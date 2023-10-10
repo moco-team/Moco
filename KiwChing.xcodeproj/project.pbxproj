@@ -15,6 +15,11 @@
 		9379C2632AD53BAD0099DEFE /* KiwChingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9379C2622AD53BAD0099DEFE /* KiwChingTests.swift */; };
 		9379C26D2AD53BAD0099DEFE /* KiwChingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9379C26C2AD53BAD0099DEFE /* KiwChingUITests.swift */; };
 		9379C26F2AD53BAD0099DEFE /* KiwChingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9379C26E2AD53BAD0099DEFE /* KiwChingUITestsLaunchTests.swift */; };
+		9379C27C2AD54FF70099DEFE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9379C27B2AD54FF70099DEFE /* README.md */; };
+		93B853382AD59DE50060DB4A /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B853372AD59DE50060DB4A /* Device.swift */; };
+		93B8533D2AD5BDFE0060DB4A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B8533C2AD5BDFE0060DB4A /* HomeView.swift */; };
+		93B853402AD5C13D0060DB4A /* ObjectDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B8533F2AD5C13D0060DB4A /* ObjectDetectionViewController.swift */; };
+		93B853422AD5C1770060DB4A /* Detector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B853412AD5C1770060DB4A /* Detector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,11 @@
 		9379C2682AD53BAD0099DEFE /* KiwChingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiwChingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9379C26C2AD53BAD0099DEFE /* KiwChingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KiwChingUITests.swift; sourceTree = "<group>"; };
 		9379C26E2AD53BAD0099DEFE /* KiwChingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KiwChingUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9379C27B2AD54FF70099DEFE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		93B853372AD59DE50060DB4A /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		93B8533C2AD5BDFE0060DB4A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		93B8533F2AD5C13D0060DB4A /* ObjectDetectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewController.swift; sourceTree = "<group>"; };
+		93B853412AD5C1770060DB4A /* Detector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +88,7 @@
 		9379C2412AD53BAA0099DEFE = {
 			isa = PBXGroup;
 			children = (
+				9379C27B2AD54FF70099DEFE /* README.md */,
 				9379C24C2AD53BAA0099DEFE /* KiwChing */,
 				9379C2612AD53BAD0099DEFE /* KiwChingTests */,
 				9379C26B2AD53BAD0099DEFE /* KiwChingUITests */,
@@ -98,6 +109,10 @@
 		9379C24C2AD53BAA0099DEFE /* KiwChing */ = {
 			isa = PBXGroup;
 			children = (
+				93B8533B2AD5BA7B0060DB4A /* ViewModel */,
+				93B8533A2AD5B92D0060DB4A /* Model */,
+				93B853392AD5B91D0060DB4A /* CoreMLModels */,
+				93B853352AD59DC70060DB4A /* View */,
 				9379C24D2AD53BAA0099DEFE /* KiwChingApp.swift */,
 				9379C24F2AD53BAA0099DEFE /* ContentView.swift */,
 				9379C2512AD53BAA0099DEFE /* Item.swift */,
@@ -132,6 +147,54 @@
 				9379C26E2AD53BAD0099DEFE /* KiwChingUITestsLaunchTests.swift */,
 			);
 			path = KiwChingUITests;
+			sourceTree = "<group>";
+		};
+		93B853352AD59DC70060DB4A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93B8533E2AD5C1210060DB4A /* ObjectDetection */,
+				93B853362AD59DCF0060DB4A /* Extension */,
+				93B8533C2AD5BDFE0060DB4A /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		93B853362AD59DCF0060DB4A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				93B853372AD59DE50060DB4A /* Device.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		93B853392AD5B91D0060DB4A /* CoreMLModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreMLModels;
+			sourceTree = "<group>";
+		};
+		93B8533A2AD5B92D0060DB4A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		93B8533B2AD5BA7B0060DB4A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		93B8533E2AD5C1210060DB4A /* ObjectDetection */ = {
+			isa = PBXGroup;
+			children = (
+				93B8533F2AD5C13D0060DB4A /* ObjectDetectionViewController.swift */,
+				93B853412AD5C1770060DB4A /* Detector.swift */,
+			);
+			path = ObjectDetection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9379C27C2AD54FF70099DEFE /* README.md in Resources */,
 				9379C2572AD53BAC0099DEFE /* Preview Assets.xcassets in Resources */,
 				9379C2542AD53BAC0099DEFE /* Assets.xcassets in Resources */,
 			);
@@ -265,8 +329,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9379C2502AD53BAA0099DEFE /* ContentView.swift in Sources */,
+				93B853422AD5C1770060DB4A /* Detector.swift in Sources */,
 				9379C2522AD53BAA0099DEFE /* Item.swift in Sources */,
 				9379C24E2AD53BAA0099DEFE /* KiwChingApp.swift in Sources */,
+				93B853402AD5C13D0060DB4A /* ObjectDetectionViewController.swift in Sources */,
+				93B8533D2AD5BDFE0060DB4A /* HomeView.swift in Sources */,
+				93B853382AD59DE50060DB4A /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
