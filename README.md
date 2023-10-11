@@ -1,4 +1,4 @@
-# KiwChing
+# Moco
 
 ## Platform
 
@@ -12,3 +12,7 @@
 ## Branch naming convention
 
 - [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/)
+
+## Design Pattern
+
+- MVVM
