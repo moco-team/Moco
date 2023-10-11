@@ -1,6 +1,6 @@
 //
 //  Device.swift
-//  KiwChing
+//  Moco
 //
 //  Created by Aaron Christopher Tanhar on 10/10/23.
 //

@@ -1,6 +1,6 @@
 //
 //  Detector.swift
-//  KiwChing
+//  Moco
 //
 //  Created by Aaron Christopher Tanhar on 11/10/23.
 //
