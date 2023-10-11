@@ -1,15 +1,15 @@
 //
-//  KiwChingApp.swift
-//  KiwChing
+//  MocoApp.swift
+//  Moco
 //
-//  Created by Aaron Christopher Tanhar on 10/10/23.
+//  Created by Aaron Christopher Tanhar on 11/10/23.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @main
-struct KiwChingApp: App {
+struct MocoApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self

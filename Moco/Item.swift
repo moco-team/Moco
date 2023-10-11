@@ -1,8 +1,8 @@
 //
 //  Item.swift
-//  KiwChing
+//  Moco
 //
-//  Created by Aaron Christopher Tanhar on 10/10/23.
+//  Created by Aaron Christopher Tanhar on 11/10/23.
 //
 
 import Foundation

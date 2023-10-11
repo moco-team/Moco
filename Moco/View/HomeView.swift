@@ -5,8 +5,8 @@
 //  Created by Aaron Christopher Tanhar on 11/10/23.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
@@ -38,7 +38,7 @@ struct HomeView: View {
 //            Text("Select an item")
 //        }
         HostedViewController()
-                    .ignoresSafeArea()
+            .ignoresSafeArea()
     }
 
     private func addItem() {

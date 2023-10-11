@@ -5,9 +5,9 @@
 //  Created by Aaron Christopher Tanhar on 11/10/23.
 //
 
-import UIKit
-import SwiftUI
 import AVFoundation
+import SwiftUI
+import UIKit
 import Vision
 
 class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
@@ -36,30 +36,30 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
         }
     }
 
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+    override func willTransition(to _: UITraitCollection, with _: UIViewControllerTransitionCoordinator) {
         screenRect = UIScreen.main.bounds
-        self.previewLayer.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
+        previewLayer.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
 
         switch UIDevice.current.orientation {
-            // Home button on top
-            case UIDeviceOrientation.portraitUpsideDown:
-                self.previewLayer.connection?.videoOrientation = .portraitUpsideDown
+        // Home button on top
+        case UIDeviceOrientation.portraitUpsideDown:
+            previewLayer.connection?.videoOrientation = .portraitUpsideDown
 
-            // Home button on right
-            case UIDeviceOrientation.landscapeLeft:
-                self.previewLayer.connection?.videoOrientation = .landscapeRight
+        // Home button on right
+        case UIDeviceOrientation.landscapeLeft:
+            previewLayer.connection?.videoOrientation = .landscapeRight
 
-            // Home button on left
-            case UIDeviceOrientation.landscapeRight:
-                self.previewLayer.connection?.videoOrientation = .landscapeLeft
+        // Home button on left
+        case UIDeviceOrientation.landscapeRight:
+            previewLayer.connection?.videoOrientation = .landscapeLeft
 
-            // Home button at bottom
-            case UIDeviceOrientation.portrait:
-                self.previewLayer.connection?.videoOrientation = .portrait
+        // Home button at bottom
+        case UIDeviceOrientation.portrait:
+            previewLayer.connection?.videoOrientation = .portrait
 
-            default:
-                break
-            }
+        default:
+            break
+        }
 
         // Detector
         updateLayers()
@@ -67,17 +67,17 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
 
     func checkPermission() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
-            // Permission has been granted before
-            case .authorized:
-                permissionGranted = true
+        // Permission has been granted before
+        case .authorized:
+            permissionGranted = true
 
-            // Permission has not been requested yet
-            case .notDetermined:
-                requestPermission()
+        // Permission has not been requested yet
+        case .notDetermined:
+            requestPermission()
 
-            default:
-                permissionGranted = false
-            }
+        default:
+            permissionGranted = false
+        }
     }
 
     func requestPermission() {
@@ -118,10 +118,9 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
 }
 
 struct HostedViewController: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UIViewController {
+    func makeUIViewController(context _: Context) -> UIViewController {
         return ObjectDetectionViewController()
-        }
+    }
 
-        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        }
+    func updateUIViewController(_: UIViewController, context _: Context) {}
 }
