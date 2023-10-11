@@ -12,7 +12,7 @@ import UIKit
 extension ObjectDetectionViewController {
 
     func setupDetector() {
-        let modelURL = Bundle.main.url(forResource: "YOLOv3TinyInt8LUT", withExtension: "mlmodelc")
+        let modelURL = Bundle.main.url(forResource: "yolov8s", withExtension: "mlmodelc")
 
         do {
             let visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL!))
@@ -36,6 +36,9 @@ extension ObjectDetectionViewController {
 
         for observation in results where observation is VNRecognizedObjectObservation {
             guard let objectObservation = observation as? VNRecognizedObjectObservation else { continue }
+            guard objectObservation.confidence > 0.5 else { continue }
+            
+            print(objectObservation.labels[0].identifier)
 
             // Transformations
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(screenRect.size.width), Int(screenRect.size.height))
@@ -47,8 +50,22 @@ extension ObjectDetectionViewController {
             )
 
             let boxLayer = self.drawBoundingBox(transformedBounds)
+            
+            let textlayer = CATextLayer()
+
+            textlayer.frame = CGRect(x: objectBounds.minX,
+                                     y: screenRect.size.height - objectBounds.maxY + 10, width: 200, height: 18)
+            textlayer.fontSize = 12
+            textlayer.alignmentMode = .center
+            textlayer.string = objectObservation.labels[0].identifier
+            textlayer.isWrapped = true
+            textlayer.truncationMode = .end
+            textlayer.backgroundColor = UIColor.white.cgColor
+            textlayer.foregroundColor = UIColor.black.cgColor
+
 
             detectionLayer.addSublayer(boxLayer)
+            detectionLayer.addSublayer(textlayer)
         }
     }
 
