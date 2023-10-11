@@ -20,6 +20,7 @@
 		93B8533D2AD5BDFE0060DB4A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B8533C2AD5BDFE0060DB4A /* HomeView.swift */; };
 		93B853402AD5C13D0060DB4A /* ObjectDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B8533F2AD5C13D0060DB4A /* ObjectDetectionViewController.swift */; };
 		93B853422AD5C1770060DB4A /* Detector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B853412AD5C1770060DB4A /* Detector.swift */; };
+		93C2D2092AD6556F0051DE9F /* yolov8s.mlmodel in Resources */ = {isa = PBXBuildFile; fileRef = 93B853432AD5C4D40060DB4A /* yolov8s.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		93B8533C2AD5BDFE0060DB4A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		93B8533F2AD5C13D0060DB4A /* ObjectDetectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewController.swift; sourceTree = "<group>"; };
 		93B853412AD5C1770060DB4A /* Detector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detector.swift; sourceTree = "<group>"; };
+		93B853432AD5C4D40060DB4A /* yolov8s.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = yolov8s.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 		93B853392AD5B91D0060DB4A /* CoreMLModels */ = {
 			isa = PBXGroup;
 			children = (
+				93B853432AD5C4D40060DB4A /* yolov8s.mlmodel */,
 			);
 			path = CoreMLModels;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93C2D2092AD6556F0051DE9F /* yolov8s.mlmodel in Resources */,
 				9379C27C2AD54FF70099DEFE /* README.md in Resources */,
 				9379C2572AD53BAC0099DEFE /* Preview Assets.xcassets in Resources */,
 				9379C2542AD53BAC0099DEFE /* Assets.xcassets in Resources */,
@@ -503,6 +507,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KiwChing/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow this app to access the camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -513,7 +518,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kiwchingteam.KiwChing;
+				PRODUCT_BUNDLE_IDENTIFIER = cip.kiwchingteam.KiwChing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -534,6 +539,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KiwChing/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow this app to access the camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -544,7 +550,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kiwchingteam.KiwChing;
+				PRODUCT_BUNDLE_IDENTIFIER = cip.kiwchingteam.KiwChing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
