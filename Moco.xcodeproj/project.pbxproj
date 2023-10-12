@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D1E2AD7AD78003D2AE1 /* Collection.swift */; };
+		938E3D222AD7C868003D2AE1 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D212AD7C868003D2AE1 /* IconButton.swift */; };
 		93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C2F8832AD683AC007D1ABC /* MocoApp.swift */; };
 		93C2F8862AD683AC007D1ABC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C2F8852AD683AC007D1ABC /* ContentView.swift */; };
 		93C2F8882AD683AC007D1ABC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C2F8872AD683AC007D1ABC /* Item.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		938E3D1E2AD7AD78003D2AE1 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		938E3D212AD7C868003D2AE1 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		93C2F8802AD683AC007D1ABC /* Moco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C2F8832AD683AC007D1ABC /* MocoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocoApp.swift; sourceTree = "<group>"; };
 		93C2F8852AD683AC007D1ABC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		938E3D202AD7C85A003D2AE1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				938E3D212AD7C868003D2AE1 /* IconButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		93C2F8772AD683AC007D1ABC = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +173,7 @@
 		93C2F8B22AD68470007D1ABC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				938E3D1E2AD7AD78003D2AE1 /* Collection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,6 +189,7 @@
 		93C2F8B42AD6848F007D1ABC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				938E3D202AD7C85A003D2AE1 /* Components */,
 				93C2F8B92AD684CE007D1ABC /* Extension */,
 				93C2F8B82AD684CE007D1ABC /* HomeView.swift */,
 				93C2F8B52AD684CE007D1ABC /* ObjectDetection */,
@@ -332,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				938E3D222AD7C868003D2AE1 /* IconButton.swift in Sources */,
 				93C2F8862AD683AC007D1ABC /* ContentView.swift in Sources */,
 				93C2F8882AD683AC007D1ABC /* Item.swift in Sources */,
 				93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */,
@@ -339,6 +354,7 @@
 				93C2F8BC2AD684CE007D1ABC /* ObjectDetectionViewController.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
 				93C2F8BB2AD684CE007D1ABC /* Detector.swift in Sources */,
+				938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
