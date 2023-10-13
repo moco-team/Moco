@@ -28,7 +28,6 @@ struct CircleButton: ButtonStyle {
 }
 
 struct RoundedRectangleButton: ButtonStyle {
-
     var width: CGFloat = 30
     var height: CGFloat = 30
     var backgroundColor = Color.white
@@ -36,7 +35,7 @@ struct RoundedRectangleButton: ButtonStyle {
     var animation = Animation.easeOut(duration: 0.2)
 
     var cornerRadius: CGFloat = 15
-    
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: width, height: height)
@@ -51,7 +50,7 @@ struct RoundedRectangleButton: ButtonStyle {
 
 struct ImageStyleButton: View {
     var imageName: String
-    
+
     var body: some View {
         Image(systemName: imageName)
             .resizable()
@@ -61,5 +60,5 @@ struct ImageStyleButton: View {
 }
 
 #Preview {
-    ImageStyleButton()
+    ImageStyleButton(imageName: "gear")
 }

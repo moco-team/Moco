@@ -12,6 +12,13 @@ import SwiftData
     var modelContext: ModelContext?
     var items = [Item]()
 
+    init(modelContext: ModelContext? = nil) {
+        if modelContext != nil {
+            self.modelContext = modelContext
+            fetchItems()
+        }
+    }
+
     func fetchItems() {
         let fetchDescriptor = FetchDescriptor<Item>(
             predicate: #Predicate {
@@ -30,5 +37,18 @@ import SwiftData
         fetchItems()
     }
 
-    func deleteItem() {}
+    func deleteItem(item: Item) {
+        modelContext?.delete(item)
+        try? modelContext?.save()
+
+        fetchItems()
+    }
+
+    func deleteItem(_ index: Int) {
+        guard items.indices.contains(index) else { return }
+        modelContext?.delete(items[index])
+        try? modelContext?.save()
+
+        fetchItems()
+    }
 }
