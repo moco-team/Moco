@@ -2,64 +2,64 @@
 //  IconButton.swift
 //  Moco
 //
-//  Created by Aaron Christopher Tanhar on 12/10/23.
+//  Created by Nur Azizah on 12/10/23.
 //
 
+import Foundation
 import SwiftUI
 
-struct IconButton: ButtonStyle {
+struct CircleButton: ButtonStyle {
     var width: CGFloat = 30
     var height: CGFloat = 30
     var backgroundColor = Color.white
     var foregroundColor = Color.black
     var animation = Animation.easeOut(duration: 0.2)
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: width, height: height)
             .background(backgroundColor)
             .foregroundColor(foregroundColor)
-            .clipShape(Capsule())
+            .clipShape(Circle())
             .scaleEffect(configuration.isPressed ? 1.2 : 1)
             .animation(animation, value: configuration.isPressed)
             .shadow(radius: 2, y: 3)
     }
 }
 
-struct IconButtonRect: ButtonStyle {
+struct RoundedRectangleButton: ButtonStyle {
+
     var width: CGFloat = 30
     var height: CGFloat = 30
     var backgroundColor = Color.white
     var foregroundColor = Color.black
     var animation = Animation.easeOut(duration: 0.2)
+
+    var cornerRadius: CGFloat = 15
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: width, height: height)
             .background(backgroundColor)
             .foregroundColor(foregroundColor)
-            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 8, height: 8)))
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
             .scaleEffect(configuration.isPressed ? 1.2 : 1)
             .animation(animation, value: configuration.isPressed)
             .shadow(radius: 2, y: 3)
     }
 }
 
-struct SettingsButtonView: View {
+struct ImageStyleButton: View {
+    var imageName: String
+    
     var body: some View {
-        VStack {
-            Button {
-                print("Button pressed!")
-            } label: {
-                Image(systemName: "gearshape")
-            }.buttonStyle(IconButton(width: 30, height: 30, backgroundColor: .green, foregroundColor: .red))
-            Button {
-                print("Button pressed!")
-            } label: {
-                Image(systemName: "gearshape")
-            }.buttonStyle(IconButtonRect(width: 30, height: 30, backgroundColor: .purple, foregroundColor: .red, animation: .easeOut(duration: 0.6)))
-        }
+        Image(systemName: imageName)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 50, height: 50)
     }
 }
 
 #Preview {
-    SettingsButtonView()
+    ImageStyleButton()
 }

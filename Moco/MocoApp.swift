@@ -14,10 +14,10 @@ struct MocoApp: App {
 
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self
+            CollectionModel.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
+        
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
@@ -34,6 +34,5 @@ struct MocoApp: App {
         WindowGroup {
             ContentView().environment(\.itemViewModel, itemViewModel)
         }
-        .modelContainer(sharedModelContainer)
     }
 }
