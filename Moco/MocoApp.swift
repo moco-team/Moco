@@ -10,6 +10,8 @@ import SwiftUI
 
 @main
 struct MocoApp: App {
+    @State private var itemViewModel = ItemViewModel()
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             CollectionModel.self
@@ -22,11 +24,15 @@ struct MocoApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-    
+
+    init() {
+        itemViewModel.modelContext = ModelContext(sharedModelContainer)
+        itemViewModel.fetchItems()
+    }
+
     var body: some Scene {
         WindowGroup {
-            CollectionView()
-                .modelContainer(sharedModelContainer)
+            ContentView().environment(\.itemViewModel, itemViewModel)
         }
     }
 }
