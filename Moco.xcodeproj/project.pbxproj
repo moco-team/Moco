@@ -15,6 +15,8 @@
 		0B2E31DE2AD8087B00DFC16F /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31DD2AD8087B00DFC16F /* Header.swift */; };
 		0B2E31E02AD810D400DFC16F /* StoryBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31DF2AD810D400DFC16F /* StoryBoardView.swift */; };
 		0B2E31E22AD9064900DFC16F /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31E12AD9064900DFC16F /* CollectionViewModel.swift */; };
+		938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D1E2AD7AD78003D2AE1 /* Collection.swift */; };
+		938E3D222AD7C868003D2AE1 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D212AD7C868003D2AE1 /* IconButton.swift */; };
 		93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C2F8832AD683AC007D1ABC /* MocoApp.swift */; };
 		93C2F8882AD683AC007D1ABC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C2F8872AD683AC007D1ABC /* Item.swift */; };
 		93C2F88A2AD683AE007D1ABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C2F8892AD683AE007D1ABC /* Assets.xcassets */; };
@@ -56,6 +58,8 @@
 		0B2E31DD2AD8087B00DFC16F /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		0B2E31DF2AD810D400DFC16F /* StoryBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardView.swift; sourceTree = "<group>"; };
 		0B2E31E12AD9064900DFC16F /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewModel.swift; path = Moco/View/CollectionViewModel.swift; sourceTree = SOURCE_ROOT; };
+		938E3D1E2AD7AD78003D2AE1 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		938E3D212AD7C868003D2AE1 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		93C2F8802AD683AC007D1ABC /* Moco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C2F8832AD683AC007D1ABC /* MocoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocoApp.swift; sourceTree = "<group>"; };
 		93C2F8872AD683AC007D1ABC /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				0B2E31D92AD7EBE500DFC16F /* CollectionModel.swift */,
+				938E3D1E2AD7AD78003D2AE1 /* Collection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */,
+				93C2F8862AD683AC007D1ABC /* ContentView.swift in Sources */,
 				93C2F8882AD683AC007D1ABC /* Item.swift in Sources */,
 				93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */,
 				93C2F8BD2AD684CE007D1ABC /* HomeView.swift in Sources */,
@@ -391,6 +397,7 @@
 				0B2E31DE2AD8087B00DFC16F /* Header.swift in Sources */,
 				93C2F8BB2AD684CE007D1ABC /* Detector.swift in Sources */,
 				0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */,
+				938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
