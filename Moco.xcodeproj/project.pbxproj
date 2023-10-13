@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D1E2AD7AD78003D2AE1 /* Collection.swift */; };
 		938E3D222AD7C868003D2AE1 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D212AD7C868003D2AE1 /* IconButton.swift */; };
+		938E3D312AD8FD2E003D2AE1 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D302AD8FD2E003D2AE1 /* ItemViewModel.swift */; };
+		938E3D332AD91605003D2AE1 /* DetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D322AD91605003D2AE1 /* DetectionView.swift */; };
+		938E3D352AD91AD5003D2AE1 /* EnvironmentValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D342AD91AD5003D2AE1 /* EnvironmentValue.swift */; };
 		93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C2F8832AD683AC007D1ABC /* MocoApp.swift */; };
 		93C2F8862AD683AC007D1ABC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C2F8852AD683AC007D1ABC /* ContentView.swift */; };
 		93C2F8882AD683AC007D1ABC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C2F8872AD683AC007D1ABC /* Item.swift */; };
@@ -45,6 +48,9 @@
 /* Begin PBXFileReference section */
 		938E3D1E2AD7AD78003D2AE1 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		938E3D212AD7C868003D2AE1 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		938E3D302AD8FD2E003D2AE1 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
+		938E3D322AD91605003D2AE1 /* DetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionView.swift; sourceTree = "<group>"; };
+		938E3D342AD91AD5003D2AE1 /* EnvironmentValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValue.swift; sourceTree = "<group>"; };
 		93C2F8802AD683AC007D1ABC /* Moco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C2F8832AD683AC007D1ABC /* MocoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocoApp.swift; sourceTree = "<group>"; };
 		93C2F8852AD683AC007D1ABC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -129,7 +135,6 @@
 				93C2F8B12AD68467007D1ABC /* ViewModel */,
 				93C2F8832AD683AC007D1ABC /* MocoApp.swift */,
 				93C2F8852AD683AC007D1ABC /* ContentView.swift */,
-				93C2F8872AD683AC007D1ABC /* Item.swift */,
 				93C2F8892AD683AE007D1ABC /* Assets.xcassets */,
 				93C2F88E2AD683AE007D1ABC /* Moco.entitlements */,
 				93C2F88F2AD683AE007D1ABC /* Info.plist */,
@@ -166,6 +171,7 @@
 		93C2F8B12AD68467007D1ABC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				938E3D302AD8FD2E003D2AE1 /* ItemViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -173,6 +179,7 @@
 		93C2F8B22AD68470007D1ABC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				93C2F8872AD683AC007D1ABC /* Item.swift */,
 				938E3D1E2AD7AD78003D2AE1 /* Collection.swift */,
 			);
 			path = Model;
@@ -192,6 +199,7 @@
 				938E3D202AD7C85A003D2AE1 /* Components */,
 				93C2F8B92AD684CE007D1ABC /* Extension */,
 				93C2F8B82AD684CE007D1ABC /* HomeView.swift */,
+				938E3D322AD91605003D2AE1 /* DetectionView.swift */,
 				93C2F8B52AD684CE007D1ABC /* ObjectDetection */,
 			);
 			path = View;
@@ -210,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				93C2F8BA2AD684CE007D1ABC /* Device.swift */,
+				938E3D342AD91AD5003D2AE1 /* EnvironmentValue.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -349,9 +358,12 @@
 				938E3D222AD7C868003D2AE1 /* IconButton.swift in Sources */,
 				93C2F8862AD683AC007D1ABC /* ContentView.swift in Sources */,
 				93C2F8882AD683AC007D1ABC /* Item.swift in Sources */,
+				938E3D312AD8FD2E003D2AE1 /* ItemViewModel.swift in Sources */,
 				93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */,
 				93C2F8BD2AD684CE007D1ABC /* HomeView.swift in Sources */,
 				93C2F8BC2AD684CE007D1ABC /* ObjectDetectionViewController.swift in Sources */,
+				938E3D352AD91AD5003D2AE1 /* EnvironmentValue.swift in Sources */,
+				938E3D332AD91605003D2AE1 /* DetectionView.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
 				93C2F8BB2AD684CE007D1ABC /* Detector.swift in Sources */,
 				938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */,
