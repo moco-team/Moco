@@ -8,13 +8,15 @@
 import Foundation
 import SwiftData
 
-@Observable class ItemViewModel {
-    var modelContext: ModelContext?
+@Observable class ItemViewModel: BaseViewModel {
     var items = [Item]()
 
     init(modelContext: ModelContext? = nil) {
+        super.init()
         if modelContext != nil {
             self.modelContext = modelContext
+        }
+        if self.modelContext != nil {
             fetchItems()
         }
     }

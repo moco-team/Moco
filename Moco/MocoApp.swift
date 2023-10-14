@@ -12,16 +12,12 @@ import SwiftUI
 struct MocoApp: App {
     @State private var itemViewModel = ItemViewModel()
 
-    var sharedModelContainer: ModelContainer = ModelGenerator.generator()
-
-    init() {
-        itemViewModel.modelContext = ModelContext(sharedModelContainer)
-        itemViewModel.fetchItems()
-    }
+    private static let sharedModelContainer: ModelContainer = ModelGenerator.generator()
+    static let modelContext = ModelContext(sharedModelContainer)
 
     var body: some Scene {
         WindowGroup {
             ContentView().environment(\.itemViewModel, itemViewModel)
-        }.modelContainer(sharedModelContainer)
+        }
     }
 }
