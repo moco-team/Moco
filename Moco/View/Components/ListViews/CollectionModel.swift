@@ -13,14 +13,14 @@ final class CollectionModel: Identifiable {
     var id: String = ""
     var collectionDescription: String = ""
     var image: String = ""
-    var createdAt: Date = Date()
-    var updatedAt: Date = Date()
-    
+    var createdAt = Date()
+    var updatedAt = Date()
+
     init(collectionDescription: String, image: String) {
-        self.id = UUID().uuidString
+        id = UUID().uuidString
         self.collectionDescription = collectionDescription
         self.image = image
-        self.createdAt = Date()
-        self.updatedAt = Date()
+        createdAt = Date()
+        updatedAt = Date()
     }
 }

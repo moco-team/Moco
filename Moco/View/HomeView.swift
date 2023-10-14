@@ -9,13 +9,18 @@ import SwiftData
 import SwiftUI
 
 struct HomeView: View {
-    @Environment(\.modelContext) private var modelContext
     @Environment(\.itemViewModel) private var itemViewModel
 
     var body: some View {
         NavigationStack {
-            List(itemViewModel.items) { item in
-                Text(item.name)
+            List {
+                ForEach(itemViewModel.items) { item in
+                    Text(item.name)
+                }.onDelete { indexSet in
+                    for index in indexSet {
+                        itemViewModel.deleteItem(index)
+                    }
+                }
             }
             .toolbar {
                 Button("Add") {
@@ -27,6 +32,9 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
-        .modelContainer(for: Item.self, inMemory: true)
+    var sharedModelContainer: ModelContainer = ModelGenerator.generator()
+
+    @State var itemViewModel = ItemViewModel(modelContext: ModelContext(sharedModelContainer))
+
+    return HomeView().environment(\.itemViewModel, itemViewModel)
 }

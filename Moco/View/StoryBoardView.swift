@@ -14,11 +14,11 @@ struct StoryBoardView: View {
                 Header()
                 Spacer()
             }
-            
+
             VStack {
                 HStack {
                     Text("Pilih Koleksi")
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .fontWeight(/*@START_MENU_TOKEN@*/ .bold/*@END_MENU_TOKEN@*/)
                         .font(.title)
                     Spacer()
                 }
