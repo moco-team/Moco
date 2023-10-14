@@ -32,9 +32,7 @@ struct HomeView: View {
 }
 
 #Preview {
-    var sharedModelContainer: ModelContainer = ModelGenerator.generator()
-
-    @State var itemViewModel = ItemViewModel(modelContext: ModelContext(sharedModelContainer))
+    @State var itemViewModel = ItemViewModel()
 
     return HomeView().environment(\.itemViewModel, itemViewModel)
 }
