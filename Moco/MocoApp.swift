@@ -10,6 +10,8 @@ import SwiftUI
 
 @main
 struct MocoApp: App {
+    @Bindable private var routeViewModel = RouteViewModel()
+
     @State private var itemViewModel = ItemViewModel()
 
     private static let sharedModelContainer: ModelContainer = ModelGenerator.generator()
@@ -17,7 +19,10 @@ struct MocoApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView().environment(\.itemViewModel, itemViewModel)
+            NavigationStack(path: $routeViewModel.navPath) {
+                ContentViewContainer()
+            }.environment(\.navigate, routeViewModel)
+                .environment(\.itemViewModel, itemViewModel)
         }
     }
 }
