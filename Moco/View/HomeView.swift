@@ -10,24 +10,29 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(\.itemViewModel) private var itemViewModel
+    @Environment(\.navigate) private var navigate
 
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(itemViewModel.items) { item in
-                    Text(item.name)
-                }.onDelete { indexSet in
-                    for index in indexSet {
-                        itemViewModel.deleteItem(index)
+        VStack {
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHGrid(rows: [GridItem(.flexible())]) {
+                    ForEach(itemViewModel.items) { item in
+                        StoryBook(title: item.name) {
+                            navigate.append(.story("Bangers"))
+                        }
                     }
                 }
-            }
-            .toolbar {
-                Button("Add") {
-                    itemViewModel.createItem()
+                .padding(.horizontal, 30)
+                .toolbar {
+                    Button("Add") {
+                        itemViewModel.createItem()
+                    }
+                    Button("Delete") {
+                        itemViewModel.deleteItem(itemViewModel.items.count - 1)
+                    }
                 }
-            }
-        }
+            }.scrollClipDisabled()
+        }.navigationTitle("Your Collection")
     }
 }
 
