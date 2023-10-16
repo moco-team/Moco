@@ -15,6 +15,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    CollectionView()
-        .modelContainer(for: CollectionModel.self, inMemory: true)
+    ContentView()
+        .modelContainer(for: Item.self, inMemory: true)
 }
