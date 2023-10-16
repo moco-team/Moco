@@ -15,14 +15,14 @@ final class StoryThemeModel: Identifiable {
     var descriptionTheme: String = ""
     var createdAt = Date()
     var updatedAt = Date()
-    
+
     var stories: [StoryModel]?
-    
+
     init(pictureName: String, descriptionTheme: String) {
         id = UUID().uuidString
         self.pictureName = pictureName
         self.descriptionTheme = descriptionTheme
-        self.createdAt = Date()
-        self.updatedAt = Date()
+        createdAt = Date()
+        updatedAt = Date()
     }
 }

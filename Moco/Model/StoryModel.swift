@@ -10,23 +10,22 @@ import SwiftData
 
 @Model
 final class StoryModel: Identifiable {
-    var id: String = ""
+    var id: String = UUID().uuidString
     var background: String = ""
     var pageNumber: Int = 0
-    var is_have_prompt: Bool = false
+    var isHavePrompt: Bool = false
     var createdAt = Date()
     var updatedAt = Date()
-    
-    var storyTheme: StoryThemeModel? = nil
+
+    var storyTheme: StoryThemeModel?
     var prompts: [PromptModel]?
     var storyContents: [StoryContentModel]?
-    
-    init(background: String, pageNumber: Int, is_have_prompt: Bool) {
-        id = UUID().uuidString
+
+    init(background: String, pageNumber: Int, isHavePrompt: Bool) {
         self.background = background
         self.pageNumber = pageNumber
-        self.is_have_prompt = is_have_prompt
-        self.createdAt = Date()
-        self.updatedAt = Date()
+        self.isHavePrompt = isHavePrompt
+        createdAt = Date()
+        updatedAt = Date()
     }
 }

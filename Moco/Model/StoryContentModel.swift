@@ -16,15 +16,15 @@ final class StoryContentModel: Identifiable {
     var contentType: String = ""
     var createdAt = Date()
     var updatedAt = Date()
-    
-    var stories: [StoryModel]? = nil
-    
+
+    var stories: [StoryModel]?
+
     init(duration: TimeInterval, contentName: String, contentType: String) {
         id = UUID().uuidString
         self.duration = duration
         self.contentName = contentName
         self.contentType = contentType
-        self.createdAt = Date()
-        self.updatedAt = Date()
+        createdAt = Date()
+        updatedAt = Date()
     }
 }
