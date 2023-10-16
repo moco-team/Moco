@@ -9,9 +9,9 @@ import Foundation
 import SwiftData
 
 protocol BaseViewModelProtocol {
-    var modelContext: ModelContext? { get set }
+    var repository: ItemRepository? { get set }
 }
 
-@Observable class BaseViewModel {
-    var modelContext: ModelContext? = MocoApp.modelContext
+@Observable class BaseViewModel: BaseViewModelProtocol {
+    var repository: ItemRepository? = nil
 }
