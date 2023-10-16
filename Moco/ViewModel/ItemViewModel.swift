@@ -7,50 +7,35 @@
 
 import Foundation
 import SwiftData
+import SwiftUI
 
 @Observable class ItemViewModel: BaseViewModel {
     var items = [Item]()
 
-    init(modelContext: ModelContext? = nil) {
+    init(modelContext: ModelContext? = nil, repository: ItemRepository) {
         super.init()
-        if modelContext != nil {
-            self.modelContext = modelContext
-        }
-        if self.modelContext != nil {
-            fetchItems()
-        }
+        self.repository = repository
+        items = repository.fetchAll()
     }
-
-    func fetchItems() {
-        let fetchDescriptor = FetchDescriptor<Item>(
-            predicate: #Predicate {
-                $0.name != "SecretItem"
-            },
-            sortBy: [SortDescriptor<Item>(\.name)]
-        )
-        items = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
-    }
-
+    
     func createItem() {
-        let newItem = Item(name: "bozo")
-        modelContext?.insert(newItem)
-        try? modelContext?.save()
-
-        fetchItems()
+        _ = repository!.create(Item(name: "azab"))
+        items = repository!.fetchAll()
     }
-
-    func deleteItem(item: Item) {
-        modelContext?.delete(item)
-        try? modelContext?.save()
-
-        fetchItems()
+    
+    func deleteItem(_ item: Item) {
+        _ = repository!.delete(item)
+        items = repository!.fetchAll()
     }
+    
+    func deleteItem(at index: Int) {
+        guard index >= 0, index < items.count else {
+            return // Index out of bounds
+        }
 
-    func deleteItem(_ index: Int) {
-        guard items.indices.contains(index) else { return }
-        modelContext?.delete(items[index])
-        try? modelContext?.save()
+        let item = items.remove(at: index)
 
-        fetchItems()
+        _ = repository!.delete(item)
+        items = repository!.fetchAll()
     }
 }
