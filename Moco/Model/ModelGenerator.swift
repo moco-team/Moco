@@ -10,7 +10,12 @@ import SwiftData
 struct ModelGenerator {
     private static let models: [any PersistentModel.Type] = [
         Item.self,
-        CollectionModel.self
+        CollectionModel.self,
+        StoryThemeModel.self,
+        StoryModel.self,
+        StoryContentModel.self,
+        PromptModel.self,
+        HintModel.self
     ]
 
     static var generator = {
