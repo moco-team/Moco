@@ -12,16 +12,10 @@ struct StoryView: View {
     @State private var scrollPosition: Int? = 0
     @State private var isPopUpActive = false
 
-    var title: String?
+    var title: String? = "Hello World"
 
     private let storyBackgrounds = ["Story/Content/Story1/Pages/Page1",
                                     "Story/Content/Story1/Pages/Page2"]
-
-    init(title: String? = "Hello World") {
-        UIScrollView.appearance().bounces = false
-        UIScrollView.appearance().isUserInteractionEnabled = false
-        self.title = title
-    }
 
     var body: some View {
         ZStack {
@@ -37,7 +31,8 @@ struct StoryView: View {
                         }.id(index)
                     }
                 }.scrollTargetLayout()
-            }.scrollTargetBehavior(.viewAligned(limitBehavior: .always))
+            }.disabled(true)
+                .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
                 .scrollPosition(id: $scrollPosition)
             ZStack {
                 VStack {

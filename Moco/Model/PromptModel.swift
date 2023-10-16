@@ -10,24 +10,23 @@ import SwiftData
 
 @Model
 final class PromptModel: Identifiable {
-    var id: String = ""
-    var prompt_description: String = ""
+    var id: String = UUID().uuidString
+    var promptDescription: String = ""
     var correctAnswer: String = ""
     var duration: TimeInterval = 0.0
-    var prompt_type: String = ""
+    var promptType: String = ""
     var createdAt = Date()
     var updatedAt = Date()
-    
-    var story: StoryModel? = nil
+
+    var story: StoryModel?
     var hints: [HintModel]?
-    
-    init(prompt_description: String, correctAnswer: String, duration: TimeInterval, prompt_type: String) {
-        id = UUID().uuidString
-        self.prompt_description = prompt_description
+
+    init(promptDescription: String, correctAnswer: String, duration: TimeInterval, promptType: String) {
+        self.promptDescription = promptDescription
         self.correctAnswer = correctAnswer
         self.duration = duration
-        self.prompt_type = prompt_type
-        self.createdAt = Date()
-        self.updatedAt = Date()
+        self.promptType = promptType
+        createdAt = Date()
+        updatedAt = Date()
     }
 }
