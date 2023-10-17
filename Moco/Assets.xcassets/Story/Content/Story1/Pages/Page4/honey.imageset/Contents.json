@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "balon-hijau.png",
+      "filename" : "honey.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "balon-hijau 1.png",
+      "filename" : "honey 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "balon-hijau 2.png",
+      "filename" : "honey 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

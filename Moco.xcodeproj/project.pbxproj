@@ -17,6 +17,7 @@
 		05AE93652ADE82E60082B21D /* LottieAnimationTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93642ADE82E60082B21D /* LottieAnimationTestView.swift */; };
 		05AE93682ADE83430082B21D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 05AE93672ADE83430082B21D /* Lottie */; };
 		05D966E12ADEE6CF00997E3A /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05D966E02ADEE6CF00997E3A /* success.mp3 */; };
+		05D966E42ADEE96700997E3A /* FindHoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D966E32ADEE96700997E3A /* FindHoney.swift */; };
 		05E17AD52ADE86DE00A34547 /* FindTheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD42ADE86DE00A34547 /* FindTheObject.swift */; };
 		05E17AD72ADEBFC500A34547 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD62ADEBFC500A34547 /* BalloonView.swift */; };
 		05E17AD92ADED16800A34547 /* balon_merah.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05E17AD82ADED16800A34547 /* balon_merah.mp3 */; };
@@ -101,6 +102,7 @@
 		05AE93622ADE82920082B21D /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		05AE93642ADE82E60082B21D /* LottieAnimationTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimationTestView.swift; sourceTree = "<group>"; };
 		05D966E02ADEE6CF00997E3A /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
+		05D966E32ADEE96700997E3A /* FindHoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindHoney.swift; sourceTree = "<group>"; };
 		05E17AD42ADE86DE00A34547 /* FindTheObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTheObject.swift; sourceTree = "<group>"; };
 		05E17AD62ADEBFC500A34547 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
 		05E17AD82ADED16800A34547 /* balon_merah.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = balon_merah.mp3; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		05B1661C2ADE755F0077FA0D /* Prompts */ = {
 			isa = PBXGroup;
 			children = (
+				05D966E22ADEE95A00997E3A /* FindHoney */,
 				05B1661D2ADE75640077FA0D /* FindTheObject */,
 			);
 			path = Prompts;
@@ -238,6 +241,14 @@
 				05E17AD62ADEBFC500A34547 /* BalloonView.swift */,
 			);
 			path = FindTheObject;
+			sourceTree = "<group>";
+		};
+		05D966E22ADEE95A00997E3A /* FindHoney */ = {
+			isa = PBXGroup;
+			children = (
+				05D966E32ADEE96700997E3A /* FindHoney.swift */,
+			);
+			path = FindHoney;
 			sourceTree = "<group>";
 		};
 		05E17ADA2ADED17B00A34547 /* Story */ = {
@@ -644,6 +655,7 @@
 				0B6E2F6E2ADC92950001D320 /* HintModel.swift in Sources */,
 				0B2E31E22AD9064900DFC16F /* CollectionViewModel.swift in Sources */,
 				938E3D522ADBAE62003D2AE1 /* SettingsView.swift in Sources */,
+				05D966E42ADEE96700997E3A /* FindHoney.swift in Sources */,
 				938E3D472ADB0AA5003D2AE1 /* Routes.swift in Sources */,
 				0B2E31E02AD810D400DFC16F /* StoryBoardView.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
