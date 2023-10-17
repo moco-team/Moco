@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.com.kiwchingteam.KiwChing</string>
+		<string>iCloud.com.kiwchingteam.Moco</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>
