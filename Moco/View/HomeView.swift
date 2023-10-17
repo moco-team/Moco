@@ -9,6 +9,8 @@ import SwiftData
 import SwiftUI
 
 struct HomeView: View {
+    @Environment(\.audioViewModel) private var audioViewModel
+
     @Environment(\.itemViewModel) private var itemViewModel
     @Environment(\.navigate) private var navigate
 
@@ -33,6 +35,9 @@ struct HomeView: View {
                 }
             }.scrollClipDisabled()
         }.navigationTitle("Your Collection")
+            .onAppear {
+                audioViewModel.playSound(soundFileName: "bg-story")
+            }
     }
 }
 
