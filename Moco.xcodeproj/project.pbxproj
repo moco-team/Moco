@@ -215,6 +215,7 @@
 				05B166212ADE7B6F0077FA0D /* ObjectDetection.swift */,
 			);
 			path = ObjectDetection;
+		};
 		05AE93542ADE74540082B21D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +414,8 @@
 			isa = PBXGroup;
 			children = (
 				0B1197602AD7D4A7004FAD14 /* Components */,
+				93C2F8B82AD684CE007D1ABC /* HomeView.swift */,
+				938E3D322AD91605003D2AE1 /* DetectionView.swift */,
 				93C2F8B52AD684CE007D1ABC /* ObjectDetection */,
 				05AE93592ADE74E10082B21D /* Temporary */,
 				0B2E31DB2AD8084600DFC16F /* CollectionView.swift */,
