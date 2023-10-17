@@ -37,7 +37,6 @@ struct FindTheObjectView: View {
                         .cornerRadius(10)
                         .foregroundColor(.white)
                     
-                    
                     Image("Story/Content/Story1/Pages/Page1/balon-\(balloon.color)").resizable().frame(width: 22, height: 22)
                 }
             }
