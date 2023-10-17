@@ -14,10 +14,8 @@ struct StoryView: View {
 
     var title: String? = "Hello World"
 
-    private let storyBackgrounds = [
-        "Story/Content/Story1/Pages/Page1/background",
-        "Story/Content/Story1/Pages/Page2/background"
-    ]
+    private let storyBackgrounds = ["Story/Content/Story1/Pages/Page1",
+                                    "Story/Content/Story1/Pages/Page2"]
 
     var body: some View {
         ZStack {
