@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */; };
+		05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */; };
+		05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93552ADE74740082B21D /* RecognizerError.swift */; };
+		05AE93582ADE74980082B21D /* SpeechRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93572ADE74980082B21D /* SpeechRecognizerViewModel.swift */; };
+		05AE935D2ADE751A0082B21D /* SpeechRecognizerTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE935C2ADE751A0082B21D /* SpeechRecognizerTestView.swift */; };
 		0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1197612AD7D4F3004FAD14 /* IconButton.swift */; };
 		0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1197822AD7E97A004FAD14 /* CollectionRowView.swift */; };
 		0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31D72AD7EB6100DFC16F /* CollectionListView.swift */; };
@@ -76,6 +81,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSpeechRecognizerExtension.swift; sourceTree = "<group>"; };
+		05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioSessionExtension.swift; sourceTree = "<group>"; };
+		05AE93552ADE74740082B21D /* RecognizerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerError.swift; sourceTree = "<group>"; };
+		05AE93572ADE74980082B21D /* SpeechRecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizerViewModel.swift; sourceTree = "<group>"; };
+		05AE935C2ADE751A0082B21D /* SpeechRecognizerTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizerTestView.swift; sourceTree = "<group>"; };
 		0B1197612AD7D4F3004FAD14 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		0B1197822AD7E97A004FAD14 /* CollectionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionRowView.swift; sourceTree = "<group>"; };
 		0B2E31D72AD7EB6100DFC16F /* CollectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListView.swift; sourceTree = "<group>"; };
@@ -157,6 +167,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05AE93542ADE74540082B21D /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				05AE93552ADE74740082B21D /* RecognizerError.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		05AE93592ADE74E10082B21D /* Temporary */ = {
+			isa = PBXGroup;
+			children = (
+				05AE935C2ADE751A0082B21D /* SpeechRecognizerTestView.swift */,
+			);
+			path = Temporary;
+			sourceTree = "<group>";
+		};
 		0B1197602AD7D4A7004FAD14 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,10 +248,12 @@
 			isa = PBXGroup;
 			children = (
 				938E3D4E2ADBABC3003D2AE1 /* Utils */,
-				93C2F8B42AD6848F007D1ABC /* View */,
+				05AE93542ADE74540082B21D /* Helper */,
+				93C2F8B92AD684CE007D1ABC /* Extension */,
 				93C2F8B32AD6847A007D1ABC /* CoreMLModel */,
 				93C2F8B22AD68470007D1ABC /* Model */,
 				93C2F8B12AD68467007D1ABC /* ViewModel */,
+				93C2F8B42AD6848F007D1ABC /* View */,
 				938E3D462ADB0AA5003D2AE1 /* Routes.swift */,
 				93C2F8832AD683AC007D1ABC /* MocoApp.swift */,
 				93C2F8892AD683AE007D1ABC /* Assets.xcassets */,
@@ -272,6 +300,7 @@
 				0B6E2F752ADC9F020001D320 /* PromptViewModel.swift */,
 				0B6E2F732ADC9DC90001D320 /* HintViewModel.swift */,
 				0B6E2F772ADCA8990001D320 /* StoryContentViewModel.swift */,
+				05AE93572ADE74980082B21D /* SpeechRecognizerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -303,17 +332,17 @@
 		93C2F8B42AD6848F007D1ABC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0B2E31DB2AD8084600DFC16F /* CollectionView.swift */,
 				0B1197602AD7D4A7004FAD14 /* Components */,
-				93C2F8B92AD684CE007D1ABC /* Extension */,
-				93C2F8B82AD684CE007D1ABC /* HomeView.swift */,
-				938E3D322AD91605003D2AE1 /* DetectionView.swift */,
 				93C2F8B52AD684CE007D1ABC /* ObjectDetection */,
+				05AE93592ADE74E10082B21D /* Temporary */,
+				0B2E31DB2AD8084600DFC16F /* CollectionView.swift */,
+				938E3D322AD91605003D2AE1 /* DetectionView.swift */,
 				0B2E31DF2AD810D400DFC16F /* StoryBoardView.swift */,
-				938E3D362AD939C4003D2AE1 /* ContentView.swift */,
 				938E3D4A2ADB9F1B003D2AE1 /* StoryView.swift */,
 				938E3D4C2ADBA247003D2AE1 /* ContentViewContainer.swift */,
 				938E3D512ADBAE62003D2AE1 /* SettingsView.swift */,
+				93C2F8B82AD684CE007D1ABC /* HomeView.swift */,
+				938E3D362AD939C4003D2AE1 /* ContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -333,6 +362,8 @@
 				93C2F8BA2AD684CE007D1ABC /* Device.swift */,
 				938E3D342AD91AD5003D2AE1 /* EnvironmentValue.swift */,
 				938E3D572ADC00FB003D2AE1 /* PopUpExtension.swift */,
+				05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */,
+				05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -473,6 +504,7 @@
 				938E3D562ADBE961003D2AE1 /* Screen.swift in Sources */,
 				0B6E2F702ADC96200001D320 /* StoryThemeViewModel.swift in Sources */,
 				938E3D392AD939DC003D2AE1 /* Item.swift in Sources */,
+				05AE93582ADE74980082B21D /* SpeechRecognizerViewModel.swift in Sources */,
 				938E3D3D2AD9901B003D2AE1 /* PopUpComponent.swift in Sources */,
 				938E3D4D2ADBA247003D2AE1 /* ContentViewContainer.swift in Sources */,
 				0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */,
@@ -491,6 +523,9 @@
 				0B6E2F6C2ADC91E10001D320 /* PromptModel.swift in Sources */,
 				0B6E2F782ADCA8990001D320 /* StoryContentViewModel.swift in Sources */,
 				93C2F8BC2AD684CE007D1ABC /* ObjectDetectionViewController.swift in Sources */,
+				05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */,
+				05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */,
+				05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */,
 				938E3D352AD91AD5003D2AE1 /* EnvironmentValue.swift in Sources */,
 				938E3D332AD91605003D2AE1 /* DetectionView.swift in Sources */,
 				938E3D452ADAD5F3003D2AE1 /* StoryBook.swift in Sources */,
@@ -505,6 +540,7 @@
 				0B6E2F682ADC908B0001D320 /* StoryModel.swift in Sources */,
 				938E3D3B2AD9874F003D2AE1 /* ModelGenerator.swift in Sources */,
 				0B2E31DE2AD8087B00DFC16F /* Header.swift in Sources */,
+				05AE935D2ADE751A0082B21D /* SpeechRecognizerTestView.swift in Sources */,
 				938E3D502ADBABD3003D2AE1 /* Print.swift in Sources */,
 				938E3D4B2ADB9F1B003D2AE1 /* StoryView.swift in Sources */,
 				93C2F8BB2AD684CE007D1ABC /* Detector.swift in Sources */,
@@ -675,11 +711,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Moco/Preview Content\"";
-				DEVELOPMENT_TEAM = J8A42WJ9LX;
+				DEVELOPMENT_TEAM = G6VH4SDWTF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Moco/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow this app to access the camera.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow this app to access the microphone.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Allow this app to access speech recognition.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -690,7 +728,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mocoteam.Moco;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mocoteam.Moco.01;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -707,11 +745,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Moco/Preview Content\"";
-				DEVELOPMENT_TEAM = J8A42WJ9LX;
+				DEVELOPMENT_TEAM = G6VH4SDWTF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Moco/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow this app to access the camera.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow this app to access the microphone.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Allow this app to access speech recognition.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -722,7 +762,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mocoteam.Moco;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mocoteam.Moco.01;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
