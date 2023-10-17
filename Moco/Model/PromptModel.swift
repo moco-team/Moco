@@ -8,6 +8,12 @@
 import Foundation
 import SwiftData
 
+enum PromptType {
+    case puzzle
+    case objectDetection
+    case speech
+}
+
 @Model
 final class PromptModel: Identifiable {
     var id: String = UUID().uuidString

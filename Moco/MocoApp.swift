@@ -12,6 +12,7 @@ import SwiftUI
 struct MocoApp: App {
     @Bindable private var routeViewModel = RouteViewModel()
 
+    @State private var audioViewModel = AudioViewModel()
     @State private var itemViewModel = ItemViewModel()
 
     private static let sharedModelContainer: ModelContainer = ModelGenerator.generator()
@@ -23,6 +24,7 @@ struct MocoApp: App {
                 ContentViewContainer()
             }.environment(\.navigate, routeViewModel)
                 .environment(\.itemViewModel, itemViewModel)
+                .environment(\.audioViewModel, audioViewModel)
         }
     }
 }

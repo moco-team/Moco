@@ -25,6 +25,9 @@
 		0B6E2F742ADC9DC90001D320 /* HintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E2F732ADC9DC90001D320 /* HintViewModel.swift */; };
 		0B6E2F762ADC9F020001D320 /* PromptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E2F752ADC9F020001D320 /* PromptViewModel.swift */; };
 		0B6E2F782ADCA8990001D320 /* StoryContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E2F772ADCA8990001D320 /* StoryContentViewModel.swift */; };
+		932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 932357D52ADE6EF3009B3D86 /* bg-story.mp3 */; };
+		932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D72ADE700D009B3D86 /* AudioViewModel.swift */; };
+		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
 		938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D1E2AD7AD78003D2AE1 /* Collection.swift */; };
 		938E3D312AD8FD2E003D2AE1 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D302AD8FD2E003D2AE1 /* ItemViewModel.swift */; };
 		938E3D332AD91605003D2AE1 /* DetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D322AD91605003D2AE1 /* DetectionView.swift */; };
@@ -94,6 +97,9 @@
 		0B6E2F732ADC9DC90001D320 /* HintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintViewModel.swift; sourceTree = "<group>"; };
 		0B6E2F752ADC9F020001D320 /* PromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewModel.swift; sourceTree = "<group>"; };
 		0B6E2F772ADCA8990001D320 /* StoryContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryContentViewModel.swift; sourceTree = "<group>"; };
+		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
+		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
+		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
 		938E3D1E2AD7AD78003D2AE1 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		938E3D302AD8FD2E003D2AE1 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		938E3D322AD91605003D2AE1 /* DetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionView.swift; sourceTree = "<group>"; };
@@ -188,6 +194,14 @@
 			path = ListViews;
 			sourceTree = "<group>";
 		};
+		932357D22ADE6DF2009B3D86 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				932357D52ADE6EF3009B3D86 /* bg-story.mp3 */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		938E3D4E2ADBABC3003D2AE1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +235,8 @@
 		93C2F8822AD683AC007D1ABC /* Moco */ = {
 			isa = PBXGroup;
 			children = (
+				93C2F8B92AD684CE007D1ABC /* Extension */,
+				932357D22ADE6DF2009B3D86 /* Audio */,
 				938E3D4E2ADBABC3003D2AE1 /* Utils */,
 				93C2F8B42AD6848F007D1ABC /* View */,
 				93C2F8B32AD6847A007D1ABC /* CoreMLModel */,
@@ -272,6 +288,7 @@
 				0B6E2F752ADC9F020001D320 /* PromptViewModel.swift */,
 				0B6E2F732ADC9DC90001D320 /* HintViewModel.swift */,
 				0B6E2F772ADCA8990001D320 /* StoryContentViewModel.swift */,
+				932357D72ADE700D009B3D86 /* AudioViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -288,6 +305,7 @@
 				0B6E2F6B2ADC91E10001D320 /* PromptModel.swift */,
 				0B6E2F6D2ADC92950001D320 /* HintModel.swift */,
 				0B6E2F692ADC91060001D320 /* StoryContentModel.swift */,
+				932357D92ADE7190009B3D86 /* AudioModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -305,7 +323,6 @@
 			children = (
 				0B2E31DB2AD8084600DFC16F /* CollectionView.swift */,
 				0B1197602AD7D4A7004FAD14 /* Components */,
-				93C2F8B92AD684CE007D1ABC /* Extension */,
 				93C2F8B82AD684CE007D1ABC /* HomeView.swift */,
 				938E3D322AD91605003D2AE1 /* DetectionView.swift */,
 				93C2F8B52AD684CE007D1ABC /* ObjectDetection */,
@@ -444,6 +461,7 @@
 				93C2F8C32AD685E6007D1ABC /* yolov8s.mlmodel in Resources */,
 				93C2F8C02AD685A3007D1ABC /* README.md in Resources */,
 				93C2F88D2AD683AE007D1ABC /* Preview Assets.xcassets in Resources */,
+				932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */,
 				93C2F88A2AD683AE007D1ABC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,6 +490,7 @@
 				938E3D582ADC00FB003D2AE1 /* PopUpExtension.swift in Sources */,
 				938E3D562ADBE961003D2AE1 /* Screen.swift in Sources */,
 				0B6E2F702ADC96200001D320 /* StoryThemeViewModel.swift in Sources */,
+				932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */,
 				938E3D392AD939DC003D2AE1 /* Item.swift in Sources */,
 				938E3D3D2AD9901B003D2AE1 /* PopUpComponent.swift in Sources */,
 				938E3D4D2ADBA247003D2AE1 /* ContentViewContainer.swift in Sources */,
@@ -505,6 +524,7 @@
 				0B6E2F682ADC908B0001D320 /* StoryModel.swift in Sources */,
 				938E3D3B2AD9874F003D2AE1 /* ModelGenerator.swift in Sources */,
 				0B2E31DE2AD8087B00DFC16F /* Header.swift in Sources */,
+				932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */,
 				938E3D502ADBABD3003D2AE1 /* Print.swift in Sources */,
 				938E3D4B2ADB9F1B003D2AE1 /* StoryView.swift in Sources */,
 				93C2F8BB2AD684CE007D1ABC /* Detector.swift in Sources */,
@@ -679,6 +699,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Moco/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow this app to access the camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -711,6 +732,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Moco/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow this app to access the camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
