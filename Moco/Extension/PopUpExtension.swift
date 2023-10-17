@@ -13,7 +13,7 @@ public extension View {
         title: String? = "Congratulation",
         topImage: String? = nil,
         bottomImage: String? = nil,
-        cancelText: String? = "Cancel",
+        cancelText: String? = nil,
         confirmText: String? = nil,
         containerBgColor: Color = .orange,
         textColor: Color = .black,
