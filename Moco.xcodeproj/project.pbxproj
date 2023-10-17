@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05B166222ADE7B6F0077FA0D /* ObjectDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B166212ADE7B6F0077FA0D /* ObjectDetection.swift */; };
+		05E17AD52ADE86DE00A34547 /* FindTheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD42ADE86DE00A34547 /* FindTheObject.swift */; };
 		05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */; };
 		05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */; };
 		05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93552ADE74740082B21D /* RecognizerError.swift */; };
@@ -88,6 +90,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05B166212ADE7B6F0077FA0D /* ObjectDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetection.swift; sourceTree = "<group>"; };
+		05E17AD42ADE86DE00A34547 /* FindTheObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTheObject.swift; sourceTree = "<group>"; };
 		05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSpeechRecognizerExtension.swift; sourceTree = "<group>"; };
 		05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioSessionExtension.swift; sourceTree = "<group>"; };
 		05AE93552ADE74740082B21D /* RecognizerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerError.swift; sourceTree = "<group>"; };
@@ -181,6 +185,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05B1661B2ADE75340077FA0D /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		05B1661C2ADE755F0077FA0D /* Prompts */ = {
+			isa = PBXGroup;
+			children = (
+				05B166202ADE7B620077FA0D /* ObjectDetection */,
+				05B1661D2ADE75640077FA0D /* FindTheObject */,
+			);
+			path = Prompts;
+			sourceTree = "<group>";
+		};
+		05B1661D2ADE75640077FA0D /* FindTheObject */ = {
+			isa = PBXGroup;
+			children = (
+				05E17AD42ADE86DE00A34547 /* FindTheObject.swift */,
+			);
+			path = FindTheObject;
+			sourceTree = "<group>";
+		};
+		05B166202ADE7B620077FA0D /* ObjectDetection */ = {
+			isa = PBXGroup;
+			children = (
+				05B166212ADE7B6F0077FA0D /* ObjectDetection.swift */,
+			);
+			path = ObjectDetection;
+		};
 		05AE93542ADE74540082B21D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +253,8 @@
 		0B1197602AD7D4A7004FAD14 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				05B1661C2ADE755F0077FA0D /* Prompts */,
+				05B1661B2ADE75340077FA0D /* New Group */,
 				0B2E31D62AD7EB4B00DFC16F /* ListViews */,
 				0B2E31D52AD7EB3600DFC16F /* RowViews */,
 				0B1197612AD7D4F3004FAD14 /* IconButton.swift */,
@@ -377,6 +414,8 @@
 			isa = PBXGroup;
 			children = (
 				0B1197602AD7D4A7004FAD14 /* Components */,
+				93C2F8B82AD684CE007D1ABC /* HomeView.swift */,
+				938E3D322AD91605003D2AE1 /* DetectionView.swift */,
 				93C2F8B52AD684CE007D1ABC /* ObjectDetection */,
 				05AE93592ADE74E10082B21D /* Temporary */,
 				0B2E31DB2AD8084600DFC16F /* CollectionView.swift */,
@@ -592,6 +631,7 @@
 				938E3D472ADB0AA5003D2AE1 /* Routes.swift in Sources */,
 				0B2E31E02AD810D400DFC16F /* StoryBoardView.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
+				05B166222ADE7B6F0077FA0D /* ObjectDetection.swift in Sources */,
 				0B6E2F682ADC908B0001D320 /* StoryModel.swift in Sources */,
 				938E3D3B2AD9874F003D2AE1 /* ModelGenerator.swift in Sources */,
 				0B2E31DE2AD8087B00DFC16F /* Header.swift in Sources */,
@@ -601,6 +641,7 @@
 				938E3D4B2ADB9F1B003D2AE1 /* StoryView.swift in Sources */,
 				93C2F8BB2AD684CE007D1ABC /* Detector.swift in Sources */,
 				0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */,
+				05E17AD52ADE86DE00A34547 /* FindTheObject.swift in Sources */,
 				0B6E2F762ADC9F020001D320 /* PromptViewModel.swift in Sources */,
 				938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */,
 			);
