@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+//MARK: - Environment Values
 extension EnvironmentValues {
     var audioViewModel: AudioViewModel {
         get { self[AudioViewModelKey.self] }
@@ -20,6 +21,7 @@ extension EnvironmentValues {
 }
 
 
+//MARK: - View Model Keys
 private struct AudioViewModelKey: EnvironmentKey {
     static var defaultValue: AudioViewModel = .init()
 }
