@@ -18,6 +18,8 @@ public extension View {
         containerBgColor: Color = .orange,
         textColor: Color = .black,
         overlayOpacity: Double = 0.3,
+        width: CGFloat? = nil,
+        height: CGFloat? = nil,
         function: @escaping () -> Void,
         cancelHandler: (() -> Void)? = {}
     ) -> some View {
@@ -31,7 +33,9 @@ public extension View {
                 confirmText: confirmText ?? "Yes",
                 containerBgColor: containerBgColor,
                 textColor: textColor,
-                overlayOpacity: overlayOpacity
+                overlayOpacity: overlayOpacity,
+                width: width ?? Screen.width * 0.3,
+                height: height ?? Screen.height * 0.2
             ) {
                 function()
             } cancelHandler: {

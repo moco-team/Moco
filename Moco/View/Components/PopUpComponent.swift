@@ -21,6 +21,8 @@ struct PopUpComponent: ViewModifier {
     var containerBgColor = Color.orange
     var textColor = Color.black
     var overlayOpacity = 0.3
+    var width = Screen.width * 0.3
+    var height = Screen.height * 0.2
 
     var function: () -> Void
     var cancelHandler: (() -> Void)?
@@ -38,7 +40,9 @@ struct PopUpComponent: ViewModifier {
                     confirmText: confirmText,
                     containerBgColor: containerBgColor,
                     textColor: textColor,
-                    overlayOpacity: overlayOpacity
+                    overlayOpacity: overlayOpacity,
+                    width: width,
+                    height: height
                 ) {
                     function()
                 } cancelHandler: {
@@ -65,6 +69,8 @@ struct PopUpComponentView: View {
     var containerBgColor = Color.orange
     var textColor = Color.black
     var overlayOpacity = 0.3
+    var width = Screen.width * 0.3
+    var height = Screen.height * 0.2
 
     var function: () -> Void
     var cancelHandler: (() -> Void)?
@@ -87,12 +93,15 @@ struct PopUpComponentView: View {
                                 .padding(.leading, -100)
                         }
 
-                        Rectangle().frame(width: 300, height: 180)
+                        Rectangle().frame(width: width, height: height)
                             .foregroundColor(containerBgColor)
                             .cornerRadius(10)
 
                         VStack {
-                            Text(title ?? "Congratulations")
+                            Text(title ?? "Congratulations").font(.custom(
+                                "CherryBomb-Regular",
+                                size: 24,
+                                relativeTo: .body))
                                 .foregroundColor(textColor)
                                 .fontWeight(.bold)
                                 .padding(.bottom, 1)
@@ -102,7 +111,7 @@ struct PopUpComponentView: View {
                                 .padding(.bottom, 13)
                                 .padding(.horizontal, 90)
                                 .multilineTextAlignment(.center)
-                            Grid {
+                            Grid(horizontalSpacing: 20) {
                                 GridRow {
                                     if cancelText != nil {
                                         Button(cancelText!) {
@@ -130,7 +139,7 @@ struct PopUpComponentView: View {
                                 .padding(.top, 210)
                                 .padding(.leading, 240)
                         }
-                    }
+                    }.frame(width: width, height: height)
                 }
             }
             .overlay(alignment: .topTrailing) {

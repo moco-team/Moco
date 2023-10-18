@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct SpeechRecognizerTestView: View {
-    
     @ObservedObject var speechRecognizerViewModel = SpeechRecognizerViewModel.shared
-    
+
     @State private var textToSpeech: String = ""
     @State private var isRecording = false
-    
+
     var body: some View {
         VStack {
             Spacer()
-            Group{
+            Group {
                 Text("Text-To-Speech")
                 TextField("Write something...", text: $textToSpeech)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -27,12 +26,12 @@ struct SpeechRecognizerTestView: View {
                 }
             }
             Spacer()
-            Group{
+            Group {
                 Text("Speech-To-Text")
                 Text("Transcribed Text: \(speechRecognizerViewModel.transcript)")
                     .foregroundStyle(.gray)
                     .padding()
-                
+
                 Button(action: {
                     if isRecording {
                         speechRecognizerViewModel.stopTranscribing()

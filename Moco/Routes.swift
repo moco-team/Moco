@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - Route Key definition
 
+/// Definition of route keys
 enum Route: Hashable {
     case home
     case story(String?)
@@ -17,6 +18,7 @@ enum Route: Hashable {
 
 // MARK: - Route view definition, set them here
 
+/// Struct that stores all mappings of Views and Routes from Route Enum
 struct Routes: View {
     let route: Route
 
@@ -34,18 +36,21 @@ struct Routes: View {
 
 // MARK: - Route View Model
 
+/// Route view model, should not change if not necessary
 @Observable
 class RouteViewModel {
     var navPath = NavigationPath()
 
     // MARK: - Append route to navigation path
 
+    /// Append AKA go to next route
     func append(_ route: Route) {
         navPath.append(route)
     }
 
     // MARK: - Pop route from navigation path
 
+    /// Pop AKA return to previous view in the navigation stack
     func pop() {
         guard !navPath.isEmpty else {
             print("navPath is empty")
@@ -56,6 +61,7 @@ class RouteViewModel {
 
     // MARK: - Pop multiple routes
 
+    /// Pop multiple times AKA return to previous view multiple times in the navigation stack
     func pop(_ count: Int) {
         guard navPath.count >= count else {
             print("count must not be greater than navPath.count")
@@ -66,12 +72,14 @@ class RouteViewModel {
 
     // MARK: - Pop to root
 
+    /// Back to root view
     func popToRoot() {
         navPath.removeLast(navPath.count)
     }
 
     // MARK: - Append multiple routes
 
+    /// Append multiple routes to navigation stack
     func append(_ routes: Route...) {
         for route in routes {
             navPath.append(route)
