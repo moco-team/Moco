@@ -16,7 +16,10 @@
 		05AE93632ADE82920082B21D /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93622ADE82920082B21D /* LottieView.swift */; };
 		05AE93652ADE82E60082B21D /* LottieAnimationTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93642ADE82E60082B21D /* LottieAnimationTestView.swift */; };
 		05AE93682ADE83430082B21D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 05AE93672ADE83430082B21D /* Lottie */; };
+		05D966E12ADEE6CF00997E3A /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05D966E02ADEE6CF00997E3A /* success.mp3 */; };
 		05E17AD52ADE86DE00A34547 /* FindTheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD42ADE86DE00A34547 /* FindTheObject.swift */; };
+		05E17AD72ADEBFC500A34547 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD62ADEBFC500A34547 /* BalloonView.swift */; };
+		05E17AD92ADED16800A34547 /* balon_merah.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05E17AD82ADED16800A34547 /* balon_merah.mp3 */; };
 		0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1197612AD7D4F3004FAD14 /* IconButton.swift */; };
 		0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1197822AD7E97A004FAD14 /* CollectionRowView.swift */; };
 		0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31D72AD7EB6100DFC16F /* CollectionListView.swift */; };
@@ -102,7 +105,10 @@
 		05AE93602ADE82410082B21D /* testing-cat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "testing-cat.json"; sourceTree = "<group>"; };
 		05AE93622ADE82920082B21D /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		05AE93642ADE82E60082B21D /* LottieAnimationTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimationTestView.swift; sourceTree = "<group>"; };
+		05D966E02ADEE6CF00997E3A /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
 		05E17AD42ADE86DE00A34547 /* FindTheObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTheObject.swift; sourceTree = "<group>"; };
+		05E17AD62ADEBFC500A34547 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
+		05E17AD82ADED16800A34547 /* balon_merah.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = balon_merah.mp3; sourceTree = "<group>"; };
 		0B1197612AD7D4F3004FAD14 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		0B1197822AD7E97A004FAD14 /* CollectionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionRowView.swift; sourceTree = "<group>"; };
 		0B2E31D72AD7EB6100DFC16F /* CollectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListView.swift; sourceTree = "<group>"; };
@@ -239,8 +245,33 @@
 			isa = PBXGroup;
 			children = (
 				05E17AD42ADE86DE00A34547 /* FindTheObject.swift */,
+				05E17AD62ADEBFC500A34547 /* BalloonView.swift */,
 			);
 			path = FindTheObject;
+			sourceTree = "<group>";
+		};
+		05E17ADA2ADED17B00A34547 /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				05E17ADB2ADED18800A34547 /* Story1 */,
+			);
+			path = Story;
+			sourceTree = "<group>";
+		};
+		05E17ADB2ADED18800A34547 /* Story1 */ = {
+			isa = PBXGroup;
+			children = (
+				05E17ADC2ADED19700A34547 /* Page1 */,
+			);
+			path = Story1;
+			sourceTree = "<group>";
+		};
+		05E17ADC2ADED19700A34547 /* Page1 */ = {
+			isa = PBXGroup;
+			children = (
+				05E17AD82ADED16800A34547 /* balon_merah.mp3 */,
+			);
+			path = Page1;
 			sourceTree = "<group>";
 		};
 		0B1197602AD7D4A7004FAD14 /* Components */ = {
@@ -280,7 +311,9 @@
 			isa = PBXGroup;
 			children = (
 				93C8E7262ADF8DA3002315A2 /* bg-shop.mp3 */,
+				05E17ADA2ADED17B00A34547 /* Story */,
 				932357D52ADE6EF3009B3D86 /* bg-story.mp3 */,
+				05D966E02ADEE6CF00997E3A /* success.mp3 */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -568,9 +601,11 @@
 				93C8E7272ADF8DA3002315A2 /* bg-shop.mp3 in Resources */,
 				93C8E71E2ADEDA8F002315A2 /* CherryBombRegular.ttf in Resources */,
 				93C2F8C02AD685A3007D1ABC /* README.md in Resources */,
+				05D966E12ADEE6CF00997E3A /* success.mp3 in Resources */,
 				93C2F88D2AD683AE007D1ABC /* Preview Assets.xcassets in Resources */,
 				05AE93612ADE82410082B21D /* testing-cat.json in Resources */,
 				932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */,
+				05E17AD92ADED16800A34547 /* balon_merah.mp3 in Resources */,
 				93C2F88A2AD683AE007D1ABC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,6 +663,7 @@
 				05AE93632ADE82920082B21D /* LottieView.swift in Sources */,
 				93C8E7252ADEF2D3002315A2 /* TimerViewModel.swift in Sources */,
 				05AE93652ADE82E60082B21D /* LottieAnimationTestView.swift in Sources */,
+				05E17AD72ADEBFC500A34547 /* BalloonView.swift in Sources */,
 				938E3D352AD91AD5003D2AE1 /* EnvironmentValue.swift in Sources */,
 				938E3D332AD91605003D2AE1 /* DetectionView.swift in Sources */,
 				938E3D452ADAD5F3003D2AE1 /* StoryBook.swift in Sources */,
