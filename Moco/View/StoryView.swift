@@ -54,16 +54,18 @@ struct StoryView: View {
         "Story/Content/Story1/Pages/Page10/background"
     ]
     
-    private let narratives: [[Narrative]] = [[
-        .init(text: "Pada hari minggu", duration: 2.5, positionX: 0.2, positionY: 0.2),
-        .init(text: "Moco sang sapi jantan mengangkat tangannya", duration: 3.5, positionX: 0.2, positionY: 0.2),
-        .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.3, positionY: 0.2)
-    ],
-                                             [
-                                                .init(text: "Moco pun bergegas menuju gunung bromo", duration: 3.5, positionX: 0.2, positionY: 0.2),
-                                                .init(text: "Dia melewati lembah dan bukit", duration: 3, positionX: 0.2, positionY: 0.2),
-                                                .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.3, positionY: 0.2)
-                                             ]]
+    private let narratives: [[Narrative]] = [
+        [
+        .init(text: "Pada hari minggu", duration: 2.5, positionX: 0.6, positionY: 0.2),
+        .init(text: "Moco sang sapi jantan mengangkat tangannya", duration: 3.5, positionX: 0.6, positionY: 0.2),
+        .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.6, positionY: 0.2)
+        ],
+        [
+        .init(text: "Moco pun bergegas menuju gunung bromo", duration: 3.5, positionX: 0.6, positionY: 0.2),
+        .init(text: "Dia melewati lembah dan bukit", duration: 3, positionX: 0.6, positionY: 0.2),
+        .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.6, positionY: 0.2)
+        ],
+    ]
     
     private let bgSounds = ["bg-shop", "bg-story"]
     
@@ -109,6 +111,7 @@ struct StoryView: View {
                                 .frame(width: Screen.width, height: Screen.height, alignment: .center)
                                 .clipped()
                             Text(narratives[scrollPosition!][max(narrativeIndex, 0)].text)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                                 .position(CGPoint(
                                     x: Screen.width * narratives[scrollPosition!][max(narrativeIndex, 0)].positionX,
                                     y: Screen.height * narratives[scrollPosition!][max(narrativeIndex, 0)].positionY
@@ -129,6 +132,8 @@ struct StoryView: View {
                         Button {
                             if !isMuted{
                                 audioViewModel.mute()
+                            } else {
+                                audioViewModel.unmute()
                             }
                             isMuted.toggle()
                         } label: {
