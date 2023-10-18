@@ -43,7 +43,15 @@ struct StoryView: View {
     
     private let storyBackgrounds = [
         "Story/Content/Story1/Pages/Page1/background",
-        "Story/Content/Story1/Pages/Page2/background"
+        "Story/Content/Story1/Pages/Page2/background",
+        "Story/Content/Story1/Pages/Page3/background",
+        "Story/Content/Story1/Pages/Page4/background",
+        "Story/Content/Story1/Pages/Page5/background",
+        "Story/Content/Story1/Pages/Page6/background",
+        "Story/Content/Story1/Pages/Page7/background",
+        "Story/Content/Story1/Pages/Page8/background",
+        "Story/Content/Story1/Pages/Page9/background",
+        "Story/Content/Story1/Pages/Page10/background"
     ]
     
     private let narratives: [[Narrative]] = [

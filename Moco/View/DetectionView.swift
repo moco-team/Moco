@@ -37,8 +37,16 @@ struct DetectionView: View {
 //        } detail: {
 //            Text("Select an item")
 //        }
-        HostedViewController()
-            .ignoresSafeArea()
+        
+        ZStack {
+            HostedViewController()
+                .ignoresSafeArea()
+            
+            Image("Story/Content/Story1/Pages/Page7/background")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .background(.clear)
+        }
     }
 
     private func addItem() {
