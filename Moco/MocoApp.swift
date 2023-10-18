@@ -22,9 +22,7 @@ struct MocoApp: App {
 
     // MARK: - State Objects
 
-    #if !targetEnvironment(simulator)
-        @StateObject private var speechViewModel = SpeechRecognizerViewModel.shared
-    #endif
+    @StateObject private var speechViewModel = SpeechRecognizerViewModel.shared
 
     private static let sharedModelContainer: ModelContainer = ModelGenerator.generator()
     static let modelContext = ModelContext(sharedModelContainer)
@@ -38,9 +36,7 @@ struct MocoApp: App {
                 .environment(\.itemViewModel, itemViewModel)
                 .environment(\.audioViewModel, audioViewModel)
                 .environment(\.timerViewModel, timerViewModel)
-            #if !targetEnvironment(simulator)
                 .environmentObject(speechViewModel)
-            #endif
         }
     }
 }

@@ -55,20 +55,22 @@ class SpeechRecognizerViewModel: ObservableObject {
 
     // For Text-To-Speech
     func textToSpeech(text: String) {
-        let utterance = AVSpeechUtterance(string: text)
+        #if !targetEnvironment(simulator)
+            let utterance = AVSpeechUtterance(string: text)
 
-        do {
-            let audioSession = AVAudioSession.sharedInstance()
-            try audioSession.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
-        } catch {
-            print("Error speakText: \(text)")
-        }
+            do {
+                let audioSession = AVAudioSession.sharedInstance()
+                try audioSession.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
+            } catch {
+                print("Error speakText: \(text)")
+            }
 
-        utterance.voice = AVSpeechSynthesisVoice(language: "id-ID")
-        utterance.rate = 0.35
-        utterance.volume = 1.0
-        synthesizer.stopSpeaking(at: .immediate)
-        synthesizer.speak(utterance)
+            utterance.voice = AVSpeechSynthesisVoice(language: "id-ID")
+            utterance.rate = 0.35
+            utterance.volume = 1.0
+            synthesizer.stopSpeaking(at: .immediate)
+            synthesizer.speak(utterance)
+        #endif
     }
 
     func stopSpeaking(_ boundary: AVSpeechBoundary? = .immediate) {
