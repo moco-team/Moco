@@ -121,6 +121,8 @@ struct StoryView: View {
                         Button {
                             if !isMuted{
                                 audioViewModel.mute()
+                            } else {
+                                audioViewModel.unmute()
                             }
                             isMuted.toggle()
                         } label: {
