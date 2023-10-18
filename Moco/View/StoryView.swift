@@ -100,7 +100,10 @@ struct StoryView: View {
                                 .frame(width: Screen.width, height: Screen.height, alignment: .center)
                                 .clipped()
                             Text(narratives[scrollPosition!][max(narrativeIndex, 0)].text)
-                                .position(CGPoint(x: Screen.width * narratives[scrollPosition!][max(narrativeIndex, 0)].positionX, y: Screen.height * narratives[scrollPosition!][max(narrativeIndex, 0)].positionY))
+                                .position(CGPoint(
+                                    x: Screen.width * narratives[scrollPosition!][max(narrativeIndex, 0)].positionX,
+                                    y: Screen.height * narratives[scrollPosition!][max(narrativeIndex, 0)].positionY
+                                ))
                                 .id(narrativeIndex)
                                 .transition(.opacity.animation(.linear))
                         }.id(index)
