@@ -15,7 +15,7 @@ enum Direction {
 struct StoryNavigationButton: View {
     var width = 100.0
     var height = 100.0
-    var direction = Direction.right
+    var direction: Direction
 
     var pressHandler: (() -> Void)?
 
@@ -28,11 +28,16 @@ struct StoryNavigationButton: View {
         Button {
             pressHandler?()
         } label: {
-            Image(systemName: directionMap[direction] ?? "arrowtriangle.forward").resizable().scaledToFit().padding(20)
+            Image(systemName: directionMap[direction]!)
+                                .resizable()
+                                .scaledToFit()
+                                .padding(.leading, direction == .right ? 12 : 0)
+                                .padding(.trailing, direction == .left ? 12 : 0)
+                                .padding(.vertical, 24)
         }.buttonStyle(CircleButton(width: width, height: height)).opacity(0.5)
     }
 }
 
 #Preview {
-    StoryNavigationButton(direction: .left)
+    StoryNavigationButton(direction: .right)
 }

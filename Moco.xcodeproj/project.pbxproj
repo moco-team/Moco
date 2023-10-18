@@ -219,6 +219,7 @@
 		05AE935E2ADE820B0082B21D /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				93C8E71C2ADEDA6A002315A2 /* Fonts */,
 				932357D22ADE6DF2009B3D86 /* Audio */,
 				05AE935F2ADE82240082B21D /* Lottie */,
 			);
@@ -352,7 +353,6 @@
 		93C2F8822AD683AC007D1ABC /* Moco */ = {
 			isa = PBXGroup;
 			children = (
-				93C8E71C2ADEDA6A002315A2 /* Fonts */,
 				05AE935E2ADE820B0082B21D /* Assets */,
 				938E3D4E2ADBABC3003D2AE1 /* Utils */,
 				05AE93542ADE74540082B21D /* Helper */,

@@ -9,57 +9,58 @@ import SwiftUI
 
 struct Narrative {
     var text: String
-
+    
     var duration: Double // MARK: In seconds
-
+    
     var positionX: Double // MARK: position in percentage of the size of the screen
-
+    
     var positionY: Double
 }
 
 struct StoryView: View {
     // MARK: - Environments stored property
-
+    
     @Environment(\.timerViewModel) private var timerViewModel
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.navigate) private var navigate
     @EnvironmentObject var speechViewModel: SpeechRecognizerViewModel
-
+    
     // MARK: - Static Variables
-
+    
     private static let storyVolume: Float = 0.5
-
+    
     // MARK: - States
-
+    
     @State private var scrollPosition: Int? = 0
     @State private var isPopUpActive = false
+    @State private var isMuted = false
     @State private var text: String = ""
     @State private var narrativeIndex: Int = -1
-
+    
     // MARK: - Variables
-
+    
     var title: String? = "Hello World"
-
+    
     private let storyBackgrounds = [
         "Story/Content/Story1/Pages/Page1/background",
         "Story/Content/Story1/Pages/Page2/background"
     ]
-
+    
     private let narratives: [[Narrative]] = [[
         .init(text: "Pada hari minggu", duration: 2.5, positionX: 0.2, positionY: 0.2),
         .init(text: "Moco sang sapi jantan mengangkat tangannya", duration: 3.5, positionX: 0.2, positionY: 0.2),
         .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.3, positionY: 0.2)
     ],
-    [
-        .init(text: "Moco pun bergegas menuju gunung bromo", duration: 3.5, positionX: 0.2, positionY: 0.2),
-        .init(text: "Dia melewati lembah dan bukit", duration: 3, positionX: 0.2, positionY: 0.2),
-        .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.3, positionY: 0.2)
-    ]]
-
+                                             [
+                                                .init(text: "Moco pun bergegas menuju gunung bromo", duration: 3.5, positionX: 0.2, positionY: 0.2),
+                                                .init(text: "Dia melewati lembah dan bukit", duration: 3, positionX: 0.2, positionY: 0.2),
+                                                .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.3, positionY: 0.2)
+                                             ]]
+    
     private let bgSounds = ["bg-shop", "bg-story"]
-
+    
     // MARK: - Functions
-
+    
     private func updateText() {
         guard narratives[scrollPosition!].indices.contains(narrativeIndex + 1) else { return }
         narrativeIndex += 1
@@ -68,26 +69,26 @@ struct StoryView: View {
             updateText()
         }
     }
-
+    
     private func stop() {
         timerViewModel.stopTimer()
         audioViewModel.stopAllSounds()
         speechViewModel.stopSpeaking()
     }
-
+    
     private func startNarrative() {
         narrativeIndex = -1
         updateText()
     }
-
+    
     private func onPageChange() {
         stop()
         audioViewModel.playSound(soundFileName: bgSounds[scrollPosition ?? 0], numberOfLoops: -1, volume: StoryView.storyVolume)
         startNarrative()
     }
-
+    
     // MARK: - View
-
+    
     var body: some View {
         ZStack {
             ScrollView(.horizontal) {
@@ -106,6 +107,7 @@ struct StoryView: View {
                                 ))
                                 .id(narrativeIndex)
                                 .transition(.opacity.animation(.linear))
+                            
                         }.id(index)
                     }
                 }.scrollTargetLayout()
@@ -116,6 +118,18 @@ struct StoryView: View {
                 VStack {
                     HStack {
                         Spacer()
+                        Button {
+                            if !isMuted{
+                                audioViewModel.mute()
+                            }
+                            isMuted.toggle()
+                        } label: {
+                            Image(systemName: isMuted ? "speaker.slash" : "speaker.wave.2")
+                                .resizable()
+                                .scaledToFit()
+                                .padding(20)
+                        }.buttonStyle(CircleButton(width: 80, height: 80))
+                            .padding()
                         Button {
                             isPopUpActive = true
                         } label: {
