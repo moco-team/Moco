@@ -8,8 +8,6 @@
 import Foundation
 import SwiftData
 
-let a = [2, 2, 1, 1, 3]
-
 @Model
 final class StoryModel: Identifiable {
     var id: String = UUID().uuidString
