@@ -25,13 +25,14 @@ struct AudioModel: Identifiable, Equatable {
         }
     }
 
-    mutating func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0) {
+    mutating func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0, volume: Float = 1) {
         guard let bundle = Bundle.main.path(forResource: soundFileName, ofType: type) else { return }
         let soundFileNameURL = URL(fileURLWithPath: bundle)
 
         if let player = players[soundFileNameURL] { // player for sound has been found
             if !player.isPlaying { // player is not in use, so use that one
                 player.numberOfLoops = numberOfLoops
+                player.volume = volume
                 player.prepareToPlay()
                 player.play()
             }
@@ -40,6 +41,7 @@ struct AudioModel: Identifiable, Equatable {
                 let player = try AVAudioPlayer(contentsOf: soundFileNameURL)
                 players[soundFileNameURL] = player
                 player.numberOfLoops = numberOfLoops
+                player.volume = volume
                 player.prepareToPlay()
                 player.play()
             } catch {

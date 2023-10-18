@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  FindTheObject.swift
 //  Moco
 //
 //  Created by Carissa Farry Hilmi Az Zahra on 17/10/23.
@@ -9,16 +9,16 @@ import SwiftUI
 
 struct FindTheObjectView: View {
     @Environment(\.navigate) private var navigate
-    
+
     @Binding var isPromptDone: Bool
-    
+
     let content: String
     let hints: [String]
     let correctAnswer: String
     @State var balloons: [Balloon]
-    
+
     let maxTry = 3
-    
+
     @State private var correctTryCount = 0
     @State private var falseTryCount = 0
     @State private var isTried = false
@@ -26,9 +26,9 @@ struct FindTheObjectView: View {
     @State private var isCorrectBalloonTapped = false
     @State private var isAnimating = false
     @State private var isFinalPopUp = false
-    
+
     @State private var showTheBalloons = true
-    
+
     var body: some View {
         VStack {
             if showTheBalloons {

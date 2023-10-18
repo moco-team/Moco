@@ -5,26 +5,25 @@
 //  Created by Daniel Aprillio on 17/10/23.
 //
 
-import Foundation
 import AVFoundation
+import Foundation
 import Speech
 
 class SpeechRecognizerViewModel: ObservableObject {
-    
     static let shared = SpeechRecognizerViewModel()
-    
+
     @Published var error: RecognizerError?
     @Published var transcript: String = ""
-    
+
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var task: SFSpeechRecognitionTask?
     private let recognizer: SFSpeechRecognizer?
     private let synthesizer = AVSpeechSynthesizer()
-    
-    private init(){
-        recognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "id"))
-        
+
+    private init() {
+        recognizer = SFSpeechRecognizer(locale: Locale(identifier: "id"))
+
         Task(priority: .background) {
             do {
                 guard recognizer != nil else {
@@ -41,11 +40,11 @@ class SpeechRecognizerViewModel: ObservableObject {
             }
         }
     }
-    
+
     deinit {
         reset()
     }
-    
+
     private func reset() {
         task?.cancel()
         audioEngine?.stop()
@@ -53,34 +52,40 @@ class SpeechRecognizerViewModel: ObservableObject {
         request = nil
         task = nil
     }
-    
+
     // For Text-To-Speech
     func textToSpeech(text: String) {
-        let utterance = AVSpeechUtterance(string: text)
-        
-        do {
-            let audioSession = AVAudioSession.sharedInstance()
-            try audioSession.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
-        } catch {
-            print("Error speakText: \(text)")
-        }
-        
-        utterance.voice = AVSpeechSynthesisVoice(language: "id-ID")
-        utterance.rate = 0.35
-        utterance.volume = 1.0
-        synthesizer.stopSpeaking(at: .immediate)
-        synthesizer.speak(utterance)
+        #if !targetEnvironment(simulator)
+            let utterance = AVSpeechUtterance(string: text)
+
+            do {
+                let audioSession = AVAudioSession.sharedInstance()
+                try audioSession.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
+            } catch {
+                print("Error speakText: \(text)")
+            }
+
+            utterance.voice = AVSpeechSynthesisVoice(language: "id-ID")
+            utterance.rate = 0.35
+            utterance.volume = 1.0
+            synthesizer.stopSpeaking(at: .immediate)
+            synthesizer.speak(utterance)
+        #endif
     }
-    
+
+    func stopSpeaking(_ boundary: AVSpeechBoundary? = .immediate) {
+        synthesizer.stopSpeaking(at: boundary ?? .immediate)
+    }
+
     // For Speech-To-Text
     private func inputTranscript(_ message: String) {
         transcript = message
     }
-    
-    func resetTranscript(){
+
+    func resetTranscript() {
         transcript = ""
     }
-    
+
     func transcribe() {
         print("Start Transcribe")
         resetTranscript()
@@ -89,21 +94,21 @@ class SpeechRecognizerViewModel: ObservableObject {
                 self?.speakError(RecognizerError.recognizerIsUnavailable)
                 return
             }
-            
+
             do {
                 let (audioEngine, request) = try Self.prepareEngine()
                 self.audioEngine = audioEngine
                 self.request = request
-                
+
                 self.task = recognizer.recognitionTask(with: request) { result, error in
                     let receivedFinalResult = result?.isFinal ?? false
                     let receivedError = error != nil // != nil mean there's error (true)
-                    
+
                     if receivedFinalResult || receivedError {
                         audioEngine.stop()
                         audioEngine.inputNode.removeTap(onBus: 0)
                     }
-                    
+
                     if let result = result {
                         self.inputTranscript(result.bestTranscription.formattedString)
                     }
@@ -114,7 +119,7 @@ class SpeechRecognizerViewModel: ObservableObject {
             }
         }
     }
-    
+
     private static func prepareEngine() throws -> (AVAudioEngine, SFSpeechAudioBufferRecognitionRequest) {
         let audioEngine = AVAudioEngine()
 
@@ -128,7 +133,7 @@ class SpeechRecognizerViewModel: ObservableObject {
 
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) {
-            (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
+            (buffer: AVAudioPCMBuffer, _: AVAudioTime) in
             request.append(buffer)
         }
         audioEngine.prepare()
@@ -136,16 +141,16 @@ class SpeechRecognizerViewModel: ObservableObject {
 
         return (audioEngine, request)
     }
-    
+
     func stopTranscribing() {
         print("Stop Transcribe")
-        do{
+        do {
             let audioSession = AVAudioSession.sharedInstance()
             try audioSession.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
-        }catch{
+        } catch {
             print("Tidak jalan")
         }
-        
+
         reset()
     }
 
@@ -158,5 +163,4 @@ class SpeechRecognizerViewModel: ObservableObject {
         }
         transcript = "<< \(errorMessage) >>"
     }
-    
 }

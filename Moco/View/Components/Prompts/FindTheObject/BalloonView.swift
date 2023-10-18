@@ -21,10 +21,10 @@ struct BalloonView: View {
     @Binding var isFinalPopUp: Bool
     @Binding var showTheAnswer: Bool
     @Binding var isCorrectBalloonTapped: Bool
-    
+
     @State private var isAnimating = false
     @State private var isHidden = false
-    
+
     var body: some View {
         VStack {
             if !isHidden {
@@ -36,23 +36,21 @@ struct BalloonView: View {
                     .onTapGesture {
                         if balloon.isCorrect {
                             audioViewModel.playSound(soundFileName: "success")
-                            correctTryCount+=1
+                            correctTryCount += 1
                             print("Benar \(correctTryCount)")
-                            
+
                             withAnimation(.easeOut(duration: 0.5)) {
-                               self.isAnimating = true
+                                self.isAnimating = true
                             }
-                            
+
                             if correctTryCount < 3 {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                     isCorrectBalloonTapped = true
                                 }
-                            }
-                            else {
+                            } else {
                                 isFinalPopUp = true
                             }
-                        } 
-                        else {
+                        } else {
                             if falseTryCount > 2 {
                                 showTheAnswer = true
                             } else {
@@ -62,8 +60,6 @@ struct BalloonView: View {
                                 isCorrectBalloonTapped = false
                             }
                         }
-                            
-                        
                     }
             }
         }

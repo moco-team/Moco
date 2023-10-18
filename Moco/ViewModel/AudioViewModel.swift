@@ -10,14 +10,17 @@ import AVFoundation
 @Observable class AudioViewModel: NSObject, AVAudioPlayerDelegate {
     private var audioModel = AudioModel()
 
-    func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0) {
-        audioModel.playSound(soundFileName: soundFileName, type: type, numberOfLoops: numberOfLoops)
+    /// Plays a sound with arbitrary filename and type, specify numberOfLoops = -1 to play indefinitely
+    func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0, volume: Float = 1) {
+        audioModel.playSound(soundFileName: soundFileName, type: type, numberOfLoops: numberOfLoops, volume: volume)
     }
 
+    /// Stop a sound from playing
     func stopSound(soundFileName: String, type: String = "mp3") {
         audioModel.stopSound(soundFileName: soundFileName, type: type)
     }
 
+    /// Stop all sounds from playing
     func stopAllSounds() {
         audioModel.stopAllSounds()
     }
@@ -30,10 +33,12 @@ import AVFoundation
         audioModel.playSounds(soundFileNames: soundFileNames)
     }
 
+    /// Mute audio
     func mute() {
         audioModel.mute()
     }
 
+    /// Unmute audio
     func unmute() {
         audioModel.unmute()
     }

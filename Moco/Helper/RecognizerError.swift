@@ -12,7 +12,6 @@ enum RecognizerError: Error {
     case notAuthorizedToRecognize
     case notPermittedToRecord
     case recognizerIsUnavailable
-    
 }
 
 extension RecognizerError: LocalizedError {
