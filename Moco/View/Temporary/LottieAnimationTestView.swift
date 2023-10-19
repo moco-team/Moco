@@ -10,7 +10,7 @@ import SwiftUI
 struct LottieAnimationTestView: View {
     var body: some View {
         VStack {
-            LottieView(fileName: "testing-cat.json", width: 75, height: 75)
+            LottieView(fileName: "testing-cat.json", width: 75, height: 75, loopMode: .loop)
                 .padding()
         }
     }

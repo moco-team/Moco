@@ -11,10 +11,10 @@ import SwiftUI
     private var timerModel = TimerModel()
     var timerSet: [String: Bool] = [:]
 
-    /// Start a timer with a key
-    /// - parameter:  key  It is a unique key that stores the timer and helps differentiate timers between the view
-    /// - parameter:  withInterval  Sets the interval in which the timer will fire
-    /// - parameter:  andJob  A function to be executed when interval ends
+    /// Start a `timer` with a key
+    /// - parameter:  `key`  It is a unique key that stores the timer and helps differentiate timers between the view
+    /// - parameter:  `withInterval`  Sets the interval in which the timer will fire
+    /// - parameter:  `andJob`  A function to be executed when interval ends
     func setTimer(key: String, withInterval interval: Double, andJob job: @escaping () -> Void) {
         if timerSet[key] != nil, timerSet[key]! {
             return
@@ -41,7 +41,7 @@ import SwiftUI
 
     @objc func doJob() {
         guard timerModel.jobs.count > 0 else { return }
-        for job in timerModel.jobs {
+        timerModel.jobs.forEach { job in
             job()
         }
     }

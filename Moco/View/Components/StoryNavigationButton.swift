@@ -29,15 +29,18 @@ struct StoryNavigationButton: View {
             pressHandler?()
         } label: {
             Image(systemName: directionMap[direction]!)
-                                .resizable()
-                                .scaledToFit()
-                                .padding(.leading, direction == .right ? 12 : 0)
-                                .padding(.trailing, direction == .left ? 12 : 0)
-                                .padding(.vertical, 24)
+                .resizable()
+                .scaledToFit()
+                .padding(.leading, direction == .right ? 12 : 0)
+                .padding(.trailing, direction == .left ? 12 : 0)
+                .padding(.vertical, 24)
         }.buttonStyle(CircleButton(width: width, height: height)).opacity(0.5)
     }
 }
 
 #Preview {
-    StoryNavigationButton(direction: .right)
+    HStack(spacing: 40) {
+        StoryNavigationButton(direction: .left)
+        StoryNavigationButton(direction: .right)
+    }
 }

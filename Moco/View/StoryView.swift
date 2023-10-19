@@ -9,38 +9,45 @@ import SwiftUI
 
 struct Narrative {
     var text: String
-    
+
     var duration: Double // MARK: In seconds
-    
+
     var positionX: Double // MARK: position in percentage of the size of the screen
-    
+
     var positionY: Double
+}
+
+struct Prompt {
+    var type: PromptType
+    var startTime: Double
 }
 
 struct StoryView: View {
     // MARK: - Environments stored property
-    
+
     @Environment(\.timerViewModel) private var timerViewModel
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.navigate) private var navigate
     @EnvironmentObject var speechViewModel: SpeechRecognizerViewModel
-    
+
     // MARK: - Static Variables
-    
+
     private static let storyVolume: Float = 0.5
-    
+
     // MARK: - States
-    
+
     @State private var scrollPosition: Int? = 0
     @State private var isPopUpActive = false
     @State private var isMuted = false
     @State private var text: String = ""
     @State private var narrativeIndex: Int = -1
-    
+    @State private var showPromptButton = false
+    @State private var activePrompt: Prompt?
+
     // MARK: - Variables
-    
+
     var title: String? = "Hello World"
-    
+
     private let storyBackgrounds = [
         "Story/Content/Story1/Pages/Page1/background",
         "Story/Content/Story1/Pages/Page2/background",
@@ -53,24 +60,41 @@ struct StoryView: View {
         "Story/Content/Story1/Pages/Page9/background",
         "Story/Content/Story1/Pages/Page10/background"
     ]
-    
+
     private let narratives: [[Narrative]] = [
         [
-        .init(text: "Pada hari minggu", duration: 2.5, positionX: 0.6, positionY: 0.2),
-        .init(text: "Moco sang sapi jantan mengangkat tangannya", duration: 3.5, positionX: 0.6, positionY: 0.2),
-        .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.6, positionY: 0.2)
+            .init(text: "Pada hari minggu", duration: 2.5, positionX: 0.6, positionY: 0.2),
+            .init(text: "Moco sang sapi jantan mengangkat tangannya", duration: 3.5, positionX: 0.6, positionY: 0.2),
+            .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.6, positionY: 0.2)
         ],
         [
-        .init(text: "Moco pun bergegas menuju gunung bromo", duration: 3.5, positionX: 0.6, positionY: 0.2),
-        .init(text: "Dia melewati lembah dan bukit", duration: 3, positionX: 0.6, positionY: 0.2),
-        .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.6, positionY: 0.2)
+            .init(text: "Moco pun bergegas menuju gunung bromo", duration: 3.5, positionX: 0.6, positionY: 0.2),
+            .init(text: "Dia melewati lembah dan bukit", duration: 3, positionX: 0.6, positionY: 0.2),
+            .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.6, positionY: 0.2)
         ],
+        [
+            .init(text: "Moco pun bergegas menuju gunung bromo", duration: 3.5, positionX: 0.6, positionY: 0.2),
+            .init(text: "Dia melewati lembah dan bukit", duration: 3, positionX: 0.6, positionY: 0.2),
+            .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.6, positionY: 0.2)
+        ],
+        [
+            .init(text: "Moco pun bergegas menuju gunung bromo", duration: 3.5, positionX: 0.6, positionY: 0.2),
+            .init(text: "Dia melewati lembah dan bukit", duration: 3, positionX: 0.6, positionY: 0.2),
+            .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.6, positionY: 0.2)
+        ]
     ]
-    
+
+    private let prompts: [Prompt?] = [
+        nil,
+        .init(type: .findHoney, startTime: 5),
+        .init(type: .puzzle, startTime: 5),
+        .init(type: .objectDetection, startTime: 5)
+    ]
+
     private let bgSounds = ["bg-shop", "bg-story"]
-    
+
     // MARK: - Functions
-    
+
     private func updateText() {
         guard narratives[scrollPosition!].indices.contains(narrativeIndex + 1) else { return }
         narrativeIndex += 1
@@ -79,26 +103,43 @@ struct StoryView: View {
             updateText()
         }
     }
-    
+
     private func stop() {
         timerViewModel.stopTimer()
         audioViewModel.stopAllSounds()
         speechViewModel.stopSpeaking()
     }
-    
+
     private func startNarrative() {
+        guard narratives.indices.contains(scrollPosition ?? -1) else { return }
         narrativeIndex = -1
         updateText()
     }
-    
+
+    private func startPrompt() {
+        showPromptButton = false
+        activePrompt = nil
+        guard prompts.indices.contains(scrollPosition ?? -1) && prompts[scrollPosition!] != nil else { return }
+        timerViewModel.setTimer(key: "storyPagePrompt-\(scrollPosition!)", withInterval: prompts[scrollPosition!]!.startTime) {
+            showPromptButton = true
+        }
+    }
+
     private func onPageChange() {
         stop()
-        audioViewModel.playSound(soundFileName: bgSounds[scrollPosition ?? 0], numberOfLoops: -1, volume: StoryView.storyVolume)
+        if bgSounds.indices.contains(scrollPosition ?? -1) {
+            audioViewModel.playSound(
+                soundFileName: bgSounds[scrollPosition ?? 0],
+                numberOfLoops: -1,
+                volume: StoryView.storyVolume
+            )
+        }
         startNarrative()
+        startPrompt()
     }
-    
+
     // MARK: - View
-    
+
     var body: some View {
         ZStack {
             ScrollView(.horizontal) {
@@ -110,6 +151,7 @@ struct StoryView: View {
                                 .scaledToFill()
                                 .frame(width: Screen.width, height: Screen.height, alignment: .center)
                                 .clipped()
+                            StormView()
                             Text(narratives[scrollPosition!][max(narrativeIndex, 0)].text)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .position(CGPoint(
@@ -118,7 +160,30 @@ struct StoryView: View {
                                 ))
                                 .id(narrativeIndex)
                                 .transition(.opacity.animation(.linear))
-                            
+                            Group {
+                                switch activePrompt?.type {
+                                case .puzzle:
+                                    FindTheObjectView(
+                                        isPromptDone: .constant(false),
+                                        content: "Once upon a time...",
+                                        hints: ["Coba lagi!", "Ayo coba lagi!"],
+                                        correctAnswer: "Jawaban yang benar adalah balon berwarna Merah",
+                                        balloons: [
+                                            Balloon(color: "orange", isCorrect: false),
+                                            Balloon(color: "ungu", isCorrect: false),
+                                            Balloon(color: "merah", isCorrect: true),
+                                            Balloon(color: "hijau", isCorrect: false),
+                                            Balloon(color: "biru", isCorrect: false)
+                                        ]
+                                    )
+                                case .findHoney:
+                                    FindHoney(isPromptDone: .constant(false))
+                                case .objectDetection:
+                                    DetectionView()
+                                default:
+                                    EmptyView()
+                                }
+                            }
                         }.id(index)
                     }
                 }.scrollTargetLayout()
@@ -130,7 +195,7 @@ struct StoryView: View {
                     HStack {
                         Spacer()
                         Button {
-                            if !isMuted{
+                            if !isMuted {
                                 audioViewModel.mute()
                             } else {
                                 audioViewModel.unmute()
@@ -162,10 +227,19 @@ struct StoryView: View {
                     Spacer()
                     StoryNavigationButton(direction: .right) {
                         guard storyBackgrounds.count > scrollPosition! + 1 else {
-                            navigate.popToRoot()
+                            isPopUpActive = true
                             return
                         }
                         scrollPosition! += 1
+                    }
+                }
+                VStack {
+                    Spacer()
+                    if showPromptButton {
+                        Button("Start") {
+                            activePrompt = prompts[scrollPosition!]
+                        }.buttonStyle(CircleButton(width: 80, height: 80))
+                            .padding()
                     }
                 }
             }
@@ -175,8 +249,7 @@ struct StoryView: View {
         }
         .navigationBarHidden(true)
         .task {
-            audioViewModel.playSound(soundFileName: bgSounds[scrollPosition ?? 0], numberOfLoops: -1, volume: StoryView.storyVolume)
-            startNarrative()
+            onPageChange()
         }
         .onDisappear {
             stop()
@@ -188,5 +261,12 @@ struct StoryView: View {
 }
 
 #Preview {
-    StoryView()
+    @State var timerViewModel = TimerViewModel()
+    @State var audioViewModel = AudioViewModel()
+    @StateObject var speechViewModel = SpeechRecognizerViewModel.shared
+
+    return StoryView()
+        .environment(\.timerViewModel, timerViewModel)
+        .environment(\.audioViewModel, audioViewModel)
+        .environmentObject(speechViewModel)
 }

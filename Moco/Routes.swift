@@ -81,7 +81,7 @@ class RouteViewModel {
 
     /// Append multiple routes to navigation stack
     func append(_ routes: Route...) {
-        for route in routes {
+        routes.forEach { route in
             navPath.append(route)
         }
     }
