@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MediaPlayer
 
 struct StoryBook: View {
     // MARK: - Stored variable definition
@@ -14,7 +15,8 @@ struct StoryBook: View {
     let durationAndDelay: CGFloat = 0.3
     @State var degree = 0.0
     @State var isFlipped = false
-
+    @State private var soundLevel: Float = 0.5
+    
     var tapHandler: (() -> Void)?
 
     // MARK: - Flip Card Function
@@ -51,6 +53,7 @@ struct StoryBook: View {
             .onAppear {
                 isFlipped = false
                 degree = 0.0
+                MPVolumeView.setVolume(self.soundLevel)
             }
     }
 }
