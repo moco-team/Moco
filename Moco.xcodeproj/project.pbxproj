@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		050353E12ADFE2970066591A /* FindHoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050353E02ADFE2970066591A /* FindHoney.swift */; };
+		056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */; };
 		05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */; };
 		05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */; };
 		05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93552ADE74740082B21D /* RecognizerError.swift */; };
@@ -99,6 +100,19 @@
 
 /* Begin PBXFileReference section */
 		050353E02ADFE2970066591A /* FindHoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindHoney.swift; sourceTree = "<group>"; };
+		056949702AE0EB6A00830D57 /* Page4-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page4-monolog1.m4a"; sourceTree = "<group>"; };
+		056949712AE0EB6A00830D57 /* Page4-monolog2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page4-monolog2.m4a"; sourceTree = "<group>"; };
+		056949722AE0EB6A00830D57 /* Page1-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page1-monolog1.m4a"; sourceTree = "<group>"; };
+		056949732AE0EB6A00830D57 /* Page5-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page5-monolog1.m4a"; sourceTree = "<group>"; };
+		056949742AE0EB6A00830D57 /* Page6-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page6-monolog1.m4a"; sourceTree = "<group>"; };
+		056949752AE0EB6A00830D57 /* Page2-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page2-monolog1.m4a"; sourceTree = "<group>"; };
+		056949762AE0EB6A00830D57 /* prompt_kursi.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = prompt_kursi.m4a; sourceTree = "<group>"; };
+		056949772AE0EB6A00830D57 /* Page3-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page3-monolog1.m4a"; sourceTree = "<group>"; };
+		056949782AE0EB6A00830D57 /* Page8-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page8-monolog1.m4a"; sourceTree = "<group>"; };
+		056949812AE0ED3300830D57 /* Page10-monolog2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page10-monolog2.m4a"; sourceTree = "<group>"; };
+		056949822AE0ED3300830D57 /* Page10-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page10-monolog1.m4a"; sourceTree = "<group>"; };
+		056949832AE0EDC500830D57 /* Page9-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page9-monolog1.m4a"; sourceTree = "<group>"; };
+		056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cow_bell_ring.mp3; sourceTree = "<group>"; };
 		05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSpeechRecognizerExtension.swift; sourceTree = "<group>"; };
 		05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioSessionExtension.swift; sourceTree = "<group>"; };
 		05AE93552ADE74740082B21D /* RecognizerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerError.swift; sourceTree = "<group>"; };
@@ -209,6 +223,81 @@
 			path = FindHoney;
 			sourceTree = "<group>";
 		};
+		0569496F2AE0EAD600830D57 /* Page9 */ = {
+			isa = PBXGroup;
+			children = (
+				056949832AE0EDC500830D57 /* Page9-monolog1.m4a */,
+				05E17AD82ADED16800A34547 /* balon_merah.mp3 */,
+			);
+			path = Page9;
+			sourceTree = "<group>";
+		};
+		056949792AE0EB7D00830D57 /* Page2 */ = {
+			isa = PBXGroup;
+			children = (
+				056949752AE0EB6A00830D57 /* Page2-monolog1.m4a */,
+			);
+			path = Page2;
+			sourceTree = "<group>";
+		};
+		0569497A2AE0EB8600830D57 /* Page3 */ = {
+			isa = PBXGroup;
+			children = (
+				056949772AE0EB6A00830D57 /* Page3-monolog1.m4a */,
+			);
+			path = Page3;
+			sourceTree = "<group>";
+		};
+		0569497B2AE0EB8D00830D57 /* Page4 */ = {
+			isa = PBXGroup;
+			children = (
+				056949712AE0EB6A00830D57 /* Page4-monolog2.m4a */,
+				056949702AE0EB6A00830D57 /* Page4-monolog1.m4a */,
+			);
+			path = Page4;
+			sourceTree = "<group>";
+		};
+		0569497C2AE0EB9200830D57 /* Page5 */ = {
+			isa = PBXGroup;
+			children = (
+				056949732AE0EB6A00830D57 /* Page5-monolog1.m4a */,
+			);
+			path = Page5;
+			sourceTree = "<group>";
+		};
+		0569497D2AE0EB9900830D57 /* Page6 */ = {
+			isa = PBXGroup;
+			children = (
+				056949742AE0EB6A00830D57 /* Page6-monolog1.m4a */,
+			);
+			path = Page6;
+			sourceTree = "<group>";
+		};
+		0569497E2AE0EB9E00830D57 /* Page7 */ = {
+			isa = PBXGroup;
+			children = (
+				056949762AE0EB6A00830D57 /* prompt_kursi.m4a */,
+			);
+			path = Page7;
+			sourceTree = "<group>";
+		};
+		0569497F2AE0EBC600830D57 /* Page8 */ = {
+			isa = PBXGroup;
+			children = (
+				056949782AE0EB6A00830D57 /* Page8-monolog1.m4a */,
+			);
+			path = Page8;
+			sourceTree = "<group>";
+		};
+		056949802AE0EC1B00830D57 /* Page10 */ = {
+			isa = PBXGroup;
+			children = (
+				056949822AE0ED3300830D57 /* Page10-monolog1.m4a */,
+				056949812AE0ED3300830D57 /* Page10-monolog2.m4a */,
+			);
+			path = Page10;
+			sourceTree = "<group>";
+		};
 		05AE93542ADE74540082B21D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +363,15 @@
 			isa = PBXGroup;
 			children = (
 				05E17ADC2ADED19700A34547 /* Page1 */,
+				056949792AE0EB7D00830D57 /* Page2 */,
+				0569497A2AE0EB8600830D57 /* Page3 */,
+				0569497B2AE0EB8D00830D57 /* Page4 */,
+				0569497C2AE0EB9200830D57 /* Page5 */,
+				0569497D2AE0EB9900830D57 /* Page6 */,
+				0569497E2AE0EB9E00830D57 /* Page7 */,
+				0569497F2AE0EBC600830D57 /* Page8 */,
+				0569496F2AE0EAD600830D57 /* Page9 */,
+				056949802AE0EC1B00830D57 /* Page10 */,
 			);
 			path = Story1;
 			sourceTree = "<group>";
@@ -281,7 +379,7 @@
 		05E17ADC2ADED19700A34547 /* Page1 */ = {
 			isa = PBXGroup;
 			children = (
-				05E17AD82ADED16800A34547 /* balon_merah.mp3 */,
+				056949722AE0EB6A00830D57 /* Page1-monolog1.m4a */,
 			);
 			path = Page1;
 			sourceTree = "<group>";
@@ -326,6 +424,7 @@
 				05E17ADA2ADED17B00A34547 /* Story */,
 				932357D52ADE6EF3009B3D86 /* bg-story.mp3 */,
 				05D966E02ADEE6CF00997E3A /* success.mp3 */,
+				056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -615,6 +714,7 @@
 				05D966E12ADEE6CF00997E3A /* success.mp3 in Resources */,
 				93C2F88D2AD683AE007D1ABC /* Preview Assets.xcassets in Resources */,
 				05AE93612ADE82410082B21D /* testing-cat.json in Resources */,
+				056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */,
 				932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */,
 				05E17AD92ADED16800A34547 /* balon_merah.mp3 in Resources */,
 				93C2F88A2AD683AE007D1ABC /* Assets.xcassets in Resources */,
