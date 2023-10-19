@@ -9,7 +9,7 @@ import Foundation
 import MediaPlayer
 
 extension MPVolumeView {
-    static func setVolume(_ volume: Float) -> Void {
+    static func setVolume(_ volume: Float) {
         let volumeView = MPVolumeView()
         let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
 

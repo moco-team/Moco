@@ -32,9 +32,9 @@ import SwiftData
         storyContents = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
     }
 
-    func createStoryContent(stories: [StoryModel], story: StoryModel) {
-        let newStoryContent = StoryContentModel(duration: 9.0, contentName: "audio.mp3", contentType: "audio")
-        newStoryContent.stories = stories
+    func createStoryContent(story: StoryModel, duration: TimeInterval, contentName: String, contentType: String) {
+        let newStoryContent = StoryContentModel(duration: duration, contentName: contentName, contentType: contentType)
+//        newStoryContent.stories = stories
 
         modelContext?.insert(newStoryContent)
         try? modelContext?.save()
