@@ -17,30 +17,38 @@ struct FindHoney: View {
     var doneHandler: (() -> Void)?
 
     var body: some View {
-        VStack {
-            Image("Story/Content/Story1/Pages/Page4/honey")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 120, height: 120)
-                .position(
-                    x: 350,
-                    y: 800
-                )
-//                .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
-                .onTapGesture {
-                    print("")
-                    audioViewModel.playSound(soundFileName: "success")
-                    showPopUp = true
-                }
-
-            Image("Story/Content/Story1/Pages/Page4/cover-leaves")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+        ZStack {
+            VStack {
+                Image("Story/Content/Story1/Pages/Page4/honey")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 120, height: 120)
+                    .position(
+                        x: 350,
+                        y: 850
+                    )
+                
+                Image("Story/Content/Story1/Pages/Page4/cover-leaves")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+            .popUp(isActive: $showPopUp, title: "Selamat kamu berhasil menemukan Madu!") {
+                isPromptDone = true
+                doneHandler?()
+            }
+            
+            InvisibleButton {
+                print("Object found!")
+                audioViewModel.playSound(soundFileName: "success")
+                showPopUp = true
+            }
+            .frame(width: 120, height: 120)
+            .position(
+                x: 350,
+                y: 850
+            )
         }
-        .popUp(isActive: $showPopUp, title: "Selamat kamu berhasil menemukan Madu!") {
-            isPromptDone = true
-            doneHandler?()
-        }
+        
     }
 }
 

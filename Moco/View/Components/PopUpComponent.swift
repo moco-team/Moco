@@ -70,7 +70,7 @@ struct PopUpComponentView: View {
     var textColor = Color.black
     var overlayOpacity = 0.3
     var width = Screen.width * 0.3
-    var height = Screen.height * 0.2
+    var height = Screen.height * 0.25
 
     var function: () -> Void
     var cancelHandler: (() -> Void)?
@@ -99,14 +99,15 @@ struct PopUpComponentView: View {
                             .cornerRadius(10)
 
                         VStack {
-                            Text(title ?? "Congratulations").customFont(.cherryBomb, size: 24)
+                            Text(title ?? "Congratulations").customFont(.cherryBomb, size: 22)
                                 .foregroundColor(textColor)
-                                .fontWeight(.bold)
-                                .padding(.bottom, 1)
+                                .padding(.top, 10)
+                                .padding(.bottom, 20)
+                                .fixedSize(horizontal: false, vertical: true)
                             Text(text ?? "")
                                 .foregroundColor(textColor)
                                 .font(.footnote)
-                                .padding(.bottom, 13)
+                                .padding(.bottom, 23)
                                 .padding(.horizontal, 90)
                                 .multilineTextAlignment(.center)
                             Grid(horizontalSpacing: 20) {
@@ -129,6 +130,7 @@ struct PopUpComponentView: View {
                                 }
                             }
                         }
+                        .padding(.vertical, 20)
 
                         if bottomImage != nil {
                             Image(bottomImage!)
@@ -171,7 +173,7 @@ struct PopUpComponentView: View {
 #Preview {
     @State var isActive: Bool = true
 
-    return PopUpComponentView(isActive: $isActive, title: "Congrads", text: "Kareba", cancelText: "Cancel") {
+    return PopUpComponentView(isActive: $isActive, title: "Are you sure you want to quit?", text: "Kareba", cancelText: "Cancel") {
         print("Claimed")
     } cancelHandler: {
         print("cancel handler")
