@@ -18,7 +18,7 @@ struct PopUpComponent: ViewModifier {
     var bottomImage: String?
     var cancelText: String?
     var confirmText = "Yes"
-    var containerBgColor = Color.orange
+    var containerBgColor = Color.white
     var textColor = Color.black
     var overlayOpacity = 0.3
     var width = Screen.width * 0.3
@@ -66,7 +66,7 @@ struct PopUpComponentView: View {
     var bottomImage: String?
     var cancelText: String?
     var confirmText = "Yes"
-    var containerBgColor = Color.orange
+    var containerBgColor = Color.white
     var textColor = Color.black
     var overlayOpacity = 0.3
     var width = Screen.width * 0.3
@@ -120,13 +120,13 @@ struct PopUpComponentView: View {
                                             }
                                             close()
                                         }
-                                        .buttonStyle(MainButton(width: 80, height: 10, buttonColor: .red))
+                                        .buttonStyle(MainButton(width: 80, height: 10, buttonColor: Color.redBtn))
                                         .font(.footnote)
                                     }
                                     Button(confirmText) {
                                         function()
                                     }
-                                    .buttonStyle(MainButton(width: 80, height: 10, buttonColor: .green))
+                                    .buttonStyle(MainButton(width: 80, height: 10, buttonColor: Color.greenBtn))
                                     .font(.footnote)
                                 }
                             }

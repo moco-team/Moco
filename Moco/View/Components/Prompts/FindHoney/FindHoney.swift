@@ -12,36 +12,32 @@ struct FindHoney: View {
 
     @Binding var isPromptDone: Bool
 
-    @State private var imageOffsets: CGPoint = .zero
     @State private var showPopUp = false
-    @State private var isFloating = true
 
     var body: some View {
         VStack {
             Image("Story/Content/Story1/Pages/Page4/honey")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 60, height: 60)
+                .frame(width: 120, height: 120)
                 .position(
-                    x: imageOffsets.x,
-                    y: imageOffsets.y
+                    x: 350,
+                    y: 800
                 )
-                .animation(Animation.easeInOut(duration: 5.0).repeatForever(autoreverses: true), value: isFloating)
+//                .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
                 .onTapGesture {
+                    print("")
                     audioViewModel.playSound(soundFileName: "success")
                     showPopUp = true
                 }
-        }
-        .onAppear {
-            randomImageOffet()
+            
+            Image("Story/Content/Story1/Pages/Page4/cover-leaves")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
         }
         .popUp(isActive: $showPopUp, title: "Selamat kamu berhasil menemukan Madu!") {
             isPromptDone = true
         }
-    }
-
-    func randomImageOffet() {
-        imageOffsets = CGPoint(x: .random(in: 0 ..< Screen.width), y: .random(in: 0 ..< Screen.height))
     }
 }
 
