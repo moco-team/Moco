@@ -14,6 +14,7 @@ enum Route: Hashable {
     case home
     case story(String?)
     case storyAdmin(String?)
+    case storyThemeAdmin
     case settings
 }
 
@@ -31,6 +32,8 @@ struct Routes: View {
             StoryView(title: text)
         case .storyAdmin:
             StoryAdminView()
+        case .storyThemeAdmin:
+            StoryThemeAdminView()
         case .settings:
             SettingsView()
         }
