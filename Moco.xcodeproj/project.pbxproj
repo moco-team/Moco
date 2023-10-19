@@ -102,6 +102,9 @@
 
 /* Begin PBXFileReference section */
 		050353E02ADFE2970066591A /* FindHoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindHoney.swift; sourceTree = "<group>"; };
+		053393102AE13A0C0085BB30 /* bear_thankyou.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bear_thankyou.m4a; sourceTree = "<group>"; };
+		053393112AE13A220085BB30 /* frog_thankyou.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = frog_thankyou.m4a; sourceTree = "<group>"; };
+		053393122AE13A310085BB30 /* congratulations.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = congratulations.m4a; sourceTree = "<group>"; };
 		056949702AE0EB6A00830D57 /* Page4-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page4-monolog1.m4a"; sourceTree = "<group>"; };
 		056949712AE0EB6A00830D57 /* Page4-monolog2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page4-monolog2.m4a"; sourceTree = "<group>"; };
 		056949722AE0EB6A00830D57 /* Page1-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page1-monolog1.m4a"; sourceTree = "<group>"; };
@@ -230,6 +233,7 @@
 		0569496F2AE0EAD600830D57 /* Page9 */ = {
 			isa = PBXGroup;
 			children = (
+				053393112AE13A220085BB30 /* frog_thankyou.m4a */,
 				056949832AE0EDC500830D57 /* Page9-monolog1.m4a */,
 				05E17AD82ADED16800A34547 /* balon_merah.mp3 */,
 			);
@@ -257,6 +261,7 @@
 			children = (
 				056949712AE0EB6A00830D57 /* Page4-monolog2.m4a */,
 				056949702AE0EB6A00830D57 /* Page4-monolog1.m4a */,
+				053393102AE13A0C0085BB30 /* bear_thankyou.m4a */,
 			);
 			path = Page4;
 			sourceTree = "<group>";
@@ -429,6 +434,7 @@
 				05E17ADA2ADED17B00A34547 /* Story */,
 				932357D52ADE6EF3009B3D86 /* bg-story.mp3 */,
 				05D966E02ADEE6CF00997E3A /* success.mp3 */,
+				053393122AE13A310085BB30 /* congratulations.m4a */,
 				056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */,
 			);
 			path = Audio;

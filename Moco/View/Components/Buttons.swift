@@ -10,7 +10,7 @@ import SwiftUI
 struct MainButton: ButtonStyle {
     var width: CGFloat?
     var height: CGFloat?
-    var buttonColor = Color.red
+    var buttonColor = Color.redBtn
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: width, height: height)
