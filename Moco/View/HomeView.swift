@@ -7,14 +7,17 @@
 
 import SwiftData
 import SwiftUI
+import MediaPlayer
 
 struct HomeView: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.timerViewModel) private var timerViewModel
-
+    
     @Environment(\.itemViewModel) private var itemViewModel
     @Environment(\.navigate) private var navigate
-
+    
+    @State private var soundLevel: Float = 0.5
+    
     var body: some View {
         VStack {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -37,13 +40,14 @@ struct HomeView: View {
             }.scrollClipDisabled()
         }.navigationTitle("Your Collection")
             .onAppear {
-//                audioViewModel.playSound(soundFileName: "bg-story", numberOfLoops: -1)
+                //                audioViewModel.playSound(soundFileName: "bg-story", numberOfLoops: -1)
+                MPVolumeView.setVolume(self.soundLevel)
             }
     }
 }
 
 #Preview {
     @State var itemViewModel = ItemViewModel()
-
+    
     return HomeView().environment(\.itemViewModel, itemViewModel)
 }
