@@ -37,11 +37,11 @@ struct DetectionView: View {
 //        } detail: {
 //            Text("Select an item")
 //        }
-        
+
         ZStack {
             HostedViewController()
                 .ignoresSafeArea()
-            
+
             Image("Story/Content/Story1/Pages/Page7/background")
                 .resizable()
                 .aspectRatio(contentMode: .fill)

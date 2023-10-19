@@ -32,7 +32,7 @@ struct FindTheObjectView: View {
     var body: some View {
         VStack {
             if showTheBalloons {
-                HStack(spacing: 100) {
+                HStack(spacing: 20) {
                     ForEach(balloons.indices, id: \.self) { index in
                         BalloonView(
                             balloon: balloons[index],
@@ -49,6 +49,8 @@ struct FindTheObjectView: View {
                 .animation(.easeOut)
             }
         }
+        .frame(maxHeight: Screen.height * 0.7)
+        .frame(maxWidth: Screen.width * 0.7)
         .padding(.vertical, 60)
         .popUp(isActive: $isCorrectBalloonTapped, title: "Selamat kamu sudah menemukan balon yang Moco cari! \n Ayo cari balon selanjutnya!") {
             if correctTryCount < maxTry {

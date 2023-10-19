@@ -44,7 +44,7 @@ import AVFoundation
     }
 
     func playSounds(soundFileNames: [String], withDelay: Double) { // withDelay is in seconds
-        for (index, soundFileName) in soundFileNames.enumerated() {
+        soundFileNames.enumerated().forEach { index, soundFileName in
             let delay = withDelay * Double(index)
             _ = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(playSoundNotification(_:)), userInfo: ["fileName": soundFileName], repeats: false)
         }

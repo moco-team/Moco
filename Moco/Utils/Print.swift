@@ -9,7 +9,7 @@ import Foundation
 
 public func print(_ object: Any...) {
     #if DEBUG
-        for item in object {
+        object.forEach { item in
             Swift.print(item)
         }
     #endif
