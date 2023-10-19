@@ -12,7 +12,8 @@ struct ContentView: View {
     var body: some View {
         // MARK: - First Vew Declaration
 
-        HomeView()
+//        HomeView()
+        SpeakTheStory()
     }
 }
 

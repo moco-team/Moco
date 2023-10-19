@@ -58,6 +58,7 @@ struct HomeView: View {
                 }.scrollClipDisabled()
                 
                 Spacer()
+                Spacer()
             }
             .onAppear {
                 //                audioViewModel.playSound(soundFileName: "bg-story", numberOfLoops: -1)

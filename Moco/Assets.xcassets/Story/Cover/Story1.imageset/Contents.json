@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Story1.png",
+      "filename" : "cover.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Story1@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Story1@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
