@@ -13,6 +13,7 @@ import SwiftUI
 enum Route: Hashable {
     case home
     case story(String?)
+    case storyAdmin(String?)
     case settings
 }
 
@@ -28,6 +29,8 @@ struct Routes: View {
             HomeView()
         case let .story(text):
             StoryView(title: text)
+        case .storyAdmin:
+            StoryAdminView()
         case .settings:
             SettingsView()
         }

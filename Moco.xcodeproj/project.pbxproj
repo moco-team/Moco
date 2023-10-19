@@ -41,6 +41,10 @@
 		0B6E2F742ADC9DC90001D320 /* HintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E2F732ADC9DC90001D320 /* HintViewModel.swift */; };
 		0B6E2F762ADC9F020001D320 /* PromptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E2F752ADC9F020001D320 /* PromptViewModel.swift */; };
 		0B6E2F782ADCA8990001D320 /* StoryContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E2F772ADCA8990001D320 /* StoryContentViewModel.swift */; };
+		0BA3E5092ADFC61500BCFE9E /* StoryThemeAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E5082ADFC61500BCFE9E /* StoryThemeAdminView.swift */; };
+		0BA3E50B2ADFC62000BCFE9E /* StoryAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E50A2ADFC62000BCFE9E /* StoryAdminView.swift */; };
+		0BA3E5102ADFD04700BCFE9E /* StoryThemeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E50F2ADFD04700BCFE9E /* StoryThemeModalView.swift */; };
+		0BA3E5122ADFD98400BCFE9E /* StoryModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E5112ADFD98400BCFE9E /* StoryModalView.swift */; };
 		932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 932357D52ADE6EF3009B3D86 /* bg-story.mp3 */; };
 		932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D72ADE700D009B3D86 /* AudioViewModel.swift */; };
 		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
@@ -146,6 +150,10 @@
 		0B6E2F732ADC9DC90001D320 /* HintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintViewModel.swift; sourceTree = "<group>"; };
 		0B6E2F752ADC9F020001D320 /* PromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewModel.swift; sourceTree = "<group>"; };
 		0B6E2F772ADCA8990001D320 /* StoryContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryContentViewModel.swift; sourceTree = "<group>"; };
+		0BA3E5082ADFC61500BCFE9E /* StoryThemeAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryThemeAdminView.swift; sourceTree = "<group>"; };
+		0BA3E50A2ADFC62000BCFE9E /* StoryAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryAdminView.swift; sourceTree = "<group>"; };
+		0BA3E50F2ADFD04700BCFE9E /* StoryThemeModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryThemeModalView.swift; sourceTree = "<group>"; };
+		0BA3E5112ADFD98400BCFE9E /* StoryModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModalView.swift; sourceTree = "<group>"; };
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
@@ -422,6 +430,40 @@
 			path = ListViews;
 			sourceTree = "<group>";
 		};
+		0BA3E5062ADFC5E200BCFE9E /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				0BA3E50E2ADFD03100BCFE9E /* FormSheetViews */,
+				0BA3E5082ADFC61500BCFE9E /* StoryThemeAdminView.swift */,
+				0BA3E50A2ADFC62000BCFE9E /* StoryAdminView.swift */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
+		0BA3E5072ADFC5EE00BCFE9E /* User */ = {
+			isa = PBXGroup;
+			children = (
+				0B2E31DB2AD8084600DFC16F /* CollectionView.swift */,
+				938E3D322AD91605003D2AE1 /* DetectionView.swift */,
+				0B2E31DF2AD810D400DFC16F /* StoryBoardView.swift */,
+				938E3D4A2ADB9F1B003D2AE1 /* StoryView.swift */,
+				938E3D4C2ADBA247003D2AE1 /* ContentViewContainer.swift */,
+				938E3D512ADBAE62003D2AE1 /* SettingsView.swift */,
+				93C2F8B82AD684CE007D1ABC /* HomeView.swift */,
+				938E3D362AD939C4003D2AE1 /* ContentView.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		0BA3E50E2ADFD03100BCFE9E /* FormSheetViews */ = {
+			isa = PBXGroup;
+			children = (
+				0BA3E50F2ADFD04700BCFE9E /* StoryThemeModalView.swift */,
+				0BA3E5112ADFD98400BCFE9E /* StoryModalView.swift */,
+			);
+			path = FormSheetViews;
+			sourceTree = "<group>";
+		};
 		932357D22ADE6DF2009B3D86 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,17 +600,11 @@
 		93C2F8B42AD6848F007D1ABC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0BA3E5072ADFC5EE00BCFE9E /* User */,
+				0BA3E5062ADFC5E200BCFE9E /* Admin */,
 				0B1197602AD7D4A7004FAD14 /* Components */,
 				93C2F8B52AD684CE007D1ABC /* ObjectDetection */,
 				05AE93592ADE74E10082B21D /* Temporary */,
-				0B2E31DB2AD8084600DFC16F /* CollectionView.swift */,
-				938E3D322AD91605003D2AE1 /* DetectionView.swift */,
-				0B2E31DF2AD810D400DFC16F /* StoryBoardView.swift */,
-				938E3D4A2ADB9F1B003D2AE1 /* StoryView.swift */,
-				938E3D4C2ADBA247003D2AE1 /* ContentViewContainer.swift */,
-				938E3D512ADBAE62003D2AE1 /* SettingsView.swift */,
-				93C2F8B82AD684CE007D1ABC /* HomeView.swift */,
-				938E3D362AD939C4003D2AE1 /* ContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -756,6 +792,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BA3E50B2ADFC62000BCFE9E /* StoryAdminView.swift in Sources */,
 				938E3D582ADC00FB003D2AE1 /* PopUpExtension.swift in Sources */,
 				938E3D562ADBE961003D2AE1 /* Screen.swift in Sources */,
 				0B6E2F702ADC96200001D320 /* StoryThemeViewModel.swift in Sources */,
@@ -797,7 +834,9 @@
 				938E3D432ADABD9F003D2AE1 /* BaseViewModel.swift in Sources */,
 				050353E12ADFE2970066591A /* FindHoney.swift in Sources */,
 				0B6E2F6E2ADC92950001D320 /* HintModel.swift in Sources */,
+				0BA3E5122ADFD98400BCFE9E /* StoryModalView.swift in Sources */,
 				0B2E31E22AD9064900DFC16F /* CollectionViewModel.swift in Sources */,
+				0BA3E5102ADFD04700BCFE9E /* StoryThemeModalView.swift in Sources */,
 				938E3D522ADBAE62003D2AE1 /* SettingsView.swift in Sources */,
 				938E3D472ADB0AA5003D2AE1 /* Routes.swift in Sources */,
 				0B2E31E02AD810D400DFC16F /* StoryBoardView.swift in Sources */,
@@ -810,6 +849,7 @@
 				05AE935D2ADE751A0082B21D /* SpeechRecognizerTestView.swift in Sources */,
 				938E3D502ADBABD3003D2AE1 /* Print.swift in Sources */,
 				938E3D4B2ADB9F1B003D2AE1 /* StoryView.swift in Sources */,
+				0BA3E5092ADFC61500BCFE9E /* StoryThemeAdminView.swift in Sources */,
 				93C2F8BB2AD684CE007D1ABC /* Detector.swift in Sources */,
 				0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */,
 				05E17AD52ADE86DE00A34547 /* FindTheObject.swift in Sources */,

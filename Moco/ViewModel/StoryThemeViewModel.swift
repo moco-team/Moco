@@ -10,6 +10,7 @@ import SwiftData
 
 @Observable class StoryThemeViewModel: BaseViewModel {
     var storyThemes = [StoryThemeModel]()
+    var selectedStoryTheme: StoryThemeModel?
 
     init(modelContext: ModelContext? = nil) {
         super.init()
@@ -29,8 +30,8 @@ import SwiftData
         storyThemes = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
     }
 
-    func createStoryTheme(stories: [StoryModel]) {
-        let newStoryTheme = StoryThemeModel(pictureName: "picture", descriptionTheme: "new")
+    func createStoryTheme(stories: [StoryModel], pictureName: String, descriptionTheme: String) {
+        let newStoryTheme = StoryThemeModel(pictureName: pictureName, descriptionTheme: descriptionTheme)
         newStoryTheme.stories = stories
 
         modelContext?.insert(newStoryTheme)
@@ -52,5 +53,10 @@ import SwiftData
         try? modelContext?.save()
 
         fetchStoryThemes()
+    }
+
+    func setSelectedStoryTheme(_ index: Int) {
+        guard storyThemes.indices.contains(index) else { return }
+        selectedStoryTheme = storyThemes[index]
     }
 }

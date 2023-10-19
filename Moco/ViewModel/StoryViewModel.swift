@@ -10,6 +10,7 @@ import SwiftData
 
 @Observable class StoryViewModel: BaseViewModel {
     var stories = [StoryModel]()
+    var selectedStoryPage: StoryModel?
 
     init(modelContext: ModelContext? = nil) {
         super.init()
@@ -33,8 +34,8 @@ import SwiftData
         stories = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
     }
 
-    func createStory(storyTheme: StoryThemeModel) {
-        let newStory = StoryModel(background: "bg", pageNumber: 1, isHavePrompt: false)
+    func createStory(storyTheme: StoryThemeModel, background: String, pageNumber: Int, isHavePrompt: Bool) {
+        let newStory = StoryModel(background: background, pageNumber: pageNumber, isHavePrompt: isHavePrompt)
         newStory.storyTheme = storyTheme
 
         modelContext?.insert(newStory)
@@ -56,5 +57,10 @@ import SwiftData
         try? modelContext?.save()
 
         fetchStories(storyTheme)
+    }
+
+    func setSelectedStoryPage(_ index: Int) {
+        guard stories.indices.contains(index) else { return }
+        selectedStoryPage = stories[index]
     }
 }
