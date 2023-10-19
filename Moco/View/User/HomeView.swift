@@ -43,6 +43,9 @@ struct HomeView: View {
                 //                audioViewModel.playSound(soundFileName: "bg-story", numberOfLoops: -1)
                 MPVolumeView.setVolume(self.soundLevel)
             }
+            .onShake {
+                navigate.append(.storyThemeAdmin)
+            }
     }
 }
 

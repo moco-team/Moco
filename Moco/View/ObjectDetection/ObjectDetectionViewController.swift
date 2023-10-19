@@ -36,14 +36,11 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
         }
     }
 
-    override func willTransition(to _: UITraitCollection, with _: UIViewControllerTransitionCoordinator) {
-        screenRect = UIScreen.main.bounds
-        previewLayer.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
-
+    func setOrientation() {
         switch UIDevice.current.orientation {
         // Home button on top
         case UIDeviceOrientation.portraitUpsideDown:
-            previewLayer.connection?.videoOrientation = .portraitUpsideDown
+            previewLayer.connection?.videoOrientation = .portrait
 
         // Home button on right
         case UIDeviceOrientation.landscapeLeft:
@@ -55,11 +52,41 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
 
         // Home button at bottom
         case UIDeviceOrientation.portrait:
-            previewLayer.connection?.videoOrientation = .portrait
+            previewLayer.connection?.videoOrientation = .portraitUpsideDown
 
         default:
             break
         }
+    }
+
+    func setOutputOrientation() {
+        switch UIDevice.current.orientation {
+        // Home button on top
+        case UIDeviceOrientation.portraitUpsideDown:
+            videoOutput.connection(with: .video)?.videoOrientation = .portrait
+
+        // Home button on right
+        case UIDeviceOrientation.landscapeLeft:
+            videoOutput.connection(with: .video)?.videoOrientation = .landscapeRight
+
+        // Home button on left
+        case UIDeviceOrientation.landscapeRight:
+            videoOutput.connection(with: .video)?.videoOrientation = .landscapeLeft
+
+        // Home button at bottom
+        case UIDeviceOrientation.portrait:
+            videoOutput.connection(with: .video)?.videoOrientation = .portraitUpsideDown
+
+        default:
+            break
+        }
+    }
+
+    override func willTransition(to _: UITraitCollection, with _: UIViewControllerTransitionCoordinator) {
+        screenRect = UIScreen.main.bounds
+        previewLayer.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
+
+        setOrientation()
 
         // Detector
         updateLayers()
@@ -102,13 +129,13 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill // Fill screen
-        previewLayer.connection?.videoOrientation = .portrait
+        setOrientation()
 
         // Detector
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sampleBufferQueue"))
         captureSession.addOutput(videoOutput)
 
-        videoOutput.connection(with: .video)?.videoOrientation = .portrait
+        setOutputOrientation()
 
         // Updates to UI must be on main queue
         DispatchQueue.main.async { [weak self] in

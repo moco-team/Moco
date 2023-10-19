@@ -85,6 +85,7 @@
 		93C8E7252ADEF2D3002315A2 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8E7242ADEF2D3002315A2 /* TimerViewModel.swift */; };
 		93C8E7272ADF8DA3002315A2 /* bg-shop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93C8E7262ADF8DA3002315A2 /* bg-shop.mp3 */; };
 		93C8E72A2AE01660002315A2 /* Storm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8E7292AE01660002315A2 /* Storm.swift */; };
+		93C8E72C2AE1373D002315A2 /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8E72B2AE1373D002315A2 /* Shake.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +200,7 @@
 		93C8E7242ADEF2D3002315A2 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		93C8E7262ADF8DA3002315A2 /* bg-shop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-shop.mp3"; sourceTree = "<group>"; };
 		93C8E7292AE01660002315A2 /* Storm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storm.swift; sourceTree = "<group>"; };
+		93C8E72B2AE1373D002315A2 /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -627,6 +629,7 @@
 				05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */,
 				05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */,
 				05BA97A92AE11EE400F64F52 /* MPVolumeViewExtension.swift */,
+				93C8E72B2AE1373D002315A2 /* Shake.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -810,6 +813,7 @@
 				93C8E7232ADEF249002315A2 /* FontUtil.swift in Sources */,
 				0B2E31DC2AD8084600DFC16F /* CollectionView.swift in Sources */,
 				0B6E2F6A2ADC91060001D320 /* StoryContentModel.swift in Sources */,
+				93C8E72C2AE1373D002315A2 /* Shake.swift in Sources */,
 				0B2E31DA2AD7EBE500DFC16F /* CollectionModel.swift in Sources */,
 				0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */,
 				938E3D542ADBCDB8003D2AE1 /* StoryNavigationButton.swift in Sources */,
