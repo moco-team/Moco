@@ -37,7 +37,7 @@ extension EnvironmentValues {
         get { self[PromptViewModelKey.self] }
         set { self[PromptViewModelKey.self] = newValue }
     }
-    var HintViewModel: HintViewModel {
+    var hintViewModel: HintViewModel {
         get { self[HintViewModelKey.self] }
         set { self[HintViewModelKey.self] = newValue }
     }
