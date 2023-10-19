@@ -48,6 +48,8 @@
 		932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 932357D52ADE6EF3009B3D86 /* bg-story.mp3 */; };
 		932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D72ADE700D009B3D86 /* AudioViewModel.swift */; };
 		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
+		938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55352AE181C600BC233D /* RootViewModifier.swift */; };
+		938C55382AE183AA00BC233D /* FontViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55372AE183AA00BC233D /* FontViewModifier.swift */; };
 		938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D1E2AD7AD78003D2AE1 /* Collection.swift */; };
 		938E3D312AD8FD2E003D2AE1 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D302AD8FD2E003D2AE1 /* ItemViewModel.swift */; };
 		938E3D332AD91605003D2AE1 /* DetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D322AD91605003D2AE1 /* DetectionView.swift */; };
@@ -161,6 +163,8 @@
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
+		938C55352AE181C600BC233D /* RootViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModifier.swift; sourceTree = "<group>"; };
+		938C55372AE183AA00BC233D /* FontViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewModifier.swift; sourceTree = "<group>"; };
 		938E3D1E2AD7AD78003D2AE1 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		938E3D302AD8FD2E003D2AE1 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		938E3D322AD91605003D2AE1 /* DetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionView.swift; sourceTree = "<group>"; };
@@ -484,6 +488,15 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
+		938C55342AE181AF00BC233D /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				938C55352AE181C600BC233D /* RootViewModifier.swift */,
+				938C55372AE183AA00BC233D /* FontViewModifier.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
 		938E3D4E2ADBABC3003D2AE1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,6 +621,7 @@
 		93C2F8B42AD6848F007D1ABC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				938C55342AE181AF00BC233D /* ViewModifiers */,
 				0BA3E5072ADFC5EE00BCFE9E /* User */,
 				0BA3E5062ADFC5E200BCFE9E /* Admin */,
 				0B1197602AD7D4A7004FAD14 /* Components */,
@@ -815,6 +829,7 @@
 				938E3D312AD8FD2E003D2AE1 /* ItemViewModel.swift in Sources */,
 				0B6E2F662ADC8ECE0001D320 /* StoryThemeModel.swift in Sources */,
 				93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */,
+				938C55382AE183AA00BC233D /* FontViewModifier.swift in Sources */,
 				93C2F8BD2AD684CE007D1ABC /* HomeView.swift in Sources */,
 				93C8E7232ADEF249002315A2 /* FontUtil.swift in Sources */,
 				0B2E31DC2AD8084600DFC16F /* CollectionView.swift in Sources */,
@@ -826,6 +841,7 @@
 				0B6E2F742ADC9DC90001D320 /* HintViewModel.swift in Sources */,
 				938E3D372AD939C4003D2AE1 /* ContentView.swift in Sources */,
 				0B6E2F6C2ADC91E10001D320 /* PromptModel.swift in Sources */,
+				938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */,
 				0B6E2F782ADCA8990001D320 /* StoryContentViewModel.swift in Sources */,
 				93C2F8BC2AD684CE007D1ABC /* ObjectDetectionViewController.swift in Sources */,
 				05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */,

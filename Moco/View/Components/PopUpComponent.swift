@@ -46,7 +46,7 @@ struct PopUpComponent: ViewModifier {
                 ) {
                     function()
                 } cancelHandler: {
-                    (cancelHandler ?? {})()
+                    cancelHandler?()
                 }
             }
         } else {
@@ -79,6 +79,7 @@ struct PopUpComponentView: View {
         ZStack {
             Color(.black)
                 .opacity(overlayOpacity)
+                .frame(width: Screen.width, height: Screen.height)
                 .onTapGesture {
                     close()
                 }
@@ -98,10 +99,7 @@ struct PopUpComponentView: View {
                             .cornerRadius(10)
 
                         VStack {
-                            Text(title ?? "Congratulations").font(.custom(
-                                "CherryBomb-Regular",
-                                size: 24,
-                                relativeTo: .body))
+                            Text(title ?? "Congratulations").customFont(.cherryBomb, size: 24)
                                 .foregroundColor(textColor)
                                 .fontWeight(.bold)
                                 .padding(.bottom, 1)

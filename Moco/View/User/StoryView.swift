@@ -137,6 +137,14 @@ struct StoryView: View {
         startNarrative()
         startPrompt()
     }
+    
+    private func nextPage() {
+        guard storyBackgrounds.count > scrollPosition! + 1 else {
+            isPopUpActive = true
+            return
+        }
+        scrollPosition! += 1
+    }
 
     // MARK: - View
 
@@ -175,9 +183,13 @@ struct StoryView: View {
                                             Balloon(color: "hijau", isCorrect: false),
                                             Balloon(color: "biru", isCorrect: false)
                                         ]
-                                    )
+                                    ) {
+                                        nextPage()
+                                    }
                                 case .findHoney:
-                                    FindHoney(isPromptDone: .constant(false))
+                                    FindHoney(isPromptDone: .constant(false)) {
+                                        nextPage()
+                                    }
                                 case .objectDetection:
                                     DetectionView()
                                 default:
@@ -226,11 +238,7 @@ struct StoryView: View {
                     }
                     Spacer()
                     StoryNavigationButton(direction: .right) {
-                        guard storyBackgrounds.count > scrollPosition! + 1 else {
-                            isPopUpActive = true
-                            return
-                        }
-                        scrollPosition! += 1
+                        nextPage()
                     }
                 }
                 VStack {
@@ -247,7 +255,6 @@ struct StoryView: View {
         .popUp(isActive: $isPopUpActive, title: "Are you sure you want to quit?", cancelText: "No") {
             navigate.popToRoot()
         }
-        .navigationBarHidden(true)
         .task {
             onPageChange()
         }

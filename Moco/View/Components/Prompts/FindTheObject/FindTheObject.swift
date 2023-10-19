@@ -28,6 +28,8 @@ struct FindTheObjectView: View {
     @State private var isFinalPopUp = false
 
     @State private var showTheBalloons = true
+    
+    var doneHandler: (() -> Void)?
 
     var body: some View {
         VStack {
@@ -69,6 +71,7 @@ struct FindTheObjectView: View {
         }
         .popUp(isActive: $isFinalPopUp, title: "Selamat kamu berhasil mencari semua balon Moco!") {
             isPromptDone = true
+            doneHandler?()
         }
     }
 }

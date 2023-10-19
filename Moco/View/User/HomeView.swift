@@ -5,27 +5,28 @@
 //  Created by Aaron Christopher Tanhar on 11/10/23.
 //
 
+import MediaPlayer
 import SwiftData
 import SwiftUI
-import MediaPlayer
 
 struct HomeView: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.timerViewModel) private var timerViewModel
-    
+
     @Environment(\.itemViewModel) private var itemViewModel
     @Environment(\.navigate) private var navigate
-    
+
     @State private var soundLevel: Float = 0.5
-    
+
     var body: some View {
         ZStack {
-            Image("Story/main-background")
-                .resizable()
-                .scaledToFill()
-                .frame(width: Screen.width, height: Screen.height, alignment: .center)
-                .clipped()
-            
+            VStack {
+                Image("Story/main-background")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .edgesIgnoringSafeArea(.all)
+            }.frame(width: Screen.width, height: Screen.height)
+
             VStack {
                 HStack(alignment: .center) {
                     Image("Story/nav-icon")
@@ -33,9 +34,9 @@ struct HomeView: View {
                         .scaledToFit()
                         .frame(width: 0.4 * Screen.width)
                         .padding(.top, 50)
-                        
+
                     Spacer()
-                    
+
                     Button(action: {}) {
                         Image("Story/Icons/burger-menu")
                             .resizable()
@@ -43,9 +44,9 @@ struct HomeView: View {
                     }
                 }
                 .padding(.horizontal, 0.05 * Screen.width)
-                
+
                 Spacer()
-                
+
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: [GridItem(.flexible())]) {
                         ForEach(itemViewModel.items) { item in
@@ -56,7 +57,7 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, 30)
                 }.scrollClipDisabled()
-                
+
                 Spacer()
             }
             .onAppear {
@@ -69,6 +70,6 @@ struct HomeView: View {
 
 #Preview {
     @State var itemViewModel = ItemViewModel()
-    
+
     return HomeView().environment(\.itemViewModel, itemViewModel)
 }

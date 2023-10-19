@@ -9,11 +9,9 @@ import SwiftUI
 
 struct ContentViewContainer: View {
     var body: some View {
-        ContentView().edgesIgnoringSafeArea(.all)
-            .statusBar(hidden: true)
+        ContentView().rootViewModifier()
             .navigationDestination(for: Route.self) { route in
-                Routes(route: route).edgesIgnoringSafeArea(.all)
-                    .statusBar(hidden: true)
+                Routes(route: route).rootViewModifier()
             }
     }
 }

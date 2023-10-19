@@ -13,6 +13,8 @@ struct FindHoney: View {
     @Binding var isPromptDone: Bool
 
     @State private var showPopUp = false
+    
+    var doneHandler: (() -> Void)?
 
     var body: some View {
         VStack {
@@ -30,13 +32,14 @@ struct FindHoney: View {
                     audioViewModel.playSound(soundFileName: "success")
                     showPopUp = true
                 }
-            
+
             Image("Story/Content/Story1/Pages/Page4/cover-leaves")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
         }
         .popUp(isActive: $showPopUp, title: "Selamat kamu berhasil menemukan Madu!") {
             isPromptDone = true
+            doneHandler?()
         }
     }
 }
