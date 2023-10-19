@@ -5,22 +5,22 @@
 //  Created by Aaron Christopher Tanhar on 14/10/23.
 //
 
-import SwiftUI
 import MediaPlayer
+import SwiftUI
 
 struct StoryBook: View {
     // MARK: - Stored variable definition
-    
+
     var title: String = "Story 1"
     let durationAndDelay: CGFloat = 0.3
     @State var degree = 0.0
     @State var isFlipped = false
     @State private var soundLevel: Float = 0.5
-    
+
     var tapHandler: (() -> Void)?
-    
+
     // MARK: - Flip Card Function
-    
+
     func flipCard() {
         isFlipped.toggle()
         if isFlipped {
@@ -35,11 +35,11 @@ struct StoryBook: View {
             }
         }
     }
-    
+
     var body: some View {
         VStack {
             VStack {
-                ZStack{
+                ZStack {
                     Rectangle()
                         .fill(.white)
                         .frame(width: 220, height: 300) // Adjust the frame size as needed

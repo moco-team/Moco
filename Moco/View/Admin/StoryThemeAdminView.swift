@@ -1,5 +1,5 @@
 //
-//  StoryThemeView.swift
+//  StoryThemeAdminView.swift
 //  Moco
 //
 //  Created by Nur Azizah on 18/10/23.
@@ -12,13 +12,13 @@ struct StoryThemeAdminView: View {
     @Environment(\.storyThemeViewModel) private var storyThemeViewModel
     @Environment(\.storyViewModel) private var storyViewModel
     @State var isSheetPresented: Bool = false
-    
+
     func deleteStoryTheme(_ storyTheme: StoryThemeModel) {
         if let index = storyThemeViewModel.storyThemes.firstIndex(of: storyTheme) {
             storyThemeViewModel.deleteStoryTheme(index)
         }
     }
-    
+
     var body: some View {
         VStack {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -33,9 +33,9 @@ struct StoryThemeAdminView: View {
                                     .frame(width: 300, height: 400, alignment: .center)
                                     .clipped()
                             }.padding()
-                            
+
                             Button(action: {
-                                deleteStoryTheme (storyTheme)
+                                deleteStoryTheme(storyTheme)
                             }) {
                                 Image(systemName: "trash")
                                     .foregroundColor(.red)
@@ -43,9 +43,9 @@ struct StoryThemeAdminView: View {
                         }.padding()
                             .onTapGesture {
                                 storyThemeViewModel.setSelectedStoryTheme(index)
-                                
+
                                 storyViewModel.fetchStories(storyThemeViewModel.selectedStoryTheme)
-                                
+
                                 navigate.append(.storyAdmin("storyAdmin"))
                             }
                     }
@@ -66,6 +66,6 @@ struct StoryThemeAdminView: View {
 
 #Preview {
     @State var storyThemeViewModel = StoryThemeViewModel()
-    
+
     return StoryThemeAdminView().environment(\.storyThemeViewModel, storyThemeViewModel)
 }

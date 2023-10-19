@@ -58,9 +58,9 @@ import SwiftData
 
         fetchStories(storyTheme)
     }
-    
+
     func setSelectedStoryPage(_ index: Int) {
         guard stories.indices.contains(index) else { return }
-        self.selectedStoryPage = stories[index]
+        selectedStoryPage = stories[index]
     }
 }

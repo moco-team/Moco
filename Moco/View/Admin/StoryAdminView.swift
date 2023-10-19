@@ -1,5 +1,5 @@
 //
-//  StoryView.swift
+//  StoryAdminView.swift
 //  Moco
 //
 //  Created by Nur Azizah on 18/10/23.
@@ -11,10 +11,10 @@ struct StoryAdminView: View {
     @Environment(\.navigate) private var navigate
     @Environment(\.storyThemeViewModel) private var storyThemeViewModel
     @Environment(\.storyViewModel) private var storyViewModel
-    
+
     @State var isSheetPresented: Bool = false
     @State private var scrollPosition: Int? = 0
-    
+
     var body: some View {
         ZStack {
             ScrollView(.horizontal) {
@@ -26,7 +26,7 @@ struct StoryAdminView: View {
                                 .scaledToFill()
                                 .frame(width: Screen.width, height: Screen.height, alignment: .center)
                                 .clipped()
-                        }.id(story.pageNumber-1)
+                        }.id(story.pageNumber - 1)
                     }
                 }.scrollTargetLayout()
             }.disabled(true)

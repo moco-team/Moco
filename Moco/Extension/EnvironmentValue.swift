@@ -25,22 +25,27 @@ extension EnvironmentValues {
         get { self[ItemViewModelKey.self] }
         set { self[ItemViewModelKey.self] = newValue }
     }
+
     var storyThemeViewModel: StoryThemeViewModel {
         get { self[StoryThemeViewModelKey.self] }
         set { self[StoryThemeViewModelKey.self] = newValue }
     }
+
     var storyViewModel: StoryViewModel {
         get { self[StoryViewModelKey.self] }
         set { self[StoryViewModelKey.self] = newValue }
     }
+
     var promptViewModel: PromptViewModel {
         get { self[PromptViewModelKey.self] }
         set { self[PromptViewModelKey.self] = newValue }
     }
+
     var hintViewModel: HintViewModel {
         get { self[HintViewModelKey.self] }
         set { self[HintViewModelKey.self] = newValue }
     }
+
     var storyContentViewModel: StoryContentViewModel {
         get { self[StoryContentViewModelKey.self] }
         set { self[StoryContentViewModelKey.self] = newValue }

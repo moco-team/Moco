@@ -5,19 +5,19 @@
 //  Created by Aaron Christopher Tanhar on 11/10/23.
 //
 
+import MediaPlayer
 import SwiftData
 import SwiftUI
-import MediaPlayer
 
 struct HomeView: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.timerViewModel) private var timerViewModel
-    
+
     @Environment(\.itemViewModel) private var itemViewModel
     @Environment(\.navigate) private var navigate
-    
+
     @State private var soundLevel: Float = 0.5
-    
+
     var body: some View {
         VStack {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -48,6 +48,6 @@ struct HomeView: View {
 
 #Preview {
     @State var itemViewModel = ItemViewModel()
-    
+
     return HomeView().environment(\.itemViewModel, itemViewModel)
 }
