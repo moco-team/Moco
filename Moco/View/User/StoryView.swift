@@ -15,6 +15,8 @@ struct Narrative {
     var positionX: Double // MARK: position in percentage of the size of the screen
 
     var positionY: Double
+    var maxWidth: Double? = Screen.width * 0.5
+    var color: Color? = .black
 }
 
 struct Prompt {
@@ -63,32 +65,46 @@ struct StoryView: View {
 
     private let narratives: [[Narrative]] = [
         [
-            .init(text: "Pada hari minggu", duration: 2.5, positionX: 0.6, positionY: 0.2),
-            .init(text: "Moco sang sapi jantan mengangkat tangannya", duration: 3.5, positionX: 0.6, positionY: 0.2),
-            .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.6, positionY: 0.2)
+            .init(text: "Moco si Sapi adalah seekor sapi yang cerdik. \nDia ingin menjelajahi dunia.", duration: 2.5, positionX: 0.31, positionY: 0.15),
         ],
         [
-            .init(text: "Moco pun bergegas menuju gunung bromo", duration: 3.5, positionX: 0.6, positionY: 0.2),
-            .init(text: "Dia melewati lembah dan bukit", duration: 3, positionX: 0.6, positionY: 0.2),
-            .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.6, positionY: 0.2)
+            .init(text: "Di perjalanannya, dia bertemu dengan teman-temannya yang membutuhkan bantuan.", duration: 3.5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4),
         ],
         [
-            .init(text: "Moco pun bergegas menuju gunung bromo", duration: 3.5, positionX: 0.6, positionY: 0.2),
-            .init(text: "Dia melewati lembah dan bukit", duration: 3, positionX: 0.6, positionY: 0.2),
-            .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.6, positionY: 0.2)
+            .init(text: "Saat menjelajahi hutan rimba, dia bertemu Maudi si Beruang madu yang sedang menangis.", duration: 3, positionX: 0.3, positionY: 0.17, maxWidth: Screen.width * 0.4),
+            .init(text: "ari kita tanya mengapa Maudi menangis.", duration: 2, positionX: 0.3, positionY: 0.13, maxWidth: Screen.width * 0.4),
         ],
         [
-            .init(text: "Moco pun bergegas menuju gunung bromo", duration: 3.5, positionX: 0.6, positionY: 0.2),
-            .init(text: "Dia melewati lembah dan bukit", duration: 3, positionX: 0.6, positionY: 0.2),
-            .init(text: "Sambil tersenyum dia pun beranjak dari kandang sapi di tulungagung", duration: 5, positionX: 0.6, positionY: 0.2)
+            .init(text: "Yuk bantu Maudi mencari madu kesayangannya!", duration: 3.5, positionX: 0.5, positionY: 0.3),
+        ],
+        [
+            .init(text: "Moco melanjutkan petualangannya. \n Saat ingin melewati gua, dia bertemu dengan Teka & Teki si Tikus.", duration: 3.5, positionX: 0.71, positionY: 0.85),
+        ],
+        [
+            .init(text: "Teka & Teki melarang Moco untuk melewati gua sebelum dia menjawab teka teki yang mereka berikan.", duration: 3, positionX: 0.5, positionY: 0.15),
+            .init(text: "Yuk kita selesaikan teka-tekinya.", duration: 2, positionX: 0.5, positionY: 0.15),
+        ],
+        [
+            .init(text: "Aku berkaki empat, tetapi aku tidak bisa berjalan. Orang-orang biasanya duduk di atasku.", duration: 3.5, positionX: 0.6, positionY: 0.3),
+        ],
+        [
+            .init(text: "Saat langit sudah mulai gelap, Moco bertemu dengan Kakak Katak yang sedang kesulitan menangkap balon.", duration: 3.5, positionX: 0.7, positionY: 0.15, color: .white),
+        ],
+        [
+//            .init(text: "Kakak Katak sedang mengumpulkan balon yang berwarna biru. Yuk kita bantu Kakak Katak menangkap balon!", duration: 3.5, positionX: 0.6, positionY: 0.2),
+        ],
+        [
+            .init(text: "Matahari terbenam dan Moco merasa lelah. Moco memutuskan untuk beristirahat dan melanjutkan petualangannya esok hari.", duration: 4, positionX: 0.67, positionY: 0.63),
+            .init(text: "Hari ini, Moco belajar bahwa petualangan bisa menjadi kesempatan untuk membantu teman-temannya.", duration: 3.5, positionX: 0.67, positionY: 0.63),
+            .init(text: "Moco tidur dengan senyum di wajahnya, bermimpi tentang petualangan berikutnya.", duration: 3.5, positionX: 0.67, positionY: 0.63),
         ]
     ]
 
     private let prompts: [Prompt?] = [
         nil,
-        .init(type: .findHoney, startTime: 5),
-        .init(type: .puzzle, startTime: 5),
-        .init(type: .objectDetection, startTime: 5)
+        .init(type: .findHoney, startTime: 3),
+        .init(type: .puzzle, startTime: 3),
+        .init(type: .objectDetection, startTime: 3)
     ]
 
     private let bgSounds = ["bg-shop", "bg-story"]
@@ -152,14 +168,24 @@ struct StoryView: View {
                                 .frame(width: Screen.width, height: Screen.height, alignment: .center)
                                 .clipped()
                             StormView()
-                            Text(narratives[scrollPosition!][max(narrativeIndex, 0)].text)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .position(CGPoint(
-                                    x: Screen.width * narratives[scrollPosition!][max(narrativeIndex, 0)].positionX,
-                                    y: Screen.height * narratives[scrollPosition!][max(narrativeIndex, 0)].positionY
-                                ))
-                                .id(narrativeIndex)
-                                .transition(.opacity.animation(.linear))
+                            if narratives[scrollPosition!].count > 0 {
+                                Text(narratives[scrollPosition!][max(narrativeIndex, 0)].text)
+                                    .foregroundColor(narratives[scrollPosition!][max(narrativeIndex, 0)].color!)
+                                    .frame(maxWidth: CGFloat(narratives[scrollPosition!][max(narrativeIndex, 0)].maxWidth!), alignment: .leading)
+                                    .position(CGPoint(
+                                        x: Screen.width * narratives[scrollPosition!][max(narrativeIndex, 0)].positionX,
+                                        y: Screen.height * narratives[scrollPosition!][max(narrativeIndex, 0)].positionY
+                                    ))
+                                    .id(narrativeIndex)
+                                    .transition(.opacity.animation(.linear))
+                                    .font(.custom(
+                                        "CherryBomb-Regular",
+                                        size: 30,
+                                        relativeTo: .body)
+                                    )
+                                    .padding(.bottom, 2)
+                            }
+                            
                             Group {
                                 switch activePrompt?.type {
                                 case .puzzle:
@@ -180,6 +206,8 @@ struct StoryView: View {
                                     FindHoney(isPromptDone: .constant(false))
                                 case .objectDetection:
                                     DetectionView()
+                                case .speech:
+                                    SpeakTheStory()
                                 default:
                                     EmptyView()
                                 }
@@ -238,8 +266,11 @@ struct StoryView: View {
                     if showPromptButton {
                         Button("Start") {
                             activePrompt = prompts[scrollPosition!]
-                        }.buttonStyle(CircleButton(width: 80, height: 80))
-                            .padding()
+                        }
+                        .buttonStyle(
+                            CircleButton(width: 80, height: 80)
+                        )
+                        .padding(.bottom, 20)
                     }
                 }
             }

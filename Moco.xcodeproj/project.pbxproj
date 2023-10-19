@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		050353E12ADFE2970066591A /* FindHoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050353E02ADFE2970066591A /* FindHoney.swift */; };
 		056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */; };
+		0571CB362AE17A9E00CE0CC7 /* SpeakTheStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0571CB352AE17A9E00CE0CC7 /* SpeakTheStory.swift */; };
+		0571CB382AE1935C00CE0CC7 /* InvisibleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0571CB372AE1935C00CE0CC7 /* InvisibleButton.swift */; };
 		05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */; };
 		05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */; };
 		05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93552ADE74740082B21D /* RecognizerError.swift */; };
@@ -123,6 +125,8 @@
 		056949822AE0ED3300830D57 /* Page10-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page10-monolog1.m4a"; sourceTree = "<group>"; };
 		056949832AE0EDC500830D57 /* Page9-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page9-monolog1.m4a"; sourceTree = "<group>"; };
 		056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cow_bell_ring.mp3; sourceTree = "<group>"; };
+		0571CB352AE17A9E00CE0CC7 /* SpeakTheStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakTheStory.swift; sourceTree = "<group>"; };
+		0571CB372AE1935C00CE0CC7 /* InvisibleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvisibleButton.swift; sourceTree = "<group>"; };
 		05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSpeechRecognizerExtension.swift; sourceTree = "<group>"; };
 		05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioSessionExtension.swift; sourceTree = "<group>"; };
 		05AE93552ADE74740082B21D /* RecognizerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerError.swift; sourceTree = "<group>"; };
@@ -317,6 +321,14 @@
 			path = Page10;
 			sourceTree = "<group>";
 		};
+		0571CB342AE17A6800CE0CC7 /* SpeakTheStory */ = {
+			isa = PBXGroup;
+			children = (
+				0571CB352AE17A9E00CE0CC7 /* SpeakTheStory.swift */,
+			);
+			path = SpeakTheStory;
+			sourceTree = "<group>";
+		};
 		05AE93542ADE74540082B21D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +367,7 @@
 		05B1661C2ADE755F0077FA0D /* Prompts */ = {
 			isa = PBXGroup;
 			children = (
+				0571CB342AE17A6800CE0CC7 /* SpeakTheStory */,
 				050353DF2ADFE28B0066591A /* FindHoney */,
 				05B1661D2ADE75640077FA0D /* FindTheObject */,
 			);
@@ -417,6 +430,7 @@
 				938E3D442ADAD5F3003D2AE1 /* StoryBook.swift */,
 				938E3D532ADBCDB8003D2AE1 /* StoryNavigationButton.swift */,
 				05AE93622ADE82920082B21D /* LottieView.swift */,
+				0571CB372AE1935C00CE0CC7 /* InvisibleButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -824,9 +838,11 @@
 				0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */,
 				938E3D542ADBCDB8003D2AE1 /* StoryNavigationButton.swift in Sources */,
 				0B6E2F742ADC9DC90001D320 /* HintViewModel.swift in Sources */,
+				0571CB382AE1935C00CE0CC7 /* InvisibleButton.swift in Sources */,
 				938E3D372AD939C4003D2AE1 /* ContentView.swift in Sources */,
 				0B6E2F6C2ADC91E10001D320 /* PromptModel.swift in Sources */,
 				0B6E2F782ADCA8990001D320 /* StoryContentViewModel.swift in Sources */,
+				0571CB362AE17A9E00CE0CC7 /* SpeakTheStory.swift in Sources */,
 				93C2F8BC2AD684CE007D1ABC /* ObjectDetectionViewController.swift in Sources */,
 				05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */,
 				05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */,
