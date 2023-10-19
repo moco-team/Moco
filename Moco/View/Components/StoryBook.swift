@@ -6,19 +6,21 @@
 //
 
 import SwiftUI
+import MediaPlayer
 
 struct StoryBook: View {
     // MARK: - Stored variable definition
-
+    
     var title: String = "Story 1"
     let durationAndDelay: CGFloat = 0.3
     @State var degree = 0.0
     @State var isFlipped = false
-
+    @State private var soundLevel: Float = 0.5
+    
     var tapHandler: (() -> Void)?
-
+    
     // MARK: - Flip Card Function
-
+    
     func flipCard() {
         isFlipped.toggle()
         if isFlipped {
@@ -33,24 +35,47 @@ struct StoryBook: View {
             }
         }
     }
-
+    
     var body: some View {
         VStack {
             VStack {
-                Text(title)
-                Image("Story/Cover/Story1")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 300, height: 400, alignment: .center)
-                    .clipped()
-            }.padding().border(.black).rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0), anchor: .leading, perspective: 0.5)
-                .onTapGesture {
-                    flipCard()
+                ZStack{
+                    Rectangle()
+                        .fill(.white)
+                        .frame(width: 220, height: 300) // Adjust the frame size as needed
+                        .clipShape(
+                            .rect(
+                                topLeadingRadius: 16,
+                                bottomLeadingRadius: 16,
+                                bottomTrailingRadius: 32,
+                                topTrailingRadius: 32
+                            )
+                        )
+                    Image("Story/Cover/Story1")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 200, height: 280) // Adjust the frame size as needed
+                        .clipShape(
+                            .rect(
+                                topLeadingRadius: 8,
+                                bottomLeadingRadius: 8,
+                                bottomTrailingRadius: 24,
+                                topTrailingRadius: 24
+                            )
+                        )
                 }
+                Text(title)
+            }
+            .padding()
+            .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0), anchor: .leading, perspective: 0.5)
+            .onTapGesture {
+                flipCard()
+            }
         }.padding()
             .onAppear {
                 isFlipped = false
                 degree = 0.0
+                MPVolumeView.setVolume(self.soundLevel)
             }
     }
 }

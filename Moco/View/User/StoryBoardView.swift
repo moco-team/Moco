@@ -17,6 +17,7 @@ struct StoryBoardView: View {
 
             VStack {
                 HStack {
+                    
                     Text("Pilih Koleksi")
                         .fontWeight(.bold)
                         .font(.title)

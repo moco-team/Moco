@@ -10,6 +10,7 @@ import SwiftData
 
 enum PromptType {
     case puzzle
+    case findHoney
     case objectDetection
     case speech
 }

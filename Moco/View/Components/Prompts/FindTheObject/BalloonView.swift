@@ -28,7 +28,7 @@ struct BalloonView: View {
     var body: some View {
         VStack {
             if !isHidden {
-                Image("Story/Content/Story1/Pages/Page1/balon-\(balloon.color)")
+                Image("Story/Content/Story1/Pages/Page9/balon-\(balloon.color)")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: .infinity)

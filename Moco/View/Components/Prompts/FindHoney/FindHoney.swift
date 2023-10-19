@@ -9,17 +9,17 @@ import SwiftUI
 
 struct FindHoney: View {
     @Environment(\.audioViewModel) private var audioViewModel
-    
+
     @Binding var isPromptDone: Bool
-    
-    @State private var imageOffsets: CGPoint = CGPoint.zero
+
+    @State private var imageOffsets: CGPoint = .zero
     @State private var showPopUp = false
     @State private var isFloating = true
-    
+
     var body: some View {
         VStack {
             Image("Story/Content/Story1/Pages/Page4/honey")
-            .resizable()
+                .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 60, height: 60)
                 .position(
@@ -39,9 +39,9 @@ struct FindHoney: View {
             isPromptDone = true
         }
     }
-    
+
     func randomImageOffet() {
-        imageOffsets = CGPoint(x: .random(in: 0..<Screen.width), y: .random(in: 0..<Screen.height))
+        imageOffsets = CGPoint(x: .random(in: 0 ..< Screen.width), y: .random(in: 0 ..< Screen.height))
     }
 }
 
