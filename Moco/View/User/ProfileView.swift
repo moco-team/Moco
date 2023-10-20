@@ -1,22 +1,22 @@
 //
-//  SettingsView.swift
+//  ProfileView.swift
 //  Moco
 //
-//  Created by Aaron Christopher Tanhar on 15/10/23.
+//  Created by Daniel Aprillio on 20/10/23.
 //
 
 import SwiftUI
 
-struct SettingsView: View {
+struct ProfileView: View {
     @Environment(\.navigate) private var navigate
 
     var body: some View {
-        Button("Settings View") {
+        Button("Profile View") {
             navigate.pop(2)
         }
     }
 }
 
 #Preview {
-    SettingsView()
+    ProfileView()
 }

@@ -16,6 +16,8 @@ enum Route: Hashable {
     case storyAdmin(String?)
     case storyThemeAdmin
     case settings
+    case profile
+    case achievements
 }
 
 // MARK: - Route view definition, set them here
@@ -36,6 +38,10 @@ struct Routes: View {
             StoryThemeAdminView()
         case .settings:
             SettingsView()
+        case .profile:
+            ProfileView()
+        case .achievements:
+            AchievementsView()
         }
     }
 }
