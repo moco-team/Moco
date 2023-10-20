@@ -114,7 +114,7 @@ struct StoryView: View {
 
     private let lottieAnimations: [LottieAsset?] = [
         .init(fileName: "moco-1-1", positionX: Screen.width * 0.65, positionY: Screen.height * 0.6),
-        .init(fileName: "moco-1-2", positionX: Screen.width * 0.66, positionY: Screen.height * 0.68, maxWidth: Screen.width * 0.53),
+        .init(fileName: "moco-1-2", positionX: Screen.width * 0.54, positionY: Screen.height * 0.6, maxWidth: Screen.width * 0.15),
         .init(fileName: "maudi", positionX: Screen.width * 0.6, positionY: Screen.height * 0.6),
         nil,
         .init(fileName: "moco-1-5", positionX: Screen.width * 0.25, positionY: Screen.height * 0.58, maxWidth: Screen.width * 0.39),
