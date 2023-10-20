@@ -24,8 +24,8 @@ struct FindHoney: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 120, height: 120)
                     .position(
-                        x: 350,
-                        y: 850
+                        x: 305,
+                        y: 665
                     )
 
                 Image("Story/Content/Story1/Pages/Page4/cover-leaves")
@@ -44,8 +44,8 @@ struct FindHoney: View {
             }
             .frame(width: 120, height: 120)
             .position(
-                x: 350,
-                y: 850
+                x: 305,
+                y: 665
             )
         }
     }
