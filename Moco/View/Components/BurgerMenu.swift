@@ -16,12 +16,18 @@ struct BurgerMenu: View {
             HStack {
                 if expand {
                     HStack {
-                        Image("Story/Icons/burger-menu")
+                        Image("Story/Icons/achievements")
                             .resizable()
                             .frame(width: 90, height: 90)
-                        Image("Story/Icons/burger-menu")
+                            .shadow(radius: 4, x: -2, y: 2)
+                        Image("Story/Icons/profile")
                             .resizable()
                             .frame(width: 90, height: 90)
+                            .shadow(radius: 4, x: -2, y: 2)
+                        Image("Story/Icons/settings")
+                            .resizable()
+                            .frame(width: 90, height: 90)
+                            .shadow(radius: 4, x: -2, y: 2)
                     }.padding(.vertical, 18)
                         .padding(.leading, 20)
                 }
@@ -33,7 +39,9 @@ struct BurgerMenu: View {
                     Image("Story/Icons/burger-menu")
                         .resizable()
                         .frame(width: 90, height: 90)
+                        .shadow(radius: 4, x: -2, y: 2)
                 }
+                .padding(.trailing, 20)
             }
             .background(expand ? .white : .clear)
             .cornerRadius(38)
