@@ -10,7 +10,11 @@ import SwiftUI
 
 struct DetectionView: View {
     @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject var objectDetectionViewModel: ObjectDetectionViewModel
     @Query private var items: [Item]
+    @State private var showPopup = false
+
+    var doneHandler: (() -> Void)?
 
     var body: some View {
 //        NavigationSplitView {
@@ -39,13 +43,23 @@ struct DetectionView: View {
 //        }
 
         ZStack {
-            HostedViewController()
-                .ignoresSafeArea()
-
-            Image("Story/Content/Story1/Pages/Page7/background")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .background(.clear)
+            if objectDetectionViewModel.isMatch {
+                HostedViewController()
+                environmentObject(objectDetectionViewModel)
+                    .ignoresSafeArea()
+                Image("Story/Content/Story1/Pages/Page7/background")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .background(.clear)
+            }
+        }
+        .onChange(of: objectDetectionViewModel.isMatch) {
+            if objectDetectionViewModel.isMatch {
+                showPopup = true
+            }
+        }
+        .popUp(isActive: $showPopup, title: "Selamat kamu berhasil menemukan Orang!") {
+            doneHandler?()
         }
     }
 

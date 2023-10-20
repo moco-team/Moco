@@ -28,7 +28,7 @@ struct FindTheObjectView: View {
     @State private var isFinalPopUp = false
 
     @State private var showTheBalloons = true
-    
+
     var doneHandler: (() -> Void)?
 
     var body: some View {

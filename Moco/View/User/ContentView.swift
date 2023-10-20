@@ -10,10 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        // MARK: - First Vew Declaration
+        // MARK: - First View Declaration
 
-//        HomeView()
-        SpeakTheStory()
+        HomeView()
     }
 }
 

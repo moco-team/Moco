@@ -31,6 +31,7 @@ struct StoryView: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.navigate) private var navigate
     @EnvironmentObject var speechViewModel: SpeechRecognizerViewModel
+    @EnvironmentObject var objectDetectionViewModel: ObjectDetectionViewModel
 
     // MARK: - Static Variables
 
@@ -65,38 +66,38 @@ struct StoryView: View {
 
     private let narratives: [[Narrative]] = [
         [
-            .init(text: "Moco si Sapi adalah seekor sapi yang cerdik. \nDia ingin menjelajahi dunia.", duration: 2.5, positionX: 0.31, positionY: 0.15),
+            .init(text: "Moco si Sapi adalah seekor sapi yang cerdik. \nDia ingin menjelajahi dunia.", duration: 2.5, positionX: 0.31, positionY: 0.15)
         ],
         [
-            .init(text: "Di perjalanannya, dia bertemu dengan teman-temannya yang membutuhkan bantuan.", duration: 3.5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4),
+            .init(text: "Di perjalanannya, dia bertemu dengan teman-temannya yang membutuhkan bantuan.", duration: 3.5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4)
         ],
         [
             .init(text: "Saat menjelajahi hutan rimba, dia bertemu Maudi si Beruang madu yang sedang menangis.", duration: 3, positionX: 0.3, positionY: 0.17, maxWidth: Screen.width * 0.4),
-            .init(text: "ari kita tanya mengapa Maudi menangis.", duration: 2, positionX: 0.3, positionY: 0.13, maxWidth: Screen.width * 0.4),
+            .init(text: "ari kita tanya mengapa Maudi menangis.", duration: 2, positionX: 0.3, positionY: 0.13, maxWidth: Screen.width * 0.4)
         ],
         [
-            .init(text: "Yuk bantu Maudi mencari madu kesayangannya!", duration: 3.5, positionX: 0.5, positionY: 0.3),
+            .init(text: "Yuk bantu Maudi mencari madu kesayangannya!", duration: 3.5, positionX: 0.5, positionY: 0.3)
         ],
         [
-            .init(text: "Moco melanjutkan petualangannya. \n Saat ingin melewati gua, dia bertemu dengan Teka & Teki si Tikus.", duration: 3.5, positionX: 0.71, positionY: 0.85),
+            .init(text: "Moco melanjutkan petualangannya. \n Saat ingin melewati gua, dia bertemu dengan Teka & Teki si Tikus.", duration: 3.5, positionX: 0.71, positionY: 0.85)
         ],
         [
             .init(text: "Teka & Teki melarang Moco untuk melewati gua sebelum dia menjawab teka teki yang mereka berikan.", duration: 3, positionX: 0.5, positionY: 0.15),
-            .init(text: "Yuk kita selesaikan teka-tekinya.", duration: 2, positionX: 0.5, positionY: 0.15),
+            .init(text: "Yuk kita selesaikan teka-tekinya.", duration: 2, positionX: 0.5, positionY: 0.15)
         ],
         [
-            .init(text: "Aku berkaki empat, tetapi aku tidak bisa berjalan. Orang-orang biasanya duduk di atasku.", duration: 3.5, positionX: 0.6, positionY: 0.3),
+            .init(text: "Aku berkaki empat, tetapi aku tidak bisa berjalan. Orang-orang biasanya duduk di atasku.", duration: 3.5, positionX: 0.6, positionY: 0.3)
         ],
         [
-            .init(text: "Saat langit sudah mulai gelap, Moco bertemu dengan Kakak Katak yang sedang kesulitan menangkap balon.", duration: 3.5, positionX: 0.7, positionY: 0.15, color: .white),
+            .init(text: "Saat langit sudah mulai gelap, Moco bertemu dengan Kakak Katak yang sedang kesulitan menangkap balon.", duration: 3.5, positionX: 0.7, positionY: 0.15, color: .white)
         ],
         [
-//            .init(text: "Kakak Katak sedang mengumpulkan balon yang berwarna biru. Yuk kita bantu Kakak Katak menangkap balon!", duration: 3.5, positionX: 0.6, positionY: 0.2),
+            //            .init(text: "Kakak Katak sedang mengumpulkan balon yang berwarna biru. Yuk kita bantu Kakak Katak menangkap balon!", duration: 3.5, positionX: 0.6, positionY: 0.2),
         ],
         [
             .init(text: "Matahari terbenam dan Moco merasa lelah. Moco memutuskan untuk beristirahat dan melanjutkan petualangannya esok hari.", duration: 4, positionX: 0.67, positionY: 0.63),
             .init(text: "Hari ini, Moco belajar bahwa petualangan bisa menjadi kesempatan untuk membantu teman-temannya.", duration: 3.5, positionX: 0.67, positionY: 0.63),
-            .init(text: "Moco tidur dengan senyum di wajahnya, bermimpi tentang petualangan berikutnya.", duration: 3.5, positionX: 0.67, positionY: 0.63),
+            .init(text: "Moco tidur dengan senyum di wajahnya, bermimpi tentang petualangan berikutnya.", duration: 3.5, positionX: 0.67, positionY: 0.63)
         ]
     ]
 
@@ -104,7 +105,12 @@ struct StoryView: View {
         nil,
         .init(type: .findHoney, startTime: 3),
         .init(type: .puzzle, startTime: 3),
-        .init(type: .objectDetection, startTime: 3)
+        .init(type: .objectDetection, startTime: 3),
+        nil,
+        nil,
+        nil,
+        nil,
+        nil
     ]
 
     private let bgSounds = ["bg-shop", "bg-story"]
@@ -153,7 +159,7 @@ struct StoryView: View {
         startNarrative()
         startPrompt()
     }
-    
+
     private func nextPage() {
         guard storyBackgrounds.count > scrollPosition! + 1 else {
             isPopUpActive = true
@@ -176,7 +182,7 @@ struct StoryView: View {
                                 .frame(width: Screen.width, height: Screen.height, alignment: .center)
                                 .clipped()
                             StormView()
-                            if narratives[scrollPosition!].count > 0 {
+                            if narratives[scrollPosition!].count > narrativeIndex {
                                 Text(narratives[scrollPosition!][max(narrativeIndex, 0)].text)
                                     .foregroundColor(narratives[scrollPosition!][max(narrativeIndex, 0)].color!)
                                     .frame(maxWidth: CGFloat(narratives[scrollPosition!][max(narrativeIndex, 0)].maxWidth!), alignment: .leading)
@@ -189,11 +195,12 @@ struct StoryView: View {
                                     .font(.custom(
                                         "CherryBomb-Regular",
                                         size: 30,
-                                        relativeTo: .body)
+                                        relativeTo: .body
+                                    )
                                     )
                                     .padding(.bottom, 2)
                             }
-                            
+
                             Group {
                                 switch activePrompt?.type {
                                 case .puzzle:
@@ -217,7 +224,9 @@ struct StoryView: View {
                                         nextPage()
                                     }
                                 case .objectDetection:
-                                    DetectionView()
+                                    DetectionView {
+                                        nextPage()
+                                    }
                                 case .speech:
                                     SpeakTheStory()
                                 default:

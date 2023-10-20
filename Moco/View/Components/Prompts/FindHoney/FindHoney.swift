@@ -13,7 +13,7 @@ struct FindHoney: View {
     @Binding var isPromptDone: Bool
 
     @State private var showPopUp = false
-    
+
     var doneHandler: (() -> Void)?
 
     var body: some View {
@@ -27,7 +27,7 @@ struct FindHoney: View {
                         x: 350,
                         y: 850
                     )
-                
+
                 Image("Story/Content/Story1/Pages/Page4/cover-leaves")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -36,7 +36,7 @@ struct FindHoney: View {
                 isPromptDone = true
                 doneHandler?()
             }
-            
+
             InvisibleButton {
                 print("Object found!")
                 audioViewModel.playSound(soundFileName: "success")
@@ -48,7 +48,6 @@ struct FindHoney: View {
                 y: 850
             )
         }
-        
     }
 }
 

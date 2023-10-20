@@ -17,6 +17,8 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
     private var previewLayer = AVCaptureVideoPreviewLayer()
     var screenRect: CGRect! = nil // For view dimensions
 
+    var objectDetectionViewModel: ObjectDetectionViewModel?
+
     // Detector
     private var videoOutput = AVCaptureVideoDataOutput()
     var requests = [VNRequest]()
@@ -145,8 +147,15 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
 }
 
 struct HostedViewController: UIViewControllerRepresentable {
+    @EnvironmentObject var objectDetectionViewModel: ObjectDetectionViewModel
+
+    var targetObject: DetectionValue = .person
+
     func makeUIViewController(context _: Context) -> UIViewController {
-        return ObjectDetectionViewController()
+        let viewController = ObjectDetectionViewController()
+        objectDetectionViewModel.setTargetObject(targetObject)
+        viewController.objectDetectionViewModel = objectDetectionViewModel
+        return viewController
     }
 
     func updateUIViewController(_: UIViewController, context _: Context) {}

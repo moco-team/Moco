@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomFontViewModifier: ViewModifier {
     func getFont(fontType: CustomFontType) -> String {
-        switch(fontType) {
+        switch fontType {
         case .cherryBomb:
             return "CherryBomb-Regular"
         }
@@ -36,4 +36,3 @@ extension View {
         modifier(CustomFontViewModifier(fontType: fontType, size: size, relativeTo: relativeTo))
     }
 }
-

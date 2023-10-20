@@ -9,14 +9,14 @@ import SwiftUI
 
 struct SpeakTheStory: View {
     @ObservedObject var speechRecognizerViewModel = SpeechRecognizerViewModel.shared
-    
+
     @State private var isRecording = false
-    
+
     var body: some View {
         Text("Transcribed Text: \(speechRecognizerViewModel.transcript)")
             .foregroundStyle(.gray)
             .padding()
-        
+
         Button(action: {
             if isRecording {
                 speechRecognizerViewModel.stopTranscribing()
