@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		050353E12ADFE2970066591A /* FindHoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050353E02ADFE2970066591A /* FindHoney.swift */; };
+		0518CDD82AE220BA00521EC8 /* moco-1-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518CDD72AE220BA00521EC8 /* moco-1-2.json */; };
+		0518CDDA2AE227FA00521EC8 /* kakak_katak.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518CDD92AE227FA00521EC8 /* kakak_katak.json */; };
 		056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */; };
 		0571CB362AE17A9E00CE0CC7 /* SpeakTheStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0571CB352AE17A9E00CE0CC7 /* SpeakTheStory.swift */; };
 		0571CB382AE1935C00CE0CC7 /* InvisibleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0571CB372AE1935C00CE0CC7 /* InvisibleButton.swift */; };
 		0571CB3D2AE19D5700CE0CC7 /* moco-1-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB3C2AE19D5700CE0CC7 /* moco-1-1.json */; };
-		0571CB442AE19D6000CE0CC7 /* kaka_katak.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB3E2AE19D6000CE0CC7 /* kaka_katak.json */; };
 		0571CB452AE19D6000CE0CC7 /* moco-1-10.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB3F2AE19D6000CE0CC7 /* moco-1-10.json */; };
 		0571CB462AE19D6000CE0CC7 /* maudi.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB402AE19D6000CE0CC7 /* maudi.json */; };
-		0571CB472AE19D6000CE0CC7 /* moco1-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB412AE19D6000CE0CC7 /* moco1-2.json */; };
 		0571CB482AE19D6000CE0CC7 /* moco-1-5.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB422AE19D6000CE0CC7 /* moco-1-5.json */; };
 		0571CB492AE19D6000CE0CC7 /* teka_dan_teki.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB432AE19D6000CE0CC7 /* teka_dan_teki.json */; };
 		05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */; };
@@ -121,6 +121,8 @@
 
 /* Begin PBXFileReference section */
 		050353E02ADFE2970066591A /* FindHoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindHoney.swift; sourceTree = "<group>"; };
+		0518CDD72AE220BA00521EC8 /* moco-1-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-2.json"; sourceTree = "<group>"; };
+		0518CDD92AE227FA00521EC8 /* kakak_katak.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = kakak_katak.json; sourceTree = "<group>"; };
 		053393102AE13A0C0085BB30 /* bear_thankyou.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bear_thankyou.m4a; sourceTree = "<group>"; };
 		053393112AE13A220085BB30 /* frog_thankyou.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = frog_thankyou.m4a; sourceTree = "<group>"; };
 		053393122AE13A310085BB30 /* congratulations.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = congratulations.m4a; sourceTree = "<group>"; };
@@ -140,10 +142,8 @@
 		0571CB352AE17A9E00CE0CC7 /* SpeakTheStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakTheStory.swift; sourceTree = "<group>"; };
 		0571CB372AE1935C00CE0CC7 /* InvisibleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvisibleButton.swift; sourceTree = "<group>"; };
 		0571CB3C2AE19D5700CE0CC7 /* moco-1-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-1.json"; sourceTree = "<group>"; };
-		0571CB3E2AE19D6000CE0CC7 /* kaka_katak.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = kaka_katak.json; sourceTree = "<group>"; };
 		0571CB3F2AE19D6000CE0CC7 /* moco-1-10.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-10.json"; sourceTree = "<group>"; };
 		0571CB402AE19D6000CE0CC7 /* maudi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = maudi.json; sourceTree = "<group>"; };
-		0571CB412AE19D6000CE0CC7 /* moco1-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco1-2.json"; sourceTree = "<group>"; };
 		0571CB422AE19D6000CE0CC7 /* moco-1-5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-5.json"; sourceTree = "<group>"; };
 		0571CB432AE19D6000CE0CC7 /* teka_dan_teki.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teka_dan_teki.json; sourceTree = "<group>"; };
 		05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSpeechRecognizerExtension.swift; sourceTree = "<group>"; };
@@ -386,7 +386,7 @@
 		0571CB4A2AE19D6900CE0CC7 /* Page2 */ = {
 			isa = PBXGroup;
 			children = (
-				0571CB412AE19D6000CE0CC7 /* moco1-2.json */,
+				0518CDD72AE220BA00521EC8 /* moco-1-2.json */,
 			);
 			path = Page2;
 			sourceTree = "<group>";
@@ -418,7 +418,7 @@
 		0571CB4E2AE19D7D00CE0CC7 /* Page8 */ = {
 			isa = PBXGroup;
 			children = (
-				0571CB3E2AE19D6000CE0CC7 /* kaka_katak.json */,
+				0518CDD92AE227FA00521EC8 /* kakak_katak.json */,
 			);
 			path = Page8;
 			sourceTree = "<group>";
@@ -899,18 +899,18 @@
 				93C2F8C32AD685E6007D1ABC /* yolov8s.mlmodel in Resources */,
 				93C8E7272ADF8DA3002315A2 /* bg-shop.mp3 in Resources */,
 				0571CB492AE19D6000CE0CC7 /* teka_dan_teki.json in Resources */,
-				0571CB472AE19D6000CE0CC7 /* moco1-2.json in Resources */,
 				93C8E71E2ADEDA8F002315A2 /* CherryBombRegular.ttf in Resources */,
 				93C2F8C02AD685A3007D1ABC /* README.md in Resources */,
+				0518CDDA2AE227FA00521EC8 /* kakak_katak.json in Resources */,
 				05D966E12ADEE6CF00997E3A /* success.mp3 in Resources */,
 				0571CB482AE19D6000CE0CC7 /* moco-1-5.json in Resources */,
 				0571CB3D2AE19D5700CE0CC7 /* moco-1-1.json in Resources */,
 				93C2F88D2AD683AE007D1ABC /* Preview Assets.xcassets in Resources */,
 				05AE93612ADE82410082B21D /* testing-cat.json in Resources */,
-				0571CB442AE19D6000CE0CC7 /* kaka_katak.json in Resources */,
 				056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */,
 				0571CB462AE19D6000CE0CC7 /* maudi.json in Resources */,
 				932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */,
+				0518CDD82AE220BA00521EC8 /* moco-1-2.json in Resources */,
 				05E17AD92ADED16800A34547 /* balon_merah.mp3 in Resources */,
 				0571CB452AE19D6000CE0CC7 /* moco-1-10.json in Resources */,
 				93C2F88A2AD683AE007D1ABC /* Assets.xcassets in Resources */,

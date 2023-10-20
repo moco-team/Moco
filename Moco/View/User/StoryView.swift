@@ -24,6 +24,13 @@ struct Prompt {
     var startTime: Double
 }
 
+struct LottieAsset {
+    var fileName: String
+    var positionX: Double // MARK: position in percentage of the size of the screen
+    var positionY: Double
+    var maxWidth: Double? = Screen.width * 0.52
+}
+
 struct StoryView: View {
     // MARK: - Environments stored property
 
@@ -44,6 +51,7 @@ struct StoryView: View {
     @State private var isMuted = false
     @State private var text: String = ""
     @State private var narrativeIndex: Int = -1
+    @State private var lottieAnimationIndex: Int = -1
     @State private var showPromptButton = false
     @State private var activePrompt: Prompt?
 
@@ -73,13 +81,13 @@ struct StoryView: View {
         ],
         [
             .init(text: "Saat menjelajahi hutan rimba, dia bertemu Maudi si Beruang madu yang sedang menangis.", duration: 3, positionX: 0.3, positionY: 0.17, maxWidth: Screen.width * 0.4),
-            .init(text: "ari kita tanya mengapa Maudi menangis.", duration: 2, positionX: 0.3, positionY: 0.13, maxWidth: Screen.width * 0.4)
+            .init(text: "Mari kita tanya mengapa Maudi menangis.", duration: 2, positionX: 0.3, positionY: 0.13, maxWidth: Screen.width * 0.4)
         ],
         [
             .init(text: "Yuk bantu Maudi mencari madu kesayangannya!", duration: 3.5, positionX: 0.5, positionY: 0.3)
         ],
         [
-            .init(text: "Moco melanjutkan petualangannya. \n Saat ingin melewati gua, dia bertemu dengan Teka & Teki si Tikus.", duration: 3.5, positionX: 0.71, positionY: 0.85)
+            .init(text: "Moco melanjutkan petualangannya. \nSaat ingin melewati gua, dia bertemu dengan Teka & Teki si Tikus.", duration: 3.5, positionX: 0.71, positionY: 0.85)
         ],
         [
             .init(text: "Teka & Teki melarang Moco untuk melewati gua sebelum dia menjawab teka teki yang mereka berikan.", duration: 3, positionX: 0.5, positionY: 0.15),
@@ -99,6 +107,19 @@ struct StoryView: View {
             .init(text: "Hari ini, Moco belajar bahwa petualangan bisa menjadi kesempatan untuk membantu teman-temannya.", duration: 3.5, positionX: 0.67, positionY: 0.63),
             .init(text: "Moco tidur dengan senyum di wajahnya, bermimpi tentang petualangan berikutnya.", duration: 3.5, positionX: 0.67, positionY: 0.63)
         ]
+    ]
+    
+    private let lottieAnimations: [LottieAsset?] = [
+        .init(fileName: "moco-1-1", positionX: Screen.width * 0.65, positionY: Screen.height * 0.6),
+        .init(fileName: "moco-1-2", positionX: Screen.width * 0.66, positionY: Screen.height * 0.68, maxWidth: Screen.width * 0.53),
+        .init(fileName: "maudi", positionX: Screen.width * 0.6, positionY: Screen.height * 0.6),
+        nil,
+        .init(fileName: "moco-1-5", positionX: Screen.width * 0.25, positionY: Screen.height * 0.58, maxWidth: Screen.width * 0.39),
+        .init(fileName: "teka_dan_teki", positionX: Screen.width * 0.5, positionY: Screen.height * 0.72, maxWidth: Screen.width * 0.9),
+        nil,
+        .init(fileName: "kakak_katak", positionX: Screen.width * 0.54, positionY: Screen.height * 0.678, maxWidth: Screen.width * 0.35),
+        nil,
+        .init(fileName: "moco-1-10", positionX: Screen.width * 0.22, positionY: Screen.height * 0.75, maxWidth: Screen.width * 0.35)
     ]
 
     private let prompts: [Prompt?] = [
@@ -156,6 +177,9 @@ struct StoryView: View {
                 volume: StoryView.storyVolume
             )
         }
+        if lottieAnimationIndex < lottieAnimations.count {
+            lottieAnimationIndex += 1
+        }
         startNarrative()
         startPrompt()
     }
@@ -181,8 +205,19 @@ struct StoryView: View {
                                 .scaledToFill()
                                 .frame(width: Screen.width, height: Screen.height, alignment: .center)
                                 .clipped()
+                            
+                            if let lottie = lottieAnimations[scrollPosition!] {
+                                LottieView(fileName: lottie.fileName)
+                                    .frame(maxWidth: CGFloat(lottie.maxWidth!))
+                                    .position(CGPoint(
+                                        x: lottie.positionX,
+                                        y: lottie.positionY
+                                    ))
+                                    .id(lottieAnimationIndex)
+                            }
+                            
                             StormView()
-                            if narratives[scrollPosition!].count > narrativeIndex {
+                            if narratives[scrollPosition!].count > 0 {
                                 Text(narratives[scrollPosition!][max(narrativeIndex, 0)].text)
                                     .foregroundColor(narratives[scrollPosition!][max(narrativeIndex, 0)].color!)
                                     .frame(maxWidth: CGFloat(narratives[scrollPosition!][max(narrativeIndex, 0)].maxWidth!), alignment: .leading)
