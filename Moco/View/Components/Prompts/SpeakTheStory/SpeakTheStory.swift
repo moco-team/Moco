@@ -14,13 +14,19 @@ struct SpeakTheStory: View {
     @State var isPromptDone: Bool = false
 
 //    let hints: [String]
-    @State private var correctAnswer: String = "Mengapa maudi sedang menangis?"
+    @State private var correctAnswer: String = "mengapa maudi menangis"
 
     @State private var audio: String = "Page3-monolog1"
     @State private var showPopUp = false
     @State private var isRecording = false
 
     var doneHandler: (() -> Void)?
+
+    private func isCorrectAnswer() -> Bool {
+        return speechRecognizerViewModel.possibleTranscripts.contains { transcript in
+            transcript.filter { !$0.isWhitespace }.contains(correctAnswer.filter { !$0.isWhitespace }.lowercased())
+        }
+    }
 
     var body: some View {
         VStack {
@@ -51,7 +57,7 @@ struct SpeakTheStory: View {
             Spacer()
         }
         .onChange(of: speechRecognizerViewModel.transcript) {
-            if speechRecognizerViewModel.transcript.lowercased() == correctAnswer.lowercased() {
+            if isCorrectAnswer() {
                 print("Benar!")
                 showPopUp = true
             }

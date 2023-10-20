@@ -62,11 +62,11 @@ struct DetectionView: View {
                 showPopup = true
             }
         }
-        .popUp(isActive: $showPopup, title: "Selamat kamu berhasil menemukan Orang!") {
+        .popUp(isActive: $showPopup, title: "Selamat kamu berhasil menemukan Kursi!") {
             doneHandler?()
         }
         .task {
-            objectDetectionViewModel.setTargetObject(.person)
+            objectDetectionViewModel.setTargetObject(.chair)
             objectDetectionViewModel.setDetectedObject(nil)
         }
     }

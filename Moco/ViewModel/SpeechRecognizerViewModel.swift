@@ -14,6 +14,7 @@ class SpeechRecognizerViewModel: ObservableObject {
 
     @Published var error: RecognizerError?
     @Published var transcript: String = ""
+    @Published var possibleTranscripts = [String]()
 
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
@@ -82,8 +83,13 @@ class SpeechRecognizerViewModel: ObservableObject {
         transcript = message
     }
 
+    private func inputPossibleTranscripts(_ messages: [String]) {
+        possibleTranscripts = messages
+    }
+
     func resetTranscript() {
         transcript = ""
+        possibleTranscripts = []
     }
 
     func transcribe() {
@@ -110,7 +116,8 @@ class SpeechRecognizerViewModel: ObservableObject {
                     }
 
                     if let result = result {
-                        self.inputTranscript(result.bestTranscription.formattedString)
+                        self.inputTranscript(result.bestTranscription.formattedString.trimmingCharacters(in: .whitespacesAndNewlines))
+                        self.inputPossibleTranscripts(result.transcriptions.map { $0.formattedString.trimmingCharacters(in: .whitespacesAndNewlines) })
                     }
                 }
             } catch {

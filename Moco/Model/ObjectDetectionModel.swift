@@ -8,8 +8,9 @@
 import Foundation
 
 enum DetectionValue: String {
-    case phone
+    case cellPhone = "cell phone"
     case person
+    case chair
 }
 
 struct ObjectDetectionModel {
