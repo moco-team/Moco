@@ -16,4 +16,5 @@ public func printFonts() {
 
 enum CustomFontType {
     case cherryBomb
+    case didactGothic
 }

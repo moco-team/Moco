@@ -50,7 +50,7 @@ struct StoryBook: View {
                 .fontWeight(.bold)
                 .padding(.leading, 30)
                 .padding(.bottom, 1)
-            
+
             VStack {
                 ZStack {
                     Rectangle()

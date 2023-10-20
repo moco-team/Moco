@@ -12,6 +12,8 @@ struct CustomFontViewModifier: ViewModifier {
         switch fontType {
         case .cherryBomb:
             return "CherryBomb-Regular"
+        case .didactGothic:
+            return "DidactGothic-Regular"
         }
     }
 

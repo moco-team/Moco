@@ -37,11 +37,7 @@ struct HomeView: View {
 
                     Spacer()
 
-                    Button(action: {}) {
-                        Image("Story/Icons/burger-menu")
-                            .resizable()
-                            .frame(width: 90, height: 90)
-                    }
+                    BurgerMenu()
                 }
                 .padding(.horizontal, 0.05 * Screen.width)
 

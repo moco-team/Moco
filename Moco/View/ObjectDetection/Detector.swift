@@ -62,7 +62,7 @@ extension ObjectDetectionViewController {
 
             detectionLayer.addSublayer(boxLayer)
             detectionLayer.addSublayer(textlayer)
-            
+
             detectionHandler?(objectObservation.labels[0].identifier)
         }
     }

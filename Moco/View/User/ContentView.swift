@@ -13,7 +13,7 @@ struct ContentView: View {
         // MARK: - First View Declaration
 
         HomeView()
-        
+
 //        SpeakTheStory(
 //            isPromptDone: .constant(false),
 //            hints: ["Page3-monolog1"],

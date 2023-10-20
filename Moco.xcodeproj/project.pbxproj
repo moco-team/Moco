@@ -62,6 +62,7 @@
 		938C553A2AE1B3E800BC233D /* ObjectDetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */; };
 		938C553C2AE1B59F00BC233D /* ObjectDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C553B2AE1B59F00BC233D /* ObjectDetection.swift */; };
 		938C553E2AE1B76600BC233D /* ObjectDetectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C553D2AE1B76600BC233D /* ObjectDetectionModel.swift */; };
+		938C55412AE2301700BC233D /* BurgerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55402AE2301700BC233D /* BurgerMenu.swift */; };
 		938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D1E2AD7AD78003D2AE1 /* Collection.swift */; };
 		938E3D312AD8FD2E003D2AE1 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D302AD8FD2E003D2AE1 /* ItemViewModel.swift */; };
 		938E3D332AD91605003D2AE1 /* DetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D322AD91605003D2AE1 /* DetectionView.swift */; };
@@ -189,6 +190,8 @@
 		938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewModel.swift; sourceTree = "<group>"; };
 		938C553B2AE1B59F00BC233D /* ObjectDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetection.swift; sourceTree = "<group>"; };
 		938C553D2AE1B76600BC233D /* ObjectDetectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionModel.swift; sourceTree = "<group>"; };
+		938C553F2AE22E6800BC233D /* DidactGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DidactGothic-Regular.ttf"; sourceTree = "<group>"; };
+		938C55402AE2301700BC233D /* BurgerMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgerMenu.swift; sourceTree = "<group>"; };
 		938E3D1E2AD7AD78003D2AE1 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		938E3D302AD8FD2E003D2AE1 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		938E3D322AD91605003D2AE1 /* DetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionView.swift; sourceTree = "<group>"; };
@@ -535,6 +538,7 @@
 				938E3D532ADBCDB8003D2AE1 /* StoryNavigationButton.swift */,
 				05AE93622ADE82920082B21D /* LottieView.swift */,
 				0571CB372AE1935C00CE0CC7 /* InvisibleButton.swift */,
+				938C55402AE2301700BC233D /* BurgerMenu.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -773,6 +777,7 @@
 		93C8E71C2ADEDA6A002315A2 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				938C553F2AE22E6800BC233D /* DidactGothic-Regular.ttf */,
 				93C8E71D2ADEDA79002315A2 /* CherryBombRegular.ttf */,
 			);
 			path = Fonts;
@@ -969,6 +974,7 @@
 				938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */,
 				0B6E2F782ADCA8990001D320 /* StoryContentViewModel.swift in Sources */,
 				0571CB362AE17A9E00CE0CC7 /* SpeakTheStory.swift in Sources */,
+				938C55412AE2301700BC233D /* BurgerMenu.swift in Sources */,
 				93C2F8BC2AD684CE007D1ABC /* ObjectDetectionViewController.swift in Sources */,
 				05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */,
 				05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */,

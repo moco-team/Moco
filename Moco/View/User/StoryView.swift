@@ -26,7 +26,9 @@ struct Prompt {
 
 struct LottieAsset {
     var fileName: String
+
     var positionX: Double // MARK: position in percentage of the size of the screen
+
     var positionY: Double
     var maxWidth: Double? = Screen.width * 0.52
 }
@@ -109,7 +111,7 @@ struct StoryView: View {
             .init(text: "Moco tidur dengan senyum di wajahnya, bermimpi tentang petualangan berikutnya.", duration: 3.5, positionX: 0.67, positionY: 0.63)
         ]
     ]
-    
+
     private let lottieAnimations: [LottieAsset?] = [
         .init(fileName: "moco-1-1", positionX: Screen.width * 0.65, positionY: Screen.height * 0.6),
         .init(fileName: "moco-1-2", positionX: Screen.width * 0.66, positionY: Screen.height * 0.68, maxWidth: Screen.width * 0.53),
@@ -133,7 +135,7 @@ struct StoryView: View {
         .init(type: .objectDetection, startTime: 3),
         nil,
         .init(type: .puzzle, startTime: 3),
-        nil,
+        nil
     ]
 
     private let bgSounds = ["bg-shop", "bg-story"]
@@ -207,7 +209,7 @@ struct StoryView: View {
                                 .scaledToFill()
                                 .frame(width: Screen.width, height: Screen.height, alignment: .center)
                                 .clipped()
-                            
+
                             if let lottie = lottieAnimations[scrollPosition!] {
                                 LottieView(fileName: lottie.fileName)
                                     .frame(maxWidth: CGFloat(lottie.maxWidth!))
@@ -217,9 +219,7 @@ struct StoryView: View {
                                     ))
                                     .id(lottieAnimationIndex)
                             }
-                            
-                            StormView()
-                            if narratives[scrollPosition!].count > 0 {
+                            if narratives[scrollPosition!].count > narrativeIndex && !narratives[scrollPosition!].isEmpty {
                                 Text(narratives[scrollPosition!][max(narrativeIndex, 0)].text)
                                     .foregroundColor(narratives[scrollPosition!][max(narrativeIndex, 0)].color!)
                                     .frame(maxWidth: CGFloat(narratives[scrollPosition!][max(narrativeIndex, 0)].maxWidth!), alignment: .leading)
@@ -229,12 +229,7 @@ struct StoryView: View {
                                     ))
                                     .id(narrativeIndex)
                                     .transition(.opacity.animation(.linear))
-                                    .font(.custom(
-                                        "CherryBomb-Regular",
-                                        size: 30,
-                                        relativeTo: .body
-                                    )
-                                    )
+                                    .customFont(.didactGothic, size: 30)
                                     .padding(.bottom, 2)
                             }
 
@@ -265,7 +260,9 @@ struct StoryView: View {
                                         nextPage()
                                     }
                                 case .speech:
-                                    SpeakTheStory()
+                                    SpeakTheStory {
+                                        nextPage()
+                                    }
                                 default:
                                     EmptyView()
                                 }

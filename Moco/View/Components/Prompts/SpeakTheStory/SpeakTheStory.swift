@@ -15,17 +15,19 @@ struct SpeakTheStory: View {
 
 //    let hints: [String]
     @State private var correctAnswer: String = "Mengapa maudi sedang menangis?"
-    
+
     @State private var audio: String = "Page3-monolog1"
     @State private var showPopUp = false
     @State private var isRecording = false
-    
+
+    var doneHandler: (() -> Void)?
+
     var body: some View {
         VStack {
             Spacer()
             Spacer()
             Spacer()
-            
+
             Text("Transcribed Text: \(speechRecognizerViewModel.transcript)")
                 .foregroundStyle(.white)
                 .padding()
@@ -45,7 +47,7 @@ struct SpeakTheStory: View {
                     .padding()
                     .background(Circle().foregroundColor(!isRecording ? Color.greenBtn : .gray))
             }
-            
+
             Spacer()
         }
         .onChange(of: speechRecognizerViewModel.transcript) {
@@ -56,13 +58,14 @@ struct SpeakTheStory: View {
         }
         .popUp(isActive: $showPopUp, title: "Benar! Maudi sedang menangis!") {
             isPromptDone = true
+            doneHandler?()
         }
     }
 }
 
 #Preview {
     SpeakTheStory(
-//        isPromptDone: .constant(false)
+        //        isPromptDone: .constant(false)
 //        hints: ["Page3-monolog1"]
 //        correctAnswer: "Page3-monolog1"
     )
