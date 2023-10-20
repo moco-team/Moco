@@ -67,6 +67,7 @@ struct DetectionView: View {
         }
         .task {
             objectDetectionViewModel.setTargetObject(.person)
+            objectDetectionViewModel.setDetectedObject(nil)
         }
     }
 
