@@ -40,6 +40,17 @@ struct StoryBook: View {
 
     var body: some View {
         VStack {
+            Text("Koleksi Buku")
+                .font(.custom(
+                    "CherryBomb-Regular",
+                    size: 50,
+                    relativeTo: .body
+                ))
+                .foregroundColor(Color.blueTxt)
+                .fontWeight(.bold)
+                .padding(.leading, 30)
+                .padding(.bottom, 1)
+            
             VStack {
                 ZStack {
                     Rectangle()
@@ -86,7 +97,6 @@ struct StoryBook: View {
                     }
                     .position(x: 53, y: 41)
                 )
-                Text(title)
             }
             .padding()
             .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0), anchor: .leading, perspective: 0.5)
