@@ -28,9 +28,10 @@ struct FindHoney: View {
                         y: 665
                     )
 
-                Image("Story/Content/Story1/Pages/Page4/cover-leaves")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+//                Image("Story/Content/Story1/Pages/Page4/cover-leaves")
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//                    .frame(width: Screen.width)
             }
             .popUp(isActive: $showPopUp, title: "Selamat kamu berhasil menemukan Madu!") {
                 isPromptDone = true
