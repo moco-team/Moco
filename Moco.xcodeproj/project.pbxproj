@@ -11,12 +11,12 @@
 		056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */; };
 		0571CB362AE17A9E00CE0CC7 /* SpeakTheStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0571CB352AE17A9E00CE0CC7 /* SpeakTheStory.swift */; };
 		0571CB382AE1935C00CE0CC7 /* InvisibleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0571CB372AE1935C00CE0CC7 /* InvisibleButton.swift */; };
-		0571CB3D2AE19D5700CE0CC7 /* moco.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB3C2AE19D5700CE0CC7 /* moco.json */; };
+		0571CB3D2AE19D5700CE0CC7 /* moco-1-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB3C2AE19D5700CE0CC7 /* moco-1-1.json */; };
 		0571CB442AE19D6000CE0CC7 /* kaka_katak.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB3E2AE19D6000CE0CC7 /* kaka_katak.json */; };
-		0571CB452AE19D6000CE0CC7 /* moco.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB3F2AE19D6000CE0CC7 /* moco.json */; };
+		0571CB452AE19D6000CE0CC7 /* moco-1-10.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB3F2AE19D6000CE0CC7 /* moco-1-10.json */; };
 		0571CB462AE19D6000CE0CC7 /* maudi.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB402AE19D6000CE0CC7 /* maudi.json */; };
-		0571CB472AE19D6000CE0CC7 /* moco.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB412AE19D6000CE0CC7 /* moco.json */; };
-		0571CB482AE19D6000CE0CC7 /* moco.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB422AE19D6000CE0CC7 /* moco.json */; };
+		0571CB472AE19D6000CE0CC7 /* moco1-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB412AE19D6000CE0CC7 /* moco1-2.json */; };
+		0571CB482AE19D6000CE0CC7 /* moco-1-5.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB422AE19D6000CE0CC7 /* moco-1-5.json */; };
 		0571CB492AE19D6000CE0CC7 /* teka_dan_teki.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB432AE19D6000CE0CC7 /* teka_dan_teki.json */; };
 		05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */; };
 		05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */; };
@@ -57,6 +57,11 @@
 		932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 932357D52ADE6EF3009B3D86 /* bg-story.mp3 */; };
 		932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D72ADE700D009B3D86 /* AudioViewModel.swift */; };
 		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
+		938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55352AE181C600BC233D /* RootViewModifier.swift */; };
+		938C55382AE183AA00BC233D /* FontViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55372AE183AA00BC233D /* FontViewModifier.swift */; };
+		938C553A2AE1B3E800BC233D /* ObjectDetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */; };
+		938C553C2AE1B59F00BC233D /* ObjectDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C553B2AE1B59F00BC233D /* ObjectDetection.swift */; };
+		938C553E2AE1B76600BC233D /* ObjectDetectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C553D2AE1B76600BC233D /* ObjectDetectionModel.swift */; };
 		938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D1E2AD7AD78003D2AE1 /* Collection.swift */; };
 		938E3D312AD8FD2E003D2AE1 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D302AD8FD2E003D2AE1 /* ItemViewModel.swift */; };
 		938E3D332AD91605003D2AE1 /* DetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D322AD91605003D2AE1 /* DetectionView.swift */; };
@@ -134,12 +139,12 @@
 		056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cow_bell_ring.mp3; sourceTree = "<group>"; };
 		0571CB352AE17A9E00CE0CC7 /* SpeakTheStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakTheStory.swift; sourceTree = "<group>"; };
 		0571CB372AE1935C00CE0CC7 /* InvisibleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvisibleButton.swift; sourceTree = "<group>"; };
-		0571CB3C2AE19D5700CE0CC7 /* moco.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moco.json; sourceTree = "<group>"; };
+		0571CB3C2AE19D5700CE0CC7 /* moco-1-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-1.json"; sourceTree = "<group>"; };
 		0571CB3E2AE19D6000CE0CC7 /* kaka_katak.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = kaka_katak.json; sourceTree = "<group>"; };
-		0571CB3F2AE19D6000CE0CC7 /* moco.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moco.json; sourceTree = "<group>"; };
+		0571CB3F2AE19D6000CE0CC7 /* moco-1-10.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-10.json"; sourceTree = "<group>"; };
 		0571CB402AE19D6000CE0CC7 /* maudi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = maudi.json; sourceTree = "<group>"; };
-		0571CB412AE19D6000CE0CC7 /* moco.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moco.json; sourceTree = "<group>"; };
-		0571CB422AE19D6000CE0CC7 /* moco.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moco.json; sourceTree = "<group>"; };
+		0571CB412AE19D6000CE0CC7 /* moco1-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco1-2.json"; sourceTree = "<group>"; };
+		0571CB422AE19D6000CE0CC7 /* moco-1-5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-5.json"; sourceTree = "<group>"; };
 		0571CB432AE19D6000CE0CC7 /* teka_dan_teki.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teka_dan_teki.json; sourceTree = "<group>"; };
 		05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSpeechRecognizerExtension.swift; sourceTree = "<group>"; };
 		05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioSessionExtension.swift; sourceTree = "<group>"; };
@@ -179,6 +184,11 @@
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
+		938C55352AE181C600BC233D /* RootViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModifier.swift; sourceTree = "<group>"; };
+		938C55372AE183AA00BC233D /* FontViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewModifier.swift; sourceTree = "<group>"; };
+		938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewModel.swift; sourceTree = "<group>"; };
+		938C553B2AE1B59F00BC233D /* ObjectDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetection.swift; sourceTree = "<group>"; };
+		938C553D2AE1B76600BC233D /* ObjectDetectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionModel.swift; sourceTree = "<group>"; };
 		938E3D1E2AD7AD78003D2AE1 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		938E3D302AD8FD2E003D2AE1 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		938E3D322AD91605003D2AE1 /* DetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionView.swift; sourceTree = "<group>"; };
@@ -368,7 +378,7 @@
 		0571CB3B2AE19D4900CE0CC7 /* Page1 */ = {
 			isa = PBXGroup;
 			children = (
-				0571CB3C2AE19D5700CE0CC7 /* moco.json */,
+				0571CB3C2AE19D5700CE0CC7 /* moco-1-1.json */,
 			);
 			path = Page1;
 			sourceTree = "<group>";
@@ -376,7 +386,7 @@
 		0571CB4A2AE19D6900CE0CC7 /* Page2 */ = {
 			isa = PBXGroup;
 			children = (
-				0571CB412AE19D6000CE0CC7 /* moco.json */,
+				0571CB412AE19D6000CE0CC7 /* moco1-2.json */,
 			);
 			path = Page2;
 			sourceTree = "<group>";
@@ -392,7 +402,7 @@
 		0571CB4C2AE19D7300CE0CC7 /* Page5 */ = {
 			isa = PBXGroup;
 			children = (
-				0571CB422AE19D6000CE0CC7 /* moco.json */,
+				0571CB422AE19D6000CE0CC7 /* moco-1-5.json */,
 			);
 			path = Page5;
 			sourceTree = "<group>";
@@ -416,7 +426,7 @@
 		0571CB4F2AE19D8200CE0CC7 /* Page10 */ = {
 			isa = PBXGroup;
 			children = (
-				0571CB3F2AE19D6000CE0CC7 /* moco.json */,
+				0571CB3F2AE19D6000CE0CC7 /* moco-1-10.json */,
 			);
 			path = Page10;
 			sourceTree = "<group>";
@@ -425,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				05AE93552ADE74740082B21D /* RecognizerError.swift */,
+				938C553B2AE1B59F00BC233D /* ObjectDetection.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -591,6 +602,15 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
+		938C55342AE181AF00BC233D /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				938C55352AE181C600BC233D /* RootViewModifier.swift */,
+				938C55372AE183AA00BC233D /* FontViewModifier.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
 		938E3D4E2ADBABC3003D2AE1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -682,6 +702,7 @@
 				932357D72ADE700D009B3D86 /* AudioViewModel.swift */,
 				05AE93572ADE74980082B21D /* SpeechRecognizerViewModel.swift */,
 				93C8E7242ADEF2D3002315A2 /* TimerViewModel.swift */,
+				938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -700,6 +721,7 @@
 				0B6E2F692ADC91060001D320 /* StoryContentModel.swift */,
 				932357D92ADE7190009B3D86 /* AudioModel.swift */,
 				93C8E7202ADEF1DB002315A2 /* TimerModel.swift */,
+				938C553D2AE1B76600BC233D /* ObjectDetectionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -715,6 +737,7 @@
 		93C2F8B42AD6848F007D1ABC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				938C55342AE181AF00BC233D /* ViewModifiers */,
 				0BA3E5072ADFC5EE00BCFE9E /* User */,
 				0BA3E5062ADFC5E200BCFE9E /* Admin */,
 				0B1197602AD7D4A7004FAD14 /* Components */,
@@ -876,12 +899,12 @@
 				93C2F8C32AD685E6007D1ABC /* yolov8s.mlmodel in Resources */,
 				93C8E7272ADF8DA3002315A2 /* bg-shop.mp3 in Resources */,
 				0571CB492AE19D6000CE0CC7 /* teka_dan_teki.json in Resources */,
-				0571CB472AE19D6000CE0CC7 /* moco.json in Resources */,
+				0571CB472AE19D6000CE0CC7 /* moco1-2.json in Resources */,
 				93C8E71E2ADEDA8F002315A2 /* CherryBombRegular.ttf in Resources */,
 				93C2F8C02AD685A3007D1ABC /* README.md in Resources */,
 				05D966E12ADEE6CF00997E3A /* success.mp3 in Resources */,
-				0571CB482AE19D6000CE0CC7 /* moco.json in Resources */,
-				0571CB3D2AE19D5700CE0CC7 /* moco.json in Resources */,
+				0571CB482AE19D6000CE0CC7 /* moco-1-5.json in Resources */,
+				0571CB3D2AE19D5700CE0CC7 /* moco-1-1.json in Resources */,
 				93C2F88D2AD683AE007D1ABC /* Preview Assets.xcassets in Resources */,
 				05AE93612ADE82410082B21D /* testing-cat.json in Resources */,
 				0571CB442AE19D6000CE0CC7 /* kaka_katak.json in Resources */,
@@ -889,7 +912,7 @@
 				0571CB462AE19D6000CE0CC7 /* maudi.json in Resources */,
 				932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */,
 				05E17AD92ADED16800A34547 /* balon_merah.mp3 in Resources */,
-				0571CB452AE19D6000CE0CC7 /* moco.json in Resources */,
+				0571CB452AE19D6000CE0CC7 /* moco-1-10.json in Resources */,
 				93C2F88A2AD683AE007D1ABC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -917,6 +940,7 @@
 			files = (
 				0BA3E50B2ADFC62000BCFE9E /* StoryAdminView.swift in Sources */,
 				938E3D582ADC00FB003D2AE1 /* PopUpExtension.swift in Sources */,
+				938C553C2AE1B59F00BC233D /* ObjectDetection.swift in Sources */,
 				938E3D562ADBE961003D2AE1 /* Screen.swift in Sources */,
 				0B6E2F702ADC96200001D320 /* StoryThemeViewModel.swift in Sources */,
 				932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */,
@@ -929,6 +953,7 @@
 				938E3D312AD8FD2E003D2AE1 /* ItemViewModel.swift in Sources */,
 				0B6E2F662ADC8ECE0001D320 /* StoryThemeModel.swift in Sources */,
 				93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */,
+				938C55382AE183AA00BC233D /* FontViewModifier.swift in Sources */,
 				93C2F8BD2AD684CE007D1ABC /* HomeView.swift in Sources */,
 				93C8E7232ADEF249002315A2 /* FontUtil.swift in Sources */,
 				0B2E31DC2AD8084600DFC16F /* CollectionView.swift in Sources */,
@@ -941,6 +966,7 @@
 				0571CB382AE1935C00CE0CC7 /* InvisibleButton.swift in Sources */,
 				938E3D372AD939C4003D2AE1 /* ContentView.swift in Sources */,
 				0B6E2F6C2ADC91E10001D320 /* PromptModel.swift in Sources */,
+				938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */,
 				0B6E2F782ADCA8990001D320 /* StoryContentViewModel.swift in Sources */,
 				0571CB362AE17A9E00CE0CC7 /* SpeakTheStory.swift in Sources */,
 				93C2F8BC2AD684CE007D1ABC /* ObjectDetectionViewController.swift in Sources */,
@@ -967,6 +993,7 @@
 				938E3D472ADB0AA5003D2AE1 /* Routes.swift in Sources */,
 				0B2E31E02AD810D400DFC16F /* StoryBoardView.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
+				938C553E2AE1B76600BC233D /* ObjectDetectionModel.swift in Sources */,
 				0B6E2F682ADC908B0001D320 /* StoryModel.swift in Sources */,
 				938E3D3B2AD9874F003D2AE1 /* ModelGenerator.swift in Sources */,
 				93C8E72A2AE01660002315A2 /* Storm.swift in Sources */,
@@ -977,6 +1004,7 @@
 				938E3D4B2ADB9F1B003D2AE1 /* StoryView.swift in Sources */,
 				0BA3E5092ADFC61500BCFE9E /* StoryThemeAdminView.swift in Sources */,
 				93C2F8BB2AD684CE007D1ABC /* Detector.swift in Sources */,
+				938C553A2AE1B3E800BC233D /* ObjectDetectionViewModel.swift in Sources */,
 				0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */,
 				05E17AD52ADE86DE00A34547 /* FindTheObject.swift in Sources */,
 				0B6E2F762ADC9F020001D320 /* PromptViewModel.swift in Sources */,

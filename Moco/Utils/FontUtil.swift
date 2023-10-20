@@ -13,3 +13,7 @@ public func printFonts() {
         print("Family: \(family) Font names: \(names)")
     }
 }
+
+enum CustomFontType {
+    case cherryBomb
+}

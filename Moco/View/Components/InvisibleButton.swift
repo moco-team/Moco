@@ -12,10 +12,10 @@ struct InvisibleButton: View {
 
     var body: some View {
         Color.clear
-        .contentShape(Rectangle())
-        .onTapGesture {
-            action?()
-        }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                action?()
+            }
     }
 }
 

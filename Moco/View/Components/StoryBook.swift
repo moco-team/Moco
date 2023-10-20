@@ -10,6 +10,7 @@ import SwiftUI
 
 struct StoryBook: View {
     // MARK: - Stored variable definition
+
     @Environment(\.font) private var font
 
     var title: String = "Story 1"
@@ -71,15 +72,16 @@ struct StoryBook: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 70, height: 70)
-                            
+
                         Text("1")
                             .font(.custom(
                                 "CherryBomb-Regular",
                                 size: 30,
-                                relativeTo: .body))
-                                .foregroundColor(Color.brownTxt)
-                                .fontWeight(.bold)
-                                .padding(.bottom, 1)
+                                relativeTo: .body
+                            ))
+                            .foregroundColor(Color.brownTxt)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 1)
                             .offset(x: 0, y: -9)
                     }
                     .position(x: 53, y: 41)
