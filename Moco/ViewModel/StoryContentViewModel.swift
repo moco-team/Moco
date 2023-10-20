@@ -10,7 +10,8 @@ import SwiftData
 
 @Observable class StoryContentViewModel: BaseViewModel {
     var storyContents = [StoryContentModel]()
-
+    var selectedStoryContents = [StoryContentModel]()
+    
     init(modelContext: ModelContext? = nil) {
         super.init()
         if modelContext != nil {
@@ -21,20 +22,19 @@ import SwiftData
         }
     }
 
-    func fetchStoryContents(_: StoryModel?) {
+    func fetchStoryContents(_ story: StoryModel?) {
         let fetchDescriptor = FetchDescriptor<StoryContentModel>(
-            //            predicate: #Predicate { storyContent in
-            // fill in...
-            //            },
             sortBy: [SortDescriptor<StoryContentModel>(\.createdAt)]
         )
-
+        
         storyContents = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
+        
+        getStoryContentPage(story)
     }
 
     func createStoryContent(story: StoryModel, duration: TimeInterval, contentName: String, contentType: String) {
         let newStoryContent = StoryContentModel(duration: duration, contentName: contentName, contentType: contentType)
-//        newStoryContent.stories = stories
+        newStoryContent.stories?.append(story)
 
         modelContext?.insert(newStoryContent)
         try? modelContext?.save()
@@ -55,5 +55,28 @@ import SwiftData
         try? modelContext?.save()
 
         fetchStoryContents(story)
+    }
+    
+    func getStoryContentPage(_ story: StoryModel?) {
+        self.selectedStoryContents = []
+        
+        if let story = story {
+            for storyContent in storyContents {
+                for storyObj in storyContent.stories! {
+                    if storyObj.id == story.id {
+                        self.selectedStoryContents.append(storyContent)
+                    }
+                }
+            }
+        }
+    }
+    
+    func getTextStoryContent(_ story: StoryModel) -> String? {
+        for storyContent in selectedStoryContents {
+            if storyContent.contentType == "Text" {
+                    return storyContent.contentName
+            }
+        }
+        return nil
     }
 }

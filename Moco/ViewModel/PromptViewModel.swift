@@ -10,7 +10,8 @@ import SwiftData
 
 @Observable class PromptViewModel: BaseViewModel {
     var prompts = [PromptModel]()
-
+    var selectedPrompt: PromptModel?
+    
     init(modelContext: ModelContext? = nil) {
         super.init()
         if modelContext != nil {
@@ -33,8 +34,8 @@ import SwiftData
         prompts = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
     }
 
-    func createPrompt(hints: [HintModel], story: StoryModel) {
-        let newPrompt = PromptModel(promptDescription: "desc", correctAnswer: "correct", duration: 1.0, promptType: "object detection")
+    func createPrompt(hints: [HintModel], story: StoryModel, promptDescription: String, correctAnswer: String, duration: TimeInterval, promptType: String) {
+        let newPrompt = PromptModel(promptDescription: promptDescription, correctAnswer: correctAnswer, duration: duration, promptType: promptType)
         newPrompt.story = story
         newPrompt.hints = hints
 
@@ -57,5 +58,10 @@ import SwiftData
         try? modelContext?.save()
 
         fetchPrompts(story)
+    }
+    
+    func setSelectedPromptPage(_ index: Int) {
+        guard prompts.indices.contains(index) else { return }
+        selectedPrompt = prompts[index]
     }
 }

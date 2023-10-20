@@ -11,14 +11,14 @@ struct StoryThemeAdminView: View {
     @Environment(\.navigate) private var navigate
     @Environment(\.storyThemeViewModel) private var storyThemeViewModel
     @Environment(\.storyViewModel) private var storyViewModel
+    @Environment(\.storyContentViewModel) private var storyContentViewModel
+    
     @State var isSheetPresented: Bool = false
-
+    
     func deleteStoryTheme(_ storyTheme: StoryThemeModel) {
-        if let index = storyThemeViewModel.storyThemes.firstIndex(of: storyTheme) {
-            storyThemeViewModel.deleteStoryTheme(index)
-        }
+        storyThemeViewModel.deleteStoryTheme(storyTheme: storyTheme)
     }
-
+    
     var body: some View {
         VStack {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -33,7 +33,7 @@ struct StoryThemeAdminView: View {
                                     .frame(width: 300, height: 400, alignment: .center)
                                     .clipped()
                             }.padding()
-
+                            
                             Button(action: {
                                 deleteStoryTheme(storyTheme)
                             }) {
@@ -43,9 +43,15 @@ struct StoryThemeAdminView: View {
                         }.padding()
                             .onTapGesture {
                                 storyThemeViewModel.setSelectedStoryTheme(index)
-
+                                
                                 storyViewModel.fetchStories(storyThemeViewModel.selectedStoryTheme)
-
+                                
+                                if storyViewModel.stories.count > 0 {
+                                    storyViewModel.setSelectedStoryPage(0)
+                                    
+                                    storyContentViewModel.fetchStoryContents(storyViewModel.selectedStoryPage!)
+                                }
+                                
                                 navigate.append(.storyAdmin("storyAdmin"))
                             }
                     }
@@ -57,7 +63,7 @@ struct StoryThemeAdminView: View {
                     }
                 }
                 .sheet(isPresented: $isSheetPresented) {
-                    StoryThemeModalView(isPresented: $isSheetPresented)
+                    StoryThemeModalAdminView(isPresented: $isSheetPresented)
                 }
             }.scrollClipDisabled()
         }.navigationTitle("Story Theme")
@@ -66,6 +72,6 @@ struct StoryThemeAdminView: View {
 
 #Preview {
     @State var storyThemeViewModel = StoryThemeViewModel()
-
+    
     return StoryThemeAdminView().environment(\.storyThemeViewModel, storyThemeViewModel)
 }

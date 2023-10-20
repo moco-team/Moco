@@ -10,7 +10,8 @@ import SwiftData
 
 @Observable class HintViewModel: BaseViewModel {
     var hints = [HintModel]()
-
+    var selectedHints: HintModel?
+    
     init(modelContext: ModelContext? = nil) {
         super.init()
         if modelContext != nil {
@@ -34,8 +35,8 @@ import SwiftData
         hints = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
     }
 
-    func createHint(_ prompt: PromptModel) {
-        let newHint = HintModel(hint: "new hint")
+    func createHint(_ prompt: PromptModel, hint: String) {
+        let newHint = HintModel(hint: hint)
         newHint.prompt = prompt
 
         modelContext?.insert(newHint)
@@ -57,5 +58,10 @@ import SwiftData
         try? modelContext?.save()
 
         fetchHints(prompt)
+    }
+    
+    func setSelectedHintPage(_ index: Int) {
+        guard hints.indices.contains(index) else { return }
+        selectedHints = hints[index]
     }
 }

@@ -7,19 +7,19 @@
 
 import SwiftUI
 
-struct StoryThemeModalView: View {
+struct StoryThemeModalAdminView: View {
     @Environment(\.storyThemeViewModel) private var storyThemeViewModel
-
+    
     @Binding var isPresented: Bool
     @State private var pictureName: String = ""
     @State private var descriptionTheme: String = ""
-
+    
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Add Story Theme")) {
                     TextField("Picture name...", text: $pictureName)
-
+                    
                     TextField("Description theme...", text: $descriptionTheme)
                 }
             }
@@ -39,6 +39,6 @@ struct StoryThemeModalView: View {
 
 #Preview {
     @State var storyThemeViewModel = StoryThemeViewModel()
-
-    return StoryThemeModalView(isPresented: .constant(true)).environment(\.storyThemeViewModel, storyThemeViewModel)
+    
+    return StoryThemeModalAdminView(isPresented: .constant(true)).environment(\.storyThemeViewModel, storyThemeViewModel)
 }
