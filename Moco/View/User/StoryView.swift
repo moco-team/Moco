@@ -79,10 +79,10 @@ struct StoryView: View {
             .init(text: "Moco si Sapi adalah seekor sapi yang cerdik. \nDia ingin menjelajahi dunia.", duration: 2.5, positionX: 0.31, positionY: 0.15)
         ],
         [
-            .init(text: "Di perjalanannya, dia bertemu dengan teman-temannya yang membutuhkan bantuan.", duration: 3.5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4)
+            .init(text: "Di perjalanannya, dia bertemu dengan teman-temannya yang membutuhkan bantuan.", duration: 5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4)
         ],
         [
-            .init(text: "Saat menjelajahi hutan rimba, dia bertemu Maudi si Beruang madu yang sedang menangis.", duration: 3, positionX: 0.3, positionY: 0.17, maxWidth: Screen.width * 0.4),
+            .init(text: "Saat menjelajahi hutan rimba, dia bertemu Maudi si Beruang madu yang sedang menangis.", duration: 5, positionX: 0.3, positionY: 0.17, maxWidth: Screen.width * 0.4),
             .init(text: "Mari kita tanya mengapa Maudi menangis.", duration: 2, positionX: 0.3, positionY: 0.13, maxWidth: Screen.width * 0.4),
             .init(text: "Katakan Mengapa Maudi Menangis?", duration: 2, positionX: 0.3, positionY: 0.13, maxWidth: Screen.width * 0.4)
         ],
@@ -90,25 +90,25 @@ struct StoryView: View {
             .init(text: "Yuk bantu Maudi mencari madu kesayangannya!", duration: 3.5, positionX: 0.5, positionY: 0.3)
         ],
         [
-            .init(text: "Moco melanjutkan petualangannya. \nSaat ingin melewati gua, dia bertemu dengan Teka & Teki si Tikus.", duration: 3.5, positionX: 0.71, positionY: 0.85)
+            .init(text: "Moco melanjutkan petualangannya. \nSaat ingin melewati gua, dia bertemu dengan Teka & Teki si Tikus.", duration: 5, positionX: 0.71, positionY: 0.85)
         ],
         [
-            .init(text: "Teka & Teki melarang Moco untuk melewati gua sebelum dia menjawab teka teki yang mereka berikan.", duration: 3, positionX: 0.5, positionY: 0.15),
+            .init(text: "Teka & Teki melarang Moco untuk melewati gua sebelum dia menjawab teka teki yang mereka berikan.", duration: 6, positionX: 0.5, positionY: 0.15),
             .init(text: "Yuk kita selesaikan teka-tekinya.", duration: 2, positionX: 0.5, positionY: 0.15)
         ],
         [
-            .init(text: "Aku berkaki empat, tetapi aku tidak bisa berjalan. Orang-orang biasanya duduk di atasku.", duration: 3.5, positionX: 0.6, positionY: 0.3)
+            .init(text: "Aku berkaki empat, tetapi aku tidak bisa berjalan. Orang-orang biasanya duduk di atasku.", duration: 5, positionX: 0.6, positionY: 0.3)
         ],
         [
-            .init(text: "Saat langit sudah mulai gelap, Moco bertemu dengan Kakak Katak yang sedang kesulitan menangkap balon.", duration: 3.5, positionX: 0.7, positionY: 0.15, color: .white)
+            .init(text: "Saat langit sudah mulai gelap, Moco bertemu dengan Kakak Katak yang sedang kesulitan menangkap balon.", duration: 5, positionX: 0.7, positionY: 0.15, color: .white)
         ],
         [
             //            .init(text: "Kakak Katak sedang mengumpulkan balon yang berwarna biru. Yuk kita bantu Kakak Katak menangkap balon!", duration: 3.5, positionX: 0.6, positionY: 0.2),
         ],
         [
-            .init(text: "Matahari terbenam dan Moco merasa lelah. Moco memutuskan untuk beristirahat dan melanjutkan petualangannya esok hari.", duration: 4, positionX: 0.67, positionY: 0.63),
-            .init(text: "Hari ini, Moco belajar bahwa petualangan bisa menjadi kesempatan untuk membantu teman-temannya.", duration: 3.5, positionX: 0.67, positionY: 0.63),
-            .init(text: "Moco tidur dengan senyum di wajahnya, bermimpi tentang petualangan berikutnya.", duration: 3.5, positionX: 0.67, positionY: 0.63)
+            .init(text: "Matahari terbenam dan Moco merasa lelah. Moco memutuskan untuk beristirahat dan melanjutkan petualangannya esok hari.", duration: 7, positionX: 0.67, positionY: 0.63),
+            .init(text: "Hari ini, Moco belajar bahwa petualangan bisa menjadi kesempatan untuk membantu teman-temannya.", duration: 7, positionX: 0.67, positionY: 0.63),
+            .init(text: "Moco tidur dengan senyum di wajahnya, bermimpi tentang petualangan berikutnya.", duration: 5, positionX: 0.67, positionY: 0.63)
         ]
     ]
 
