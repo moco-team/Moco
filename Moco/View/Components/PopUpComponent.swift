@@ -69,8 +69,8 @@ struct PopUpComponentView: View {
     var containerBgColor = Color.white
     var textColor = Color.black
     var overlayOpacity = 0.3
-    var width = Screen.width * 0.3
-    var height = Screen.height * 0.25
+    var width = Screen.width * 0.45
+    var height = Screen.height * 0.4
 
     var function: () -> Void
     var cancelHandler: (() -> Void)?
@@ -108,7 +108,7 @@ struct PopUpComponentView: View {
                                 .foregroundColor(textColor)
                                 .font(.footnote)
                                 .padding(.bottom, 23)
-                                .padding(.horizontal, 90)
+                                .padding(.horizontal, 70)
                                 .multilineTextAlignment(.center)
                             Grid(horizontalSpacing: 20) {
                                 GridRow {
@@ -130,8 +130,9 @@ struct PopUpComponentView: View {
                                 }
                             }
                         }
-                        .padding(.vertical, 20)
-
+                        .padding(.vertical, 40)
+                        .padding(40)
+                        
                         if bottomImage != nil {
                             Image(bottomImage!)
                                 .resizable()
