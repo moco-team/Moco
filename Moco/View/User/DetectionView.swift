@@ -43,9 +43,13 @@ struct DetectionView: View {
 //        }
 
         ZStack {
-            if objectDetectionViewModel.isMatch {
-                HostedViewController()
-                environmentObject(objectDetectionViewModel)
+            if !objectDetectionViewModel.isMatch {
+                HostedViewController { detectedObject in
+                    print(detectedObject)
+                    if DetectionValue(rawValue: detectedObject) == objectDetectionViewModel.getTargetObject() {
+                        objectDetectionViewModel.setDetectedObject(DetectionValue(rawValue: detectedObject))
+                    }
+                }.environmentObject(objectDetectionViewModel)
                     .ignoresSafeArea()
                 Image("Story/Content/Story1/Pages/Page7/background")
                     .resizable()
@@ -60,6 +64,9 @@ struct DetectionView: View {
         }
         .popUp(isActive: $showPopup, title: "Selamat kamu berhasil menemukan Orang!") {
             doneHandler?()
+        }
+        .task {
+            objectDetectionViewModel.setTargetObject(.person)
         }
     }
 

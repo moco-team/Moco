@@ -35,9 +35,9 @@ extension ObjectDetectionViewController {
 
         for observation in results where observation is VNRecognizedObjectObservation {
             guard let objectObservation = observation as? VNRecognizedObjectObservation else { continue }
-            guard objectObservation.confidence > 0.5 else { continue }
+            guard objectObservation.confidence > 0.7 else { continue }
 
-            objectDetectionViewModel?.setDetectedObject(DetectionValue(rawValue: objectObservation.labels[0].identifier))
+            detectionHandler?(objectObservation.labels[0].identifier)
 
             // Transformations
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(screenRect.size.width), Int(screenRect.size.height))

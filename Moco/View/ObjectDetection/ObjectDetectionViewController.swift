@@ -18,6 +18,7 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
     var screenRect: CGRect! = nil // For view dimensions
 
     var objectDetectionViewModel: ObjectDetectionViewModel?
+    var detectionHandler: ((String) -> Void)?
 
     // Detector
     private var videoOutput = AVCaptureVideoDataOutput()
@@ -150,11 +151,11 @@ struct HostedViewController: UIViewControllerRepresentable {
     @EnvironmentObject var objectDetectionViewModel: ObjectDetectionViewModel
 
     var targetObject: DetectionValue = .person
+    var detectionHandler: ((String) -> Void)?
 
     func makeUIViewController(context _: Context) -> UIViewController {
         let viewController = ObjectDetectionViewController()
-        objectDetectionViewModel.setTargetObject(targetObject)
-        viewController.objectDetectionViewModel = objectDetectionViewModel
+        viewController.detectionHandler = detectionHandler
         return viewController
     }
 

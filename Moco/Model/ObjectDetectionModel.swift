@@ -17,7 +17,7 @@ struct ObjectDetectionModel {
     private var targetObject: DetectionValue?
 
     var isMatch: Bool {
-        detectedObject == targetObject
+        targetObject != nil && detectedObject == targetObject
     }
 
     mutating func clear() {
