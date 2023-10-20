@@ -81,7 +81,8 @@ struct StoryView: View {
         ],
         [
             .init(text: "Saat menjelajahi hutan rimba, dia bertemu Maudi si Beruang madu yang sedang menangis.", duration: 3, positionX: 0.3, positionY: 0.17, maxWidth: Screen.width * 0.4),
-            .init(text: "Mari kita tanya mengapa Maudi menangis.", duration: 2, positionX: 0.3, positionY: 0.13, maxWidth: Screen.width * 0.4)
+            .init(text: "Mari kita tanya mengapa Maudi menangis.", duration: 2, positionX: 0.3, positionY: 0.13, maxWidth: Screen.width * 0.4),
+            .init(text: "Katakan Mengapa Maudi Menangis?", duration: 2, positionX: 0.3, positionY: 0.13, maxWidth: Screen.width * 0.4)
         ],
         [
             .init(text: "Yuk bantu Maudi mencari madu kesayangannya!", duration: 3.5, positionX: 0.5, positionY: 0.3)
@@ -124,14 +125,15 @@ struct StoryView: View {
 
     private let prompts: [Prompt?] = [
         nil,
+        nil,
+        .init(type: .speech, startTime: 3),
         .init(type: .findHoney, startTime: 3),
-        .init(type: .puzzle, startTime: 3),
+        nil,
+        nil,
         .init(type: .objectDetection, startTime: 3),
         nil,
+        .init(type: .puzzle, startTime: 3),
         nil,
-        nil,
-        nil,
-        nil
     ]
 
     private let bgSounds = ["bg-shop", "bg-story"]
