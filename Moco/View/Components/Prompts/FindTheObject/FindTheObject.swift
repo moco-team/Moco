@@ -54,7 +54,7 @@ struct FindTheObjectView: View {
         .frame(maxHeight: Screen.height * 0.7)
         .frame(maxWidth: Screen.width * 0.7)
         .padding(.vertical, 60)
-        .popUp(isActive: $isCorrectBalloonTapped, title: "Selamat kamu sudah menemukan balon yang Moco cari! \n Ayo cari balon selanjutnya!") {
+        .popUp(isActive: $isCorrectBalloonTapped, title: "Selamat kamu sudah menemukan balon yang Kakak Katak cari! \n\nAyo cari balon selanjutnya!") {
             if correctTryCount < maxTry {
                 isTried = false
                 isCorrectBalloonTapped = false
@@ -66,8 +66,9 @@ struct FindTheObjectView: View {
             }
         }
         .popUp(isActive: $showTheAnswer, title: correctAnswer) {
-            isPromptDone = true
             print("Selesai!")
+        } cancelHandler: {
+            navigate.popToRoot()
         }
         .popUp(isActive: $isFinalPopUp, title: "Selamat kamu berhasil mencari semua balon Moco!") {
             isPromptDone = true

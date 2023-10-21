@@ -30,7 +30,7 @@ public extension View {
                 topImage: topImage,
                 bottomImage: bottomImage,
                 cancelText: cancelText,
-                confirmText: confirmText ?? "Yes",
+                confirmText: confirmText ?? "Lanjut",
                 containerBgColor: containerBgColor,
                 textColor: textColor,
                 overlayOpacity: overlayOpacity,

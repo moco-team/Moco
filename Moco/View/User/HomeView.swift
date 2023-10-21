@@ -58,7 +58,7 @@ struct HomeView: View {
                 Spacer()
             }
             .onAppear {
-                //                audioViewModel.playSound(soundFileName: "bg-story", numberOfLoops: -1)
+                audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1)
                 MPVolumeView.setVolume(self.soundLevel)
             }
         }
