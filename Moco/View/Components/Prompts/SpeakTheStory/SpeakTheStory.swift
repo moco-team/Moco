@@ -23,9 +23,20 @@ struct SpeakTheStory: View {
     var doneHandler: (() -> Void)?
 
     private func isCorrectAnswer() -> Bool {
-        return speechRecognizerViewModel.possibleTranscripts.contains { transcript in
-            transcript.filter { !$0.isWhitespace }.contains(correctAnswer.filter { !$0.isWhitespace }.lowercased())
-        }
+        let filteredAnswer = correctAnswer
+            .filter { !$0.isWhitespace }
+            .lowercased()
+        return speechRecognizerViewModel.transcript
+            .filter { !$0.isWhitespace }
+            .lowercased()
+            .contains(filteredAnswer) ||
+            speechRecognizerViewModel.possibleTranscripts
+            .contains { transcript in
+                transcript
+                    .filter { !$0.isWhitespace }
+                    .lowercased()
+                    .contains(filteredAnswer)
+            }
     }
 
     var body: some View {

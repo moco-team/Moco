@@ -132,7 +132,7 @@ struct PopUpComponentView: View {
                         }
                         .padding(.vertical, 40)
                         .padding(40)
-                        
+
                         if bottomImage != nil {
                             Image(bottomImage!)
                                 .resizable()
