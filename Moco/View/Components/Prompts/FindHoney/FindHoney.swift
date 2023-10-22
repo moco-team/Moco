@@ -14,6 +14,9 @@ struct FindHoney: View {
 
     @State private var showPopUp = false
 
+    var honeyXPosition: CGFloat = 305
+    var honeyYPositon: CGFloat = 665
+
     var doneHandler: (() -> Void)?
 
     var body: some View {
@@ -24,8 +27,8 @@ struct FindHoney: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 120, height: 120)
                     .position(
-                        x: 305,
-                        y: 665
+                        x: honeyXPosition,
+                        y: honeyYPositon
                     )
 
 //                Image("Story/Content/Story1/Pages/Page4/cover-leaves")
@@ -45,8 +48,8 @@ struct FindHoney: View {
             }
             .frame(width: 120, height: 120)
             .position(
-                x: 305,
-                y: 665
+                x: honeyXPosition,
+                y: honeyYPositon
             )
         }
     }

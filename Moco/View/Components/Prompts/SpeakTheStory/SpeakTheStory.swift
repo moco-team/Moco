@@ -11,35 +11,11 @@ struct SpeakTheStory: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @ObservedObject var speechRecognizerViewModel = SpeechRecognizerViewModel.shared
 
-//    @Binding var isPromptDone: Bool
-    @State var isPromptDone: Bool = false
-
 //    let hints: [String]
-    @State private var correctAnswer: String = "maudi sedang menangis"
 
-    @State private var audio: String = "Page3-monolog1"
-    @State private var showPopUp = false
-    @State private var isRecording = false
-    @State private var showHint = false
+    @State private var speakPromptViewModel = SpeakPromptViewModel()
 
     var doneHandler: (() -> Void)?
-
-    private func isCorrectAnswer() -> Bool {
-        let filteredAnswer = correctAnswer
-            .filter { !$0.isWhitespace }
-            .lowercased()
-        return speechRecognizerViewModel.transcript
-            .filter { !$0.isWhitespace }
-            .lowercased()
-            .contains(filteredAnswer) ||
-            speechRecognizerViewModel.possibleTranscripts
-            .contains { transcript in
-                transcript
-                    .filter { !$0.isWhitespace }
-                    .lowercased()
-                    .contains(filteredAnswer)
-            }
-    }
 
     var body: some View {
         VStack {
@@ -48,49 +24,48 @@ struct SpeakTheStory: View {
             Spacer()
 
             Button(action: {
-                showHint = !showHint
+                speakPromptViewModel.showHint.toggle()
             }) {
                 Text("Petunjuk")
                     .foregroundStyle(Color.brownTxt)
             }
-            
-            if showHint {
+
+            if speakPromptViewModel.showHint {
                 Text("Maudi sedang menangis")
                     .foregroundStyle(.white)
             }
-            
+
             Text("\(speechRecognizerViewModel.transcript)")
                 .foregroundStyle(.white)
                 .padding()
 
             Button(action: {
-                if isRecording {
+                if speakPromptViewModel.isRecording {
                     speechRecognizerViewModel.stopTranscribing()
                 } else {
                     speechRecognizerViewModel.transcribe()
                 }
-                isRecording.toggle()
+                speakPromptViewModel.isRecording.toggle()
             }) {
                 Image("Story/Icons/mic")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100)
                     .padding()
-                    .background(Circle().foregroundColor(!isRecording ? Color.greenBtn : .gray))
+                    .background(Circle().foregroundColor(!speakPromptViewModel.isRecording ? Color.greenBtn : .gray))
             }
 
             Spacer()
         }
         .onChange(of: speechRecognizerViewModel.transcript) {
-            if isCorrectAnswer() {
+            if speakPromptViewModel.isCorrectAnswer(speechRecognizerViewModel.transcript, possibleTranscripts: speechRecognizerViewModel.possibleTranscripts) {
                 print("Benar!")
                 audioViewModel.playSound(soundFileName: "success")
                 speechRecognizerViewModel.stopTranscribing()
-                showPopUp = true
+                speakPromptViewModel.showPopUp = true
             }
         }
-        .popUp(isActive: $showPopUp, title: "Benar! Maudi sedang menangis!") {
-            isPromptDone = true
+        .popUp(isActive: $speakPromptViewModel.showPopUp, title: "Benar! Maudi sedang menangis!") {
             doneHandler?()
         }
     }

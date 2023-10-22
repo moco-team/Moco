@@ -11,83 +11,56 @@ import SwiftUI
 struct DetectionView: View {
     @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var objectDetectionViewModel: ObjectDetectionViewModel
-    @Query private var items: [Item]
-    @State private var showPopup = false
+
+    @State private var detectionPromptViewModel = DetectionPromptViewModel()
+
+    private let maxDetectionCount = 100
 
     var doneHandler: (() -> Void)?
 
     var body: some View {
-//        NavigationSplitView {
-//            List {
-//                ForEach(items) { item in
-//                    NavigationLink {
-//                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-//                    } label: {
-//                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-//                    }
-//                }
-//                .onDelete(perform: deleteItems)
-//            }
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    EditButton()
-//                }
-//                ToolbarItem {
-//                    Button(action: addItem) {
-//                        Label("Add Item", systemImage: "plus")
-//                    }
-//                }
-//            }
-//        } detail: {
-//            Text("Select an item")
-//        }
-
         ZStack {
             if !objectDetectionViewModel.isMatch {
                 HostedViewController { detectedObject in
                     print(detectedObject)
-                    if DetectionValue(rawValue: detectedObject) == objectDetectionViewModel.getTargetObject() {
-                        objectDetectionViewModel.setDetectedObject(DetectionValue(rawValue: detectedObject))
-                    }
+                    objectDetectionViewModel.setDetectedObject(DetectionValue(rawValue: detectedObject))
                 }.environmentObject(objectDetectionViewModel)
                     .ignoresSafeArea()
                 Image("Story/Content/Story1/Pages/Page7/background")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .background(.clear)
+                if detectionPromptViewModel.correctCount > 0 {
+                    CircularProgressView(progress: Double(detectionPromptViewModel.correctCount) / 100.0) {
+                        progress in
+                        Text("\(progress * 100, specifier: "%.0f")%")
+                            .customFont(.didactGothic, size: 50)
+                            .bold()
+                    }
+                }
             }
         }
         .onChange(of: objectDetectionViewModel.isMatch) {
             if objectDetectionViewModel.isMatch {
-                showPopup = true
+                if detectionPromptViewModel.correctCount < maxDetectionCount {
+                    detectionPromptViewModel.incCorrectCount()
+                }
+                objectDetectionViewModel.setDetectedObject(nil)
+                if detectionPromptViewModel.correctCount >= maxDetectionCount {
+                    detectionPromptViewModel.showPopup = true
+                }
             }
         }
-        .popUp(isActive: $showPopup, title: "Selamat kamu berhasil menemukan Kursi!") {
+        .popUp(isActive: $detectionPromptViewModel.showPopup, title: "Selamat kamu berhasil menemukan Kursi!") {
             doneHandler?()
         }
         .task {
-            objectDetectionViewModel.setTargetObject(.chair)
+            objectDetectionViewModel.setTargetObject([.chair, .couch])
             objectDetectionViewModel.setDetectedObject(nil)
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item()
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
         }
     }
 }
 
 #Preview {
     DetectionView()
-        .modelContainer(for: Item.self, inMemory: true)
 }

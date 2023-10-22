@@ -50,6 +50,10 @@ import AVFoundation
         }
     }
 
+    func playSoundsQueue(sounds: [AudioModel.QueuePlayerParam], intervalDuration: Double = 0, volume: Float = 1, id: String? = nil) {
+        audioModel.playSoundsQueue(sounds: sounds, intervalDuration: intervalDuration, volume: volume, id: id)
+    }
+
     @objc func playSoundNotification(_ notification: NSNotification) {
         if let soundFileName = notification.userInfo?["fileName"] as? String {
             audioModel.playSound(soundFileName: soundFileName)

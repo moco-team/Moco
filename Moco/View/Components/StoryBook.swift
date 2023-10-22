@@ -15,6 +15,8 @@ struct StoryBook: View {
 
     var title: String = "Story 1"
     let durationAndDelay: CGFloat = 0.3
+    var image: String? = ""
+    var number: Int = 1
     @State var degree = 0.0
     @State var isFlipped = false
     @State private var soundLevel: Float = 0.5
@@ -41,11 +43,7 @@ struct StoryBook: View {
     var body: some View {
         VStack {
             Text("Koleksi Buku")
-                .font(.custom(
-                    "CherryBomb-Regular",
-                    size: 50,
-                    relativeTo: .body
-                ))
+                .customFont(.cherryBomb, size: 50)
                 .foregroundColor(Color.blueTxt)
                 .fontWeight(.bold)
                 .padding(.leading, 30)
@@ -64,7 +62,7 @@ struct StoryBook: View {
                                 topTrailingRadius: 32
                             )
                         )
-                    Image("Story/Cover/Story1")
+                    Image(image ?? "")
                         .resizable()
                         .scaledToFill()
                         .frame(width: 200, height: 280) // Adjust the frame size as needed
@@ -84,12 +82,8 @@ struct StoryBook: View {
                             .scaledToFit()
                             .frame(width: 70, height: 70)
 
-                        Text("1")
-                            .font(.custom(
-                                "CherryBomb-Regular",
-                                size: 30,
-                                relativeTo: .body
-                            ))
+                        Text("\(number)")
+                            .customFont(size: 30)
                             .foregroundColor(Color.brownTxt)
                             .fontWeight(.bold)
                             .padding(.bottom, 1)

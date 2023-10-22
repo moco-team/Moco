@@ -99,13 +99,13 @@ struct StoryView: View {
             .init(text: "Yuk kita selesaikan teka-tekinya!", duration: 2, positionX: 0.5, positionY: 0.15)
         ],
         [
-            .init(text: "Aku berkaki empat, tetapi aku tidak bisa berjalan. Orang-orang biasanya duduk di atasku.\nSiapakah aku?", duration: 9, positionX: 0.6, positionY: 0.3),
+            .init(text: "Aku berkaki empat, tetapi aku tidak bisa berjalan. Orang-orang biasanya duduk di atasku.\nSiapakah aku?", duration: 9, positionX: 0.6, positionY: 0.3)
         ],
         [
             .init(text: "Saat langit sudah mulai gelap, Moco bertemu dengan Kakak Katak yang sedang kesulitan menangkap balon.", duration: 5, positionX: 0.7, positionY: 0.15, color: .white)
         ],
         [
-            .init(text: "Kakak Katak sedang mengumpulkan balon yang berwarna Merah. Yuk kita bantu Kakak Katak menangkap balon!", duration: 7, positionX: 0.6, positionY: 0.2, color: .white),
+            .init(text: "Kakak Katak sedang mengumpulkan balon yang berwarna Merah. Yuk kita bantu Kakak Katak menangkap balon!", duration: 7, positionX: 0.6, positionY: 0.2, color: .white)
         ],
         [
             .init(text: "Matahari pun terbenam dan Moco merasa lelah. Moco memutuskan untuk beristirahat dan melanjutkan petualangannya esok hari.", duration: 12, positionX: 0.67, positionY: 0.63),
@@ -140,7 +140,7 @@ struct StoryView: View {
         nil
     ]
 
-    private let bgSounds = ["bg-story", "bg-story","bg-story","bg-story","bg-story","bg-story","bg-story","bg-story","bg-story","bg-story"]
+    private let bgSounds = ["bg-story", "bg-story", "bg-story", "bg-story", "bg-story", "bg-story", "bg-story", "bg-story", "bg-story", "bg-story"]
 
     // MARK: - Functions
 

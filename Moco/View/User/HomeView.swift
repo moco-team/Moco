@@ -13,10 +13,10 @@ struct HomeView: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.timerViewModel) private var timerViewModel
 
-    @Environment(\.itemViewModel) private var itemViewModel
+    @Environment(\.storyThemeViewModel) private var storyThemeViewModel
     @Environment(\.navigate) private var navigate
 
-    @State private var soundLevel: Float = 0.5
+    @State private var homeViewModel = HomeViewModel()
 
     var body: some View {
         ZStack {
@@ -45,9 +45,9 @@ struct HomeView: View {
 
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: [GridItem(.flexible())]) {
-                        ForEach(itemViewModel.items) { item in
-                            StoryBook(title: item.name) {
-                                navigate.append(.story("Bangers"))
+                        ForEach(storyThemeViewModel.storyThemes) { storyTheme in
+                            StoryBook(title: storyTheme.title, image: storyTheme.pictureName) {
+                                navigate.append(.story(storyTheme.id))
                             }
                         }
                     }
@@ -57,9 +57,11 @@ struct HomeView: View {
                 Spacer()
                 Spacer()
             }
-            .onAppear {
+            .task {
+                storyThemeViewModel.fetchStoryThemes()
                 audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1)
-                MPVolumeView.setVolume(self.soundLevel)
+                homeViewModel.soundLevel = 0.5
+                homeViewModel.setVolume()
             }
         }
     }
