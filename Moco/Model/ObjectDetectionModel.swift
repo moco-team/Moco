@@ -11,27 +11,39 @@ enum DetectionValue: String {
     case cellPhone = "cell phone"
     case person
     case chair
+    case couch
+    case bicycle
+    case motorcycle
+    case airplane
+    case bus
+    case train
 }
 
 struct ObjectDetectionModel {
     private var detectedObject: DetectionValue?
-    private var targetObject: DetectionValue?
+    private var targetObject: [DetectionValue] = []
 
     var isMatch: Bool {
-        targetObject != nil && detectedObject == targetObject
+        !targetObject.isEmpty && detectedObject != nil && targetObject.contains {
+            $0 == detectedObject
+        }
     }
 
     mutating func clear() {
         detectedObject = nil
-        targetObject = nil
+        targetObject = []
     }
 
-    mutating func setTargetObject(_ value: DetectionValue?) {
-        targetObject = value
+    mutating func setTargetObject(_ values: [DetectionValue]) {
+        targetObject = values
     }
 
-    func getTargetObject() -> DetectionValue? {
-        return targetObject
+    mutating func appendTargetObject(_ values: DetectionValue...) {
+        targetObject += values
+    }
+
+    func getTargetObject() -> [DetectionValue] {
+        targetObject
     }
 
     mutating func setDetectedObject(_ value: DetectionValue?) {
@@ -39,6 +51,6 @@ struct ObjectDetectionModel {
     }
 
     func getDetectedObject() -> DetectionValue? {
-        return detectedObject
+        detectedObject
     }
 }

@@ -22,23 +22,29 @@ class ObjectDetectionViewModel: ObservableObject {
         objectDetectionModel.clear()
     }
 
-    func setTargetObject(_ value: DetectionValue?) {
-        objectDetectionModel.setTargetObject(value)
+    func setTargetObject(_ values: [DetectionValue]) {
+        objectDetectionModel.setTargetObject(values)
         if isMatch {
             callback?()
         }
     }
 
-    func getTargetObject() -> DetectionValue? {
-        return objectDetectionModel.getTargetObject()
+    func appendTargetObject(_ values: DetectionValue...) {
+        objectDetectionModel.setTargetObject(values)
+        if isMatch {
+            callback?()
+        }
+    }
+
+    func getTargetObject() -> [DetectionValue] {
+        objectDetectionModel.getTargetObject()
     }
 
     func setDetectedObject(_ value: DetectionValue?) {
-        guard value == objectDetectionModel.getTargetObject() else { return }
         objectDetectionModel.setDetectedObject(value)
     }
 
     func getDetectedObject() -> DetectionValue? {
-        return objectDetectionModel.getDetectedObject()
+        objectDetectionModel.getDetectedObject()
     }
 }

@@ -23,9 +23,7 @@ struct DetectionView: View {
             if !objectDetectionViewModel.isMatch {
                 HostedViewController { detectedObject in
                     print(detectedObject)
-                    if DetectionValue(rawValue: detectedObject) == objectDetectionViewModel.getTargetObject() {
-                        objectDetectionViewModel.setDetectedObject(DetectionValue(rawValue: detectedObject))
-                    }
+                    objectDetectionViewModel.setDetectedObject(DetectionValue(rawValue: detectedObject))
                 }.environmentObject(objectDetectionViewModel)
                     .ignoresSafeArea()
                 Image("Story/Content/Story1/Pages/Page7/background")
@@ -44,7 +42,7 @@ struct DetectionView: View {
             doneHandler?()
         }
         .task {
-            objectDetectionViewModel.setTargetObject(.chair)
+            objectDetectionViewModel.setTargetObject([DetectionValue.chair])
             objectDetectionViewModel.setDetectedObject(nil)
         }
     }
