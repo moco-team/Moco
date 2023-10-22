@@ -19,6 +19,7 @@ struct MocoApp: App {
     @State private var audioViewModel = AudioViewModel()
     @State private var timerViewModel = TimerViewModel()
     @State private var itemViewModel = ItemViewModel()
+    @State private var storyThemeViewModel = StoryThemeViewModel()
 
     // MARK: - State Objects
 
@@ -35,6 +36,7 @@ struct MocoApp: App {
             }.environment(\.navigate, routeViewModel)
                 .environment(\.font, Font.custom("CherryBomb-Regular", size: 24, relativeTo: .body))
                 .environment(\.itemViewModel, itemViewModel)
+                .environment(\.storyThemeViewModel, storyThemeViewModel)
                 .environment(\.audioViewModel, audioViewModel)
                 .environment(\.timerViewModel, timerViewModel)
                 .environmentObject(speechViewModel)

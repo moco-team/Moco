@@ -30,6 +30,11 @@ struct DetectionView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .background(.clear)
+                CircularProgressView(progress: Double(detectionPromptViewModel.correctCount) / 100.0) { progress in
+                    Text("\(progress * 100, specifier: "%.0f")%")
+                        .customFont(.didactGothic, size: 50)
+                        .bold()
+                }
             }
         }
         .onChange(of: objectDetectionViewModel.isMatch) {
@@ -42,7 +47,7 @@ struct DetectionView: View {
             doneHandler?()
         }
         .task {
-            objectDetectionViewModel.setTargetObject([DetectionValue.chair])
+            objectDetectionViewModel.setTargetObject([.chair, .couch])
             objectDetectionViewModel.setDetectedObject(nil)
         }
     }

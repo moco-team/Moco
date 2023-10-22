@@ -49,8 +49,7 @@ struct CircularProgressView<Content: View>: View {
             Spacer()
             CircularProgressView(progress: progress, size: 200) { progress in
                 Text("\(progress * 100, specifier: "%.0f")")
-                    .font(.largeTitle)
-                    .bold()
+                    .customFont(.didactGothic, size: 50)
             }
             Spacer()
             HStack {
