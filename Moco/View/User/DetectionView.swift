@@ -14,7 +14,7 @@ struct DetectionView: View {
 
     @State private var detectionPromptViewModel = DetectionPromptViewModel()
 
-    private static let maxDetectionCount = 100
+    private let maxDetectionCount = 100
 
     var doneHandler: (() -> Void)?
 
@@ -30,17 +30,25 @@ struct DetectionView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .background(.clear)
-                CircularProgressView(progress: Double(detectionPromptViewModel.correctCount) / 100.0) { progress in
-                    Text("\(progress * 100, specifier: "%.0f")%")
-                        .customFont(.didactGothic, size: 50)
-                        .bold()
+                if detectionPromptViewModel.correctCount > 0 {
+                    CircularProgressView(progress: Double(detectionPromptViewModel.correctCount) / 100.0) {
+                        progress in
+                        Text("\(progress * 100, specifier: "%.0f")%")
+                            .customFont(.didactGothic, size: 50)
+                            .bold()
+                    }
                 }
             }
         }
         .onChange(of: objectDetectionViewModel.isMatch) {
             if objectDetectionViewModel.isMatch {
-                detectionPromptViewModel.incCorrectCount()
-                detectionPromptViewModel.showPopup = true
+                if detectionPromptViewModel.correctCount < maxDetectionCount {
+                    detectionPromptViewModel.incCorrectCount()
+                }
+                objectDetectionViewModel.setDetectedObject(nil)
+                if detectionPromptViewModel.correctCount >= maxDetectionCount {
+                    detectionPromptViewModel.showPopup = true
+                }
             }
         }
         .popUp(isActive: $detectionPromptViewModel.showPopup, title: "Selamat kamu berhasil menemukan Kursi!") {
