@@ -67,7 +67,7 @@ class SpeechRecognizerViewModel: ObservableObject {
             }
 
             utterance.voice = AVSpeechSynthesisVoice(language: "id-ID")
-            utterance.rate = 0.35
+            utterance.rate = 0.3
             utterance.volume = 1.0
             synthesizer.stopSpeaking(at: .immediate)
             synthesizer.speak(utterance)

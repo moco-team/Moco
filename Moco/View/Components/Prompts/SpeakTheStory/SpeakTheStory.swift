@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct SpeakTheStory: View {
+    @Environment(\.audioViewModel) private var audioViewModel
     @ObservedObject var speechRecognizerViewModel = SpeechRecognizerViewModel.shared
 
 //    @Binding var isPromptDone: Bool
     @State var isPromptDone: Bool = false
 
 //    let hints: [String]
-    @State private var correctAnswer: String = "mengapa maudi menangis"
+    @State private var correctAnswer: String = "maudi sedang menangis"
 
     @State private var audio: String = "Page3-monolog1"
     @State private var showPopUp = false
     @State private var isRecording = false
+    @State private var showHint = false
 
     var doneHandler: (() -> Void)?
 
@@ -45,7 +47,19 @@ struct SpeakTheStory: View {
             Spacer()
             Spacer()
 
-            Text("Transcribed Text: \(speechRecognizerViewModel.transcript)")
+            Button(action: {
+                showHint = !showHint
+            }) {
+                Text("Petunjuk")
+                    .foregroundStyle(Color.brownTxt)
+            }
+            
+            if showHint {
+                Text("Maudi sedang menangis")
+                    .foregroundStyle(.white)
+            }
+            
+            Text("\(speechRecognizerViewModel.transcript)")
                 .foregroundStyle(.white)
                 .padding()
 
@@ -70,6 +84,8 @@ struct SpeakTheStory: View {
         .onChange(of: speechRecognizerViewModel.transcript) {
             if isCorrectAnswer() {
                 print("Benar!")
+                audioViewModel.playSound(soundFileName: "success")
+                speechRecognizerViewModel.stopTranscribing()
                 showPopUp = true
             }
         }
