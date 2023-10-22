@@ -41,11 +41,7 @@ struct StoryBook: View {
     var body: some View {
         VStack {
             Text("Koleksi Buku")
-                .font(.custom(
-                    "CherryBomb-Regular",
-                    size: 50,
-                    relativeTo: .body
-                ))
+                .customFont(.cherryBomb, size: 50)
                 .foregroundColor(Color.blueTxt)
                 .fontWeight(.bold)
                 .padding(.leading, 30)
@@ -85,11 +81,7 @@ struct StoryBook: View {
                             .frame(width: 70, height: 70)
 
                         Text("1")
-                            .font(.custom(
-                                "CherryBomb-Regular",
-                                size: 30,
-                                relativeTo: .body
-                            ))
+                            .customFont(size: 30)
                             .foregroundColor(Color.brownTxt)
                             .fontWeight(.bold)
                             .padding(.bottom, 1)

@@ -13,35 +13,13 @@ struct DetectionView: View {
     @EnvironmentObject var objectDetectionViewModel: ObjectDetectionViewModel
     @Query private var items: [Item]
     @State private var showPopup = false
+    @State private var correctCount = 0
+
+    private static let maxDetectionCount = 100
 
     var doneHandler: (() -> Void)?
 
     var body: some View {
-//        NavigationSplitView {
-//            List {
-//                ForEach(items) { item in
-//                    NavigationLink {
-//                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-//                    } label: {
-//                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-//                    }
-//                }
-//                .onDelete(perform: deleteItems)
-//            }
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    EditButton()
-//                }
-//                ToolbarItem {
-//                    Button(action: addItem) {
-//                        Label("Add Item", systemImage: "plus")
-//                    }
-//                }
-//            }
-//        } detail: {
-//            Text("Select an item")
-//        }
-
         ZStack {
             if !objectDetectionViewModel.isMatch {
                 HostedViewController { detectedObject in
@@ -59,6 +37,7 @@ struct DetectionView: View {
         }
         .onChange(of: objectDetectionViewModel.isMatch) {
             if objectDetectionViewModel.isMatch {
+                correctCount += 1
                 showPopup = true
             }
         }

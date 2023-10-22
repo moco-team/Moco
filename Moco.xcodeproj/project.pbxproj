@@ -57,6 +57,8 @@
 		932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 932357D52ADE6EF3009B3D86 /* bg-story.mp3 */; };
 		932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D72ADE700D009B3D86 /* AudioViewModel.swift */; };
 		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
+		937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */; };
+		937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */; };
 		938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55352AE181C600BC233D /* RootViewModifier.swift */; };
 		938C55382AE183AA00BC233D /* FontViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55372AE183AA00BC233D /* FontViewModifier.swift */; };
 		938C553A2AE1B3E800BC233D /* ObjectDetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */; };
@@ -82,6 +84,8 @@
 		938E3D542ADBCDB8003D2AE1 /* StoryNavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D532ADBCDB8003D2AE1 /* StoryNavigationButton.swift */; };
 		938E3D562ADBE961003D2AE1 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D552ADBE961003D2AE1 /* Screen.swift */; };
 		938E3D582ADC00FB003D2AE1 /* PopUpExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D572ADC00FB003D2AE1 /* PopUpExtension.swift */; };
+		9398FBB52AE4105900AB5CE4 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9398FBB42AE4105900AB5CE4 /* CircularProgressView.swift */; };
+		9398FBB82AE41D2600AB5CE4 /* CustomAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9398FBB72AE41D2600AB5CE4 /* CustomAsyncImage.swift */; };
 		93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C2F8832AD683AC007D1ABC /* MocoApp.swift */; };
 		93C2F88A2AD683AE007D1ABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C2F8892AD683AE007D1ABC /* Assets.xcassets */; };
 		93C2F88D2AD683AE007D1ABC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C2F88C2AD683AE007D1ABC /* Preview Assets.xcassets */; };
@@ -185,6 +189,8 @@
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
+		937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		938C55352AE181C600BC233D /* RootViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModifier.swift; sourceTree = "<group>"; };
 		938C55372AE183AA00BC233D /* FontViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewModifier.swift; sourceTree = "<group>"; };
 		938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewModel.swift; sourceTree = "<group>"; };
@@ -211,6 +217,8 @@
 		938E3D532ADBCDB8003D2AE1 /* StoryNavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryNavigationButton.swift; sourceTree = "<group>"; };
 		938E3D552ADBE961003D2AE1 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		938E3D572ADC00FB003D2AE1 /* PopUpExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpExtension.swift; sourceTree = "<group>"; };
+		9398FBB42AE4105900AB5CE4 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		9398FBB72AE41D2600AB5CE4 /* CustomAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAsyncImage.swift; sourceTree = "<group>"; };
 		93C2F8802AD683AC007D1ABC /* Moco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C2F8832AD683AC007D1ABC /* MocoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocoApp.swift; sourceTree = "<group>"; };
 		93C2F8892AD683AE007D1ABC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -517,6 +525,7 @@
 		0B1197602AD7D4A7004FAD14 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9398FBB62AE41D0200AB5CE4 /* Image */,
 				93C8E7282AE0164E002315A2 /* Animations */,
 				05B1661C2ADE755F0077FA0D /* Prompts */,
 				0B2E31D62AD7EB4B00DFC16F /* ListViews */,
@@ -530,6 +539,7 @@
 				05AE93622ADE82920082B21D /* LottieView.swift */,
 				0571CB372AE1935C00CE0CC7 /* InvisibleButton.swift */,
 				938C55402AE2301700BC233D /* BurgerMenu.swift */,
+				9398FBB42AE4105900AB5CE4 /* CircularProgressView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -618,6 +628,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		9398FBB62AE41D0200AB5CE4 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				9398FBB72AE41D2600AB5CE4 /* CustomAsyncImage.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		93C2F8772AD683AC007D1ABC = {
 			isa = PBXGroup;
 			children = (
@@ -700,6 +718,7 @@
 				05AE93572ADE74980082B21D /* SpeechRecognizerViewModel.swift */,
 				93C8E7242ADEF2D3002315A2 /* TimerViewModel.swift */,
 				938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */,
+				937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -719,6 +738,7 @@
 				932357D92ADE7190009B3D86 /* AudioModel.swift */,
 				93C8E7202ADEF1DB002315A2 /* TimerModel.swift */,
 				938C553D2AE1B76600BC233D /* ObjectDetectionModel.swift */,
+				937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -940,6 +960,7 @@
 				938C553C2AE1B59F00BC233D /* ObjectDetection.swift in Sources */,
 				938E3D562ADBE961003D2AE1 /* Screen.swift in Sources */,
 				0B6E2F702ADC96200001D320 /* StoryThemeViewModel.swift in Sources */,
+				9398FBB52AE4105900AB5CE4 /* CircularProgressView.swift in Sources */,
 				932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */,
 				938E3D392AD939DC003D2AE1 /* Item.swift in Sources */,
 				05AE93582ADE74980082B21D /* SpeechRecognizerViewModel.swift in Sources */,
@@ -953,12 +974,15 @@
 				938C55382AE183AA00BC233D /* FontViewModifier.swift in Sources */,
 				93C2F8BD2AD684CE007D1ABC /* HomeView.swift in Sources */,
 				93C8E7232ADEF249002315A2 /* FontUtil.swift in Sources */,
+				937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */,
 				0B2E31DC2AD8084600DFC16F /* CollectionView.swift in Sources */,
 				0B6E2F6A2ADC91060001D320 /* StoryContentModel.swift in Sources */,
 				93C8E72C2AE1373D002315A2 /* Shake.swift in Sources */,
 				0B2E31DA2AD7EBE500DFC16F /* CollectionModel.swift in Sources */,
+				937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */,
 				0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */,
 				938E3D542ADBCDB8003D2AE1 /* StoryNavigationButton.swift in Sources */,
+				9398FBB82AE41D2600AB5CE4 /* CustomAsyncImage.swift in Sources */,
 				0B6E2F742ADC9DC90001D320 /* HintViewModel.swift in Sources */,
 				0571CB382AE1935C00CE0CC7 /* InvisibleButton.swift in Sources */,
 				938E3D372AD939C4003D2AE1 /* ContentView.swift in Sources */,

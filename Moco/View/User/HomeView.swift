@@ -16,7 +16,7 @@ struct HomeView: View {
     @Environment(\.itemViewModel) private var itemViewModel
     @Environment(\.navigate) private var navigate
 
-    @State private var soundLevel: Float = 0.5
+    @State private var homeViewModel = HomeViewModel()
 
     var body: some View {
         ZStack {
@@ -57,9 +57,10 @@ struct HomeView: View {
                 Spacer()
                 Spacer()
             }
-            .onAppear {
+            .task {
                 audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1)
-                MPVolumeView.setVolume(self.soundLevel)
+                homeViewModel.soundLevel = 0.5
+                homeViewModel.setVolume()
             }
         }
     }
