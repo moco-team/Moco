@@ -11,9 +11,8 @@ import SwiftUI
 struct DetectionView: View {
     @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var objectDetectionViewModel: ObjectDetectionViewModel
-    @Query private var items: [Item]
-    @State private var showPopup = false
-    @State private var correctCount = 0
+
+    @State private var detectionPromptViewModel = DetectionPromptViewModel()
 
     private static let maxDetectionCount = 100
 
@@ -37,11 +36,11 @@ struct DetectionView: View {
         }
         .onChange(of: objectDetectionViewModel.isMatch) {
             if objectDetectionViewModel.isMatch {
-                correctCount += 1
-                showPopup = true
+                detectionPromptViewModel.incCorrectCount()
+                detectionPromptViewModel.showPopup = true
             }
         }
-        .popUp(isActive: $showPopup, title: "Selamat kamu berhasil menemukan Kursi!") {
+        .popUp(isActive: $detectionPromptViewModel.showPopup, title: "Selamat kamu berhasil menemukan Kursi!") {
             doneHandler?()
         }
         .task {
@@ -49,24 +48,8 @@ struct DetectionView: View {
             objectDetectionViewModel.setDetectedObject(nil)
         }
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item()
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
-    }
 }
 
 #Preview {
     DetectionView()
-        .modelContainer(for: Item.self, inMemory: true)
 }

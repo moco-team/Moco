@@ -5,8 +5,8 @@
 //  Created by Aaron Christopher Tanhar on 22/10/23.
 //
 
-import SwiftUI
 import MediaPlayer
+import SwiftUI
 
 @Observable class HomeViewModel {
     private var homeModel = HomeModel()
@@ -19,8 +19,8 @@ import MediaPlayer
             homeModel.soundLevel = newValue
         }
     }
-    
+
     func setVolume() {
-        MPVolumeView.setVolume(self.soundLevel)
+        MPVolumeView.setVolume(soundLevel)
     }
 }

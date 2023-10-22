@@ -35,9 +35,9 @@ struct FindTheObjectView: View {
         VStack {
             if showTheBalloons {
                 HStack(spacing: 20) {
-                    ForEach(balloons.indices, id: \.self) { index in
+                    ForEach(balloons) { balloon in
                         BalloonView(
-                            balloon: balloons[index],
+                            balloon: balloon,
                             correctTryCount: $correctTryCount,
                             falseTryCount: $falseTryCount,
                             isFinalPopUp: $isFinalPopUp,
@@ -48,7 +48,6 @@ struct FindTheObjectView: View {
                 }
                 .padding(.horizontal, Screen.width * 0.1)
                 .opacity(showTheBalloons ? 1.0 : 0.0)
-                .animation(.easeOut)
             }
         }
         .frame(maxHeight: Screen.height * 0.7)

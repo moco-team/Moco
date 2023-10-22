@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct Balloon {
+struct Balloon: Identifiable {
+    var id = UUID()
+
     let color: String
     let isCorrect: Bool
 }
