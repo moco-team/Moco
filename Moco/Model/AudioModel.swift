@@ -112,7 +112,12 @@ struct AudioModel: Identifiable, Equatable {
     ///
     /// Usage Example
     ///
-    /// `audioViewModel.playSoundsQueue(sounds: [.init(fileName: "Page1-monolog1", type: "m4a"), .init(fileName: "Page2-monolog1", type: "m4a"), .init(fileName: "Page3-monolog1", type: "m4a")], intervalDuration: 3)`
+    /// `audioViewModel.playSoundsQueue(`
+    /// `sounds: [`
+    /// `.init(fileName: "Page1-monolog1", type: "m4a"),`
+    /// `.init(fileName: "Page2-monolog1", type: "m4a"),`
+    /// `.init(fileName: "Page3-monolog1", type: "m4a")],`
+    /// `intervalDuration: 3)`
     ///
     /// This will play the songs with 3 seconds delay between songs
     mutating func playSoundsQueue(sounds: [QueuePlayerParam], intervalDuration: Double = 0, volume: Float = 1, id: String? = nil) {
