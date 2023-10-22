@@ -9,11 +9,17 @@ import AVFoundation
 
 struct AudioModel: Identifiable, Equatable {
     var players: [URL: AVAudioPlayer] = [:]
+    var queuePlayers: [String: AVQueuePlayer] = [:]
     var playerVolumes: [URL: Float] = [:]
     var duplicatePlayers: [AVAudioPlayer] = []
 
     var volume: Float {
         players.first?.value.volume ?? 0
+    }
+
+    struct QueuePlayerParam {
+        var fileName: String
+        var type = "mp3"
     }
 
     var id = UUID()
@@ -99,6 +105,51 @@ struct AudioModel: Identifiable, Equatable {
             } catch {
                 print(error.localizedDescription)
             }
+        }
+    }
+
+    /// Play sounds in queue
+    ///
+    /// Usage Example
+    ///
+    /// `audioViewModel.playSoundsQueue(sounds: [.init(fileName: "Page1-monolog1", type: "m4a"), .init(fileName: "Page2-monolog1", type: "m4a"), .init(fileName: "Page3-monolog1", type: "m4a")], intervalDuration: 3)`
+    ///
+    /// This will play the songs with 3 seconds delay between songs
+    mutating func playSoundsQueue(sounds: [QueuePlayerParam], intervalDuration: Double = 0, volume: Float = 1, id: String? = nil) {
+        if let player = queuePlayers[id ?? ""] {
+            player.volume = volume
+            player.play()
+            return
+        }
+
+        let urls = sounds.filter { sound in
+            Bundle.main.path(forResource: sound.fileName, ofType: sound.type) != nil
+        }.map { sound in
+            let bundle = Bundle.main.path(forResource: sound.fileName, ofType: sound.type)
+            return URL(fileURLWithPath: bundle!)
+        }
+
+        let playerItems = urls.map { AVPlayerItem(url: $0) }
+        let player = AVQueuePlayer(items: playerItems)
+        // Add a periodic time observer to check playback progress
+        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: nil) { _ in
+            // Check if the player has reached the end of the current item
+            if let currentItem = player.currentItem,
+               currentItem.currentTime() >= currentItem.duration {
+                // Pause the player
+                player.pause()
+
+                // Start a timer to wait for the interval duration
+                Timer.scheduledTimer(withTimeInterval: intervalDuration, repeats: false) { _ in
+                    // Resume playing after the interval
+                    player.play()
+                }
+            }
+        }
+        player.volume = volume
+        player.play()
+        if id != nil {
+            queuePlayers[id!] = player
         }
     }
 

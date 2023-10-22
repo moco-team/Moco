@@ -54,6 +54,21 @@
 		0BA3E50B2ADFC62000BCFE9E /* StoryAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E50A2ADFC62000BCFE9E /* StoryAdminView.swift */; };
 		0BA3E5102ADFD04700BCFE9E /* StoryThemeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E50F2ADFD04700BCFE9E /* StoryThemeModalView.swift */; };
 		0BA3E5122ADFD98400BCFE9E /* StoryModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E5112ADFD98400BCFE9E /* StoryModalView.swift */; };
+		931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949722AE0EB6A00830D57 /* Page1-monolog1.m4a */; };
+		931722182AE5508300346382 /* Page2-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949752AE0EB6A00830D57 /* Page2-monolog1.m4a */; };
+		931722192AE5508300346382 /* Page3-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949772AE0EB6A00830D57 /* Page3-monolog1.m4a */; };
+		9317221A2AE5508300346382 /* Page4-monolog2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949712AE0EB6A00830D57 /* Page4-monolog2.m4a */; };
+		9317221B2AE5508300346382 /* Page4-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949702AE0EB6A00830D57 /* Page4-monolog1.m4a */; };
+		9317221C2AE5508300346382 /* bear_thankyou.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 053393102AE13A0C0085BB30 /* bear_thankyou.m4a */; };
+		9317221D2AE5508300346382 /* Page5-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949732AE0EB6A00830D57 /* Page5-monolog1.m4a */; };
+		9317221E2AE5508300346382 /* Page6-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949742AE0EB6A00830D57 /* Page6-monolog1.m4a */; };
+		9317221F2AE5508300346382 /* prompt_kursi.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949762AE0EB6A00830D57 /* prompt_kursi.m4a */; };
+		931722202AE5508300346382 /* Page8-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949782AE0EB6A00830D57 /* Page8-monolog1.m4a */; };
+		931722212AE5508300346382 /* frog_thankyou.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 053393112AE13A220085BB30 /* frog_thankyou.m4a */; };
+		931722222AE5508300346382 /* Page9-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949832AE0EDC500830D57 /* Page9-monolog1.m4a */; };
+		931722232AE5508300346382 /* Page10-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949822AE0ED3300830D57 /* Page10-monolog1.m4a */; };
+		931722242AE5508300346382 /* Page10-monolog2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949812AE0ED3300830D57 /* Page10-monolog2.m4a */; };
+		931722252AE5508300346382 /* congratulations.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 053393122AE13A310085BB30 /* congratulations.m4a */; };
 		932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 932357D52ADE6EF3009B3D86 /* bg-story.mp3 */; };
 		932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D72ADE700D009B3D86 /* AudioViewModel.swift */; };
 		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
@@ -925,6 +940,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */,
+				931722182AE5508300346382 /* Page2-monolog1.m4a in Resources */,
+				931722192AE5508300346382 /* Page3-monolog1.m4a in Resources */,
+				9317221A2AE5508300346382 /* Page4-monolog2.m4a in Resources */,
+				9317221B2AE5508300346382 /* Page4-monolog1.m4a in Resources */,
+				9317221C2AE5508300346382 /* bear_thankyou.m4a in Resources */,
+				9317221D2AE5508300346382 /* Page5-monolog1.m4a in Resources */,
+				9317221E2AE5508300346382 /* Page6-monolog1.m4a in Resources */,
+				9317221F2AE5508300346382 /* prompt_kursi.m4a in Resources */,
+				931722202AE5508300346382 /* Page8-monolog1.m4a in Resources */,
+				931722212AE5508300346382 /* frog_thankyou.m4a in Resources */,
+				931722222AE5508300346382 /* Page9-monolog1.m4a in Resources */,
+				931722232AE5508300346382 /* Page10-monolog1.m4a in Resources */,
+				931722242AE5508300346382 /* Page10-monolog2.m4a in Resources */,
+				931722252AE5508300346382 /* congratulations.m4a in Resources */,
 				93C2F8C32AD685E6007D1ABC /* yolov8s.mlmodel in Resources */,
 				93C8E7272ADF8DA3002315A2 /* bg-shop.mp3 in Resources */,
 				0571CB492AE19D6000CE0CC7 /* teka_dan_teki.json in Resources */,
