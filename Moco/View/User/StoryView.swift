@@ -310,8 +310,11 @@ struct StoryView: View {
                         }
                     }
                     Spacer()
-                    StoryNavigationButton(direction: .right) {
-                        nextPage()
+                    if prompts.indices.contains(scrollPosition ?? -1) &&
+                        prompts[scrollPosition!] == nil {
+                        StoryNavigationButton(direction: .right) {
+                            nextPage()
+                        }
                     }
                 }
                 VStack {

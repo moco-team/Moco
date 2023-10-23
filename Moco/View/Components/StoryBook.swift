@@ -19,7 +19,6 @@ struct StoryBook: View {
     var number: Int = 1
     @State var degree = 0.0
     @State var isFlipped = false
-    @State private var soundLevel: Float = 0.5
 
     var tapHandler: (() -> Void)?
 
@@ -42,13 +41,6 @@ struct StoryBook: View {
 
     var body: some View {
         VStack {
-            Text("Koleksi Buku")
-                .customFont(.cherryBomb, size: 50)
-                .foregroundColor(Color.blueTxt)
-                .fontWeight(.bold)
-                .padding(.leading, 30)
-                .padding(.bottom, 1)
-
             VStack {
                 ZStack {
                     Rectangle()
@@ -101,7 +93,6 @@ struct StoryBook: View {
             .onAppear {
                 isFlipped = false
                 degree = 0.0
-                MPVolumeView.setVolume(self.soundLevel)
             }
     }
 }

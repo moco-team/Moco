@@ -23,7 +23,7 @@ struct CollectionView: View {
             VStack {
                 HStack {
                     Text("Pilih Koleksi")
-                        .fontWeight(/*@START_MENU_TOKEN@*/ .bold/*@END_MENU_TOKEN@*/)
+                        .fontWeight(.bold)
                         .font(.title)
                     Spacer()
                 }
@@ -45,5 +45,5 @@ struct CollectionView: View {
 
 #Preview {
     CollectionView()
-        .modelContainer(for: CollectionModel.self)
+        .modelContainer(for: CollectionModel.self, inMemory: true)
 }
