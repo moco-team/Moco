@@ -17,9 +17,6 @@ import SwiftData
         if modelContext != nil {
             self.modelContext = modelContext
         }
-        if self.modelContext != nil {
-            fetchStoryThemes()
-        }
     }
 
     func fetchStoryThemes() {

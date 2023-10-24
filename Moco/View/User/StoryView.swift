@@ -10,9 +10,13 @@ import SwiftUI
 struct Narrative {
     var text: String
 
-    var duration: Double // MARK: In seconds
+    /// Duration in seconds
 
-    var positionX: Double // MARK: position in percentage of the size of the screen
+    var duration: Double // MARK: - In seconds
+
+    /// Position in percentage of the size of the screen
+
+    var positionX: Double // MARK: - position in percentage of the size of the screen
 
     var positionY: Double
     var maxWidth: Double? = Screen.width * 0.5
@@ -27,7 +31,9 @@ struct Prompt {
 struct LottieAsset {
     var fileName: String
 
-    var positionX: Double // MARK: position in percentage of the size of the screen
+    /// Position in percentage of the size of the screen
+
+    var positionX: Double // MARK: - position in percentage of the size of the screen
 
     var positionY: Double
     var maxWidth: Double? = Screen.width * 0.52
@@ -310,8 +316,11 @@ struct StoryView: View {
                         }
                     }
                     Spacer()
-                    StoryNavigationButton(direction: .right) {
-                        nextPage()
+                    if prompts.indices.contains(scrollPosition ?? -1) &&
+                        prompts[scrollPosition!] == nil {
+                        StoryNavigationButton(direction: .right) {
+                            nextPage()
+                        }
                     }
                 }
                 VStack {

@@ -22,23 +22,29 @@ struct ModelGenerator {
         var modelFetchDescriptor = FetchDescriptor<T>()
         modelFetchDescriptor.fetchLimit = 1
 
+        let modelContext = ModelContext(container)
+
         do {
-            guard try container.mainContext.fetch(modelFetchDescriptor).isEmpty else { return }
+            let res = try modelContext.fetch(modelFetchDescriptor)
+            guard res.isEmpty else { return }
 
             // MARK: - This code will only run if the persistent store is empty.
 
             for item in items {
-                container.mainContext.insert(item)
+                modelContext.insert(item)
             }
+            try? modelContext.save()
         } catch {
             print("Cannot populate container")
         }
     }
 
     @MainActor
-    static let generator = {
+    static let generator = { (inMemory: Bool) in
         let schema = Schema(models)
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        let modelConfiguration = inMemory ?
+            ModelConfiguration(schema: schema, isStoredInMemoryOnly: inMemory, cloudKitDatabase: .none) :
+            ModelConfiguration(schema: schema, isStoredInMemoryOnly: inMemory)
 
         do {
             let container = try ModelContainer(for: schema, configurations: [modelConfiguration])

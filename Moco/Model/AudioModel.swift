@@ -158,6 +158,20 @@ struct AudioModel: Identifiable, Equatable {
         }
     }
 
+    func stopSoundsQueue(id: String) {
+        if let player = queuePlayers[id] { // player for sound has been found
+            player.pause()
+            player.seek(to: .zero)
+        }
+    }
+
+    func stopAllSoundsQueue() {
+        queuePlayers.forEach { _, player in
+            player.pause()
+            player.seek(to: .zero)
+        }
+    }
+
     func stopSound(soundFileName: String, type: String = "mp3") {
         guard let bundle = Bundle.main.path(forResource: soundFileName, ofType: type) else { return }
         let soundFileNameURL = URL(fileURLWithPath: bundle)

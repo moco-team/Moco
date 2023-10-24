@@ -20,6 +20,15 @@ class SpeakPromptViewModel {
         }
     }
 
+    var correctAnswer: String {
+        get {
+            speakPromptModel.correctAnswer
+        }
+        set {
+            speakPromptModel.correctAnswer = newValue
+        }
+    }
+
     var showPopUp: Bool {
         get {
             speakPromptModel.showPopUp

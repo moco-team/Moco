@@ -8,7 +8,7 @@
 import Foundation
 
 @Observable class DetectionPromptViewModel {
-    var detectionPromptModel = DetectionPromptModel()
+    private var detectionPromptModel = DetectionPromptModel()
 
     var correctCount: Int {
         detectionPromptModel.correctCount

@@ -15,6 +15,7 @@ struct LottieView: UIViewRepresentable {
     var height: Double = 0
     var loopMode: LottieLoopMode = .playOnce
     var contentMode: UIView.ContentMode = .scaleAspectFit
+    @State var shouldPlay = true
 
     func makeUIView(context _: UIViewRepresentableContext<LottieView>) -> some UIView {
         let view = UIView(frame: .init(x: 0, y: 0, width: width, height: height))
@@ -25,7 +26,11 @@ struct LottieView: UIViewRepresentable {
         lottieAnimationView.animation = animation
         lottieAnimationView.contentMode = contentMode
         lottieAnimationView.loopMode = loopMode
-        lottieAnimationView.play()
+        if shouldPlay {
+            lottieAnimationView.play()
+        } else {
+            shouldPlay = false
+        }
 
         lottieAnimationView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(lottieAnimationView)

@@ -26,7 +26,7 @@ struct MocoApp: App {
     @StateObject private var speechViewModel = SpeechRecognizerViewModel.shared
     @StateObject private var objectDetectionViewModel = ObjectDetectionViewModel.shared
 
-    private static let sharedModelContainer: ModelContainer = ModelGenerator.generator()
+    private static let sharedModelContainer: ModelContainer = ModelGenerator.generator(false)
     static let modelContext = ModelContext(sharedModelContainer)
 
     var body: some Scene {

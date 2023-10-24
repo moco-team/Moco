@@ -43,10 +43,24 @@ struct HomeView: View {
 
                 Spacer()
 
+                HStack {
+                    Text("Koleksi Buku")
+                        .customFont(.cherryBomb, size: 50)
+                        .foregroundColor(Color.blueTxt)
+                        .fontWeight(.bold)
+                    Spacer()
+                }.padding(.leading, 60).padding(.bottom, 30)
+
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: [GridItem(.flexible())]) {
-                        ForEach(storyThemeViewModel.storyThemes) { storyTheme in
-                            StoryBook(title: storyTheme.title, image: storyTheme.pictureName) {
+                        ForEach(
+                            Array(storyThemeViewModel.storyThemes.enumerated()), id: \.element
+                        ) { index, storyTheme in
+                            StoryBook(
+                                title: storyTheme.title,
+                                image: storyTheme.pictureName,
+                                number: index + 1
+                            ) {
                                 navigate.append(.story(storyTheme.id))
                             }
                         }
@@ -57,10 +71,13 @@ struct HomeView: View {
                 Spacer()
                 Spacer()
             }
-            .task {
+            .onShake {
+                navigate.append(.storyThemeAdmin)
+            }
+            .onAppear {
                 storyThemeViewModel.fetchStoryThemes()
                 audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1)
-                homeViewModel.soundLevel = 0.5
+                homeViewModel.soundLevel = 0.3
                 homeViewModel.setVolume()
             }
         }
