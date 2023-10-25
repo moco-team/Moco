@@ -19,13 +19,13 @@ struct RootViewModifier: ViewModifier {
                 .navigationBarBackButtonHidden(true)
                 .ignoresSafeArea()
                 .onTapGesture { location in
-                    rippleViewModel.appendRipple(Ripple(x: location.x, y: location.y))
+                    rippleViewModel.appendRipple(Ripple(xPosition: location.x, yPosition: location.y))
                 }
             ForEach(rippleViewModel.ripples, id: \.self) { ripple in
-                RippleView(x: ripple.x, y: ripple.y) {
+                RippleView(xPosition: ripple.xPosition, yPosition: ripple.yPosition) {
                     rippleViewModel.removeRipple(id: ripple.id.uuidString)
                 }.onTapGesture { location in
-                    rippleViewModel.appendRipple(Ripple(x: location.x, y: location.y))
+                    rippleViewModel.appendRipple(Ripple(xPosition: location.x, yPosition: location.y))
                 }
             }
         }

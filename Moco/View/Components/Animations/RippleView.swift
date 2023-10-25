@@ -9,14 +9,14 @@ import SwiftUI
 
 struct Ripple: Identifiable, Hashable {
     var id = UUID()
-    var x: CGFloat
-    var y: CGFloat
+    var xPosition: CGFloat
+    var yPosition: CGFloat
 }
 
 struct RippleView: View {
     @State private var isVisible = true
-    var x: CGFloat
-    var y: CGFloat
+    var xPosition: CGFloat
+    var yPosition: CGFloat
 
     @State var index = 0
     let images = (0 ... 60).map { UIImage(named: "Ripple_\($0)")! }
@@ -32,10 +32,10 @@ struct RippleView: View {
                         .resizable()
                         .frame(width: 200, height: 200, alignment: .center)
                         .onReceive(timer) { _ in
-                            self.index = self.index + 1
+                            self.index += 1
                             if self.index >= 60 { self.index = 0 }
                         }
-                        .position(x: x, y: y)
+                        .position(x: xPosition, y: yPosition)
                 }.onAppear(perform: {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
                         self.index = 0

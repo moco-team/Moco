@@ -194,9 +194,9 @@ class ARViewController: UIViewController, ARSessionDelegate {
                 // Transform the latter into normalized view coordinates
                 let viewNormalizedBoundingBox = boundingBox.applying(fromCameraImageToViewTransform)
                 // The affine transform for view coordinates
-                let t = CGAffineTransform(scaleX: viewportSize.width, y: viewportSize.height)
+                let transform = CGAffineTransform(scaleX: viewportSize.width, y: viewportSize.height)
                 // Scale up to view coordinates
-                let viewBoundingBox = viewNormalizedBoundingBox.applying(t)
+                let viewBoundingBox = viewNormalizedBoundingBox.applying(transform)
 
                 let midPoint = CGPoint(x: viewBoundingBox.midX,
                                        y: viewBoundingBox.midY)
@@ -253,25 +253,29 @@ class ARViewController: UIViewController, ARSessionDelegate {
         }
 
         private func setupObject() {
-            let environment = try! ModelEntity.load(named: "environment.usdz")
+            do {
+                let environment = try ModelEntity.load(named: "environment.usdz")
 
-            let scalingPivot = Entity()
-            scalingPivot.position.y = environment.visualBounds(relativeTo: nil).center.y
-            scalingPivot.addChild(environment)
+                let scalingPivot = Entity()
+                scalingPivot.position.y = environment.visualBounds(relativeTo: nil).center.y
+                scalingPivot.addChild(environment)
 
-            // compensating a robot position
-            environment.position.y -= scalingPivot.position.y
+                // compensating a robot position
+                environment.position.y -= scalingPivot.position.y
 
-            let anchor = AnchorEntity()
-            anchor.addChild(scalingPivot)
-            arView.scene.addAnchor(anchor)
+                let anchor = AnchorEntity()
+                anchor.addChild(scalingPivot)
+                arView.scene.addAnchor(anchor)
 
-            let newTransform = Transform(scale: .one * 0.1)
-            scalingPivot.move(to: newTransform,
-                              relativeTo: scalingPivot.parent,
-                              duration: 5.0)
+                let newTransform = Transform(scale: .one * 0.1)
+                scalingPivot.move(to: newTransform,
+                                  relativeTo: scalingPivot.parent,
+                                  duration: 5.0)
 
-            arView.scene.addAnchor(anchor)
+                arView.scene.addAnchor(anchor)
+            } catch {
+                fatalError("Error loading model entity")
+            }
 
 //        if usdzModel != nil {
 //            for animation in usdzModel!.availableAnimations {
