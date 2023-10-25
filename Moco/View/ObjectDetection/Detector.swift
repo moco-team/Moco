@@ -50,11 +50,13 @@ extension ObjectDetectionViewController {
 
             let textlayer = CATextLayer()
 
+            let objectName = objectObservation.labels.first?.identifier
+
             textlayer.frame = CGRect(x: objectBounds.minX,
                                      y: screenRect.size.height - objectBounds.maxY + 10, width: 200, height: 18)
             textlayer.fontSize = 12
             textlayer.alignmentMode = .center
-            textlayer.string = objectObservation.labels[0].identifier
+            textlayer.string = objectObservation.labels.first?.identifier
             textlayer.isWrapped = true
             textlayer.truncationMode = .end
             textlayer.backgroundColor = UIColor.white.cgColor
@@ -63,7 +65,7 @@ extension ObjectDetectionViewController {
             detectionLayer.addSublayer(boxLayer)
             detectionLayer.addSublayer(textlayer)
 
-            detectionHandler?(objectObservation.labels[0].identifier)
+            detectionHandler?(objectName)
         }
     }
 

@@ -22,8 +22,8 @@ struct DetectionView: View {
         ZStack {
             if !objectDetectionViewModel.isMatch {
                 HostedViewController { detectedObject in
-                    print(detectedObject)
-                    objectDetectionViewModel.setDetectedObject(DetectionValue(rawValue: detectedObject))
+                    print(detectedObject ?? "")
+                    objectDetectionViewModel.setDetectedObject(DetectionValue(rawValue: detectedObject ?? ""))
                 }.environmentObject(objectDetectionViewModel)
                     .ignoresSafeArea()
                 Image("Story/Content/Story1/Pages/Page7/background")

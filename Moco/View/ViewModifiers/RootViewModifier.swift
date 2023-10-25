@@ -8,13 +8,27 @@
 import SwiftUI
 
 struct RootViewModifier: ViewModifier {
+    @State private var rippleViewModel = RippleViewModel()
+
     func body(content: Content) -> some View {
-        content
-            .edgesIgnoringSafeArea(.all)
-            .statusBar(hidden: true)
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
-            .ignoresSafeArea()
+        ZStack {
+            content
+                .edgesIgnoringSafeArea(.all)
+                .statusBar(hidden: true)
+                .navigationBarHidden(true)
+                .navigationBarBackButtonHidden(true)
+                .ignoresSafeArea()
+                .onTapGesture { location in
+                    rippleViewModel.appendRipple(Ripple(xPosition: location.x, yPosition: location.y))
+                }
+            ForEach(rippleViewModel.ripples, id: \.self) { ripple in
+                RippleView(xPosition: ripple.xPosition, yPosition: ripple.yPosition) {
+                    rippleViewModel.removeRipple(id: ripple.id.uuidString)
+                }.onTapGesture { location in
+                    rippleViewModel.appendRipple(Ripple(xPosition: location.x, yPosition: location.y))
+                }
+            }
+        }
     }
 }
 

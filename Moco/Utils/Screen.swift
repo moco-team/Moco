@@ -10,4 +10,5 @@ import SwiftUI
 struct Screen {
     static var width = UIScreen.main.bounds.size.width
     static var height = UIScreen.main.bounds.size.height
+    static var size = UIScreen.main.bounds.size
 }

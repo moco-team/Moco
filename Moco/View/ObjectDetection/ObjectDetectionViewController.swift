@@ -18,7 +18,7 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
     var screenRect: CGRect! = nil // For view dimensions
 
     var objectDetectionViewModel: ObjectDetectionViewModel?
-    var detectionHandler: ((String) -> Void)?
+    var detectionHandler: ((String?) -> Void)?
     var threshold: Float = 0.8
 
     // Detector
@@ -153,7 +153,7 @@ struct HostedViewController: UIViewControllerRepresentable {
 
     var targetObject: DetectionValue = .person
     var threshold: Float = 0.8
-    var detectionHandler: ((String) -> Void)?
+    var detectionHandler: ((String?) -> Void)?
 
     func makeUIViewController(context _: Context) -> UIViewController {
         let viewController = ObjectDetectionViewController()
