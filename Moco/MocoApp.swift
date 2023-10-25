@@ -25,6 +25,7 @@ struct MocoApp: App {
 
     @StateObject private var speechViewModel = SpeechRecognizerViewModel.shared
     @StateObject private var objectDetectionViewModel = ObjectDetectionViewModel.shared
+    @StateObject private var arViewModel = ARViewModel()
 
     private static let sharedModelContainer: ModelContainer = ModelGenerator.generator(false)
     static let modelContext = ModelContext(sharedModelContainer)
@@ -41,6 +42,7 @@ struct MocoApp: App {
                 .environment(\.timerViewModel, timerViewModel)
                 .environmentObject(speechViewModel)
                 .environmentObject(objectDetectionViewModel)
+                .environmentObject(arViewModel)
         }
     }
 }

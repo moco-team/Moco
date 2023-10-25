@@ -72,6 +72,18 @@
 		932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 932357D52ADE6EF3009B3D86 /* bg-story.mp3 */; };
 		932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D72ADE700D009B3D86 /* AudioViewModel.swift */; };
 		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
+		937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2852AE80BFA008C69BB /* RippleView.swift */; };
+		937AF2882AE81983008C69BB /* RippleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2872AE81983008C69BB /* RippleModel.swift */; };
+		937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2892AE81A26008C69BB /* RippleViewModel.swift */; };
+		937AF28C2AE832A7008C69BB /* ARViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF28B2AE832A7008C69BB /* ARViewControllerContainer.swift */; };
+		937AF28F2AE832FC008C69BB /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF28E2AE832FC008C69BB /* ARViewController.swift */; };
+		937AF2912AE83794008C69BB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2902AE83794008C69BB /* Date.swift */; };
+		937AF2932AE838D0008C69BB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2922AE838D0008C69BB /* Dictionary.swift */; };
+		937AF2952AE8C06C008C69BB /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2942AE8C06C008C69BB /* ARView.swift */; };
+		937AF2982AE8C72B008C69BB /* environment.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 937AF2972AE8C72B008C69BB /* environment.usdz */; };
+		937AF29A2AE8D422008C69BB /* EnvironmentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2992AE8D422008C69BB /* EnvironmentEntity.swift */; };
+		937AF29C2AE8D47E008C69BB /* ResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF29B2AE8D47E008C69BB /* ResourceLoader.swift */; };
+		937AF29E2AE8D4EE008C69BB /* ARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF29D2AE8D4EE008C69BB /* ARViewModel.swift */; };
 		937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */; };
 		937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */; };
 		938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55352AE181C600BC233D /* RootViewModifier.swift */; };
@@ -208,6 +220,18 @@
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
+		937AF2852AE80BFA008C69BB /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
+		937AF2872AE81983008C69BB /* RippleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleModel.swift; sourceTree = "<group>"; };
+		937AF2892AE81A26008C69BB /* RippleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleViewModel.swift; sourceTree = "<group>"; };
+		937AF28B2AE832A7008C69BB /* ARViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewControllerContainer.swift; sourceTree = "<group>"; };
+		937AF28E2AE832FC008C69BB /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		937AF2902AE83794008C69BB /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		937AF2922AE838D0008C69BB /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		937AF2942AE8C06C008C69BB /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
+		937AF2972AE8C72B008C69BB /* environment.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = environment.usdz; sourceTree = "<group>"; };
+		937AF2992AE8D422008C69BB /* EnvironmentEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentEntity.swift; sourceTree = "<group>"; };
+		937AF29B2AE8D47E008C69BB /* ResourceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceLoader.swift; sourceTree = "<group>"; };
+		937AF29D2AE8D4EE008C69BB /* ARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewModel.swift; sourceTree = "<group>"; };
 		937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		938C55352AE181C600BC233D /* RootViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModifier.swift; sourceTree = "<group>"; };
@@ -477,6 +501,7 @@
 		05AE935E2ADE820B0082B21D /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				937AF2962AE8C719008C69BB /* Usdz */,
 				93C8E71C2ADEDA6A002315A2 /* Fonts */,
 				932357D22ADE6DF2009B3D86 /* Audio */,
 				05AE935F2ADE82240082B21D /* Lottie */,
@@ -632,6 +657,26 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
+		937AF28D2AE832AF008C69BB /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				937AF28B2AE832A7008C69BB /* ARViewControllerContainer.swift */,
+				937AF28E2AE832FC008C69BB /* ARViewController.swift */,
+				937AF2942AE8C06C008C69BB /* ARView.swift */,
+				937AF2992AE8D422008C69BB /* EnvironmentEntity.swift */,
+				937AF29B2AE8D47E008C69BB /* ResourceLoader.swift */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
+		937AF2962AE8C719008C69BB /* Usdz */ = {
+			isa = PBXGroup;
+			children = (
+				937AF2972AE8C72B008C69BB /* environment.usdz */,
+			);
+			path = Usdz;
+			sourceTree = "<group>";
+		};
 		938C55342AE181AF00BC233D /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +692,8 @@
 				938E3D4F2ADBABD3003D2AE1 /* Print.swift */,
 				938E3D552ADBE961003D2AE1 /* Screen.swift */,
 				93C8E7222ADEF249002315A2 /* FontUtil.swift */,
+				937AF2902AE83794008C69BB /* Date.swift */,
+				937AF2922AE838D0008C69BB /* Dictionary.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -744,6 +791,8 @@
 				937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */,
 				93E3D8772AE4E55000E5391F /* DetectionPromptViewModel.swift */,
 				93E3D87B2AE4EFDB00E5391F /* SpeakPromptViewModel.swift */,
+				937AF2892AE81A26008C69BB /* RippleViewModel.swift */,
+				937AF29D2AE8D4EE008C69BB /* ARViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -766,6 +815,7 @@
 				937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */,
 				93E3D8752AE4E4BA00E5391F /* DetectionPromptModel.swift */,
 				93E3D8792AE4E95700E5391F /* SpeakPromptModel.swift */,
+				937AF2872AE81983008C69BB /* RippleModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -781,6 +831,7 @@
 		93C2F8B42AD6848F007D1ABC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				937AF28D2AE832AF008C69BB /* AR */,
 				938C55342AE181AF00BC233D /* ViewModifiers */,
 				0BA3E5072ADFC5EE00BCFE9E /* User */,
 				0BA3E5062ADFC5E200BCFE9E /* Admin */,
@@ -826,6 +877,7 @@
 			isa = PBXGroup;
 			children = (
 				93C8E7292AE01660002315A2 /* Storm.swift */,
+				937AF2852AE80BFA008C69BB /* RippleView.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -949,6 +1001,7 @@
 				9317221D2AE5508300346382 /* Page5-monolog1.m4a in Resources */,
 				9317221E2AE5508300346382 /* Page6-monolog1.m4a in Resources */,
 				9317221F2AE5508300346382 /* prompt_kursi.m4a in Resources */,
+				937AF2982AE8C72B008C69BB /* environment.usdz in Resources */,
 				931722202AE5508300346382 /* Page8-monolog1.m4a in Resources */,
 				931722212AE5508300346382 /* frog_thankyou.m4a in Resources */,
 				931722222AE5508300346382 /* Page9-monolog1.m4a in Resources */,
@@ -1010,6 +1063,7 @@
 				938E3D4D2ADBA247003D2AE1 /* ContentViewContainer.swift in Sources */,
 				0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */,
 				938E3D3F2AD990C3003D2AE1 /* Buttons.swift in Sources */,
+				937AF2952AE8C06C008C69BB /* ARView.swift in Sources */,
 				938E3D312AD8FD2E003D2AE1 /* ItemViewModel.swift in Sources */,
 				0B6E2F662ADC8ECE0001D320 /* StoryThemeModel.swift in Sources */,
 				93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */,
@@ -1017,9 +1071,11 @@
 				93C2F8BD2AD684CE007D1ABC /* HomeView.swift in Sources */,
 				93C8E7232ADEF249002315A2 /* FontUtil.swift in Sources */,
 				937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */,
+				937AF2932AE838D0008C69BB /* Dictionary.swift in Sources */,
 				0B2E31DC2AD8084600DFC16F /* CollectionView.swift in Sources */,
 				0B6E2F6A2ADC91060001D320 /* StoryContentModel.swift in Sources */,
 				93C8E72C2AE1373D002315A2 /* Shake.swift in Sources */,
+				937AF2882AE81983008C69BB /* RippleModel.swift in Sources */,
 				0B2E31DA2AD7EBE500DFC16F /* CollectionModel.swift in Sources */,
 				937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */,
 				0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */,
@@ -1044,26 +1100,34 @@
 				93C8E7252ADEF2D3002315A2 /* TimerViewModel.swift in Sources */,
 				05E17AD72ADEBFC500A34547 /* BalloonView.swift in Sources */,
 				938E3D352AD91AD5003D2AE1 /* EnvironmentValue.swift in Sources */,
+				937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */,
 				938E3D332AD91605003D2AE1 /* DetectionView.swift in Sources */,
 				05BA97AA2AE11EE400F64F52 /* MPVolumeViewExtension.swift in Sources */,
 				938E3D452ADAD5F3003D2AE1 /* StoryBook.swift in Sources */,
 				0B6E2F722ADC97BE0001D320 /* StoryViewModel.swift in Sources */,
+				937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */,
 				056B67282AE28D1400A3B493 /* AchievementsView.swift in Sources */,
 				938E3D432ADABD9F003D2AE1 /* BaseViewModel.swift in Sources */,
 				050353E12ADFE2970066591A /* FindHoney.swift in Sources */,
 				0B6E2F6E2ADC92950001D320 /* HintModel.swift in Sources */,
 				93E3D87C2AE4EFDB00E5391F /* SpeakPromptViewModel.swift in Sources */,
 				0BA3E5122ADFD98400BCFE9E /* StoryModalView.swift in Sources */,
+				937AF29C2AE8D47E008C69BB /* ResourceLoader.swift in Sources */,
 				0B2E31E22AD9064900DFC16F /* CollectionViewModel.swift in Sources */,
+				937AF2912AE83794008C69BB /* Date.swift in Sources */,
 				0BA3E5102ADFD04700BCFE9E /* StoryThemeModalView.swift in Sources */,
+				937AF29A2AE8D422008C69BB /* EnvironmentEntity.swift in Sources */,
 				938E3D522ADBAE62003D2AE1 /* SettingsView.swift in Sources */,
 				938E3D472ADB0AA5003D2AE1 /* Routes.swift in Sources */,
+				937AF28F2AE832FC008C69BB /* ARViewController.swift in Sources */,
 				0B2E31E02AD810D400DFC16F /* StoryBoardView.swift in Sources */,
+				937AF28C2AE832A7008C69BB /* ARViewControllerContainer.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
 				938C553E2AE1B76600BC233D /* ObjectDetectionModel.swift in Sources */,
 				0B6E2F682ADC908B0001D320 /* StoryModel.swift in Sources */,
 				938E3D3B2AD9874F003D2AE1 /* ModelGenerator.swift in Sources */,
 				93C8E72A2AE01660002315A2 /* Storm.swift in Sources */,
+				937AF29E2AE8D4EE008C69BB /* ARViewModel.swift in Sources */,
 				056B67262AE28CFB00A3B493 /* ProfileView.swift in Sources */,
 				0B2E31DE2AD8087B00DFC16F /* Header.swift in Sources */,
 				932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */,

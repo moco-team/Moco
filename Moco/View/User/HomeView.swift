@@ -17,6 +17,7 @@ struct HomeView: View {
     @Environment(\.navigate) private var navigate
 
     @State private var homeViewModel = HomeViewModel()
+    @State private var showAr = false
 
     var body: some View {
         ZStack {
@@ -40,6 +41,9 @@ struct HomeView: View {
                     BurgerMenu()
                 }
                 .padding(.horizontal, 0.05 * Screen.width)
+                Button("AR") {
+                    showAr = true
+                }
 
                 Spacer()
 
@@ -79,6 +83,9 @@ struct HomeView: View {
                 audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1)
                 homeViewModel.soundLevel = 0.3
                 homeViewModel.setVolume()
+            }
+            if showAr {
+                ARCameraView().ignoresSafeArea()
             }
         }
     }
