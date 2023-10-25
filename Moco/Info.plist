@@ -5,6 +5,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>CherryBombRegular.ttf</string>
+		<string>DidactGothic-Regular.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

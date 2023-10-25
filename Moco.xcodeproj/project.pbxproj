@@ -84,6 +84,7 @@
 		937AF29A2AE8D422008C69BB /* EnvironmentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2992AE8D422008C69BB /* EnvironmentEntity.swift */; };
 		937AF29C2AE8D47E008C69BB /* ResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF29B2AE8D47E008C69BB /* ResourceLoader.swift */; };
 		937AF29E2AE8D4EE008C69BB /* ARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF29D2AE8D4EE008C69BB /* ARViewModel.swift */; };
+		937AF29F2AE8FDB7008C69BB /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 938C553F2AE22E6800BC233D /* DidactGothic-Regular.ttf */; };
 		937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */; };
 		937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */; };
 		938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55352AE181C600BC233D /* RootViewModifier.swift */; };
@@ -992,6 +993,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				937AF29F2AE8FDB7008C69BB /* DidactGothic-Regular.ttf in Resources */,
 				931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */,
 				931722182AE5508300346382 /* Page2-monolog1.m4a in Resources */,
 				931722192AE5508300346382 /* Page3-monolog1.m4a in Resources */,

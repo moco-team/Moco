@@ -59,17 +59,20 @@ final class ARViewModel: NSObject, ObservableObject {
             environment.setPosition(translation, relativeTo: nil)
         }
 
-        // If there is not already an anchor here, create one
-        guard let anchorEntity = anchors[anchor.identifier] else {
-            let anchorEntity = AnchorEntity(anchor: anchor)
-            anchorEntity.addChild(environment)
-            view.scene.addAnchor(anchorEntity)
-            anchors[anchor.identifier] = anchorEntity
-            return
-        }
+        #if !targetEnvironment(simulator)
 
-        // Add the cup to the existing anchor
-        anchorEntity.addChild(environment)
+            // If there is not already an anchor here, create one
+            guard let anchorEntity = anchors[anchor.identifier] else {
+                let anchorEntity = AnchorEntity(anchor: anchor)
+                anchorEntity.addChild(environment)
+                view.scene.addAnchor(anchorEntity)
+                anchors[anchor.identifier] = anchorEntity
+                return
+            }
+
+            // Add the cup to the existing anchor
+            anchorEntity.addChild(environment)
+        #endif
     }
 
     // MARK: - Private methods
