@@ -58,16 +58,16 @@ struct MazeModel {
             return xPos >= 0 && xPos < rows && yPos >= 0 && yPos < cols && maze[xPos][yPos] == 1
         }
 
-        func recursiveBacktracking(x: Int, y: Int) {
+        func recursiveBacktracking(xPos: Int, yPos: Int) {
             var directions = [(0, 2), (2, 0), (0, -2), (-2, 0)]
             directions.shuffle()
             for (dx, dy) in directions {
-                let newX = x + dx
-                let newY = y + dy
+                let newX = xPos + dx
+                let newY = yPos + dy
                 if isValid(newX, newY) {
                     maze[newX][newY] = 0 // Mark the path (0)
-                    maze[(x + newX) / 2][(y + newY) / 2] = 0 // Remove the wall
-                    recursiveBacktracking(x: newX, y: newY)
+                    maze[(xPos + newX) / 2][(yPos + newY) / 2] = 0 // Remove the wall
+                    recursiveBacktracking(xPos: newX, yPos: newY)
                 }
             }
         }
@@ -79,7 +79,7 @@ struct MazeModel {
             startY = Int.random(in: 1 ..< cols).advanced(by: 1) / 2 * 2 + 1
         }
         maze[startX][startY] = 0 // Mark the starting point
-        recursiveBacktracking(x: startX, y: startY)
+        recursiveBacktracking(xPos: startX, yPos: startY)
 
         func generateInOutXPoint(yPos: Int) -> LocationPoint {
             var initX = Int.random(in: 1 ..< cols - 1)

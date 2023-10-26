@@ -25,37 +25,40 @@ class MazeScene: SKScene {
         let screenHeight = size.height
         let tileSize = min(screenWidth, screenHeight) / CGFloat(mazeModel.arrayPoint.count)
 
-        var x: CGFloat
-        var y: CGFloat = screenHeight
-        for i in 0 ..< mazeModel.arrayPoint.count {
-            x = tileSize / 2 + screenWidth / 2
-            x -= (tileSize * CGFloat(mazeModel.arrayPoint.first!.count)) / 2
+        var xRenderPos: CGFloat
+        var yRenderPos: CGFloat = screenHeight
+        for index in 0 ..< mazeModel.arrayPoint.count {
+            xRenderPos = tileSize / 2 + screenWidth / 2
+            xRenderPos -= (tileSize * CGFloat(mazeModel.arrayPoint.first!.count)) / 2
 
-            if i == 0 {
-                y = screenHeight - tileSize / 2
+            if index == 0 {
+                yRenderPos = screenHeight - tileSize / 2
             } else {
-                y -= tileSize
+                yRenderPos -= tileSize
             }
 
-            for j in 0 ..< mazeModel.arrayPoint[i].count {
+            for jIndex in 0 ..< mazeModel.arrayPoint[index].count {
                 let ground = SKSpriteNode()
                 ground.size = CGSize(width: tileSize, height: tileSize)
 
-                if mazeModel.arrayPoint[i][j] == 0 {
-                    let food = SKSpriteNode(color: UIColor(red: 0.36, green: 0.25, blue: 0.20, alpha: 1.00), size: CGSize(width: 6, height: 6))
+                if mazeModel.arrayPoint[index][jIndex] == 0 {
+                    let food = SKSpriteNode(
+                        color: UIColor(red: 0.36, green: 0.25, blue: 0.20, alpha: 1.00),
+                        size: CGSize(width: 6, height: 6)
+                    )
                     food.name = "0"
                     ground.name = "0"
                     ground.color = UIColor(red: 0.77, green: 0.87, blue: 0.96, alpha: 1.00)
                     ground.addChild(food)
-                } else if mazeModel.arrayPoint[i][j] == 1 {
+                } else if mazeModel.arrayPoint[index][jIndex] == 1 {
                     ground.name = "1"
                     ground.texture = SKTexture(imageNamed: "wall")
                 }
 
-                ground.position = CGPoint(x: x, y: y)
-                x += tileSize
+                ground.position = CGPoint(x: xRenderPos, y: yRenderPos)
+                xRenderPos += tileSize
                 addChild(ground)
-                mazeModel.points[i][j] = ground.position
+                mazeModel.points[index][jIndex] = ground.position
             }
         }
     }
@@ -85,22 +88,22 @@ class MazeScene: SKScene {
         addChild(moco)
     }
 
-    func actionMovePacman(to: SKNode, x: CGFloat, y: CGFloat) {
+    func actionMovePacman(to: SKNode, xPos: CGFloat, yPos: CGFloat) {
         let move = SKAction.move(to: to.position, duration: 0.15)
         let void = SKAction.run { [self] in
-            movePacman(x: x, y: y)
+            movePacman(xPos: xPos, yPos: yPos)
         }
         let sequence = SKAction.sequence([move, void])
         moco.run(sequence)
     }
 
-    func movePacman(x: CGFloat, y: CGFloat) {
-        let next = nodes(at: CGPoint(x: moco.position.x + x, y: moco.position.y + y)).last
+    func movePacman(xPos: CGFloat, yPos: CGFloat) {
+        let next = nodes(at: CGPoint(x: moco.position.x + xPos, y: moco.position.y + yPos)).last
         if next?.name == "0" {
             if let nextChildNode = next?.childNode(withName: "0") {
                 nextChildNode.removeFromParent()
             }
-            actionMovePacman(to: next!, x: x, y: y)
+            actionMovePacman(to: next!, xPos: xPos, yPos: yPos)
         }
     }
 
