@@ -7,59 +7,13 @@
 
 import SpriteKit
 
-enum MoveDirection {
-    case left
-    case right
-    case up
-    case down
-}
-
-struct MapSize {
-    var width: Int
-    var height: Int
-}
-
 class MazeScene: SKScene {
-    var pacman: SKSpriteNode!
+    var moco: SKSpriteNode!
     var touched: Bool = false
     var snack1: SKSpriteNode!
     var score: Int = 0
-    var characterLocationPoint = (25, 19)
 
-    static var mapSize = MapSize(width: 21, height: 27)
-
-    var arrayPoint: [[Int]] =
-        [
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1],
-            [1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1],
-            [1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1],
-            [1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
-            [1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-            [1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1],
-            [1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
-            [1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-        ]
-
-    var points: [[CGPoint]] = Array(repeating: Array(repeating: CGPoint.zero, count: mapSize.width), count: mapSize.height)
+    var mazeModel = MazeModel()
 
     override func didMove(to _: SKView) {
         createMap()
@@ -69,13 +23,13 @@ class MazeScene: SKScene {
     func createMap() {
         let screenWidth = size.width
         let screenHeight = size.height
-        let tileSize = min(screenWidth, screenHeight) / CGFloat(arrayPoint.count)
+        let tileSize = min(screenWidth, screenHeight) / CGFloat(mazeModel.arrayPoint.count)
 
         var x: CGFloat
         var y: CGFloat = screenHeight
-        for i in 0 ..< arrayPoint.count {
+        for i in 0 ..< mazeModel.arrayPoint.count {
             x = tileSize / 2 + screenWidth / 2
-            x -= (tileSize * CGFloat(arrayPoint.first!.count)) / 2
+            x -= (tileSize * CGFloat(mazeModel.arrayPoint.first!.count)) / 2
 
             if i == 0 {
                 y = screenHeight - tileSize / 2
@@ -83,17 +37,17 @@ class MazeScene: SKScene {
                 y -= tileSize
             }
 
-            for j in 0 ..< arrayPoint[i].count {
+            for j in 0 ..< mazeModel.arrayPoint[i].count {
                 let ground = SKSpriteNode()
                 ground.size = CGSize(width: tileSize, height: tileSize)
 
-                if arrayPoint[i][j] == 0 {
+                if mazeModel.arrayPoint[i][j] == 0 {
                     let food = SKSpriteNode(color: UIColor(red: 0.36, green: 0.25, blue: 0.20, alpha: 1.00), size: CGSize(width: 6, height: 6))
                     food.name = "0"
                     ground.name = "0"
                     ground.color = UIColor(red: 0.77, green: 0.87, blue: 0.96, alpha: 1.00)
                     ground.addChild(food)
-                } else if arrayPoint[i][j] == 1 {
+                } else if mazeModel.arrayPoint[i][j] == 1 {
                     ground.name = "1"
                     ground.texture = SKTexture(imageNamed: "wall")
                 }
@@ -101,55 +55,34 @@ class MazeScene: SKScene {
                 ground.position = CGPoint(x: x, y: y)
                 x += tileSize
                 addChild(ground)
-                points[i][j] = ground.position
+                mazeModel.points[i][j] = ground.position
             }
         }
     }
 
     func move(_ direction: MoveDirection) {
-        switch direction {
-        case .left:
-            if characterLocationPoint.1 <= 0 ||
-                arrayPoint[characterLocationPoint.0][characterLocationPoint.1 - 1] == 1 {
-                return
-            }
-            characterLocationPoint.1 -= 1
-        case .right:
-            if characterLocationPoint.1 >= MazeScene.mapSize.width - 1 ||
-                arrayPoint[characterLocationPoint.0][characterLocationPoint.1 + 1] == 1 {
-                return
-            }
-            characterLocationPoint.1 += 1
-        case .down:
-            if characterLocationPoint.0 >= MazeScene.mapSize.height - 1 ||
-                arrayPoint[characterLocationPoint.0 + 1][characterLocationPoint.1] == 1 {
-                return
-            }
-            characterLocationPoint.0 += 1
-        case .up:
-            if characterLocationPoint.0 <= 0 ||
-                arrayPoint[characterLocationPoint.0 - 1][characterLocationPoint.1] == 1 {
-                return
-            }
-            characterLocationPoint.0 -= 1
-        }
-        guard
-            points.indices.contains(characterLocationPoint.0) &&
-            points.first!.indices.contains(characterLocationPoint.1)
-        else { return }
+        guard mazeModel.move(direction) else { return }
 
-        let position = points[characterLocationPoint.0][characterLocationPoint.1]
+        let position =
+            mazeModel.points[mazeModel.characterLocationPoint.yPos][mazeModel.characterLocationPoint.xPos]
 
         let move = SKAction.move(to: position, duration: 0.15)
         let sequence = SKAction.sequence([move])
-        pacman.run(sequence)
+        moco.run(sequence)
     }
 
     func createPacman() {
-        pacman = SKSpriteNode(texture: SKTexture(imageNamed: "turtle"), size: CGSize(width: min(size.width, size.height) / CGFloat(arrayPoint.count), height: min(size.width, size.height) / CGFloat(arrayPoint.count)))
-        pacman.name = "pacman"
-        pacman.position = points[25][19]
-        addChild(pacman)
+        moco = SKSpriteNode(
+            texture: SKTexture(imageNamed: "turtle"),
+            size: CGSize(
+                width: min(size.width, size.height) / CGFloat(mazeModel.arrayPoint.count),
+                height: min(size.width, size.height) / CGFloat(mazeModel.arrayPoint.count)
+            )
+        )
+        moco.name = "pacman"
+        moco.position =
+            mazeModel.points[mazeModel.characterLocationPoint.yPos][mazeModel.characterLocationPoint.xPos]
+        addChild(moco)
     }
 
     func actionMovePacman(to: SKNode, x: CGFloat, y: CGFloat) {
@@ -158,11 +91,11 @@ class MazeScene: SKScene {
             movePacman(x: x, y: y)
         }
         let sequence = SKAction.sequence([move, void])
-        pacman.run(sequence)
+        moco.run(sequence)
     }
 
     func movePacman(x: CGFloat, y: CGFloat) {
-        let next = nodes(at: CGPoint(x: pacman.position.x + x, y: pacman.position.y + y)).last
+        let next = nodes(at: CGPoint(x: moco.position.x + x, y: moco.position.y + y)).last
         if next?.name == "0" {
             if let nextChildNode = next?.childNode(withName: "0") {
                 nextChildNode.removeFromParent()
