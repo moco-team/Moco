@@ -85,6 +85,8 @@
 		937AF29C2AE8D47E008C69BB /* ResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF29B2AE8D47E008C69BB /* ResourceLoader.swift */; };
 		937AF29E2AE8D4EE008C69BB /* ARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF29D2AE8D4EE008C69BB /* ARViewModel.swift */; };
 		937AF29F2AE8FDB7008C69BB /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 938C553F2AE22E6800BC233D /* DidactGothic-Regular.ttf */; };
+		937AF2A22AE930AF008C69BB /* MazeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2A12AE930AF008C69BB /* MazeScene.swift */; };
+		937AF2A42AE930E0008C69BB /* MazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2A32AE930E0008C69BB /* MazeView.swift */; };
 		937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */; };
 		937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */; };
 		938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55352AE181C600BC233D /* RootViewModifier.swift */; };
@@ -233,6 +235,8 @@
 		937AF2992AE8D422008C69BB /* EnvironmentEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentEntity.swift; sourceTree = "<group>"; };
 		937AF29B2AE8D47E008C69BB /* ResourceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceLoader.swift; sourceTree = "<group>"; };
 		937AF29D2AE8D4EE008C69BB /* ARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewModel.swift; sourceTree = "<group>"; };
+		937AF2A12AE930AF008C69BB /* MazeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeScene.swift; sourceTree = "<group>"; };
+		937AF2A32AE930E0008C69BB /* MazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeView.swift; sourceTree = "<group>"; };
 		937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		938C55352AE181C600BC233D /* RootViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModifier.swift; sourceTree = "<group>"; };
@@ -622,6 +626,7 @@
 		0BA3E5072ADFC5EE00BCFE9E /* User */ = {
 			isa = PBXGroup;
 			children = (
+				937AF2A02AE930A1008C69BB /* Maze */,
 				0B2E31DB2AD8084600DFC16F /* CollectionView.swift */,
 				938E3D322AD91605003D2AE1 /* DetectionView.swift */,
 				0B2E31DF2AD810D400DFC16F /* StoryBoardView.swift */,
@@ -676,6 +681,15 @@
 				937AF2972AE8C72B008C69BB /* environment.usdz */,
 			);
 			path = Usdz;
+			sourceTree = "<group>";
+		};
+		937AF2A02AE930A1008C69BB /* Maze */ = {
+			isa = PBXGroup;
+			children = (
+				937AF2A12AE930AF008C69BB /* MazeScene.swift */,
+				937AF2A32AE930E0008C69BB /* MazeView.swift */,
+			);
+			path = Maze;
 			sourceTree = "<group>";
 		};
 		938C55342AE181AF00BC233D /* ViewModifiers */ = {
@@ -1125,7 +1139,9 @@
 				0B2E31E02AD810D400DFC16F /* StoryBoardView.swift in Sources */,
 				937AF28C2AE832A7008C69BB /* ARViewControllerContainer.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
+				937AF2A22AE930AF008C69BB /* MazeScene.swift in Sources */,
 				938C553E2AE1B76600BC233D /* ObjectDetectionModel.swift in Sources */,
+				937AF2A42AE930E0008C69BB /* MazeView.swift in Sources */,
 				0B6E2F682ADC908B0001D320 /* StoryModel.swift in Sources */,
 				938E3D3B2AD9874F003D2AE1 /* ModelGenerator.swift in Sources */,
 				93C8E72A2AE01660002315A2 /* Storm.swift in Sources */,
