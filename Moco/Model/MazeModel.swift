@@ -72,19 +72,41 @@ struct MazeModel {
             }
         }
 
-        var startX = Int.random(in: 1 ..< rows).advanced(by: 1) / 2 * 2 + 1
-        var startY = Int.random(in: 1 ..< cols).advanced(by: 1) / 2 * 2 + 1
-        while !maze.indices.contains(startX) || !maze.first!.indices.contains(startY) {
-            startX = Int.random(in: 1 ..< rows).advanced(by: 1) / 2 * 2 + 1
-            startY = Int.random(in: 1 ..< cols).advanced(by: 1) / 2 * 2 + 1
+        func populateMaze() {
+            maze = Array(repeating: Array(repeating: 1, count: cols), count: rows)
+            var startX = Int.random(in: 1 ..< rows).advanced(by: 1) / 2 * 2 + 1
+            var startY = Int.random(in: 1 ..< cols).advanced(by: 1) / 2 * 2 + 1
+            while !maze.indices.contains(startX) || !maze.first!.indices.contains(startY) {
+                startX = Int.random(in: 1 ..< rows).advanced(by: 1) / 2 * 2 + 1
+                startY = Int.random(in: 1 ..< cols).advanced(by: 1) / 2 * 2 + 1
+            }
+            maze[startX][startY] = 0 // Mark the starting point
+            recursiveBacktracking(xPos: startX, yPos: startY)
         }
-        maze[startX][startY] = 0 // Mark the starting point
-        recursiveBacktracking(xPos: startX, yPos: startY)
+
+        func isGoodMaze() -> Bool {
+            var wallCount = 0
+            maze[1].forEach { block in if block == 1 { wallCount += 1 }}
+            return wallCount > 3
+        }
+
+        func populateGoodMaze() {
+            populateMaze()
+
+            while !isGoodMaze() {
+                populateMaze()
+            }
+        }
+
+        populateGoodMaze()
 
         func generateInOutXPoint(yPos: Int) -> LocationPoint {
-            var initX = Int.random(in: 1 ..< cols - 1)
             guard (maze[yPos].contains { $0 == 1 }) else { return LocationPoint() }
-            while maze[yPos][initX] == 0 {
+
+            var initX = Int.random(in: 1 ..< cols - 1)
+            while maze[yPos][initX] == 0 ||
+                (yPos == 0 && maze[yPos + 1][initX] == 1) ||
+                (yPos == rows - 1 && maze[yPos - 1][initX] == 1) {
                 initX = Int.random(in: 1 ..< cols - 1)
             }
 
@@ -92,24 +114,55 @@ struct MazeModel {
             return LocationPoint(xPos: initX, yPos: yPos)
         }
 
-        func resetGenerateInOutPoint() {
+        func resetGenerateInOutPoint(exitOnly: Bool = false) {
             for col in 0 ..< cols {
                 maze[0][col] = 1
-                maze[rows - 1][col] = 1
+                if !exitOnly {
+                    maze[rows - 1][col] = 1
+                }
             }
         }
 
+        func checkDifferenceGreaterThan(_ array: [Int], diffCount: Int = 2) -> Bool {
+            for i in 0 ..< (array.count - 1) {
+                let difference = abs(array[i] - array[i + 1])
+                if difference <= diffCount {
+                    return false
+                }
+            }
+            return true
+        }
+
+        func generateExitPoints() -> [LocationPoint] {
+            var exitPositions = [
+                generateInOutXPoint(yPos: 0),
+                generateInOutXPoint(yPos: 0),
+                generateInOutXPoint(yPos: 0)
+            ]
+
+            var xPositions = exitPositions.map { $0.xPos }.sorted()
+
+            while !checkDifferenceGreaterThan(xPositions) {
+                resetGenerateInOutPoint(exitOnly: true)
+                exitPositions = [
+                    generateInOutXPoint(yPos: 0),
+                    generateInOutXPoint(yPos: 0),
+                    generateInOutXPoint(yPos: 0)
+                ]
+
+                xPositions = exitPositions.map { $0.xPos }.sorted()
+            }
+            return exitPositions
+        }
+
         var characterPos = generateInOutXPoint(yPos: rows - 1)
-        var correctPos = generateInOutXPoint(yPos: 0)
-        _ = generateInOutXPoint(yPos: 0)
-        _ = generateInOutXPoint(yPos: 0)
+
+        var correctPos = generateExitPoints().first!
 
         while !canReachDestination(from: maze, startRow: characterPos.yPos, startCol: characterPos.xPos, destinationRow: correctPos.yPos, destinationCol: correctPos.xPos) {
             resetGenerateInOutPoint()
             characterPos = generateInOutXPoint(yPos: rows - 1)
-            correctPos = generateInOutXPoint(yPos: 0)
-            _ = generateInOutXPoint(yPos: 0)
-            _ = generateInOutXPoint(yPos: 0)
+            correctPos = generateExitPoints().first!
         }
 
         return (maze, characterPos, correctPos)
