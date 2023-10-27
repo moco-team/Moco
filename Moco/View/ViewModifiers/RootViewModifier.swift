@@ -24,9 +24,10 @@ struct RootViewModifier: ViewModifier {
             ForEach(rippleViewModel.ripples, id: \.self) { ripple in
                 RippleView(xPosition: ripple.xPosition, yPosition: ripple.yPosition) {
                     rippleViewModel.removeRipple(id: ripple.id.uuidString)
-                }.onTapGesture { location in
-                    rippleViewModel.appendRipple(Ripple(xPosition: location.x, yPosition: location.y))
-                }
+                }.allowsHitTesting(false)
+                    .onTapGesture { location in
+                        rippleViewModel.appendRipple(Ripple(xPosition: location.x, yPosition: location.y))
+                    }
             }
         }
     }

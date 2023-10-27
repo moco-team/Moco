@@ -18,6 +18,7 @@ struct HomeView: View {
 
     @State private var homeViewModel = HomeViewModel()
     @State private var showAr = false
+    @State private var showMaze = false
 
     var body: some View {
         ZStack {
@@ -43,6 +44,9 @@ struct HomeView: View {
                 .padding(.horizontal, 0.05 * Screen.width)
                 Button("AR") {
                     showAr = true
+                }
+                Button("Maze") {
+                    showMaze = true
                 }
 
                 Spacer()
@@ -86,6 +90,9 @@ struct HomeView: View {
             }
             if showAr {
                 ARCameraView().ignoresSafeArea()
+            }
+            if showMaze {
+                MazeView().ignoresSafeArea()
             }
         }
     }
