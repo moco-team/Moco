@@ -73,11 +73,12 @@
 		932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D72ADE700D009B3D86 /* AudioViewModel.swift */; };
 		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
 		93324AA72AEA9FD400046CB8 /* MazeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93324AA62AEA9FD400046CB8 /* MazeModel.swift */; };
+		935D784B2AEBC7FE00DF64A5 /* CustomPersistentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */; };
 		935D784E2AEBF96800DF64A5 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 935D784D2AEBF96800DF64A5 /* FLAnimatedImage */; };
 		935D78502AEBF98400DF64A5 /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D784F2AEBF98400DF64A5 /* GifView.swift */; };
 		935D78532AEBF9FE00DF64A5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78522AEBF9FE00DF64A5 /* URL.swift */; };
 		935D78552AEC09A000DF64A5 /* GlobalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78542AEC09A000DF64A5 /* GlobalStorage.swift */; };
-		935D784B2AEBC7FE00DF64A5 /* CustomPersistentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */; };
+		935D78572AEC2D7900DF64A5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78562AEC2D7900DF64A5 /* SettingsViewModel.swift */; };
 		937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2852AE80BFA008C69BB /* RippleView.swift */; };
 		937AF2882AE81983008C69BB /* RippleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2872AE81983008C69BB /* RippleModel.swift */; };
 		937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2892AE81A26008C69BB /* RippleViewModel.swift */; };
@@ -230,10 +231,11 @@
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
 		93324AA62AEA9FD400046CB8 /* MazeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeModel.swift; sourceTree = "<group>"; };
+		935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPersistentModel.swift; sourceTree = "<group>"; };
 		935D784F2AEBF98400DF64A5 /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
 		935D78522AEBF9FE00DF64A5 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		935D78542AEC09A000DF64A5 /* GlobalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStorage.swift; sourceTree = "<group>"; };
-		935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPersistentModel.swift; sourceTree = "<group>"; };
+		935D78562AEC2D7900DF64A5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		937AF2852AE80BFA008C69BB /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
 		937AF2872AE81983008C69BB /* RippleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleModel.swift; sourceTree = "<group>"; };
 		937AF2892AE81A26008C69BB /* RippleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleViewModel.swift; sourceTree = "<group>"; };
@@ -831,6 +833,7 @@
 				93E3D87B2AE4EFDB00E5391F /* SpeakPromptViewModel.swift */,
 				937AF2892AE81A26008C69BB /* RippleViewModel.swift */,
 				937AF29D2AE8D4EE008C69BB /* ARViewModel.swift */,
+				935D78562AEC2D7900DF64A5 /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1101,6 +1104,7 @@
 				9398FBB52AE4105900AB5CE4 /* CircularProgressView.swift in Sources */,
 				932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */,
 				938E3D392AD939DC003D2AE1 /* Item.swift in Sources */,
+				935D78572AEC2D7900DF64A5 /* SettingsViewModel.swift in Sources */,
 				05AE93582ADE74980082B21D /* SpeechRecognizerViewModel.swift in Sources */,
 				938E3D3D2AD9901B003D2AE1 /* PopUpComponent.swift in Sources */,
 				938E3D4D2ADBA247003D2AE1 /* ContentViewContainer.swift in Sources */,
