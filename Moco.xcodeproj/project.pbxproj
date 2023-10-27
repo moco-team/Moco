@@ -73,6 +73,9 @@
 		932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D72ADE700D009B3D86 /* AudioViewModel.swift */; };
 		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
 		93324AA72AEA9FD400046CB8 /* MazeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93324AA62AEA9FD400046CB8 /* MazeModel.swift */; };
+		935D784E2AEBF96800DF64A5 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 935D784D2AEBF96800DF64A5 /* FLAnimatedImage */; };
+		935D78502AEBF98400DF64A5 /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D784F2AEBF98400DF64A5 /* GifView.swift */; };
+		935D78532AEBF9FE00DF64A5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78522AEBF9FE00DF64A5 /* URL.swift */; };
 		937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2852AE80BFA008C69BB /* RippleView.swift */; };
 		937AF2882AE81983008C69BB /* RippleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2872AE81983008C69BB /* RippleModel.swift */; };
 		937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2892AE81A26008C69BB /* RippleViewModel.swift */; };
@@ -225,6 +228,8 @@
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
 		93324AA62AEA9FD400046CB8 /* MazeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeModel.swift; sourceTree = "<group>"; };
+		935D784F2AEBF98400DF64A5 /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
+		935D78522AEBF9FE00DF64A5 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		937AF2852AE80BFA008C69BB /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
 		937AF2872AE81983008C69BB /* RippleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleModel.swift; sourceTree = "<group>"; };
 		937AF2892AE81A26008C69BB /* RippleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleViewModel.swift; sourceTree = "<group>"; };
@@ -305,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05AE93682ADE83430082B21D /* Lottie in Frameworks */,
+				935D784E2AEBF96800DF64A5 /* FLAnimatedImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,6 +671,14 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
+		935D78512AEBF9EC00DF64A5 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				935D78522AEBF9FE00DF64A5 /* URL.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		937AF28D2AE832AF008C69BB /* AR */ = {
 			isa = PBXGroup;
 			children = (
@@ -719,6 +733,7 @@
 			isa = PBXGroup;
 			children = (
 				9398FBB72AE41D2600AB5CE4 /* CustomAsyncImage.swift */,
+				935D784F2AEBF98400DF64A5 /* GifView.swift */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -747,6 +762,7 @@
 		93C2F8822AD683AC007D1ABC /* Moco */ = {
 			isa = PBXGroup;
 			children = (
+				935D78512AEBF9EC00DF64A5 /* Enum */,
 				05AE935E2ADE820B0082B21D /* Assets */,
 				938E3D4E2ADBABC3003D2AE1 /* Utils */,
 				05AE93542ADE74540082B21D /* Helper */,
@@ -918,6 +934,7 @@
 			name = Moco;
 			packageProductDependencies = (
 				05AE93672ADE83430082B21D /* Lottie */,
+				935D784D2AEBF96800DF64A5 /* FLAnimatedImage */,
 			);
 			productName = Moco;
 			productReference = 93C2F8802AD683AC007D1ABC /* Moco.app */;
@@ -993,6 +1010,7 @@
 			mainGroup = 93C2F8772AD683AC007D1ABC;
 			packageReferences = (
 				05AE93662ADE83430082B21D /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				935D784C2AEBF96800DF64A5 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
 			);
 			productRefGroup = 93C2F8812AD683AC007D1ABC /* Products */;
 			projectDirPath = "";
@@ -1092,6 +1110,7 @@
 				937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */,
 				937AF2932AE838D0008C69BB /* Dictionary.swift in Sources */,
 				0B2E31DC2AD8084600DFC16F /* CollectionView.swift in Sources */,
+				935D78532AEBF9FE00DF64A5 /* URL.swift in Sources */,
 				0B6E2F6A2ADC91060001D320 /* StoryContentModel.swift in Sources */,
 				93C8E72C2AE1373D002315A2 /* Shake.swift in Sources */,
 				937AF2882AE81983008C69BB /* RippleModel.swift in Sources */,
@@ -1124,6 +1143,7 @@
 				05BA97AA2AE11EE400F64F52 /* MPVolumeViewExtension.swift in Sources */,
 				938E3D452ADAD5F3003D2AE1 /* StoryBook.swift in Sources */,
 				0B6E2F722ADC97BE0001D320 /* StoryViewModel.swift in Sources */,
+				935D78502AEBF98400DF64A5 /* GifView.swift in Sources */,
 				937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */,
 				056B67282AE28D1400A3B493 /* AchievementsView.swift in Sources */,
 				938E3D432ADABD9F003D2AE1 /* BaseViewModel.swift in Sources */,
@@ -1514,6 +1534,14 @@
 				minimumVersion = 4.3.3;
 			};
 		};
+		935D784C2AEBF96800DF64A5 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Flipboard/FLAnimatedImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.17;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1521,6 +1549,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 05AE93662ADE83430082B21D /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		935D784D2AEBF96800DF64A5 /* FLAnimatedImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 935D784C2AEBF96800DF64A5 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */;
+			productName = FLAnimatedImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
