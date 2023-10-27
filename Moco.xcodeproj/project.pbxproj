@@ -73,6 +73,7 @@
 		932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D72ADE700D009B3D86 /* AudioViewModel.swift */; };
 		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
 		93324AA72AEA9FD400046CB8 /* MazeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93324AA62AEA9FD400046CB8 /* MazeModel.swift */; };
+		935D784B2AEBC7FE00DF64A5 /* CustomPersistentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */; };
 		937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2852AE80BFA008C69BB /* RippleView.swift */; };
 		937AF2882AE81983008C69BB /* RippleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2872AE81983008C69BB /* RippleModel.swift */; };
 		937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2892AE81A26008C69BB /* RippleViewModel.swift */; };
@@ -225,6 +226,7 @@
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
 		93324AA62AEA9FD400046CB8 /* MazeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeModel.swift; sourceTree = "<group>"; };
+		935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPersistentModel.swift; sourceTree = "<group>"; };
 		937AF2852AE80BFA008C69BB /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
 		937AF2872AE81983008C69BB /* RippleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleModel.swift; sourceTree = "<group>"; };
 		937AF2892AE81A26008C69BB /* RippleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleViewModel.swift; sourceTree = "<group>"; };
@@ -834,6 +836,7 @@
 				93E3D8792AE4E95700E5391F /* SpeakPromptModel.swift */,
 				937AF2872AE81983008C69BB /* RippleModel.swift */,
 				93324AA62AEA9FD400046CB8 /* MazeModel.swift */,
+				935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1134,6 +1137,7 @@
 				937AF29C2AE8D47E008C69BB /* ResourceLoader.swift in Sources */,
 				0B2E31E22AD9064900DFC16F /* CollectionViewModel.swift in Sources */,
 				937AF2912AE83794008C69BB /* Date.swift in Sources */,
+				935D784B2AEBC7FE00DF64A5 /* CustomPersistentModel.swift in Sources */,
 				0BA3E5102ADFD04700BCFE9E /* StoryThemeModalView.swift in Sources */,
 				937AF29A2AE8D422008C69BB /* EnvironmentEntity.swift in Sources */,
 				938E3D522ADBAE62003D2AE1 /* SettingsView.swift in Sources */,

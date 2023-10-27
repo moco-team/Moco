@@ -9,8 +9,9 @@ import Foundation
 import SwiftData
 
 @Model
-final class StoryThemeModel: Identifiable {
+final class StoryThemeModel: Identifiable, CustomPersistentModel {
     var id: String = ""
+    var slug: String = ""
     var pictureName: String = ""
     var descriptionTheme: String = ""
     var title: String = ""
@@ -19,8 +20,9 @@ final class StoryThemeModel: Identifiable {
 
     var stories: [StoryModel]?
 
-    init(pictureName: String, descriptionTheme: String, title: String = "", stories: [StoryModel]? = nil) {
+    init(pictureName: String, descriptionTheme: String, title: String = "", stories: [StoryModel]? = nil, slug: String = "") {
         id = UUID().uuidString
+        self.slug = slug
         self.pictureName = pictureName
         self.descriptionTheme = descriptionTheme
         self.title = title
