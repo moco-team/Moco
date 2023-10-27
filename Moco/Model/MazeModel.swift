@@ -124,8 +124,8 @@ struct MazeModel {
         }
 
         func checkDifferenceGreaterThan(_ array: [Int], diffCount: Int = 2) -> Bool {
-            for i in 0 ..< (array.count - 1) {
-                let difference = abs(array[i] - array[i + 1])
+            for index in 0 ..< (array.count - 1) {
+                let difference = abs(array[index] - array[index + 1])
                 if difference <= diffCount {
                     return false
                 }
