@@ -18,19 +18,24 @@ struct ModelGenerator {
         HintModel.self
     ]
 
-    @MainActor static func populateContainer<T: PersistentModel>(container: ModelContainer, items: [T]) {
-        var modelFetchDescriptor = FetchDescriptor<T>()
-        modelFetchDescriptor.fetchLimit = 1
+    @MainActor static func populateContainer<T: CustomPersistentModel>(container: ModelContainer, items: [T]) {
+        let modelFetchDescriptor = FetchDescriptor<T>()
 
         let modelContext = ModelContext(container)
 
         do {
             let res = try modelContext.fetch(modelFetchDescriptor)
-            guard res.isEmpty else { return }
 
             // MARK: - This code will only run if the persistent store is empty.
 
             for item in items {
+                if res.contains(where: {
+                    $0.slug == item.slug
+                }) {
+                    modelContext.delete(res.first {
+                        $0.slug == item.slug
+                    }!)
+                }
                 modelContext.insert(item)
             }
             try? modelContext.save()
@@ -49,13 +54,15 @@ struct ModelGenerator {
         do {
             let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
 
+            // !!!: TO BE POPULATED, A MODEL MUST IMPLEMENT CustomPersistentModel
             let dataToBePopulated = [
                 "storyThemeModel": [
                     StoryThemeModel(
                         pictureName: "Story/Cover/Story1",
                         descriptionTheme: "Story 1",
                         title: "Story 1",
-                        stories: [StoryModel(background: "", pageNumber: 0, isHavePrompt: false)]
+                        stories: [StoryModel(background: "", pageNumber: 0, isHavePrompt: false)],
+                        slug: "story-1"
                     )
                 ]
             ]
