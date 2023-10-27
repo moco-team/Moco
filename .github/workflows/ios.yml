@@ -24,12 +24,12 @@ jobs:
     - name: Xcode Setup
       uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: '15.0'
+        xcode-version: '15.0.1'
 
     # - name: Select Xcode
     #   run: sudo xcode-select -switch /Applications/Xcode_14.3.app
     - name: Build
-      run: xcodebuild clean build -scheme Moco -project Moco.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0'
+      run: xcodebuild clean build -scheme Moco -project Moco.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0.1'
    
     # - name: Test
     #   run: xcodebuild test -scheme KiwChing -project KiwChing.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0'
