@@ -9,10 +9,22 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.navigate) private var navigate
+    @Environment(\.audioViewModel) private var audioViewModel
+    @State var settingsViewModel = SettingsViewModel()
 
     var body: some View {
-        Button("Settings View") {
-            navigate.pop(2)
+        HStack {
+            Image(systemName: "speaker.fill")
+                .foregroundColor(Color.black)
+
+            Slider(value: $settingsViewModel.backsoundVolume,
+                   in: 0 ... 1,
+                   step: 0.01) { _ in
+                audioViewModel.setVolume(Float(settingsViewModel.backsoundVolume))
+            }.foregroundColor(.black).accentColor(.black)
+
+            Image(systemName: "speaker.wave.2.fill")
+                .foregroundColor(Color.black)
         }
     }
 }

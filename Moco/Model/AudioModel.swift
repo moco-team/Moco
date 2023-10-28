@@ -11,6 +11,7 @@ struct AudioModel: Identifiable, Equatable {
     var players: [URL: AVAudioPlayer] = [:]
     var queuePlayers: [String: AVQueuePlayer] = [:]
     var playerVolumes: [URL: Float] = [:]
+    var queuePlayerVolumes: [String: Float] = [:]
     var duplicatePlayers: [AVAudioPlayer] = []
 
     var volume: Float {
@@ -155,6 +156,34 @@ struct AudioModel: Identifiable, Equatable {
         player.play()
         if id != nil {
             queuePlayers[id!] = player
+        }
+    }
+
+    mutating func setVolumeQueue(_ volume: Float?, writePlayerVolumes: Bool = true) {
+        queuePlayers.forEach { key, value in
+            setVolumeQueue(volume, player: value, playerId: key, writePlayerVolumes: writePlayerVolumes)
+        }
+    }
+
+    mutating func setVolumeQueue(_ volume: Float?, playerId: String, writePlayerVolumes: Bool = true) {
+        if let player = queuePlayers[playerId] {
+            setVolumeQueue(volume, player: player, writePlayerVolumes: writePlayerVolumes)
+        }
+    }
+
+    mutating func setVolumeQueue(
+        _ volume: Float?,
+        player: AVQueuePlayer,
+        playerId: String? = nil,
+        writePlayerVolumes: Bool = true
+    ) {
+        if playerId != nil {
+            if volume != nil && writePlayerVolumes {
+                queuePlayerVolumes[playerId!] = volume
+            }
+            player.volume = volume ?? (queuePlayerVolumes[playerId!] ?? 0)
+        } else {
+            player.volume = volume ?? 1
         }
     }
 

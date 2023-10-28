@@ -11,7 +11,7 @@ import AVFoundation
     private var audioModel = AudioModel()
 
     /// Plays a sound with arbitrary filename and type, specify numberOfLoops = -1 to play indefinitely
-    func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0, volume: Float = 1) {
+    func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0, volume: Float = Float(GlobalStorage.backsoundVolume)) {
         audioModel.playSound(soundFileName: soundFileName, type: type, numberOfLoops: numberOfLoops, volume: volume)
     }
 
@@ -48,6 +48,10 @@ import AVFoundation
             let delay = withDelay * Double(index)
             _ = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(playSoundNotification(_:)), userInfo: ["fileName": soundFileName], repeats: false)
         }
+    }
+
+    func setVolume(_ volume: Float?, writePlayerVolumes: Bool = true) {
+        audioModel.setVolume(volume, writePlayerVolumes: writePlayerVolumes)
     }
 
     func playSoundsQueue(sounds: [AudioModel.QueuePlayerParam], intervalDuration: Double = 0, volume: Float = 1, id: String? = nil) {

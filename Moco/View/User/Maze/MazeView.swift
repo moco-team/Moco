@@ -44,7 +44,7 @@ struct MazeView: View {
                     scene.move(.down)
                 }
             }
-        }
+        }.background(.ultraThinMaterial)
     }
 }
 
