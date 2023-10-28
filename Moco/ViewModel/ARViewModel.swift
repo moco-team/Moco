@@ -19,6 +19,7 @@ final class ARViewModel: NSObject, ObservableObject {
     private var anchors = [UUID: AnchorEntity]()
 
     @Published var assetsLoaded = false
+    @Published var hasPlacedObject: Bool = false
 
     func resume() {
         if !assetsLoaded && loadCancellable == nil {
@@ -40,14 +41,14 @@ final class ARViewModel: NSObject, ObservableObject {
 
     func addCup(anchor: ARAnchor,
                 at worldTransform: simd_float4x4,
-                in view: ARView) {
+                in view: ARView) -> Entity? {
         // Create a new cup to place at the tap location
         let environment: Entity
         do {
             environment = try resourceLoader.createEnvironment()
         } catch {
             print("Failed to create environment: \(error)")
-            return
+            return nil
         }
 
         defer {
@@ -66,12 +67,16 @@ final class ARViewModel: NSObject, ObservableObject {
                 let anchorEntity = AnchorEntity(anchor: anchor)
                 anchorEntity.addChild(environment)
                 view.scene.addAnchor(anchorEntity)
+                environment.generateCollisionShapes(recursive: true)
+//                view.installGestures(.all, for: environment)
+                
                 anchors[anchor.identifier] = anchorEntity
-                return
+                return environment
             }
 
             // Add the cup to the existing anchor
             anchorEntity.addChild(environment)
+            return anchorEntity
         #endif
     }
 

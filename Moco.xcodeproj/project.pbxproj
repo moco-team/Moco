@@ -32,6 +32,7 @@
 		05E17AD52ADE86DE00A34547 /* FindTheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD42ADE86DE00A34547 /* FindTheObject.swift */; };
 		05E17AD72ADEBFC500A34547 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD62ADEBFC500A34547 /* BalloonView.swift */; };
 		05E17AD92ADED16800A34547 /* balon_merah.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05E17AD82ADED16800A34547 /* balon_merah.mp3 */; };
+		05E8B55D2AECE32D00E3612F /* button.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 05E8B55C2AECE32D00E3612F /* button.usdz */; };
 		0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1197612AD7D4F3004FAD14 /* IconButton.swift */; };
 		0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1197822AD7E97A004FAD14 /* CollectionRowView.swift */; };
 		0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31D72AD7EB6100DFC16F /* CollectionListView.swift */; };
@@ -205,6 +206,7 @@
 		05E17AD42ADE86DE00A34547 /* FindTheObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTheObject.swift; sourceTree = "<group>"; };
 		05E17AD62ADEBFC500A34547 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
 		05E17AD82ADED16800A34547 /* balon_merah.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = balon_merah.mp3; sourceTree = "<group>"; };
+		05E8B55C2AECE32D00E3612F /* button.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = button.usdz; sourceTree = "<group>"; };
 		0B1197612AD7D4F3004FAD14 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		0B1197822AD7E97A004FAD14 /* CollectionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionRowView.swift; sourceTree = "<group>"; };
 		0B2E31D72AD7EB6100DFC16F /* CollectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListView.swift; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 			isa = PBXGroup;
 			children = (
 				937AF2972AE8C72B008C69BB /* environment.usdz */,
+				05E8B55C2AECE32D00E3612F /* button.usdz */,
 			);
 			path = Usdz;
 			sourceTree = "<group>";
@@ -1060,6 +1063,7 @@
 				93C8E71E2ADEDA8F002315A2 /* CherryBombRegular.ttf in Resources */,
 				93C2F8C02AD685A3007D1ABC /* README.md in Resources */,
 				0518CDDA2AE227FA00521EC8 /* kakak_katak.json in Resources */,
+				05E8B55D2AECE32D00E3612F /* button.usdz in Resources */,
 				05D966E12ADEE6CF00997E3A /* success.mp3 in Resources */,
 				0571CB482AE19D6000CE0CC7 /* moco-1-5.json in Resources */,
 				0571CB3D2AE19D5700CE0CC7 /* moco-1-1.json in Resources */,

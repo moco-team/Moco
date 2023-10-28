@@ -40,20 +40,38 @@ struct ARViewContainer: UIViewRepresentable {
         init(parent: ARViewContainer) {
             self.parent = parent
         }
+        
+        private var tappedEntities: [Entity]?
 
         @objc func viewTapped(_ gesture: UITapGestureRecognizer) {
-            let point = gesture.location(in: gesture.view)
-            guard let arView,
-                  let result = arView.raycast(from: point,
-                                              allowing: .existingPlaneGeometry,
-                                              alignment: .horizontal).first,
-                  let anchor = result.anchor
-            else {
+            print("Screen tapped")
+            
+            if parent.viewModel.hasPlacedObject {
+                let point = gesture.location(in: arView)
+                
+                tappedEntities = arView!.entities(at: point)
+                if !tappedEntities!.isEmpty {
+                    print(tappedEntities?.first as Any)
+                }
+                
                 return
+            } else {
+                print("Place an object")
+                
+                let point = gesture.location(in: gesture.view)
+                guard let arView,
+                      let result = arView.raycast(from: point,
+                                                  allowing: .existingPlaneGeometry,
+                                                  alignment: .horizontal).first,
+                      let anchor = result.anchor
+                else {
+                    return
+                }
+                _ = parent.viewModel.addCup(anchor: anchor,
+                                        at: result.worldTransform,
+                                        in: arView)
+                parent.viewModel.hasPlacedObject = true
             }
-            parent.viewModel.addCup(anchor: anchor,
-                                    at: result.worldTransform,
-                                    in: arView)
         }
     }
 
