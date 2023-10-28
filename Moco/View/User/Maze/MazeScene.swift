@@ -10,7 +10,6 @@ import SpriteKit
 class MazeScene: SKScene {
     var moco: SKSpriteNode!
     var touched: Bool = false
-    var snack1: SKSpriteNode!
     var score: Int = 0
 
     var mazeModel = MazeModel()
@@ -42,14 +41,8 @@ class MazeScene: SKScene {
                 ground.size = CGSize(width: tileSize, height: tileSize)
 
                 if mazeModel.arrayPoint[index][jIndex] == 0 {
-                    let food = SKSpriteNode(
-                        color: UIColor(red: 0.36, green: 0.25, blue: 0.20, alpha: 1.00),
-                        size: CGSize(width: 6, height: 6)
-                    )
-                    food.name = "0"
                     ground.name = "0"
-                    ground.color = UIColor(red: 0.77, green: 0.87, blue: 0.96, alpha: 1.00)
-                    ground.addChild(food)
+                    ground.color = UIColor(hex: 0xA7968E)
                 } else if mazeModel.arrayPoint[index][jIndex] == 1 {
                     ground.name = "1"
                     ground.texture = SKTexture(imageNamed: "wall")

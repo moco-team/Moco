@@ -79,6 +79,10 @@
 		935D78532AEBF9FE00DF64A5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78522AEBF9FE00DF64A5 /* URL.swift */; };
 		935D78552AEC09A000DF64A5 /* GlobalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78542AEC09A000DF64A5 /* GlobalStorage.swift */; };
 		935D78572AEC2D7900DF64A5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78562AEC2D7900DF64A5 /* SettingsViewModel.swift */; };
+		935D78592AED433A00DF64A5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78582AED433A00DF64A5 /* Color.swift */; };
+		935D785B2AED55B200DF64A5 /* PeelEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D785A2AED55B200DF64A5 /* PeelEffect.swift */; };
+		935D785D2AED6D6600DF64A5 /* StoryBookNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D785C2AED6D6600DF64A5 /* StoryBookNew.swift */; };
+		935D785F2AED7C9D00DF64A5 /* PeelEffectTappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D785E2AED7C9D00DF64A5 /* PeelEffectTappable.swift */; };
 		937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2852AE80BFA008C69BB /* RippleView.swift */; };
 		937AF2882AE81983008C69BB /* RippleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2872AE81983008C69BB /* RippleModel.swift */; };
 		937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2892AE81A26008C69BB /* RippleViewModel.swift */; };
@@ -236,6 +240,10 @@
 		935D78522AEBF9FE00DF64A5 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		935D78542AEC09A000DF64A5 /* GlobalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStorage.swift; sourceTree = "<group>"; };
 		935D78562AEC2D7900DF64A5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		935D78582AED433A00DF64A5 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		935D785A2AED55B200DF64A5 /* PeelEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelEffect.swift; sourceTree = "<group>"; };
+		935D785C2AED6D6600DF64A5 /* StoryBookNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBookNew.swift; sourceTree = "<group>"; };
+		935D785E2AED7C9D00DF64A5 /* PeelEffectTappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelEffectTappable.swift; sourceTree = "<group>"; };
 		937AF2852AE80BFA008C69BB /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
 		937AF2872AE81983008C69BB /* RippleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleModel.swift; sourceTree = "<group>"; };
 		937AF2892AE81A26008C69BB /* RippleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleViewModel.swift; sourceTree = "<group>"; };
@@ -607,6 +615,7 @@
 				0571CB372AE1935C00CE0CC7 /* InvisibleButton.swift */,
 				938C55402AE2301700BC233D /* BurgerMenu.swift */,
 				9398FBB42AE4105900AB5CE4 /* CircularProgressView.swift */,
+				935D785C2AED6D6600DF64A5 /* StoryBookNew.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -903,6 +912,7 @@
 				05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */,
 				05BA97A92AE11EE400F64F52 /* MPVolumeViewExtension.swift */,
 				93C8E72B2AE1373D002315A2 /* Shake.swift */,
+				935D78582AED433A00DF64A5 /* Color.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -921,6 +931,8 @@
 			children = (
 				93C8E7292AE01660002315A2 /* Storm.swift */,
 				937AF2852AE80BFA008C69BB /* RippleView.swift */,
+				935D785A2AED55B200DF64A5 /* PeelEffect.swift */,
+				935D785E2AED7C9D00DF64A5 /* PeelEffectTappable.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -1118,13 +1130,16 @@
 				93C2F8BD2AD684CE007D1ABC /* HomeView.swift in Sources */,
 				93C8E7232ADEF249002315A2 /* FontUtil.swift in Sources */,
 				937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */,
+				935D785F2AED7C9D00DF64A5 /* PeelEffectTappable.swift in Sources */,
 				937AF2932AE838D0008C69BB /* Dictionary.swift in Sources */,
 				0B2E31DC2AD8084600DFC16F /* CollectionView.swift in Sources */,
 				935D78532AEBF9FE00DF64A5 /* URL.swift in Sources */,
+				935D785D2AED6D6600DF64A5 /* StoryBookNew.swift in Sources */,
 				0B6E2F6A2ADC91060001D320 /* StoryContentModel.swift in Sources */,
 				93C8E72C2AE1373D002315A2 /* Shake.swift in Sources */,
 				937AF2882AE81983008C69BB /* RippleModel.swift in Sources */,
 				0B2E31DA2AD7EBE500DFC16F /* CollectionModel.swift in Sources */,
+				935D785B2AED55B200DF64A5 /* PeelEffect.swift in Sources */,
 				937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */,
 				0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */,
 				938E3D542ADBCDB8003D2AE1 /* StoryNavigationButton.swift in Sources */,
@@ -1189,6 +1204,7 @@
 				938E3D4B2ADB9F1B003D2AE1 /* StoryView.swift in Sources */,
 				0BA3E5092ADFC61500BCFE9E /* StoryThemeAdminView.swift in Sources */,
 				93C2F8BB2AD684CE007D1ABC /* Detector.swift in Sources */,
+				935D78592AED433A00DF64A5 /* Color.swift in Sources */,
 				938C553A2AE1B3E800BC233D /* ObjectDetectionViewModel.swift in Sources */,
 				0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */,
 				93E3D8782AE4E55000E5391F /* DetectionPromptViewModel.swift in Sources */,
