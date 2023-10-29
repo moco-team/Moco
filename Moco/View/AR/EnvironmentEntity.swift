@@ -13,10 +13,11 @@ final class EnvironmentEntity: Entity {
     var model: Entity?
 
     static var loadAsync: AnyPublisher<EnvironmentEntity, Error> {
-        return Entity.loadAsync(named: "environment")
+        return Entity.loadAsync(named: "button")
             .map { loadedEnvironment -> EnvironmentEntity in
-                let environment = EnvironmentEntity()
                 loadedEnvironment.name = "Cup"
+                loadedEnvironment.transform.translation = .init(0.2, 0, 0)
+                let environment = EnvironmentEntity()
                 environment.model = loadedEnvironment
                 return environment
             }

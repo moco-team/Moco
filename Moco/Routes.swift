@@ -18,6 +18,7 @@ enum Route: Hashable {
     case settings
     case profile
     case achievements
+    case arStory
 }
 
 // MARK: - Route view definition, set them here
@@ -42,6 +43,8 @@ struct Routes: View {
             ProfileView()
         case .achievements:
             AchievementsView()
+        case .arStory:
+            ARStory()
         }
     }
 }

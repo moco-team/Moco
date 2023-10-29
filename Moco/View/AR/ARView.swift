@@ -21,9 +21,12 @@ struct ARCameraView: View {
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var arViewModel: ARViewModel
 
+    var onFindObject: () -> () = {}
+    
+    @State var fadeInGameStartView = false
+
     var body: some View {
         ZStack {
-            // Fullscreen camera ARView
             ARViewContainer().edgesIgnoringSafeArea(.all)
 
             // Overlay above the camera
@@ -52,7 +55,8 @@ struct ARCameraView: View {
             .ignoresSafeArea()
             .animation(Animation.default.speed(1),
                        value: arViewModel.assetsLoaded)
-        }.onChange(of: scenePhase, initial: true) { _, newPhase in
+        }
+        .onChange(of: scenePhase, initial: true) { _, newPhase in
             switch newPhase {
             case .active:
                 print("App did become active")
@@ -64,6 +68,17 @@ struct ARCameraView: View {
                 break
             }
         }
+        .onChange(of: arViewModel.hasFindObject) {
+            print("Object finded")
+            arViewModel.hasFindObject = false
+            onFindObject()
+        }
+        .onAppear() {
+            withAnimation(Animation.easeIn(duration: 1.5)){
+                fadeInGameStartView.toggle()
+            }
+        }
+        .opacity(fadeInGameStartView ? 1 : 0)
     }
 }
 
