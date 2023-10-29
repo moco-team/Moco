@@ -7,19 +7,19 @@
 
 import Foundation
 
-enum MoveDirection {
+enum MoveDirection: Equatable {
     case left
     case right
     case up
     case down
 }
 
-struct MapSize {
+struct MapSize: Equatable {
     var width: Int
     var height: Int
 }
 
-struct LocationPoint {
+struct LocationPoint: Equatable {
     var xPos = 0
     var yPos = 0
 }
@@ -27,6 +27,7 @@ struct LocationPoint {
 struct MazeModel {
     var characterLocationPoint = LocationPoint()
     var correctPoint = LocationPoint()
+    var startPoint = LocationPoint()
 
     static var mapSize = MapSize(width: 21, height: 27)
 
@@ -49,6 +50,8 @@ struct MazeModel {
         )
         arrayPoint = newMazeWithPlayerPos.0
         characterLocationPoint = newMazeWithPlayerPos.1
+        correctPoint = newMazeWithPlayerPos.2
+        startPoint = characterLocationPoint
     }
 
     private static func generateMaze(rows: Int, cols: Int) -> ([[Int]], LocationPoint, LocationPoint) {

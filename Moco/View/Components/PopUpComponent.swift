@@ -5,11 +5,13 @@
 //  Created by Aaron Christopher Tanhar on 13/10/23.
 //
 
+import ConfettiSwiftUI
 import SwiftUI
 
 struct PopUpComponent: ViewModifier {
     @State private var offset: CGFloat = 1000
     @Binding var isActive: Bool
+    @State private var confettiCounter = 0
 
     var title: String? = "Congratulations"
     var text: String? = ""
@@ -24,6 +26,8 @@ struct PopUpComponent: ViewModifier {
     var width = Screen.width * 0.3
     var height = Screen.height * 0.2
 
+    var withConfetti = false
+
     var function: () -> Void
     var cancelHandler: (() -> Void)?
 
@@ -34,6 +38,7 @@ struct PopUpComponent: ViewModifier {
                     isActive: $isActive,
                     title: title,
                     text: text,
+                    withConfetti: withConfetti,
                     topImage: topImage,
                     bottomImage: bottomImage,
                     cancelText: cancelText,
@@ -48,6 +53,7 @@ struct PopUpComponent: ViewModifier {
                 } cancelHandler: {
                     cancelHandler?()
                 }
+                .id(isActive)
             }
         } else {
             content
@@ -58,9 +64,12 @@ struct PopUpComponent: ViewModifier {
 struct PopUpComponentView: View {
     @State private var offset: CGFloat = 1000
     @Binding var isActive: Bool
+    @State private var confettiCounter = 0
+    @State private var internalOverlayOpacity = 0.0
 
     var title: String? = "Congratulations"
     var text: String? = ""
+    var withConfetti = false
 
     var topImage: String?
     var bottomImage: String?
@@ -78,7 +87,7 @@ struct PopUpComponentView: View {
     var body: some View {
         ZStack {
             Color(.black)
-                .opacity(overlayOpacity)
+                .opacity(internalOverlayOpacity)
                 .frame(width: Screen.width, height: Screen.height)
                 .onTapGesture {
                     close()
@@ -156,16 +165,24 @@ struct PopUpComponentView: View {
             }
             .offset(x: 0, y: offset)
             .onAppear {
+                offset = 1000
                 withAnimation(.spring()) {
                     offset = 0
+                    internalOverlayOpacity = overlayOpacity
+                }
+                if withConfetti {
+                    confettiCounter += 1
                 }
             }
         }
+        .confettiCannon(counter: $confettiCounter, num: 30, confettiSize: 20, rainHeight: Screen.height * 1.2, radius: Screen.width * 0.4, repetitions: 2)
     }
 
     func close() {
         withAnimation(.spring()) {
             offset = 1000
+            internalOverlayOpacity = 0
+        } completion: {
             isActive = false
         }
     }
@@ -174,9 +191,13 @@ struct PopUpComponentView: View {
 #Preview {
     @State var isActive: Bool = true
 
-    return PopUpComponentView(isActive: $isActive, title: "Are you sure you want to quit?", text: "Kareba", cancelText: "Cancel") {
-        print("Claimed")
-    } cancelHandler: {
-        print("cancel handler")
-    }
+    return
+        Button("Waduh") {
+            isActive = true
+            print(isActive)
+        }.popUp(isActive: $isActive, title: "Are you sure you want to quit?", text: "Kareba", cancelText: "Cancel", withConfetti: true) {
+            print("Done")
+        } cancelHandler: {
+            print("Cancel")
+        }
 }

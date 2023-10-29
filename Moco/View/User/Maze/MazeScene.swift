@@ -6,17 +6,20 @@
 //
 
 import SpriteKit
+import SwiftUI
 
 class MazeScene: SKScene, ObservableObject {
     var moco: SKSpriteNode!
     var touched: Bool = false
     var score: Int = 0
 
+    @Published private(set) var correctAnswer = false
+
     var mazeModel = MazeModel()
 
     override func didMove(to _: SKView) {
         createMap()
-        createPacman()
+        createPlayer()
     }
 
     func createMap() {
@@ -62,12 +65,24 @@ class MazeScene: SKScene, ObservableObject {
         let position =
             mazeModel.points[mazeModel.characterLocationPoint.yPos][mazeModel.characterLocationPoint.xPos]
 
+        if mazeModel.characterLocationPoint.yPos == 0 && mazeModel.characterLocationPoint.xPos != mazeModel.correctPoint.xPos {
+            let move = SKAction.move(to: position, duration: 0.15)
+            let scale = SKAction.scale(to: 0.0001, duration: 0.25)
+            let remove = SKAction.removeFromParent()
+            let sequence = SKAction.sequence([move, scale, remove])
+            moco.run(sequence) { [unowned self] in
+                createPlayer()
+            }
+        } else if mazeModel.characterLocationPoint == mazeModel.correctPoint {
+            correctAnswer = true
+        }
+
         let move = SKAction.move(to: position, duration: 0.15)
         let sequence = SKAction.sequence([move])
         moco.run(sequence)
     }
 
-    func createPacman() {
+    func createPlayer() {
         moco = SKSpriteNode(
             texture: SKTexture(imageNamed: "turtle"),
             size: CGSize(
@@ -75,13 +90,15 @@ class MazeScene: SKScene, ObservableObject {
                 height: min(size.width, size.height) / CGFloat(mazeModel.arrayPoint.count)
             )
         )
-        moco.name = "pacman"
+
+        moco.name = "moco"
+        mazeModel.characterLocationPoint = mazeModel.startPoint
         moco.position =
-            mazeModel.points[mazeModel.characterLocationPoint.yPos][mazeModel.characterLocationPoint.xPos]
+            mazeModel.points[mazeModel.startPoint.yPos][mazeModel.startPoint.xPos]
         addChild(moco)
     }
 
-    func actionMovePacman(to: SKNode, xPos: CGFloat, yPos: CGFloat) {
+    func actionMovePlayer(to: SKNode, xPos: CGFloat, yPos: CGFloat) {
         let move = SKAction.move(to: to.position, duration: 0.15)
         let void = SKAction.run { [self] in
             movePacman(xPos: xPos, yPos: yPos)
@@ -96,7 +113,7 @@ class MazeScene: SKScene, ObservableObject {
             if let nextChildNode = next?.childNode(withName: "0") {
                 nextChildNode.removeFromParent()
             }
-            actionMovePacman(to: next!, xPos: xPos, yPos: yPos)
+            actionMovePlayer(to: next!, xPos: xPos, yPos: yPos)
         }
     }
 
@@ -133,4 +150,8 @@ class MazeScene: SKScene, ObservableObject {
 //        }
 //        touched = false
     }
+}
+
+#Preview {
+    MazeView()
 }

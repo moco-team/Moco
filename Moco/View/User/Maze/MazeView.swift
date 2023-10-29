@@ -5,21 +5,25 @@
 //  Created by Aaron Christopher Tanhar on 25/10/23.
 //
 
+import ConfettiSwiftUI
 import SpriteKit
 import SwiftUI
 
 struct MazeView: View {
-    @StateObject var scene: MazeScene = {
+    @StateObject private var scene: MazeScene = {
         let screenWidth = Screen.width
         let screenHeight = Screen.height
         let scene = MazeScene(
             size: CGSize(width: screenWidth, height: screenHeight)
         )
         scene.scaleMode = .fill
-        print(screenWidth, screenHeight)
 
         return scene
     }()
+
+    @State private var correctAnswer = false
+
+    var onComplete: () -> Void = {}
 
     var body: some View {
         ZStack {
@@ -45,9 +49,17 @@ struct MazeView: View {
                 }
             }
         }.background(.ultraThinMaterial)
+            .onChange(of: scene.correctAnswer) {
+                correctAnswer = scene.correctAnswer
+            }
+            .popUp(isActive: $correctAnswer, withConfetti: true) {
+                onComplete()
+            }
     }
 }
 
 #Preview {
-    MazeView()
+    MazeView {
+        print("Done")
+    }
 }
