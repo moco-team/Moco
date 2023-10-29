@@ -19,6 +19,7 @@ struct HomeView: View {
     @State private var homeViewModel = HomeViewModel()
     @State private var showAr = false
     @State private var showMaze = false
+    @State private var startARStory = false
 
     var body: some View {
         ZStack {
@@ -44,6 +45,9 @@ struct HomeView: View {
                 .padding(.horizontal, 0.05 * Screen.width)
                 Button("AR") {
                     showAr = true
+                }
+                Button("AR Story") {
+                    startARStory = true
                 }
                 Button("Maze") {
                     showMaze = true
@@ -93,6 +97,11 @@ struct HomeView: View {
             }
             if showMaze {
                 MazePrompt().ignoresSafeArea()
+            }
+            if startARStory {
+                ARStory(doneHandler: {
+                    startARStory.toggle()
+                })
             }
         }
     }
