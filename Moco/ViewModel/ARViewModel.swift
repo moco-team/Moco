@@ -63,14 +63,33 @@ final class ARViewModel: NSObject, ObservableObject {
 
         #if !targetEnvironment(simulator)
 
+            // Creating parent ModelEntity
+            let parentEntity = ModelEntity()
+            parentEntity.addChild(environment)
+        
             // If there is not already an anchor here, create one
             guard let anchorEntity = anchors[anchor.identifier] else {
+                
+                // Anchoring the entity and adding it to the scene
                 let anchorEntity = AnchorEntity(anchor: anchor)
-                anchorEntity.addChild(environment)
+                anchorEntity.addChild(parentEntity)
                 view.scene.addAnchor(anchorEntity)
-                environment.generateCollisionShapes(recursive: true)
+//                environment.generateCollisionShapes(recursive: true)
 
+                // Add animation
+                
+                
+                // Generate collision
+                let entityBounds = environment.visualBounds(relativeTo: parentEntity)
+                parentEntity.collision = CollisionComponent(
+                    shapes: [ShapeResource.generateBox(size: entityBounds.extents).offsetBy(translation: entityBounds.center)]
+                )
+                
+                // Installing gestures for the parentEntity
+                view.installGestures(for: parentEntity)
+                
                 anchors[anchor.identifier] = anchorEntity
+                
                 return environment
             }
 
