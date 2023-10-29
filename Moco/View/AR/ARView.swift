@@ -21,8 +21,8 @@ struct ARCameraView: View {
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var arViewModel: ARViewModel
 
-    var onFindObject: () -> () = {}
-    
+    var onFindObject: () -> Void = {}
+
     @State var fadeInGameStartView = false
 
     var body: some View {
@@ -73,8 +73,8 @@ struct ARCameraView: View {
             arViewModel.hasFindObject = false
             onFindObject()
         }
-        .onAppear() {
-            withAnimation(Animation.easeIn(duration: 1.5)){
+        .onAppear {
+            withAnimation(Animation.easeIn(duration: 1.5)) {
                 fadeInGameStartView.toggle()
             }
         }
