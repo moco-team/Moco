@@ -11,13 +11,41 @@ struct MainButton: ButtonStyle {
     var width: CGFloat?
     var height: CGFloat?
     var buttonColor = Color.redBtn
+    var cornerRadius: CGFloat = 8
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: width, height: height)
             .padding()
             .background(buttonColor)
             .foregroundColor(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            .scaleEffect(configuration.isPressed ? 1.2 : 1)
+            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+            .fontWeight(.bold)
+            .shadow(radius: 2, y: 3)
+    }
+}
+
+struct MainButtonOutlined: ButtonStyle {
+    var width: CGFloat?
+    var height: CGFloat?
+    var buttonColor = Color.redBtn
+    var textColor = Color.text.primary
+    var borderWidth: CGFloat = 3
+    var cornerRadius: CGFloat = 8
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(width: width, height: height)
+            .padding()
+            .background(.clear)
+            .foregroundColor(textColor)
+            .clipShape(
+                RoundedRectangle(cornerRadius: cornerRadius)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .stroke(buttonColor, lineWidth: borderWidth)
+            )
             .scaleEffect(configuration.isPressed ? 1.2 : 1)
             .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
             .fontWeight(.bold)
@@ -50,6 +78,10 @@ struct ButtonView: View {
             print("Button pressed!")
         }
         .buttonStyle(MainButton(width: 80))
+        Button("Press Me") {
+            print("Button pressed!")
+        }
+        .buttonStyle(MainButtonOutlined(width: 80))
         Button("Press Me") {
             print("Button pressed!")
             active = !active

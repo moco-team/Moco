@@ -11,6 +11,7 @@ public extension View {
     func popUp(
         isActive: Binding<Bool>,
         title: String? = "Congratulation",
+        text: String? = "",
         topImage: String? = nil,
         bottomImage: String? = nil,
         cancelText: String? = nil,
@@ -18,6 +19,7 @@ public extension View {
         containerBgColor: Color = Color.white,
         textColor: Color = .black,
         overlayOpacity: Double = 0.3,
+        withConfetti: Bool = false,
         width: CGFloat? = nil,
         height: CGFloat? = nil,
         function: @escaping () -> Void,
@@ -27,6 +29,7 @@ public extension View {
             PopUpComponent(
                 isActive: isActive,
                 title: title,
+                text: text,
                 topImage: topImage,
                 bottomImage: bottomImage,
                 cancelText: cancelText,
@@ -35,7 +38,8 @@ public extension View {
                 textColor: textColor,
                 overlayOpacity: overlayOpacity,
                 width: width ?? Screen.width * 0.3,
-                height: height ?? Screen.height * 0.2
+                height: height ?? Screen.height * 0.2,
+                withConfetti: withConfetti
             ) {
                 function()
             } cancelHandler: {

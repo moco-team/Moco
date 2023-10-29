@@ -27,7 +27,7 @@ struct ARViewContainer: UIViewRepresentable {
                                                    action: #selector(Coordinator.viewTapped(_:)))
         tapRecognizer.name = "ARView Tap"
         arView.addGestureRecognizer(tapRecognizer)
-        
+
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleLongPress(_:)))
         arView.addGestureRecognizer(longPressGestureRecognizer)
 
@@ -43,24 +43,24 @@ struct ARViewContainer: UIViewRepresentable {
         init(parent: ARViewContainer) {
             self.parent = parent
         }
-        
+
         private var tappedEntities: [Entity]?
 
         @objc func viewTapped(_ gesture: UITapGestureRecognizer) {
             print("Screen tapped")
-            
+
             if parent.viewModel.hasPlacedObject {
                 let point = gesture.location(in: arView)
-                
+
                 tappedEntities = arView!.entities(at: point)
                 if !tappedEntities!.isEmpty {
                     print(tappedEntities?.first as Any)
                 }
-                
+
                 return
             } else {
                 print("Place an object")
-                
+
                 let point = gesture.location(in: gesture.view)
                 guard let arView,
                       let result = arView.raycast(from: point,
@@ -71,18 +71,18 @@ struct ARViewContainer: UIViewRepresentable {
                     return
                 }
                 _ = parent.viewModel.addCup(anchor: anchor,
-                                        at: result.worldTransform,
-                                        in: arView)
+                                            at: result.worldTransform,
+                                            in: arView)
                 parent.viewModel.hasPlacedObject = true
             }
         }
-        
+
         @objc func handleLongPress(_ recognizer: UILongPressGestureRecognizer) {
             let location = recognizer.location(in: arView)
-            
+
             if let entity = arView!.entity(at: location) {
                 if let anchorEntity = entity.anchor {
-                    print ("Removed anchor with name: " + anchorEntity.name)
+                    print("Removed anchor with name: " + anchorEntity.name)
                     anchorEntity.removeFromParent()
                     parent.viewModel.hasPlacedObject = false
                     parent.viewModel.hasFindObject = true

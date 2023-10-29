@@ -69,7 +69,7 @@ final class ARViewModel: NSObject, ObservableObject {
                 anchorEntity.addChild(environment)
                 view.scene.addAnchor(anchorEntity)
                 environment.generateCollisionShapes(recursive: true)
-                
+
                 anchors[anchor.identifier] = anchorEntity
                 return environment
             }

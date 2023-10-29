@@ -9,22 +9,22 @@ import SwiftUI
 
 struct ARClueView: View {
     @State var fadeInGameStartView = false
-    
+
     var clue: String
-    
-    var onStartGame: () -> () = {}
-    
+
+    var onStartGame: () -> Void = {}
+
     var body: some View {
         ZStack {
             Rectangle()
                 .frame(width: Screen.width, height: Screen.height)
                 .edgesIgnoringSafeArea(.all)
                 .foregroundColor(Color.bgPrimary)
-            
+
             VStack {
                 Text(clue)
                     .foregroundStyle(.brownTxt)
-                
+
                 Button(action: {
                     onStartGame()
                 }, label: {
@@ -34,8 +34,8 @@ struct ARClueView: View {
                 .padding()
             }
         }
-        .onAppear() {
-            withAnimation(Animation.easeIn(duration: 1.5)){
+        .onAppear {
+            withAnimation(Animation.easeIn(duration: 1.5)) {
                 fadeInGameStartView.toggle()
             }
         }

@@ -201,7 +201,9 @@ struct StoryView: View {
             isPopUpActive = true
             return
         }
-        scrollPosition! += 1
+        withAnimation {
+            scrollPosition! += 1
+        }
     }
 
     // MARK: - View
@@ -312,7 +314,9 @@ struct StoryView: View {
                     if scrollPosition! > 0 {
                         StoryNavigationButton(direction: .left) {
                             guard scrollPosition! > 0 else { return }
-                            scrollPosition! -= 1
+                            withAnimation {
+                                scrollPosition! -= 1
+                            }
                         }
                     }
                     Spacer()

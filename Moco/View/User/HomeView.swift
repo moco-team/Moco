@@ -68,7 +68,7 @@ struct HomeView: View {
                         ForEach(
                             Array(storyThemeViewModel.storyThemes.enumerated()), id: \.element
                         ) { index, storyTheme in
-                            StoryBook(
+                            StoryBookNew(
                                 title: storyTheme.title,
                                 image: storyTheme.pictureName,
                                 number: index + 1
@@ -96,7 +96,7 @@ struct HomeView: View {
                 ARCameraView().ignoresSafeArea()
             }
             if showMaze {
-                MazeView().ignoresSafeArea()
+                MazePrompt().ignoresSafeArea()
             }
             if startARStory {
                 ARStory(doneHandler: {
