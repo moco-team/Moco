@@ -19,6 +19,7 @@ struct HomeView: View {
     @State private var homeViewModel = HomeViewModel()
     @State private var showAr = false
     @State private var showMaze = false
+    @State private var showTryMotion = false
     @State private var startARStory = false
 
     var body: some View {
@@ -51,6 +52,9 @@ struct HomeView: View {
                 }
                 Button("Maze") {
                     showMaze = true
+                }
+                Button("Try-Motion"){
+                    showTryMotion = true
                 }
 
                 Spacer()
@@ -97,6 +101,9 @@ struct HomeView: View {
             }
             if showMaze {
                 MazeView().ignoresSafeArea()
+            }
+            if showTryMotion{
+                TryMotionView().ignoresSafeArea()
             }
             if startARStory {
                 ARStory(doneHandler: {
