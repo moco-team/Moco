@@ -33,6 +33,8 @@
 		05E17AD72ADEBFC500A34547 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD62ADEBFC500A34547 /* BalloonView.swift */; };
 		05E17AD92ADED16800A34547 /* balon_merah.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05E17AD82ADED16800A34547 /* balon_merah.mp3 */; };
 		05E8B55D2AECE32D00E3612F /* button.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 05E8B55C2AECE32D00E3612F /* button.usdz */; };
+		05E8B56A2AED4AD400E3612F /* ARClueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E8B5692AED4AD400E3612F /* ARClueView.swift */; };
+		05E8B56D2AED57CF00E3612F /* ARStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E8B56C2AED57CF00E3612F /* ARStory.swift */; };
 		0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1197612AD7D4F3004FAD14 /* IconButton.swift */; };
 		0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1197822AD7E97A004FAD14 /* CollectionRowView.swift */; };
 		0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31D72AD7EB6100DFC16F /* CollectionListView.swift */; };
@@ -207,6 +209,8 @@
 		05E17AD62ADEBFC500A34547 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
 		05E17AD82ADED16800A34547 /* balon_merah.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = balon_merah.mp3; sourceTree = "<group>"; };
 		05E8B55C2AECE32D00E3612F /* button.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = button.usdz; sourceTree = "<group>"; };
+		05E8B5692AED4AD400E3612F /* ARClueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARClueView.swift; sourceTree = "<group>"; };
+		05E8B56C2AED57CF00E3612F /* ARStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARStory.swift; sourceTree = "<group>"; };
 		0B1197612AD7D4F3004FAD14 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		0B1197822AD7E97A004FAD14 /* CollectionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionRowView.swift; sourceTree = "<group>"; };
 		0B2E31D72AD7EB6100DFC16F /* CollectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListView.swift; sourceTree = "<group>"; };
@@ -542,6 +546,7 @@
 		05B1661C2ADE755F0077FA0D /* Prompts */ = {
 			isa = PBXGroup;
 			children = (
+				05E8B56B2AED57AA00E3612F /* ARStory */,
 				0571CB342AE17A6800CE0CC7 /* SpeakTheStory */,
 				050353DF2ADFE28B0066591A /* FindHoney */,
 				05B1661D2ADE75640077FA0D /* FindTheObject */,
@@ -589,6 +594,14 @@
 				056949722AE0EB6A00830D57 /* Page1-monolog1.m4a */,
 			);
 			path = Page1;
+			sourceTree = "<group>";
+		};
+		05E8B56B2AED57AA00E3612F /* ARStory */ = {
+			isa = PBXGroup;
+			children = (
+				05E8B56C2AED57CF00E3612F /* ARStory.swift */,
+			);
+			path = ARStory;
 			sourceTree = "<group>";
 		};
 		0B1197602AD7D4A7004FAD14 /* Components */ = {
@@ -695,6 +708,7 @@
 				937AF2942AE8C06C008C69BB /* ARView.swift */,
 				937AF2992AE8D422008C69BB /* EnvironmentEntity.swift */,
 				937AF29B2AE8D47E008C69BB /* ResourceLoader.swift */,
+				05E8B5692AED4AD400E3612F /* ARClueView.swift */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -1188,10 +1202,12 @@
 				93324AA72AEA9FD400046CB8 /* MazeModel.swift in Sources */,
 				056B67262AE28CFB00A3B493 /* ProfileView.swift in Sources */,
 				0B2E31DE2AD8087B00DFC16F /* Header.swift in Sources */,
+				05E8B56D2AED57CF00E3612F /* ARStory.swift in Sources */,
 				932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */,
 				938E3D502ADBABD3003D2AE1 /* Print.swift in Sources */,
 				938E3D4B2ADB9F1B003D2AE1 /* StoryView.swift in Sources */,
 				0BA3E5092ADFC61500BCFE9E /* StoryThemeAdminView.swift in Sources */,
+				05E8B56A2AED4AD400E3612F /* ARClueView.swift in Sources */,
 				93C2F8BB2AD684CE007D1ABC /* Detector.swift in Sources */,
 				938C553A2AE1B3E800BC233D /* ObjectDetectionViewModel.swift in Sources */,
 				0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */,

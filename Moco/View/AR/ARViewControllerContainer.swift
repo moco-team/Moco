@@ -27,6 +27,9 @@ struct ARViewContainer: UIViewRepresentable {
                                                    action: #selector(Coordinator.viewTapped(_:)))
         tapRecognizer.name = "ARView Tap"
         arView.addGestureRecognizer(tapRecognizer)
+        
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleLongPress(_:)))
+        arView.addGestureRecognizer(longPressGestureRecognizer)
 
         return arView
     }
@@ -71,6 +74,19 @@ struct ARViewContainer: UIViewRepresentable {
                                         at: result.worldTransform,
                                         in: arView)
                 parent.viewModel.hasPlacedObject = true
+            }
+        }
+        
+        @objc func handleLongPress(_ recognizer: UILongPressGestureRecognizer) {
+            let location = recognizer.location(in: arView)
+            
+            if let entity = arView!.entity(at: location) {
+                if let anchorEntity = entity.anchor {
+                    print ("Removed anchor with name: " + anchorEntity.name)
+                    anchorEntity.removeFromParent()
+                    parent.viewModel.hasPlacedObject = false
+                    parent.viewModel.hasFindObject = true
+                }
             }
         }
     }

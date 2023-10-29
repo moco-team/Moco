@@ -20,6 +20,7 @@ final class ARViewModel: NSObject, ObservableObject {
 
     @Published var assetsLoaded = false
     @Published var hasPlacedObject: Bool = false
+    @Published var hasFindObject: Bool = false
 
     func resume() {
         if !assetsLoaded && loadCancellable == nil {
@@ -68,7 +69,6 @@ final class ARViewModel: NSObject, ObservableObject {
                 anchorEntity.addChild(environment)
                 view.scene.addAnchor(anchorEntity)
                 environment.generateCollisionShapes(recursive: true)
-//                view.installGestures(.all, for: environment)
                 
                 anchors[anchor.identifier] = anchorEntity
                 return environment
@@ -76,7 +76,7 @@ final class ARViewModel: NSObject, ObservableObject {
 
             // Add the cup to the existing anchor
             anchorEntity.addChild(environment)
-            return anchorEntity
+            return environment
         #endif
     }
 
