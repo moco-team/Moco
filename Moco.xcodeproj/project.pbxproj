@@ -83,6 +83,8 @@
 		935D785B2AED55B200DF64A5 /* PeelEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D785A2AED55B200DF64A5 /* PeelEffect.swift */; };
 		935D785D2AED6D6600DF64A5 /* StoryBookNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D785C2AED6D6600DF64A5 /* StoryBookNew.swift */; };
 		935D785F2AED7C9D00DF64A5 /* PeelEffectTappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D785E2AED7C9D00DF64A5 /* PeelEffectTappable.swift */; };
+		935D78622AEE1AC400DF64A5 /* MazePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78612AEE1AC400DF64A5 /* MazePrompt.swift */; };
+		935D78642AEE217C00DF64A5 /* ColorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78632AEE217C00DF64A5 /* ColorUtil.swift */; };
 		937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2852AE80BFA008C69BB /* RippleView.swift */; };
 		937AF2882AE81983008C69BB /* RippleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2872AE81983008C69BB /* RippleModel.swift */; };
 		937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2892AE81A26008C69BB /* RippleViewModel.swift */; };
@@ -244,6 +246,8 @@
 		935D785A2AED55B200DF64A5 /* PeelEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelEffect.swift; sourceTree = "<group>"; };
 		935D785C2AED6D6600DF64A5 /* StoryBookNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBookNew.swift; sourceTree = "<group>"; };
 		935D785E2AED7C9D00DF64A5 /* PeelEffectTappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelEffectTappable.swift; sourceTree = "<group>"; };
+		935D78612AEE1AC400DF64A5 /* MazePrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazePrompt.swift; sourceTree = "<group>"; };
+		935D78632AEE217C00DF64A5 /* ColorUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtil.swift; sourceTree = "<group>"; };
 		937AF2852AE80BFA008C69BB /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
 		937AF2872AE81983008C69BB /* RippleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleModel.swift; sourceTree = "<group>"; };
 		937AF2892AE81A26008C69BB /* RippleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleViewModel.swift; sourceTree = "<group>"; };
@@ -548,6 +552,7 @@
 		05B1661C2ADE755F0077FA0D /* Prompts */ = {
 			isa = PBXGroup;
 			children = (
+				935D78602AEE1AB400DF64A5 /* Maze */,
 				0571CB342AE17A6800CE0CC7 /* SpeakTheStory */,
 				050353DF2ADFE28B0066591A /* FindHoney */,
 				05B1661D2ADE75640077FA0D /* FindTheObject */,
@@ -694,6 +699,14 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		935D78602AEE1AB400DF64A5 /* Maze */ = {
+			isa = PBXGroup;
+			children = (
+				935D78612AEE1AC400DF64A5 /* MazePrompt.swift */,
+			);
+			path = Maze;
+			sourceTree = "<group>";
+		};
 		937AF28D2AE832AF008C69BB /* AR */ = {
 			isa = PBXGroup;
 			children = (
@@ -741,6 +754,7 @@
 				937AF2902AE83794008C69BB /* Date.swift */,
 				937AF2922AE838D0008C69BB /* Dictionary.swift */,
 				935D78542AEC09A000DF64A5 /* GlobalStorage.swift */,
+				935D78632AEE217C00DF64A5 /* ColorUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1131,6 +1145,7 @@
 				93C8E7232ADEF249002315A2 /* FontUtil.swift in Sources */,
 				937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */,
 				935D785F2AED7C9D00DF64A5 /* PeelEffectTappable.swift in Sources */,
+				935D78642AEE217C00DF64A5 /* ColorUtil.swift in Sources */,
 				937AF2932AE838D0008C69BB /* Dictionary.swift in Sources */,
 				0B2E31DC2AD8084600DFC16F /* CollectionView.swift in Sources */,
 				935D78532AEBF9FE00DF64A5 /* URL.swift in Sources */,
@@ -1190,6 +1205,7 @@
 				937AF28C2AE832A7008C69BB /* ARViewControllerContainer.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
 				937AF2A22AE930AF008C69BB /* MazeScene.swift in Sources */,
+				935D78622AEE1AC400DF64A5 /* MazePrompt.swift in Sources */,
 				938C553E2AE1B76600BC233D /* ObjectDetectionModel.swift in Sources */,
 				937AF2A42AE930E0008C69BB /* MazeView.swift in Sources */,
 				0B6E2F682ADC908B0001D320 /* StoryModel.swift in Sources */,

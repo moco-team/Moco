@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-class MazeScene: SKScene {
+class MazeScene: SKScene, ObservableObject {
     var moco: SKSpriteNode!
     var touched: Bool = false
     var score: Int = 0

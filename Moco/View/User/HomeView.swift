@@ -92,7 +92,7 @@ struct HomeView: View {
                 ARCameraView().ignoresSafeArea()
             }
             if showMaze {
-                MazeView().ignoresSafeArea()
+                MazePrompt().ignoresSafeArea()
             }
         }
     }

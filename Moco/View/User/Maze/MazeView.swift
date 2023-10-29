@@ -9,7 +9,7 @@ import SpriteKit
 import SwiftUI
 
 struct MazeView: View {
-    let scene: MazeScene = {
+    @StateObject var scene: MazeScene = {
         let screenWidth = Screen.width
         let screenHeight = Screen.height
         let scene = MazeScene(
