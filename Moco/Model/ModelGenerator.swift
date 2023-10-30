@@ -61,7 +61,7 @@ struct ModelGenerator {
                         pictureName: "Story/Cover/Story1",
                         descriptionTheme: "Story 1",
                         title: "Story 1",
-                        stories: [StoryModel(background: "", pageNumber: 0, isHavePrompt: false)],
+                        stories: [StoryModel(background: "Story/Content/Story1/Pages/Page1/background", pageNumber: 0, isHavePrompt: false)],
                         slug: "story-1"
                     )
                 ]
