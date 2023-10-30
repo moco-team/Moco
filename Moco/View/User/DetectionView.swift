@@ -48,6 +48,7 @@ struct DetectionView: View {
                 objectDetectionViewModel.setDetectedObject(nil)
                 if detectionPromptViewModel.correctCount >= maxDetectionCount {
                     detectionPromptViewModel.showPopup = true
+                    objectDetectionViewModel.shouldStopSession = true
                 }
             }
         }
@@ -55,6 +56,7 @@ struct DetectionView: View {
             doneHandler?()
         }
         .task {
+            objectDetectionViewModel.shouldStopSession = false
             objectDetectionViewModel.setTargetObject([.chair, .couch])
             objectDetectionViewModel.setDetectedObject(nil)
         }

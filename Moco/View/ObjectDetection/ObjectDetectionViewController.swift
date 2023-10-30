@@ -40,6 +40,24 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
         }
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        stopSession()
+        super.viewWillDisappear(animated)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        stopSession()
+        super.viewDidDisappear(animated)
+    }
+
+    func stopSession() {
+        if captureSession.isRunning {
+            sessionQueue.async { [weak self] in
+                self?.captureSession.stopRunning()
+            }
+        }
+    }
+
     func setOrientation() {
         switch UIDevice.current.orientation {
         // Home button on top
@@ -155,12 +173,16 @@ struct HostedViewController: UIViewControllerRepresentable {
     var threshold: Float = 0.8
     var detectionHandler: ((String?) -> Void)?
 
-    func makeUIViewController(context _: Context) -> UIViewController {
+    func makeUIViewController(context _: Context) -> ObjectDetectionViewController {
         let viewController = ObjectDetectionViewController()
         viewController.detectionHandler = detectionHandler
         viewController.threshold = threshold
         return viewController
     }
 
-    func updateUIViewController(_: UIViewController, context _: Context) {}
+    func updateUIViewController(_ viewController: ObjectDetectionViewController, context _: Context) {
+        if objectDetectionViewModel.shouldStopSession {
+            viewController.stopSession()
+        }
+    }
 }
