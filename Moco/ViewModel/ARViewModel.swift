@@ -21,6 +21,7 @@ final class ARViewModel: NSObject, ObservableObject {
     @Published var assetsLoaded = false
     @Published var hasPlacedObject: Bool = false
     @Published var hasFindObject: Bool = false
+    @Published var foundObjectName: String?
 
     func resume() {
         if !assetsLoaded && loadCancellable == nil {
@@ -38,6 +39,10 @@ final class ARViewModel: NSObject, ObservableObject {
         config.planeDetection = [.horizontal]
         arView.session.run(config)
         arView.session.delegate = self
+    }
+    
+    func setSearchedObject(objectName: String) {
+        foundObjectName = objectName
     }
 
     func addCup(anchor: ARAnchor,
@@ -65,6 +70,7 @@ final class ARViewModel: NSObject, ObservableObject {
 
             // Creating parent ModelEntity
             let parentEntity = ModelEntity()
+            parentEntity.name = environment.name // Set entity name based on added object's name
             parentEntity.addChild(environment)
         
             // If there is not already an anchor here, create one
@@ -89,6 +95,7 @@ final class ARViewModel: NSObject, ObservableObject {
                 view.installGestures(for: parentEntity)
                 
                 anchors[anchor.identifier] = anchorEntity
+                print(parentEntity)
                 
                 return environment
             }

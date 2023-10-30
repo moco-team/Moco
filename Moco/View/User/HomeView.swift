@@ -20,6 +20,8 @@ struct HomeView: View {
     @State private var showAr = false
     @State private var showMaze = false
     @State private var startARStory = false
+    
+    let clueData = ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "environment")
 
     var body: some View {
         ZStack {
@@ -93,7 +95,7 @@ struct HomeView: View {
                 homeViewModel.setVolume()
             }
             if showAr {
-                ARCameraView().ignoresSafeArea()
+                ARCameraView(objectToBeFound: clueData.objectName).ignoresSafeArea()
             }
             if showMaze {
                 MazePrompt().ignoresSafeArea()
