@@ -19,7 +19,7 @@ struct ARStory: View {
     @State private var isGameStarted: Bool = false
 
     var doneHandler: (() -> Void)?
-    
+
     let clueData = ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "environment")
 
     var body: some View {

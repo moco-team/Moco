@@ -11,7 +11,7 @@ import SwiftUI
 
 struct MazeView: View {
     @EnvironmentObject var motionViewModel: MotionViewModel
-    
+
     @StateObject private var scene: MazeScene = {
         let screenWidth = Screen.width
         let screenHeight = Screen.height
@@ -19,14 +19,14 @@ struct MazeView: View {
             size: CGSize(width: screenWidth, height: screenHeight)
         )
         scene.scaleMode = .fill
-        
+
         return scene
     }()
-    
+
     @State private var correctAnswer = false
-    
+
     var onComplete: () -> Void = {}
-    
+
     var body: some View {
         ZStack {
             SpriteView(scene: scene, options: [.allowsTransparency])
@@ -40,18 +40,18 @@ struct MazeView: View {
         .background(.ultraThinMaterial)
         .onAppear {
             motionViewModel.startUpdates()
-            TimerViewModel().setTimer(key: "startTimer", withInterval: 0.5){
+            TimerViewModel().setTimer(key: "startTimer", withInterval: 0.5) {
                 motionViewModel.updateMotion()
-                if (abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum)){
-                    if(motionViewModel.rollNum > 0) {
+                if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
+                    if motionViewModel.rollNum > 0 {
                         scene.move(.up)
-                    } else if(motionViewModel.rollNum < 0){
+                    } else if motionViewModel.rollNum < 0 {
                         scene.move(.down)
                     }
                 } else {
-                    if(motionViewModel.pitchNum > 0){
+                    if motionViewModel.pitchNum > 0 {
                         scene.move(.right)
-                    } else if(motionViewModel.pitchNum < 0){
+                    } else if motionViewModel.pitchNum < 0 {
                         scene.move(.left)
                     }
                 }
