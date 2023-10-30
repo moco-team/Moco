@@ -23,6 +23,8 @@ struct ObjectDetectionModel {
     private var detectedObject: DetectionValue?
     private var targetObject: [DetectionValue] = []
 
+    var shouldStopSession = false
+
     var isMatch: Bool {
         !targetObject.isEmpty && detectedObject != nil && targetObject.contains {
             $0 == detectedObject

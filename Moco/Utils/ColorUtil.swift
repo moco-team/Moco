@@ -99,6 +99,11 @@ extension Color {
 }
 
 extension Color {
+    /// Color extension
+    ///
+    /// How to use it:
+    ///
+    /// `Color.text.primary`
     static let text = TextColor()
 }
 

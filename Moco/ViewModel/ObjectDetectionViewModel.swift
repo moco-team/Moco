@@ -12,6 +12,15 @@ class ObjectDetectionViewModel: ObservableObject {
 
     @Published private var objectDetectionModel = ObjectDetectionModel()
 
+    var shouldStopSession: Bool {
+        get {
+            objectDetectionModel.shouldStopSession
+        }
+        set {
+            objectDetectionModel.shouldStopSession = newValue
+        }
+    }
+
     var callback: (() -> Void)?
 
     var isMatch: Bool {
