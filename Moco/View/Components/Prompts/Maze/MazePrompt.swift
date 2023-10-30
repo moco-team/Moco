@@ -14,6 +14,28 @@ struct MazePrompt: View {
 
     var promptText = "Moco adalah sapi jantan"
 
+    func playPrompt() {
+        isStarted = false
+        withAnimation(.easeInOut(duration: 3)) {
+            blurOpacity = 1
+        } completion: {
+            withAnimation(.easeInOut.delay(2)) {
+                showStartButton = true
+            }
+        }
+    }
+
+    func stopPrompt() {
+        withAnimation(.easeInOut(duration: 2)) {
+            blurOpacity = 0
+            showStartButton = false
+        } completion: {
+            withAnimation {
+                isStarted = true
+            }
+        }
+    }
+
     var body: some View {
         ZStack {
             MazeView()
@@ -26,14 +48,7 @@ struct MazePrompt: View {
                         .opacity(blurOpacity)
                     if showStartButton {
                         Button("Mulai") {
-                            withAnimation(.easeInOut(duration: 2)) {
-                                blurOpacity = 0
-                                showStartButton = false
-                            } completion: {
-                                withAnimation {
-                                    isStarted = true
-                                }
-                            }
+                            stopPrompt()
                         }
                         .buttonStyle(
                             MainButton(width: 80, height: 20)
@@ -41,15 +56,26 @@ struct MazePrompt: View {
                         .padding(.bottom, 20)
                     }
                 }.frame(width: Screen.width, height: Screen.height).background(.ultraThinMaterial.opacity(blurOpacity))
-            }
-        }.onAppear {
-            withAnimation(.easeInOut(duration: 3)) {
-                blurOpacity = 1
-            } completion: {
-                withAnimation(.easeInOut.delay(2)) {
-                    showStartButton = true
+            } else {
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button {
+                            playPrompt()
+                        } label: {
+                            Image(systemName: "arrow.counterclockwise.circle")
+                                .resizable()
+                                .frame(width: 60, height: 60)
+                        }
+                        .buttonStyle(
+                            CircleButton(width: 80, height: 80)
+                        ).padding(40)
+                    }
+                    Spacer()
                 }
             }
+        }.onAppear {
+            playPrompt()
         }
     }
 }

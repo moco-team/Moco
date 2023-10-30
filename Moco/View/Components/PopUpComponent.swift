@@ -92,7 +92,7 @@ struct PopUpComponentView: View {
                 .onTapGesture {
                     close()
                 }
-            VStack(alignment: .center) {
+            VStack(alignment: .center, spacing: 0) {
                 HStack(alignment: .center) {
                     ZStack {
                         if topImage != nil {

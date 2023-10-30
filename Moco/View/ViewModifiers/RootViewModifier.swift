@@ -15,11 +15,10 @@ struct RootViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         ZStack {
             content
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea()
                 .statusBar(hidden: true)
                 .navigationBarHidden(true)
                 .navigationBarBackButtonHidden(true)
-                .ignoresSafeArea()
                 .onTapGesture { location in
                     rippleViewModel.appendRipple(Ripple(xPosition: location.x, yPosition: location.y))
                 }
