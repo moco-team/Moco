@@ -21,8 +21,9 @@ struct ARCameraView: View {
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var arViewModel: ARViewModel
 
-    var onFindObject: () -> () = {}
-    
+    let objectToBeFound: String
+    var onFoundObject: () -> Void = {}
+
     @State var fadeInGameStartView = false
 
     var body: some View {
@@ -69,12 +70,15 @@ struct ARCameraView: View {
             }
         }
         .onChange(of: arViewModel.hasFindObject) {
-            print("Object finded")
-            arViewModel.hasFindObject = false
-            onFindObject()
+            print("Object found!")
+            arViewModel.hasFindObject = false // Set back to default value, so the AR can works if user open the AR view again
+            onFoundObject()
         }
-        .onAppear() {
-            withAnimation(Animation.easeIn(duration: 1.5)){
+        .task {
+            arViewModel.setSearchedObject(objectName: objectToBeFound)
+        }
+        .onAppear {
+            withAnimation(Animation.easeIn(duration: 1.5)) {
                 fadeInGameStartView.toggle()
             }
         }
@@ -83,5 +87,5 @@ struct ARCameraView: View {
 }
 
 #Preview {
-    ARCameraView()
+    ARCameraView(objectToBeFound: "environment", onFoundObject: {})
 }

@@ -15,7 +15,7 @@ struct StoryBook: View {
 
     var title: String = "Story 1"
     let durationAndDelay: CGFloat = 0.3
-    var image: String? = ""
+    var image: String? = "Story/Cover/Story1"
     var number: Int = 1
     @State var degree = 0.0
     @State var isFlipped = false

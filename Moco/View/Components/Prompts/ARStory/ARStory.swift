@@ -7,28 +7,31 @@
 
 import SwiftUI
 
+struct ClueData {
+    let clue: String
+    let objectName: String
+}
+
 struct ARStory: View {
     @Environment(\.audioViewModel) private var audioViewModel
-    
+
     @State private var startVisibility: Bool = true
     @State private var isGameStarted: Bool = false
-    
+
     var doneHandler: (() -> Void)?
     
-    private let clues: [String] = [
-        "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!"
-    ]
-    
+    let clueData = ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "environment")
+
     var body: some View {
-        if(startVisibility){
-            ARClueView(clue: clues[0], onStartGame: {
+        if startVisibility {
+            ARClueView(clue: clueData.clue, onStartGame: {
                 isGameStarted = true
                 audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1)
             })
             .ignoresSafeArea()
         }
         if isGameStarted {
-            ARCameraView(onFindObject: {
+            ARCameraView(objectToBeFound: clueData.objectName, onFoundObject: {
                 isGameStarted = false
                 print("Ditemukan!")
                 doneHandler!()

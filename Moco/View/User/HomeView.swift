@@ -21,6 +21,8 @@ struct HomeView: View {
     @State private var showMaze = false
     @State private var showTryMotion = false
     @State private var startARStory = false
+    
+    let clueData = ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "environment")
 
     var body: some View {
         ZStack {
@@ -72,7 +74,7 @@ struct HomeView: View {
                         ForEach(
                             Array(storyThemeViewModel.storyThemes.enumerated()), id: \.element
                         ) { index, storyTheme in
-                            StoryBook(
+                            StoryBookNew(
                                 title: storyTheme.title,
                                 image: storyTheme.pictureName,
                                 number: index + 1
@@ -97,10 +99,10 @@ struct HomeView: View {
                 homeViewModel.setVolume()
             }
             if showAr {
-                ARCameraView().ignoresSafeArea()
+                ARCameraView(objectToBeFound: clueData.objectName).ignoresSafeArea()
             }
             if showMaze {
-                MazeView().ignoresSafeArea()
+                MazePrompt().ignoresSafeArea()
             }
             if showTryMotion{
                 TryMotionView().ignoresSafeArea()

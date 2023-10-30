@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		050353E12ADFE2970066591A /* FindHoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050353E02ADFE2970066591A /* FindHoney.swift */; };
+		0517C5202AEF3C9B00CE7A01 /* RKFade in Frameworks */ = {isa = PBXBuildFile; productRef = 0517C51F2AEF3C9B00CE7A01 /* RKFade */; };
 		0518CDD82AE220BA00521EC8 /* moco-1-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518CDD72AE220BA00521EC8 /* moco-1-2.json */; };
 		0518CDDA2AE227FA00521EC8 /* kakak_katak.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518CDD92AE227FA00521EC8 /* kakak_katak.json */; };
 		056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */; };
@@ -37,6 +38,7 @@
 		05E8B55D2AECE32D00E3612F /* button.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 05E8B55C2AECE32D00E3612F /* button.usdz */; };
 		05E8B56A2AED4AD400E3612F /* ARClueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E8B5692AED4AD400E3612F /* ARClueView.swift */; };
 		05E8B56D2AED57CF00E3612F /* ARStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E8B56C2AED57CF00E3612F /* ARStory.swift */; };
+		05EEF0692AEE95C000D710E2 /* environment-2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 05EEF0682AEE95C000D710E2 /* environment-2.usdz */; };
 		0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1197612AD7D4F3004FAD14 /* IconButton.swift */; };
 		0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1197822AD7E97A004FAD14 /* CollectionRowView.swift */; };
 		0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31D72AD7EB6100DFC16F /* CollectionListView.swift */; };
@@ -84,6 +86,17 @@
 		935D78532AEBF9FE00DF64A5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78522AEBF9FE00DF64A5 /* URL.swift */; };
 		935D78552AEC09A000DF64A5 /* GlobalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78542AEC09A000DF64A5 /* GlobalStorage.swift */; };
 		935D78572AEC2D7900DF64A5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78562AEC2D7900DF64A5 /* SettingsViewModel.swift */; };
+		935D78592AED433A00DF64A5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78582AED433A00DF64A5 /* Color.swift */; };
+		935D785B2AED55B200DF64A5 /* PeelEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D785A2AED55B200DF64A5 /* PeelEffect.swift */; };
+		935D785D2AED6D6600DF64A5 /* StoryBookNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D785C2AED6D6600DF64A5 /* StoryBookNew.swift */; };
+		935D785F2AED7C9D00DF64A5 /* PeelEffectTappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D785E2AED7C9D00DF64A5 /* PeelEffectTappable.swift */; };
+		935D78622AEE1AC400DF64A5 /* MazePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78612AEE1AC400DF64A5 /* MazePrompt.swift */; };
+		935D78642AEE217C00DF64A5 /* ColorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78632AEE217C00DF64A5 /* ColorUtil.swift */; };
+		935D78672AEE858500DF64A5 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 935D78662AEE858500DF64A5 /* ConfettiSwiftUI */; };
+		935D78692AEF4B1C00DF64A5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D78682AEF4B1C00DF64A5 /* View.swift */; };
+		935D786B2AEF4B8300DF64A5 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D786A2AEF4B8300DF64A5 /* Binding.swift */; };
+		935D786D2AEF4BD600DF64A5 /* ViewOnLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D786C2AEF4BD600DF64A5 /* ViewOnLoad.swift */; };
+		935D786F2AEF4C1200DF64A5 /* Spacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D786E2AEF4C1200DF64A5 /* Spacer.swift */; };
 		937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2852AE80BFA008C69BB /* RippleView.swift */; };
 		937AF2882AE81983008C69BB /* RippleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2872AE81983008C69BB /* RippleModel.swift */; };
 		937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2892AE81A26008C69BB /* RippleViewModel.swift */; };
@@ -215,6 +228,7 @@
 		05E8B55C2AECE32D00E3612F /* button.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = button.usdz; sourceTree = "<group>"; };
 		05E8B5692AED4AD400E3612F /* ARClueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARClueView.swift; sourceTree = "<group>"; };
 		05E8B56C2AED57CF00E3612F /* ARStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARStory.swift; sourceTree = "<group>"; };
+		05EEF0682AEE95C000D710E2 /* environment-2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "environment-2.usdz"; sourceTree = "<group>"; };
 		0B1197612AD7D4F3004FAD14 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		0B1197822AD7E97A004FAD14 /* CollectionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionRowView.swift; sourceTree = "<group>"; };
 		0B2E31D72AD7EB6100DFC16F /* CollectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListView.swift; sourceTree = "<group>"; };
@@ -246,6 +260,16 @@
 		935D78522AEBF9FE00DF64A5 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		935D78542AEC09A000DF64A5 /* GlobalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStorage.swift; sourceTree = "<group>"; };
 		935D78562AEC2D7900DF64A5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		935D78582AED433A00DF64A5 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		935D785A2AED55B200DF64A5 /* PeelEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelEffect.swift; sourceTree = "<group>"; };
+		935D785C2AED6D6600DF64A5 /* StoryBookNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBookNew.swift; sourceTree = "<group>"; };
+		935D785E2AED7C9D00DF64A5 /* PeelEffectTappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelEffectTappable.swift; sourceTree = "<group>"; };
+		935D78612AEE1AC400DF64A5 /* MazePrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazePrompt.swift; sourceTree = "<group>"; };
+		935D78632AEE217C00DF64A5 /* ColorUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtil.swift; sourceTree = "<group>"; };
+		935D78682AEF4B1C00DF64A5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		935D786A2AEF4B8300DF64A5 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		935D786C2AEF4BD600DF64A5 /* ViewOnLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOnLoad.swift; sourceTree = "<group>"; };
+		935D786E2AEF4C1200DF64A5 /* Spacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacer.swift; sourceTree = "<group>"; };
 		937AF2852AE80BFA008C69BB /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
 		937AF2872AE81983008C69BB /* RippleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleModel.swift; sourceTree = "<group>"; };
 		937AF2892AE81A26008C69BB /* RippleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleViewModel.swift; sourceTree = "<group>"; };
@@ -325,8 +349,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				935D78672AEE858500DF64A5 /* ConfettiSwiftUI in Frameworks */,
 				05AE93682ADE83430082B21D /* Lottie in Frameworks */,
 				935D784E2AEBF96800DF64A5 /* FLAnimatedImage in Frameworks */,
+				0517C5202AEF3C9B00CE7A01 /* RKFade in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +576,7 @@
 		05B1661C2ADE755F0077FA0D /* Prompts */ = {
 			isa = PBXGroup;
 			children = (
+				935D78602AEE1AB400DF64A5 /* Maze */,
 				05E8B56B2AED57AA00E3612F /* ARStory */,
 				0571CB342AE17A6800CE0CC7 /* SpeakTheStory */,
 				050353DF2ADFE28B0066591A /* FindHoney */,
@@ -626,6 +653,7 @@
 				0571CB372AE1935C00CE0CC7 /* InvisibleButton.swift */,
 				938C55402AE2301700BC233D /* BurgerMenu.swift */,
 				9398FBB42AE4105900AB5CE4 /* CircularProgressView.swift */,
+				935D785C2AED6D6600DF64A5 /* StoryBookNew.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -704,6 +732,14 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		935D78602AEE1AB400DF64A5 /* Maze */ = {
+			isa = PBXGroup;
+			children = (
+				935D78612AEE1AC400DF64A5 /* MazePrompt.swift */,
+			);
+			path = Maze;
+			sourceTree = "<group>";
+		};
 		937AF28D2AE832AF008C69BB /* AR */ = {
 			isa = PBXGroup;
 			children = (
@@ -721,6 +757,7 @@
 			isa = PBXGroup;
 			children = (
 				937AF2972AE8C72B008C69BB /* environment.usdz */,
+				05EEF0682AEE95C000D710E2 /* environment-2.usdz */,
 				05E8B55C2AECE32D00E3612F /* button.usdz */,
 			);
 			path = Usdz;
@@ -754,6 +791,7 @@
 				937AF2902AE83794008C69BB /* Date.swift */,
 				937AF2922AE838D0008C69BB /* Dictionary.swift */,
 				935D78542AEC09A000DF64A5 /* GlobalStorage.swift */,
+				935D78632AEE217C00DF64A5 /* ColorUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -926,6 +964,11 @@
 				05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */,
 				05BA97A92AE11EE400F64F52 /* MPVolumeViewExtension.swift */,
 				93C8E72B2AE1373D002315A2 /* Shake.swift */,
+				935D78582AED433A00DF64A5 /* Color.swift */,
+				935D78682AEF4B1C00DF64A5 /* View.swift */,
+				935D786A2AEF4B8300DF64A5 /* Binding.swift */,
+				935D786C2AEF4BD600DF64A5 /* ViewOnLoad.swift */,
+				935D786E2AEF4C1200DF64A5 /* Spacer.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -944,6 +987,8 @@
 			children = (
 				93C8E7292AE01660002315A2 /* Storm.swift */,
 				937AF2852AE80BFA008C69BB /* RippleView.swift */,
+				935D785A2AED55B200DF64A5 /* PeelEffect.swift */,
+				935D785E2AED7C9D00DF64A5 /* PeelEffectTappable.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -967,6 +1012,8 @@
 			packageProductDependencies = (
 				05AE93672ADE83430082B21D /* Lottie */,
 				935D784D2AEBF96800DF64A5 /* FLAnimatedImage */,
+				935D78662AEE858500DF64A5 /* ConfettiSwiftUI */,
+				0517C51F2AEF3C9B00CE7A01 /* RKFade */,
 			);
 			productName = Moco;
 			productReference = 93C2F8802AD683AC007D1ABC /* Moco.app */;
@@ -1043,6 +1090,8 @@
 			packageReferences = (
 				05AE93662ADE83430082B21D /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				935D784C2AEBF96800DF64A5 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
+				935D78652AEE858500DF64A5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				0517C51E2AEF3C9B00CE7A01 /* XCRemoteSwiftPackageReference "RealityKit-Fade" */,
 			);
 			productRefGroup = 93C2F8812AD683AC007D1ABC /* Products */;
 			projectDirPath = "";
@@ -1071,6 +1120,7 @@
 				9317221E2AE5508300346382 /* Page6-monolog1.m4a in Resources */,
 				9317221F2AE5508300346382 /* prompt_kursi.m4a in Resources */,
 				937AF2982AE8C72B008C69BB /* environment.usdz in Resources */,
+				05EEF0692AEE95C000D710E2 /* environment-2.usdz in Resources */,
 				931722202AE5508300346382 /* Page8-monolog1.m4a in Resources */,
 				931722212AE5508300346382 /* frog_thankyou.m4a in Resources */,
 				931722222AE5508300346382 /* Page9-monolog1.m4a in Resources */,
@@ -1139,16 +1189,21 @@
 				0B6E2F662ADC8ECE0001D320 /* StoryThemeModel.swift in Sources */,
 				93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */,
 				938C55382AE183AA00BC233D /* FontViewModifier.swift in Sources */,
+				935D786F2AEF4C1200DF64A5 /* Spacer.swift in Sources */,
 				93C2F8BD2AD684CE007D1ABC /* HomeView.swift in Sources */,
 				93C8E7232ADEF249002315A2 /* FontUtil.swift in Sources */,
 				937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */,
+				935D785F2AED7C9D00DF64A5 /* PeelEffectTappable.swift in Sources */,
+				935D78642AEE217C00DF64A5 /* ColorUtil.swift in Sources */,
 				937AF2932AE838D0008C69BB /* Dictionary.swift in Sources */,
 				0B2E31DC2AD8084600DFC16F /* CollectionView.swift in Sources */,
 				935D78532AEBF9FE00DF64A5 /* URL.swift in Sources */,
+				935D785D2AED6D6600DF64A5 /* StoryBookNew.swift in Sources */,
 				0B6E2F6A2ADC91060001D320 /* StoryContentModel.swift in Sources */,
 				93C8E72C2AE1373D002315A2 /* Shake.swift in Sources */,
 				937AF2882AE81983008C69BB /* RippleModel.swift in Sources */,
 				0B2E31DA2AD7EBE500DFC16F /* CollectionModel.swift in Sources */,
+				935D785B2AED55B200DF64A5 /* PeelEffect.swift in Sources */,
 				937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */,
 				0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */,
 				938E3D542ADBCDB8003D2AE1 /* StoryNavigationButton.swift in Sources */,
@@ -1169,9 +1224,11 @@
 				93C8E7212ADEF1DB002315A2 /* TimerModel.swift in Sources */,
 				05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */,
 				05AE93632ADE82920082B21D /* LottieView.swift in Sources */,
+				935D786D2AEF4BD600DF64A5 /* ViewOnLoad.swift in Sources */,
 				93C8E7252ADEF2D3002315A2 /* TimerViewModel.swift in Sources */,
 				05E17AD72ADEBFC500A34547 /* BalloonView.swift in Sources */,
 				938E3D352AD91AD5003D2AE1 /* EnvironmentValue.swift in Sources */,
+				935D786B2AEF4B8300DF64A5 /* Binding.swift in Sources */,
 				937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */,
 				938E3D332AD91605003D2AE1 /* DetectionView.swift in Sources */,
 				05B8ED9C2AEE63F2009ED2C5 /* TryMotionView.swift in Sources */,
@@ -1186,6 +1243,7 @@
 				938E3D432ADABD9F003D2AE1 /* BaseViewModel.swift in Sources */,
 				050353E12ADFE2970066591A /* FindHoney.swift in Sources */,
 				0B6E2F6E2ADC92950001D320 /* HintModel.swift in Sources */,
+				935D78692AEF4B1C00DF64A5 /* View.swift in Sources */,
 				93E3D87C2AE4EFDB00E5391F /* SpeakPromptViewModel.swift in Sources */,
 				0BA3E5122ADFD98400BCFE9E /* StoryModalView.swift in Sources */,
 				937AF29C2AE8D47E008C69BB /* ResourceLoader.swift in Sources */,
@@ -1201,6 +1259,7 @@
 				937AF28C2AE832A7008C69BB /* ARViewControllerContainer.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
 				937AF2A22AE930AF008C69BB /* MazeScene.swift in Sources */,
+				935D78622AEE1AC400DF64A5 /* MazePrompt.swift in Sources */,
 				938C553E2AE1B76600BC233D /* ObjectDetectionModel.swift in Sources */,
 				937AF2A42AE930E0008C69BB /* MazeView.swift in Sources */,
 				0B6E2F682ADC908B0001D320 /* StoryModel.swift in Sources */,
@@ -1217,6 +1276,7 @@
 				0BA3E5092ADFC61500BCFE9E /* StoryThemeAdminView.swift in Sources */,
 				05E8B56A2AED4AD400E3612F /* ARClueView.swift in Sources */,
 				93C2F8BB2AD684CE007D1ABC /* Detector.swift in Sources */,
+				935D78592AED433A00DF64A5 /* Color.swift in Sources */,
 				938C553A2AE1B3E800BC233D /* ObjectDetectionViewModel.swift in Sources */,
 				0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */,
 				93E3D8782AE4E55000E5391F /* DetectionPromptViewModel.swift in Sources */,
@@ -1566,6 +1626,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0517C51E2AEF3C9B00CE7A01 /* XCRemoteSwiftPackageReference "RealityKit-Fade" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Reality-Dev/RealityKit-Fade.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.14;
+			};
+		};
 		05AE93662ADE83430082B21D /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -1582,9 +1650,22 @@
 				minimumVersion = 1.0.17;
 			};
 		};
+		935D78652AEE858500DF64A5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0517C51F2AEF3C9B00CE7A01 /* RKFade */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0517C51E2AEF3C9B00CE7A01 /* XCRemoteSwiftPackageReference "RealityKit-Fade" */;
+			productName = RKFade;
+		};
 		05AE93672ADE83430082B21D /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 05AE93662ADE83430082B21D /* XCRemoteSwiftPackageReference "lottie-ios" */;
@@ -1594,6 +1675,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 935D784C2AEBF96800DF64A5 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */;
 			productName = FLAnimatedImage;
+		};
+		935D78662AEE858500DF64A5 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 935D78652AEE858500DF64A5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

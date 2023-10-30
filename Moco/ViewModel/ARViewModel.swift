@@ -21,6 +21,7 @@ final class ARViewModel: NSObject, ObservableObject {
     @Published var assetsLoaded = false
     @Published var hasPlacedObject: Bool = false
     @Published var hasFindObject: Bool = false
+    @Published var foundObjectName: String?
 
     func resume() {
         if !assetsLoaded && loadCancellable == nil {
@@ -38,6 +39,10 @@ final class ARViewModel: NSObject, ObservableObject {
         config.planeDetection = [.horizontal]
         arView.session.run(config)
         arView.session.delegate = self
+    }
+    
+    func setSearchedObject(objectName: String) {
+        foundObjectName = objectName
     }
 
     func addCup(anchor: ARAnchor,
@@ -63,14 +68,35 @@ final class ARViewModel: NSObject, ObservableObject {
 
         #if !targetEnvironment(simulator)
 
+            // Creating parent ModelEntity
+            let parentEntity = ModelEntity()
+            parentEntity.name = environment.name // Set entity name based on added object's name
+            parentEntity.addChild(environment)
+        
             // If there is not already an anchor here, create one
             guard let anchorEntity = anchors[anchor.identifier] else {
+                
+                // Anchoring the entity and adding it to the scene
                 let anchorEntity = AnchorEntity(anchor: anchor)
-                anchorEntity.addChild(environment)
+                anchorEntity.addChild(parentEntity)
                 view.scene.addAnchor(anchorEntity)
-                environment.generateCollisionShapes(recursive: true)
+//                environment.generateCollisionShapes(recursive: true)
+
+                // Add animation
+                
+                
+                // Generate collision
+                let entityBounds = environment.visualBounds(relativeTo: parentEntity)
+                parentEntity.collision = CollisionComponent(
+                    shapes: [ShapeResource.generateBox(size: entityBounds.extents).offsetBy(translation: entityBounds.center)]
+                )
+                
+                // Installing gestures for the parentEntity
+                view.installGestures(for: parentEntity)
                 
                 anchors[anchor.identifier] = anchorEntity
+                print(parentEntity)
+                
                 return environment
             }
 
