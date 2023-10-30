@@ -42,23 +42,17 @@ struct MazeView: View {
             motionViewModel.startUpdates()
             TimerViewModel().setTimer(key: "startTimer", withInterval: 0.5){
                 motionViewModel.updateMotion()
-                print("rollnum:\(motionViewModel.rollNum)")
-                print("pitchnum:\(motionViewModel.pitchNum)")
                 if (abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum)){
                     if(motionViewModel.rollNum > 0) {
                         scene.move(.up)
-                        print("up")
                     } else if(motionViewModel.rollNum < 0){
                         scene.move(.down)
-                        print("down")
                     }
                 } else {
                     if(motionViewModel.pitchNum > 0){
                         scene.move(.right)
-                        print("right")
                     } else if(motionViewModel.pitchNum < 0){
                         scene.move(.left)
-                        print("left")
                     }
                 }
             }
