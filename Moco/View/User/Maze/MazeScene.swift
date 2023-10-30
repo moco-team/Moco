@@ -45,7 +45,7 @@ class MazeScene: SKScene, ObservableObject {
 
                 if mazeModel.arrayPoint[index][jIndex] == 0 {
                     ground.name = "0"
-                    ground.color = UIColor(hex: 0xA7968E)
+                    ground.texture = SKTexture(imageNamed: "floor")
                 } else if mazeModel.arrayPoint[index][jIndex] == 1 {
                     ground.name = "1"
                     ground.texture = SKTexture(imageNamed: "wall")

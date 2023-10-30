@@ -12,7 +12,7 @@ class MotionViewModel: ObservableObject {
     @Published var accelerationValue: String = ""
     @Published var gravityValue: String = ""
     @Published var rotationValue: String = ""
-    
+
     @Published var roll = false
     @Published var pitch = false
     @Published var rollNum = 0.0
@@ -33,10 +33,10 @@ class MotionViewModel: ObservableObject {
         motionManager.deviceMotionUpdateInterval = 1.0 / 60.0 // 60 Hz
         motionManager.accelerometerUpdateInterval = 1.0 / 60.0
         motionManager.gyroUpdateInterval = 1.0 / 20.0
-        
+
 //        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(MotionViewModel.printUpdate), userInfo: nil, repeats: true)
     }
-    
+
     func startUpdates() {
         accelerationValue = ""
         gravityValue = ""
@@ -102,14 +102,14 @@ class MotionViewModel: ObservableObject {
         roll = rollNum > 0
         pitch = pitchNum > 0
     }
-    
+
     // Function responsible for stopping the sensor updates
     func stopUpdates() {
         motionManager.stopDeviceMotionUpdates()
         motionManager.stopAccelerometerUpdates()
         motionManager.stopGyroUpdates()
     }
-    
+
     @objc func printUpdate() {
         if let accelerometerData = motionManager.accelerometerData {
             print(accelerometerData)
@@ -124,6 +124,4 @@ class MotionViewModel: ObservableObject {
             print(deviceMotion)
         }
     }
-    
 }
-

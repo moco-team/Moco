@@ -40,7 +40,7 @@ final class ARViewModel: NSObject, ObservableObject {
         arView.session.run(config)
         arView.session.delegate = self
     }
-    
+
     func setSearchedObject(objectName: String) {
         foundObjectName = objectName
     }
@@ -72,10 +72,9 @@ final class ARViewModel: NSObject, ObservableObject {
             let parentEntity = ModelEntity()
             parentEntity.name = environment.name // Set entity name based on added object's name
             parentEntity.addChild(environment)
-        
+
             // If there is not already an anchor here, create one
             guard let anchorEntity = anchors[anchor.identifier] else {
-                
                 // Anchoring the entity and adding it to the scene
                 let anchorEntity = AnchorEntity(anchor: anchor)
                 anchorEntity.addChild(parentEntity)
@@ -83,27 +82,26 @@ final class ARViewModel: NSObject, ObservableObject {
 //                environment.generateCollisionShapes(recursive: true)
 
                 // Add animation
-                
-                
+
                 // Generate collision
                 let entityBounds = environment.visualBounds(relativeTo: parentEntity)
                 parentEntity.collision = CollisionComponent(
                     shapes: [ShapeResource.generateBox(size: entityBounds.extents).offsetBy(translation: entityBounds.center)]
                 )
-                
+
                 // Installing gestures for the parentEntity
                 view.installGestures(for: parentEntity)
-                
+
                 anchors[anchor.identifier] = anchorEntity
                 print(parentEntity)
-                
+
                 return environment
             }
 
             // Add the cup to the existing anchor
             anchorEntity.addChild(environment)
-            return environment
         #endif
+        return environment
     }
 
     // MARK: - Private methods
