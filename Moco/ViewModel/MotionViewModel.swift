@@ -12,9 +12,15 @@ class MotionViewModel: ObservableObject {
     @Published var accelerationValue: String = ""
     @Published var gravityValue: String = ""
     @Published var rotationValue: String = ""
+    
+    @Published var roll = false
+    @Published var pitch = false
+    @Published var rollNum = 0.0
+    @Published var pitchNum = 0.0
 
     // The instance of CMMotionManager responsible for handling sensor updates
     private let motionManager = CMMotionManager()
+    private var timer: Timer!
 
     // Properties to hold the sensor values
     private var userAcceleration: CMAcceleration = .init()
@@ -27,8 +33,10 @@ class MotionViewModel: ObservableObject {
         motionManager.deviceMotionUpdateInterval = 1.0 / 60.0 // 60 Hz
         motionManager.accelerometerUpdateInterval = 1.0 / 60.0
         motionManager.gyroUpdateInterval = 1.0 / 20.0
+        
+//        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(MotionViewModel.printUpdate), userInfo: nil, repeats: true)
     }
-
+    
     func startUpdates() {
         accelerationValue = ""
         gravityValue = ""
@@ -88,11 +96,34 @@ class MotionViewModel: ObservableObject {
         attitude
     }
 
+    func updateMotion() {
+        rollNum = getAttitude()?.roll ?? 0
+        pitchNum = getAttitude()?.pitch ?? 0
+        roll = rollNum > 0
+        pitch = pitchNum > 0
+    }
+    
     // Function responsible for stopping the sensor updates
     func stopUpdates() {
         motionManager.stopDeviceMotionUpdates()
         motionManager.stopAccelerometerUpdates()
         motionManager.stopGyroUpdates()
     }
+    
+    @objc func printUpdate() {
+        if let accelerometerData = motionManager.accelerometerData {
+            print(accelerometerData)
+        }
+        if let gyroData = motionManager.gyroData {
+            print(gyroData)
+        }
+        if let magnetometerData = motionManager.magnetometerData {
+            print(magnetometerData)
+        }
+        if let deviceMotion = motionManager.deviceMotion {
+            print(deviceMotion)
+        }
+    }
+    
 }
 

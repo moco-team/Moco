@@ -19,7 +19,6 @@ struct HomeView: View {
     @State private var homeViewModel = HomeViewModel()
     @State private var showAr = false
     @State private var showMaze = false
-    @State private var showTryMotion = false
     @State private var startARStory = false
     
     let clueData = ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "environment")
@@ -54,9 +53,6 @@ struct HomeView: View {
                 }
                 Button("Maze") {
                     showMaze = true
-                }
-                Button("Try-Motion"){
-                    showTryMotion = true
                 }
 
                 Spacer()
@@ -103,9 +99,6 @@ struct HomeView: View {
             }
             if showMaze {
                 MazePrompt().ignoresSafeArea()
-            }
-            if showTryMotion{
-                TryMotionView().ignoresSafeArea()
             }
             if startARStory {
                 ARStory(doneHandler: {
