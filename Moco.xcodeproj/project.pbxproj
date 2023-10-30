@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		050353E12ADFE2970066591A /* FindHoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050353E02ADFE2970066591A /* FindHoney.swift */; };
+		0517C5202AEF3C9B00CE7A01 /* RKFade in Frameworks */ = {isa = PBXBuildFile; productRef = 0517C51F2AEF3C9B00CE7A01 /* RKFade */; };
 		0518CDD82AE220BA00521EC8 /* moco-1-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518CDD72AE220BA00521EC8 /* moco-1-2.json */; };
 		0518CDDA2AE227FA00521EC8 /* kakak_katak.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518CDD92AE227FA00521EC8 /* kakak_katak.json */; };
 		056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */; };
@@ -35,6 +36,7 @@
 		05E8B55D2AECE32D00E3612F /* button.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 05E8B55C2AECE32D00E3612F /* button.usdz */; };
 		05E8B56A2AED4AD400E3612F /* ARClueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E8B5692AED4AD400E3612F /* ARClueView.swift */; };
 		05E8B56D2AED57CF00E3612F /* ARStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E8B56C2AED57CF00E3612F /* ARStory.swift */; };
+		05EEF0692AEE95C000D710E2 /* environment-2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 05EEF0682AEE95C000D710E2 /* environment-2.usdz */; };
 		0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1197612AD7D4F3004FAD14 /* IconButton.swift */; };
 		0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1197822AD7E97A004FAD14 /* CollectionRowView.swift */; };
 		0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31D72AD7EB6100DFC16F /* CollectionListView.swift */; };
@@ -222,6 +224,7 @@
 		05E8B55C2AECE32D00E3612F /* button.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = button.usdz; sourceTree = "<group>"; };
 		05E8B5692AED4AD400E3612F /* ARClueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARClueView.swift; sourceTree = "<group>"; };
 		05E8B56C2AED57CF00E3612F /* ARStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARStory.swift; sourceTree = "<group>"; };
+		05EEF0682AEE95C000D710E2 /* environment-2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "environment-2.usdz"; sourceTree = "<group>"; };
 		0B1197612AD7D4F3004FAD14 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		0B1197822AD7E97A004FAD14 /* CollectionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionRowView.swift; sourceTree = "<group>"; };
 		0B2E31D72AD7EB6100DFC16F /* CollectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListView.swift; sourceTree = "<group>"; };
@@ -345,6 +348,7 @@
 				935D78672AEE858500DF64A5 /* ConfettiSwiftUI in Frameworks */,
 				05AE93682ADE83430082B21D /* Lottie in Frameworks */,
 				935D784E2AEBF96800DF64A5 /* FLAnimatedImage in Frameworks */,
+				0517C5202AEF3C9B00CE7A01 /* RKFade in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +753,7 @@
 			isa = PBXGroup;
 			children = (
 				937AF2972AE8C72B008C69BB /* environment.usdz */,
+				05EEF0682AEE95C000D710E2 /* environment-2.usdz */,
 				05E8B55C2AECE32D00E3612F /* button.usdz */,
 			);
 			path = Usdz;
@@ -1002,6 +1007,7 @@
 				05AE93672ADE83430082B21D /* Lottie */,
 				935D784D2AEBF96800DF64A5 /* FLAnimatedImage */,
 				935D78662AEE858500DF64A5 /* ConfettiSwiftUI */,
+				0517C51F2AEF3C9B00CE7A01 /* RKFade */,
 			);
 			productName = Moco;
 			productReference = 93C2F8802AD683AC007D1ABC /* Moco.app */;
@@ -1079,6 +1085,7 @@
 				05AE93662ADE83430082B21D /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				935D784C2AEBF96800DF64A5 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
 				935D78652AEE858500DF64A5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				0517C51E2AEF3C9B00CE7A01 /* XCRemoteSwiftPackageReference "RealityKit-Fade" */,
 			);
 			productRefGroup = 93C2F8812AD683AC007D1ABC /* Products */;
 			projectDirPath = "";
@@ -1107,6 +1114,7 @@
 				9317221E2AE5508300346382 /* Page6-monolog1.m4a in Resources */,
 				9317221F2AE5508300346382 /* prompt_kursi.m4a in Resources */,
 				937AF2982AE8C72B008C69BB /* environment.usdz in Resources */,
+				05EEF0692AEE95C000D710E2 /* environment-2.usdz in Resources */,
 				931722202AE5508300346382 /* Page8-monolog1.m4a in Resources */,
 				931722212AE5508300346382 /* frog_thankyou.m4a in Resources */,
 				931722222AE5508300346382 /* Page9-monolog1.m4a in Resources */,
@@ -1610,6 +1618,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0517C51E2AEF3C9B00CE7A01 /* XCRemoteSwiftPackageReference "RealityKit-Fade" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Reality-Dev/RealityKit-Fade.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.14;
+			};
+		};
 		05AE93662ADE83430082B21D /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -1637,6 +1653,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0517C51F2AEF3C9B00CE7A01 /* RKFade */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0517C51E2AEF3C9B00CE7A01 /* XCRemoteSwiftPackageReference "RealityKit-Fade" */;
+			productName = RKFade;
+		};
 		05AE93672ADE83430082B21D /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 05AE93662ADE83430082B21D /* XCRemoteSwiftPackageReference "lottie-ios" */;
