@@ -26,6 +26,15 @@
         "revision" : "45517c3cfec9469bbdd4f86e32393c28ae9df0bc",
         "version" : "4.3.3"
       }
+    },
+    {
+      "identity" : "realitykit-fade",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Reality-Dev/RealityKit-Fade.git",
+      "state" : {
+        "revision" : "d60b2d3382d896d00dd61de041636edc66d62492",
+        "version" : "1.0.14"
+      }
     }
   ],
   "version" : 2

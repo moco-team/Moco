@@ -52,9 +52,8 @@ struct ARViewContainer: UIViewRepresentable {
             if parent.viewModel.hasPlacedObject {
                 let point = gesture.location(in: arView)
 
-                tappedEntities = arView!.entities(at: point)
-                if !tappedEntities!.isEmpty {
-                    print(tappedEntities?.first as Any)
+                if let tappedEntity = arView!.entity(at: point) {
+                    print(tappedEntity)
                 }
 
                 return
@@ -81,11 +80,23 @@ struct ARViewContainer: UIViewRepresentable {
             let location = recognizer.location(in: arView)
 
             if let entity = arView!.entity(at: location) {
-                if let anchorEntity = entity.anchor {
-                    print("Removed anchor with name: " + anchorEntity.name)
-                    anchorEntity.removeFromParent()
-                    parent.viewModel.hasPlacedObject = false
+                print("Long pressed entity:")
+                print(entity)
+            
+                // Check if user has found the correct object
+                if entity.name == parent.viewModel.foundObjectName {
+                    print("The object found is correct!")
+                    print("Removed entity with name: " + entity.name)
                     parent.viewModel.hasFindObject = true
+                    
+                    if let anchorEntity = entity.anchor {
+                        print("Removed anchor with name: " + anchorEntity.name)
+                        anchorEntity.removeFromParent()
+                    }
+                    
+                    parent.viewModel.hasPlacedObject = false
+                } else {
+                    print("The object found is incorrect!")
                 }
             }
         }
