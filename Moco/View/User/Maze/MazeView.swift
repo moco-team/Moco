@@ -10,6 +10,8 @@ import SpriteKit
 import SwiftUI
 
 struct MazeView: View {
+    @EnvironmentObject var motionViewModel: MotionViewModel
+    
     @StateObject private var scene: MazeScene = {
         let screenWidth = Screen.width
         let screenHeight = Screen.height
@@ -17,14 +19,14 @@ struct MazeView: View {
             size: CGSize(width: screenWidth, height: screenHeight)
         )
         scene.scaleMode = .fill
-
+        
         return scene
     }()
-
+    
     @State private var correctAnswer = false
-
+    
     var onComplete: () -> Void = {}
-
+    
     var body: some View {
         ZStack {
             SpriteView(scene: scene, options: [.allowsTransparency])
@@ -34,27 +36,42 @@ struct MazeView: View {
                 .navigationBarHidden(true)
                 .navigationBarBackButtonHidden(true)
                 .ignoresSafeArea()
-            VStack {
-                Button("left") {
-                    scene.move(.left)
-                }
-                Button("right") {
-                    scene.move(.right)
-                }
-                Button("up") {
-                    scene.move(.up)
-                }
-                Button("down") {
-                    scene.move(.down)
+        }
+        .background(.ultraThinMaterial)
+        .onAppear {
+            motionViewModel.startUpdates()
+            TimerViewModel().setTimer(key: "startTimer", withInterval: 0.5){
+                motionViewModel.updateMotion()
+                print("rollnum:\(motionViewModel.rollNum)")
+                print("pitchnum:\(motionViewModel.pitchNum)")
+                if (abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum)){
+                    if(motionViewModel.rollNum > 0) {
+                        scene.move(.up)
+                        print("up")
+                    } else if(motionViewModel.rollNum < 0){
+                        scene.move(.down)
+                        print("down")
+                    }
+                } else {
+                    if(motionViewModel.pitchNum > 0){
+                        scene.move(.right)
+                        print("right")
+                    } else if(motionViewModel.pitchNum < 0){
+                        scene.move(.left)
+                        print("left")
+                    }
                 }
             }
-        }.background(.ultraThinMaterial)
-            .onChange(of: scene.correctAnswer) {
-                correctAnswer = scene.correctAnswer
-            }
-            .popUp(isActive: $correctAnswer, withConfetti: true) {
-                onComplete()
-            }
+        }
+        .onDisappear {
+            motionViewModel.stopUpdates()
+        }
+        .onChange(of: scene.correctAnswer) {
+            correctAnswer = scene.correctAnswer
+        }
+        .popUp(isActive: $correctAnswer, withConfetti: true) {
+            onComplete()
+        }
     }
 }
 
