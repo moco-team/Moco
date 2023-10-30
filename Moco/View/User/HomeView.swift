@@ -73,6 +73,7 @@ struct HomeView: View {
                             StoryBookNew(
                                 title: storyTheme.title,
                                 image: storyTheme.pictureName,
+                                firstPageBackground: storyTheme.stories![0].background,
                                 number: index + 1
                             ) {
                                 navigate.append(.story(storyTheme.id))
