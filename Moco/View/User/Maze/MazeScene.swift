@@ -60,7 +60,7 @@ class MazeScene: SKScene, ObservableObject {
     }
 
     func move(_ direction: MoveDirection) {
-        guard moco.action(forKey: "moving") == nil else { return }
+        guard !moco.actionForKeyIsRunning(key: "moving") else { return }
         guard mazeModel.move(direction) else { return }
 
         let position =
