@@ -77,9 +77,9 @@ final class ARViewModel: NSObject, ObservableObject {
             guard let anchorEntity = anchors[anchor.identifier] else {
                 // Anchoring the entity and adding it to the scene
                 let anchorEntity = AnchorEntity(anchor: anchor)
-                anchorEntity.addChild(environment)
+                anchorEntity.addChild(parentEntity)
                 view.scene.addAnchor(anchorEntity)
-                environment.generateCollisionShapes(recursive: true)
+//                environment.generateCollisionShapes(recursive: true)
 
                 // Add animation
 
