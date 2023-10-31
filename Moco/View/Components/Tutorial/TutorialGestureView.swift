@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct TutorialGestureView: View {
-    
-    @State var gesture : String = ""
+    @State var gesture: String = ""
 //    @State var descriptionGesture : String = ""
 //    @State var gestureName : String = ""
-    @State var descriptionView: AnyView = AnyView(VStack{})
-    
+    @State var descriptionView: AnyView = .init(VStack {})
+
     var body: some View {
         GIFView(type: .name(gesture))
             .frame(width: 200, height: 200)

@@ -8,8 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Gesture: Identifiable, Hashable{
+struct Gesture: Identifiable, Hashable {
     var id: String
     var image: String
 }
-

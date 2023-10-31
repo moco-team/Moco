@@ -11,12 +11,12 @@ struct TutorialCard<Content: View>: View {
     @State var width: CGFloat = 300
     @State var height: CGFloat = 300
     @State var cornerRadius: CGFloat = 20
-    @State var backgroundColorTop: Color = Color.clear
-    @State var backgroundColorBottom: Color = Color.clear
-    @State var borderColor: Color = Color.gray
+    @State var backgroundColorTop: Color = .clear
+    @State var backgroundColorBottom: Color = .clear
+    @State var borderColor: Color = .gray
     @State var backgroundImage: String
     var content: () -> Content?
-    
+
     init(
         width: CGFloat = 300,
         height: CGFloat = 300,
@@ -34,12 +34,12 @@ struct TutorialCard<Content: View>: View {
         self.backgroundColorBottom = backgroundColorBottom
         self.borderColor = borderColor
         self.backgroundImage = backgroundImage
-        self.content = component
+        content = component
     }
 
     var body: some View {
-        VStack(){
-            if (content() != nil) {
+        VStack {
+            if content() != nil {
                 content()
             }
         }
@@ -49,15 +49,14 @@ struct TutorialCard<Content: View>: View {
                 .foregroundColor(borderColor)
         )
         .background(LinearGradient(colors: [backgroundColorTop, backgroundColorBottom],
-                                    startPoint: .top,
-                                    endPoint: .center))
+                                   startPoint: .top,
+                                   endPoint: .center))
         .cornerRadius(cornerRadius)
     }
 }
 
 struct TutorialCard_Previews: PreviewProvider {
     static var previews: some View {
-        TutorialCard(component: {VStack{}})
+        TutorialCard(component: { VStack {}})
     }
 }
-
