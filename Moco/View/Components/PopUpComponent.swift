@@ -92,7 +92,7 @@ struct PopUpComponentView: View {
                 .onTapGesture {
                     close()
                 }
-            VStack(alignment: .center) {
+            VStack(alignment: .center, spacing: 0) {
                 HStack(alignment: .center) {
                     ZStack {
                         if topImage != nil {
@@ -156,12 +156,8 @@ struct PopUpComponentView: View {
                 Button {
                     close()
                 } label: {
-                    Image(systemName: "xmark")
-                        .font(.title2)
-                        .fontWeight(.medium)
+                    Image("Buttons/button-x").resizable().frame(width: 50, height: 50)
                 }
-                .tint(.black)
-                .padding()
             }
             .offset(x: 0, y: offset)
             .onAppear {

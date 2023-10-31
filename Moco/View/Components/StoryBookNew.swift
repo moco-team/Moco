@@ -36,7 +36,7 @@ struct StoryBookNew: View {
                             topTrailingRadius: 32
                         )
                     )
-                
+
                 Image(firstPageBackground!)
                     .resizable()
                     .scaledToFill()
@@ -49,7 +49,7 @@ struct StoryBookNew: View {
                             topTrailingRadius: 24
                         )
                     )
-                
+
                 PeelEffect(state: $peelEffectState) {
                     VStack {
                         VStack {
@@ -84,7 +84,7 @@ struct StoryBookNew: View {
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 70, height: 70)
-                                    
+
                                     Text("\(number)")
                                         .customFont(size: 30)
                                         .foregroundColor(Color.brownTxt)
