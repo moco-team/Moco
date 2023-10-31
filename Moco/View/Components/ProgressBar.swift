@@ -71,21 +71,21 @@ struct ProgressBar: View {
         .tooltip(showTooltip, config: tooltipConfig) {
             Text("\(value ?? 0)/100").font(.caption)
         }.frame(height: 25)
-            .onChange(of: value) {
-                barValue = 0
-                for _ in 0 ..< (value ?? 0) {
-                    barValue += 0.01
-                }
+        .onChange(of: value) {
+            barValue = 0
+            for _ in 0 ..< (value ?? 0) {
+                barValue += 0.01
             }
-            .onAppear {
-                barValue = 0
-                for _ in 0 ..< (value ?? 0) {
-                    barValue += 0.01
-                }
-                animationFinished = true
-                print("animationFinished")
-                print(animationFinished)
+        }
+        .onAppear {
+            barValue = 0
+            for _ in 0 ..< (value ?? 0) {
+                barValue += 0.01
             }
+            animationFinished = true
+            print("animationFinished")
+            print(animationFinished)
+        }
     }
 }
 
@@ -124,4 +124,3 @@ struct ProgressBarView: View {
 #Preview {
     ProgressBarView()
 }
-

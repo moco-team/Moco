@@ -308,7 +308,7 @@ struct StoryView: View {
                                 foregroundColor: .clear
                             )
                         )
-                            .padding()
+                        .padding()
                         Button {
                             isPopUpActive = true
                         } label: {
