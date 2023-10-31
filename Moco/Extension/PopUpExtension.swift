@@ -37,8 +37,8 @@ public extension View {
                 containerBgColor: containerBgColor,
                 textColor: textColor,
                 overlayOpacity: overlayOpacity,
-                width: width ?? Screen.width * 0.3,
-                height: height ?? Screen.height * 0.2,
+                width: width ?? Screen.width * 0.32,
+                height: height ?? Screen.height * 0.3,
                 withConfetti: withConfetti
             ) {
                 function()
