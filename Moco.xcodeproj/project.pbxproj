@@ -159,6 +159,9 @@
 		93C8E7272ADF8DA3002315A2 /* bg-shop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93C8E7262ADF8DA3002315A2 /* bg-shop.mp3 */; };
 		93C8E72A2AE01660002315A2 /* Storm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8E7292AE01660002315A2 /* Storm.swift */; };
 		93C8E72C2AE1373D002315A2 /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8E72B2AE1373D002315A2 /* Shake.swift */; };
+		93CA8B7B2AF00E8400651885 /* SpriteKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8B7A2AF00E8400651885 /* SpriteKit.swift */; };
+		93CA8B7D2AF0107800651885 /* MazePromptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8B7C2AF0107800651885 /* MazePromptModel.swift */; };
+		93CA8B7F2AF010C600651885 /* MazePromptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8B7E2AF010C600651885 /* MazePromptViewModel.swift */; };
 		93E3D8762AE4E4BA00E5391F /* DetectionPromptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3D8752AE4E4BA00E5391F /* DetectionPromptModel.swift */; };
 		93E3D8782AE4E55000E5391F /* DetectionPromptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3D8772AE4E55000E5391F /* DetectionPromptViewModel.swift */; };
 		93E3D87A2AE4E95700E5391F /* SpeakPromptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3D8792AE4E95700E5391F /* SpeakPromptModel.swift */; };
@@ -336,6 +339,9 @@
 		93C8E7262ADF8DA3002315A2 /* bg-shop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-shop.mp3"; sourceTree = "<group>"; };
 		93C8E7292AE01660002315A2 /* Storm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storm.swift; sourceTree = "<group>"; };
 		93C8E72B2AE1373D002315A2 /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
+		93CA8B7A2AF00E8400651885 /* SpriteKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKit.swift; sourceTree = "<group>"; };
+		93CA8B7C2AF0107800651885 /* MazePromptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazePromptModel.swift; sourceTree = "<group>"; };
+		93CA8B7E2AF010C600651885 /* MazePromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazePromptViewModel.swift; sourceTree = "<group>"; };
 		93E3D8752AE4E4BA00E5391F /* DetectionPromptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionPromptModel.swift; sourceTree = "<group>"; };
 		93E3D8772AE4E55000E5391F /* DetectionPromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionPromptViewModel.swift; sourceTree = "<group>"; };
 		93E3D8792AE4E95700E5391F /* SpeakPromptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakPromptModel.swift; sourceTree = "<group>"; };
@@ -892,6 +898,7 @@
 				937AF29D2AE8D4EE008C69BB /* ARViewModel.swift */,
 				935D78562AEC2D7900DF64A5 /* SettingsViewModel.swift */,
 				05B8ED9F2AEE65FE009ED2C5 /* MotionViewModel.swift */,
+				93CA8B7E2AF010C600651885 /* MazePromptViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -917,6 +924,7 @@
 				937AF2872AE81983008C69BB /* RippleModel.swift */,
 				93324AA62AEA9FD400046CB8 /* MazeModel.swift */,
 				935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */,
+				93CA8B7C2AF0107800651885 /* MazePromptModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -966,6 +974,7 @@
 				935D786A2AEF4B8300DF64A5 /* Binding.swift */,
 				935D786C2AEF4BD600DF64A5 /* ViewOnLoad.swift */,
 				935D786E2AEF4C1200DF64A5 /* Spacer.swift */,
+				93CA8B7A2AF00E8400651885 /* SpriteKit.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1216,6 +1225,7 @@
 				93E3D8762AE4E4BA00E5391F /* DetectionPromptModel.swift in Sources */,
 				938C55412AE2301700BC233D /* BurgerMenu.swift in Sources */,
 				93C2F8BC2AD684CE007D1ABC /* ObjectDetectionViewController.swift in Sources */,
+				93CA8B7B2AF00E8400651885 /* SpriteKit.swift in Sources */,
 				05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */,
 				05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */,
 				93C8E7212ADEF1DB002315A2 /* TimerModel.swift in Sources */,
@@ -1232,11 +1242,13 @@
 				05BA97AA2AE11EE400F64F52 /* MPVolumeViewExtension.swift in Sources */,
 				05B8EDA02AEE65FE009ED2C5 /* MotionViewModel.swift in Sources */,
 				938E3D452ADAD5F3003D2AE1 /* StoryBook.swift in Sources */,
+				93CA8B7D2AF0107800651885 /* MazePromptModel.swift in Sources */,
 				0B6E2F722ADC97BE0001D320 /* StoryViewModel.swift in Sources */,
 				935D78502AEBF98400DF64A5 /* GifView.swift in Sources */,
 				937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */,
 				056B67282AE28D1400A3B493 /* AchievementsView.swift in Sources */,
 				938E3D432ADABD9F003D2AE1 /* BaseViewModel.swift in Sources */,
+				93CA8B7F2AF010C600651885 /* MazePromptViewModel.swift in Sources */,
 				050353E12ADFE2970066591A /* FindHoney.swift in Sources */,
 				0B6E2F6E2ADC92950001D320 /* HintModel.swift in Sources */,
 				935D78692AEF4B1C00DF64A5 /* View.swift in Sources */,

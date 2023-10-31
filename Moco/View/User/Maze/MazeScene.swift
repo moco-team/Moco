@@ -60,14 +60,15 @@ class MazeScene: SKScene, ObservableObject {
     }
 
     func move(_ direction: MoveDirection) {
+        guard !moco.actionForKeyIsRunning(key: "moving") else { return }
         guard mazeModel.move(direction) else { return }
 
         let position =
             mazeModel.points[mazeModel.characterLocationPoint.yPos][mazeModel.characterLocationPoint.xPos]
 
         if mazeModel.characterLocationPoint.yPos == 0 && mazeModel.characterLocationPoint.xPos != mazeModel.correctPoint.xPos {
-            let move = SKAction.move(to: position, duration: 0.15)
-            let scale = SKAction.scale(to: 0.0001, duration: 0.25)
+            let move = SKAction.move(to: position, duration: 0.3)
+            let scale = SKAction.scale(to: 0.0001, duration: 0.3)
             let remove = SKAction.removeFromParent()
             let sequence = SKAction.sequence([move, scale, remove])
             moco.run(sequence) { [unowned self] in
@@ -77,9 +78,9 @@ class MazeScene: SKScene, ObservableObject {
             correctAnswer = true
         }
 
-        let move = SKAction.move(to: position, duration: 0.15)
+        let move = SKAction.move(to: position, duration: 0.3)
         let sequence = SKAction.sequence([move])
-        moco.run(sequence)
+        moco.run(sequence, withKey: "moving")
     }
 
     func createPlayer() {

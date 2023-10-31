@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct MazePrompt: View {
-    @State private var blurOpacity = 0.0
-    @State private var showStartButton = false
-    @State private var isStarted = false
+    @State private var mazePromptViewModel = MazePromptViewModel()
 
     var promptText = "Moco adalah sapi jantan"
 
@@ -18,38 +16,49 @@ struct MazePrompt: View {
         ZStack {
             MazeView()
 
-            if !isStarted {
+            if !mazePromptViewModel.isStarted {
                 VStack {
                     Text(promptText)
                         .customFont(.didactGothic, size: 30)
                         .foregroundColor(.text.primary)
-                        .opacity(blurOpacity)
-                    if showStartButton {
-                        Button("Mulai") {
-                            withAnimation(.easeInOut(duration: 2)) {
-                                blurOpacity = 0
-                                showStartButton = false
-                            } completion: {
-                                withAnimation {
-                                    isStarted = true
-                                }
-                            }
+                        .opacity(mazePromptViewModel.blurOpacity)
+                    if mazePromptViewModel.showStartButton {
+                        Button {
+                            mazePromptViewModel.stopPrompt()
+                        } label: {
+                            Image("Buttons/button-start").resizable().scaledToFit()
                         }
                         .buttonStyle(
-                            MainButton(width: 80, height: 20)
+                            CapsuleButton(
+                                width: 190,
+                                height: 90,
+                                backgroundColor: .clear,
+                                foregroundColor: .clear
+                            )
                         )
                         .padding(.bottom, 20)
                     }
-                }.frame(width: Screen.width, height: Screen.height).background(.ultraThinMaterial.opacity(blurOpacity))
-            }
-        }.onAppear {
-            withAnimation(.easeInOut(duration: 3)) {
-                blurOpacity = 1
-            } completion: {
-                withAnimation(.easeInOut.delay(2)) {
-                    showStartButton = true
+                }.frame(width: Screen.width, height: Screen.height).background(.ultraThinMaterial.opacity(mazePromptViewModel.blurOpacity))
+            } else {
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button {
+                            mazePromptViewModel.playPrompt()
+                        } label: {
+                            Image(systemName: "arrow.counterclockwise.circle")
+                                .resizable()
+                                .frame(width: 60, height: 60)
+                        }
+                        .buttonStyle(
+                            CircleButton(width: 80, height: 80)
+                        ).padding(40)
+                    }
+                    Spacer()
                 }
             }
+        }.onAppear {
+            mazePromptViewModel.playPrompt()
         }
     }
 }

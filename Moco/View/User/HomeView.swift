@@ -29,7 +29,7 @@ struct HomeView: View {
                 Image("Story/main-background")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .edgesIgnoringSafeArea(.all)
+                    .ignoresSafeArea()
             }.frame(width: Screen.width, height: Screen.height)
 
             VStack {

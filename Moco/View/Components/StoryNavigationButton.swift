@@ -13,6 +13,29 @@ enum Direction {
 }
 
 struct StoryNavigationButton: View {
+    var width = 140.0
+    var height = 100.0
+    var direction: Direction
+
+    var pressHandler: (() -> Void)?
+
+    private let directionMap: [Direction: String] = [
+        .left: "Buttons/button-left",
+        .right: "Buttons/button-right"
+    ]
+
+    var body: some View {
+        Button {
+            pressHandler?()
+        } label: {
+            Image(directionMap[direction]!)
+                .resizable()
+                .scaledToFit()
+        }.buttonStyle(ImageButton(width: width, height: height))
+    }
+}
+
+struct StoryNavigationButtonOld: View {
     var width = 100.0
     var height = 100.0
     var direction: Direction
