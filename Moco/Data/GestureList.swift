@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-// var gestureList = [
-//    Gesture(id: "1", name: "swipe", image: "hand.swipe.left", descriptionGesture: "untuk memutar dunia"),
-//    Gesture(id: "2", name: "pinch", image: "hand.zoom", descriptionGesture: "untuk perbesar/perkecil dunia"),
-//    Gesture(id: "3", name: "tap", image: "hand.tap", descriptionGesture: "untuk memilih barang")
-// ]
-
 var gestureList = [
     Gesture(id: "1", image: "hand.swipe.left"),
     Gesture(id: "2", image: "hand.zoom"),
