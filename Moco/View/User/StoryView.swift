@@ -106,7 +106,9 @@ struct StoryView: View {
         activePrompt = nil
         guard prompts.indices.contains(scrollPosition ?? -1) && prompts[scrollPosition!] != nil else { return }
         timerViewModel.setTimer(key: "storyPagePrompt-\(scrollPosition!)", withInterval: prompts[scrollPosition!]!.startTime) {
-            showPromptButton = true
+            withAnimation {
+                showPromptButton = true
+            }
         }
     }
 
@@ -235,9 +237,16 @@ struct StoryView: View {
                         Button {
                             isPopUpActive = true
                         } label: {
-                            Image(systemName: "xmark").resizable().scaledToFit().padding(20)
-                        }.buttonStyle(CircleButton(width: 80, height: 80))
-                            .padding()
+                            Image("Buttons/button-x").resizable().scaledToFit()
+                        }.buttonStyle(
+                            CircleButton(
+                                width: 80,
+                                height: 80,
+                                backgroundColor: .clear,
+                                foregroundColor: .clear
+                            )
+                        )
+                        .padding()
                     }
                     Spacer()
                 }
@@ -261,11 +270,18 @@ struct StoryView: View {
                 VStack {
                     Spacer()
                     if showPromptButton {
-                        Button("Start") {
+                        Button {
                             activePrompt = prompts[scrollPosition!]
+                        } label: {
+                            Image("Buttons/button-start").resizable().scaledToFit()
                         }
                         .buttonStyle(
-                            CircleButton(width: 80, height: 80)
+                            CapsuleButton(
+                                width: 190,
+                                height: 90,
+                                backgroundColor: .clear,
+                                foregroundColor: .clear
+                            )
                         )
                         .padding(.bottom, 20)
                     }

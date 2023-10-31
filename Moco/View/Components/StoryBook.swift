@@ -54,7 +54,7 @@ struct StoryBook: View {
                             topTrailingRadius: 32
                         )
                     )
-                
+
 //                Image("Story/Content/Story1/Pages/Page1/background")
                 Image(firstPageBackground!)
                     .resizable()
@@ -70,7 +70,7 @@ struct StoryBook: View {
                     )
                     .shadow(color: .black.opacity(0.12), radius: 5, x: 15, y: 8)
                     .shadow(color: .black.opacity(0.1), radius: 6, x: -10, y: -8)
-                
+
                 VStack {
                     ZStack {
                         Rectangle()
@@ -103,7 +103,7 @@ struct StoryBook: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 70, height: 70)
-                            
+
                             Text("\(number)")
                                 .customFont(size: 30)
                                 .foregroundColor(Color.brownTxt)
@@ -111,10 +111,10 @@ struct StoryBook: View {
                                 .padding(.bottom, 1)
                                 .offset(x: 0, y: -9)
                         }
-                            .position(x: 53, y: 41)
+                        .position(x: 53, y: 41)
                     )
                 }
-                .onAppear{
+                .onAppear {
                     print(firstPageBackground!)
                 }
                 .padding()

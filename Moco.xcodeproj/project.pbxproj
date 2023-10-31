@@ -38,6 +38,18 @@
 		05E8B56A2AED4AD400E3612F /* ARClueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E8B5692AED4AD400E3612F /* ARClueView.swift */; };
 		05E8B56D2AED57CF00E3612F /* ARStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E8B56C2AED57CF00E3612F /* ARStory.swift */; };
 		05EEF0692AEE95C000D710E2 /* environment-2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 05EEF0682AEE95C000D710E2 /* environment-2.usdz */; };
+		05FF77162AF0B0250037453D /* TutorialCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF77152AF0B0250037453D /* TutorialCard.swift */; };
+		05FF77182AF0B05F0037453D /* JosefineSans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF77172AF0B05F0037453D /* JosefineSans.swift */; };
+		05FF771D2AF0B0980037453D /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF771A2AF0B0980037453D /* TutorialView.swift */; };
+		05FF771E2AF0B0980037453D /* TutorialCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF771B2AF0B0980037453D /* TutorialCarouselView.swift */; };
+		05FF771F2AF0B0980037453D /* TutorialGestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF771C2AF0B0980037453D /* TutorialGestureView.swift */; };
+		05FF77222AF0B28A0037453D /* GestureList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF77212AF0B28A0037453D /* GestureList.swift */; };
+		05FF77242AF0B3200037453D /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF77232AF0B3200037453D /* Gesture.swift */; };
+		05FF772F2AF0B6C30037453D /* hand.zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 05FF772A2AF0B6C30037453D /* hand.zoom.gif */; };
+		05FF77302AF0B6C30037453D /* ripple.gif in Resources */ = {isa = PBXBuildFile; fileRef = 05FF772B2AF0B6C30037453D /* ripple.gif */; };
+		05FF77312AF0B6C30037453D /* hand.swipe.left.gif in Resources */ = {isa = PBXBuildFile; fileRef = 05FF772C2AF0B6C30037453D /* hand.swipe.left.gif */; };
+		05FF77322AF0B6C30037453D /* hand.swipe.up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 05FF772D2AF0B6C30037453D /* hand.swipe.up.gif */; };
+		05FF77332AF0B6C30037453D /* hand.tap.gif in Resources */ = {isa = PBXBuildFile; fileRef = 05FF772E2AF0B6C30037453D /* hand.tap.gif */; };
 		0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1197612AD7D4F3004FAD14 /* IconButton.swift */; };
 		0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1197822AD7E97A004FAD14 /* CollectionRowView.swift */; };
 		0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31D72AD7EB6100DFC16F /* CollectionListView.swift */; };
@@ -161,6 +173,9 @@
 		93C8E7272ADF8DA3002315A2 /* bg-shop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93C8E7262ADF8DA3002315A2 /* bg-shop.mp3 */; };
 		93C8E72A2AE01660002315A2 /* Storm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8E7292AE01660002315A2 /* Storm.swift */; };
 		93C8E72C2AE1373D002315A2 /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8E72B2AE1373D002315A2 /* Shake.swift */; };
+		93CA8B7B2AF00E8400651885 /* SpriteKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8B7A2AF00E8400651885 /* SpriteKit.swift */; };
+		93CA8B7D2AF0107800651885 /* MazePromptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8B7C2AF0107800651885 /* MazePromptModel.swift */; };
+		93CA8B7F2AF010C600651885 /* MazePromptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8B7E2AF010C600651885 /* MazePromptViewModel.swift */; };
 		93E3D8762AE4E4BA00E5391F /* DetectionPromptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3D8752AE4E4BA00E5391F /* DetectionPromptModel.swift */; };
 		93E3D8782AE4E55000E5391F /* DetectionPromptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3D8772AE4E55000E5391F /* DetectionPromptViewModel.swift */; };
 		93E3D87A2AE4E95700E5391F /* SpeakPromptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3D8792AE4E95700E5391F /* SpeakPromptModel.swift */; };
@@ -229,6 +244,18 @@
 		05E8B5692AED4AD400E3612F /* ARClueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARClueView.swift; sourceTree = "<group>"; };
 		05E8B56C2AED57CF00E3612F /* ARStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARStory.swift; sourceTree = "<group>"; };
 		05EEF0682AEE95C000D710E2 /* environment-2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "environment-2.usdz"; sourceTree = "<group>"; };
+		05FF77152AF0B0250037453D /* TutorialCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialCard.swift; sourceTree = "<group>"; };
+		05FF77172AF0B05F0037453D /* JosefineSans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JosefineSans.swift; sourceTree = "<group>"; };
+		05FF771A2AF0B0980037453D /* TutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		05FF771B2AF0B0980037453D /* TutorialCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialCarouselView.swift; sourceTree = "<group>"; };
+		05FF771C2AF0B0980037453D /* TutorialGestureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialGestureView.swift; sourceTree = "<group>"; };
+		05FF77212AF0B28A0037453D /* GestureList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureList.swift; sourceTree = "<group>"; };
+		05FF77232AF0B3200037453D /* Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gesture.swift; sourceTree = "<group>"; };
+		05FF772A2AF0B6C30037453D /* hand.zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.zoom.gif; sourceTree = "<group>"; };
+		05FF772B2AF0B6C30037453D /* ripple.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ripple.gif; sourceTree = "<group>"; };
+		05FF772C2AF0B6C30037453D /* hand.swipe.left.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.swipe.left.gif; sourceTree = "<group>"; };
+		05FF772D2AF0B6C30037453D /* hand.swipe.up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.swipe.up.gif; sourceTree = "<group>"; };
+		05FF772E2AF0B6C30037453D /* hand.tap.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.tap.gif; sourceTree = "<group>"; };
 		0B1197612AD7D4F3004FAD14 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		0B1197822AD7E97A004FAD14 /* CollectionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionRowView.swift; sourceTree = "<group>"; };
 		0B2E31D72AD7EB6100DFC16F /* CollectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListView.swift; sourceTree = "<group>"; };
@@ -340,6 +367,9 @@
 		93C8E7262ADF8DA3002315A2 /* bg-shop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-shop.mp3"; sourceTree = "<group>"; };
 		93C8E7292AE01660002315A2 /* Storm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storm.swift; sourceTree = "<group>"; };
 		93C8E72B2AE1373D002315A2 /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
+		93CA8B7A2AF00E8400651885 /* SpriteKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKit.swift; sourceTree = "<group>"; };
+		93CA8B7C2AF0107800651885 /* MazePromptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazePromptModel.swift; sourceTree = "<group>"; };
+		93CA8B7E2AF010C600651885 /* MazePromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazePromptViewModel.swift; sourceTree = "<group>"; };
 		93E3D8752AE4E4BA00E5391F /* DetectionPromptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionPromptModel.swift; sourceTree = "<group>"; };
 		93E3D8772AE4E55000E5391F /* DetectionPromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionPromptViewModel.swift; sourceTree = "<group>"; };
 		93E3D8792AE4E95700E5391F /* SpeakPromptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakPromptModel.swift; sourceTree = "<group>"; };
@@ -558,6 +588,7 @@
 		05AE935E2ADE820B0082B21D /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				05FF77272AF0B69A0037453D /* Gif */,
 				937AF2962AE8C719008C69BB /* Usdz */,
 				93C8E71C2ADEDA6A002315A2 /* Fonts */,
 				932357D22ADE6DF2009B3D86 /* Audio */,
@@ -637,9 +668,58 @@
 			path = ARStory;
 			sourceTree = "<group>";
 		};
+		05FF77192AF0B0650037453D /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				05FF771B2AF0B0980037453D /* TutorialCarouselView.swift */,
+				05FF771C2AF0B0980037453D /* TutorialGestureView.swift */,
+				05FF771A2AF0B0980037453D /* TutorialView.swift */,
+				05FF77152AF0B0250037453D /* TutorialCard.swift */,
+				05FF77172AF0B05F0037453D /* JosefineSans.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		05FF77202AF0B27F0037453D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				05FF77212AF0B28A0037453D /* GestureList.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		05FF77272AF0B69A0037453D /* Gif */ = {
+			isa = PBXGroup;
+			children = (
+				05FF77282AF0B69F0037453D /* Story1 */,
+			);
+			path = Gif;
+			sourceTree = "<group>";
+		};
+		05FF77282AF0B69F0037453D /* Story1 */ = {
+			isa = PBXGroup;
+			children = (
+				05FF77292AF0B6A30037453D /* Ep3 */,
+			);
+			path = Story1;
+			sourceTree = "<group>";
+		};
+		05FF77292AF0B6A30037453D /* Ep3 */ = {
+			isa = PBXGroup;
+			children = (
+				05FF772C2AF0B6C30037453D /* hand.swipe.left.gif */,
+				05FF772D2AF0B6C30037453D /* hand.swipe.up.gif */,
+				05FF772E2AF0B6C30037453D /* hand.tap.gif */,
+				05FF772A2AF0B6C30037453D /* hand.zoom.gif */,
+				05FF772B2AF0B6C30037453D /* ripple.gif */,
+			);
+			path = Ep3;
+			sourceTree = "<group>";
+		};
 		0B1197602AD7D4A7004FAD14 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				05FF77192AF0B0650037453D /* Tutorial */,
 				9398FBB62AE41D0200AB5CE4 /* Image */,
 				93C8E7282AE0164E002315A2 /* Animations */,
 				05B1661C2ADE755F0077FA0D /* Prompts */,
@@ -830,6 +910,7 @@
 		93C2F8822AD683AC007D1ABC /* Moco */ = {
 			isa = PBXGroup;
 			children = (
+				05FF77202AF0B27F0037453D /* Data */,
 				935D78512AEBF9EC00DF64A5 /* Enum */,
 				05AE935E2ADE820B0082B21D /* Assets */,
 				938E3D4E2ADBABC3003D2AE1 /* Utils */,
@@ -974,6 +1055,7 @@
 				935D786A2AEF4B8300DF64A5 /* Binding.swift */,
 				935D786C2AEF4BD600DF64A5 /* ViewOnLoad.swift */,
 				935D786E2AEF4C1200DF64A5 /* Spacer.swift */,
+				93CA8B7A2AF00E8400651885 /* SpriteKit.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1114,6 +1196,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05FF77332AF0B6C30037453D /* hand.tap.gif in Resources */,
 				937AF29F2AE8FDB7008C69BB /* DidactGothic-Regular.ttf in Resources */,
 				931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */,
 				931722182AE5508300346382 /* Page2-monolog1.m4a in Resources */,
@@ -1138,15 +1221,19 @@
 				93C8E71E2ADEDA8F002315A2 /* CherryBombRegular.ttf in Resources */,
 				93C2F8C02AD685A3007D1ABC /* README.md in Resources */,
 				0518CDDA2AE227FA00521EC8 /* kakak_katak.json in Resources */,
+				05FF77322AF0B6C30037453D /* hand.swipe.up.gif in Resources */,
 				05E8B55D2AECE32D00E3612F /* button.usdz in Resources */,
+				05FF77312AF0B6C30037453D /* hand.swipe.left.gif in Resources */,
 				05D966E12ADEE6CF00997E3A /* success.mp3 in Resources */,
 				0571CB482AE19D6000CE0CC7 /* moco-1-5.json in Resources */,
+				05FF772F2AF0B6C30037453D /* hand.zoom.gif in Resources */,
 				0571CB3D2AE19D5700CE0CC7 /* moco-1-1.json in Resources */,
 				93C2F88D2AD683AE007D1ABC /* Preview Assets.xcassets in Resources */,
 				05AE93612ADE82410082B21D /* testing-cat.json in Resources */,
 				056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */,
 				0571CB462AE19D6000CE0CC7 /* maudi.json in Resources */,
 				932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */,
+				05FF77302AF0B6C30037453D /* ripple.gif in Resources */,
 				0518CDD82AE220BA00521EC8 /* moco-1-2.json in Resources */,
 				05E17AD92ADED16800A34547 /* balon_merah.mp3 in Resources */,
 				0571CB452AE19D6000CE0CC7 /* moco-1-10.json in Resources */,
@@ -1211,6 +1298,7 @@
 				0B2E31DA2AD7EBE500DFC16F /* CollectionModel.swift in Sources */,
 				935D785B2AED55B200DF64A5 /* PeelEffect.swift in Sources */,
 				937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */,
+				05FF77242AF0B3200037453D /* Gesture.swift in Sources */,
 				0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */,
 				938E3D542ADBCDB8003D2AE1 /* StoryNavigationButton.swift in Sources */,
 				9398FBB82AE41D2600AB5CE4 /* CustomAsyncImage.swift in Sources */,
@@ -1224,8 +1312,11 @@
 				0571CB362AE17A9E00CE0CC7 /* SpeakTheStory.swift in Sources */,
 				0B46D7232AF120BC002DE821 /* EpisodeModel.swift in Sources */,
 				93E3D8762AE4E4BA00E5391F /* DetectionPromptModel.swift in Sources */,
+				05FF77222AF0B28A0037453D /* GestureList.swift in Sources */,
+				05FF77162AF0B0250037453D /* TutorialCard.swift in Sources */,
 				938C55412AE2301700BC233D /* BurgerMenu.swift in Sources */,
 				93C2F8BC2AD684CE007D1ABC /* ObjectDetectionViewController.swift in Sources */,
+				93CA8B7B2AF00E8400651885 /* SpriteKit.swift in Sources */,
 				05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */,
 				05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */,
 				93C8E7212ADEF1DB002315A2 /* TimerModel.swift in Sources */,
@@ -1242,11 +1333,13 @@
 				05BA97AA2AE11EE400F64F52 /* MPVolumeViewExtension.swift in Sources */,
 				05B8EDA02AEE65FE009ED2C5 /* MotionViewModel.swift in Sources */,
 				938E3D452ADAD5F3003D2AE1 /* StoryBook.swift in Sources */,
+				93CA8B7D2AF0107800651885 /* MazePromptModel.swift in Sources */,
 				0B6E2F722ADC97BE0001D320 /* StoryViewModel.swift in Sources */,
 				935D78502AEBF98400DF64A5 /* GifView.swift in Sources */,
 				937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */,
 				056B67282AE28D1400A3B493 /* AchievementsView.swift in Sources */,
 				938E3D432ADABD9F003D2AE1 /* BaseViewModel.swift in Sources */,
+				93CA8B7F2AF010C600651885 /* MazePromptViewModel.swift in Sources */,
 				050353E12ADFE2970066591A /* FindHoney.swift in Sources */,
 				0B6E2F6E2ADC92950001D320 /* HintModel.swift in Sources */,
 				935D78692AEF4B1C00DF64A5 /* View.swift in Sources */,
@@ -1254,6 +1347,8 @@
 				0BA3E5122ADFD98400BCFE9E /* StoryModalView.swift in Sources */,
 				937AF29C2AE8D47E008C69BB /* ResourceLoader.swift in Sources */,
 				0B2E31E22AD9064900DFC16F /* CollectionViewModel.swift in Sources */,
+				05FF771D2AF0B0980037453D /* TutorialView.swift in Sources */,
+				05FF771F2AF0B0980037453D /* TutorialGestureView.swift in Sources */,
 				937AF2912AE83794008C69BB /* Date.swift in Sources */,
 				935D784B2AEBC7FE00DF64A5 /* CustomPersistentModel.swift in Sources */,
 				0BA3E5102ADFD04700BCFE9E /* StoryThemeModalView.swift in Sources */,
@@ -1269,12 +1364,14 @@
 				938C553E2AE1B76600BC233D /* ObjectDetectionModel.swift in Sources */,
 				937AF2A42AE930E0008C69BB /* MazeView.swift in Sources */,
 				0B6E2F682ADC908B0001D320 /* StoryModel.swift in Sources */,
+				05FF771E2AF0B0980037453D /* TutorialCarouselView.swift in Sources */,
 				938E3D3B2AD9874F003D2AE1 /* ModelGenerator.swift in Sources */,
 				93C8E72A2AE01660002315A2 /* Storm.swift in Sources */,
 				937AF29E2AE8D4EE008C69BB /* ARViewModel.swift in Sources */,
 				93324AA72AEA9FD400046CB8 /* MazeModel.swift in Sources */,
 				056B67262AE28CFB00A3B493 /* ProfileView.swift in Sources */,
 				0B2E31DE2AD8087B00DFC16F /* Header.swift in Sources */,
+				05FF77182AF0B05F0037453D /* JosefineSans.swift in Sources */,
 				05E8B56D2AED57CF00E3612F /* ARStory.swift in Sources */,
 				932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */,
 				938E3D502ADBABD3003D2AE1 /* Print.swift in Sources */,

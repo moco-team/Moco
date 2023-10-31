@@ -30,17 +30,13 @@ struct MazeView: View {
     var body: some View {
         ZStack {
             SpriteView(scene: scene, options: [.allowsTransparency])
-                .frame(width: Screen.width, height: Screen.height)
-                .edgesIgnoringSafeArea(.all)
-                .statusBar(hidden: true)
-                .navigationBarHidden(true)
-                .navigationBarBackButtonHidden(true)
                 .ignoresSafeArea()
+                .frame(width: Screen.width, height: Screen.height)
         }
         .background(.ultraThinMaterial)
         .onAppear {
             motionViewModel.startUpdates()
-            TimerViewModel().setTimer(key: "startTimer", withInterval: 0.5) {
+            TimerViewModel().setTimer(key: "startTimer", withInterval: 0.02) {
                 motionViewModel.updateMotion()
                 if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
                     if motionViewModel.rollNum > 0 {

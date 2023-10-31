@@ -7,6 +7,7 @@
 
 import RealityKit
 import SwiftUI
+import RKFade
 
 protocol BottomSheetDelegate {
     func dismissBottomSheet()
@@ -17,6 +18,7 @@ struct ARViewContainer: UIViewRepresentable {
 
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
+        arView.environment.lighting.intensityExponent = 1.5
 
         // Configure the session
         viewModel.configureSession(forView: arView)
@@ -45,6 +47,7 @@ struct ARViewContainer: UIViewRepresentable {
         }
 
         private var tappedEntities: [Entity]?
+        private var longPressedEntitites: [Entity]?
 
         @objc func viewTapped(_ gesture: UITapGestureRecognizer) {
             print("Screen tapped")
@@ -52,9 +55,9 @@ struct ARViewContainer: UIViewRepresentable {
             if parent.viewModel.hasPlacedObject {
                 let point = gesture.location(in: arView)
 
-                if let tappedEntity = arView!.entity(at: point) {
-                    print(tappedEntity)
-                }
+                tappedEntities = arView!.entities(at: point)
+                let entities = tappedEntities?.filter { $0.name.contains("button") }
+                checkFoundObject(entities: entities!)
 
                 return
             } else {
@@ -79,19 +82,27 @@ struct ARViewContainer: UIViewRepresentable {
         @objc func handleLongPress(_ recognizer: UILongPressGestureRecognizer) {
             let location = recognizer.location(in: arView)
 
-            if let entity = arView!.entity(at: location) {
-                print("Long pressed entity:")
-                print(entity)
-
-                // Check if user has found the correct object
-                if entity.name == parent.viewModel.foundObjectName {
+            longPressedEntitites = arView!.entities(at: location)
+            let entities = longPressedEntitites?.filter { $0.name.contains("button") }
+            checkFoundObject(entities: entities!)
+        }
+        
+        func checkFoundObject(entities: [Entity]) {
+            for entity in entities {
+                if entity.name.contains(parent.viewModel.foundObjectName!) {
                     print("The object found is correct!")
                     print("Removed entity with name: " + entity.name)
-                    parent.viewModel.hasFindObject = true
 
                     if let anchorEntity = entity.anchor {
-                        print("Removed anchor with name: " + anchorEntity.name)
-                        anchorEntity.removeFromParent()
+                        entity.fadeOut(duration: 2, recursive: true) { [self] in
+                            print("Removed anchor with name: " + anchorEntity.name)
+                            anchorEntity.removeFromParent()
+                            
+                            print("Removed entity with name: " + entity.name)
+                            self.parent.viewModel.hasFindObject = true
+                            
+                            self.parent.viewModel.hasPlacedObject = false
+                        }
                     }
 
                     parent.viewModel.hasPlacedObject = false
