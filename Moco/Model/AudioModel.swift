@@ -27,6 +27,9 @@ struct AudioModel: Identifiable, Equatable {
 
     mutating func mute() {
         setVolume(0, writePlayerVolumes: false)
+        GlobalStorage.backsoundVolume = 0
+        GlobalStorage.narrationVolume = 0
+        GlobalStorage.soundEffectVolume = 0
     }
 
     mutating func unmute() {

@@ -228,12 +228,18 @@ struct StoryView: View {
                             }
                             isMuted.toggle()
                         } label: {
-                            Image(systemName: isMuted ? "speaker.slash" : "speaker.wave.2")
+                            Image(isMuted ? "Buttons/sound-off" : "Buttons/sound-on")
                                 .resizable()
                                 .scaledToFit()
-                                .padding(20)
-                        }.buttonStyle(CircleButton(width: 80, height: 80))
-                            .padding()
+                        }.buttonStyle(
+                            CircleButton(
+                                width: 80,
+                                height: 80,
+                                backgroundColor: .clear,
+                                foregroundColor: .clear
+                            )
+                        )
+                        .padding()
                         Button {
                             isPopUpActive = true
                         } label: {

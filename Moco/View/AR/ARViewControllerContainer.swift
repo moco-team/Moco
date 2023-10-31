@@ -6,8 +6,8 @@
 //
 
 import RealityKit
-import SwiftUI
 import RKFade
+import SwiftUI
 
 protocol BottomSheetDelegate {
     func dismissBottomSheet()
@@ -86,7 +86,7 @@ struct ARViewContainer: UIViewRepresentable {
             let entities = longPressedEntitites?.filter { $0.name.contains("button") }
             checkFoundObject(entities: entities!)
         }
-        
+
         func checkFoundObject(entities: [Entity]) {
             for entity in entities {
                 if entity.name.contains(parent.viewModel.foundObjectName!) {
@@ -97,10 +97,10 @@ struct ARViewContainer: UIViewRepresentable {
                         entity.fadeOut(duration: 2, recursive: true) { [self] in
                             print("Removed anchor with name: " + anchorEntity.name)
                             anchorEntity.removeFromParent()
-                            
+
                             print("Removed entity with name: " + entity.name)
                             self.parent.viewModel.hasFindObject = true
-                            
+
                             self.parent.viewModel.hasPlacedObject = false
                         }
                     }

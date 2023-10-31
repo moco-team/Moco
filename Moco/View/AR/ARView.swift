@@ -43,7 +43,7 @@ struct ARCameraView: View {
                 }
                 .frame(height: 150)
                 Spacer()
-                
+
                 HStack {
                     Spacer()
                     Button {
@@ -57,7 +57,6 @@ struct ARCameraView: View {
                     .buttonStyle(CircleButton(width: 80, height: 80))
                     .padding(50)
                 }
-                
             }
             .ignoresSafeArea()
 

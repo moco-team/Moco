@@ -11,10 +11,9 @@ struct AppJosefineSans: View {
     var text: String = ""
 //    var josepSize: fontType
     var size: Font
-    var fontWeight: Font.Weight = Font.Weight.medium
-    var fontColor: Color = Color.black
+    var fontWeight: Font.Weight = .medium
+    var fontColor: Color = .black
     var textAligment: TextAlignment = .center
-    
 
     var body: some View {
         Text(text)
@@ -29,6 +28,6 @@ struct AppJosefineSans: View {
 struct AppJosefineSans_Previews: PreviewProvider {
     static var previews: some View {
 //        AppJosefineSans(text:"adsad", josepSize: fontType.regular)
-        AppJosefineSans(text:"adsad", size: .largeTitle)
+        AppJosefineSans(text: "adsad", size: .largeTitle)
     }
 }
