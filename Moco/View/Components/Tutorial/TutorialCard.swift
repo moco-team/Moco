@@ -17,7 +17,16 @@ struct TutorialCard<Content: View>: View {
     @State var backgroundImage: String
     var content: () -> Content?
     
-    init(width: CGFloat = 300, height: CGFloat = 300, cornerRadius: CGFloat = 20, backgroundColorTop: Color = Color.clear, backgroundColorBottom: Color = Color.clear, borderColor: Color = Color.white, backgroundImage: String = "", @ViewBuilder component: @escaping () -> Content?) {
+    init(
+        width: CGFloat = 300,
+        height: CGFloat = 300,
+        cornerRadius: CGFloat = 20,
+        backgroundColorTop: Color = Color.clear,
+        backgroundColorBottom: Color = Color.clear,
+        borderColor: Color = Color.white,
+        backgroundImage: String = "",
+        @ViewBuilder component: @escaping () -> Content?
+    ) {
         self.width = width
         self.height = height
         self.cornerRadius = cornerRadius
@@ -27,10 +36,10 @@ struct TutorialCard<Content: View>: View {
         self.backgroundImage = backgroundImage
         self.content = component
     }
-    
+
     var body: some View {
         VStack(){
-            if (content != nil) {
+            if (content() != nil) {
                 content()
             }
         }
