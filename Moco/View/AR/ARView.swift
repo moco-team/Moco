@@ -43,6 +43,21 @@ struct ARCameraView: View {
                 }
                 .frame(height: 150)
                 Spacer()
+                
+                HStack {
+                    Spacer()
+                    Button {
+                        print("Hint!")
+                    } label: {
+                        Image(systemName: "lightbulb.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .padding(15)
+                    }
+                    .buttonStyle(CircleButton(width: 80, height: 80))
+                    .padding(50)
+                }
+                
             }
             .ignoresSafeArea()
 
