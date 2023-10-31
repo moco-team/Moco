@@ -50,6 +50,11 @@ extension EnvironmentValues {
         get { self[StoryContentViewModelKey.self] }
         set { self[StoryContentViewModelKey.self] = newValue }
     }
+    
+    var episodeViewModel: EpisodeViewModel {
+        get { self[EpisodeViewModelKey.self] }
+        set { self[EpisodeViewModelKey.self] = newValue }
+    }
 }
 
 // MARK: - View Model Keys
@@ -84,4 +89,8 @@ private struct HintViewModelKey: EnvironmentKey {
 
 private struct StoryContentViewModelKey: EnvironmentKey {
     static var defaultValue: StoryContentViewModel = .init()
+}
+
+private struct EpisodeViewModelKey: EnvironmentKey {
+    static var defaultValue: EpisodeViewModel = .init()
 }

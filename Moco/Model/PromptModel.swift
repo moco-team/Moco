@@ -17,16 +17,16 @@ enum PromptType {
 
 @Model
 final class PromptModel: Identifiable {
-    var id: String = UUID().uuidString
-    var promptDescription = ""
-    var correctAnswer = ""
-    var duration: TimeInterval = 0.0
-    var promptType = ""
-    var createdAt = Date()
-    var updatedAt = Date()
+    @Attribute var id: String = UUID().uuidString
+    @Attribute var promptDescription = ""
+    @Attribute var correctAnswer = ""
+    @Attribute var duration: TimeInterval = 0.0
+    @Attribute var promptType = ""
+    @Attribute var createdAt = Date()
+    @Attribute var updatedAt = Date()
 
-    var story: StoryModel?
-    var hints: [HintModel]?
+    @Attribute var story: StoryModel?
+    @Attribute var hints: [HintModel]?
 
     init(promptDescription: String, correctAnswer: String, duration: TimeInterval, promptType: String) {
         self.promptDescription = promptDescription

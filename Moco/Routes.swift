@@ -12,13 +12,14 @@ import SwiftUI
 /// Definition of route keys
 enum Route: Hashable {
     case home
-    case story(String?)
+    case story(String?, [String], [[Narrative]], [LottieAsset?], [Prompt?], [String])
     case storyAdmin(String?)
     case storyThemeAdmin
     case settings
     case profile
     case achievements
     case arStory
+    case episode
 }
 
 // MARK: - Route view definition, set them here
@@ -31,8 +32,10 @@ struct Routes: View {
         switch route {
         case .home:
             HomeView()
-        case let .story(text):
-            StoryView(title: text)
+        case let .story(text, storyBackgrounds,
+                        narratives, lottieAnimations,
+                        prompts, bgSounds):
+            StoryView(title: text, storyBackgrounds: storyBackgrounds, narratives: narratives, lottieAnimations: lottieAnimations, prompts: prompts, bgSounds: bgSounds)
         case .storyAdmin:
             StoryAdminView()
         case .storyThemeAdmin:
@@ -45,6 +48,8 @@ struct Routes: View {
             AchievementsView()
         case .arStory:
             ARStory()
+        case .episode:
+            EpisodeView()
         }
     }
 }
