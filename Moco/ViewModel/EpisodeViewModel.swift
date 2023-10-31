@@ -11,11 +11,10 @@ import SwiftData
 @Observable class EpisodeViewModel: BaseViewModel {
     //    var episodes = [EpisodeModel]()
     var episodeActive: [Int] = [1]
-    
-    
+
     func appendEpisodeActive(_ indexEpisode: Int) {
         if episodeActive.count < 3 {
-            self.episodeActive.append(indexEpisode)
+            episodeActive.append(indexEpisode)
         }
     }
     //    init(modelContext: ModelContext? = nil) {

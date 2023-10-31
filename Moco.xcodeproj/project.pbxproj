@@ -44,7 +44,6 @@
 		05FF771E2AF0B0980037453D /* TutorialCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF771B2AF0B0980037453D /* TutorialCarouselView.swift */; };
 		05FF771F2AF0B0980037453D /* TutorialGestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF771C2AF0B0980037453D /* TutorialGestureView.swift */; };
 		05FF77222AF0B28A0037453D /* GestureList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF77212AF0B28A0037453D /* GestureList.swift */; };
-		05FF77242AF0B3200037453D /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF77232AF0B3200037453D /* Gesture.swift */; };
 		05FF772F2AF0B6C30037453D /* hand.zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 05FF772A2AF0B6C30037453D /* hand.zoom.gif */; };
 		05FF77302AF0B6C30037453D /* ripple.gif in Resources */ = {isa = PBXBuildFile; fileRef = 05FF772B2AF0B6C30037453D /* ripple.gif */; };
 		05FF77312AF0B6C30037453D /* hand.swipe.left.gif in Resources */ = {isa = PBXBuildFile; fileRef = 05FF772C2AF0B6C30037453D /* hand.swipe.left.gif */; };
@@ -92,6 +91,8 @@
 		932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 932357D52ADE6EF3009B3D86 /* bg-story.mp3 */; };
 		932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D72ADE700D009B3D86 /* AudioViewModel.swift */; };
 		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
+		9328F9132AF16B3A00E82995 /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9328F9122AF16B3A00E82995 /* Gesture.swift */; };
+		9328F9152AF16B6900E82995 /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9328F9142AF16B6900E82995 /* Gesture.swift */; };
 		93324AA72AEA9FD400046CB8 /* MazeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93324AA62AEA9FD400046CB8 /* MazeModel.swift */; };
 		935D784B2AEBC7FE00DF64A5 /* CustomPersistentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */; };
 		935D784E2AEBF96800DF64A5 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 935D784D2AEBF96800DF64A5 /* FLAnimatedImage */; };
@@ -288,6 +289,8 @@
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
+		9328F9122AF16B3A00E82995 /* Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Gesture.swift; path = Moco/Model/Gesture.swift; sourceTree = "<group>"; };
+		9328F9142AF16B6900E82995 /* Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gesture.swift; sourceTree = "<group>"; };
 		93324AA62AEA9FD400046CB8 /* MazeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeModel.swift; sourceTree = "<group>"; };
 		935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPersistentModel.swift; sourceTree = "<group>"; };
 		935D784F2AEBF98400DF64A5 /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
@@ -819,6 +822,14 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
+		9328F9112AF16A8A00E82995 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				05FF77232AF0B3200037453D /* Gesture.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		935D78512AEBF9EC00DF64A5 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
@@ -903,11 +914,13 @@
 		93C2F8772AD683AC007D1ABC = {
 			isa = PBXGroup;
 			children = (
+				9328F9122AF16B3A00E82995 /* Gesture.swift */,
 				93C2F8BF2AD685A3007D1ABC /* README.md */,
 				93C2F8822AD683AC007D1ABC /* Moco */,
 				93C2F8972AD683AE007D1ABC /* MocoTests */,
 				93C2F8A12AD683AE007D1ABC /* MocoUITests */,
 				93C2F8812AD683AC007D1ABC /* Products */,
+				9328F9112AF16A8A00E82995 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1020,6 +1033,7 @@
 				935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */,
 				93CA8B7C2AF0107800651885 /* MazePromptModel.swift */,
 				0B46D7222AF120BC002DE821 /* EpisodeModel.swift */,
+				9328F9142AF16B6900E82995 /* Gesture.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1279,6 +1293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9328F9132AF16B3A00E82995 /* Gesture.swift in Sources */,
 				0BA3E50B2ADFC62000BCFE9E /* StoryAdminView.swift in Sources */,
 				938E3D582ADC00FB003D2AE1 /* PopUpExtension.swift in Sources */,
 				0B46D7212AF12077002DE821 /* EpisodeViewModel.swift in Sources */,
@@ -1316,7 +1331,6 @@
 				0B2E31DA2AD7EBE500DFC16F /* CollectionModel.swift in Sources */,
 				935D785B2AED55B200DF64A5 /* PeelEffect.swift in Sources */,
 				937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */,
-				05FF77242AF0B3200037453D /* Gesture.swift in Sources */,
 				0B2E31D82AD7EB6100DFC16F /* CollectionListView.swift in Sources */,
 				938E3D542ADBCDB8003D2AE1 /* StoryNavigationButton.swift in Sources */,
 				9398FBB82AE41D2600AB5CE4 /* CustomAsyncImage.swift in Sources */,
@@ -1350,6 +1364,7 @@
 				935D78552AEC09A000DF64A5 /* GlobalStorage.swift in Sources */,
 				05BA97AA2AE11EE400F64F52 /* MPVolumeViewExtension.swift in Sources */,
 				93676D242AF139A800E756A5 /* ProgressBar.swift in Sources */,
+				9328F9152AF16B6900E82995 /* Gesture.swift in Sources */,
 				05B8EDA02AEE65FE009ED2C5 /* MotionViewModel.swift in Sources */,
 				938E3D452ADAD5F3003D2AE1 /* StoryBook.swift in Sources */,
 				93CA8B7D2AF0107800651885 /* MazePromptModel.swift in Sources */,

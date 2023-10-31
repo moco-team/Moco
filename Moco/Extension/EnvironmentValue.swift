@@ -50,7 +50,7 @@ extension EnvironmentValues {
         get { self[StoryContentViewModelKey.self] }
         set { self[StoryContentViewModelKey.self] = newValue }
     }
-    
+
     var episodeViewModel: EpisodeViewModel {
         get { self[EpisodeViewModelKey.self] }
         set { self[EpisodeViewModelKey.self] = newValue }

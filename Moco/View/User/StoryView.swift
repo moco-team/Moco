@@ -41,6 +41,7 @@ struct LottieAsset: Hashable {
 
 struct StoryView: View {
     // MARK: - Environments stored property
+
     @Environment(\.episodeViewModel) private var episodeViewModel
 
     @Environment(\.timerViewModel) private var timerViewModel

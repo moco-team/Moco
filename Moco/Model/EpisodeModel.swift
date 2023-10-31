@@ -8,8 +8,8 @@
 import Foundation
 import SwiftData
 
-//@Model
-//final class EpisodeModel: Identifiable, CustomPersistentModel {
+// @Model
+// final class EpisodeModel: Identifiable, CustomPersistentModel {
 ////    @Attribute var id: String = ""
 ////    @Attribute var slug: String = ""
 ////    @Attribute var pictureName: String = ""
@@ -30,4 +30,4 @@ import SwiftData
 ////        createdAt = Date()
 ////        updatedAt = Date()
 ////    }
-//}
+// }
