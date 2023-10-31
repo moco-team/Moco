@@ -27,6 +27,40 @@ struct CircleButton: ButtonStyle {
     }
 }
 
+struct CapsuleButton: ButtonStyle {
+    var width: CGFloat = 30
+    var height: CGFloat = 30
+    var backgroundColor = Color.white
+    var foregroundColor = Color.black
+    var animation = Animation.easeOut(duration: 0.2)
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(width: width, height: height)
+            .background(backgroundColor)
+            .foregroundColor(foregroundColor)
+            .clipShape(Capsule())
+            .scaleEffect(configuration.isPressed ? 1.2 : 1)
+            .animation(animation, value: configuration.isPressed)
+            .shadow(radius: 2, y: 3)
+    }
+}
+
+struct ImageButton: ButtonStyle {
+    var width: CGFloat = 30
+    var height: CGFloat = 30
+    var animation = Animation.easeOut(duration: 0.2)
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(width: width, height: height)
+            .clipShape(Rectangle())
+            .scaleEffect(configuration.isPressed ? 1.2 : 1)
+            .animation(animation, value: configuration.isPressed)
+            .shadow(radius: 2, y: 3)
+    }
+}
+
 struct RoundedRectangleButton: ButtonStyle {
     var width: CGFloat = 30
     var height: CGFloat = 30

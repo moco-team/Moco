@@ -23,11 +23,18 @@ struct MazePrompt: View {
                         .foregroundColor(.text.primary)
                         .opacity(mazePromptViewModel.blurOpacity)
                     if mazePromptViewModel.showStartButton {
-                        Button("Mulai") {
+                        Button {
                             mazePromptViewModel.stopPrompt()
+                        } label: {
+                            Image("Buttons/button-start").resizable().scaledToFit()
                         }
                         .buttonStyle(
-                            MainButton(width: 80, height: 20)
+                            CapsuleButton(
+                                width: 190,
+                                height: 90,
+                                backgroundColor: .clear,
+                                foregroundColor: .clear
+                            )
                         )
                         .padding(.bottom, 20)
                     }
