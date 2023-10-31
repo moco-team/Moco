@@ -76,7 +76,7 @@ struct HomeView: View {
                                 firstPageBackground: storyTheme.stories![0].background,
                                 number: index + 1
                             ) {
-                                navigate.append(.story(storyTheme.id))
+                                navigate.append(.episode)
                             }
                         }
                     }

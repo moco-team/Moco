@@ -44,8 +44,10 @@
 		0B2E31DA2AD7EBE500DFC16F /* CollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31D92AD7EBE500DFC16F /* CollectionModel.swift */; };
 		0B2E31DC2AD8084600DFC16F /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31DB2AD8084600DFC16F /* CollectionView.swift */; };
 		0B2E31DE2AD8087B00DFC16F /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31DD2AD8087B00DFC16F /* Header.swift */; };
-		0B2E31E02AD810D400DFC16F /* StoryBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31DF2AD810D400DFC16F /* StoryBoardView.swift */; };
+		0B2E31E02AD810D400DFC16F /* EpisodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31DF2AD810D400DFC16F /* EpisodeView.swift */; };
 		0B2E31E22AD9064900DFC16F /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E31E12AD9064900DFC16F /* CollectionViewModel.swift */; };
+		0B46D7212AF12077002DE821 /* EpisodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B46D7202AF12077002DE821 /* EpisodeViewModel.swift */; };
+		0B46D7232AF120BC002DE821 /* EpisodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B46D7222AF120BC002DE821 /* EpisodeModel.swift */; };
 		0B6E2F662ADC8ECE0001D320 /* StoryThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E2F652ADC8ECE0001D320 /* StoryThemeModel.swift */; };
 		0B6E2F682ADC908B0001D320 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E2F672ADC908B0001D320 /* StoryModel.swift */; };
 		0B6E2F6A2ADC91060001D320 /* StoryContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E2F692ADC91060001D320 /* StoryContentModel.swift */; };
@@ -233,8 +235,10 @@
 		0B2E31D92AD7EBE500DFC16F /* CollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionModel.swift; path = Moco/View/Components/ListViews/CollectionModel.swift; sourceTree = SOURCE_ROOT; };
 		0B2E31DB2AD8084600DFC16F /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		0B2E31DD2AD8087B00DFC16F /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
-		0B2E31DF2AD810D400DFC16F /* StoryBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardView.swift; sourceTree = "<group>"; };
+		0B2E31DF2AD810D400DFC16F /* EpisodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeView.swift; sourceTree = "<group>"; };
 		0B2E31E12AD9064900DFC16F /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewModel.swift; path = Moco/View/CollectionViewModel.swift; sourceTree = SOURCE_ROOT; };
+		0B46D7202AF12077002DE821 /* EpisodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewModel.swift; sourceTree = "<group>"; };
+		0B46D7222AF120BC002DE821 /* EpisodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeModel.swift; sourceTree = "<group>"; };
 		0B6E2F652ADC8ECE0001D320 /* StoryThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryThemeModel.swift; sourceTree = "<group>"; };
 		0B6E2F672ADC908B0001D320 /* StoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
 		0B6E2F692ADC91060001D320 /* StoryContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryContentModel.swift; sourceTree = "<group>"; };
@@ -688,13 +692,13 @@
 				937AF2A02AE930A1008C69BB /* Maze */,
 				0B2E31DB2AD8084600DFC16F /* CollectionView.swift */,
 				938E3D322AD91605003D2AE1 /* DetectionView.swift */,
-				0B2E31DF2AD810D400DFC16F /* StoryBoardView.swift */,
+				0B2E31DF2AD810D400DFC16F /* EpisodeView.swift */,
+				93C2F8B82AD684CE007D1ABC /* HomeView.swift */,
 				938E3D4A2ADB9F1B003D2AE1 /* StoryView.swift */,
 				938E3D4C2ADBA247003D2AE1 /* ContentViewContainer.swift */,
 				938E3D512ADBAE62003D2AE1 /* SettingsView.swift */,
 				056B67252AE28CFB00A3B493 /* ProfileView.swift */,
 				056B67272AE28D1400A3B493 /* AchievementsView.swift */,
-				93C2F8B82AD684CE007D1ABC /* HomeView.swift */,
 				938E3D362AD939C4003D2AE1 /* ContentView.swift */,
 			);
 			path = User;
@@ -892,6 +896,8 @@
 				937AF29D2AE8D4EE008C69BB /* ARViewModel.swift */,
 				935D78562AEC2D7900DF64A5 /* SettingsViewModel.swift */,
 				05B8ED9F2AEE65FE009ED2C5 /* MotionViewModel.swift */,
+				93CA8B7E2AF010C600651885 /* MazePromptViewModel.swift */,
+				0B46D7202AF12077002DE821 /* EpisodeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -917,6 +923,8 @@
 				937AF2872AE81983008C69BB /* RippleModel.swift */,
 				93324AA62AEA9FD400046CB8 /* MazeModel.swift */,
 				935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */,
+				93CA8B7C2AF0107800651885 /* MazePromptModel.swift */,
+				0B46D7222AF120BC002DE821 /* EpisodeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1169,6 +1177,7 @@
 			files = (
 				0BA3E50B2ADFC62000BCFE9E /* StoryAdminView.swift in Sources */,
 				938E3D582ADC00FB003D2AE1 /* PopUpExtension.swift in Sources */,
+				0B46D7212AF12077002DE821 /* EpisodeViewModel.swift in Sources */,
 				938C553C2AE1B59F00BC233D /* ObjectDetection.swift in Sources */,
 				938E3D562ADBE961003D2AE1 /* Screen.swift in Sources */,
 				0B6E2F702ADC96200001D320 /* StoryThemeViewModel.swift in Sources */,
@@ -1213,6 +1222,7 @@
 				938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */,
 				0B6E2F782ADCA8990001D320 /* StoryContentViewModel.swift in Sources */,
 				0571CB362AE17A9E00CE0CC7 /* SpeakTheStory.swift in Sources */,
+				0B46D7232AF120BC002DE821 /* EpisodeModel.swift in Sources */,
 				93E3D8762AE4E4BA00E5391F /* DetectionPromptModel.swift in Sources */,
 				938C55412AE2301700BC233D /* BurgerMenu.swift in Sources */,
 				93C2F8BC2AD684CE007D1ABC /* ObjectDetectionViewController.swift in Sources */,
@@ -1251,7 +1261,7 @@
 				938E3D522ADBAE62003D2AE1 /* SettingsView.swift in Sources */,
 				938E3D472ADB0AA5003D2AE1 /* Routes.swift in Sources */,
 				937AF28F2AE832FC008C69BB /* ARViewController.swift in Sources */,
-				0B2E31E02AD810D400DFC16F /* StoryBoardView.swift in Sources */,
+				0B2E31E02AD810D400DFC16F /* EpisodeView.swift in Sources */,
 				937AF28C2AE832A7008C69BB /* ARViewControllerContainer.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
 				937AF2A22AE930AF008C69BB /* MazeScene.swift in Sources */,

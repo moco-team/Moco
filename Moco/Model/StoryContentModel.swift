@@ -10,14 +10,14 @@ import SwiftData
 
 @Model
 final class StoryContentModel: Identifiable {
-    var id: String = ""
-    var duration: TimeInterval = 0.0
-    var contentName: String = ""
-    var contentType: String = ""
-    var createdAt = Date()
-    var updatedAt = Date()
+    @Attribute var id: String = ""
+    @Attribute var duration: TimeInterval = 0.0
+    @Attribute var contentName: String = ""
+    @Attribute var contentType: String = ""
+    @Attribute var createdAt = Date()
+    @Attribute var updatedAt = Date()
 
-    var stories: [StoryModel]?
+    @Attribute var stories: [StoryModel]?
 
     init(duration: TimeInterval, contentName: String, contentType: String) {
         id = UUID().uuidString
