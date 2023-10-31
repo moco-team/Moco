@@ -108,6 +108,9 @@
 		935D786B2AEF4B8300DF64A5 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D786A2AEF4B8300DF64A5 /* Binding.swift */; };
 		935D786D2AEF4BD600DF64A5 /* ViewOnLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D786C2AEF4BD600DF64A5 /* ViewOnLoad.swift */; };
 		935D786F2AEF4C1200DF64A5 /* Spacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D786E2AEF4C1200DF64A5 /* Spacer.swift */; };
+		93676D242AF139A800E756A5 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93676D232AF139A800E756A5 /* ProgressBar.swift */; };
+		93676D262AF13AA200E756A5 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93676D252AF13AA200E756A5 /* pop.mp3 */; };
+		93676D292AF13C5400E756A5 /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 93676D282AF13C5400E756A5 /* SwiftUITooltip */; };
 		937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2852AE80BFA008C69BB /* RippleView.swift */; };
 		937AF2882AE81983008C69BB /* RippleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2872AE81983008C69BB /* RippleModel.swift */; };
 		937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2892AE81A26008C69BB /* RippleViewModel.swift */; };
@@ -295,6 +298,8 @@
 		935D786A2AEF4B8300DF64A5 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		935D786C2AEF4BD600DF64A5 /* ViewOnLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOnLoad.swift; sourceTree = "<group>"; };
 		935D786E2AEF4C1200DF64A5 /* Spacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacer.swift; sourceTree = "<group>"; };
+		93676D232AF139A800E756A5 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		93676D252AF13AA200E756A5 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
 		937AF2852AE80BFA008C69BB /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
 		937AF2872AE81983008C69BB /* RippleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleModel.swift; sourceTree = "<group>"; };
 		937AF2892AE81A26008C69BB /* RippleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleViewModel.swift; sourceTree = "<group>"; };
@@ -377,6 +382,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93676D292AF13C5400E756A5 /* SwiftUITooltip in Frameworks */,
 				935D78672AEE858500DF64A5 /* ConfettiSwiftUI in Frameworks */,
 				05AE93682ADE83430082B21D /* Lottie in Frameworks */,
 				935D784E2AEBF96800DF64A5 /* FLAnimatedImage in Frameworks */,
@@ -732,6 +738,7 @@
 				938C55402AE2301700BC233D /* BurgerMenu.swift */,
 				9398FBB42AE4105900AB5CE4 /* CircularProgressView.swift */,
 				935D785C2AED6D6600DF64A5 /* StoryBookNew.swift */,
+				93676D232AF139A800E756A5 /* ProgressBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -792,6 +799,7 @@
 		932357D22ADE6DF2009B3D86 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				93676D252AF13AA200E756A5 /* pop.mp3 */,
 				93C8E7262ADF8DA3002315A2 /* bg-shop.mp3 */,
 				05E17ADA2ADED17B00A34547 /* Story */,
 				932357D52ADE6EF3009B3D86 /* bg-story.mp3 */,
@@ -1096,6 +1104,7 @@
 				935D784D2AEBF96800DF64A5 /* FLAnimatedImage */,
 				935D78662AEE858500DF64A5 /* ConfettiSwiftUI */,
 				0517C51F2AEF3C9B00CE7A01 /* RKFade */,
+				93676D282AF13C5400E756A5 /* SwiftUITooltip */,
 			);
 			productName = Moco;
 			productReference = 93C2F8802AD683AC007D1ABC /* Moco.app */;
@@ -1174,6 +1183,7 @@
 				935D784C2AEBF96800DF64A5 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
 				935D78652AEE858500DF64A5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 				0517C51E2AEF3C9B00CE7A01 /* XCRemoteSwiftPackageReference "RealityKit-Fade" */,
+				93676D272AF13C5300E756A5 /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */,
 			);
 			productRefGroup = 93C2F8812AD683AC007D1ABC /* Products */;
 			projectDirPath = "";
@@ -1191,6 +1201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93676D262AF13AA200E756A5 /* pop.mp3 in Resources */,
 				05FF77332AF0B6C30037453D /* hand.tap.gif in Resources */,
 				937AF29F2AE8FDB7008C69BB /* DidactGothic-Regular.ttf in Resources */,
 				931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */,
@@ -1324,6 +1335,7 @@
 				938E3D332AD91605003D2AE1 /* DetectionView.swift in Sources */,
 				935D78552AEC09A000DF64A5 /* GlobalStorage.swift in Sources */,
 				05BA97AA2AE11EE400F64F52 /* MPVolumeViewExtension.swift in Sources */,
+				93676D242AF139A800E756A5 /* ProgressBar.swift in Sources */,
 				05B8EDA02AEE65FE009ED2C5 /* MotionViewModel.swift in Sources */,
 				938E3D452ADAD5F3003D2AE1 /* StoryBook.swift in Sources */,
 				93CA8B7D2AF0107800651885 /* MazePromptModel.swift in Sources */,
@@ -1754,6 +1766,14 @@
 				minimumVersion = 1.1.0;
 			};
 		};
+		93676D272AF13C5300E756A5 /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/quassum/SwiftUI-Tooltip.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1776,6 +1796,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 935D78652AEE858500DF64A5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
 			productName = ConfettiSwiftUI;
+		};
+		93676D282AF13C5400E756A5 /* SwiftUITooltip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93676D272AF13C5300E756A5 /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */;
+			productName = SwiftUITooltip;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
