@@ -168,9 +168,10 @@ struct ARViewContainer: UIViewRepresentable {
             modelComponent.materials = [material]
             entity.components.set(modelComponent)
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [self] in
                 modelComponent.materials = [existingMaterial]
                 entity.components.set(modelComponent)
+                self.isShowHint = false
             }
         }
     }

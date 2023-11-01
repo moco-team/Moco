@@ -21,7 +21,7 @@ struct ARStory: View {
 
     var doneHandler: (() -> Void)?
 
-    let clueData = ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "button", meshes: ["Mesh_button_cylinder", "Mesh_button_cube"])
+    let clueData = ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "honey_jar", meshes: ["honey_jar"])
 
     var body: some View {
         if startVisibility {
