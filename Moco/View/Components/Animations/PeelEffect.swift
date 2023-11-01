@@ -17,14 +17,17 @@ struct PeelEffect<Content: View, Background: View>: View {
     var content: Content
     var background: Background
 
-    var onComplete: () -> Void = {}
-
     var maxProgress = 0.8
+
+    var isReverse = false
+
+    var onComplete: () -> Void = {}
 
     @Binding var state: PeelEffectState
 
     init(
         state: Binding<PeelEffectState>,
+        isReverse: Bool? = nil,
         @ViewBuilder content: @escaping () -> Content,
         @ViewBuilder background: @escaping () -> Background,
         onComplete: (() -> Void)? = nil
@@ -33,6 +36,9 @@ struct PeelEffect<Content: View, Background: View>: View {
         self.onComplete = onComplete ?? {}
         self.background = background()
         _state = state
+        if isReverse != nil {
+            self.isReverse = isReverse!
+        }
     }
 
     @State private var dragProgress: CGFloat = 0
@@ -120,42 +126,62 @@ struct PeelEffect<Content: View, Background: View>: View {
                         onComplete()
                         onCompleteExecuted = true
                     }
-                case .stop: break
+                case .stop:
+                    dragProgress = 0
+                    onCompleteExecuted = false
                 case .reverse:
+                    if dragProgress == 0 && !onCompleteExecuted {
+                        dragProgress = maxProgress
+                    }
                     if dragProgress >= 0.1 {
                         dragProgress -= 0.1
+                    } else if !onCompleteExecuted {
+                        onComplete()
+                        onCompleteExecuted = true
                     }
                 }
             }
             .onAppear {
                 onCompleteExecuted = false
-                dragProgress = 0
-                state = .stop
+                if !isReverse {
+                    dragProgress = 0
+                    state = .stop
+                } else {
+                    state = .reverse
+                    dragProgress = maxProgress
+                }
             }
     }
 }
 
-#Preview {
+struct PeelPreview: View {
     @State var peelState = PeelEffectState.start
 
-    return PeelEffect(state: $peelState) {
-        StoryBook()
-    } background: {
-        Image("Story/Cover/Story1")
-            .resizable()
-            .scaledToFill()
-            .frame(width: 200, height: 280) // Adjust the frame size as needed
-            .clipShape(
-                .rect(
-                    topLeadingRadius: 8,
-                    bottomLeadingRadius: 8,
-                    bottomTrailingRadius: 24,
-                    topTrailingRadius: 24
+    var body: some View {
+
+        PeelEffect(state: $peelState) {
+            StoryBookNew()
+        } background: {
+            Image("Story/Cover/Story1")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 200, height: 280) // Adjust the frame size as needed
+                .clipShape(
+                    .rect(
+                        topLeadingRadius: 8,
+                        bottomLeadingRadius: 8,
+                        bottomTrailingRadius: 24,
+                        topTrailingRadius: 24
+                    )
                 )
-            )
-    } onComplete: {
-        print("woi")
-    }.onTapGesture {
-        print("tapped")
+        } onComplete: {
+            print("woi")
+        }.onTapGesture {
+            print("tapped")
+        }
     }
+}
+
+#Preview {
+    PeelPreview()
 }

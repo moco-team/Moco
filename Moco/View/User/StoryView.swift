@@ -65,6 +65,11 @@ struct StoryView: View {
     @State private var lottieAnimationIndex: Int = -1
     @State private var showPromptButton = false
     @State private var activePrompt: Prompt?
+    @State private var peelEffectState = PeelEffectState.stop
+    @State private var toBeExecutedByPeelEffect = {}
+    @State private var peelBackground = AnyView(EmptyView())
+    @State private var isReversePeel = false
+
 
     // MARK: - Variables
 
@@ -136,8 +141,31 @@ struct StoryView: View {
             isPopUpActive = true
             return
         }
-        withAnimation {
+        peelBackground = AnyView(Image(storyBackgrounds[scrollPosition! + 1])
+            .resizable()
+            .scaledToFill()
+            .frame(width: Screen.width, height: Screen.height, alignment: .center)
+            .clipped())
+        peelEffectState = .start
+        toBeExecutedByPeelEffect = {
             scrollPosition! += 1
+            peelEffectState = .stop
+        }
+    }
+
+    private func prevPage() {
+        guard scrollPosition! > 0 else { return }
+        isReversePeel = true
+        scrollPosition! -= 1
+        peelEffectState = .reverse
+        peelBackground = AnyView(Image(storyBackgrounds[scrollPosition! + 1])
+            .resizable()
+            .scaledToFill()
+            .frame(width: Screen.width, height: Screen.height, alignment: .center)
+            .clipped())
+        toBeExecutedByPeelEffect = {
+            peelEffectState = .stop
+            isReversePeel = false
         }
     }
 
@@ -148,73 +176,79 @@ struct StoryView: View {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 0) {
                     ForEach(Array(storyBackgrounds.enumerated()), id: \.offset) { index, background in
-                        ZStack {
-                            Image(background)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: Screen.width, height: Screen.height, alignment: .center)
-                                .clipped()
+                        PeelEffect(state: $peelEffectState, isReverse: isReversePeel) {
+                            ZStack {
+                                Image(background)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: Screen.width, height: Screen.height, alignment: .center)
+                                    .clipped()
 
-                            if let lottie = lottieAnimations[scrollPosition!] {
-                                LottieView(fileName: lottie.fileName)
-                                    .frame(maxWidth: CGFloat(lottie.maxWidth!))
-                                    .position(CGPoint(
-                                        x: lottie.positionX,
-                                        y: lottie.positionY
-                                    ))
-                                    .id(lottieAnimationIndex)
-                            }
-
-                            if narratives[scrollPosition!].count > narrativeIndex && !narratives[scrollPosition!].isEmpty {
-                                let narrative = narratives[scrollPosition!][max(narrativeIndex, 0)]
-                                Text(narrative.text)
-                                    .foregroundColor(narrative.color!)
-                                    .frame(maxWidth: CGFloat(narrative.maxWidth!), alignment: .leading)
-                                    .position(CGPoint(
-                                        x: Screen.width * narrative.positionX,
-                                        y: Screen.height * narrative.positionY
-                                    ))
-                                    .id(narrativeIndex)
-                                    .transition(.opacity.animation(.linear))
-                                    .customFont(.didactGothic, size: narrative.fontSize)
-                                    .padding(.bottom, 2)
-                            }
-
-                            Group {
-                                switch activePrompt?.type {
-                                case .puzzle:
-                                    FindTheObjectView(
-                                        isPromptDone: .constant(false),
-                                        content: "Once upon a time...",
-                                        hints: ["Coba lagi!", "Ayo coba lagi!"],
-                                        correctAnswer: "Jawaban yang benar adalah balon berwarna Merah",
-                                        balloons: [
-                                            Balloon(color: "orange", isCorrect: false),
-                                            Balloon(color: "ungu", isCorrect: false),
-                                            Balloon(color: "merah", isCorrect: true),
-                                            Balloon(color: "hijau", isCorrect: false),
-                                            Balloon(color: "biru", isCorrect: false)
-                                        ]
-                                    ) {
-                                        nextPage()
-                                    }
-                                case .findHoney:
-                                    FindHoney(isPromptDone: .constant(false)) {
-                                        nextPage()
-                                    }
-                                case .objectDetection:
-                                    DetectionView {
-                                        nextPage()
-                                    }
-                                case .speech:
-                                    SpeakTheStory {
-                                        nextPage()
-                                    }
-                                default:
-                                    EmptyView()
+                                if let lottie = lottieAnimations[scrollPosition!] {
+                                    LottieView(fileName: lottie.fileName)
+                                        .frame(maxWidth: CGFloat(lottie.maxWidth!))
+                                        .position(CGPoint(
+                                            x: lottie.positionX,
+                                            y: lottie.positionY
+                                        ))
+                                        .id(lottieAnimationIndex)
                                 }
-                            }
-                        }.id(index)
+
+                                if narratives[scrollPosition!].count > narrativeIndex && !narratives[scrollPosition!].isEmpty {
+                                    let narrative = narratives[scrollPosition!][max(narrativeIndex, 0)]
+                                    Text(narrative.text)
+                                        .foregroundColor(narrative.color!)
+                                        .frame(maxWidth: CGFloat(narrative.maxWidth!), alignment: .leading)
+                                        .position(CGPoint(
+                                            x: Screen.width * narrative.positionX,
+                                            y: Screen.height * narrative.positionY
+                                        ))
+                                        .id(narrativeIndex)
+                                        .transition(.opacity.animation(.linear))
+                                        .customFont(.didactGothic, size: narrative.fontSize)
+                                        .padding(.bottom, 2)
+                                }
+
+                                Group {
+                                    switch activePrompt?.type {
+                                    case .puzzle:
+                                        FindTheObjectView(
+                                            isPromptDone: .constant(false),
+                                            content: "Once upon a time...",
+                                            hints: ["Coba lagi!", "Ayo coba lagi!"],
+                                            correctAnswer: "Jawaban yang benar adalah balon berwarna Merah",
+                                            balloons: [
+                                                Balloon(color: "orange", isCorrect: false),
+                                                Balloon(color: "ungu", isCorrect: false),
+                                                Balloon(color: "merah", isCorrect: true),
+                                                Balloon(color: "hijau", isCorrect: false),
+                                                Balloon(color: "biru", isCorrect: false)
+                                            ]
+                                        ) {
+                                            nextPage()
+                                        }
+                                    case .findHoney:
+                                        FindHoney(isPromptDone: .constant(false)) {
+                                            nextPage()
+                                        }
+                                    case .objectDetection:
+                                        DetectionView {
+                                            nextPage()
+                                        }
+                                    case .speech:
+                                        SpeakTheStory {
+                                            nextPage()
+                                        }
+                                    default:
+                                        EmptyView()
+                                    }
+                                }
+                            }.id(index)
+                        } background: {
+                            peelBackground
+                        } onComplete: {
+                            toBeExecutedByPeelEffect()
+                        }
                     }
                 }.scrollTargetLayout()
             }.scrollDisabled(true)
@@ -263,10 +297,7 @@ struct StoryView: View {
                 HStack {
                     if scrollPosition! > 0 {
                         StoryNavigationButton(direction: .left) {
-                            guard scrollPosition! > 0 else { return }
-                            withAnimation {
-                                scrollPosition! -= 1
-                            }
+                            prevPage()
                         }
                     }
                     Spacer()
