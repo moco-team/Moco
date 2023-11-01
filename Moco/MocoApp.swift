@@ -28,6 +28,7 @@ struct MocoApp: App {
     @StateObject private var objectDetectionViewModel = ObjectDetectionViewModel.shared
     @StateObject private var arViewModel = ARViewModel()
     @StateObject private var motionViewModel = MotionViewModel()
+    @StateObject private var orientationInfo = OrientationInfo()
 
     private static let sharedModelContainer: ModelContainer = ModelGenerator.generator(false)
     static let modelContext = ModelContext(sharedModelContainer)
@@ -47,6 +48,7 @@ struct MocoApp: App {
                 .environmentObject(objectDetectionViewModel)
                 .environmentObject(arViewModel)
                 .environmentObject(motionViewModel)
+                .environmentObject(orientationInfo)
         }
     }
 }

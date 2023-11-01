@@ -11,6 +11,7 @@ import SwiftUI
 
 struct MazeView: View {
     @EnvironmentObject var motionViewModel: MotionViewModel
+    @EnvironmentObject var orientationInfo: OrientationInfo
 
     @StateObject private var scene: MazeScene = {
         let screenWidth = Screen.width
@@ -32,6 +33,15 @@ struct MazeView: View {
             SpriteView(scene: scene, options: [.allowsTransparency])
                 .ignoresSafeArea()
                 .frame(width: Screen.width, height: Screen.height)
+            VStack{
+                if orientationInfo.orientation == .portrait{
+                    Text("Orientation is portrait")
+                } else if orientationInfo.orientation == .landscapeLeft{
+                    Text("Orientation is landscapeLeft")
+                } else if orientationInfo.orientation == .landscapeRight{
+                    Text("Orientation is landscapeRight")
+                }
+            }
         }
         .background(.ultraThinMaterial)
         .onAppear {
