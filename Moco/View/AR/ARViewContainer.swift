@@ -15,7 +15,7 @@ protocol BottomSheetDelegate {
 
 struct ARViewContainer: UIViewRepresentable {
     @EnvironmentObject var viewModel: ARViewModel
-    
+
     @Binding var isShowHint: Bool
     let meshes: [String]?
 
@@ -46,26 +46,26 @@ struct ARViewContainer: UIViewRepresentable {
             } else {
                 print("There are no meshes to be clued!")
             }
-            
+
         } else {
             print("Hint not showed!")
         }
     }
-    
+
     func makeCoordinator() -> ARViewContainer.Coordinator {
         return Coordinator(parent: self, isShowHint: $isShowHint, meshes: meshes)
     }
 
     class Coordinator: NSObject {
         weak var arView: ARView?
-        
+
         let parent: ARViewContainer
         @Binding var isShowHint: Bool
         let meshes: [String]?
 
         init(parent: ARViewContainer, isShowHint: Binding<Bool>, meshes: [String]?) {
             self.parent = parent
-            self._isShowHint = isShowHint
+            _isShowHint = isShowHint
             self.meshes = meshes ?? nil
         }
 
@@ -134,10 +134,10 @@ struct ARViewContainer: UIViewRepresentable {
                 }
             }
         }
-        
+
         func showHint() {
             var meshesToBeFound: [Entity] = []
-            
+
             if meshes != nil {
                 if let environmentEntity = arView?.scene.findEntity(named: "environment") {
                     if let firstChild = environmentEntity.children.first {
@@ -150,24 +150,24 @@ struct ARViewContainer: UIViewRepresentable {
                     }
                 }
             }
-            
+
             print("meshes to be found")
             print(meshesToBeFound)
         }
-        
+
         func updateEntityColor(entity: Entity) {
             guard
                 var modelComponent = entity.components[ModelComponent.self] as? ModelComponent,
                 let existingMaterial = modelComponent.materials.first
             else { return }
-            
+
             // Change the color
             var material = SimpleMaterial()
             material.color = .init(tint: .yellow)
-            
+
             modelComponent.materials = [material]
             entity.components.set(modelComponent)
-            
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 modelComponent.materials = [existingMaterial]
                 entity.components.set(modelComponent)
