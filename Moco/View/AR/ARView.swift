@@ -42,12 +42,19 @@ struct ARCameraView: View {
                             print("Hint!")
                             isShowHint = true
                         } label: {
-                            Image(systemName: "lightbulb.fill")
+                            Image("Buttons/button-hint")
                                 .resizable()
                                 .scaledToFit()
                                 .padding(15)
                         }
-                        .buttonStyle(CircleButton(width: 80, height: 80))
+                        .buttonStyle(
+                            CircleButton(
+                                width: 80,
+                                height: 80,
+                                backgroundColor: .clear,
+                                foregroundColor: .clear
+                            )
+                        )
                         .padding(50)
                     }
                 }
