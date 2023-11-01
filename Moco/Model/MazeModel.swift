@@ -30,7 +30,7 @@ struct MazeModel {
     var startPoint = LocationPoint()
     var exitPoints = [LocationPoint()]
 
-    static var mapSize = MapSize(width: 37, height: 25)
+    static var mapSize = MapSize(width: 35, height: 25)
 
     var arrayPoint: [[Int]] = [[]]
 
