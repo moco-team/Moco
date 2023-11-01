@@ -99,6 +99,11 @@ class MazeScene: SKScene, ObservableObject {
         addChild(moco)
     }
 
+
+
+
+    // MARK: - Not used
+
     func actionMovePlayer(to: SKNode, xPos: CGFloat, yPos: CGFloat) {
         let move = SKAction.move(to: to.position, duration: 0.15)
         let void = SKAction.run { [self] in
