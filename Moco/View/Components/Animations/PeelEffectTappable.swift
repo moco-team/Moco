@@ -15,10 +15,13 @@ struct PeelEffectTappable<Content: View, Background: View>: View {
 
     var maxProgress = 0.8
 
+    var isReverse = false
+
     @Binding var state: PeelEffectState
 
     init(
         state: Binding<PeelEffectState>,
+        isReverse: Bool? = nil,
         @ViewBuilder content: @escaping () -> Content,
         @ViewBuilder background: @escaping () -> Background,
         onComplete: (() -> Void)? = nil
@@ -27,6 +30,9 @@ struct PeelEffectTappable<Content: View, Background: View>: View {
         self.onComplete = onComplete ?? {}
         self.background = background()
         _state = state
+        if isReverse != nil {
+            self.isReverse = isReverse!
+        }
     }
 
     @State private var dragProgress: CGFloat = 0
@@ -107,15 +113,30 @@ struct PeelEffectTappable<Content: View, Background: View>: View {
                         onComplete()
                         onCompleteExecuted = true
                     }
-                case .stop: break
+                case .stop:
+                    dragProgress = 0
+                    onCompleteExecuted = false
                 case .reverse:
+                    if dragProgress == 0 && !onCompleteExecuted {
+                        dragProgress = maxProgress
+                    }
                     if dragProgress >= 0.1 {
                         dragProgress -= 0.1
+                    } else if !onCompleteExecuted {
+                        onComplete()
+                        onCompleteExecuted = true
                     }
                 }
             }
             .onAppear {
                 onCompleteExecuted = false
+                if !isReverse {
+                    dragProgress = 0
+                    state = .stop
+                } else {
+                    state = .reverse
+                    dragProgress = maxProgress
+                }
             }
     }
 }

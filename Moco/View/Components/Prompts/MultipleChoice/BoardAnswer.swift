@@ -23,6 +23,9 @@ struct BoardAnswer: View {
                     onTap()
                 }
         }.position(position)
+            .onTapGesture {
+                print("\(label) clicked")
+            }
     }
 }
 

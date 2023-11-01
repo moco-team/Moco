@@ -69,8 +69,84 @@ struct StoryView: View {
     @State private var toBeExecutedByPeelEffect = {}
     @State private var peelBackground = AnyView(EmptyView())
     @State private var isReversePeel = false
+    @State private var showWrongAnsPopup = false
 
     // MARK: - Variables
+
+    /*
+     CERITA + PERTANYAAN
+
+     1. Tahap pengenalan
+     Moco, Bebe, Teka, dan Teki merupakan sahabat karib yang tinggal di Kota Mocokerto. Moco merupakan seekor anak sapi yang lucu. Bebe adalah seekor anak beruang yang polos. Sedangkan, si kembar teka-teki merupakan dua anak tikus yang buta. Suatu hari, mereka pergi berpetualang bersama.
+
+     Siapakah nama seekor anak sapi yang lucu?
+     A.) Moco
+     B.) Bebe
+     C.) Teka dan Teki
+
+     2. Tahap munculnya konflik
+     Di tengah petualangan mereka, datanglah katak bernama Kato yang menawarkan madu secara gratis kepada anak-anak. Karena tertarik, Bebe langsung memasukkan tangannya ke dalam toples madu yang ditawarkan Kato. Namun, Bebe tidak dapat mengeluarkan tangannya dari toples karena toples tersebut berisi lem dan bukan madu. Kato pun membawa kabur Bebe dan menculik Bebe yang polos.
+
+     Mengapa Bebe tidak dapat mengeluarkan tangannya dari toples?
+     A. Karena tangan Bebe terlalu besar
+     B. Karena Kato merupakan katak yang jahat
+     C. Karena toples tersebut berisi lem yang lengket
+
+     3. Tahap peningkatan masalah
+     Moco, Teka, dan Teki berusaha mengejar Kato dan Bebe. Akan tetapi, Kato membawa Bebe ke pulau Arjuna dengan cara melompat di atas air. Perjalanan mengejar Kato dan Bebe pun terpaksa berhenti.
+
+     Mengapa perjalanan mengejar Kato dan Bebe terpaksa berhenti?
+     A. Karena Moco, Teka, dan Teki capek bermain kejar-kejaran
+     B. Karena Kato dan Bebe sudah tidak asik untuk diajak bermain
+     C. Karena Moco, Teka, dan Teki merupakan hewan darat
+
+     4. Tahap klimaks
+     Moco menoleh ke kanan dan kiri, namun mendapati bahwa Teka dan Teki tidak ada di sekitarnya. Seketika, Moco baru sadar kalau ia telah berlari sendirian karena si kembar Teka dan Teki tidak bisa melihat. Sekarang, Moco telah kehilangan seluruh teman berpetualangnya.
+
+     Bagaimana perasaan Moco ketika ia kehilangan seluruh teman berpetualangnya?
+     A. Moco merasa senang
+     B. Moco merasa sedih
+     C. Moco merasa lapar
+
+     5. Tahap antiklimaks
+     Moco teringat cerita Teka dan Teki bahwa mereka merasa nyaman bersembunyi di dalam terowongan. Moco pun berangkat mencari Teka dan Teki menuju ke terowongan.
+     [MODAL LANJUT / NANTI]
+
+     ———
+
+     [maze/gyroscape]
+
+     “Berapakah jumlah teman yang sedang Moco cari di dalam terowongan?”
+     A.) 1
+     B.) 2
+     C.) 3
+
+     “Benda apakah yang digunakan oleh Teka dan Teki?”
+     A.) Tongkat
+     B.) Tas Ransel
+     C.) Kacamata Hitam
+
+     “Hewan apakah yang sedang Moco cari di dalam terowongan?”
+     A.) Tikus
+     B.) Sapi
+     C.) Katak
+
+     Hore! Moco berhasil menemukan Teka dan Teki. Mereka bertiga segera keluar dari terowongan. Siapa sangka, setelah keluar dari terowongan mereka menemukan jembatan menuju ke pulau Arjuna. Mereka bertiga pun berjalan melewati jembatan untuk mencari Bebe di pulau Arjuna.
+
+     ———
+
+     3D/AR World
+
+     (i) Wow! kita sudah berada di pulau Arjuna. Sekarang, kita perlu mencari benda yang dapat menjadi clue untuk menemukan Maudi! —> cari honey jar
+
+     (ii) Bagus! Kita telah menemukan dimana Bebe dikurung! Namun, pintunya terkunci. Mari kita cari sesuatu yang dapat membuka tempat Bebe dikurung —> item nya kunci
+
+     (iii) Yeay!! Kita berhasil menemukan Bebe! Betapa melelahkannya perjalanan hari ini. Waktunya kita pulang, yuk mencari alat yang dapat membawa kita kembali ke Kota Mocokerto —> pesawat
+
+     6. Tahap penyelesaian
+     Akhirnya, Moco dan teman-teman berhasil pulang ke Kota Mocokerto setelah petualangan yang panjang. Terima kasih untuk hari ini!
+     [modal selesai]
+     */
 
     var title: String? = "Hello World"
 
@@ -83,6 +159,46 @@ struct StoryView: View {
     var prompts: [Prompt?] = []
 
     var bgSounds: [String] = []
+
+    var multipleChoiceQnA: [MultipleChoicePromptQnA?] = [
+        .init(
+            correctAnswerIndex: 0,
+            question: """
+            Siapakah nama seekor anak sapi yang lucu?
+            A.) Moco
+            B.) Bebe
+            C.) Teka dan Teki
+            """
+        ),
+        .init(
+            correctAnswerIndex: 2,
+            question: """
+            Mengapa Bebe tidak dapat mengeluarkan tangannya dari toples?
+            A. Karena tangan Bebe terlalu besar
+            B. Karena Kato merupakan katak yang jahat
+            C. Karena toples tersebut berisi lem yang lengket
+            """
+        ),
+        .init(
+            correctAnswerIndex: 2,
+            question: """
+            Mengapa perjalanan mengejar Kato dan Bebe terpaksa berhenti?
+            A. Karena Moco, Teka, dan Teki capek bermain kejar-kejaran
+            B. Karena Kato dan Bebe sudah tidak asik untuk diajak bermain
+            C. Karena Moco, Teka, dan Teki merupakan hewan darat
+            """
+        ),
+        .init(
+            correctAnswerIndex: 1,
+            question: """
+            Bagaimana perasaan Moco ketika ia kehilangan seluruh teman berpetualangnya?
+            A. Moco merasa senang
+            B. Moco merasa sedih
+            C. Moco merasa lapar
+            """
+        ),
+        nil
+    ]
 
     // MARK: - Functions
 
@@ -175,23 +291,13 @@ struct StoryView: View {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 0) {
                     ForEach(Array(storyBackgrounds.enumerated()), id: \.offset) { index, background in
-                        PeelEffect(state: $peelEffectState, isReverse: isReversePeel) {
+                        PeelEffectTappable(state: $peelEffectState, isReverse: isReversePeel) {
                             ZStack {
                                 Image(background)
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: Screen.width, height: Screen.height, alignment: .center)
                                     .clipped()
-                                MultipleChoicePrompt()
-                                if let lottie = lottieAnimations[scrollPosition!] {
-                                    LottieView(fileName: lottie.fileName)
-                                        .frame(maxWidth: CGFloat(lottie.maxWidth!))
-                                        .position(CGPoint(
-                                            x: lottie.positionX,
-                                            y: lottie.positionY
-                                        ))
-                                        .id(lottieAnimationIndex)
-                                }
 
                                 if narratives[scrollPosition!].count > narrativeIndex && !narratives[scrollPosition!].isEmpty {
                                     let narrative = narratives[scrollPosition!][max(narrativeIndex, 0)]
@@ -209,7 +315,17 @@ struct StoryView: View {
                                 }
 
                                 Group {
+                                    let mcPrompt = multipleChoiceQnA[scrollPosition!]
                                     switch activePrompt?.type {
+                                    case .multipleChoice:
+                                        if mcPrompt != nil {
+                                            MultipleChoicePrompt(correctAnswerIndex: mcPrompt!.correctAnswerIndex, question: mcPrompt!.question) {
+                                                activePrompt = nil
+                                                nextPage()
+                                            } onWrong: {
+                                                showWrongAnsPopup = true
+                                            }
+                                        }
                                     case .puzzle:
                                         FindTheObjectView(
                                             isPromptDone: .constant(false),
@@ -226,16 +342,8 @@ struct StoryView: View {
                                         ) {
                                             nextPage()
                                         }
-                                    case .findHoney:
-                                        FindHoney(isPromptDone: .constant(false)) {
-                                            nextPage()
-                                        }
                                     case .objectDetection:
                                         DetectionView {
-                                            nextPage()
-                                        }
-                                    case .speech:
-                                        SpeakTheStory {
                                             nextPage()
                                         }
                                     default:
@@ -330,6 +438,10 @@ struct StoryView: View {
         }
         .popUp(isActive: $isPopUpActive, title: "Are you sure you want to quit?", cancelText: "No") {
             navigate.pop()
+        }
+        .customModal(isActive: $showWrongAnsPopup, title: "Apakah kamu yakin dengan jawaban ini? Coba cek kembali pertanyaannya") {
+            activePrompt = nil
+            showWrongAnsPopup = false
         }
         .task {
             onPageChange()
