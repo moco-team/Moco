@@ -76,7 +76,7 @@ struct PopUpComponentView: View {
     var cancelText: String?
     var confirmText = "Yes"
     var containerBgColor = Color.white
-    var textColor = Color.black
+    var textColor = Color.blue2Txt
     var overlayOpacity = 0.3
     var width = Screen.width * 0.45
     var height = Screen.height * 0.6
@@ -110,17 +110,25 @@ struct PopUpComponentView: View {
                             }
 
                         VStack {
-                            Text(title ?? "Congratulations").customFont(.cherryBomb, size: 22)
+                            Text(title ?? "Congratulations").customFont(.cherryBomb, size: 32)
+                                .fontWeight(.heavy)
                                 .foregroundColor(textColor)
+                                .glowBorder(color: .white, lineWidth: 5)
                                 .padding(.top, 10)
                                 .padding(.bottom, 20)
-                                .fixedSize(horizontal: false, vertical: true)
-                            Text(text ?? "")
-                                .foregroundColor(textColor)
-                                .font(.footnote)
-                                .padding(.bottom, 23)
                                 .padding(.horizontal, 70)
                                 .multilineTextAlignment(.center)
+                                .fixedSize(horizontal: false, vertical: true)
+                            
+                            if (text != "") {
+                                Text(text ?? "")
+                                    .foregroundColor(textColor)
+                                    .font(.footnote)
+                                    .padding(.bottom, 23)
+                                    .padding(.horizontal, 70)
+                                    .multilineTextAlignment(.center)
+                            }
+                            
                             Grid(horizontalSpacing: 20) {
                                 GridRow {
                                     if cancelText != nil {
@@ -313,7 +321,7 @@ struct PopUpPreview: View {
         Button("Waduh") {
             isActive = true
             print(isActive)
-        }.popUp(isActive: $isActive, title: "Are you sure you want to quit?", text: "Kareba", cancelText: "Cancel", withConfetti: true) {
+        }.popUp(isActive: $isActive, title: "Yakin mau keluar?", text: "", cancelText: "Cancel", withConfetti: true) {
             print("Done")
         } cancelHandler: {
             print("Cancel")

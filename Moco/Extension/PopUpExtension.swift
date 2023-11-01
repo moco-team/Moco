@@ -35,7 +35,7 @@ public extension View {
                 cancelText: cancelText,
                 confirmText: confirmText ?? "Lanjut",
                 containerBgColor: containerBgColor,
-                textColor: textColor,
+                textColor: Color.blue2Txt,
                 overlayOpacity: overlayOpacity,
                 width: width ?? Screen.width * 0.32,
                 height: height ?? Screen.height * 0.3,

@@ -23,6 +23,11 @@
 		0571CB462AE19D6000CE0CC7 /* maudi.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB402AE19D6000CE0CC7 /* maudi.json */; };
 		0571CB482AE19D6000CE0CC7 /* moco-1-5.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB422AE19D6000CE0CC7 /* moco-1-5.json */; };
 		0571CB492AE19D6000CE0CC7 /* teka_dan_teki.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB432AE19D6000CE0CC7 /* teka_dan_teki.json */; };
+		058DC8EE2AF2BC6E00A0885D /* honey.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8EC2AF2BC6E00A0885D /* honey.usdz */; };
+		058DC8EF2AF2BC6E00A0885D /* airplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8ED2AF2BC6E00A0885D /* airplane.usdz */; };
+		058DC8F12AF2BE4E00A0885D /* key.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F02AF2BE4E00A0885D /* key.usdz */; };
+		058DC8F32AF2C2E700A0885D /* honey-new.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F22AF2C2E700A0885D /* honey-new.usdz */; };
+		058DC8F52AF2CFF100A0885D /* TextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058DC8F42AF2CFF100A0885D /* TextViewModifier.swift */; };
 		05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */; };
 		05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */; };
 		05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93552ADE74740082B21D /* RecognizerError.swift */; };
@@ -39,7 +44,6 @@
 		05E8B55D2AECE32D00E3612F /* button.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 05E8B55C2AECE32D00E3612F /* button.usdz */; };
 		05E8B56A2AED4AD400E3612F /* ARClueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E8B5692AED4AD400E3612F /* ARClueView.swift */; };
 		05E8B56D2AED57CF00E3612F /* ARStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E8B56C2AED57CF00E3612F /* ARStory.swift */; };
-		05EEF0692AEE95C000D710E2 /* environment-2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 05EEF0682AEE95C000D710E2 /* environment-2.usdz */; };
 		05FF77162AF0B0250037453D /* TutorialCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF77152AF0B0250037453D /* TutorialCard.swift */; };
 		05FF77182AF0B05F0037453D /* JosefineSans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF77172AF0B05F0037453D /* JosefineSans.swift */; };
 		05FF771D2AF0B0980037453D /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF771A2AF0B0980037453D /* TutorialView.swift */; };
@@ -238,6 +242,25 @@
 		0571CB402AE19D6000CE0CC7 /* maudi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = maudi.json; sourceTree = "<group>"; };
 		0571CB422AE19D6000CE0CC7 /* moco-1-5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-5.json"; sourceTree = "<group>"; };
 		0571CB432AE19D6000CE0CC7 /* teka_dan_teki.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teka_dan_teki.json; sourceTree = "<group>"; };
+		058DC8EC2AF2BC6E00A0885D /* honey.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = honey.usdz; sourceTree = "<group>"; };
+		058DC8ED2AF2BC6E00A0885D /* airplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = airplane.usdz; sourceTree = "<group>"; };
+		058DC8F02AF2BE4E00A0885D /* key.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = key.usdz; sourceTree = "<group>"; };
+		058DC8F22AF2C2E700A0885D /* honey-new.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "honey-new.usdz"; sourceTree = "<group>"; };
+		058DC8F42AF2CFF100A0885D /* TextViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewModifier.swift; sourceTree = "<group>"; };
+		058DC8F72AF2D54600A0885D /* 005 - Coba baca lagi cerita ini.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "005 - Coba baca lagi cerita ini.m4a"; sourceTree = "<group>"; };
+		058DC8F82AF2D54700A0885D /* 003 - Tolong Moco memilih jalaban yang benar.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "003 - Tolong Moco memilih jalaban yang benar.m4a"; sourceTree = "<group>"; };
+		058DC8F92AF2D54700A0885D /* 002 - Keren.. yuk mulai petualangan ini!.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "002 - Keren.. yuk mulai petualangan ini!.m4a"; sourceTree = "<group>"; };
+		058DC8FA2AF2D54700A0885D /* 001 - Hai, apakah kamu sudah bisa membaca.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "001 - Hai, apakah kamu sudah bisa membaca.m4a"; sourceTree = "<group>"; };
+		058DC8FB2AF2D54700A0885D /* 006 - Cerdas! Jawaban kamu benar.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "006 - Cerdas! Jawaban kamu benar.m4a"; sourceTree = "<group>"; };
+		058DC8FC2AF2D54700A0885D /* 004 - Kamu sudah yakin.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "004 - Kamu sudah yakin.m4a"; sourceTree = "<group>"; };
+		058DC8FD2AF2D54800A0885D /* 007 - Ayo kita lanjutkan petualangan ini.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "007 - Ayo kita lanjutkan petualangan ini.m4a"; sourceTree = "<group>"; };
+		058DC8FF2AF2D59600A0885D /* 011 (maze) - coba miringkan layar ke atas.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "011 (maze) - coba miringkan layar ke atas.m4a"; sourceTree = "<group>"; };
+		058DC9002AF2D59600A0885D /* 009 (maze) - coba miringkan layar ke kanan.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "009 (maze) - coba miringkan layar ke kanan.m4a"; sourceTree = "<group>"; };
+		058DC9012AF2D59600A0885D /* 012 (maze) - coba miringkan layar ke bawah.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "012 (maze) - coba miringkan layar ke bawah.m4a"; sourceTree = "<group>"; };
+		058DC9022AF2D59700A0885D /* 013 (maze) - bantu arahkan Moco ke jawaban yang benar ya.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "013 (maze) - bantu arahkan Moco ke jawaban yang benar ya.m4a"; sourceTree = "<group>"; };
+		058DC9032AF2D59700A0885D /* 010 (maze) - coba miringkan layar ke kiri.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "010 (maze) - coba miringkan layar ke kiri.m4a"; sourceTree = "<group>"; };
+		058DC9042AF2D59700A0885D /* 008 (maze) - wah, kamu baik sekali yaa.. mau membantu Moco menemukan Teka dan Teki.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "008 (maze) - wah, kamu baik sekali yaa.. mau membantu Moco menemukan Teka dan Teki.m4a"; sourceTree = "<group>"; };
+		058DC9062AF2D5A400A0885D /* 014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a"; sourceTree = "<group>"; };
 		05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSpeechRecognizerExtension.swift; sourceTree = "<group>"; };
 		05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioSessionExtension.swift; sourceTree = "<group>"; };
 		05AE93552ADE74740082B21D /* RecognizerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerError.swift; sourceTree = "<group>"; };
@@ -253,7 +276,6 @@
 		05E8B55C2AECE32D00E3612F /* button.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = button.usdz; sourceTree = "<group>"; };
 		05E8B5692AED4AD400E3612F /* ARClueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARClueView.swift; sourceTree = "<group>"; };
 		05E8B56C2AED57CF00E3612F /* ARStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARStory.swift; sourceTree = "<group>"; };
-		05EEF0682AEE95C000D710E2 /* environment-2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "environment-2.usdz"; sourceTree = "<group>"; };
 		05FF77152AF0B0250037453D /* TutorialCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialCard.swift; sourceTree = "<group>"; };
 		05FF77172AF0B05F0037453D /* JosefineSans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JosefineSans.swift; sourceTree = "<group>"; };
 		05FF771A2AF0B0980037453D /* TutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
@@ -593,6 +615,41 @@
 			path = Page10;
 			sourceTree = "<group>";
 		};
+		058DC8F62AF2D53900A0885D /* Ep1 */ = {
+			isa = PBXGroup;
+			children = (
+				058DC8FA2AF2D54700A0885D /* 001 - Hai, apakah kamu sudah bisa membaca.m4a */,
+				058DC8F92AF2D54700A0885D /* 002 - Keren.. yuk mulai petualangan ini!.m4a */,
+				058DC8F82AF2D54700A0885D /* 003 - Tolong Moco memilih jalaban yang benar.m4a */,
+				058DC8FC2AF2D54700A0885D /* 004 - Kamu sudah yakin.m4a */,
+				058DC8F72AF2D54600A0885D /* 005 - Coba baca lagi cerita ini.m4a */,
+				058DC8FB2AF2D54700A0885D /* 006 - Cerdas! Jawaban kamu benar.m4a */,
+				058DC8FD2AF2D54800A0885D /* 007 - Ayo kita lanjutkan petualangan ini.m4a */,
+			);
+			path = Ep1;
+			sourceTree = "<group>";
+		};
+		058DC8FE2AF2D58800A0885D /* Ep2 */ = {
+			isa = PBXGroup;
+			children = (
+				058DC9042AF2D59700A0885D /* 008 (maze) - wah, kamu baik sekali yaa.. mau membantu Moco menemukan Teka dan Teki.m4a */,
+				058DC9002AF2D59600A0885D /* 009 (maze) - coba miringkan layar ke kanan.m4a */,
+				058DC9032AF2D59700A0885D /* 010 (maze) - coba miringkan layar ke kiri.m4a */,
+				058DC8FF2AF2D59600A0885D /* 011 (maze) - coba miringkan layar ke atas.m4a */,
+				058DC9012AF2D59600A0885D /* 012 (maze) - coba miringkan layar ke bawah.m4a */,
+				058DC9022AF2D59700A0885D /* 013 (maze) - bantu arahkan Moco ke jawaban yang benar ya.m4a */,
+			);
+			path = Ep2;
+			sourceTree = "<group>";
+		};
+		058DC9052AF2D59A00A0885D /* Ep3 */ = {
+			isa = PBXGroup;
+			children = (
+				058DC9062AF2D5A400A0885D /* 014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a */,
+			);
+			path = Ep3;
+			sourceTree = "<group>";
+		};
 		05AE93542ADE74540082B21D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -646,6 +703,9 @@
 		05E17ADA2ADED17B00A34547 /* Story */ = {
 			isa = PBXGroup;
 			children = (
+				058DC9052AF2D59A00A0885D /* Ep3 */,
+				058DC8FE2AF2D58800A0885D /* Ep2 */,
+				058DC8F62AF2D53900A0885D /* Ep1 */,
 				05E17ADB2ADED18800A34547 /* Story1 */,
 			);
 			path = Story;
@@ -865,9 +925,12 @@
 		937AF2962AE8C719008C69BB /* Usdz */ = {
 			isa = PBXGroup;
 			children = (
-				937AF2972AE8C72B008C69BB /* environment.usdz */,
-				05EEF0682AEE95C000D710E2 /* environment-2.usdz */,
+				058DC8ED2AF2BC6E00A0885D /* airplane.usdz */,
+				058DC8EC2AF2BC6E00A0885D /* honey.usdz */,
+				058DC8F02AF2BE4E00A0885D /* key.usdz */,
 				05E8B55C2AECE32D00E3612F /* button.usdz */,
+				937AF2972AE8C72B008C69BB /* environment.usdz */,
+				058DC8F22AF2C2E700A0885D /* honey-new.usdz */,
 			);
 			path = Usdz;
 			sourceTree = "<group>";
@@ -888,6 +951,7 @@
 				938C55372AE183AA00BC233D /* FontViewModifier.swift */,
 				93676D2C2AF1475200E756A5 /* PointerViewModifier.swift */,
 				9328F9182AF25D8400E82995 /* ModalViewModifier.swift */,
+				058DC8F42AF2CFF100A0885D /* TextViewModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -1236,6 +1300,7 @@
 				05FF77332AF0B6C30037453D /* hand.tap.gif in Resources */,
 				937AF29F2AE8FDB7008C69BB /* DidactGothic-Regular.ttf in Resources */,
 				931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */,
+				058DC8F32AF2C2E700A0885D /* honey-new.usdz in Resources */,
 				931722182AE5508300346382 /* Page2-monolog1.m4a in Resources */,
 				931722192AE5508300346382 /* Page3-monolog1.m4a in Resources */,
 				9317221A2AE5508300346382 /* Page4-monolog2.m4a in Resources */,
@@ -1245,10 +1310,11 @@
 				9317221E2AE5508300346382 /* Page6-monolog1.m4a in Resources */,
 				9317221F2AE5508300346382 /* prompt_kursi.m4a in Resources */,
 				937AF2982AE8C72B008C69BB /* environment.usdz in Resources */,
-				05EEF0692AEE95C000D710E2 /* environment-2.usdz in Resources */,
 				931722202AE5508300346382 /* Page8-monolog1.m4a in Resources */,
+				058DC8F12AF2BE4E00A0885D /* key.usdz in Resources */,
 				931722212AE5508300346382 /* frog_thankyou.m4a in Resources */,
 				931722222AE5508300346382 /* Page9-monolog1.m4a in Resources */,
+				058DC8EE2AF2BC6E00A0885D /* honey.usdz in Resources */,
 				931722232AE5508300346382 /* Page10-monolog1.m4a in Resources */,
 				931722242AE5508300346382 /* Page10-monolog2.m4a in Resources */,
 				931722252AE5508300346382 /* congratulations.m4a in Resources */,
@@ -1265,6 +1331,7 @@
 				0571CB482AE19D6000CE0CC7 /* moco-1-5.json in Resources */,
 				05FF772F2AF0B6C30037453D /* hand.zoom.gif in Resources */,
 				0571CB3D2AE19D5700CE0CC7 /* moco-1-1.json in Resources */,
+				058DC8EF2AF2BC6E00A0885D /* airplane.usdz in Resources */,
 				93C2F88D2AD683AE007D1ABC /* Preview Assets.xcassets in Resources */,
 				05AE93612ADE82410082B21D /* testing-cat.json in Resources */,
 				056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */,
@@ -1305,6 +1372,7 @@
 				0B46D7212AF12077002DE821 /* EpisodeViewModel.swift in Sources */,
 				938E3D562ADBE961003D2AE1 /* Screen.swift in Sources */,
 				0B6E2F702ADC96200001D320 /* StoryThemeViewModel.swift in Sources */,
+				058DC8F52AF2CFF100A0885D /* TextViewModifier.swift in Sources */,
 				93676D2B2AF1435200E756A5 /* Pointer.swift in Sources */,
 				051CC18A2AF22D0800632E09 /* OrientationInfo.swift in Sources */,
 				9398FBB52AE4105900AB5CE4 /* CircularProgressView.swift in Sources */,

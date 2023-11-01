@@ -38,10 +38,7 @@ struct EpisodeView: View {
         [
             [
                 .init(
-                    text: "Moco, Bebe, Teka, dan Teki merupakan sahabat yang karib." +
-                        "Moco merupakan seekor anak sapi yang lucu. Bebe adalah seekor anak beruang yang polos." +
-                        "Sedangkan, si kembar teka-teki merupakan dua anak tikus yang buta." +
-                        "Suatu hari, mereka pergi berpetualang bersama.",
+                    text: "Moco, Bebe, Teka, dan Teki merupakan sahabat karib yang tinggal di Kota Mocokerto. " + "Moco merupakan seekor anak sapi yang lucu. Bebe adalah seekor anak beruang yang polos. Sedangkan, si kembar teka-teki merupakan dua anak tikus yang buta. Suatu hari, mereka pergi berpetualang bersama.",
                     duration: 2.5,
                     positionX: 0.31,
                     positionY: 0.15,
@@ -49,14 +46,18 @@ struct EpisodeView: View {
                 )
             ],
             [
-                .init(text: "Di perjalanannya, dia bertemu dengan teman-temannya yang membutuhkan bantuan.", duration: 5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4)
+                .init(text: "Di tengah petualangan mereka, datanglah katak bernama Kato yang menawarkan madu secara gratis kepada anak-anak. Karena tertarik, Bebe langsung memasukkan tangannya ke dalam toples madu yang ditawarkan Kato. Namun, Bebe tidak dapat mengeluarkan tangannya dari toples karena toples tersebut berisi lem dan bukan madu. Kato pun membawa kabur Bebe dan menculik Bebe yang polos.", duration: 5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4, fontSize: 20)
             ],
             [
-                .init(text: "Saat menjelajahi hutan rimba, ", duration: 4, positionX: 0.3, positionY: 0.17, maxWidth: Screen.width * 0.4),
-                .init(text: "dia bertemu Maudi si Beruang madu yang sedang menangis.", duration: 5, positionX: 0.3, positionY: 0.17, maxWidth: Screen.width * 0.4),
-                .init(text: "Mari kita tanya mengapa Maudi menangis.", duration: 4, positionX: 0.3, positionY: 0.13, maxWidth: Screen.width * 0.4),
-                .init(text: "Apa yang sedang dilakukan Maudi?", duration: 2, positionX: 0.3, positionY: 0.13, maxWidth: Screen.width * 0.4)
-            ]
+                .init(text: "Moco, Teka, dan Teki berusaha mengejar Kato dan Bebe. Akan tetapi, Kato membawa Bebe ke pulau Arjuna dengan cara melompat di atas air. Perjalanan mengejar Kato dan Bebe pun terpaksa berhenti.", duration: 4, positionX: 0.3, positionY: 0.17, maxWidth: Screen.width * 0.4, fontSize: 25),
+            ],
+            [
+                .init(text: "Moco menoleh ke kanan dan kiri, namun mendapati bahwa Teka dan Teki tidak ada di sekitarnya. Seketika, Moco baru sadar kalau ia telah berlari sendirian karena si kembar Teka dan Teki tidak bisa melihat. Sekarang, Moco telah kehilangan seluruh teman berpetualangnya.", duration: 5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4)
+            ],
+            [
+                .init(text: "Moco teringat cerita Teka dan Teki bahwa mereka merasa nyaman bersembunyi di dalam terowongan. Moco pun berangkat mencari Teka dan Teki menuju ke terowongan.", duration: 5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4)
+            ],
+            
         ]
 
     private let narrativesTwo: [[Narrative]] =
