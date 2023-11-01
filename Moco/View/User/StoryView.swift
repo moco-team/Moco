@@ -182,7 +182,7 @@ struct StoryView: View {
                                     .scaledToFill()
                                     .frame(width: Screen.width, height: Screen.height, alignment: .center)
                                     .clipped()
-
+                                MultipleChoicePrompt()
                                 if let lottie = lottieAnimations[scrollPosition!] {
                                     LottieView(fileName: lottie.fileName)
                                         .frame(maxWidth: CGFloat(lottie.maxWidth!))
