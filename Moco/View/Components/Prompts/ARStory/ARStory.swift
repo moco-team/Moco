@@ -21,13 +21,13 @@ struct ARStory: View {
 
     var doneHandler: (() -> Void)?
 
-    let clueData = ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "honey_jar", meshes: ["honey_jar"])
+    let clueData = ClueData(clue: "Wow! kita sudah berada di pulau Arjuna. Sekarang, kita perlu mencari benda yang dapat menjadi clue untuk menemukan Maudi!", objectName: "key", meshes: ["key"])
 
     var body: some View {
         if startVisibility {
             ARClueView(clue: clueData.clue, onStartGame: {
                 isGameStarted = true
-                audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1, category: .backsound)
+                audioViewModel.playSound(soundFileName: "s1-ep3-backsound", numberOfLoops: -1, category: .backsound)
             })
             .ignoresSafeArea()
         }

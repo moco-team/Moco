@@ -8,55 +8,70 @@
 import SwiftUI
 
 var gestureList = [
-    Gesture(id: "1", image: "hand.swipe.left"),
-    Gesture(id: "2", image: "hand.zoom"),
-    Gesture(id: "3", image: "hand.tap")
+    Gesture(id: "1", image: "hand.tap"),
+    Gesture(id: "2", image: "hand.tap")
 ]
 
 var gestureDescriptionViewList = [
     AnyView(
-        Text("swipe")
+        Text("Tap")
             .font(.body)
             .fontWeight(Font.Weight.regular)
             .foregroundColor(Color.text.primary)
             +
             Text(" ")
             +
-            Text("untuk memutar dunia")
+            Text("untuk meletakkan Pulau")
             .font(.body)
             .fontWeight(Font.Weight.regular)
             .foregroundColor(Color.text.primary)
     ),
     AnyView(
         VStack {
-            AnyView(Text("pinch")
+            AnyView(Text("Tekan")
                 .font(.body)
                 .fontWeight(Font.Weight.regular)
                 .foregroundColor(Color.text.primary)
                 +
                 Text(" ")
                 +
-                Text("untuk perbesar/perkecil")
+                Text("yang lama jika menemukan petunjuk")
                 .font(.body)
                 .fontWeight(Font.Weight.regular)
                 .foregroundColor(Color.text.primary))
-            Text("dunia")
-                .font(.body)
-                .fontWeight(Font.Weight.regular)
-                .foregroundColor(Color.text.primary)
         }
     ),
     AnyView(
-        Text("swipe")
-            .font(.body)
-            .fontWeight(Font.Weight.regular)
-            .foregroundColor(Color.text.primary)
-            +
-            Text(" ")
-            +
-            Text("untuk memutar dunia")
-            .font(.body)
-            .fontWeight(Font.Weight.regular)
-            .foregroundColor(Color.text.primary)
+        VStack {
+            Button {
+                print("Hint!")
+            } label: {
+                Image("Buttons/button-hint")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(15)
+            }
+            .buttonStyle(
+                CircleButton(
+                    width: 80,
+                    height: 80,
+                    backgroundColor: .clear,
+                    foregroundColor: .clear
+                )
+            )
+            .padding(50)
+            
+            AnyView(Text("Tombol Hint")
+                .font(.body)
+                .fontWeight(Font.Weight.regular)
+                .foregroundColor(Color.text.primary)
+                +
+                Text(" ")
+                +
+                Text("untuk melihat petunjuk")
+                .font(.body)
+                .fontWeight(Font.Weight.regular)
+                .foregroundColor(Color.text.primary))
+        }
     )
 ]

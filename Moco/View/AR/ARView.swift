@@ -14,7 +14,8 @@ struct ARCameraView: View {
     let clue: ClueData
     var onFoundObject: () -> Void = {}
 
-    @State var fadeInGameStartView = false
+    @State var fadeInStartAR = false
+    @State var fadeInHintButton = false
     @State var isShowHint = false
 
     var body: some View {
@@ -27,7 +28,7 @@ struct ARCameraView: View {
                     Color.black.opacity(0.3)
                     VStack {
                         Spacer()
-                        Text("Tap to place a environment")
+                        Text("Tap pada layar untuk meletakkan dunia")
                             .font(.headline)
                             .padding(32)
                     }
@@ -37,7 +38,7 @@ struct ARCameraView: View {
 
                 HStack {
                     Spacer()
-                    if clue.meshes != nil {
+                    if clue.meshes != nil && arViewModel.hasPlacedObject != false {
                         Button {
                             print("Hint!")
                             isShowHint = true
@@ -49,13 +50,18 @@ struct ARCameraView: View {
                         }
                         .buttonStyle(
                             CircleButton(
-                                width: 80,
-                                height: 80,
+                                width: 160,
+                                height: 160,
                                 backgroundColor: .clear,
                                 foregroundColor: .clear
                             )
                         )
                         .padding(50)
+                        .onAppear {
+                            withAnimation(Animation.easeIn(duration: 1.5)) {
+                                fadeInHintButton.toggle()
+                            }                        }
+                        .opacity(fadeInHintButton ? 1 : 0)
                     }
                 }
             }
@@ -64,8 +70,10 @@ struct ARCameraView: View {
             // Loading screen
             ZStack {
                 Color.white
-                Text("Loading resources...")
-                    .foregroundColor(Color.black)
+                Text("Loading...")
+                    .customFont(.cherryBomb, size: 30)
+                    .foregroundColor(.blue2Txt)
+                    .glowBorder(color: .white, lineWidth: 5)
             }
             .opacity(arViewModel.assetsLoaded ? 0 : 1)
             .ignoresSafeArea()
@@ -94,10 +102,10 @@ struct ARCameraView: View {
         }
         .onAppear {
             withAnimation(Animation.easeIn(duration: 1.5)) {
-                fadeInGameStartView.toggle()
+                fadeInStartAR.toggle()
             }
         }
-        .opacity(fadeInGameStartView ? 1 : 0)
+        .opacity(fadeInStartAR ? 1 : 0)
     }
 }
 

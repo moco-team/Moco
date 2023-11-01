@@ -174,16 +174,16 @@ struct EpisodeView: View {
 
                 HStack {
                     HStack(spacing: 40) {
-                        Image(systemName: "chevron.backward")
+                        Image("Buttons/button-home")
                             .resizable()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 70, height: 70)
                             .shadow(radius: 4, x: -2, y: 2)
                             .foregroundColor(.white)
                             .onTapGesture {
                                 navigate.pop()
                             }
 
-                        Text("Pilih Episode")
+                        Text("Chapters")
                             .customFont(.cherryBomb, size: 50)
                             .foregroundColor(Color.blueTxt)
                             .fontWeight(.bold)

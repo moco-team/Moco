@@ -10,6 +10,8 @@ import SwiftUI
 struct ARClueView: View {
     @State var fadeInGameStartView = false
     @State private var tutorialVisibility: Bool = false
+    @State private var isButtonVisible = false
+    
     @State var tabs: [Gesture] =  gestureList
     @State var currentIndex: Int = 0
     
@@ -21,15 +23,19 @@ struct ARClueView: View {
 
     var body: some View {
         ZStack {
-            Rectangle()
-                .frame(width: Screen.width, height: Screen.height)
-                .edgesIgnoringSafeArea(.all)
-                .foregroundColor(Color.bgPrimary)
-
             VStack {
-                Text(clue)
-                    .foregroundStyle(.brownTxt)
+                Spacer()
                 
+                Text(clue)
+                    .customFont(.cherryBomb, size: 30)
+                    .foregroundColor(.blue2Txt)
+                    .glowBorder(color: .white, lineWidth: 5)
+                    .padding(.top, 10)
+                    .padding(.bottom, 40)
+                    .padding(.horizontal, 80)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+            
                 TutorialView(tabs: $tabs, currentIndex: $currentIndex, onClose: {
                     tutorialVisibility = false
                 })
@@ -38,19 +44,40 @@ struct ARClueView: View {
                         fadeInTutorialView.toggle()
                     }
                 }.opacity(fadeInTutorialView ? 1 : 0)
-
-                Button(action: {
-                    onStartGame()
-                }, label: {
-                    Text("Mulai")
-                })
-                .buttonStyle(CircleButton(width: 80, height: 80))
-                .padding()
+                
+                Spacer()
+                
+                if isButtonVisible {
+                    Button {
+                        onStartGame()
+                    } label: {
+                        Image("Buttons/button-start").resizable().scaledToFit()
+                    }
+                    .buttonStyle(
+                        CapsuleButton(
+                            width: 190,
+                            height: 90,
+                            backgroundColor: .clear,
+                            foregroundColor: .clear
+                        )
+                    )
+                    .transition(.opacity)
+                    .padding(.bottom, 20)
+                
+                }
+                Spacer()
             }
+            
         }
+        .background(Image("Story/Content/Story1/Ep3/background"))
         .onAppear {
             withAnimation(Animation.easeIn(duration: 1.5)) {
                 fadeInGameStartView.toggle()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4  ) {
+                withAnimation {
+                    isButtonVisible = true
+                }
             }
         }
         .opacity(fadeInGameStartView ? 1 : 0)
@@ -59,7 +86,7 @@ struct ARClueView: View {
 
 #Preview {
     ARClueView(
-        clue: "Carilah benda yang dapat menjadi clue untuk ditemukannya Beruang!",
+        clue: "Wow! kita sudah berada di pulau Arjuna. Sekarang, kita perlu mencari benda yang dapat menjadi clue untuk menemukan Maudi!",
         onStartGame: {}
     )
 }
