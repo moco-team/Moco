@@ -12,7 +12,7 @@ struct BoardAnswer: View {
     var fontSize = CGFloat(60)
     var position: CGPoint
 
-    var onTap: () -> () = {}
+    var onTap: () -> Void = {}
 
     var body: some View {
         Text(label).customFont(.didactGothic, size: fontSize).overlay {
@@ -27,7 +27,7 @@ struct BoardAnswer: View {
 }
 
 #Preview {
-    BoardAnswer(label: "B",position: CGPoint(x: 0.5 * Screen.width, y: 0.62 * Screen.height)) {
+    BoardAnswer(label: "B", position: CGPoint(x: 0.5 * Screen.width, y: 0.62 * Screen.height)) {
         print("Boyy")
     }
 }

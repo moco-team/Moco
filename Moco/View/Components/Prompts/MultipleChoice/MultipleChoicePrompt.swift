@@ -11,14 +11,14 @@ struct MultipleChoicePrompt: View {
     var correctAnswerIndex = 0
     var answers = ["", "", ""]
     var question = """
-Siapakah nama seekor anak sapi yang lucu?
-    A.) Moco
-    B.) Bebe
-    C.) Teka dan Teki
-"""
+    Siapakah nama seekor anak sapi yang lucu?
+        A.) Moco
+        B.) Bebe
+        C.) Teka dan Teki
+    """
 
-    var onCorrect: () -> () = {}
-    var onWrong: () -> () = {}
+    var onCorrect: () -> Void = {}
+    var onWrong: () -> Void = {}
 
     var body: some View {
         ZStack {
