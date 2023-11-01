@@ -43,7 +43,7 @@ struct FindHoney: View {
 
             InvisibleButton {
                 print("Object found!")
-                audioViewModel.playSound(soundFileName: "success")
+                audioViewModel.playSound(soundFileName: "success", category: .soundEffect)
                 showPopUp = true
             }
             .frame(width: 120, height: 120)

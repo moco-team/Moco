@@ -60,7 +60,7 @@ struct SpeakTheStory: View {
         .onChange(of: speechRecognizerViewModel.transcript) {
             if speakPromptViewModel.isCorrectAnswer(speechRecognizerViewModel.transcript, possibleTranscripts: speechRecognizerViewModel.possibleTranscripts) {
                 print("Benar!")
-                audioViewModel.playSound(soundFileName: "success")
+                audioViewModel.playSound(soundFileName: "success", category: .soundEffect)
                 speechRecognizerViewModel.stopTranscribing()
                 speakPromptViewModel.showPopUp = true
             }

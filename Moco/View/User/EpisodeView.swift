@@ -37,7 +37,16 @@ struct EpisodeView: View {
     private let narrativesOne: [[Narrative]] =
         [
             [
-                .init(text: "Moco si Sapi adalah seekor sapi yang cerdik. \nDia ingin menjelajahi dunia.", duration: 2.5, positionX: 0.31, positionY: 0.15)
+                .init(
+                    text: "Moco, Bebe, Teka, dan Teki merupakan sahabat yang karib." +
+                        "Moco merupakan seekor anak sapi yang lucu. Bebe adalah seekor anak beruang yang polos." +
+                        "Sedangkan, si kembar teka-teki merupakan dua anak tikus yang buta." +
+                        "Suatu hari, mereka pergi berpetualang bersama.",
+                    duration: 2.5,
+                    positionX: 0.31,
+                    positionY: 0.15,
+                    fontSize: 20
+                )
             ],
             [
                 .init(text: "Di perjalanannya, dia bertemu dengan teman-temannya yang membutuhkan bantuan.", duration: 5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4)
@@ -77,7 +86,13 @@ struct EpisodeView: View {
                 .init(text: "Kakak Katak sedang mengumpulkan balon yang berwarna Merah. Yuk kita bantu Kakak Katak menangkap balon!", duration: 7, positionX: 0.6, positionY: 0.2, color: .white)
             ],
             [
-                .init(text: "Matahari pun terbenam dan Moco merasa lelah. Moco memutuskan untuk beristirahat dan melanjutkan petualangannya esok hari.", duration: 12, positionX: 0.67, positionY: 0.63),
+                .init(
+                    text: "Matahari pun terbenam dan Moco merasa lelah." +
+                        "Moco memutuskan untuk beristirahat dan melanjutkan petualangannya esok hari.",
+                    duration: 12,
+                    positionX: 0.67,
+                    positionY: 0.63
+                ),
                 .init(text: "Hari ini, Moco belajar bahwa petualangan bisa menjadi kesempatan untuk membantu teman-temannya.", duration: 9, positionX: 0.67, positionY: 0.63),
                 .init(text: "Moco tidur dengan senyum di wajahnya, bermimpi tentang petualangan berikutnya.", duration: 5, positionX: 0.67, positionY: 0.63)
             ]
