@@ -27,7 +27,7 @@ struct StoryBookNew: View {
             ZStack {
                 Rectangle()
                     .fill(.white)
-                    .frame(width: 220, height: 300) // Adjust the frame size as needed
+                    .frame(width: 420, height: 300) // Adjust the frame size as needed
                     .clipShape(
                         .rect(
                             topLeadingRadius: 16,
@@ -40,7 +40,7 @@ struct StoryBookNew: View {
                 Image(firstPageBackground!)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 200, height: 280)
+                    .frame(width: 400, height: 280)
                     .clipShape(
                         .rect(
                             topLeadingRadius: 8,
@@ -56,7 +56,7 @@ struct StoryBookNew: View {
                             ZStack {
                                 Rectangle()
                                     .fill(.white)
-                                    .frame(width: 220, height: 300) // Adjust the frame size as needed
+                                    .frame(width: 420, height: 300) // Adjust the frame size as needed
                                     .clipShape(
                                         .rect(
                                             topLeadingRadius: 16,
@@ -68,7 +68,7 @@ struct StoryBookNew: View {
                                 Image(image ?? "")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: 200, height: 280) // Adjust the frame size as needed
+                                    .frame(width: 400, height: 280) // Adjust the frame size as needed
                                     .clipShape(
                                         .rect(
                                             topLeadingRadius: 8,
@@ -84,6 +84,7 @@ struct StoryBookNew: View {
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 70, height: 70)
+                                        .opacity(0.5)
 
                                     Text("\(number)")
                                         .customFont(size: 30)
