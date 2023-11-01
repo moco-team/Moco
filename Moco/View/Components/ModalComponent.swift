@@ -113,12 +113,16 @@ struct ModalComponentView: View {
                                 .padding(.top, 10)
                                 .padding(.bottom, 20)
                                 .fixedSize(horizontal: false, vertical: true)
-                            Text(text ?? "")
-                                .foregroundColor(textColor)
-                                .font(.footnote)
-                                .padding(.bottom, 23)
-                                .padding(.horizontal, 70)
-                                .multilineTextAlignment(.center)
+                            
+                            if text != "" {
+                                Text(text ?? "")
+                                    .foregroundColor(textColor)
+                                    .font(.footnote)
+                                    .padding(.bottom, 23)
+                                    .padding(.horizontal, 70)
+                                    .multilineTextAlignment(.center)
+                            }
+                            
                             Grid(horizontalSpacing: 20) {
                                 GridRow {
                                     Button(confirmText) {
@@ -171,7 +175,7 @@ struct ModalPreview: View {
         Button("Waduh") {
             isActive = true
             print(isActive)
-        }.customModal(isActive: $isActive, title: "Are you sure you want to quit?", withConfetti: true) {
+        }.customModal(isActive: $isActive, title: "Yakin mau keluar?", withConfetti: true) {
             print("Done")
         } cancelHandler: {
             print("Cancel")

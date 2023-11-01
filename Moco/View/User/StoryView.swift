@@ -436,7 +436,7 @@ struct StoryView: View {
                 }
             }
         }
-        .popUp(isActive: $isPopUpActive, title: "Are you sure you want to quit?", cancelText: "No") {
+        .popUp(isActive: $isPopUpActive, title: "Yakin mau keluar?", cancelText: "No") {
             navigate.pop()
         }
         .customModal(isActive: $showWrongAnsPopup, title: "Apakah kamu yakin dengan jawaban ini? Coba cek kembali pertanyaannya") {
