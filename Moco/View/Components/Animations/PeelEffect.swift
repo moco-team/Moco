@@ -158,7 +158,6 @@ struct PeelPreview: View {
     @State var peelState = PeelEffectState.start
 
     var body: some View {
-
         PeelEffect(state: $peelState) {
             StoryBookNew()
         } background: {

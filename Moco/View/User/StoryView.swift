@@ -70,7 +70,6 @@ struct StoryView: View {
     @State private var peelBackground = AnyView(EmptyView())
     @State private var isReversePeel = false
 
-
     // MARK: - Variables
 
     var title: String? = "Hello World"
