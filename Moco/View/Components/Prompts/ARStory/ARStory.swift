@@ -10,6 +10,7 @@ import SwiftUI
 struct ClueData {
     let clue: String
     let objectName: String
+    let meshes: [String]?
 }
 
 struct ARStory: View {
@@ -20,7 +21,7 @@ struct ARStory: View {
 
     var doneHandler: (() -> Void)?
 
-    let clueData = ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "button")
+    let clueData = ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "button", meshes: ["Mesh_button_cylinder", "Mesh_button_cube"])
 
     var body: some View {
         if startVisibility {
@@ -31,7 +32,7 @@ struct ARStory: View {
             .ignoresSafeArea()
         }
         if isGameStarted {
-            ARCameraView(objectToBeFound: clueData.objectName, onFoundObject: {
+            ARCameraView(clue: clueData, onFoundObject: {
                 isGameStarted = false
                 print("Ditemukan!")
                 doneHandler!()
