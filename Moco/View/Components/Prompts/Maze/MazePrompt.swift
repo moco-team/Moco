@@ -46,13 +46,15 @@ struct MazePrompt: View {
                         Button {
                             mazePromptViewModel.playPrompt()
                         } label: {
-                            Image(systemName: "arrow.counterclockwise.circle")
+                            Image("Buttons/button-question")
                                 .resizable()
-                                .frame(width: 60, height: 60)
+                                .frame(width: 76, height: 76)
                         }
                         .buttonStyle(
-                            CircleButton(width: 80, height: 80)
-                        ).padding(40)
+                            CircleButton(width: 80, height: 80, backgroundColor: .clear)
+                        )
+                        .opacity(0.6)
+                        .padding(40)
                     }
                     Spacer()
                 }

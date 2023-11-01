@@ -124,7 +124,7 @@ struct ModalComponentView: View {
                                     Button(confirmText) {
                                         function()
                                     }
-                                    .buttonStyle(MainButton(width: 80, height: 10, buttonColor: Color.greenBtn))
+                                    .buttonStyle(MainButton(width: 180, type: .success))
                                     .font(.footnote)
                                 }
                             }
