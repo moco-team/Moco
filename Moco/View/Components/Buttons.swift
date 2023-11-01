@@ -8,6 +8,40 @@
 import SwiftUI
 
 struct MainButton: ButtonStyle {
+    enum MainButtonType {
+        case success
+        case warning
+    }
+
+    var width: CGFloat?
+    var height: CGFloat?
+    var buttonColor = Color.redBtn
+    var cornerRadius: CGFloat = 8
+    var type = MainButtonType.success
+    var fontSize = CGFloat(20)
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(width: width, height: height)
+            .padding()
+            .background {
+                Image(type == .success ?
+                    "Buttons/button-success" :
+                    "Buttons/button-warning"
+                )
+                .resizable()
+                .scaledToFit()
+                .frame(width: width, height: height)
+            }
+            .foregroundColor(type == .success ? .text.green : .text.brown)
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            .scaleEffect(configuration.isPressed ? 1.2 : 1)
+            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+            .shadow(radius: 2, y: 3)
+            .customFont(.cherryBomb, size: fontSize)
+    }
+}
+
+struct MainButtonOld: ButtonStyle {
     var width: CGFloat?
     var height: CGFloat?
     var buttonColor = Color.redBtn
@@ -77,7 +111,17 @@ struct ButtonView: View {
         Button("Press Me") {
             print("Button pressed!")
         }
-        .buttonStyle(MainButton(width: 80))
+        .buttonStyle(MainButton(width: 180))
+        .customFont(.cherryBomb, size: 20)
+        Button("Press Me") {
+            print("Button pressed!")
+        }
+        .buttonStyle(MainButton(width: 180, type: .warning))
+        .customFont(.cherryBomb, size: 20)
+        Button("Press Me") {
+            print("Button pressed!")
+        }
+        .buttonStyle(MainButtonOld(width: 80))
         Button("Press Me") {
             print("Button pressed!")
         }
