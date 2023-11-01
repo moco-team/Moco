@@ -16,7 +16,9 @@ struct EpisodeView: View {
         [
             "Story/Content/Story1/Pages/Page1/background",
             "Story/Content/Story1/Pages/Page2/background",
-            "Story/Content/Story1/Pages/Page3/background"
+            "Story/Content/Story1/Pages/Page3/background",
+            "Story/Content/Story1/Pages/Page4/background",
+            "Story/Content/Story1/Pages/Page5/background"
         ]
 
     private let storyBackgroundsTwo: [String] =
@@ -37,40 +39,28 @@ struct EpisodeView: View {
     private let narrativesOne: [[Narrative]] =
         [
             [
-                .init(
-                    text: "Moco, Bebe, Teka, dan Teki merupakan sahabat yang karib." +
-                        "Moco merupakan seekor anak sapi yang lucu. Bebe adalah seekor anak beruang yang polos." +
-                        "Sedangkan, si kembar teka-teki merupakan dua anak tikus yang buta." +
-                        "Suatu hari, mereka pergi berpetualang bersama.",
-                    duration: 2.5,
-                    positionX: 0.31,
-                    positionY: 0.15,
-                    fontSize: 20
-                )
             ],
             [
-                .init(text: "Di perjalanannya, dia bertemu dengan teman-temannya yang membutuhkan bantuan.", duration: 5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4)
             ],
             [
-                .init(text: "Saat menjelajahi hutan rimba, ", duration: 4, positionX: 0.3, positionY: 0.17, maxWidth: Screen.width * 0.4),
-                .init(text: "dia bertemu Maudi si Beruang madu yang sedang menangis.", duration: 5, positionX: 0.3, positionY: 0.17, maxWidth: Screen.width * 0.4),
-                .init(text: "Mari kita tanya mengapa Maudi menangis.", duration: 4, positionX: 0.3, positionY: 0.13, maxWidth: Screen.width * 0.4),
-                .init(text: "Apa yang sedang dilakukan Maudi?", duration: 2, positionX: 0.3, positionY: 0.13, maxWidth: Screen.width * 0.4)
+            ],
+            [
+            ],
+            [
             ]
         ]
 
     private let narrativesTwo: [[Narrative]] =
         [
             [
-                .init(text: "Ternyata Maudi kehilangan madunya!", duration: 3.5, positionX: 0.5, positionY: 0.3),
-                .init(text: "Yuk bantu Maudi mencari madu kesayangannya!", duration: 3.5, positionX: 0.5, positionY: 0.3)
             ],
             [
-                .init(text: "Moco melanjutkan petualangannya. \nSaat ingin melewati gua, dia bertemu dengan Teka & Teki si Tikus.", duration: 5, positionX: 0.71, positionY: 0.85)
             ],
             [
-                .init(text: "Teka & Teki melarang Moco untuk melewati gua sebelum dia menjawab teka teki yang mereka berikan.", duration: 9, positionX: 0.5, positionY: 0.15),
-                .init(text: "Yuk kita selesaikan teka-tekinya!", duration: 2, positionX: 0.5, positionY: 0.15)
+            ],
+            [
+            ],
+            [
             ]
         ]
 
@@ -100,31 +90,33 @@ struct EpisodeView: View {
 
     private let lottieAnimationsOne: [LottieAsset?] =
         [
-            .init(fileName: "moco-1-1", positionX: Screen.width * 0.65, positionY: Screen.height * 0.6),
-            .init(fileName: "moco-1-2", positionX: Screen.width * 0.54, positionY: Screen.height * 0.6, maxWidth: Screen.width * 0.15),
-            .init(fileName: "maudi", positionX: Screen.width * 0.6, positionY: Screen.height * 0.6)
+            nil,
+            nil,
+            nil
         ]
 
     private let lottieAnimationsTwo: [LottieAsset?] =
         [
             nil,
-            .init(fileName: "moco-1-5", positionX: Screen.width * 0.25, positionY: Screen.height * 0.58, maxWidth: Screen.width * 0.39),
-            .init(fileName: "teka_dan_teki", positionX: Screen.width * 0.5, positionY: Screen.height * 0.72, maxWidth: Screen.width * 0.9)
+            nil,
+            nil
         ]
 
     private let lottieAnimationsThree: [LottieAsset?] =
         [
             nil,
-            .init(fileName: "kakak_katak", positionX: Screen.width * 0.54, positionY: Screen.height * 0.678, maxWidth: Screen.width * 0.35),
             nil,
-            .init(fileName: "moco-1-10", positionX: Screen.width * 0.22, positionY: Screen.height * 0.75, maxWidth: Screen.width * 0.35)
+            nil,
+            nil
         ]
 
     private let promptsOne: [Prompt?] =
         [
-            nil,
-            nil,
-            .init(type: .speech, startTime: 3)
+            .init(type: .multipleChoice, startTime: 2),
+            .init(type: .multipleChoice, startTime: 2),
+            .init(type: .multipleChoice, startTime: 2),
+            .init(type: .multipleChoice, startTime: 2),
+            nil
         ]
 
     private let promptsTwo: [Prompt?] =
