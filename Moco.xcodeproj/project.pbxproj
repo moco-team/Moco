@@ -13,6 +13,7 @@
 		0518CDDA2AE227FA00521EC8 /* kakak_katak.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518CDD92AE227FA00521EC8 /* kakak_katak.json */; };
 		051CC18A2AF22D0800632E09 /* OrientationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051CC1892AF22D0800632E09 /* OrientationInfo.swift */; };
 		056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */; };
+		056A3E482AF25170009299F4 /* SKSpriteNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A3E472AF25170009299F4 /* SKSpriteNodeExtension.swift */; };
 		056B67262AE28CFB00A3B493 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056B67252AE28CFB00A3B493 /* ProfileView.swift */; };
 		056B67282AE28D1400A3B493 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056B67272AE28D1400A3B493 /* AchievementsView.swift */; };
 		0571CB362AE17A9E00CE0CC7 /* SpeakTheStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0571CB352AE17A9E00CE0CC7 /* SpeakTheStory.swift */; };
@@ -225,6 +226,7 @@
 		056949822AE0ED3300830D57 /* Page10-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page10-monolog1.m4a"; sourceTree = "<group>"; };
 		056949832AE0EDC500830D57 /* Page9-monolog1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Page9-monolog1.m4a"; sourceTree = "<group>"; };
 		056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cow_bell_ring.mp3; sourceTree = "<group>"; };
+		056A3E472AF25170009299F4 /* SKSpriteNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSpriteNodeExtension.swift; sourceTree = "<group>"; };
 		056B67252AE28CFB00A3B493 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		056B67272AE28D1400A3B493 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		0571CB352AE17A9E00CE0CC7 /* SpeakTheStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakTheStory.swift; sourceTree = "<group>"; };
@@ -1081,6 +1083,7 @@
 				935D786C2AEF4BD600DF64A5 /* ViewOnLoad.swift */,
 				935D786E2AEF4C1200DF64A5 /* Spacer.swift */,
 				93CA8B7A2AF00E8400651885 /* SpriteKit.swift */,
+				056A3E472AF25170009299F4 /* SKSpriteNodeExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1368,6 +1371,7 @@
 				0B6E2F722ADC97BE0001D320 /* StoryViewModel.swift in Sources */,
 				935D78502AEBF98400DF64A5 /* GifView.swift in Sources */,
 				937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */,
+				056A3E482AF25170009299F4 /* SKSpriteNodeExtension.swift in Sources */,
 				056B67282AE28D1400A3B493 /* AchievementsView.swift in Sources */,
 				938E3D432ADABD9F003D2AE1 /* BaseViewModel.swift in Sources */,
 				93CA8B7F2AF010C600651885 /* MazePromptViewModel.swift in Sources */,

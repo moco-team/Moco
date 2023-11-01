@@ -31,6 +31,7 @@ struct MazeView: View {
     var body: some View {
         ZStack {
             SpriteView(scene: scene, options: [.allowsTransparency])
+                .padding(.vertical, 12)
                 .ignoresSafeArea()
                 .frame(width: Screen.width, height: Screen.height)
         }
