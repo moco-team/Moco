@@ -63,7 +63,7 @@ struct ProgressBar: View {
                 )
                 .onTapGesture {
                     showTooltip = !showTooltip
-                    audioViewModel.playSound(soundFileName: "pop")
+                    audioViewModel.playSound(soundFileName: "pop", category: .soundEffect)
                 }
                 .clipped()
                 .shadow(radius: 2, y: 2)

@@ -11,8 +11,8 @@ import AVFoundation
     private var audioModel = AudioModel()
 
     /// Plays a sound with arbitrary filename and type, specify numberOfLoops = -1 to play indefinitely
-    func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0, volume: Float = Float(GlobalStorage.backsoundVolume)) {
-        audioModel.playSound(soundFileName: soundFileName, type: type, numberOfLoops: numberOfLoops, volume: volume)
+    func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0, volume: Float = 1, category: AudioCategory? = nil) {
+        audioModel.playSound(soundFileName: soundFileName, type: type, numberOfLoops: numberOfLoops, volume: volume, category: category)
     }
 
     /// Stop a sound from playing
@@ -54,8 +54,12 @@ import AVFoundation
         audioModel.setVolume(volume, writePlayerVolumes: writePlayerVolumes)
     }
 
-    func playSoundsQueue(sounds: [AudioModel.QueuePlayerParam], intervalDuration: Double = 0, volume: Float = 1, id: String? = nil) {
-        audioModel.playSoundsQueue(sounds: sounds, intervalDuration: intervalDuration, volume: volume, id: id)
+    func setVolumeByCategory(_ volume: Float, category: AudioCategory) {
+        audioModel.setVolumeByCategory(volume, category: category)
+    }
+
+    func playSoundsQueue(sounds: [AudioModel.QueuePlayerParam], intervalDuration: Double = 0, volume: Float = 1, id: String? = nil, category: AudioCategory? = nil) {
+        audioModel.playSoundsQueue(sounds: sounds, intervalDuration: intervalDuration, volume: volume, id: id, category: category)
     }
 
     @objc func playSoundNotification(_ notification: NSNotification) {

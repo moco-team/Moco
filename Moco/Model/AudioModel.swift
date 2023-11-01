@@ -7,12 +7,40 @@
 
 import AVFoundation
 
+enum AudioCategory: Equatable, Hashable {
+    case narration
+    case backsound
+    case soundEffect
+}
+
+protocol AVPlayerWithVolume {
+    // Define anything in common between objects
+    // Example:
+    var volume: Float { get set }
+}
+
+extension AVAudioPlayer: AVPlayerWithVolume {}
+extension AVQueuePlayer: AVPlayerWithVolume {}
+
+struct PlayersByCategory: Equatable {
+    var narration: [any AVPlayerWithVolume] = []
+    var backsound: [any AVPlayerWithVolume] = []
+    var soundEffect: [any AVPlayerWithVolume] = []
+
+    static func == (lhs: PlayersByCategory, rhs: PlayersByCategory) -> Bool {
+        return lhs.narration.first?.volume == rhs.narration.first?.volume &&
+            lhs.backsound.first?.volume == rhs.backsound.first?.volume &&
+            lhs.soundEffect.first?.volume == rhs.soundEffect.first?.volume
+    }
+}
+
 struct AudioModel: Identifiable, Equatable {
     var players: [URL: AVAudioPlayer] = [:]
     var queuePlayers: [String: AVQueuePlayer] = [:]
     var playerVolumes: [URL: Float] = [:]
     var queuePlayerVolumes: [String: Float] = [:]
     var duplicatePlayers: [AVAudioPlayer] = []
+    var playersByCategory = PlayersByCategory()
 
     var volume: Float {
         players.first?.value.volume ?? 0
@@ -87,25 +115,74 @@ struct AudioModel: Identifiable, Equatable {
         return player?.volume == 0
     }
 
-    mutating func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0, volume: Float = 1) {
+    func getGlobalVolume(_ category: AudioCategory?, volume: Float) -> Float {
+        var parsedVolume: Float
+        switch category {
+        case .backsound:
+            parsedVolume = Float(GlobalStorage.backsoundVolume)
+        case .narration:
+            parsedVolume = Float(GlobalStorage.narrationVolume)
+        case .soundEffect:
+            parsedVolume = Float(GlobalStorage.soundEffectVolume)
+        case .none:
+            parsedVolume = volume
+        }
+        return parsedVolume
+    }
+
+    mutating func setPlayerByCategory(_ player: AVPlayerWithVolume, category: AudioCategory?) {
+        switch category {
+        case .backsound:
+            playersByCategory.backsound.append(player)
+        case .narration:
+            playersByCategory.narration.append(player)
+        case .soundEffect:
+            playersByCategory.soundEffect.append(player)
+        case .none:
+            break
+        }
+    }
+
+    mutating func setVolumeByCategory(_ volume: Float, category: AudioCategory) {
+        switch category {
+        case .backsound:
+            for index in playersByCategory.backsound.indices {
+                playersByCategory.backsound[index].volume = volume
+            }
+        case .narration:
+            for index in playersByCategory.narration.indices {
+                playersByCategory.narration[index].volume = volume
+            }
+        case .soundEffect:
+            for index in playersByCategory.soundEffect.indices {
+                playersByCategory.soundEffect[index].volume = volume
+            }
+        }
+    }
+
+    mutating func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0, volume: Float = 1, category: AudioCategory? = nil) {
         guard let bundle = Bundle.main.path(forResource: soundFileName, ofType: type) else { return }
         let soundFileNameURL = URL(fileURLWithPath: bundle)
 
         if let player = players[soundFileNameURL] { // player for sound has been found
             if !player.isPlaying { // player is not in use, so use that one
                 player.numberOfLoops = numberOfLoops
-                setVolume(volume, player: player)
+                let parsedVolume = getGlobalVolume(category, volume: volume)
+                setVolume(parsedVolume, player: player)
                 player.prepareToPlay()
                 player.play()
             }
+            setPlayerByCategory(player, category: category)
         } else { // player has not been found, create a new player with the URL if possible
             do {
                 let player = try AVAudioPlayer(contentsOf: soundFileNameURL)
                 players[soundFileNameURL] = player
                 player.numberOfLoops = numberOfLoops
-                setVolume(volume, player: player)
+                let parsedVolume = getGlobalVolume(category, volume: volume)
+                setVolume(parsedVolume, player: player)
                 player.prepareToPlay()
                 player.play()
+                setPlayerByCategory(player, category: category)
             } catch {
                 print(error.localizedDescription)
             }
@@ -124,10 +201,12 @@ struct AudioModel: Identifiable, Equatable {
     /// `intervalDuration: 3)`
     ///
     /// This will play the songs with 3 seconds delay between songs
-    mutating func playSoundsQueue(sounds: [QueuePlayerParam], intervalDuration: Double = 0, volume: Float = 1, id: String? = nil) {
+    mutating func playSoundsQueue(sounds: [QueuePlayerParam], intervalDuration: Double = 0, volume: Float = 1, id: String? = nil, category: AudioCategory? = nil) {
         if let player = queuePlayers[id ?? ""] {
-            player.volume = volume
+            let parsedVolume = getGlobalVolume(category, volume: volume)
+            player.volume = parsedVolume
             player.play()
+            setPlayerByCategory(player, category: category)
             return
         }
 
@@ -160,6 +239,7 @@ struct AudioModel: Identifiable, Equatable {
         if id != nil {
             queuePlayers[id!] = player
         }
+        setPlayerByCategory(player, category: category)
     }
 
     mutating func setVolumeQueue(_ volume: Float?, writePlayerVolumes: Bool = true) {
