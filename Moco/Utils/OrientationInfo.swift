@@ -10,7 +10,6 @@ import SwiftUI
 
 class OrientationInfo: ObservableObject {
     enum Orientation {
-        case portrait
         case landscapeLeft
         case landscapeRight
     }
@@ -28,8 +27,6 @@ class OrientationInfo: ObservableObject {
             self.orientation = .landscapeLeft
         } else if UIDevice.current.orientation == .landscapeRight{
             self.orientation = .landscapeRight
-        } else if UIDevice.current.orientation == .portrait {
-            self.orientation = .portrait
         }
         
         // unowned self because we unregister before self becomes invalid
@@ -37,9 +34,7 @@ class OrientationInfo: ObservableObject {
             guard let device = note.object as? UIDevice else {
                 return
             }
-            if device.orientation == .portrait {
-                self.orientation = .portrait
-            } else if device.orientation == .landscapeLeft {
+            if device.orientation == .landscapeLeft {
                 self.orientation = .landscapeLeft
             } else if device.orientation == .landscapeRight {
                 self.orientation = .landscapeRight
