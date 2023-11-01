@@ -13,6 +13,7 @@ enum PromptType {
     case findHoney
     case objectDetection
     case speech
+    case multipleChoice
 }
 
 @Model

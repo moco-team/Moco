@@ -79,6 +79,8 @@
 		0BA3E50B2ADFC62000BCFE9E /* StoryAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E50A2ADFC62000BCFE9E /* StoryAdminView.swift */; };
 		0BA3E5102ADFD04700BCFE9E /* StoryThemeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E50F2ADFD04700BCFE9E /* StoryThemeModalView.swift */; };
 		0BA3E5122ADFD98400BCFE9E /* StoryModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E5112ADFD98400BCFE9E /* StoryModalView.swift */; };
+		930D688A2AF2B9AB001976F0 /* MultipleChoicePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930D68892AF2B9AB001976F0 /* MultipleChoicePrompt.swift */; };
+		930D688C2AF2C12D001976F0 /* BoardAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930D688B2AF2C12D001976F0 /* BoardAnswer.swift */; };
 		931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949722AE0EB6A00830D57 /* Page1-monolog1.m4a */; };
 		931722182AE5508300346382 /* Page2-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949752AE0EB6A00830D57 /* Page2-monolog1.m4a */; };
 		931722192AE5508300346382 /* Page3-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949772AE0EB6A00830D57 /* Page3-monolog1.m4a */; };
@@ -312,6 +314,8 @@
 		0BA3E50A2ADFC62000BCFE9E /* StoryAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryAdminView.swift; sourceTree = "<group>"; };
 		0BA3E50F2ADFD04700BCFE9E /* StoryThemeModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryThemeModalView.swift; sourceTree = "<group>"; };
 		0BA3E5112ADFD98400BCFE9E /* StoryModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModalView.swift; sourceTree = "<group>"; };
+		930D68892AF2B9AB001976F0 /* MultipleChoicePrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoicePrompt.swift; sourceTree = "<group>"; };
+		930D688B2AF2C12D001976F0 /* BoardAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardAnswer.swift; sourceTree = "<group>"; };
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
@@ -682,6 +686,7 @@
 		05B1661C2ADE755F0077FA0D /* Prompts */ = {
 			isa = PBXGroup;
 			children = (
+				930D68882AF2B994001976F0 /* MultipleChoice */,
 				935D78602AEE1AB400DF64A5 /* Maze */,
 				05E8B56B2AED57AA00E3612F /* ARStory */,
 				0571CB342AE17A6800CE0CC7 /* SpeakTheStory */,
@@ -870,6 +875,15 @@
 				0BA3E5112ADFD98400BCFE9E /* StoryModalView.swift */,
 			);
 			path = FormSheetViews;
+			sourceTree = "<group>";
+		};
+		930D68882AF2B994001976F0 /* MultipleChoice */ = {
+			isa = PBXGroup;
+			children = (
+				930D68892AF2B9AB001976F0 /* MultipleChoicePrompt.swift */,
+				930D688B2AF2C12D001976F0 /* BoardAnswer.swift */,
+			);
+			path = MultipleChoice;
 			sourceTree = "<group>";
 		};
 		932357D22ADE6DF2009B3D86 /* Audio */ = {
@@ -1415,6 +1429,7 @@
 				93E3D87A2AE4E95700E5391F /* SpeakPromptModel.swift in Sources */,
 				0B6E2F6C2ADC91E10001D320 /* PromptModel.swift in Sources */,
 				938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */,
+				930D688A2AF2B9AB001976F0 /* MultipleChoicePrompt.swift in Sources */,
 				0B6E2F782ADCA8990001D320 /* StoryContentViewModel.swift in Sources */,
 				0571CB362AE17A9E00CE0CC7 /* SpeakTheStory.swift in Sources */,
 				0B46D7232AF120BC002DE821 /* EpisodeModel.swift in Sources */,
@@ -1466,6 +1481,7 @@
 				938E3D522ADBAE62003D2AE1 /* SettingsView.swift in Sources */,
 				938E3D472ADB0AA5003D2AE1 /* Routes.swift in Sources */,
 				0B2E31E02AD810D400DFC16F /* EpisodeView.swift in Sources */,
+				930D688C2AF2C12D001976F0 /* BoardAnswer.swift in Sources */,
 				937AF28C2AE832A7008C69BB /* ARViewContainer.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
 				93676D2D2AF1475200E756A5 /* PointerViewModifier.swift in Sources */,

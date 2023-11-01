@@ -16,7 +16,9 @@ struct EpisodeView: View {
         [
             "Story/Content/Story1/Pages/Page1/background",
             "Story/Content/Story1/Pages/Page2/background",
-            "Story/Content/Story1/Pages/Page3/background"
+            "Story/Content/Story1/Pages/Page3/background",
+            "Story/Content/Story1/Pages/Page4/background",
+            "Story/Content/Story1/Pages/Page5/background"
         ]
 
     private let storyBackgroundsTwo: [String] =
@@ -37,41 +39,28 @@ struct EpisodeView: View {
     private let narrativesOne: [[Narrative]] =
         [
             [
-                .init(
-                    text: "Moco, Bebe, Teka, dan Teki merupakan sahabat karib yang tinggal di Kota Mocokerto. " + "Moco merupakan seekor anak sapi yang lucu. Bebe adalah seekor anak beruang yang polos. Sedangkan, si kembar teka-teki merupakan dua anak tikus yang buta. Suatu hari, mereka pergi berpetualang bersama.",
-                    duration: 2.5,
-                    positionX: 0.31,
-                    positionY: 0.15,
-                    fontSize: 20
-                )
             ],
             [
-                .init(text: "Di tengah petualangan mereka, datanglah katak bernama Kato yang menawarkan madu secara gratis kepada anak-anak. Karena tertarik, Bebe langsung memasukkan tangannya ke dalam toples madu yang ditawarkan Kato. Namun, Bebe tidak dapat mengeluarkan tangannya dari toples karena toples tersebut berisi lem dan bukan madu. Kato pun membawa kabur Bebe dan menculik Bebe yang polos.", duration: 5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4, fontSize: 20)
             ],
             [
-                .init(text: "Moco, Teka, dan Teki berusaha mengejar Kato dan Bebe. Akan tetapi, Kato membawa Bebe ke pulau Arjuna dengan cara melompat di atas air. Perjalanan mengejar Kato dan Bebe pun terpaksa berhenti.", duration: 4, positionX: 0.3, positionY: 0.17, maxWidth: Screen.width * 0.4, fontSize: 25),
             ],
             [
-                .init(text: "Moco menoleh ke kanan dan kiri, namun mendapati bahwa Teka dan Teki tidak ada di sekitarnya. Seketika, Moco baru sadar kalau ia telah berlari sendirian karena si kembar Teka dan Teki tidak bisa melihat. Sekarang, Moco telah kehilangan seluruh teman berpetualangnya.", duration: 5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4)
             ],
             [
-                .init(text: "Moco teringat cerita Teka dan Teki bahwa mereka merasa nyaman bersembunyi di dalam terowongan. Moco pun berangkat mencari Teka dan Teki menuju ke terowongan.", duration: 5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4)
-            ],
-            
+            ]
         ]
 
     private let narrativesTwo: [[Narrative]] =
         [
             [
-                .init(text: "Ternyata Maudi kehilangan madunya!", duration: 3.5, positionX: 0.5, positionY: 0.3),
-                .init(text: "Yuk bantu Maudi mencari madu kesayangannya!", duration: 3.5, positionX: 0.5, positionY: 0.3)
             ],
             [
-                .init(text: "Moco melanjutkan petualangannya. \nSaat ingin melewati gua, dia bertemu dengan Teka & Teki si Tikus.", duration: 5, positionX: 0.71, positionY: 0.85)
             ],
             [
-                .init(text: "Teka & Teki melarang Moco untuk melewati gua sebelum dia menjawab teka teki yang mereka berikan.", duration: 9, positionX: 0.5, positionY: 0.15),
-                .init(text: "Yuk kita selesaikan teka-tekinya!", duration: 2, positionX: 0.5, positionY: 0.15)
+            ],
+            [
+            ],
+            [
             ]
         ]
 
@@ -101,31 +90,33 @@ struct EpisodeView: View {
 
     private let lottieAnimationsOne: [LottieAsset?] =
         [
-            .init(fileName: "moco-1-1", positionX: Screen.width * 0.65, positionY: Screen.height * 0.6),
-            .init(fileName: "moco-1-2", positionX: Screen.width * 0.54, positionY: Screen.height * 0.6, maxWidth: Screen.width * 0.15),
-            .init(fileName: "maudi", positionX: Screen.width * 0.6, positionY: Screen.height * 0.6)
+            nil,
+            nil,
+            nil
         ]
 
     private let lottieAnimationsTwo: [LottieAsset?] =
         [
             nil,
-            .init(fileName: "moco-1-5", positionX: Screen.width * 0.25, positionY: Screen.height * 0.58, maxWidth: Screen.width * 0.39),
-            .init(fileName: "teka_dan_teki", positionX: Screen.width * 0.5, positionY: Screen.height * 0.72, maxWidth: Screen.width * 0.9)
+            nil,
+            nil
         ]
 
     private let lottieAnimationsThree: [LottieAsset?] =
         [
             nil,
-            .init(fileName: "kakak_katak", positionX: Screen.width * 0.54, positionY: Screen.height * 0.678, maxWidth: Screen.width * 0.35),
             nil,
-            .init(fileName: "moco-1-10", positionX: Screen.width * 0.22, positionY: Screen.height * 0.75, maxWidth: Screen.width * 0.35)
+            nil,
+            nil
         ]
 
     private let promptsOne: [Prompt?] =
         [
-            nil,
-            nil,
-            .init(type: .speech, startTime: 3)
+            .init(type: .multipleChoice, startTime: 2),
+            .init(type: .multipleChoice, startTime: 2),
+            .init(type: .multipleChoice, startTime: 2),
+            .init(type: .multipleChoice, startTime: 2),
+            nil
         ]
 
     private let promptsTwo: [Prompt?] =
