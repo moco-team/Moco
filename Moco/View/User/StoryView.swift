@@ -21,6 +21,7 @@ struct Narrative: Hashable {
     var positionY: Double
     var maxWidth: Double? = Screen.width * 0.5
     var color: Color? = .black
+    var fontSize: CGFloat = 30
 }
 
 struct Prompt: Hashable {
@@ -119,7 +120,7 @@ struct StoryView: View {
             audioViewModel.playSound(
                 soundFileName: bgSounds[scrollPosition ?? 0],
                 numberOfLoops: -1,
-                volume: StoryView.storyVolume
+                category: .backsound
             )
         }
         if lottieAnimationIndex < lottieAnimations.count {
@@ -163,17 +164,19 @@ struct StoryView: View {
                                     ))
                                     .id(lottieAnimationIndex)
                             }
+
                             if narratives[scrollPosition!].count > narrativeIndex && !narratives[scrollPosition!].isEmpty {
-                                Text(narratives[scrollPosition!][max(narrativeIndex, 0)].text)
-                                    .foregroundColor(narratives[scrollPosition!][max(narrativeIndex, 0)].color!)
-                                    .frame(maxWidth: CGFloat(narratives[scrollPosition!][max(narrativeIndex, 0)].maxWidth!), alignment: .leading)
+                                let narrative = narratives[scrollPosition!][max(narrativeIndex, 0)]
+                                Text(narrative.text)
+                                    .foregroundColor(narrative.color!)
+                                    .frame(maxWidth: CGFloat(narrative.maxWidth!), alignment: .leading)
                                     .position(CGPoint(
-                                        x: Screen.width * narratives[scrollPosition!][max(narrativeIndex, 0)].positionX,
-                                        y: Screen.height * narratives[scrollPosition!][max(narrativeIndex, 0)].positionY
+                                        x: Screen.width * narrative.positionX,
+                                        y: Screen.height * narrative.positionY
                                     ))
                                     .id(narrativeIndex)
                                     .transition(.opacity.animation(.linear))
-                                    .customFont(.didactGothic, size: 30)
+                                    .customFont(.didactGothic, size: narrative.fontSize)
                                     .padding(.bottom, 2)
                             }
 

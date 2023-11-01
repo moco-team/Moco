@@ -26,7 +26,7 @@ struct ARStory: View {
         if startVisibility {
             ARClueView(clue: clueData.clue, onStartGame: {
                 isGameStarted = true
-                audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1)
+                audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1, category: .backsound)
             })
             .ignoresSafeArea()
         }

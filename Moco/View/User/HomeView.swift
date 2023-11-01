@@ -91,7 +91,7 @@ struct HomeView: View {
             }
             .onAppear {
                 storyThemeViewModel.fetchStoryThemes()
-                audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1)
+                audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1, category: .backsound)
                 homeViewModel.soundLevel = 0.3
                 homeViewModel.setVolume()
             }

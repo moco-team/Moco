@@ -37,7 +37,7 @@ struct BalloonView: View {
                     .opacity(isAnimating ? 0.0 : 1.0)
                     .onTapGesture {
                         if balloon.isCorrect {
-                            audioViewModel.playSound(soundFileName: "success")
+                            audioViewModel.playSound(soundFileName: "success", category: .soundEffect)
                             correctTryCount += 1
                             print("Benar \(correctTryCount)")
 
@@ -58,7 +58,7 @@ struct BalloonView: View {
                             } else {
                                 falseTryCount += 1
                                 print("Salah \(falseTryCount)")
-                                audioViewModel.playSound(soundFileName: "balon_merah")
+                                audioViewModel.playSound(soundFileName: "balon_merah", category: .narration)
                                 isCorrectBalloonTapped = false
                             }
                         }

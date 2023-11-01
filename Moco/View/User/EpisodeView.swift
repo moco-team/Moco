@@ -37,7 +37,7 @@ struct EpisodeView: View {
     private let narrativesOne: [[Narrative]] =
         [
             [
-                .init(text: "Moco si Sapi adalah seekor sapi yang cerdik. \nDia ingin menjelajahi dunia.", duration: 2.5, positionX: 0.31, positionY: 0.15)
+                .init(text: "Moco, Bebe, Teka, dan Teki merupakan sahabat yang karib. Moco merupakan seekor anak sapi yang lucu. Bebe adalah seekor anak beruang yang polos. Sedangkan, si kembar teka-teki merupakan dua anak tikus yang buta. Suatu hari, mereka pergi berpetualang bersama.", duration: 2.5, positionX: 0.31, positionY: 0.15, fontSize: 20)
             ],
             [
                 .init(text: "Di perjalanannya, dia bertemu dengan teman-temannya yang membutuhkan bantuan.", duration: 5, positionX: 0.31, positionY: 0.18, maxWidth: Screen.width * 0.4)

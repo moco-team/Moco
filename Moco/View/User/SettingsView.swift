@@ -13,18 +13,64 @@ struct SettingsView: View {
     @State var settingsViewModel = SettingsViewModel()
 
     var body: some View {
-        HStack {
-            Image(systemName: "speaker.fill")
-                .foregroundColor(Color.black)
+        VStack {
+            Text("Backsound")
+            HStack {
+                Image(systemName: "speaker.fill")
+                    .foregroundColor(Color.black)
 
-            Slider(value: $settingsViewModel.backsoundVolume,
-                   in: 0 ... 1,
-                   step: 0.01) { _ in
-                audioViewModel.setVolume(Float(settingsViewModel.backsoundVolume))
-            }.foregroundColor(.black).accentColor(.black)
+                Slider(value: $settingsViewModel.backsoundVolume,
+                       in: 0 ... 1,
+                       step: 0.01) { _ in
+                    audioViewModel
+                        .setVolumeByCategory(
+                            Float(
+                                settingsViewModel.backsoundVolume),
+                            category: .backsound
+                        )
+                }.foregroundColor(.black).accentColor(.black)
 
-            Image(systemName: "speaker.wave.2.fill")
-                .foregroundColor(Color.black)
+                Image(systemName: "speaker.wave.2.fill")
+                    .foregroundColor(Color.black)
+            }
+            Text("Narration")
+            HStack {
+                Image(systemName: "speaker.fill")
+                    .foregroundColor(Color.black)
+
+                Slider(value: $settingsViewModel.narrationVolume,
+                       in: 0 ... 1,
+                       step: 0.01) { _ in
+                    audioViewModel
+                        .setVolumeByCategory(
+                            Float(
+                                settingsViewModel.narrationVolume),
+                            category: .narration
+                        )
+                }.foregroundColor(.black).accentColor(.black)
+
+                Image(systemName: "speaker.wave.2.fill")
+                    .foregroundColor(Color.black)
+            }
+            Text("Sound effect")
+            HStack {
+                Image(systemName: "speaker.fill")
+                    .foregroundColor(Color.black)
+
+                Slider(value: $settingsViewModel.soundEffectVolume,
+                       in: 0 ... 1,
+                       step: 0.01) { _ in
+                    audioViewModel
+                        .setVolumeByCategory(
+                            Float(
+                                settingsViewModel.soundEffectVolume),
+                            category: .soundEffect
+                        )
+                }.foregroundColor(.black).accentColor(.black)
+
+                Image(systemName: "speaker.wave.2.fill")
+                    .foregroundColor(Color.black)
+            }
         }
     }
 }
