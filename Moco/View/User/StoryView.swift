@@ -70,6 +70,7 @@ struct StoryView: View {
     @State private var peelBackground = AnyView(EmptyView())
     @State private var isReversePeel = false
     @State private var showWrongAnsPopup = false
+    @State private var mazeQuestionIndex = 0
 
     // MARK: - Variables
 
@@ -160,6 +161,8 @@ struct StoryView: View {
 
     var bgSounds: [String] = []
 
+    var firstPrompt: Prompt? = nil
+
     var multipleChoiceQnA: [MultipleChoicePromptQnA?] = [
         .init(
             correctAnswerIndex: 0,
@@ -198,6 +201,33 @@ struct StoryView: View {
             """
         ),
         nil
+    ]
+
+    let mazeAnswers: [MazePuzzle] = [
+        .init(correctAnswerAsset: "Maze/answer_one", answersAsset: ["Maze/answer_two", "Maze/answer_three"], question: 
+"""
+“Berapakah jumlah teman yang sedang Moco cari di dalam terowongan?”
+ A.) 1
+ B.) 2
+ C.) 3
+"""
+             ),
+        .init(correctAnswerAsset: "Maze/answer_one", answersAsset: ["Maze/answer_two", "Maze/answer_three"], question:
+"""
+“Benda apakah yang digunakan oleh Teka dan Teki?”
+ A.) Tongkat
+ B.) Tas Ransel
+ C.) Kacamata Hitam
+"""
+             ),
+        .init(correctAnswerAsset: "Maze/answer_one", answersAsset: ["Maze/answer_two", "Maze/answer_three"], question:
+"""
+“Hewan apakah yang sedang Moco cari di dalam terowongan?”
+ A.) Tikus
+ B.) Sapi
+ C.) Katak
+"""
+             )
     ]
 
     // MARK: - Functions
@@ -316,6 +346,7 @@ struct StoryView: View {
 
                                 Group {
                                     let mcPrompt = multipleChoiceQnA[scrollPosition!]
+                                    let mazeQuestion = mazeAnswers[mazeQuestionIndex]
                                     switch activePrompt?.type {
                                     case .multipleChoice:
                                         if mcPrompt != nil {
@@ -324,6 +355,14 @@ struct StoryView: View {
                                                 nextPage()
                                             } onWrong: {
                                                 showWrongAnsPopup = true
+                                            }
+                                        }
+                                    case .maze:
+                                        MazePrompt(promptText: mazeQuestion.question, answersAsset: mazeQuestion.answersAsset, correctAnswerAsset: mazeQuestion.correctAnswerAsset) {
+                                            if mazeQuestionIndex < mazeAnswers.count - 1 {
+                                                mazeQuestionIndex += 1
+                                            } else {
+                                                activePrompt = nil
                                             }
                                         }
                                     case .puzzle:
@@ -417,7 +456,7 @@ struct StoryView: View {
                 }
                 VStack {
                     Spacer()
-                    if showPromptButton {
+                    if showPromptButton && activePrompt == nil {
                         Button {
                             activePrompt = prompts[scrollPosition!]
                         } label: {
@@ -445,6 +484,9 @@ struct StoryView: View {
         }
         .task {
             onPageChange()
+            if let directPrompt = firstPrompt {
+                activePrompt = directPrompt
+            }
         }
         .onDisappear {
             stop()

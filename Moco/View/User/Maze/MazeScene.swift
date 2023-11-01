@@ -16,6 +16,9 @@ class MazeScene: SKScene, ObservableObject {
 
     var touched: Bool = false
     var score: Int = 0
+    
+    var wrongAnswerAsset = ["Maze/answer_one", "Maze/answer_two"]
+    var correctAnswerAsset = "Maze/answer_three"
 
     @Published private(set) var correctAnswer = false
 
@@ -105,19 +108,19 @@ class MazeScene: SKScene, ObservableObject {
     }
 
     func createObjective() {
-        obj01 = SKSpriteNode(texture: SKTexture(imageNamed: "Maze/answer_one"))
+        obj01 = SKSpriteNode(texture: SKTexture(imageNamed: correctAnswerAsset))
         obj01.aspectFillToSize(fillSize: CGSize(
             width: min(size.width, size.height) / CGFloat(mazeModel.arrayPoint.count),
             height: min(size.width, size.height) / CGFloat(mazeModel.arrayPoint.count)
         )
         )
-        obj02 = SKSpriteNode(texture: SKTexture(imageNamed: "Maze/answer_two"))
+        obj02 = SKSpriteNode(texture: SKTexture(imageNamed: wrongAnswerAsset[0]))
         obj02.aspectFillToSize(fillSize: CGSize(
             width: min(size.width, size.height) / CGFloat(mazeModel.arrayPoint.count),
             height: min(size.width, size.height) / CGFloat(mazeModel.arrayPoint.count)
         )
         )
-        obj03 = SKSpriteNode(texture: SKTexture(imageNamed: "Maze/answer_three"))
+        obj03 = SKSpriteNode(texture: SKTexture(imageNamed: wrongAnswerAsset[1]))
         obj03.aspectFillToSize(fillSize: CGSize(
             width: min(size.width, size.height) / CGFloat(mazeModel.arrayPoint.count),
             height: min(size.width, size.height) / CGFloat(mazeModel.arrayPoint.count)

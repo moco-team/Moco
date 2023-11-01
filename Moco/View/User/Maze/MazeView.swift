@@ -9,9 +9,19 @@ import ConfettiSwiftUI
 import SpriteKit
 import SwiftUI
 
+struct MazePuzzle {
+    var correctAnswerAsset: String
+    var answersAsset: [String]
+    var question: String
+    var action: (() -> Void)?
+}
+
 struct MazeView: View {
     @EnvironmentObject var motionViewModel: MotionViewModel
     @EnvironmentObject var orientationInfo: OrientationInfo
+
+    var answersAsset = ["Maze/answer_one", "Maze/answer_two"]
+    var correctAnswerAsset = "Maze/answer_three"
 
     @StateObject private var scene: MazeScene = {
         let screenWidth = Screen.width

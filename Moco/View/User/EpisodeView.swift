@@ -23,8 +23,6 @@ struct EpisodeView: View {
 
     private let storyBackgroundsTwo: [String] =
         [
-            "Story/Content/Story1/Pages/Page4/background",
-            "Story/Content/Story1/Pages/Page5/background",
             "Story/Content/Story1/Pages/Page6/background"
         ]
 
@@ -121,7 +119,7 @@ struct EpisodeView: View {
 
     private let promptsTwo: [Prompt?] =
         [
-            .init(type: .findHoney, startTime: 3),
+            .init(type: .maze, startTime: 2),
             nil,
             nil
         ]
@@ -206,7 +204,7 @@ struct EpisodeView: View {
                                 if index == 0 {
                                     navigate.append(.story("kol", storyBackgroundsOne, narrativesOne, lottieAnimationsOne, promptsOne, bgSoundsOne))
                                 } else if index == 1 {
-                                    navigate.append(.story("kol", storyBackgroundsTwo, narrativesTwo, lottieAnimationsTwo, promptsTwo, bgSoundsTwo))
+                                    navigate.append(.story("kol", storyBackgroundsTwo, narrativesTwo, lottieAnimationsTwo, promptsTwo, bgSoundsTwo, promptsTwo[0]))
                                 } else if index == 2 {
                                     navigate.append(.story("kol", storyBackgroundsThree, narrativesThree, lottieAnimationsThree, promptsThree, bgSoundsThree))
                                 }

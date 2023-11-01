@@ -11,10 +11,16 @@ struct MazePrompt: View {
     @State private var mazePromptViewModel = MazePromptViewModel()
 
     var promptText = "Moco adalah sapi jantan"
+    var answersAsset = ["Maze/answer_one", "Maze/answer_two"]
+    var correctAnswerAsset = "Maze/answer_three"
+
+    var action: () -> Void = {}
 
     var body: some View {
         ZStack {
-            MazeView()
+            MazeView(answersAsset: answersAsset, correctAnswerAsset: correctAnswerAsset) {
+                action()
+            }
 
             if !mazePromptViewModel.isStarted {
                 VStack {
@@ -55,6 +61,7 @@ struct MazePrompt: View {
                         )
                         .opacity(0.6)
                         .padding(40)
+                        .padding(.top, 60)
                     }
                     Spacer()
                 }

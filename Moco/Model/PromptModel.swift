@@ -14,6 +14,7 @@ enum PromptType {
     case objectDetection
     case speech
     case multipleChoice
+    case maze
 }
 
 @Model

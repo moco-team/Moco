@@ -79,8 +79,8 @@
 		0BA3E50B2ADFC62000BCFE9E /* StoryAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E50A2ADFC62000BCFE9E /* StoryAdminView.swift */; };
 		0BA3E5102ADFD04700BCFE9E /* StoryThemeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E50F2ADFD04700BCFE9E /* StoryThemeModalView.swift */; };
 		0BA3E5122ADFD98400BCFE9E /* StoryModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E5112ADFD98400BCFE9E /* StoryModalView.swift */; };
-		930D688A2AF2B9AB001976F0 /* MultipleChoicePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930D68892AF2B9AB001976F0 /* MultipleChoicePrompt.swift */; };
-		930D688C2AF2C12D001976F0 /* BoardAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930D688B2AF2C12D001976F0 /* BoardAnswer.swift */; };
+		930D688E2AF2DB82001976F0 /* MultipleChoicePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930D688D2AF2DB82001976F0 /* MultipleChoicePrompt.swift */; };
+		930D68902AF2DB92001976F0 /* BoardAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930D688F2AF2DB92001976F0 /* BoardAnswer.swift */; };
 		931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949722AE0EB6A00830D57 /* Page1-monolog1.m4a */; };
 		931722182AE5508300346382 /* Page2-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949752AE0EB6A00830D57 /* Page2-monolog1.m4a */; };
 		931722192AE5508300346382 /* Page3-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949772AE0EB6A00830D57 /* Page3-monolog1.m4a */; };
@@ -100,7 +100,6 @@
 		932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D72ADE700D009B3D86 /* AudioViewModel.swift */; };
 		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
 		9328F9132AF16B3A00E82995 /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9328F9122AF16B3A00E82995 /* Gesture.swift */; };
-		9328F9152AF16B6900E82995 /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9328F9142AF16B6900E82995 /* Gesture.swift */; };
 		9328F9172AF25C2200E82995 /* ModalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9328F9162AF25C2200E82995 /* ModalComponent.swift */; };
 		9328F9192AF25D8400E82995 /* ModalViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9328F9182AF25D8400E82995 /* ModalViewModifier.swift */; };
 		93324AA72AEA9FD400046CB8 /* MazeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93324AA62AEA9FD400046CB8 /* MazeModel.swift */; };
@@ -314,8 +313,8 @@
 		0BA3E50A2ADFC62000BCFE9E /* StoryAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryAdminView.swift; sourceTree = "<group>"; };
 		0BA3E50F2ADFD04700BCFE9E /* StoryThemeModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryThemeModalView.swift; sourceTree = "<group>"; };
 		0BA3E5112ADFD98400BCFE9E /* StoryModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModalView.swift; sourceTree = "<group>"; };
-		930D68892AF2B9AB001976F0 /* MultipleChoicePrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoicePrompt.swift; sourceTree = "<group>"; };
-		930D688B2AF2C12D001976F0 /* BoardAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardAnswer.swift; sourceTree = "<group>"; };
+		930D688D2AF2DB82001976F0 /* MultipleChoicePrompt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleChoicePrompt.swift; sourceTree = "<group>"; };
+		930D688F2AF2DB92001976F0 /* BoardAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardAnswer.swift; sourceTree = "<group>"; };
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
@@ -880,8 +879,8 @@
 		930D68882AF2B994001976F0 /* MultipleChoice */ = {
 			isa = PBXGroup;
 			children = (
-				930D68892AF2B9AB001976F0 /* MultipleChoicePrompt.swift */,
-				930D688B2AF2C12D001976F0 /* BoardAnswer.swift */,
+				930D688D2AF2DB82001976F0 /* MultipleChoicePrompt.swift */,
+				930D688F2AF2DB92001976F0 /* BoardAnswer.swift */,
 			);
 			path = MultipleChoice;
 			sourceTree = "<group>";
@@ -1429,7 +1428,6 @@
 				93E3D87A2AE4E95700E5391F /* SpeakPromptModel.swift in Sources */,
 				0B6E2F6C2ADC91E10001D320 /* PromptModel.swift in Sources */,
 				938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */,
-				930D688A2AF2B9AB001976F0 /* MultipleChoicePrompt.swift in Sources */,
 				0B6E2F782ADCA8990001D320 /* StoryContentViewModel.swift in Sources */,
 				0571CB362AE17A9E00CE0CC7 /* SpeakTheStory.swift in Sources */,
 				0B46D7232AF120BC002DE821 /* EpisodeModel.swift in Sources */,
@@ -1443,6 +1441,8 @@
 				05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */,
 				93C8E7212ADEF1DB002315A2 /* TimerModel.swift in Sources */,
 				05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */,
+				930D68902AF2DB92001976F0 /* BoardAnswer.swift in Sources */,
+				930D688E2AF2DB82001976F0 /* MultipleChoicePrompt.swift in Sources */,
 				05AE93632ADE82920082B21D /* LottieView.swift in Sources */,
 				935D786D2AEF4BD600DF64A5 /* ViewOnLoad.swift in Sources */,
 				93C8E7252ADEF2D3002315A2 /* TimerViewModel.swift in Sources */,
@@ -1454,7 +1454,6 @@
 				935D78552AEC09A000DF64A5 /* GlobalStorage.swift in Sources */,
 				05BA97AA2AE11EE400F64F52 /* MPVolumeViewExtension.swift in Sources */,
 				93676D242AF139A800E756A5 /* ProgressBar.swift in Sources */,
-				9328F9152AF16B6900E82995 /* Gesture.swift in Sources */,
 				05B8EDA02AEE65FE009ED2C5 /* MotionViewModel.swift in Sources */,
 				938E3D452ADAD5F3003D2AE1 /* StoryBook.swift in Sources */,
 				93CA8B7D2AF0107800651885 /* MazePromptModel.swift in Sources */,
@@ -1481,7 +1480,6 @@
 				938E3D522ADBAE62003D2AE1 /* SettingsView.swift in Sources */,
 				938E3D472ADB0AA5003D2AE1 /* Routes.swift in Sources */,
 				0B2E31E02AD810D400DFC16F /* EpisodeView.swift in Sources */,
-				930D688C2AF2C12D001976F0 /* BoardAnswer.swift in Sources */,
 				937AF28C2AE832A7008C69BB /* ARViewContainer.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
 				93676D2D2AF1475200E756A5 /* PointerViewModifier.swift in Sources */,
