@@ -39,7 +39,7 @@ struct MazeView: View {
             motionViewModel.startUpdates()
             TimerViewModel().setTimer(key: "startTimer", withInterval: 0.02) {
                 motionViewModel.updateMotion()
-                if orientationInfo.orientation == .landscapeLeft{
+                if orientationInfo.orientation == .landscapeLeft {
                     if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
                         if motionViewModel.rollNum > 0 {
                             scene.move(.up)
@@ -53,7 +53,7 @@ struct MazeView: View {
                             scene.move(.left)
                         }
                     }
-                } else if orientationInfo.orientation == .landscapeRight{
+                } else if orientationInfo.orientation == .landscapeRight {
                     if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
                         if motionViewModel.rollNum > 0 {
                             scene.move(.down)

@@ -28,6 +28,7 @@ struct MazeModel {
     var characterLocationPoint = LocationPoint()
     var correctPoint = LocationPoint()
     var startPoint = LocationPoint()
+    var exitPoints = [LocationPoint()]
 
     static var mapSize = MapSize(width: 21, height: 27)
 
@@ -51,10 +52,11 @@ struct MazeModel {
         arrayPoint = newMazeWithPlayerPos.0
         characterLocationPoint = newMazeWithPlayerPos.1
         correctPoint = newMazeWithPlayerPos.2
+        exitPoints = newMazeWithPlayerPos.3
         startPoint = characterLocationPoint
     }
 
-    private static func generateMaze(rows: Int, cols: Int) -> ([[Int]], LocationPoint, LocationPoint) {
+    private static func generateMaze(rows: Int, cols: Int) -> ([[Int]], LocationPoint, LocationPoint, [LocationPoint]) {
         var maze = Array(repeating: Array(repeating: 1, count: cols), count: rows)
 
         func isValid(_ xPos: Int, _ yPos: Int) -> Bool {
@@ -159,8 +161,8 @@ struct MazeModel {
         }
 
         var characterPos = generateInOutXPoint(yPos: rows - 1)
-
-        var correctPos = generateExitPoints().first!
+        var exitPoints = generateExitPoints()
+        var correctPos = exitPoints.first!
 
         while !canReachDestination(from: maze, startRow: characterPos.yPos, startCol: characterPos.xPos, destinationRow: correctPos.yPos, destinationCol: correctPos.xPos) {
             resetGenerateInOutPoint()
@@ -168,7 +170,7 @@ struct MazeModel {
             correctPos = generateExitPoints().first!
         }
 
-        return (maze, characterPos, correctPos)
+        return (maze, characterPos, correctPos, exitPoints)
     }
 
     private static func canReachDestination(from maze: [[Int]], startRow: Int, startCol: Int, destinationRow: Int, destinationCol: Int) -> Bool {

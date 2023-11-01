@@ -45,10 +45,10 @@ class MazeScene: SKScene, ObservableObject {
 
                 if mazeModel.arrayPoint[index][jIndex] == 0 {
                     ground.name = "0"
-                    ground.texture = SKTexture(imageNamed: "floor")
+                    ground.texture = SKTexture(imageNamed: "Maze/floor")
                 } else if mazeModel.arrayPoint[index][jIndex] == 1 {
                     ground.name = "1"
-                    ground.texture = SKTexture(imageNamed: "wall")
+                    ground.texture = SKTexture(imageNamed: "Maze/wall")
                 }
 
                 ground.position = CGPoint(x: xRenderPos, y: yRenderPos)
@@ -85,7 +85,7 @@ class MazeScene: SKScene, ObservableObject {
 
     func createPlayer() {
         moco = SKSpriteNode(
-            texture: SKTexture(imageNamed: "turtle"),
+            texture: SKTexture(imageNamed: "Maze/moco-head"),
             size: CGSize(
                 width: min(size.width, size.height) / CGFloat(mazeModel.arrayPoint.count),
                 height: min(size.width, size.height) / CGFloat(mazeModel.arrayPoint.count)
