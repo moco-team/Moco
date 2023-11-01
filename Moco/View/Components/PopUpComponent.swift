@@ -307,10 +307,9 @@ struct PopUpComponentViewOld: View {
     }
 }
 
-#Preview {
+struct PopUpPreview: View {
     @State var isActive: Bool = true
-
-    return
+    var body: some View {
         Button("Waduh") {
             isActive = true
             print(isActive)
@@ -319,4 +318,9 @@ struct PopUpComponentViewOld: View {
         } cancelHandler: {
             print("Cancel")
         }
+    }
+}
+
+#Preview {
+    PopUpPreview()
 }

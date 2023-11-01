@@ -95,6 +95,8 @@
 		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
 		9328F9132AF16B3A00E82995 /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9328F9122AF16B3A00E82995 /* Gesture.swift */; };
 		9328F9152AF16B6900E82995 /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9328F9142AF16B6900E82995 /* Gesture.swift */; };
+		9328F9172AF25C2200E82995 /* ModalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9328F9162AF25C2200E82995 /* ModalComponent.swift */; };
+		9328F9192AF25D8400E82995 /* ModalViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9328F9182AF25D8400E82995 /* ModalViewModifier.swift */; };
 		93324AA72AEA9FD400046CB8 /* MazeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93324AA62AEA9FD400046CB8 /* MazeModel.swift */; };
 		935D784B2AEBC7FE00DF64A5 /* CustomPersistentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */; };
 		935D784E2AEBF96800DF64A5 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 935D784D2AEBF96800DF64A5 /* FLAnimatedImage */; };
@@ -293,6 +295,8 @@
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
 		9328F9122AF16B3A00E82995 /* Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Gesture.swift; path = Moco/Model/Gesture.swift; sourceTree = "<group>"; };
 		9328F9142AF16B6900E82995 /* Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gesture.swift; sourceTree = "<group>"; };
+		9328F9162AF25C2200E82995 /* ModalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalComponent.swift; sourceTree = "<group>"; };
+		9328F9182AF25D8400E82995 /* ModalViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModifier.swift; sourceTree = "<group>"; };
 		93324AA62AEA9FD400046CB8 /* MazeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeModel.swift; sourceTree = "<group>"; };
 		935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPersistentModel.swift; sourceTree = "<group>"; };
 		935D784F2AEBF98400DF64A5 /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
@@ -750,6 +754,7 @@
 				935D785C2AED6D6600DF64A5 /* StoryBookNew.swift */,
 				93676D232AF139A800E756A5 /* ProgressBar.swift */,
 				93676D2A2AF1435200E756A5 /* Pointer.swift */,
+				9328F9162AF25C2200E82995 /* ModalComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -882,6 +887,7 @@
 				938C55352AE181C600BC233D /* RootViewModifier.swift */,
 				938C55372AE183AA00BC233D /* FontViewModifier.swift */,
 				93676D2C2AF1475200E756A5 /* PointerViewModifier.swift */,
+				9328F9182AF25D8400E82995 /* ModalViewModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -1304,6 +1310,7 @@
 				9398FBB52AE4105900AB5CE4 /* CircularProgressView.swift in Sources */,
 				932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */,
 				938E3D392AD939DC003D2AE1 /* Item.swift in Sources */,
+				9328F9192AF25D8400E82995 /* ModalViewModifier.swift in Sources */,
 				935D78572AEC2D7900DF64A5 /* SettingsViewModel.swift in Sources */,
 				05AE93582ADE74980082B21D /* SpeechRecognizerViewModel.swift in Sources */,
 				938E3D3D2AD9901B003D2AE1 /* PopUpComponent.swift in Sources */,
@@ -1421,6 +1428,7 @@
 				05E17AD52ADE86DE00A34547 /* FindTheObject.swift in Sources */,
 				0B6E2F762ADC9F020001D320 /* PromptViewModel.swift in Sources */,
 				938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */,
+				9328F9172AF25C2200E82995 /* ModalComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
