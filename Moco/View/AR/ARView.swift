@@ -7,28 +7,19 @@
 
 import SwiftUI
 
-// struct ARCameraView: View {
-//    var body: some View {
-//        VStack {
-//            #if !targetEnvironment(simulator)
-//                ARViewControllerContainer().edgesIgnoringSafeArea(.all)
-//            #endif
-//        }
-//    }
-// }
-
 struct ARCameraView: View {
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var arViewModel: ARViewModel
 
-    let objectToBeFound: String
+    let clue: ClueData
     var onFoundObject: () -> Void = {}
 
     @State var fadeInGameStartView = false
+    @State var isShowHint = false
 
     var body: some View {
         ZStack {
-            ARViewContainer().edgesIgnoringSafeArea(.all)
+            ARViewContainer(isShowHint: $isShowHint, meshes: clue.meshes ?? nil).edgesIgnoringSafeArea(.all)
 
             // Overlay above the camera
             VStack {
@@ -46,16 +37,19 @@ struct ARCameraView: View {
 
                 HStack {
                     Spacer()
-                    Button {
-                        print("Hint!")
-                    } label: {
-                        Image(systemName: "lightbulb.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .padding(15)
+                    if clue.meshes != nil {
+                        Button {
+                            print("Hint!")
+                            isShowHint = true
+                        } label: {
+                            Image(systemName: "lightbulb.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .padding(15)
+                        }
+                        .buttonStyle(CircleButton(width: 80, height: 80))
+                        .padding(50)
                     }
-                    .buttonStyle(CircleButton(width: 80, height: 80))
-                    .padding(50)
                 }
             }
             .ignoresSafeArea()
@@ -89,7 +83,7 @@ struct ARCameraView: View {
             onFoundObject()
         }
         .task {
-            arViewModel.setSearchedObject(objectName: objectToBeFound)
+            arViewModel.setSearchedObject(objectName: clue.objectName)
         }
         .onAppear {
             withAnimation(Animation.easeIn(duration: 1.5)) {
@@ -101,5 +95,5 @@ struct ARCameraView: View {
 }
 
 #Preview {
-    ARCameraView(objectToBeFound: "environment", onFoundObject: {})
+    ARCameraView(clue: ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "button", meshes: ["Mesh_button_cylinder", "Mesh_button_cube"]), onFoundObject: {})
 }

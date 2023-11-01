@@ -1,5 +1,5 @@
 //
-//  ARViewControllerContainer.swift
+//  ARViewContainer.swift
 //  Moco
 //
 //  Created by Aaron Christopher Tanhar on 25/10/23.
@@ -15,6 +15,9 @@ protocol BottomSheetDelegate {
 
 struct ARViewContainer: UIViewRepresentable {
     @EnvironmentObject var viewModel: ARViewModel
+    
+    @Binding var isShowHint: Bool
+    let meshes: [String]?
 
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
@@ -25,8 +28,7 @@ struct ARViewContainer: UIViewRepresentable {
 
         // Capture taps into the ARView
         context.coordinator.arView = arView
-        let tapRecognizer = UITapGestureRecognizer(target: context.coordinator,
-                                                   action: #selector(Coordinator.viewTapped(_:)))
+        let tapRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.viewTapped(_:)))
         tapRecognizer.name = "ARView Tap"
         arView.addGestureRecognizer(tapRecognizer)
 
@@ -36,14 +38,35 @@ struct ARViewContainer: UIViewRepresentable {
         return arView
     }
 
-    func updateUIView(_: ARView, context _: Context) {}
+    func updateUIView(_: ARView, context: Context) {
+        if isShowHint {
+            if meshes != nil {
+                print("Hint showed!")
+                context.coordinator.showHint()
+            } else {
+                print("There are no meshes to be clued!")
+            }
+            
+        } else {
+            print("Hint not showed!")
+        }
+    }
+    
+    func makeCoordinator() -> ARViewContainer.Coordinator {
+        return Coordinator(parent: self, isShowHint: $isShowHint, meshes: meshes)
+    }
 
     class Coordinator: NSObject {
         weak var arView: ARView?
+        
         let parent: ARViewContainer
+        @Binding var isShowHint: Bool
+        let meshes: [String]?
 
-        init(parent: ARViewContainer) {
+        init(parent: ARViewContainer, isShowHint: Binding<Bool>, meshes: [String]?) {
             self.parent = parent
+            self._isShowHint = isShowHint
+            self.meshes = meshes ?? nil
         }
 
         private var tappedEntities: [Entity]?
@@ -111,42 +134,44 @@ struct ARViewContainer: UIViewRepresentable {
                 }
             }
         }
-    }
-
-    func makeCoordinator() -> ARViewContainer.Coordinator {
-        return Coordinator(parent: self)
-    }
-}
-
-struct ARViewControllerContainer: UIViewControllerRepresentable {
-    typealias UIViewControllerType = ARViewController
-
-    @State private var timer: Timer?
-
-    func makeUIViewController(context _: Context) -> ARViewController {
-        let viewController = ARViewController()
-        return viewController
-    }
-
-    func updateUIViewController(_: ARViewController, context _: Context) {
-        // Updates the state of the specified view controller with new information from SwiftUI.
-    }
-
-    func makeCoordinator() -> ARViewControllerContainer.Coordinator {
-        return Coordinator(self)
-    }
-}
-
-extension ARViewControllerContainer {
-    class Coordinator: NSObject, ObservableObject, BottomSheetDelegate {
-        func dismissBottomSheet() {
-            // TODO: Ignore this
+        
+        func showHint() {
+            var meshesToBeFound: [Entity] = []
+            
+            if meshes != nil {
+                if let environmentEntity = arView?.scene.findEntity(named: "environment") {
+                    if let firstChild = environmentEntity.children.first {
+                        for meshName in meshes! {
+                            if let meshEntity = firstChild.findEntity(named: meshName) {
+                                meshesToBeFound.append(meshEntity)
+                                updateEntityColor(entity: meshEntity)
+                            }
+                        }
+                    }
+                }
+            }
+            
+            print("meshes to be found")
+            print(meshesToBeFound)
         }
-
-        var parent: ARViewControllerContainer
-
-        init(_ parent: ARViewControllerContainer) {
-            self.parent = parent
+        
+        func updateEntityColor(entity: Entity) {
+            guard
+                var modelComponent = entity.components[ModelComponent.self] as? ModelComponent,
+                let existingMaterial = modelComponent.materials.first
+            else { return }
+            
+            // Change the color
+            var material = SimpleMaterial()
+            material.color = .init(tint: .yellow)
+            
+            modelComponent.materials = [material]
+            entity.components.set(modelComponent)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                modelComponent.materials = [existingMaterial]
+                entity.components.set(modelComponent)
+            }
         }
     }
 }

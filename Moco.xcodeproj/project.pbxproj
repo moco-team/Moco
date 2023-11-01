@@ -119,8 +119,7 @@
 		937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2852AE80BFA008C69BB /* RippleView.swift */; };
 		937AF2882AE81983008C69BB /* RippleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2872AE81983008C69BB /* RippleModel.swift */; };
 		937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2892AE81A26008C69BB /* RippleViewModel.swift */; };
-		937AF28C2AE832A7008C69BB /* ARViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF28B2AE832A7008C69BB /* ARViewControllerContainer.swift */; };
-		937AF28F2AE832FC008C69BB /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF28E2AE832FC008C69BB /* ARViewController.swift */; };
+		937AF28C2AE832A7008C69BB /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF28B2AE832A7008C69BB /* ARViewContainer.swift */; };
 		937AF2912AE83794008C69BB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2902AE83794008C69BB /* Date.swift */; };
 		937AF2932AE838D0008C69BB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2922AE838D0008C69BB /* Dictionary.swift */; };
 		937AF2952AE8C06C008C69BB /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2942AE8C06C008C69BB /* ARView.swift */; };
@@ -314,8 +313,7 @@
 		937AF2852AE80BFA008C69BB /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
 		937AF2872AE81983008C69BB /* RippleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleModel.swift; sourceTree = "<group>"; };
 		937AF2892AE81A26008C69BB /* RippleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleViewModel.swift; sourceTree = "<group>"; };
-		937AF28B2AE832A7008C69BB /* ARViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewControllerContainer.swift; sourceTree = "<group>"; };
-		937AF28E2AE832FC008C69BB /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		937AF28B2AE832A7008C69BB /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		937AF2902AE83794008C69BB /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		937AF2922AE838D0008C69BB /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		937AF2942AE8C06C008C69BB /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
@@ -849,8 +847,7 @@
 		937AF28D2AE832AF008C69BB /* AR */ = {
 			isa = PBXGroup;
 			children = (
-				937AF28B2AE832A7008C69BB /* ARViewControllerContainer.swift */,
-				937AF28E2AE832FC008C69BB /* ARViewController.swift */,
+				937AF28B2AE832A7008C69BB /* ARViewContainer.swift */,
 				937AF2942AE8C06C008C69BB /* ARView.swift */,
 				937AF2992AE8D422008C69BB /* EnvironmentEntity.swift */,
 				937AF29B2AE8D47E008C69BB /* ResourceLoader.swift */,
@@ -1389,9 +1386,8 @@
 				937AF29A2AE8D422008C69BB /* EnvironmentEntity.swift in Sources */,
 				938E3D522ADBAE62003D2AE1 /* SettingsView.swift in Sources */,
 				938E3D472ADB0AA5003D2AE1 /* Routes.swift in Sources */,
-				937AF28F2AE832FC008C69BB /* ARViewController.swift in Sources */,
 				0B2E31E02AD810D400DFC16F /* EpisodeView.swift in Sources */,
-				937AF28C2AE832A7008C69BB /* ARViewControllerContainer.swift in Sources */,
+				937AF28C2AE832A7008C69BB /* ARViewContainer.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
 				93676D2D2AF1475200E756A5 /* PointerViewModifier.swift in Sources */,
 				937AF2A22AE930AF008C69BB /* MazeScene.swift in Sources */,
