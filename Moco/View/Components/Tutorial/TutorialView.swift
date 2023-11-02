@@ -37,9 +37,8 @@ struct TutorialView: View {
                     })
                 })
 
-//                AppJosefineSans(text: "Gesture Permainan", josepSize: fontType.title2, fontWeight: Font.Weight.bold, fontColor: Color.primary, textAligment: TextAlignment.center)
                 AppJosefineSans(text: "Gesture Permainan", size: .title2, fontWeight: Font.Weight.bold, fontColor: Color.primary, textAligment: TextAlignment.center)
-//                    .padding()
+                    .padding()
 
                 TutorialCarouselView(tabs: $tabs, currentIndex: $currentIndex)
             }

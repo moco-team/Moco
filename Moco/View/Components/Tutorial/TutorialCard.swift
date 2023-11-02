@@ -18,8 +18,8 @@ struct TutorialCard<Content: View>: View {
     var content: () -> Content?
 
     init(
-        width: CGFloat = 300,
-        height: CGFloat = 300,
+        width: CGFloat = Screen.width * 0.5,
+        height: CGFloat = Screen.height * 0.5,
         cornerRadius: CGFloat = 20,
         backgroundColorTop: Color = Color.clear,
         backgroundColorBottom: Color = Color.clear,

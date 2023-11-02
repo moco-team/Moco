@@ -174,16 +174,16 @@ struct EpisodeView: View {
 
                 HStack {
                     HStack(spacing: 40) {
-                        Image(systemName: "chevron.backward")
+                        Image("Buttons/button-home")
                             .resizable()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 70, height: 70)
                             .shadow(radius: 4, x: -2, y: 2)
                             .foregroundColor(.white)
                             .onTapGesture {
                                 navigate.pop()
                             }
 
-                        Text("Pilih Episode")
+                        Text("Chapters")
                             .customFont(.cherryBomb, size: 50)
                             .foregroundColor(Color.blueTxt)
                             .fontWeight(.bold)
@@ -204,7 +204,7 @@ struct EpisodeView: View {
                                 if index == 0 {
                                     navigate.append(.story("kol", storyBackgroundsOne, narrativesOne, lottieAnimationsOne, promptsOne, bgSoundsOne))
                                 } else if index == 1 {
-                                    navigate.append(.story("kol", storyBackgroundsTwo, narrativesTwo, lottieAnimationsTwo, promptsTwo, bgSoundsTwo, promptsTwo[0]))
+                                    navigate.append(.arStory)
                                 } else if index == 2 {
                                     navigate.append(.story("kol", storyBackgroundsThree, narrativesThree, lottieAnimationsThree, promptsThree, bgSoundsThree))
                                 }

@@ -96,7 +96,7 @@ struct HomeView: View {
                 homeViewModel.setVolume()
             }
             if showAr {
-                ARCameraView(clue: clueData).ignoresSafeArea()
+                ARCameraView(clue: clueData, lastPrompt: false).ignoresSafeArea()
             }
             if showMaze {
                 MazePrompt().ignoresSafeArea()

@@ -18,7 +18,9 @@ struct TutorialGestureView: View {
             .frame(width: 200, height: 200)
             .padding(.horizontal)
             .padding(.top, -75)
-            .frame(width: 280, alignment: .center)
+            .padding(.bottom, 20)
+//            .frame(width: 280, alignment: .center)
+        
         descriptionView
             .padding(.top, -30)
     }
