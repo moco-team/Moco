@@ -95,12 +95,6 @@ struct HomeView: View {
                 homeViewModel.soundLevel = 0.3
                 homeViewModel.setVolume()
             }
-            if showAr {
-                ARCameraView(clue: clueData, lastPrompt: false).ignoresSafeArea()
-            }
-            if showMaze {
-                MazePrompt().ignoresSafeArea()
-            }
             if startARStory {
                 ARStory(doneHandler: {
                     startARStory.toggle()
