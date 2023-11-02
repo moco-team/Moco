@@ -162,6 +162,8 @@ struct StoryView: View {
 
     var bgSounds: [String] = []
 
+    var enableUI = true
+
     var firstPrompt: Prompt?
 
     var multipleChoiceQnA: [MultipleChoicePromptQnA?] = [
