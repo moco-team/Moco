@@ -20,7 +20,7 @@ struct HomeView: View {
     @State private var showAr = false
     @State private var showMaze = false
     @State private var startARStory = false
-
+    
     let clueData = ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "button", meshes: ["Mesh_button_cylinder", "Mesh_button_cube"])
     
     var body: some View {
@@ -54,7 +54,7 @@ struct HomeView: View {
                 Button("Maze") {
                     showMaze = true
                 }
-
+                
                 Spacer()
                 
                 HStack {

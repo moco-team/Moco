@@ -16,7 +16,7 @@ struct EpisodeView: View {
     @Environment(\.promptViewModel) private var promptViewModel
     @Environment(\.hintViewModel) private var hintViewModel
     @Environment(\.navigate) private var navigate
-
+    
     var body: some View {
         ZStack {
             VStack {
