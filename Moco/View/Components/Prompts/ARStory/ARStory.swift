@@ -30,36 +30,41 @@ struct ARStory: View {
     ]
 
     var body: some View {
-        if promptIndex < (clueDataArray.count - 1) {
-            if startVisibility {
-                ARClueView(clue: clueDataArray[promptIndex].clue, onStartGame: {
-                    isGameStarted = true
-                    audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1, category: .backsound)
-                })
+        ZStack {
+            if isGameStarted {
+                ARCameraView(
+                    clue: clueDataArray[promptIndex],
+                    lastPrompt: promptIndex == (clueDataArray.count - 1),
+                    onFoundObject: {
+                        // isGameStarted = false // turn of the arcameraview first, so it can generate new instance for the next prompt
+
+                        print("Ditemukan!")
+                        print("promptIndex")
+                        print(promptIndex) // 2
+                        if promptIndex < clueDataArray.count {
+                            promptIndex += 1
+                        }
+                        if promptIndex >= clueDataArray.count {
+                            doneHandler!()
+                        }
+                    }
+                ) {
+                    navigate.popToRoot()
+                }
+                .id(promptIndex)
                 .ignoresSafeArea()
             }
-        }
-        if isGameStarted {
-            ARCameraView(
-                clue: clueDataArray[promptIndex],
-                lastPrompt: promptIndex == (clueDataArray.count - 1),
-                onFoundObject: {
-                    isGameStarted = false // turn of the arcameraview first, so it can generate new instance for the next prompt
-
-                    print("Ditemukan!")
-                    promptIndex += 1
-                    print("promptIndex")
-                    print(promptIndex) // 2
-                    if promptIndex < clueDataArray.count {
-                        print("asu")
+            if promptIndex < (clueDataArray.count - 1) {
+                if startVisibility {
+                    ARClueView(clue: clueDataArray[promptIndex].clue, onStartGame: {
                         isGameStarted = true
-                    }
-                    if promptIndex >= clueDataArray.count {
-                        doneHandler!()
-                    }
+                        startVisibility = false
+                        audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1, category: .backsound)
+                    })
+                    .ignoresSafeArea()
+                    .frame(width: Screen.width, height: Screen.height)
                 }
-            )
-            .ignoresSafeArea()
+            }
         }
     }
 }

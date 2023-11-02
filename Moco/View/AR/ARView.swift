@@ -14,6 +14,7 @@ struct ARCameraView: View {
     let clue: ClueData
     let lastPrompt: Bool
     var onFoundObject: () -> Void = {}
+    var onEnd: () -> Void = {}
 
     @State var fadeInStartAR = false
     @State var fadeInHintButton = false
@@ -43,7 +44,7 @@ struct ARCameraView: View {
 
                 HStack {
                     Spacer()
-                    if clue.meshes != nil && arViewModel.hasPlacedObject != false {
+                    if clue.meshes != nil && arViewModel.hasPlacedObject {
                         Button {
                             print("Hint!")
                             isShowHint = true
@@ -99,6 +100,7 @@ struct ARCameraView: View {
         .popUp(isActive: $isLastNarrativePopupActive, title: "Akhirnya, Moco dan teman-teman berhasil pulang ke Kota Mocokerto setelah petualangan yang panjang. Terima kasih untuk hari ini!") {
             isLastNarrativePopupActive = false
             isEndTheStoryPopupActive = true
+            onEnd()
         }
         .popUp(
             isActive: $isEndTheStoryPopupActive,

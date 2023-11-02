@@ -205,7 +205,7 @@ struct StoryView: View {
     ]
 
     let mazeAnswers: [MazePuzzle] = [
-        .init(correctAnswerAsset: "Maze/answer_three", answersAsset: ["Maze/answer_two", "Maze/answer_one"], question:
+        .init(correctAnswerAsset: "Maze/answer_two", answersAsset: ["Maze/answer_three", "Maze/answer_one"], question:
             """
             “Berapakah jumlah teman yang sedang Moco cari di dalam terowongan?”
             A.) 1
