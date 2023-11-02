@@ -20,7 +20,7 @@ struct ProfileView: View {
                 .onTapGesture {
                     navigate.pop()
                 }
-            
+
             Button("Profile View") {
                 navigate.pop(2)
             }

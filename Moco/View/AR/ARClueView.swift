@@ -11,10 +11,10 @@ struct ARClueView: View {
     @State var fadeInGameStartView = false
     @State private var tutorialVisibility: Bool = false
     @State private var isButtonVisible = false
-    
-    @State var tabs: [Gesture] =  gestureList
+
+    @State var tabs: [Gesture] = gestureList
     @State var currentIndex: Int = 0
-    
+
     @State var fadeInTutorialView = false
 
     var clue: String
@@ -25,7 +25,7 @@ struct ARClueView: View {
         ZStack {
             VStack {
                 Spacer()
-                
+
                 Text(clue)
                     .customFont(.cherryBomb, size: 30)
                     .foregroundColor(.blue2Txt)
@@ -35,18 +35,18 @@ struct ARClueView: View {
                     .padding(.horizontal, 80)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
-            
+
                 TutorialView(tabs: $tabs, currentIndex: $currentIndex, onClose: {
                     tutorialVisibility = false
                 })
-                .onAppear() {
+                .onAppear {
                     withAnimation(.easeIn(duration: 0.6)) {
                         fadeInTutorialView.toggle()
                     }
                 }.opacity(fadeInTutorialView ? 1 : 0)
-                
+
                 Spacer()
-                
+
                 if isButtonVisible {
                     Button {
                         onStartGame()
@@ -63,18 +63,16 @@ struct ARClueView: View {
                     )
                     .transition(.opacity)
                     .padding(.bottom, 20)
-                
                 }
                 Spacer()
             }
-            
         }
         .background(Image("Story/Content/Story1/Ep3/background"))
         .onAppear {
             withAnimation(Animation.easeIn(duration: 1.5)) {
                 fadeInGameStartView.toggle()
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4  ) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                 withAnimation {
                     isButtonVisible = true
                 }

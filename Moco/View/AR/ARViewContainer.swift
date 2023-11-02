@@ -122,16 +122,16 @@ struct ARViewContainer: UIViewRepresentable {
 
                             print("Removed entity with name: " + entity.name)
                             self.parent.viewModel.hasFindObject = true
-                            
+
                             print("isfinalclue")
                             print(self.parent.viewModel.isFinalClue)
                         }
-                        
+
                         // TODO: Set to false only for the last clue
 //                        if self.parent.viewModel.isFinalClue {
-                            parent.viewModel.hasPlacedObject = false
-                            print("set to false")
-                            print(self.parent.viewModel.hasPlacedObject)
+                        parent.viewModel.hasPlacedObject = false
+                        print("set to false")
+                        print(parent.viewModel.hasPlacedObject)
 //                        }
                     }
                 } else {

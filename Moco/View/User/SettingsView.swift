@@ -22,7 +22,7 @@ struct SettingsView: View {
                 .onTapGesture {
                     navigate.pop()
                 }
-            
+
             Text("Backsound")
             HStack {
                 Image(systemName: "speaker.fill")

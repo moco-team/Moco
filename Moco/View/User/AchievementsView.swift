@@ -20,7 +20,7 @@ struct AchievementsView: View {
                 .onTapGesture {
                     navigate.pop()
                 }
-            
+
             Button("Achievements View") {
                 navigate.pop(2)
             }

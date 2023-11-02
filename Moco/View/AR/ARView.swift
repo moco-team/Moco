@@ -65,7 +65,8 @@ struct ARCameraView: View {
                         .onAppear {
                             withAnimation(Animation.easeIn(duration: 1.5)) {
                                 fadeInHintButton.toggle()
-                            }                        }
+                            }
+                        }
                         .opacity(fadeInHintButton ? 1 : 0)
                     }
                 }
@@ -89,7 +90,7 @@ struct ARCameraView: View {
             print("next")
             print(lastPrompt)
             onFoundObject()
-            isPopUpActive = false   
+            isPopUpActive = false
         }
         .popUp(isActive: $isFinalPopUpActive, title: "Selamat! Kamu berhasil menemukan semua benda nya!") {
             isFinalPopUpActive = false
@@ -122,7 +123,7 @@ struct ARCameraView: View {
         .onChange(of: arViewModel.hasFindObject) {
             print("Object found!")
             arViewModel.hasFindObject = false // Set back to default value, so the AR can works if user open the AR view again
-            
+
             if lastPrompt {
                 isFinalPopUpActive = true
             } else {

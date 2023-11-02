@@ -119,8 +119,8 @@ struct PopUpComponentView: View {
                                 .padding(.horizontal, 70)
                                 .multilineTextAlignment(.center)
                                 .fixedSize(horizontal: false, vertical: true)
-                            
-                            if (text != "") {
+
+                            if text != "" {
                                 Text(text ?? "")
                                     .foregroundColor(textColor)
                                     .font(.footnote)
@@ -128,7 +128,7 @@ struct PopUpComponentView: View {
                                     .padding(.horizontal, 70)
                                     .multilineTextAlignment(.center)
                             }
-                            
+
                             Grid(horizontalSpacing: 20) {
                                 GridRow {
                                     if cancelText != nil {

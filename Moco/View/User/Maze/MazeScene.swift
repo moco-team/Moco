@@ -16,7 +16,7 @@ class MazeScene: SKScene, ObservableObject {
 
     var touched: Bool = false
     var score: Int = 0
-    
+
     var wrongAnswerAsset = ["Maze/answer_one", "Maze/answer_two"]
     var correctAnswerAsset = "Maze/answer_three"
 
@@ -68,7 +68,7 @@ class MazeScene: SKScene, ObservableObject {
     }
 
     func move(_ direction: MoveDirection) {
-        guard !moco.actionForKeyIsRunning(key: "moving") else { return }
+        guard moco != nil && !moco.actionForKeyIsRunning(key: "moving") else { return }
         guard mazeModel.move(direction) else { return }
 
         let position =
@@ -141,6 +141,12 @@ class MazeScene: SKScene, ObservableObject {
         obj03.position =
             mazeModel.points[mazeModel.exitPoints[2].yPos][mazeModel.exitPoints[2].xPos]
         addChild(obj03)
+    }
+
+    func reloadObjectiveTexture() {
+        obj01?.texture = SKTexture(imageNamed: correctAnswerAsset)
+        obj02?.texture = SKTexture(imageNamed: wrongAnswerAsset[0])
+        obj03?.texture = SKTexture(imageNamed: wrongAnswerAsset[1])
     }
 
     // MARK: - Not used

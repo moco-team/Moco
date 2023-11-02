@@ -60,7 +60,7 @@ var gestureDescriptionViewList = [
                 )
             )
             .padding(50)
-            
+
             AnyView(Text("Tombol Hint")
                 .font(.body)
                 .fontWeight(Font.Weight.regular)

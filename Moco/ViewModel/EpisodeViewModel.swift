@@ -10,7 +10,7 @@ import SwiftData
 
 @Observable class EpisodeViewModel: BaseViewModel {
     //    var episodes = [EpisodeModel]()
-    var episodeActive: [Int] = [1]
+    var episodeActive: [Int] = [1, 1]
 
     func appendEpisodeActive(_ indexEpisode: Int) {
         if episodeActive.count < 3 {

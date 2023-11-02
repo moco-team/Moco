@@ -71,6 +71,7 @@ struct StoryView: View {
     @State private var isReversePeel = false
     @State private var showWrongAnsPopup = false
     @State private var mazeQuestionIndex = 0
+    @State private var forceShowNext = false
 
     // MARK: - Variables
 
@@ -161,7 +162,7 @@ struct StoryView: View {
 
     var bgSounds: [String] = []
 
-    var firstPrompt: Prompt? = nil
+    var firstPrompt: Prompt?
 
     var multipleChoiceQnA: [MultipleChoicePromptQnA?] = [
         .init(
@@ -204,30 +205,27 @@ struct StoryView: View {
     ]
 
     let mazeAnswers: [MazePuzzle] = [
-        .init(correctAnswerAsset: "Maze/answer_one", answersAsset: ["Maze/answer_two", "Maze/answer_three"], question: 
-"""
-“Berapakah jumlah teman yang sedang Moco cari di dalam terowongan?”
- A.) 1
- B.) 2
- C.) 3
-"""
-             ),
-        .init(correctAnswerAsset: "Maze/answer_one", answersAsset: ["Maze/answer_two", "Maze/answer_three"], question:
-"""
-“Benda apakah yang digunakan oleh Teka dan Teki?”
- A.) Tongkat
- B.) Tas Ransel
- C.) Kacamata Hitam
-"""
-             ),
-        .init(correctAnswerAsset: "Maze/answer_one", answersAsset: ["Maze/answer_two", "Maze/answer_three"], question:
-"""
-“Hewan apakah yang sedang Moco cari di dalam terowongan?”
- A.) Tikus
- B.) Sapi
- C.) Katak
-"""
-             )
+        .init(correctAnswerAsset: "Maze/answer_three", answersAsset: ["Maze/answer_two", "Maze/answer_one"], question:
+            """
+            “Berapakah jumlah teman yang sedang Moco cari di dalam terowongan?”
+            A.) 1
+            B.) 2
+            C.) 3
+            """),
+        .init(correctAnswerAsset: "Maze/answer_glass", answersAsset: ["Maze/answer_hammer", "Maze/answer_backpack"], question:
+            """
+            “Benda apakah yang digunakan oleh Teka dan Teki?”
+            A.) Tongkat
+            B.) Tas Ransel
+            C.) Kacamata Hitam
+            """),
+        .init(correctAnswerAsset: "Maze/answer_mice", answersAsset: ["Maze/answer_sapi_jantan", "Maze/answer_frog"], question:
+            """
+            “Hewan apakah yang sedang Moco cari di dalam terowongan?”
+            A.) Tikus
+            B.) Sapi
+            C.) Katak
+            """)
     ]
 
     // MARK: - Functions
@@ -363,8 +361,9 @@ struct StoryView: View {
                                                 mazeQuestionIndex += 1
                                             } else {
                                                 activePrompt = nil
+                                                forceShowNext = true
                                             }
-                                        }
+                                        }.id(mazeQuestionIndex)
                                     case .puzzle:
                                         FindTheObjectView(
                                             isPromptDone: .constant(false),
@@ -447,8 +446,8 @@ struct StoryView: View {
                         }
                     }
                     Spacer()
-                    if prompts.indices.contains(scrollPosition ?? -1) &&
-                        prompts[scrollPosition!] == nil {
+                    if (prompts.indices.contains(scrollPosition ?? -1) &&
+                        prompts[scrollPosition!] == nil) || forceShowNext {
                         StoryNavigationButton(direction: .right) {
                             nextPage()
                         }

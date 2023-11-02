@@ -113,7 +113,7 @@ struct ModalComponentView: View {
                                 .padding(.top, 10)
                                 .padding(.bottom, 20)
                                 .fixedSize(horizontal: false, vertical: true)
-                            
+
                             if text != "" {
                                 Text(text ?? "")
                                     .foregroundColor(textColor)
@@ -122,7 +122,7 @@ struct ModalComponentView: View {
                                     .padding(.horizontal, 70)
                                     .multilineTextAlignment(.center)
                             }
-                            
+
                             Grid(horizontalSpacing: 20) {
                                 GridRow {
                                     Button(confirmText) {
