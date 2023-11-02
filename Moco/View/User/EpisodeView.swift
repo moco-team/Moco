@@ -204,7 +204,7 @@ struct EpisodeView: View {
                                 if index == 0 {
                                     navigate.append(.story("kol", storyBackgroundsOne, narrativesOne, lottieAnimationsOne, promptsOne, bgSoundsOne))
                                 } else if index == 1 {
-                                    navigate.append(.story("kol", storyBackgroundsTwo, narrativesTwo, lottieAnimationsTwo, promptsTwo, bgSoundsTwo, promptsTwo[0]))
+                                    navigate.append(.arStory)
                                 } else if index == 2 {
                                     navigate.append(.story("kol", storyBackgroundsThree, narrativesThree, lottieAnimationsThree, promptsThree, bgSoundsThree))
                                 }

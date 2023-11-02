@@ -22,6 +22,7 @@ final class ARViewModel: NSObject, ObservableObject {
     @Published var hasPlacedObject: Bool = false
     @Published var hasFindObject: Bool = false
     @Published var foundObjectName: String?
+    @Published var isFinalClue: Bool = false
 
     func resume() {
         if !assetsLoaded && loadCancellable == nil {

@@ -28,14 +28,14 @@ var gestureDescriptionViewList = [
     ),
     AnyView(
         VStack {
-            AnyView(Text("Tekan")
+            AnyView(Text("Tap")
                 .font(.body)
                 .fontWeight(Font.Weight.regular)
                 .foregroundColor(Color.text.primary)
                 +
                 Text(" ")
                 +
-                Text("yang lama jika menemukan petunjuk")
+                Text("jika menemukan benda yang dicari")
                 .font(.body)
                 .fontWeight(Font.Weight.regular)
                 .foregroundColor(Color.text.primary))
