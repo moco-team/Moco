@@ -18,9 +18,9 @@ struct MultipleChoicePromptQnA {
 }
 
 struct MultipleChoicePrompt: View {
-    var correctAnswerIndex = 0
-    var answers = ["", "", ""]
-    var question = """
+    var correctAnswerIndex: String = "0"
+    var answers: [String] = ["", "", ""]
+    var question: String = """
     Siapakah nama seekor anak sapi yang lucu?
     A.) Moco
     B.) Bebe
@@ -42,7 +42,7 @@ struct MultipleChoicePrompt: View {
             .overlay {
                 Text(question).customFont(.didactGothic, size: 20).position(CGPoint(x: 0.5 * Screen.width, y: 0.12 * Screen.height))
                 BoardAnswer(label: "A", position: CGPoint(x: 0.21 * Screen.width, y: 0.5 * Screen.height)) {
-                    if correctAnswerIndex == 0 {
+                    if correctAnswerIndex == "0" {
                         onCorrect()
                     } else {
                         onWrong()
@@ -50,7 +50,7 @@ struct MultipleChoicePrompt: View {
                 }
 
                 BoardAnswer(label: "B", position: CGPoint(x: 0.5 * Screen.width, y: 0.62 * Screen.height)) {
-                    if correctAnswerIndex == 1 {
+                    if correctAnswerIndex == "1" {
                         onCorrect()
                     } else {
                         onWrong()
@@ -58,7 +58,7 @@ struct MultipleChoicePrompt: View {
                 }
 
                 BoardAnswer(label: "C", position: CGPoint(x: 0.79 * Screen.width, y: 0.5 * Screen.height)) {
-                    if correctAnswerIndex == 2 {
+                    if correctAnswerIndex == "2" {
                         onCorrect()
                     } else {
                         onWrong()

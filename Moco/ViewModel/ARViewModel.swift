@@ -92,8 +92,7 @@ final class ARViewModel: NSObject, ObservableObject {
                 // Installing gestures for the parentEntity
                 view.installGestures(for: parentEntity)
 
-                anchors[anchor.identifier] = anchorEntity
-                print(parentEntity)
+                anchors[anchor.identifier] = anchorEntity 
 
                 return environment
             }

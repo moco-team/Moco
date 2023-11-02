@@ -9,16 +9,16 @@ import SwiftUI
 
 struct FindTheObjectView: View {
     @Environment(\.navigate) private var navigate
-
+    
     @Binding var isPromptDone: Bool
-
+    
     let content: String
-    let hints: [String]
+    let hints: [HintModel]
     let correctAnswer: String
     @State var balloons: [Balloon]
-
+    
     let maxTry = 3
-
+    
     @State private var correctTryCount = 0
     @State private var falseTryCount = 0
     @State private var isTried = false
@@ -26,11 +26,11 @@ struct FindTheObjectView: View {
     @State private var isCorrectBalloonTapped = false
     @State private var isAnimating = false
     @State private var isFinalPopUp = false
-
+    
     @State private var showTheBalloons = true
-
+    
     var doneHandler: (() -> Void)?
-
+    
     var body: some View {
         VStack {
             if showTheBalloons {
@@ -80,7 +80,7 @@ struct FindTheObjectView: View {
     FindTheObjectView(
         isPromptDone: .constant(false),
         content: "Once upon a time...",
-        hints: ["Coba lagi!", "Ayo coba lagi!"],
+        hints: [HintModel(hint: "Coba lagi!"), HintModel(hint: "Ayo coba lagi!")],
         correctAnswer: "Jawaban yang benar adalah balon berwarna Merah",
         balloons: [
             Balloon(color: "orange", isCorrect: false),

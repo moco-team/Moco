@@ -9,7 +9,9 @@ import Foundation
 import SwiftData
 
 @Observable class StoryThemeViewModel: BaseViewModel {
-    var storyThemes = [StoryThemeModel]()
+    static var shared = StoryThemeViewModel()
+    
+    var storyThemes: [StoryThemeModel]?
     var selectedStoryTheme: StoryThemeModel?
 
     init(modelContext: ModelContext? = nil) {
@@ -27,33 +29,27 @@ import SwiftData
         storyThemes = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
     }
 
-    func createStoryTheme(stories: [StoryModel], pictureName: String, descriptionTheme: String) {
-        let newStoryTheme = StoryThemeModel(pictureName: pictureName, descriptionTheme: descriptionTheme)
-        newStoryTheme.stories = stories
-
-        modelContext?.insert(newStoryTheme)
-        try? modelContext?.save()
-
+    func setSelectedStoryTheme(_ storyTheme: StoryThemeModel) {
+        selectedStoryTheme = storyTheme
+    }
+    
+    func deleteAllStoryThemes() {
+        
+        for storyTheme in storyThemes ?? [] {
+            modelContext?.delete(storyTheme)
+            try? modelContext?.save()
+        }
         fetchStoryThemes()
     }
-
-    func deleteStoryTheme(storyTheme: StoryThemeModel) {
-        modelContext?.delete(storyTheme)
-        try? modelContext?.save()
-
-        fetchStoryThemes()
-    }
-
-    func deleteStoryTheme(_ index: Int) {
-        guard storyThemes.indices.contains(index) else { return }
-        modelContext?.delete(storyThemes[index])
-        try? modelContext?.save()
-
-        fetchStoryThemes()
-    }
-
-    func setSelectedStoryTheme(_ index: Int) {
-        guard storyThemes.indices.contains(index) else { return }
-        selectedStoryTheme = storyThemes[index]
+    
+    func findWithID(_ uid: String) -> StoryThemeModel? {
+        
+        for storyTheme in storyThemes ?? [] {
+            if storyTheme.uid == storyTheme.uid {
+                return storyTheme
+            }
+        }
+        
+        return nil
     }
 }

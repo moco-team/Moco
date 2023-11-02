@@ -7,53 +7,44 @@
 
 import Foundation
 import SwiftData
+import SwiftUI
 
 @Observable class StoryContentViewModel: BaseViewModel {
-    var storyContents = [StoryContentModel]()
-
+    static var shared = StoryContentViewModel()
+    
+    var narratives: [StoryContentModel]?
+    var lottieAnimation: StoryContentModel?
+    var bgSound: StoryContentModel?
+    
     init(modelContext: ModelContext? = nil) {
         super.init()
         if modelContext != nil {
             self.modelContext = modelContext
         }
-        if self.modelContext != nil {
-            fetchStoryContents(nil)
-        }
     }
-
-    func fetchStoryContents(_: StoryModel?) {
+    
+    func fetchStoryContents(_ story: StoryModel) {
+        narratives = []
+        let storyUid = story.uid
+        
         let fetchDescriptor = FetchDescriptor<StoryContentModel>(
-            //            predicate: #Predicate { storyContent in
-            // fill in...
-            //            },
+            predicate: #Predicate {
+                $0.story?.uid == storyUid
+            },
             sortBy: [SortDescriptor<StoryContentModel>(\.createdAt)]
         )
-
-        storyContents = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
-    }
-
-    func createStoryContent(story: StoryModel, duration: TimeInterval, contentName: String, contentType: String) {
-        let newStoryContent = StoryContentModel(duration: duration, contentName: contentName, contentType: contentType)
-//        newStoryContent.stories = stories
-
-        modelContext?.insert(newStoryContent)
-        try? modelContext?.save()
-
-        fetchStoryContents(story)
-    }
-
-    func deleteStoryContent(story: StoryModel, storyContent: StoryContentModel) {
-        modelContext?.delete(storyContent)
-        try? modelContext?.save()
-
-        fetchStoryContents(story)
-    }
-
-    func deleteStoryContent(index: Int, story: StoryModel) {
-        guard storyContents.indices.contains(index) else { return }
-        modelContext?.delete(storyContents[index])
-        try? modelContext?.save()
-
-        fetchStoryContents(story)
+        
+        
+        let getStoryContents = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
+        
+        for storyContent in getStoryContents {
+            if storyContent.contentType == "text" {
+                narratives?.append(storyContent)
+            } else if storyContent.contentType == "audio" {
+                bgSound = storyContent
+            } else if storyContent.contentType == "lottie" {
+                lottieAnimation = storyContent
+            }
+        }
     }
 }
