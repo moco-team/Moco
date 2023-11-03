@@ -15,12 +15,12 @@ final class HintModel: Identifiable {
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
-    var prompt: PromptModel? = nil
-    
+    var prompt: PromptModel?
+
     init(hint: String) {
-        self.uid = UUID().uuidString
+        uid = UUID().uuidString
         self.hint = hint
-        self.createdAt = Date()
-        self.updatedAt = Date()
+        createdAt = Date()
+        updatedAt = Date()
     }
 }

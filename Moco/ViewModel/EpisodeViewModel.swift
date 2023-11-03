@@ -10,22 +10,22 @@ import SwiftData
 
 @Observable class EpisodeViewModel: BaseViewModel {
     static let shared = EpisodeViewModel()
-    
+
     var selectedEpisode: EpisodeModel?
     var availableEpisodes: [EpisodeModel]?
     var episodes: [EpisodeModel]?
-    
+
     init(modelContext: ModelContext? = nil) {
         super.init()
         if modelContext != nil {
             self.modelContext = modelContext
         }
     }
-    
+
     func setSelectedEpisode(_ episode: EpisodeModel) {
         selectedEpisode = episode
     }
-    
+
     func fetchEpisodes(storyThemeId: String) {
         let fetchDescriptor = FetchDescriptor<EpisodeModel>(
             predicate: #Predicate {
@@ -33,24 +33,22 @@ import SwiftData
             },
             sortBy: [SortDescriptor<EpisodeModel>(\.createdAt)]
         )
-        
+
         episodes = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
-        
+
         availableEpisodes = []
-        
+
         for episode in episodes ?? [] {
             if episode.isAvailable {
                 availableEpisodes?.append(episode)
             }
         }
     }
-    
+
     func setToAvailable(selectedStoryTheme: StoryThemeModel) {
-        
         if let episodes = episodes, let availableEpisodes = availableEpisodes {
             if availableEpisodes.count < episodes.count &&
-                selectedEpisode!.uid == availableEpisodes[availableEpisodes.count-1].uid {
-                
+                selectedEpisode!.uid == availableEpisodes[availableEpisodes.count - 1].uid {
                 let storyThemeId = selectedStoryTheme.uid
                 let fetchDescriptor = FetchDescriptor<EpisodeModel>(
                     predicate: #Predicate {
@@ -58,7 +56,7 @@ import SwiftData
                     },
                     sortBy: [SortDescriptor<EpisodeModel>(\.createdAt)]
                 )
-                
+
                 if let getEpisodes = (try? modelContext?.fetch(fetchDescriptor)) {
                     getEpisodes[availableEpisodes.count].isAvailable = true
                     try? modelContext?.save()

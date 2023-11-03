@@ -21,26 +21,26 @@ enum PromptType: String, Codable {
 final class PromptModel: Identifiable {
     @Attribute var uid: String = ""
     @Attribute var startTime: Double = 0.0
-    @Attribute var promptType: PromptType = PromptType.maze
+    @Attribute var promptType: PromptType = .maze
     @Attribute var correctAnswer = ""
     @Attribute var question: String? = ""
     @Attribute var answerChoices: [String]? = []
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
-    
-    var story: StoryModel? = nil
+
+    var story: StoryModel?
     var hints: [HintModel]?
-    
+
     init(correctAnswer: String, startTime: Double, promptType: PromptType, hints: [HintModel]?, question: String? = "",
          answerChoices: [String]? = []) {
-        self.uid = UUID().uuidString
+        uid = UUID().uuidString
         self.startTime = startTime
         self.promptType = promptType
         self.correctAnswer = correctAnswer
         self.hints = hints ?? []
         self.question = question
         self.answerChoices = answerChoices
-        self.createdAt = Date()
-        self.updatedAt = Date()
+        createdAt = Date()
+        updatedAt = Date()
     }
 }

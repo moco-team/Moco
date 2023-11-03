@@ -10,7 +10,7 @@ import SwiftData
 
 @Observable class PromptViewModel: BaseViewModel {
     static var shared = PromptViewModel()
-    
+
     var prompt: PromptModel?
 
     init(modelContext: ModelContext? = nil) {
@@ -28,7 +28,7 @@ import SwiftData
             },
             sortBy: [SortDescriptor<PromptModel>(\.createdAt)]
         )
-        
+
         prompt = (try? modelContext?.fetch(fetchDescriptor)[0] ?? nil) ?? nil
     }
 }

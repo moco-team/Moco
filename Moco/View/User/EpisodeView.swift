@@ -16,7 +16,7 @@ struct EpisodeView: View {
     @Environment(\.promptViewModel) private var promptViewModel
     @Environment(\.hintViewModel) private var hintViewModel
     @Environment(\.navigate) private var navigate
-    
+
     var body: some View {
         ZStack {
             VStack {
@@ -25,7 +25,7 @@ struct EpisodeView: View {
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
             }.frame(width: Screen.width, height: Screen.height)
-            
+
             VStack {
                 HStack(alignment: .center) {
                     Image("Story/nav-icon")
@@ -33,15 +33,15 @@ struct EpisodeView: View {
                         .scaledToFit()
                         .frame(width: 0.4 * Screen.width)
                         .padding(.top, 50)
-                    
+
                     Spacer()
-                    
+
                     BurgerMenu()
                 }
                 .padding(.horizontal, 0.05 * Screen.width)
-                
+
                 Spacer()
-                
+
                 HStack {
                     HStack(spacing: 40) {
                         Image("Buttons/button-home")
@@ -52,16 +52,16 @@ struct EpisodeView: View {
                             .onTapGesture {
                                 navigate.pop()
                             }
-                        
+
                         Text("Pilih Episode")
                             .customFont(.cherryBomb, size: 50)
                             .foregroundColor(Color.blueTxt)
                             .fontWeight(.bold)
                     }
-                    
+
                     Spacer()
                 }.padding(.leading, 60).padding(.bottom, 30)
-                
+
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: [GridItem(.flexible())]) {
                         if let availableEpisodes = episodeViewModel.availableEpisodes {
@@ -71,7 +71,7 @@ struct EpisodeView: View {
                                 StoryBookNew(
                                     image: episode.pictureName,
                                     firstPageBackground: episode.pictureName,
-                                    number: index+1
+                                    number: index + 1
                                 ) {
                                     Task {
                                         episodeViewModel.setSelectedEpisode(episode)
@@ -96,7 +96,7 @@ struct EpisodeView: View {
                     }
                     .padding(.horizontal, 30)
                 }.scrollClipDisabled()
-                
+
                 Spacer()
                 Spacer()
             }
@@ -109,6 +109,6 @@ struct EpisodeView: View {
 
 #Preview {
     @State var itemViewModel = ItemViewModel()
-    
+
     return EpisodeView().environment(\.itemViewModel, itemViewModel)
 }

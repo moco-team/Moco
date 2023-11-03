@@ -10,7 +10,7 @@ import SwiftData
 
 @Observable class StoryThemeViewModel: BaseViewModel {
     static var shared = StoryThemeViewModel()
-    
+
     var storyThemes: [StoryThemeModel]?
     var selectedStoryTheme: StoryThemeModel?
 
@@ -32,24 +32,22 @@ import SwiftData
     func setSelectedStoryTheme(_ storyTheme: StoryThemeModel) {
         selectedStoryTheme = storyTheme
     }
-    
+
     func deleteAllStoryThemes() {
-        
         for storyTheme in storyThemes ?? [] {
             modelContext?.delete(storyTheme)
             try? modelContext?.save()
         }
         fetchStoryThemes()
     }
-    
-    func findWithID(_ uid: String) -> StoryThemeModel? {
-        
+
+    func findWithID(_: String) -> StoryThemeModel? {
         for storyTheme in storyThemes ?? [] {
             if storyTheme.uid == storyTheme.uid {
                 return storyTheme
             }
         }
-        
+
         return nil
     }
 }

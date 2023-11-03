@@ -25,7 +25,7 @@ struct MocoApp: App {
     @State private var storyContentViewModel = StoryContentViewModel.shared
     @State private var promptViewModel = PromptViewModel.shared
     @State private var hintViewModel = HintViewModel.shared
-    
+
     // MARK: - State Objects
 
     @StateObject private var speechViewModel = SpeechRecognizerViewModel.shared

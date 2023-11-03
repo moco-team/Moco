@@ -17,18 +17,18 @@ final class StoryModel: Identifiable {
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
-    var episode: EpisodeModel? = nil
+    var episode: EpisodeModel?
     var prompt: PromptModel?
     var storyContents: [StoryContentModel]?
 
     init(background: String, pageNumber: Int, isHavePrompt: Bool, prompt: PromptModel?, storyContents: [StoryContentModel]?) {
-        self.uid = UUID().uuidString
+        uid = UUID().uuidString
         self.background = background
         self.pageNumber = pageNumber
         self.isHavePrompt = isHavePrompt
         self.prompt = prompt
         self.storyContents = storyContents
-        self.createdAt = Date()
-        self.updatedAt = Date()
+        createdAt = Date()
+        updatedAt = Date()
     }
 }

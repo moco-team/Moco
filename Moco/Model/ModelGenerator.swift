@@ -50,19 +50,18 @@ struct ModelGenerator {
     static let generator = { (inMemory: Bool) in
         let schema = Schema(models)
         let modelConfiguration = inMemory ?
-        ModelConfiguration(schema: schema, isStoredInMemoryOnly: inMemory, cloudKitDatabase: .none) :
-        ModelConfiguration(schema: schema, isStoredInMemoryOnly: inMemory)
-        
-        
+            ModelConfiguration(schema: schema, isStoredInMemoryOnly: inMemory, cloudKitDatabase: .none) :
+            ModelConfiguration(schema: schema, isStoredInMemoryOnly: inMemory)
+
         do {
             let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
-            
+
             // !!!: TO BE POPULATED, A MODEL MUST IMPLEMENT CustomPersistentModel
-            
+
             for (_, datum) in ModelData.dataToBePopulated {
                 ModelGenerator.populateContainer(container: container, items: datum)
             }
-            
+
             return container
         } catch {
             fatalError("Could not create ModelContainer: \(error)")

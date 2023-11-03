@@ -15,9 +15,9 @@ struct HomeView: View {
 
     @Environment(\.storyThemeViewModel) private var storyThemeViewModel
     @Environment(\.navigate) private var navigate
-    
+
     @State private var homeViewModel = HomeViewModel()
-    
+
     var body: some View {
         ZStack {
             VStack {
@@ -26,7 +26,7 @@ struct HomeView: View {
                     .aspectRatio(contentMode: .fill)
                     .ignoresSafeArea()
             }.frame(width: Screen.width, height: Screen.height)
-            
+
             VStack {
                 HStack(alignment: .center) {
                     Image("Story/nav-icon")
@@ -34,15 +34,15 @@ struct HomeView: View {
                         .scaledToFit()
                         .frame(width: 0.4 * Screen.width)
                         .padding(.top, 50)
-                    
+
                     Spacer()
-                    
+
                     BurgerMenu()
                 }
                 .padding(.horizontal, 0.05 * Screen.width)
 
                 Spacer()
-                
+
                 HStack {
                     Text("Koleksi Buku")
                         .customFont(.cherryBomb, size: 50)
@@ -50,7 +50,7 @@ struct HomeView: View {
                         .fontWeight(.bold)
                     Spacer()
                 }.padding(.leading, 60).padding(.bottom, 30)
-                
+
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: [GridItem(.flexible())]) {
                         if let storyThemes = storyThemeViewModel.storyThemes {
@@ -63,7 +63,7 @@ struct HomeView: View {
                                     number: index + 1
                                 ) {
                                     storyThemeViewModel.setSelectedStoryTheme(storyTheme)
-                                    
+
                                     navigate.append(.episode)
                                 }
                             }
@@ -71,7 +71,7 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, 30)
                 }.scrollClipDisabled()
-                
+
                 Spacer()
                 Spacer()
             }
@@ -90,6 +90,6 @@ struct HomeView: View {
 
 #Preview {
     @State var itemViewModel = ItemViewModel()
-    
+
     return HomeView().environment(\.itemViewModel, itemViewModel)
 }

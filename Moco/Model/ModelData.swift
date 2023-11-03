@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct ModelData {
     static let dataToBePopulated = [
         "storyThemeModel": [
@@ -30,11 +29,11 @@ struct ModelData {
                                     promptType: PromptType.multipleChoice,
                                     hints: nil,
                                     question: """
-            Siapakah nama seekor anak sapi yang lucu?
-            A.) Moco
-            B.) Bebe
-            C.) Teka dan Teki
-            """
+                                    Siapakah nama seekor anak sapi yang lucu?
+                                    A.) Moco
+                                    B.) Bebe
+                                    C.) Teka dan Teki
+                                    """
                                 ),
                                 storyContents: [
                                     StoryContentModel(
@@ -46,7 +45,7 @@ struct ModelData {
                                         maxWidth: 0,
                                         color: "",
                                         fontSize: 0
-                                    ),
+                                    )
                                 ]
                             ),
                             // Story page-2
@@ -60,11 +59,11 @@ struct ModelData {
                                     promptType: PromptType.multipleChoice,
                                     hints: nil,
                                     question: """
-            Mengapa Bebe tidak dapat mengeluarkan tangannya dari toples?
-            A. Karena tangan Bebe terlalu besar
-            B. Karena Kato merupakan katak yang jahat
-            C. Karena toples tersebut berisi lem yang lengket
-            """
+                                    Mengapa Bebe tidak dapat mengeluarkan tangannya dari toples?
+                                    A. Karena tangan Bebe terlalu besar
+                                    B. Karena Kato merupakan katak yang jahat
+                                    C. Karena toples tersebut berisi lem yang lengket
+                                    """
                                 ),
                                 storyContents: [
                                     StoryContentModel(
@@ -76,7 +75,7 @@ struct ModelData {
                                         maxWidth: 0,
                                         color: "",
                                         fontSize: 0
-                                    ),
+                                    )
                                 ]
                             ),
                             // Story page-3
@@ -90,11 +89,11 @@ struct ModelData {
                                     promptType: PromptType.multipleChoice,
                                     hints: nil,
                                     question: """
-            Mengapa perjalanan mengejar Kato dan Bebe terpaksa berhenti?
-            A. Karena Moco, Teka, dan Teki capek bermain kejar-kejaran
-            B. Karena Kato dan Bebe sudah tidak asik untuk diajak bermain
-            C. Karena Moco, Teka, dan Teki merupakan hewan darat
-            """
+                                    Mengapa perjalanan mengejar Kato dan Bebe terpaksa berhenti?
+                                    A. Karena Moco, Teka, dan Teki capek bermain kejar-kejaran
+                                    B. Karena Kato dan Bebe sudah tidak asik untuk diajak bermain
+                                    C. Karena Moco, Teka, dan Teki merupakan hewan darat
+                                    """
                                 ),
                                 storyContents: [
                                     StoryContentModel(
@@ -106,7 +105,7 @@ struct ModelData {
                                         maxWidth: 0,
                                         color: "",
                                         fontSize: 0
-                                    ),
+                                    )
                                 ]
                             ),
                             // Story page-4
@@ -120,11 +119,11 @@ struct ModelData {
                                     promptType: PromptType.multipleChoice,
                                     hints: nil,
                                     question: """
-            Bagaimana perasaan Moco ketika ia kehilangan seluruh teman berpetualangnya?
-            A. Moco merasa senang
-            B. Moco merasa sedih
-            C. Moco merasa lapar
-            """
+                                    Bagaimana perasaan Moco ketika ia kehilangan seluruh teman berpetualangnya?
+                                    A. Moco merasa senang
+                                    B. Moco merasa sedih
+                                    C. Moco merasa lapar
+                                    """
                                 ),
                                 storyContents: [
                                     StoryContentModel(
@@ -136,7 +135,7 @@ struct ModelData {
                                         maxWidth: 0,
                                         color: "",
                                         fontSize: 0
-                                    ),
+                                    )
                                 ]
                             ),
                             // Story page-5
@@ -155,7 +154,7 @@ struct ModelData {
                                         maxWidth: 0,
                                         color: "",
                                         fontSize: 0
-                                    ),
+                                    )
                                 ]
                             )
                         ],
@@ -176,11 +175,11 @@ struct ModelData {
                                     promptType: PromptType.maze,
                                     hints: nil,
                                     question: """
-“Berapakah jumlah teman yang sedang Moco cari di dalam terowongan?”
- A.) 1
- B.) 2
- C.) 3
-""",
+                                    “Berapakah jumlah teman yang sedang Moco cari di dalam terowongan?”
+                                     A.) 1
+                                     B.) 2
+                                     C.) 3
+                                    """,
                                     answerChoices: [
                                         "Maze/answer_two",
                                         "Maze/answer_three"
@@ -210,11 +209,11 @@ struct ModelData {
                                     promptType: PromptType.maze,
                                     hints: nil,
                                     question: """
-“Benda apakah yang digunakan oleh Teka dan Teki?”
- A.) Tongkat
- B.) Tas Ransel
- C.) Kacamata Hitam
-""",
+                                    “Benda apakah yang digunakan oleh Teka dan Teki?”
+                                     A.) Tongkat
+                                     B.) Tas Ransel
+                                     C.) Kacamata Hitam
+                                    """,
                                     answerChoices: [
                                         "Maze/answer_two",
                                         "Maze/answer_three"
@@ -244,11 +243,11 @@ struct ModelData {
                                     promptType: PromptType.maze,
                                     hints: nil,
                                     question: """
-“Hewan apakah yang sedang Moco cari di dalam terowongan?”
- A.) Tikus
- B.) Sapi
- C.) Katak
-""",
+                                    “Hewan apakah yang sedang Moco cari di dalam terowongan?”
+                                     A.) Tikus
+                                     B.) Sapi
+                                     C.) Katak
+                                    """,
                                     answerChoices: [
                                         "Maze/answer_two",
                                         "Maze/answer_three"
@@ -266,7 +265,7 @@ struct ModelData {
                                         fontSize: 0
                                     )
                                 ]
-                            ),
+                            )
                         ],
                         isAvailable: false
                     ),
@@ -391,7 +390,7 @@ struct ModelData {
                                     StoryContentModel(
                                         duration: 12,
                                         contentName: "Matahari pun terbenam dan Moco merasa lelah." +
-                                        "Moco memutuskan untuk beristirahat dan melanjutkan petualangannya esok hari.",
+                                            "Moco memutuskan untuk beristirahat dan melanjutkan petualangannya esok hari.",
                                         contentType: StoryContentType.text,
                                         positionX: 0.67,
                                         positionY: 0.63,

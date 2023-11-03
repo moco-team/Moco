@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//struct MultipleChoicePromptQnA {
+// struct MultipleChoicePromptQnA {
 //    var correctAnswerIndex = 0
 //    var question = """
 //    Siapakah nama seekor anak sapi yang lucu?
@@ -15,16 +15,16 @@ import SwiftUI
 //    B.) Bebe
 //    C.) Teka dan Teki
 //    """
-//}
+// }
 
 struct MultipleChoicePrompt: View {
     @Environment(\.promptViewModel) private var promptViewModel
-    
+
     var onCorrect: () -> Void
     var onWrong: () -> Void = {
         print("Wrong")
     }
-    
+
     var body: some View {
         Image("Story/Prompts/moco-board")
             .resizable()
@@ -41,7 +41,7 @@ struct MultipleChoicePrompt: View {
                         onWrong()
                     }
                 }
-                
+
                 BoardAnswer(label: "B", position: CGPoint(x: 0.5 * Screen.width, y: 0.62 * Screen.height)) {
                     if promptViewModel.prompt!.correctAnswer == "1" {
                         onCorrect()
@@ -49,7 +49,7 @@ struct MultipleChoicePrompt: View {
                         onWrong()
                     }
                 }
-                
+
                 BoardAnswer(label: "C", position: CGPoint(x: 0.79 * Screen.width, y: 0.5 * Screen.height)) {
                     if promptViewModel.prompt!.correctAnswer == "2" {
                         onCorrect()

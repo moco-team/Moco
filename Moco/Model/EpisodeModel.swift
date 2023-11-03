@@ -8,8 +8,8 @@
 import Foundation
 import SwiftData
 
- @Model
- final class EpisodeModel: Identifiable, CustomPersistentModel {
+@Model
+final class EpisodeModel: Identifiable, CustomPersistentModel {
     @Attribute var uid: String = ""
     @Attribute var slug: String = ""
     @Attribute var pictureName: String = ""
@@ -18,15 +18,15 @@ import SwiftData
     @Attribute var updatedAt = Date()
 
     var stories: [StoryModel]?
-    var storyTheme: StoryThemeModel? = nil
+    var storyTheme: StoryThemeModel?
 
-     init(pictureName: String, stories: [StoryModel]?, slug: String = "", isAvailable: Bool) {
-        self.uid = UUID().uuidString
+    init(pictureName: String, stories: [StoryModel]?, slug: String = "", isAvailable: Bool) {
+        uid = UUID().uuidString
         self.slug = slug
         self.pictureName = pictureName
         self.stories = stories
         self.isAvailable = isAvailable
-        self.createdAt = Date()
-        self.updatedAt = Date()
+        createdAt = Date()
+        updatedAt = Date()
     }
- }
+}

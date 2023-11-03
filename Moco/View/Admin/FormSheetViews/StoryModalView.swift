@@ -5,9 +5,9 @@
 //  Created by Nur Azizah on 18/10/23.
 //
 
-//import SwiftUI
+// import SwiftUI
 //
-//struct StoryModalView: View {
+// struct StoryModalView: View {
 //    @Environment(\.storyViewModel) private var storyViewModel
 //    @Environment(\.storyThemeViewModel) private var storyThemeViewModel
 //    @Environment(\.storyContentViewModel) private var storyContentViewModel
@@ -101,8 +101,8 @@
 //            .navigationTitle("Modal Sheet Form")
 //        }
 //    }
-//}
+// }
 //
-//#Preview {
+// #Preview {
 //    StoryModalView(isPresented: .constant(true))
-//}
+// }

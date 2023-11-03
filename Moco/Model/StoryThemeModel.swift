@@ -19,11 +19,11 @@ final class StoryThemeModel: Identifiable, CustomPersistentModel {
     var episodes: [EpisodeModel]?
 
     init(pictureName: String, episodes: [EpisodeModel]?, slug: String = "") {
-        self.uid = UUID().uuidString
+        uid = UUID().uuidString
         self.slug = slug
         self.pictureName = pictureName
         self.episodes = episodes
-        self.createdAt = Date()
-        self.updatedAt = Date()
+        createdAt = Date()
+        updatedAt = Date()
     }
 }
