@@ -345,12 +345,12 @@ struct StoryView: View {
                                 }
 
                                 Group {
-                                    let mcPrompt = multipleChoiceQnA[scrollPosition!]
-                                    let mazeQuestion = mazeAnswers[mazeQuestionIndex]
-                                    switch activePrompt?.type {
-                                    case .multipleChoice:
-                                        if mcPrompt != nil {
-                                            MultipleChoicePrompt(correctAnswerIndex: mcPrompt!.correctAnswerIndex, question: mcPrompt!.question) {
+                                    //                                    let mcPrompt = multipleChoiceQnA[scrollPosition!]
+                                    //                                    let mazeQuestion = mazeAnswers[mazeQuestionIndex]
+                                    switch activePrompt?.promptType {
+                                    case "multipleChoice":
+                                        if promptViewModel.prompt != nil {
+                                            MultipleChoicePrompt() {
                                                 activePrompt = nil
                                                 nextPage()
                                             } onWrong: {
