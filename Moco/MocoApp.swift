@@ -57,11 +57,6 @@ struct MocoApp: App {
                 .environmentObject(arViewModel)
                 .environmentObject(motionViewModel)
                 .environmentObject(orientationInfo)
-                .task {
-                    for (_, datum) in ModelData.dataToBePopulated {
-                        ModelGenerator.populateContainer(container: MocoApp.sharedModelContainer, items: datum)
-                    }
-                }
         }
     }
 }

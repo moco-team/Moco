@@ -20,6 +20,7 @@ struct ModelGenerator {
         HintModel.self
     ]
 
+    @MainActor
     static func populateContainer<T: CustomPersistentModel>(container: ModelContainer, items: [T]) {
         let modelFetchDescriptor = FetchDescriptor<T>()
         let modelContext = ModelContext(container)
@@ -58,9 +59,9 @@ struct ModelGenerator {
             
             // !!!: TO BE POPULATED, A MODEL MUST IMPLEMENT CustomPersistentModel
             
-//            for (_, datum) in ModelData.dataToBePopulated {
-//                ModelGenerator.populateContainer(container: container, items: datum)
-//            }
+            for (_, datum) in ModelData.dataToBePopulated {
+                ModelGenerator.populateContainer(container: container, items: datum)
+            }
             
             return container
         } catch {

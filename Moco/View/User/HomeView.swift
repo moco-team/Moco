@@ -5,6 +5,8 @@
 //  Created by Aaron Christopher Tanhar on 11/10/23.
 //
 
+import MediaPlayer
+import SwiftData
 import SwiftUI
 
 struct HomeView: View {
@@ -51,17 +53,19 @@ struct HomeView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: [GridItem(.flexible())]) {
-                        ForEach(
-                            Array(storyThemeViewModel.storyThemes?.enumerated() ?? [].enumerated()), id: \.element
-                        ) { index, storyTheme in
-                            StoryBookNew(
-                                image: storyTheme.pictureName,
-                                firstPageBackground: storyTheme.episodes![0].pictureName,
-                                number: index + 1
-                            ) {
-                                storyThemeViewModel.setSelectedStoryTheme(storyTheme)
-
-                                navigate.append(.episode)
+                        if let storyThemes = storyThemeViewModel.storyThemes {
+                            ForEach(
+                                Array(storyThemes.enumerated()), id: \.element
+                            ) { index, storyTheme in
+                                StoryBookNew(
+                                    image: storyTheme.pictureName,
+                                    firstPageBackground: storyTheme.episodes![0].pictureName,
+                                    number: index + 1
+                                ) {
+                                    storyThemeViewModel.setSelectedStoryTheme(storyTheme)
+                                    
+                                    navigate.append(.episode)
+                                }
                             }
                         }
                     }
@@ -74,7 +78,7 @@ struct HomeView: View {
             .onShake {
                 //                navigate.append(.storyThemeAdmin)
             }
-            .task {
+            .onAppear {
                 storyThemeViewModel.fetchStoryThemes()
                 audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1, category: .backsound)
                 homeViewModel.soundLevel = 0.3
