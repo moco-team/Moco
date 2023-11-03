@@ -46,7 +46,6 @@ struct ARViewContainer: UIViewRepresentable {
             } else {
                 print("There are no meshes to be clued!")
             }
-
         } else {
             print("Hint not showed!")
         }
@@ -79,7 +78,7 @@ struct ARViewContainer: UIViewRepresentable {
                 let point = gesture.location(in: arView)
 
                 tappedEntities = arView!.entities(at: point)
-                let entities = tappedEntities?.filter { $0.name.contains("button") }
+                let entities = tappedEntities?.filter { $0.name.contains(parent.viewModel.foundObjectName!) }
                 checkFoundObject(entities: entities!)
 
                 return
@@ -106,7 +105,7 @@ struct ARViewContainer: UIViewRepresentable {
             let location = recognizer.location(in: arView)
 
             longPressedEntitites = arView!.entities(at: location)
-            let entities = longPressedEntitites?.filter { $0.name.contains("button") }
+            let entities = longPressedEntitites?.filter { $0.name.contains(parent.viewModel.foundObjectName!) }
             checkFoundObject(entities: entities!)
         }
 
@@ -124,11 +123,17 @@ struct ARViewContainer: UIViewRepresentable {
                             print("Removed entity with name: " + entity.name)
                             self.parent.viewModel.hasFindObject = true
 
-                            self.parent.viewModel.hasPlacedObject = false
+                            print("isfinalclue")
+                            print(self.parent.viewModel.isFinalClue)
                         }
-                    }
 
-                    parent.viewModel.hasPlacedObject = false
+                        // TODO: Set to false only for the last clue
+//                        if self.parent.viewModel.isFinalClue {
+                        parent.viewModel.hasPlacedObject = false
+                        print("set to false")
+                        print(parent.viewModel.hasPlacedObject)
+//                        }
+                    }
                 } else {
                     print("The object found is incorrect!")
                 }

@@ -28,6 +28,10 @@
 		058DC8F12AF2BE4E00A0885D /* key.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F02AF2BE4E00A0885D /* key.usdz */; };
 		058DC8F32AF2C2E700A0885D /* honey-new.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F22AF2C2E700A0885D /* honey-new.usdz */; };
 		058DC8F52AF2CFF100A0885D /* TextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058DC8F42AF2CFF100A0885D /* TextViewModifier.swift */; };
+		058DC9082AF2EC5100A0885D /* s1-ep3-backsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9072AF2EC5100A0885D /* s1-ep3-backsound.mp3 */; };
+		058DC90A2AF2F0A200A0885D /* tap-screen.json in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9092AF2F0A200A0885D /* tap-screen.json */; };
+		058DC90C2AF2F17700A0885D /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 058DC90B2AF2F17700A0885D /* loading.json */; };
+		058DC90F2AF2F62B00A0885D /* phone-tilt.json in Resources */ = {isa = PBXBuildFile; fileRef = 058DC90E2AF2F62B00A0885D /* phone-tilt.json */; };
 		05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */; };
 		05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */; };
 		05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93552ADE74740082B21D /* RecognizerError.swift */; };
@@ -262,6 +266,10 @@
 		058DC9032AF2D59700A0885D /* 010 (maze) - coba miringkan layar ke kiri.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "010 (maze) - coba miringkan layar ke kiri.m4a"; sourceTree = "<group>"; };
 		058DC9042AF2D59700A0885D /* 008 (maze) - wah, kamu baik sekali yaa.. mau membantu Moco menemukan Teka dan Teki.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "008 (maze) - wah, kamu baik sekali yaa.. mau membantu Moco menemukan Teka dan Teki.m4a"; sourceTree = "<group>"; };
 		058DC9062AF2D5A400A0885D /* 014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a"; sourceTree = "<group>"; };
+		058DC9072AF2EC5100A0885D /* s1-ep3-backsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "s1-ep3-backsound.mp3"; sourceTree = "<group>"; };
+		058DC9092AF2F0A200A0885D /* tap-screen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "tap-screen.json"; sourceTree = "<group>"; };
+		058DC90B2AF2F17700A0885D /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		058DC90E2AF2F62B00A0885D /* phone-tilt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "phone-tilt.json"; sourceTree = "<group>"; };
 		05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSpeechRecognizerExtension.swift; sourceTree = "<group>"; };
 		05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioSessionExtension.swift; sourceTree = "<group>"; };
 		05AE93552ADE74740082B21D /* RecognizerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerError.swift; sourceTree = "<group>"; };
@@ -551,6 +559,8 @@
 		0571CB3A2AE19D4500CE0CC7 /* Story1 */ = {
 			isa = PBXGroup;
 			children = (
+				058DC9102AF2F63200A0885D /* Ep3 */,
+				058DC90D2AF2F62000A0885D /* Ep2 */,
 				0571CB4F2AE19D8200CE0CC7 /* Page10 */,
 				0571CB4E2AE19D7D00CE0CC7 /* Page8 */,
 				0571CB4D2AE19D7800CE0CC7 /* Page6 */,
@@ -648,7 +658,24 @@
 		058DC9052AF2D59A00A0885D /* Ep3 */ = {
 			isa = PBXGroup;
 			children = (
+				058DC9072AF2EC5100A0885D /* s1-ep3-backsound.mp3 */,
 				058DC9062AF2D5A400A0885D /* 014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a */,
+			);
+			path = Ep3;
+			sourceTree = "<group>";
+		};
+		058DC90D2AF2F62000A0885D /* Ep2 */ = {
+			isa = PBXGroup;
+			children = (
+				058DC90E2AF2F62B00A0885D /* phone-tilt.json */,
+			);
+			path = Ep2;
+			sourceTree = "<group>";
+		};
+		058DC9102AF2F63200A0885D /* Ep3 */ = {
+			isa = PBXGroup;
+			children = (
+				058DC9092AF2F0A200A0885D /* tap-screen.json */,
 			);
 			path = Ep3;
 			sourceTree = "<group>";
@@ -678,6 +705,7 @@
 			children = (
 				0571CB392AE19D4000CE0CC7 /* Story */,
 				05AE93602ADE82410082B21D /* testing-cat.json */,
+				058DC90B2AF2F17700A0885D /* loading.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -707,9 +735,6 @@
 		05E17ADA2ADED17B00A34547 /* Story */ = {
 			isa = PBXGroup;
 			children = (
-				058DC9052AF2D59A00A0885D /* Ep3 */,
-				058DC8FE2AF2D58800A0885D /* Ep2 */,
-				058DC8F62AF2D53900A0885D /* Ep1 */,
 				05E17ADB2ADED18800A34547 /* Story1 */,
 			);
 			path = Story;
@@ -718,6 +743,9 @@
 		05E17ADB2ADED18800A34547 /* Story1 */ = {
 			isa = PBXGroup;
 			children = (
+				058DC9052AF2D59A00A0885D /* Ep3 */,
+				058DC8FE2AF2D58800A0885D /* Ep2 */,
+				058DC8F62AF2D53900A0885D /* Ep1 */,
 				05E17ADC2ADED19700A34547 /* Page1 */,
 				056949792AE0EB7D00830D57 /* Page2 */,
 				0569497A2AE0EB8600830D57 /* Page3 */,
@@ -1318,11 +1346,15 @@
 				931722192AE5508300346382 /* Page3-monolog1.m4a in Resources */,
 				9317221A2AE5508300346382 /* Page4-monolog2.m4a in Resources */,
 				9317221B2AE5508300346382 /* Page4-monolog1.m4a in Resources */,
+				058DC90A2AF2F0A200A0885D /* tap-screen.json in Resources */,
 				9317221C2AE5508300346382 /* bear_thankyou.m4a in Resources */,
+				058DC90C2AF2F17700A0885D /* loading.json in Resources */,
 				9317221D2AE5508300346382 /* Page5-monolog1.m4a in Resources */,
 				9317221E2AE5508300346382 /* Page6-monolog1.m4a in Resources */,
+				058DC9082AF2EC5100A0885D /* s1-ep3-backsound.mp3 in Resources */,
 				9317221F2AE5508300346382 /* prompt_kursi.m4a in Resources */,
 				937AF2982AE8C72B008C69BB /* environment.usdz in Resources */,
+				058DC90F2AF2F62B00A0885D /* phone-tilt.json in Resources */,
 				931722202AE5508300346382 /* Page8-monolog1.m4a in Resources */,
 				058DC8F12AF2BE4E00A0885D /* key.usdz in Resources */,
 				931722212AE5508300346382 /* frog_thankyou.m4a in Resources */,

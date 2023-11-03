@@ -10,11 +10,11 @@ import SwiftUI
 struct GlowBorder: ViewModifier {
     var color: Color
     var lineWidth: Int
-    
+
     func body(content: Content) -> some View {
         applyShadow(content: AnyView(content), lineWidth: lineWidth)
     }
-    
+
     func applyShadow(content: AnyView, lineWidth: Int) -> AnyView {
         if lineWidth == 0 {
             return content
@@ -26,6 +26,6 @@ struct GlowBorder: ViewModifier {
 
 extension View {
     func glowBorder(color: Color, lineWidth: Int) -> some View {
-        self.modifier(GlowBorder(color: color, lineWidth: lineWidth))
+        modifier(GlowBorder(color: color, lineWidth: lineWidth))
     }
 }

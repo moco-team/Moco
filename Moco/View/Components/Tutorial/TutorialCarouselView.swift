@@ -34,7 +34,6 @@ struct TutorialCarouselView: View {
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .always))
-        .frame(height: .infinity)
         .onChange(of: offset) { _, _ in
             if fakeIndex == 0 && offset == 0 {
                 fakeIndex = genericTabs.count - 2

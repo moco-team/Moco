@@ -106,7 +106,6 @@ class MotionViewModel: ObservableObject {
     // Function responsible for stopping the sensor updates
     func stopUpdates() {
         motionManager.stopDeviceMotionUpdates()
-        motionManager.stopAccelerometerUpdates()
         motionManager.stopGyroUpdates()
     }
 

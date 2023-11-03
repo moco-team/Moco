@@ -48,7 +48,10 @@ struct MazeView: View {
         .background(.ultraThinMaterial)
         .onAppear {
             motionViewModel.startUpdates()
-            TimerViewModel().setTimer(key: "startTimer", withInterval: 0.02) {
+            scene.correctAnswerAsset = correctAnswerAsset
+            scene.wrongAnswerAsset = answersAsset
+            print(correctAnswerAsset)
+            TimerViewModel().setTimer(key: "mazeTimer\(correctAnswerAsset)", withInterval: 0.02) {
                 motionViewModel.updateMotion()
                 if orientationInfo.orientation == .landscapeLeft {
                     if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
@@ -82,7 +85,8 @@ struct MazeView: View {
             }
         }
         .onDisappear {
-            motionViewModel.stopUpdates()
+//            motionViewModel.stopUpdates()
+            TimerViewModel().stopTimer()
         }
         .onChange(of: scene.correctAnswer) {
             correctAnswer = scene.correctAnswer

@@ -7,31 +7,28 @@
 
 import SwiftUI
 
-struct MultipleChoicePromptQnA {
-    var correctAnswerIndex = 0
-    var question = """
-    Siapakah nama seekor anak sapi yang lucu?
-    A.) Moco
-    B.) Bebe
-    C.) Teka dan Teki
-    """
-}
+//struct MultipleChoicePromptQnA {
+//    var correctAnswerIndex = 0
+//    var question = """
+//    Siapakah nama seekor anak sapi yang lucu?
+//    A.) Moco
+//    B.) Bebe
+//    C.) Teka dan Teki
+//    """
+//}
 
 struct MultipleChoicePrompt: View {
-    var correctAnswerIndex: String = "0"
-    var answers: [String] = ["", "", ""]
-    var question: String = """
-    Siapakah nama seekor anak sapi yang lucu?
-    A.) Moco
-    B.) Bebe
-    C.) Teka dan Teki
-    """
+    @Environment(\.promptViewModel) private var promptViewModel
+    
+    var correctAnswerIndex: String? = ""
+    var answers: [String?]? = []
+    var question: String? = ""
 
     var onCorrect: () -> Void
     var onWrong: () -> Void = {
         print("Wrong")
     }
-
+    
     var body: some View {
         Image("Story/Prompts/moco-board")
             .resizable()
@@ -64,6 +61,11 @@ struct MultipleChoicePrompt: View {
                         onWrong()
                     }
                 }
+            }
+            .onAppear {
+                correctAnswerIndex = promptViewModel.prompt!.correctAnswer
+                answers promptViewModel.prompt!.answerChoices
+                question = promptViewModel.prompt!.question
             }
     }
 }

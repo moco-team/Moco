@@ -28,6 +28,10 @@ struct MazePrompt: View {
                         .customFont(.didactGothic, size: 30)
                         .foregroundColor(.text.primary)
                         .opacity(mazePromptViewModel.blurOpacity)
+                        .background {
+                            Image("Components/modal-base-lg").resizable().scaledToFill().padding(-20)
+                        }
+                        .frame(width: Screen.width * 0.7, height: 0.4 * Screen.height)
                     if mazePromptViewModel.showStartButton {
                         Button {
                             mazePromptViewModel.stopPrompt()

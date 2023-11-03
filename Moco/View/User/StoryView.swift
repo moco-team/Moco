@@ -44,7 +44,7 @@ struct StoryView: View {
     @State private var mazeQuestionIndex = 0
     @State private var forceShowNext = false
     var enableUI = true
-    
+  
     // MARK: - Variables
     
     /*
@@ -190,7 +190,7 @@ struct StoryView: View {
     //"""
     //             )
     //    ]
-    
+
     // MARK: - Functions
     
     private func updateText() {
@@ -328,7 +328,7 @@ struct StoryView: View {
                                     switch activePrompt?.promptType {
                                     case "multipleChoice":
                                         if promptViewModel.prompt != nil {
-                                            MultipleChoicePrompt(correctAnswerIndex: promptViewModel.prompt!.correctAnswer, question: promptViewModel.prompt!.question? ?? "") {
+                                            MultipleChoicePrompt() {
                                                 activePrompt = nil
                                                 nextPage()
                                             } onWrong: {
@@ -341,8 +341,9 @@ struct StoryView: View {
                                                 mazeQuestionIndex += 1
                                             } else {
                                                 activePrompt = nil
+                                                forceShowNext = true
                                             }
-                                        }
+                                        }.id(mazeQuestionIndex)
                                     case .puzzle:
                                         FindTheObjectView(
                                             isPromptDone: .constant(false),
@@ -425,7 +426,8 @@ struct StoryView: View {
                         }
                     }
                     Spacer()
-                    if promptViewModel.prompt! == nil {
+                  
+                    if promptViewModel.prompt! == nil || forceShowNext{
                         StoryNavigationButton(direction: .right) {
                             nextPage()
                         }

@@ -14,6 +14,15 @@ struct SettingsView: View {
 
     var body: some View {
         VStack {
+            Image("Buttons/button-home")
+                .resizable()
+                .frame(width: 70, height: 70)
+                .shadow(radius: 4, x: -2, y: 2)
+                .foregroundColor(.white)
+                .onTapGesture {
+                    navigate.pop()
+                }
+
             Text("Backsound")
             HStack {
                 Image(systemName: "speaker.fill")

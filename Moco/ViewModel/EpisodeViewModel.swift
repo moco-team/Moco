@@ -60,13 +60,10 @@ import SwiftData
                 )
                 
                 if let getEpisodes = (try? modelContext?.fetch(fetchDescriptor)) {
-                    
                     getEpisodes[availableEpisodes.count].isAvailable = true
-                    
                     try? modelContext?.save()
                 }
             }
         }
-        
     }
 }

@@ -17,7 +17,7 @@ public extension View {
         cancelText: String? = nil,
         confirmText: String? = nil,
         containerBgColor: Color = Color.white,
-        textColor: Color = .black,
+        textColor _: Color = .black,
         overlayOpacity: Double = 0.3,
         withConfetti: Bool = false,
         width: CGFloat? = nil,
