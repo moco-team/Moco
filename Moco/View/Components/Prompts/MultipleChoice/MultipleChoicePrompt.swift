@@ -20,10 +20,6 @@ import SwiftUI
 struct MultipleChoicePrompt: View {
     @Environment(\.promptViewModel) private var promptViewModel
     
-    var correctAnswerIndex: String? = ""
-    var answers: [String?]? = []
-    var question: String? = ""
-
     var onCorrect: () -> Void
     var onWrong: () -> Void = {
         print("Wrong")
@@ -37,35 +33,30 @@ struct MultipleChoicePrompt: View {
             .clipped()
             .onTapGesture {}
             .overlay {
-                Text(question).customFont(.didactGothic, size: 20).position(CGPoint(x: 0.5 * Screen.width, y: 0.12 * Screen.height))
+                Text(promptViewModel.prompt!.question ?? "").customFont(.didactGothic, size: 20).position(CGPoint(x: 0.5 * Screen.width, y: 0.12 * Screen.height))
                 BoardAnswer(label: "A", position: CGPoint(x: 0.21 * Screen.width, y: 0.5 * Screen.height)) {
-                    if correctAnswerIndex == "0" {
+                    if promptViewModel.prompt!.correctAnswer == "0" {
                         onCorrect()
                     } else {
                         onWrong()
                     }
                 }
-
+                
                 BoardAnswer(label: "B", position: CGPoint(x: 0.5 * Screen.width, y: 0.62 * Screen.height)) {
-                    if correctAnswerIndex == "1" {
+                    if promptViewModel.prompt!.correctAnswer == "1" {
                         onCorrect()
                     } else {
                         onWrong()
                     }
                 }
-
+                
                 BoardAnswer(label: "C", position: CGPoint(x: 0.79 * Screen.width, y: 0.5 * Screen.height)) {
-                    if correctAnswerIndex == "2" {
+                    if promptViewModel.prompt!.correctAnswer == "2" {
                         onCorrect()
                     } else {
                         onWrong()
                     }
                 }
-            }
-            .onAppear {
-                correctAnswerIndex = promptViewModel.prompt!.correctAnswer
-                answers promptViewModel.prompt!.answerChoices
-                question = promptViewModel.prompt!.question
             }
     }
 }
