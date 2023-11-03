@@ -225,10 +225,10 @@ struct StoryView: View {
         }
     }
     
-    private func onPageChange(_ scrollPosition: Int) {
+    private func onPageChange() {
         stop()
-        setNewStoryPage(scrollPosition)
-        
+        setNewStoryPage(scrollPosition ?? -1)
+
         if let bgSound = storyContentViewModel.bgSound?.contentName {
             audioViewModel.playSound(
                 soundFileName: bgSound,
@@ -297,82 +297,84 @@ struct StoryView: View {
         ZStack {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 0) {
-                    ForEach(Array(episodeViewModel.selectedEpisode!.stories!.enumerated()), id: \.offset) { index, story in
-                        PeelEffectTappable(state: $peelEffectState, isReverse: isReversePeel) {
-                            ZStack {
-                                Image(storyViewModel.storyPage!.background)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: Screen.width, height: Screen.height, alignment: .center)
-                                    .clipped()
-                                
-                                if storyContentViewModel.narratives!.count > narrativeIndex && !storyContentViewModel.narratives!.isEmpty {
-                                    let narrative = storyContentViewModel.narratives![max(narrativeIndex, 0)]
-                                    Text(narrative.contentName)
-                                        .foregroundColor(Color(hex: (narrative.color?)? ?? "#000000"))
-                                        .frame(maxWidth: CGFloat(narrative.maxWidth!), alignment: .leading)
-                                        .position(CGPoint(
-                                            x: Screen.width * narrative.positionX,
-                                            y: Screen.height * narrative.positionY
-                                        ))
-                                        .id(narrativeIndex)
-                                        .transition(.opacity.animation(.linear))
-                                        .customFont(.didactGothic, size: narrative.fontSize)
-                                        .padding(.bottom, 2)
-                                    
-                                }
-                                
-                                Group {
-                                    //                                    let mcPrompt = multipleChoiceQnA[scrollPosition!]
-                                    //                                    let mazeQuestion = mazeAnswers[mazeQuestionIndex]
-                                    switch activePrompt?.promptType {
-                                    case "multipleChoice":
-                                        if promptViewModel.prompt != nil {
-                                            MultipleChoicePrompt() {
-                                                activePrompt = nil
-                                                nextPage()
-                                            } onWrong: {
-                                                showWrongAnsPopup = true
-                                            }
-                                        }
-                                    case "maze":
-                                        MazePrompt(promptText: promptViewModel.prompt!.question, answersAsset: promptViewModel.prompt!.answerChoices, correctAnswerAsset: promptViewModel.prompt!.correctAnswer) {
-                                            if mazeQuestionIndex < storyViewModel.getSumMazePrompt(episode: episodeViewModel.selectedEpisode).count - 1 {
-                                                mazeQuestionIndex += 1
-                                            } else {
-                                                activePrompt = nil
-                                                forceShowNext = true
-                                            }
-                                        }.id(mazeQuestionIndex)
-                                    case .puzzle:
-                                        FindTheObjectView(
-                                            isPromptDone: .constant(false),
-                                            content: "Once upon a time...",
-                                            hints: hintViewModel.hints,
-                                            correctAnswer: promptViewModel.prompt!.correctAnswer,
-                                            balloons: [
-                                                Balloon(color: "orange", isCorrect: false),
-                                                Balloon(color: "ungu", isCorrect: false),
-                                                Balloon(color: "merah", isCorrect: true),
-                                                Balloon(color: "hijau", isCorrect: false),
-                                                Balloon(color: "biru", isCorrect: false)
-                                            ]
-                                        ) {
-                                            nextPage()
-                                        }
-                                    case .objectDetection:
-                                        DetectionView {
-                                            nextPage()
-                                        }
-                                    default:
-                                        EmptyView()
+                    if let stories = episodeViewModel.selectedEpisode!.stories {
+                        ForEach(Array(stories.enumerated()), id: \.offset) { index, story in
+                            PeelEffectTappable(state: $peelEffectState, isReverse: isReversePeel) {
+                                ZStack {
+                                    Image(storyViewModel.storyPage!.background)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: Screen.width, height: Screen.height, alignment: .center)
+                                        .clipped()
+
+                                    if storyContentViewModel.narratives!.count > narrativeIndex && !storyContentViewModel.narratives!.isEmpty {
+                                        let narrative = storyContentViewModel.narratives![max(narrativeIndex, 0)]
+                                        Text(narrative.contentName)
+                                            .foregroundColor(Color(hex: narrative.color ?? "#000000"))
+                                            .frame(maxWidth: CGFloat(narrative.maxWidth!), alignment: .leading)
+                                            .position(CGPoint(
+                                                x: Screen.width * narrative.positionX,
+                                                y: Screen.height * narrative.positionY
+                                            ))
+                                            .id(narrativeIndex)
+                                            .transition(.opacity.animation(.linear))
+                                            .customFont(.didactGothic, size: narrative.fontSize)
+                                            .padding(.bottom, 2)
+
                                     }
-                                }
-                            }.id(index)
-                        } background: {
-                            peelBackground
-                        } onComplete: {
-                            toBeExecutedByPeelEffect()
+
+                                    Group {
+                                        switch activePrompt?.promptType {
+                                        case .multipleChoice:
+                                            if promptViewModel.prompt != nil {
+                                                MultipleChoicePrompt() {
+                                                    activePrompt = nil
+                                                    nextPage()
+                                                } onWrong: {
+                                                    showWrongAnsPopup = true
+                                                }
+                                            }
+                                        case .maze:
+                                            let mazePrompt = promptViewModel.prompt!
+                                            MazePrompt(promptText: mazePrompt.question!, answersAsset: mazePrompt.answerChoices!, correctAnswerAsset: mazePrompt.correctAnswer) {
+                                                if mazeQuestionIndex < storyViewModel.getSumMazePrompt(episode: episodeViewModel.selectedEpisode!) - 1 {
+                                                    mazeQuestionIndex += 1
+                                                } else {
+                                                    activePrompt = nil
+                                                    forceShowNext = true
+                                                }
+                                            }.id(mazeQuestionIndex)
+                                        case .puzzle:
+                                            FindTheObjectView(
+                                                isPromptDone: .constant(false),
+                                                content: "Once upon a time...",
+                                                hints: hintViewModel.hints,
+                                                correctAnswer: promptViewModel.prompt!.correctAnswer,
+                                                balloons: [
+                                                    Balloon(color: "orange", isCorrect: false),
+                                                    Balloon(color: "ungu", isCorrect: false),
+                                                    Balloon(color: "merah", isCorrect: true),
+                                                    Balloon(color: "hijau", isCorrect: false),
+                                                    Balloon(color: "biru", isCorrect: false)
+                                                ]
+                                            ) {
+                                                nextPage()
+                                            }
+                                        case .objectDetection:
+                                            DetectionView {
+                                                nextPage()
+                                            }
+                                        default:
+                                            EmptyView()
+                                        }
+                                    }
+
+                                }.id(index)
+                            } background: {
+                                peelBackground
+                            } onComplete: {
+                                toBeExecutedByPeelEffect()
+                            }
                         }
                     }
                 }.scrollTargetLayout()
@@ -427,7 +429,7 @@ struct StoryView: View {
                     }
                     Spacer()
                   
-                    if promptViewModel.prompt! == nil || forceShowNext{
+                    if promptViewModel.prompt == nil || forceShowNext{
                         StoryNavigationButton(direction: .right) {
                             nextPage()
                         }
@@ -469,15 +471,15 @@ struct StoryView: View {
         }
         .task {
             onPageChange()
-            if let directPrompt = storyViewModel.storyPage!.prompt! {
+            if let directPrompt = storyViewModel.storyPage!.prompt {
                 activePrompt = directPrompt
             }
         }
         .onDisappear {
             stop()
         }
-        .onChange(of: scrollPosition) {
-            onPageChange(scrollPosition!)
+        .task(id: scrollPosition) {
+            onPageChange()
         }
     }
 }

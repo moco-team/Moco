@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-enum StoryContentType: String {
+enum StoryContentType: String, Codable {
     case text
     case audio
     case lottie
@@ -20,7 +20,7 @@ final class StoryContentModel: Identifiable {
     @Attribute var uid: String = ""
     @Attribute var duration: Double = 0.0
     @Attribute var contentName: String = ""
-    @Attribute var contentType: String = ""
+    @Attribute var contentType: StoryContentType = StoryContentType.text
     @Attribute var positionX: Double = 0.0
     @Attribute var positionY: Double = 0.0
     @Attribute var maxWidth: Double? = Screen.width * 0.5
@@ -31,7 +31,7 @@ final class StoryContentModel: Identifiable {
     
     var story: StoryModel?  = nil
 
-    init(duration: Double, contentName: String, contentType: String, positionX: Double, positionY: Double, maxWidth: Double, color: String?
+    init(duration: Double, contentName: String, contentType: StoryContentType, positionX: Double, positionY: Double, maxWidth: Double, color: String?
          , fontSize: CGFloat) {
         self.uid = UUID().uuidString
         self.duration = duration

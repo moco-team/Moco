@@ -64,29 +64,33 @@ struct EpisodeView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: [GridItem(.flexible())]) {
-                        ForEach(
-                            Array(episodeViewModel.availableEpisodes!.enumerated()), id: \.element
-                        ) { index, episode in
-                            StoryBookNew(
-                                image: episode.pictureName,
-                                firstPageBackground: episode.pictureName,
-                                number: index+1
-                            ) {
-                                episodeViewModel.setSelectedEpisode(episode)
-                                
-                                // open new story page
-                                storyViewModel.fetchStory(0, episodeViewModel.selectedEpisode!)
-                                storyContentViewModel.fetchStoryContents(storyViewModel.storyPage!)
-                                
-                                if storyViewModel.storyPage!.isHavePrompt {
-                                    promptViewModel.fetchPrompt(storyViewModel.storyPage!)
-                                    
-                                    if promptViewModel.prompt!.hints != nil {
-                                        hintViewModel.fetchHints(promptViewModel.prompt!)
+                        if let availableEpisodes = episodeViewModel.availableEpisodes {
+                            ForEach(
+                                Array(availableEpisodes.enumerated()), id: \.element
+                            ) { index, episode in
+                                StoryBookNew(
+                                    image: episode.pictureName,
+                                    firstPageBackground: episode.pictureName,
+                                    number: index+1
+                                ) {
+                                    Task {
+                                        episodeViewModel.setSelectedEpisode(episode)
+
+                                        // open new story page
+                                        storyViewModel.fetchStory(0, episodeViewModel.selectedEpisode!)
+                                        storyContentViewModel.fetchStoryContents(storyViewModel.storyPage!)
+
+                                        if storyViewModel.storyPage!.isHavePrompt {
+                                            promptViewModel.fetchPrompt(storyViewModel.storyPage!)
+
+                                            if promptViewModel.prompt!.hints != nil {
+                                                hintViewModel.fetchHints(promptViewModel.prompt!)
+                                            }
+                                        }
+
+                                        navigate.append(.story)
                                     }
                                 }
-                                
-                                navigate.append(.story)
                             }
                         }
                     }
@@ -97,7 +101,7 @@ struct EpisodeView: View {
                 Spacer()
             }
         }
-        .onAppear {
+        .task {
             episodeViewModel.fetchEpisodes(storyThemeId: storyThemeViewModel.selectedStoryTheme!.uid)
         }
     }

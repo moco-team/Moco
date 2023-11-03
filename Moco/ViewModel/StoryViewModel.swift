@@ -46,7 +46,7 @@ import SwiftData
         
         var sumMazePrompts = 0
         for promptType in getMazes ?? [] {
-            if promptType.prompt!.promptType == PromptType.maze.rawValue {
+            if promptType.prompt!.promptType == PromptType.maze {
                 sumMazePrompts += 1
             }
         }

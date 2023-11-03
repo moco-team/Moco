@@ -38,11 +38,11 @@ import SwiftUI
         let getStoryContents = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
         
         for storyContent in getStoryContents {
-            if storyContent.contentType == "text" {
+            if storyContent.contentType == .text {
                 narratives?.append(storyContent)
-            } else if storyContent.contentType == "audio" {
+            } else if storyContent.contentType == .audio {
                 bgSound = storyContent
-            } else if storyContent.contentType == "lottie" {
+            } else if storyContent.contentType == .lottie {
                 lottieAnimation = storyContent
             }
         }

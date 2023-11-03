@@ -171,6 +171,7 @@
 		938E3D582ADC00FB003D2AE1 /* PopUpExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E3D572ADC00FB003D2AE1 /* PopUpExtension.swift */; };
 		9398FBB52AE4105900AB5CE4 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9398FBB42AE4105900AB5CE4 /* CircularProgressView.swift */; };
 		9398FBB82AE41D2600AB5CE4 /* CustomAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9398FBB72AE41D2600AB5CE4 /* CustomAsyncImage.swift */; };
+		93B7098D2AF5723E000B9C28 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B7098C2AF5723E000B9C28 /* ModelData.swift */; };
 		93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C2F8832AD683AC007D1ABC /* MocoApp.swift */; };
 		93C2F88A2AD683AE007D1ABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C2F8892AD683AE007D1ABC /* Assets.xcassets */; };
 		93C2F88D2AD683AE007D1ABC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C2F88C2AD683AE007D1ABC /* Preview Assets.xcassets */; };
@@ -392,6 +393,7 @@
 		938E3D572ADC00FB003D2AE1 /* PopUpExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpExtension.swift; sourceTree = "<group>"; };
 		9398FBB42AE4105900AB5CE4 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		9398FBB72AE41D2600AB5CE4 /* CustomAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAsyncImage.swift; sourceTree = "<group>"; };
+		93B7098C2AF5723E000B9C28 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		93C2F8802AD683AC007D1ABC /* Moco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C2F8832AD683AC007D1ABC /* MocoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocoApp.swift; sourceTree = "<group>"; };
 		93C2F8892AD683AE007D1ABC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1144,6 +1146,7 @@
 				935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */,
 				93CA8B7C2AF0107800651885 /* MazePromptModel.swift */,
 				9328F9142AF16B6900E82995 /* Gesture.swift */,
+				93B7098C2AF5723E000B9C28 /* ModelData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1508,6 +1511,7 @@
 				937AF2912AE83794008C69BB /* Date.swift in Sources */,
 				935D784B2AEBC7FE00DF64A5 /* CustomPersistentModel.swift in Sources */,
 				0BA3E5102ADFD04700BCFE9E /* StoryThemeModalView.swift in Sources */,
+				93B7098D2AF5723E000B9C28 /* ModelData.swift in Sources */,
 				937AF29A2AE8D422008C69BB /* EnvironmentEntity.swift in Sources */,
 				938E3D522ADBAE62003D2AE1 /* SettingsView.swift in Sources */,
 				938E3D472ADB0AA5003D2AE1 /* Routes.swift in Sources */,

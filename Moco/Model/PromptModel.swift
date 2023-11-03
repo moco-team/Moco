@@ -8,7 +8,7 @@
 import Foundation
 import SwiftData
 
-enum PromptType: String {
+enum PromptType: String, Codable {
     case puzzle
     case findHoney
     case objectDetection
@@ -21,7 +21,7 @@ enum PromptType: String {
 final class PromptModel: Identifiable {
     @Attribute var uid: String = ""
     @Attribute var startTime: Double = 0.0
-    @Attribute var promptType: String = ""
+    @Attribute var promptType: PromptType = PromptType.maze
     @Attribute var correctAnswer = ""
     @Attribute var question: String? = ""
     @Attribute var answerChoices: [String]? = []
@@ -31,7 +31,7 @@ final class PromptModel: Identifiable {
     var story: StoryModel? = nil
     var hints: [HintModel]?
     
-    init(correctAnswer: String, startTime: Double, promptType: String, hints: [HintModel]?, question: String? = "",
+    init(correctAnswer: String, startTime: Double, promptType: PromptType, hints: [HintModel]?, question: String? = "",
          answerChoices: [String]? = []) {
         self.uid = UUID().uuidString
         self.startTime = startTime

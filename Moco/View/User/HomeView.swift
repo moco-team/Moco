@@ -5,20 +5,16 @@
 //  Created by Aaron Christopher Tanhar on 11/10/23.
 //
 
-import MediaPlayer
-import SwiftData
 import SwiftUI
 
 struct HomeView: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.timerViewModel) private var timerViewModel
-    
+
     @Environment(\.storyThemeViewModel) private var storyThemeViewModel
     @Environment(\.navigate) private var navigate
     
     @State private var homeViewModel = HomeViewModel()
-  
-    let clueData = ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "button", meshes: ["Mesh_button_cylinder", "Mesh_button_cube"])
     
     var body: some View {
         ZStack {
@@ -64,7 +60,7 @@ struct HomeView: View {
                                 number: index + 1
                             ) {
                                 storyThemeViewModel.setSelectedStoryTheme(storyTheme)
-                                
+
                                 navigate.append(.episode)
                             }
                         }
@@ -78,7 +74,7 @@ struct HomeView: View {
             .onShake {
                 //                navigate.append(.storyThemeAdmin)
             }
-            .onAppear {
+            .task {
                 storyThemeViewModel.fetchStoryThemes()
                 audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1, category: .backsound)
                 homeViewModel.soundLevel = 0.3
