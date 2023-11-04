@@ -350,6 +350,10 @@ struct StoryView: View {
                                                     nextPage()
                                                 }.id(mazePrompt.id)
                                             }
+                                        case .ar:
+                                            ARStory() {
+                                                nextPage()
+                                            }
                                         case .puzzle:
                                             FindTheObjectView(
                                                 isPromptDone: .constant(false),

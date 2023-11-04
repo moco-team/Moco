@@ -301,7 +301,7 @@ struct ModelData {
                                 prompt: PromptModel(
                                     correctAnswer: "",
                                     startTime: 3,
-                                    promptType: PromptType.objectDetection,
+                                    promptType: PromptType.ar,
                                     hints: nil
                                 ),
                                 storyContents: [
@@ -315,24 +315,13 @@ struct ModelData {
                                         color: "",
                                         fontSize: 0
                                     ),
-                                    StoryContentModel(
-                                        duration: 9,
-                                        contentName: "Aku berkaki empat, tetapi aku tidak bisa berjalan. Orang-orang biasanya duduk di atasku.\nSiapakah aku?",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.6,
-                                        positionY: 0.3,
-                                        maxWidth: 0,
-                                        color: "",
-                                        fontSize: 0
-                                    )
-                                ]
+                                ],
+                                enableUI: false, 
+                                earlyPrompt: true
                             ),
-                            // Story page-2
                             StoryModel(
-                                background: "Story/Content/Story1/Pages/Page8/background",
+                                background: "Story/Content/Story1/Pages/Page7/background",
                                 pageNumber: 2,
-                                isHavePrompt: false,
-                                prompt: nil,
                                 storyContents: [
                                     StoryContentModel(
                                         duration: 0,
@@ -344,102 +333,8 @@ struct ModelData {
                                         color: "",
                                         fontSize: 0
                                     ),
-                                    StoryContentModel(
-                                        duration: 5,
-                                        contentName: "Saat langit sudah mulai gelap, Moco bertemu dengan Kakak Katak yang sedang kesulitan menangkap balon.",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.7,
-                                        positionY: 0.15,
-                                        maxWidth: 0,
-                                        color: "#FFFFFF",
-                                        fontSize: 0
-                                    )
                                 ]
                             ),
-                            // Story page-3
-                            StoryModel(
-                                background: "Story/Content/Story1/Pages/Page9/background",
-                                pageNumber: 3,
-                                isHavePrompt: true,
-                                prompt: PromptModel(
-                                    correctAnswer: "Jawaban yang benar adalah balon berwarna Merah",
-                                    startTime: 3,
-                                    promptType: PromptType.puzzle,
-                                    hints: nil
-                                ),
-                                storyContents: [
-                                    StoryContentModel(
-                                        duration: 0,
-                                        contentName: "bg-story",
-                                        contentType: StoryContentType.audio,
-                                        positionX: 0,
-                                        positionY: 0,
-                                        maxWidth: 0,
-                                        color: "",
-                                        fontSize: 0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 7,
-                                        contentName: "Kakak Katak sedang mengumpulkan balon yang berwarna Merah. Yuk kita bantu Kakak Katak menangkap balon!",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.6,
-                                        positionY: 0.2,
-                                        maxWidth: 0,
-                                        color: "#FFFFFF",
-                                        fontSize: 0
-                                    )
-                                ]
-                            ),
-                            // Story page-4
-                            StoryModel(
-                                background: "Story/Content/Story1/Pages/Page10/background",
-                                pageNumber: 4,
-                                isHavePrompt: false,
-                                prompt: nil,
-                                storyContents: [
-                                    StoryContentModel(
-                                        duration: 0,
-                                        contentName: "bg-story",
-                                        contentType: StoryContentType.audio,
-                                        positionX: 0,
-                                        positionY: 0,
-                                        maxWidth: 0,
-                                        color: "",
-                                        fontSize: 0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 12,
-                                        contentName: "Matahari pun terbenam dan Moco merasa lelah." +
-                                            "Moco memutuskan untuk beristirahat dan melanjutkan petualangannya esok hari.",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.67,
-                                        positionY: 0.63,
-                                        maxWidth: 0,
-                                        color: "",
-                                        fontSize: 0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 9,
-                                        contentName: "Hari ini, Moco belajar bahwa petualangan bisa menjadi kesempatan untuk membantu teman-temannya.",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.67,
-                                        positionY: 0.63,
-                                        maxWidth: 0,
-                                        color: "",
-                                        fontSize: 0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 5,
-                                        contentName: "Moco tidur dengan senyum di wajahnya, bermimpi tentang petualangan berikutnya.",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.67,
-                                        positionY: 0.63,
-                                        maxWidth: 0,
-                                        color: "",
-                                        fontSize: 0
-                                    )
-                                ]
-                            )
                         ],
                         isAvailable: false
                     )

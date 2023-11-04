@@ -14,6 +14,7 @@ final class StoryModel: Identifiable {
     @Attribute var background: String = ""
     @Attribute var pageNumber: Int = 0
     @Attribute var earlyPrompt = false
+    @Attribute var enableUI = true
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
@@ -28,9 +29,10 @@ final class StoryModel: Identifiable {
     init(
         background: String,
         pageNumber: Int,
-        isHavePrompt: Bool,
+        isHavePrompt: Bool = false,
         prompt: PromptModel? = nil,
         storyContents: [StoryContentModel]? = nil,
+        enableUI: Bool = true,
         earlyPrompt: Bool = false
     ) {
         uid = UUID().uuidString

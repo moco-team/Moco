@@ -18,7 +18,11 @@ struct ARStory: View {
     @Environment(\.navigate) private var navigate
 
     @State private var startVisibility: Bool = true
-    @State private var promptIndex = 0
+    @State private var promptIndex = 0 {
+        didSet {
+            startVisibility = true
+        }
+    }
     @State private var isGameStarted: Bool = false
 
     var doneHandler: (() -> Void)?
@@ -45,11 +49,11 @@ struct ARStory: View {
                             promptIndex += 1
                         }
                         if promptIndex >= clueDataArray.count {
-                            doneHandler!()
+                            doneHandler?()
                         }
                     }
                 ) {
-                    navigate.popToRoot()
+                    doneHandler?()
                 }
                 .id(promptIndex)
                 .ignoresSafeArea()
