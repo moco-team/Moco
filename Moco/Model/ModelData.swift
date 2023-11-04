@@ -314,9 +314,9 @@ struct ModelData {
                                         maxWidth: 0,
                                         color: "",
                                         fontSize: 0
-                                    ),
+                                    )
                                 ],
-                                enableUI: false, 
+                                enableUI: false,
                                 earlyPrompt: true
                             ),
                             StoryModel(
@@ -332,9 +332,9 @@ struct ModelData {
                                         maxWidth: 0,
                                         color: "",
                                         fontSize: 0
-                                    ),
+                                    )
                                 ]
-                            ),
+                            )
                         ],
                         isAvailable: false
                     )

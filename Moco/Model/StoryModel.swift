@@ -29,10 +29,10 @@ final class StoryModel: Identifiable {
     init(
         background: String,
         pageNumber: Int,
-        isHavePrompt: Bool = false,
+        isHavePrompt _: Bool = false,
         prompt: PromptModel? = nil,
         storyContents: [StoryContentModel]? = nil,
-        enableUI: Bool = true,
+        enableUI _: Bool = true,
         earlyPrompt: Bool = false
     ) {
         uid = UUID().uuidString

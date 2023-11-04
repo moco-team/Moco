@@ -146,5 +146,13 @@ struct ARCameraView: View {
 }
 
 #Preview {
-    ARCameraView(clue: ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "button", meshes: ["Mesh_button_cylinder", "Mesh_button_cube"]), lastPrompt: false, onFoundObject: {})
+    ARCameraView(
+        clue: ClueData(
+            clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!",
+            objectName: "button",
+            meshes: ["Mesh_button_cylinder", "Mesh_button_cube"]
+        ),
+        lastPrompt: false,
+        onFoundObject: {}
+    )
 }
