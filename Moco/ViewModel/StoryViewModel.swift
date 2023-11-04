@@ -48,22 +48,16 @@ import SwiftData
 
     func getSumMazePrompt(episode: EpisodeModel) -> Int {
         let episodeUid = episode.uid
+        let mazeType = PromptType.maze
         let fetchDescriptor = FetchDescriptor<StoryModel>(
             predicate: #Predicate {
-                $0.episode?.uid == episodeUid
+                $0.episode?.uid == episodeUid && $0.prompt?.promptType == mazeType
             },
             sortBy: [SortDescriptor<StoryModel>(\.createdAt)]
         )
 
-        let getMazes = (try? modelContext?.fetch(fetchDescriptor) ?? nil) ?? nil
+        let result = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
 
-        var sumMazePrompts = 0
-        for promptType in getMazes ?? [] {
-            if promptType.prompt!.promptType == PromptType.maze {
-                sumMazePrompts += 1
-            }
-        }
-
-        return sumMazePrompts
+        return result.count
     }
 }

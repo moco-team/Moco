@@ -29,6 +29,6 @@ import SwiftData
             sortBy: [SortDescriptor<PromptModel>(\.createdAt)]
         )
 
-        prompt = (try? modelContext?.fetch(fetchDescriptor)[0] ?? nil) ?? nil
+        prompt = (try? modelContext?.fetch(fetchDescriptor).first ?? nil) ?? nil
     }
 }

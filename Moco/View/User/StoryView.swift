@@ -216,8 +216,9 @@ struct StoryView: View {
     }
 
     private func startPrompt() {
-        showPromptButton = false
-        activePrompt = nil
+        if let storyPage = storyViewModel.storyPage, !storyPage.earlyPrompt {
+            activePrompt = nil
+        }
         guard promptViewModel.prompt != nil else { return }
         timerViewModel.setTimer(key: "storyPagePrompt-\(scrollPosition!)", withInterval: promptViewModel.prompt!.startTime) {
             withAnimation {
@@ -240,6 +241,10 @@ struct StoryView: View {
 
         startNarrative()
         startPrompt()
+        if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
+            promptViewModel.fetchPrompt(storyPage)
+            activePrompt = promptViewModel.prompt!
+        }
     }
 
     private func nextPage() {
@@ -247,6 +252,8 @@ struct StoryView: View {
             isEpisodeFinished = true
             return
         }
+
+        showPromptButton = false
 
         let nextPageBg = storyViewModel.getPageBackground(scrollPosition! + 1, episode: episodeViewModel.selectedEpisode!)
 
@@ -282,13 +289,14 @@ struct StoryView: View {
     private func setNewStoryPage(_ scrollPosition: Int) {
         if scrollPosition > -1 {
             storyViewModel.fetchStory(scrollPosition, episodeViewModel.selectedEpisode!)
-            storyContentViewModel.fetchStoryContents(storyViewModel.storyPage!)
 
-            if storyViewModel.storyPage!.isHavePrompt {
-                promptViewModel.fetchPrompt(storyViewModel.storyPage!)
+            if let storyPage = storyViewModel.storyPage {
+                storyContentViewModel.fetchStoryContents(storyPage)
 
-                if promptViewModel.prompt!.hints != nil {
-                    hintViewModel.fetchHints(promptViewModel.prompt!)
+                promptViewModel.fetchPrompt(storyPage)
+
+                if let prompt = promptViewModel.prompt, prompt.hints != nil {
+                    hintViewModel.fetchHints(prompt)
                 }
             }
         }
@@ -337,15 +345,11 @@ struct StoryView: View {
                                                 }
                                             }
                                         case .maze:
-                                            let mazePrompt = promptViewModel.prompt!
-                                            MazePrompt(promptText: mazePrompt.question!, answersAsset: mazePrompt.answerChoices!, correctAnswerAsset: mazePrompt.correctAnswer) {
-                                                if mazeQuestionIndex < storyViewModel.getSumMazePrompt(episode: episodeViewModel.selectedEpisode!) - 1 {
-                                                    mazeQuestionIndex += 1
-                                                } else {
-                                                    activePrompt = nil
-                                                    forceShowNext = true
-                                                }
-                                            }.id(mazeQuestionIndex)
+                                            if let mazePrompt = promptViewModel.prompt {
+                                                MazePrompt(promptText: mazePrompt.question!, answersAsset: mazePrompt.answerChoices!, correctAnswerAsset: mazePrompt.correctAnswer) {
+                                                    nextPage()
+                                                }.id(mazePrompt.id)
+                                            }
                                         case .puzzle:
                                             FindTheObjectView(
                                                 isPromptDone: .constant(false),
@@ -473,9 +477,6 @@ struct StoryView: View {
         }
         .task {
             onPageChange()
-            if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
-                activePrompt = promptViewModel.prompt!
-            }
         }
         .onDisappear {
             stop()
