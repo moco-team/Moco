@@ -20,7 +20,7 @@ final class StoryContentModel: Identifiable {
     @Attribute var uid: String = ""
     @Attribute var duration: Double = 0.0
     @Attribute var contentName: String = ""
-    @Attribute var contentType: StoryContentType = .text
+    @Attribute var contentType = StoryContentType.text
     @Attribute var positionX: Double = 0.0
     @Attribute var positionY: Double = 0.0
     @Attribute var maxWidth: Double? = Screen.width * 0.5

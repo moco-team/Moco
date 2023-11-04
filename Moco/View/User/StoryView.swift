@@ -248,7 +248,9 @@ struct StoryView: View {
             return
         }
 
-        peelBackground = AnyView(Image(storyViewModel.storyPage!.background)
+        let nextPageBg = storyViewModel.getPageBackground(scrollPosition! + 1, episode: episodeViewModel.selectedEpisode!)
+
+        peelBackground = AnyView(Image(nextPageBg ?? storyViewModel.storyPage!.background)
             .resizable()
             .scaledToFill()
             .frame(width: Screen.width, height: Screen.height, alignment: .center)
@@ -471,8 +473,8 @@ struct StoryView: View {
         }
         .task {
             onPageChange()
-            if let directPrompt = storyViewModel.storyPage!.prompt {
-                activePrompt = directPrompt
+            if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
+                activePrompt = promptViewModel.prompt!
             }
         }
         .onDisappear {

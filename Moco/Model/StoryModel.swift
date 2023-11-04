@@ -14,6 +14,7 @@ final class StoryModel: Identifiable {
     @Attribute var background: String = ""
     @Attribute var pageNumber: Int = 0
     @Attribute var isHavePrompt: Bool = false
+    @Attribute var earlyPrompt = false
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
@@ -21,13 +22,21 @@ final class StoryModel: Identifiable {
     var prompt: PromptModel?
     var storyContents: [StoryContentModel]?
 
-    init(background: String, pageNumber: Int, isHavePrompt: Bool, prompt: PromptModel?, storyContents: [StoryContentModel]?) {
+    init(
+        background: String,
+        pageNumber: Int,
+        isHavePrompt: Bool,
+        prompt: PromptModel? = nil,
+        storyContents: [StoryContentModel]? = nil,
+        earlyPrompt: Bool = false
+    ) {
         uid = UUID().uuidString
         self.background = background
         self.pageNumber = pageNumber
         self.isHavePrompt = isHavePrompt
         self.prompt = prompt
         self.storyContents = storyContents
+        self.earlyPrompt = earlyPrompt
         createdAt = Date()
         updatedAt = Date()
     }

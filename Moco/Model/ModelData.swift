@@ -111,7 +111,7 @@ struct ModelData {
                             // Story page-4
                             StoryModel(
                                 background: "Story/Content/Story1/Pages/Page4/background",
-                                pageNumber: 3,
+                                pageNumber: 4,
                                 isHavePrompt: true,
                                 prompt: PromptModel(
                                     correctAnswer: "1",
@@ -141,7 +141,7 @@ struct ModelData {
                             // Story page-5
                             StoryModel(
                                 background: "Story/Content/Story1/Pages/Page5/background",
-                                pageNumber: 3,
+                                pageNumber: 5,
                                 isHavePrompt: false,
                                 prompt: nil,
                                 storyContents: [
@@ -170,7 +170,7 @@ struct ModelData {
                                 pageNumber: 1,
                                 isHavePrompt: true,
                                 prompt: PromptModel(
-                                    correctAnswer: "Maze/answer_one",
+                                    correctAnswer: "Maze/answer_two",
                                     startTime: 2,
                                     promptType: PromptType.maze,
                                     hints: nil,
@@ -181,7 +181,7 @@ struct ModelData {
                                      C.) 3
                                     """,
                                     answerChoices: [
-                                        "Maze/answer_two",
+                                        "Maze/answer_one",
                                         "Maze/answer_three"
                                     ]
                                 ),
@@ -196,7 +196,8 @@ struct ModelData {
                                         color: "",
                                         fontSize: 0
                                     )
-                                ]
+                                ],
+                                earlyPrompt: true
                             ),
                             // Story page-2
                             StoryModel(
@@ -204,7 +205,7 @@ struct ModelData {
                                 pageNumber: 2,
                                 isHavePrompt: true,
                                 prompt: PromptModel(
-                                    correctAnswer: "Maze/answer_one",
+                                    correctAnswer: "Maze/answer_glass",
                                     startTime: 2,
                                     promptType: PromptType.maze,
                                     hints: nil,
@@ -215,8 +216,8 @@ struct ModelData {
                                      C.) Kacamata Hitam
                                     """,
                                     answerChoices: [
-                                        "Maze/answer_two",
-                                        "Maze/answer_three"
+                                        "Maze/answer_backpack",
+                                        "Maze/answer_hammer"
                                     ]
                                 ),
                                 storyContents: [
@@ -230,7 +231,8 @@ struct ModelData {
                                         color: "",
                                         fontSize: 0
                                     )
-                                ]
+                                ],
+                                earlyPrompt: true
                             ),
                             // Story page-3
                             StoryModel(
@@ -238,7 +240,7 @@ struct ModelData {
                                 pageNumber: 3,
                                 isHavePrompt: true,
                                 prompt: PromptModel(
-                                    correctAnswer: "Maze/answer_one",
+                                    correctAnswer: "Maze/answer_mice",
                                     startTime: 2,
                                     promptType: PromptType.maze,
                                     hints: nil,
@@ -249,10 +251,28 @@ struct ModelData {
                                      C.) Katak
                                     """,
                                     answerChoices: [
-                                        "Maze/answer_two",
-                                        "Maze/answer_three"
+                                        "Maze/answer_sapi_jantan",
+                                        "Maze/answer_frog"
                                     ]
                                 ),
+                                storyContents: [
+                                    StoryContentModel(
+                                        duration: 0,
+                                        contentName: "bg-story",
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
+                                    )
+                                ],
+                                earlyPrompt: true
+                            ),
+                            StoryModel(
+                                background: "Story/Content/Story1/Pages/Page6/background",
+                                pageNumber: 4,
+                                isHavePrompt: false,
                                 storyContents: [
                                     StoryContentModel(
                                         duration: 0,

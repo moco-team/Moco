@@ -21,7 +21,7 @@ enum PromptType: String, Codable {
 final class PromptModel: Identifiable {
     @Attribute var uid: String = ""
     @Attribute var startTime: Double = 0.0
-    @Attribute var promptType: PromptType = .maze
+    @Attribute var promptType = PromptType.maze
     @Attribute var correctAnswer = ""
     @Attribute var question: String? = ""
     @Attribute var answerChoices: [String]? = []

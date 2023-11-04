@@ -33,6 +33,19 @@ import SwiftData
         storyPage = (try? modelContext?.fetch(fetchDescriptor)[index] ?? nil) ?? nil
     }
 
+    func getPageBackground(_ index: Int, episode: EpisodeModel?) -> String? {
+        let episodeUid = episode?.uid
+
+        let fetchDescriptor = FetchDescriptor<StoryModel>(
+            predicate: #Predicate {
+                $0.episode?.uid == episodeUid
+            },
+            sortBy: [SortDescriptor<StoryModel>(\.createdAt)]
+        )
+
+        return (try? modelContext?.fetch(fetchDescriptor)[index].background ?? nil) ?? nil
+    }
+
     func getSumMazePrompt(episode: EpisodeModel) -> Int {
         let episodeUid = episode.uid
         let fetchDescriptor = FetchDescriptor<StoryModel>(
