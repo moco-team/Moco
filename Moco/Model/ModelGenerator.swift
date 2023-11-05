@@ -6,21 +6,23 @@
 //
 
 import SwiftData
+import SwiftUI
 
 struct ModelGenerator {
     private static let models: [any PersistentModel.Type] = [
         Item.self,
         CollectionModel.self,
         StoryThemeModel.self,
+        EpisodeModel.self,
         StoryModel.self,
         StoryContentModel.self,
         PromptModel.self,
         HintModel.self
     ]
 
-    @MainActor static func populateContainer<T: CustomPersistentModel>(container: ModelContainer, items: [T]) {
+    @MainActor
+    static func populateContainer<T: CustomPersistentModel>(container: ModelContainer, items: [T]) {
         let modelFetchDescriptor = FetchDescriptor<T>()
-
         let modelContext = ModelContext(container)
 
         do {
@@ -55,19 +57,8 @@ struct ModelGenerator {
             let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
 
             // !!!: TO BE POPULATED, A MODEL MUST IMPLEMENT CustomPersistentModel
-            let dataToBePopulated = [
-                "storyThemeModel": [
-                    StoryThemeModel(
-                        pictureName: "Story/Cover/Story1",
-                        descriptionTheme: "Story 1",
-                        title: "Story 1",
-                        stories: [StoryModel(background: "Story/Content/Story1/Pages/Page1/background", pageNumber: 0, isHavePrompt: false)],
-                        slug: "story-1"
-                    )
-                ]
-            ]
 
-            for (_, datum) in dataToBePopulated {
+            for (_, datum) in ModelData.dataToBePopulated {
                 ModelGenerator.populateContainer(container: container, items: datum)
             }
 

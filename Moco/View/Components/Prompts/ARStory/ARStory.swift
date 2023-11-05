@@ -18,15 +18,32 @@ struct ARStory: View {
     @Environment(\.navigate) private var navigate
 
     @State private var startVisibility: Bool = true
-    @State private var promptIndex = 0
+    @State private var promptIndex = 0 {
+        didSet {
+            startVisibility = true
+        }
+    }
+
     @State private var isGameStarted: Bool = false
 
     var doneHandler: (() -> Void)?
 
     let clueDataArray: [ClueData] = [
-        ClueData(clue: "Wow! kita sudah berada di pulau Arjuna. Sekarang, kita perlu mencari benda yang dapat menjadi clue untuk menemukan Maudi!", objectName: "honey_jar", meshes: ["honey_jar"]),
-        ClueData(clue: "Bagus! Kita telah menemukan dimana Bebe dikurung! Namun, pintunya terkunci. Mari kita cari sesuatu yang dapat membuka tempat Bebe dikurung!", objectName: "key", meshes: ["key"]),
-        ClueData(clue: "Yeay!! Kita berhasil menemukan Bebe! Betapa melelahkannya perjalanan hari ini. Waktunya kita pulang, yuk mencari alat yang dapat membawa kita kembali ke Kota Mocokerto!", objectName: "airplane", meshes: ["airplane"])
+        ClueData(
+            clue: "Wow! kita sudah berada di pulau Arjuna. Sekarang, kita perlu mencari benda yang dapat menjadi clue untuk menemukan Maudi!",
+            objectName: "honey_jar",
+            meshes: ["honey_jar"]
+        ),
+        ClueData(
+            clue: "Bagus! Kita telah menemukan dimana Bebe dikurung! Namun, pintunya terkunci. Mari kita cari sesuatu yang dapat membuka tempat Bebe dikurung!",
+            objectName: "key",
+            meshes: ["key"]
+        ),
+        ClueData(
+            clue: "Yeay!! Kita berhasil menemukan Bebe! Betapa melelahkannya perjalanan hari ini. Waktunya kita pulang, yuk mencari alat yang dapat membawa kita kembali ke Kota Mocokerto!",
+            objectName: "airplane",
+            meshes: ["airplane"]
+        )
     ]
 
     var body: some View {
@@ -45,11 +62,11 @@ struct ARStory: View {
                             promptIndex += 1
                         }
                         if promptIndex >= clueDataArray.count {
-                            doneHandler!()
+                            doneHandler?()
                         }
                     }
                 ) {
-                    navigate.popToRoot()
+                    doneHandler?()
                 }
                 .id(promptIndex)
                 .ignoresSafeArea()

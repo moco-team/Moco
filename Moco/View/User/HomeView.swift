@@ -18,8 +18,6 @@ struct HomeView: View {
 
     @State private var homeViewModel = HomeViewModel()
 
-    let clueData = ClueData(clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!", objectName: "button", meshes: ["Mesh_button_cylinder", "Mesh_button_cube"])
-
     var body: some View {
         ZStack {
             VStack {
@@ -42,6 +40,7 @@ struct HomeView: View {
                     BurgerMenu()
                 }
                 .padding(.horizontal, 0.05 * Screen.width)
+
                 Spacer()
 
                 HStack {
@@ -54,16 +53,19 @@ struct HomeView: View {
 
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: [GridItem(.flexible())]) {
-                        ForEach(
-                            Array(storyThemeViewModel.storyThemes.enumerated()), id: \.element
-                        ) { index, storyTheme in
-                            StoryBookNew(
-                                title: storyTheme.title,
-                                image: storyTheme.pictureName,
-                                firstPageBackground: storyTheme.stories![0].background,
-                                number: index + 1
-                            ) {
-                                navigate.append(.episode)
+                        if let storyThemes = storyThemeViewModel.storyThemes {
+                            ForEach(
+                                Array(storyThemes.enumerated()), id: \.element
+                            ) { index, storyTheme in
+                                StoryBookNew(
+                                    image: storyTheme.pictureName,
+                                    firstPageBackground: storyTheme.episodes![0].pictureName,
+                                    number: index + 1
+                                ) {
+                                    storyThemeViewModel.setSelectedStoryTheme(storyTheme)
+
+                                    navigate.append(.episode)
+                                }
                             }
                         }
                     }
@@ -74,7 +76,7 @@ struct HomeView: View {
                 Spacer()
             }
             .onShake {
-                navigate.append(.storyThemeAdmin)
+                //                navigate.append(.storyThemeAdmin)
             }
             .onAppear {
                 storyThemeViewModel.fetchStoryThemes()

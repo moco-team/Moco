@@ -10,14 +10,15 @@ import SwiftData
 
 @Model
 final class HintModel: Identifiable {
-    @Attribute var id: String = UUID().uuidString
+    @Attribute var uid: String = ""
     @Attribute var hint: String = ""
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
-    @Attribute var prompt: PromptModel?
+    var prompt: PromptModel?
 
     init(hint: String) {
+        uid = UUID().uuidString
         self.hint = hint
         createdAt = Date()
         updatedAt = Date()

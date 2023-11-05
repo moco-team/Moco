@@ -19,8 +19,12 @@ struct MocoApp: App {
     @State private var audioViewModel = AudioViewModel()
     @State private var timerViewModel = TimerViewModel()
     @State private var itemViewModel = ItemViewModel()
-    @State private var storyThemeViewModel = StoryThemeViewModel()
-    @State private var episodeViewModel = EpisodeViewModel()
+    @State private var storyThemeViewModel = StoryThemeViewModel.shared
+    @State private var episodeViewModel = EpisodeViewModel.shared
+    @State private var storyViewModel = StoryViewModel.shared
+    @State private var storyContentViewModel = StoryContentViewModel.shared
+    @State private var promptViewModel = PromptViewModel.shared
+    @State private var hintViewModel = HintViewModel.shared
 
     // MARK: - State Objects
 
@@ -42,6 +46,10 @@ struct MocoApp: App {
                 .environment(\.itemViewModel, itemViewModel)
                 .environment(\.storyThemeViewModel, storyThemeViewModel)
                 .environment(\.episodeViewModel, episodeViewModel)
+                .environment(\.storyViewModel, storyViewModel)
+                .environment(\.storyContentViewModel, storyContentViewModel)
+                .environment(\.promptViewModel, promptViewModel)
+                .environment(\.hintViewModel, hintViewModel)
                 .environment(\.audioViewModel, audioViewModel)
                 .environment(\.timerViewModel, timerViewModel)
                 .environmentObject(speechViewModel)

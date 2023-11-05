@@ -9,58 +9,55 @@ import Foundation
 import SwiftData
 
 @Observable class StoryViewModel: BaseViewModel {
-    var stories = [StoryModel]()
-    var selectedStoryPage: StoryModel?
+    static var shared = StoryViewModel()
+
+    var storyPage: StoryModel?
 
     init(modelContext: ModelContext? = nil) {
         super.init()
         if modelContext != nil {
             self.modelContext = modelContext
         }
-        if self.modelContext != nil {
-            fetchStories(nil)
-        }
     }
 
-    func fetchStories(_ storyThemeModel: StoryThemeModel?) {
-        let storyThemeModelId = storyThemeModel?.id
+    func fetchStory(_ index: Int, _ episode: EpisodeModel?) {
+        let episodeUid = episode?.uid
+
         let fetchDescriptor = FetchDescriptor<StoryModel>(
             predicate: #Predicate {
-                $0.storyTheme?.id == storyThemeModelId
+                $0.episode?.uid == episodeUid
             },
-            sortBy: [SortDescriptor<StoryModel>(\.pageNumber)]
+            sortBy: [SortDescriptor<StoryModel>(\.createdAt)]
         )
 
-        stories = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
+        storyPage = (try? modelContext?.fetch(fetchDescriptor)[index] ?? nil) ?? nil
     }
 
-    func createStory(storyTheme: StoryThemeModel, background: String, pageNumber: Int, isHavePrompt: Bool) {
-        let newStory = StoryModel(background: background, pageNumber: pageNumber, isHavePrompt: isHavePrompt)
-        newStory.storyTheme = storyTheme
+    func getPageBackground(_ index: Int, episode: EpisodeModel?) -> String? {
+        let episodeUid = episode?.uid
 
-        modelContext?.insert(newStory)
-        try? modelContext?.save()
+        let fetchDescriptor = FetchDescriptor<StoryModel>(
+            predicate: #Predicate {
+                $0.episode?.uid == episodeUid
+            },
+            sortBy: [SortDescriptor<StoryModel>(\.createdAt)]
+        )
 
-        fetchStories(storyTheme)
+        return (try? modelContext?.fetch(fetchDescriptor)[index].background ?? nil) ?? nil
     }
 
-    func deleteStory(_ story: StoryModel, _ storyTheme: StoryThemeModel) {
-        modelContext?.delete(story)
-        try? modelContext?.save()
+    func getSumMazePrompt(episode: EpisodeModel) -> Int {
+        let episodeUid = episode.uid
+        let mazeType = PromptType.maze
+        let fetchDescriptor = FetchDescriptor<StoryModel>(
+            predicate: #Predicate {
+                $0.episode?.uid == episodeUid && $0.prompt?.promptType == mazeType
+            },
+            sortBy: [SortDescriptor<StoryModel>(\.createdAt)]
+        )
 
-        fetchStories(storyTheme)
-    }
+        let result = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
 
-    func deleteStory(index: Int, _ storyTheme: StoryThemeModel) {
-        guard stories.indices.contains(index) else { return }
-        modelContext?.delete(stories[index])
-        try? modelContext?.save()
-
-        fetchStories(storyTheme)
-    }
-
-    func setSelectedStoryPage(_ index: Int) {
-        guard stories.indices.contains(index) else { return }
-        selectedStoryPage = stories[index]
+        return result.count
     }
 }

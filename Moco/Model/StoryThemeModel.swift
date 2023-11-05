@@ -10,23 +10,19 @@ import SwiftData
 
 @Model
 final class StoryThemeModel: Identifiable, CustomPersistentModel {
-    @Attribute var id: String = ""
+    @Attribute var uid: String = ""
     @Attribute var slug: String = ""
     @Attribute var pictureName: String = ""
-    @Attribute var descriptionTheme: String = ""
-    @Attribute var title: String = ""
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
-    @Attribute var stories: [StoryModel]?
+    var episodes: [EpisodeModel]?
 
-    init(pictureName: String, descriptionTheme: String, title: String = "", stories: [StoryModel]? = nil, slug: String = "") {
-        id = UUID().uuidString
+    init(pictureName: String, episodes: [EpisodeModel]?, slug: String = "") {
+        uid = UUID().uuidString
         self.slug = slug
         self.pictureName = pictureName
-        self.descriptionTheme = descriptionTheme
-        self.title = title
-        self.stories = stories
+        self.episodes = episodes
         createdAt = Date()
         updatedAt = Date()
     }

@@ -9,59 +9,59 @@ import Foundation
 import SwiftData
 
 @Observable class EpisodeViewModel: BaseViewModel {
-    //    var episodes = [EpisodeModel]()
-    var episodeActive: [Int] = [1, 1, 1]
+    static let shared = EpisodeViewModel()
 
-    func appendEpisodeActive(_ indexEpisode: Int) {
-        if episodeActive.count < 3 {
-            episodeActive.append(indexEpisode)
+    var selectedEpisode: EpisodeModel?
+    var availableEpisodes: [EpisodeModel]?
+    var episodes: [EpisodeModel]?
+
+    init(modelContext: ModelContext? = nil) {
+        super.init()
+        if modelContext != nil {
+            self.modelContext = modelContext
         }
     }
-    //    init(modelContext: ModelContext? = nil) {
-    //        super.init()
-    //        if modelContext != nil {
-    //            self.modelContext = modelContext
-    //        }
-    //        if self.modelContext != nil {
-    //            fetchHints(nil)
-    //        }
-    //    }
-    //
-    //    func fetchHints(_ prompt: PromptModel?) {
-    //        // ???: Cannot assign to predicate without putting it into variable first, idk why
-    //        let promptId = prompt?.id
-    //        let fetchDescriptor = FetchDescriptor<HintModel>(
-    //            predicate: #Predicate {
-    //                $0.prompt?.id == promptId
-    //            },
-    //            sortBy: [SortDescriptor<HintModel>(\.createdAt)]
-    //        )
-    //
-    //        hints = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
-    //    }
-    //
-    //    func createHint(_ prompt: PromptModel) {
-    //        let newHint = HintModel(hint: "new hint")
-    //        newHint.prompt = prompt
-    //
-    //        modelContext?.insert(newHint)
-    //        try? modelContext?.save()
-    //
-    //        fetchHints(prompt)
-    //    }
-    //
-    //    func deleteHint(prompt: PromptModel, hint: HintModel) {
-    //        modelContext?.delete(hint)
-    //        try? modelContext?.save()
-    //
-    //        fetchHints(prompt)
-    //    }
-    //
-    //    func deleteHint(prompt: PromptModel, index: Int) {
-    //        guard hints.indices.contains(index) else { return }
-    //        modelContext?.delete(hints[index])
-    //        try? modelContext?.save()
-    //
-    //        fetchHints(prompt)
-    //    }
+
+    func setSelectedEpisode(_ episode: EpisodeModel) {
+        selectedEpisode = episode
+    }
+
+    func fetchEpisodes(storyThemeId: String) {
+        let fetchDescriptor = FetchDescriptor<EpisodeModel>(
+            predicate: #Predicate {
+                $0.storyTheme?.uid == storyThemeId
+            },
+            sortBy: [SortDescriptor<EpisodeModel>(\.createdAt)]
+        )
+
+        episodes = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
+
+        availableEpisodes = []
+
+        for episode in episodes ?? [] {
+            if episode.isAvailable {
+                availableEpisodes?.append(episode)
+            }
+        }
+    }
+
+    func setToAvailable(selectedStoryTheme: StoryThemeModel) {
+        if let episodes = episodes, let availableEpisodes = availableEpisodes {
+            if availableEpisodes.count < episodes.count &&
+                selectedEpisode!.uid == availableEpisodes[availableEpisodes.count - 1].uid {
+                let storyThemeId = selectedStoryTheme.uid
+                let fetchDescriptor = FetchDescriptor<EpisodeModel>(
+                    predicate: #Predicate {
+                        $0.storyTheme?.uid == storyThemeId
+                    },
+                    sortBy: [SortDescriptor<EpisodeModel>(\.createdAt)]
+                )
+
+                if let getEpisodes = (try? modelContext?.fetch(fetchDescriptor)) {
+                    getEpisodes[availableEpisodes.count].isAvailable = true
+                    try? modelContext?.save()
+                }
+            }
+        }
+    }
 }

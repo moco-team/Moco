@@ -13,7 +13,7 @@ struct FindTheObjectView: View {
     @Binding var isPromptDone: Bool
 
     let content: String
-    let hints: [String]
+    let hints: [HintModel]
     let correctAnswer: String
     @State var balloons: [Balloon]
 
@@ -80,7 +80,7 @@ struct FindTheObjectView: View {
     FindTheObjectView(
         isPromptDone: .constant(false),
         content: "Once upon a time...",
-        hints: ["Coba lagi!", "Ayo coba lagi!"],
+        hints: [HintModel(hint: "Coba lagi!"), HintModel(hint: "Ayo coba lagi!")],
         correctAnswer: "Jawaban yang benar adalah balon berwarna Merah",
         balloons: [
             Balloon(color: "orange", isCorrect: false),

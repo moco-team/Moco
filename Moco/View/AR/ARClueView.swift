@@ -67,8 +67,13 @@ struct ARClueView: View {
                 Spacer()
             }
         }
-        .background(Image("Story/Content/Story1/Ep3/background"))
-        .onAppear {
+        .background(
+            Image("Story/Content/Story1/Ep3/background")
+                .resizable()
+                .ignoresSafeArea()
+                .frame(width: Screen.width, height: Screen.height)
+        )
+        .task {
             withAnimation(Animation.easeIn(duration: 1.5)) {
                 fadeInGameStartView.toggle()
             }

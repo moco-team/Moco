@@ -13,7 +13,6 @@ struct StoryBookNew: View {
 
     @Environment(\.font) private var font
 
-    var title: String = "Story 1"
     let durationAndDelay: CGFloat = 0.3
     var image: String? = "Story/Cover/Story1"
     var firstPageBackground: String?

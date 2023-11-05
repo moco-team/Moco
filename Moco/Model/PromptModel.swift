@@ -8,33 +8,39 @@
 import Foundation
 import SwiftData
 
-enum PromptType {
+enum PromptType: String, Codable {
     case puzzle
     case findHoney
     case objectDetection
     case speech
     case multipleChoice
     case maze
+    case ar
 }
 
 @Model
 final class PromptModel: Identifiable {
-    @Attribute var id: String = UUID().uuidString
-    @Attribute var promptDescription = ""
+    @Attribute var uid: String = ""
+    @Attribute var startTime: Double = 0.0
+    @Attribute var promptType = PromptType.maze
     @Attribute var correctAnswer = ""
-    @Attribute var duration: TimeInterval = 0.0
-    @Attribute var promptType = ""
+    @Attribute var question: String? = ""
+    @Attribute var answerChoices: [String]? = []
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
-    @Attribute var story: StoryModel?
-    @Attribute var hints: [HintModel]?
+    var story: StoryModel?
+    var hints: [HintModel]?
 
-    init(promptDescription: String, correctAnswer: String, duration: TimeInterval, promptType: String) {
-        self.promptDescription = promptDescription
-        self.correctAnswer = correctAnswer
-        self.duration = duration
+    init(correctAnswer: String, startTime: Double, promptType: PromptType, hints: [HintModel]?, question: String? = "",
+         answerChoices: [String]? = []) {
+        uid = UUID().uuidString
+        self.startTime = startTime
         self.promptType = promptType
+        self.correctAnswer = correctAnswer
+        self.hints = hints ?? []
+        self.question = question
+        self.answerChoices = answerChoices
         createdAt = Date()
         updatedAt = Date()
     }
