@@ -287,7 +287,7 @@ struct ModelData {
                                 ]
                             )
                         ],
-                        isAvailable: false
+                        isAvailable: true
                     ),
                     // Episode-3
                     EpisodeModel(

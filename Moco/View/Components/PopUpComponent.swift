@@ -32,8 +32,8 @@ struct PopUpComponent: ViewModifier {
     var cancelHandler: (() -> Void)?
 
     func body(content: Content) -> some View {
-        if isActive {
-            content.overlay {
+        content.overlay {
+            if isActive {
                 PopUpComponentView(
                     isActive: $isActive,
                     title: title,
@@ -55,8 +55,6 @@ struct PopUpComponent: ViewModifier {
                 }
                 .id(isActive)
             }
-        } else {
-            content
         }
     }
 }

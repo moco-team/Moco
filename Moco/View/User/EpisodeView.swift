@@ -9,6 +9,7 @@ import SwiftData
 import SwiftUI
 
 struct EpisodeView: View {
+    @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.storyThemeViewModel) private var storyThemeViewModel
     @Environment(\.episodeViewModel) private var episodeViewModel
     @Environment(\.storyViewModel) private var storyViewModel
@@ -103,12 +104,14 @@ struct EpisodeView: View {
         }
         .task {
             episodeViewModel.fetchEpisodes(storyThemeId: storyThemeViewModel.selectedStoryTheme!.uid)
+            if navigate.previousRoute == .story {
+                audioViewModel.clearAll()
+                audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1, category: .backsound)
+            }
         }
     }
 }
 
 #Preview {
-    @State var itemViewModel = ItemViewModel()
-
-    return EpisodeView().environment(\.itemViewModel, itemViewModel)
+    EpisodeView()
 }

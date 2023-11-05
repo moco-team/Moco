@@ -80,7 +80,10 @@ struct HomeView: View {
             }
             .onAppear {
                 storyThemeViewModel.fetchStoryThemes()
-                audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1, category: .backsound)
+                if navigate.previousRoute == nil {
+                    audioViewModel.clearAll()
+                    audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1, category: .backsound)
+                }
                 homeViewModel.soundLevel = 0.3
                 homeViewModel.setVolume()
             }
@@ -89,7 +92,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    @State var itemViewModel = ItemViewModel()
-
-    return HomeView().environment(\.itemViewModel, itemViewModel)
+    HomeView()
 }

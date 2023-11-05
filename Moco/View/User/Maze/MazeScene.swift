@@ -17,8 +17,17 @@ class MazeScene: SKScene, ObservableObject {
     var touched: Bool = false
     var score: Int = 0
 
-    var wrongAnswerAsset = ["Maze/answer_one", "Maze/answer_two"]
-    var correctAnswerAsset = "Maze/answer_three"
+    var wrongAnswerAsset = ["Maze/answer_one", "Maze/answer_two"] {
+        didSet {
+            reloadObjectiveTexture()
+        }
+    }
+
+    var correctAnswerAsset = "Maze/answer_three" {
+        didSet {
+            reloadObjectiveTexture()
+        }
+    }
 
     @Published private(set) var correctAnswer = false
 

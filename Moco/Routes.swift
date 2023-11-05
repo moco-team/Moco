@@ -57,48 +57,62 @@ struct Routes: View {
 /// Route view model, should not change if not necessary
 @Observable
 class RouteViewModel {
-    var navPath = NavigationPath()
+    var navPath = [Route]() {
+        willSet {
+            previousRoute = navPath.last
+        }
+    }
+
+    private(set) var previousRoute: Route?
+    var currentRoute: Route? {
+        navPath.last
+    }
 
     // MARK: - Append route to navigation path
 
     /// Append AKA go to next route
-    func append(_ route: Route) {
+    func append(_ route: Route, before: (() -> Void)? = nil) {
+        before?()
         navPath.append(route)
     }
 
     // MARK: - Pop route from navigation path
 
     /// Pop AKA return to previous view in the navigation stack
-    func pop() {
+    func pop(before: (() -> Void)? = nil) {
         guard !navPath.isEmpty else {
             print("navPath is empty")
             return
         }
+        before?()
         navPath.removeLast()
     }
 
     // MARK: - Pop multiple routes
 
     /// Pop multiple times AKA return to previous view multiple times in the navigation stack
-    func pop(_ count: Int) {
+    func pop(_ count: Int, before: (() -> Void)? = nil) {
         guard navPath.count >= count else {
             print("count must not be greater than navPath.count")
             return
         }
+        before?()
         navPath.removeLast(count)
     }
 
     // MARK: - Pop to root
 
     /// Back to root view
-    func popToRoot() {
+    func popToRoot(before: (() -> Void)? = nil) {
+        before?()
         navPath.removeLast(navPath.count)
     }
 
     // MARK: - Append multiple routes
 
     /// Append multiple routes to navigation stack
-    func append(_ routes: Route...) {
+    func append(_ routes: Route..., before: (() -> Void)? = nil) {
+        before?()
         routes.forEach { route in
             navPath.append(route)
         }
