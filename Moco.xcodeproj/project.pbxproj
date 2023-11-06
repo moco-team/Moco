@@ -185,6 +185,8 @@
 		93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C2F8BA2AD684CE007D1ABC /* Device.swift */; };
 		93C2F8C02AD685A3007D1ABC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 93C2F8BF2AD685A3007D1ABC /* README.md */; };
 		93C2F8C32AD685E6007D1ABC /* yolov8s.mlmodel in Resources */ = {isa = PBXBuildFile; fileRef = 93C2F8C12AD685D7007D1ABC /* yolov8s.mlmodel */; };
+		93C30CBA2AF926150076808F /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C30CB92AF926150076808F /* TimerView.swift */; };
+		93C30CBC2AF928CC0076808F /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C30CBB2AF928CC0076808F /* DateExtension.swift */; };
 		93C8E71E2ADEDA8F002315A2 /* CherryBombRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93C8E71D2ADEDA79002315A2 /* CherryBombRegular.ttf */; };
 		93C8E7212ADEF1DB002315A2 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8E7202ADEF1DB002315A2 /* TimerModel.swift */; };
 		93C8E7232ADEF249002315A2 /* FontUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8E7222ADEF249002315A2 /* FontUtil.swift */; };
@@ -413,6 +415,8 @@
 		93C2F8BA2AD684CE007D1ABC /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		93C2F8BF2AD685A3007D1ABC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		93C2F8C12AD685D7007D1ABC /* yolov8s.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = yolov8s.mlmodel; sourceTree = "<group>"; };
+		93C30CB92AF926150076808F /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		93C30CBB2AF928CC0076808F /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		93C8E71D2ADEDA79002315A2 /* CherryBombRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CherryBombRegular.ttf; sourceTree = "<group>"; };
 		93C8E7202ADEF1DB002315A2 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		93C8E7222ADEF249002315A2 /* FontUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontUtil.swift; sourceTree = "<group>"; };
@@ -851,6 +855,7 @@
 				93676D232AF139A800E756A5 /* ProgressBar.swift */,
 				93676D2A2AF1435200E756A5 /* Pointer.swift */,
 				9328F9162AF25C2200E82995 /* ModalComponent.swift */,
+				93C30CB92AF926150076808F /* TimerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1201,6 +1206,7 @@
 				935D786E2AEF4C1200DF64A5 /* Spacer.swift */,
 				93CA8B7A2AF00E8400651885 /* SpriteKit.swift */,
 				056A3E472AF25170009299F4 /* SKSpriteNodeExtension.swift */,
+				93C30CBB2AF928CC0076808F /* DateExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1507,6 +1513,8 @@
 				0B6E2F6E2ADC92950001D320 /* HintModel.swift in Sources */,
 				935D78692AEF4B1C00DF64A5 /* View.swift in Sources */,
 				93E3D87C2AE4EFDB00E5391F /* SpeakPromptViewModel.swift in Sources */,
+				93C30CBA2AF926150076808F /* TimerView.swift in Sources */,
+				93C30CBC2AF928CC0076808F /* DateExtension.swift in Sources */,
 				0BA3E5122ADFD98400BCFE9E /* StoryModalView.swift in Sources */,
 				937AF29C2AE8D47E008C69BB /* ResourceLoader.swift in Sources */,
 				0B2E31E22AD9064900DFC16F /* CollectionViewModel.swift in Sources */,
