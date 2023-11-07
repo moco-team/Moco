@@ -34,6 +34,10 @@ class OrientationInfo: ObservableObject {
             guard let device = note.object as? UIDevice else {
                 return
             }
+            if let appDelegateOrientationLock = AppDelegate.orientationLock {
+                self.orientation = (appDelegateOrientationLock == .landscapeLeft) ? .landscapeRight : .landscapeLeft
+                return
+            }
             if device.orientation == .landscapeLeft {
                 self.orientation = .landscapeLeft
             } else if device.orientation == .landscapeRight {

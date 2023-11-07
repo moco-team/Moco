@@ -72,7 +72,7 @@ struct MazePrompt: View {
             }
         }.onLoad {
             mazePromptViewModel.playPrompt()
-        }
+        }.forceRotation()
     }
 }
 
