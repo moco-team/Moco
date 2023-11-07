@@ -188,7 +188,7 @@ struct ModelData {
                                 storyContents: [
                                     StoryContentModel(
                                         duration: 0,
-                                        contentName: "bg-story",
+                                        contentName: "maze-bgm",
                                         contentType: StoryContentType.audio,
                                         positionX: 0,
                                         positionY: 0,
@@ -223,7 +223,7 @@ struct ModelData {
                                 storyContents: [
                                     StoryContentModel(
                                         duration: 0,
-                                        contentName: "bg-story",
+                                        contentName: "maze-bgm",
                                         contentType: StoryContentType.audio,
                                         positionX: 0,
                                         positionY: 0,
@@ -258,7 +258,7 @@ struct ModelData {
                                 storyContents: [
                                     StoryContentModel(
                                         duration: 0,
-                                        contentName: "bg-story",
+                                        contentName: "maze-bgm",
                                         contentType: StoryContentType.audio,
                                         positionX: 0,
                                         positionY: 0,
