@@ -20,8 +20,17 @@ struct MazeView: View {
     @EnvironmentObject var motionViewModel: MotionViewModel
     @EnvironmentObject var orientationInfo: OrientationInfo
 
-    var answersAsset = ["Maze/answer_one", "Maze/answer_two"]
-    var correctAnswerAsset = "Maze/answer_three"
+    var answersAsset = ["Maze/answer_one", "Maze/answer_two"] {
+        didSet {
+            scene.wrongAnswerAsset = answersAsset
+        }
+    }
+
+    var correctAnswerAsset = "Maze/answer_three" {
+        didSet {
+            scene.correctAnswerAsset = correctAnswerAsset
+        }
+    }
 
     @StateObject private var scene: MazeScene = {
         let screenWidth = Screen.width
@@ -50,7 +59,6 @@ struct MazeView: View {
             motionViewModel.startUpdates()
             scene.correctAnswerAsset = correctAnswerAsset
             scene.wrongAnswerAsset = answersAsset
-            print(correctAnswerAsset)
             TimerViewModel().setTimer(key: "mazeTimer\(correctAnswerAsset)", withInterval: 0.02) {
                 motionViewModel.updateMotion()
                 if orientationInfo.orientation == .landscapeLeft {

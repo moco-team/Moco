@@ -18,7 +18,6 @@ struct MocoApp: App {
 
     @State private var audioViewModel = AudioViewModel()
     @State private var timerViewModel = TimerViewModel()
-    @State private var itemViewModel = ItemViewModel()
     @State private var storyThemeViewModel = StoryThemeViewModel.shared
     @State private var episodeViewModel = EpisodeViewModel.shared
     @State private var storyViewModel = StoryViewModel.shared
@@ -43,7 +42,6 @@ struct MocoApp: App {
                 ContentViewContainer()
             }.environment(\.navigate, routeViewModel)
                 .environment(\.font, Font.custom("CherryBomb-Regular", size: 24, relativeTo: .body))
-                .environment(\.itemViewModel, itemViewModel)
                 .environment(\.storyThemeViewModel, storyThemeViewModel)
                 .environment(\.episodeViewModel, episodeViewModel)
                 .environment(\.storyViewModel, storyViewModel)

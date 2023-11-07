@@ -31,8 +31,8 @@ struct ModalComponent: ViewModifier {
     var cancelHandler: (() -> Void)?
 
     func body(content: Content) -> some View {
-        if isActive {
-            content.overlay {
+        content.overlay {
+            if isActive {
                 ModalComponentView(
                     isActive: $isActive,
                     title: title,
@@ -53,8 +53,6 @@ struct ModalComponent: ViewModifier {
                 }
                 .id(isActive)
             }
-        } else {
-            content
         }
     }
 }

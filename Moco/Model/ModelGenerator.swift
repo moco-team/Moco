@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ModelGenerator {
     private static let models: [any PersistentModel.Type] = [
-        Item.self,
         CollectionModel.self,
         StoryThemeModel.self,
         EpisodeModel.self,

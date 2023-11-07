@@ -70,7 +70,7 @@ struct MazePrompt: View {
                     Spacer()
                 }
             }
-        }.onAppear {
+        }.onLoad {
             mazePromptViewModel.playPrompt()
         }
     }

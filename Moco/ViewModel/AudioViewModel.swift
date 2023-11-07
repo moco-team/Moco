@@ -25,6 +25,23 @@ import AVFoundation
         audioModel.stopAllSounds()
     }
 
+    func pauseAllSounds() {
+        audioModel.pauseAllSounds()
+    }
+
+    /// Stop all sounds from playing
+    func stopAllSoundsQueue() {
+        audioModel.stopAllSoundsQueue()
+    }
+
+    func pauseAllSoundsQueue() {
+        audioModel.pauseAllSoundsQueue()
+    }
+
+    func clearAll() {
+        audioModel.clearAll()
+    }
+
     func playSounds(soundFileNames: [String]) {
         audioModel.playSounds(soundFileNames: soundFileNames)
     }

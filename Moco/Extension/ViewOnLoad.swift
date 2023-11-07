@@ -17,7 +17,7 @@ private struct ViewOnLoadModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content.onAppear {
-            guard didLoad == false
+            guard !didLoad
             else {
                 return
             }

@@ -8,6 +8,20 @@
 import SpriteKit
 import SwiftUI
 
+@propertyWrapper
+struct MazeAnswerAssets {
+    private var answerAssets: [String] = []
+    var wrappedValue: [String] {
+        get { return answerAssets }
+        // ???: Maximum 2 answers
+        set { answerAssets = Array(newValue.prefix(2)) }
+    }
+
+    init(wrappedValue: [String]) {
+        answerAssets = Array(wrappedValue.prefix(2))
+    }
+}
+
 class MazeScene: SKScene, ObservableObject {
     var moco: SKSpriteNode!
     var obj01: SKSpriteNode!
@@ -17,8 +31,17 @@ class MazeScene: SKScene, ObservableObject {
     var touched: Bool = false
     var score: Int = 0
 
-    var wrongAnswerAsset = ["Maze/answer_one", "Maze/answer_two"]
-    var correctAnswerAsset = "Maze/answer_three"
+    @MazeAnswerAssets var wrongAnswerAsset = ["Maze/answer_one", "Maze/answer_two"] {
+        didSet {
+            reloadObjectiveTexture()
+        }
+    }
+
+    var correctAnswerAsset = "Maze/answer_three" {
+        didSet {
+            reloadObjectiveTexture()
+        }
+    }
 
     @Published private(set) var correctAnswer = false
 

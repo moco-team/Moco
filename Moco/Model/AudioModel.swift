@@ -55,13 +55,12 @@ struct AudioModel: Identifiable, Equatable {
 
     mutating func mute() {
         setVolume(0, writePlayerVolumes: false)
-        GlobalStorage.backsoundVolume = 0
-        GlobalStorage.narrationVolume = 0
-        GlobalStorage.soundEffectVolume = 0
+        setVolumeQueue(0, writePlayerVolumes: false)
     }
 
     mutating func unmute() {
         setVolume(nil)
+        setVolumeQueue(nil)
     }
 
     mutating func setVolume(_ volume: Float?, writePlayerVolumes: Bool = true) {
@@ -284,6 +283,25 @@ struct AudioModel: Identifiable, Equatable {
         }
     }
 
+    func pauseAllSoundsQueue() {
+        queuePlayers.forEach { _, player in
+            player.pause()
+        }
+    }
+
+    mutating func clearAll() {
+        queuePlayers.forEach { _, player in
+            player.removeAllItems()
+        }
+        stopAllSounds()
+        players = [:]
+        queuePlayers = [:]
+        playerVolumes = [:]
+        queuePlayerVolumes = [:]
+        duplicatePlayers = []
+        playersByCategory = PlayersByCategory()
+    }
+
     func stopSound(soundFileName: String, type: String = "mp3") {
         guard let bundle = Bundle.main.path(forResource: soundFileName, ofType: type) else { return }
         let soundFileNameURL = URL(fileURLWithPath: bundle)
@@ -296,6 +314,12 @@ struct AudioModel: Identifiable, Equatable {
     }
 
     func stopAllSounds() {
+        players.forEach { _, value in
+            value.stop()
+        }
+    }
+
+    func pauseAllSounds() {
         players.forEach { _, value in
             value.stop()
         }

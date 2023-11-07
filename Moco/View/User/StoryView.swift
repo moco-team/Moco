@@ -62,7 +62,7 @@ struct StoryView: View {
 
     private func stop() {
         timerViewModel.stopTimer()
-        audioViewModel.stopAllSounds()
+        audioViewModel.pauseAllSounds()
         speechViewModel.stopSpeaking()
     }
 
@@ -324,13 +324,17 @@ struct StoryView: View {
             }
         }
         .popUp(isActive: $isExitPopUpActive, title: "Petualangan Moco belum selesai!. Petualangan Moco akan terulang dari awal. Yakin mau keluar?", cancelText: "Tidak", confirmText: "Ya") {
-            navigate.pop()
+            navigate.pop {
+                stop()
+            }
         }
         .popUp(isActive: $isEpisodeFinished, title: "Petualangan Moco sebentar lagi selesai!. Lanjutkan petualangan?", cancelText: "Tidak", confirmText: "Lanjut") {
             episodeViewModel.setToAvailable(selectedStoryTheme: storyThemeViewModel.selectedStoryTheme!)
             storyThemeViewModel.fetchStoryThemes()
             storyThemeViewModel.setSelectedStoryTheme(storyThemeViewModel.findWithID(storyThemeViewModel.selectedStoryTheme!.uid)!)
-            navigate.pop()
+            navigate.pop {
+                stop()
+            }
         }
         .customModal(isActive: $showWrongAnsPopup, title: "Apakah kamu yakin dengan jawaban ini? Coba cek kembali pertanyaannya") {
             activePrompt = nil
@@ -338,9 +342,6 @@ struct StoryView: View {
         }
         .task {
             onPageChange()
-        }
-        .onDisappear {
-            stop()
         }
         .task(id: scrollPosition) {
             onPageChange()

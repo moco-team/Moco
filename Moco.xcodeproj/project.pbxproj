@@ -83,6 +83,7 @@
 		0BA3E50B2ADFC62000BCFE9E /* StoryAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E50A2ADFC62000BCFE9E /* StoryAdminView.swift */; };
 		0BA3E5102ADFD04700BCFE9E /* StoryThemeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E50F2ADFD04700BCFE9E /* StoryThemeModalView.swift */; };
 		0BA3E5122ADFD98400BCFE9E /* StoryModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E5112ADFD98400BCFE9E /* StoryModalView.swift */; };
+		930CBFFB2AF76956001B67D2 /* ViewWillDisappear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930CBFFA2AF76956001B67D2 /* ViewWillDisappear.swift */; };
 		930D688E2AF2DB82001976F0 /* MultipleChoicePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930D688D2AF2DB82001976F0 /* MultipleChoicePrompt.swift */; };
 		930D68902AF2DB92001976F0 /* BoardAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930D688F2AF2DB92001976F0 /* BoardAnswer.swift */; };
 		931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949722AE0EB6A00830D57 /* Page1-monolog1.m4a */; };
@@ -184,6 +185,8 @@
 		93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C2F8BA2AD684CE007D1ABC /* Device.swift */; };
 		93C2F8C02AD685A3007D1ABC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 93C2F8BF2AD685A3007D1ABC /* README.md */; };
 		93C2F8C32AD685E6007D1ABC /* yolov8s.mlmodel in Resources */ = {isa = PBXBuildFile; fileRef = 93C2F8C12AD685D7007D1ABC /* yolov8s.mlmodel */; };
+		93C30CBA2AF926150076808F /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C30CB92AF926150076808F /* TimerView.swift */; };
+		93C30CBC2AF928CC0076808F /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C30CBB2AF928CC0076808F /* DateExtension.swift */; };
 		93C8E71E2ADEDA8F002315A2 /* CherryBombRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93C8E71D2ADEDA79002315A2 /* CherryBombRegular.ttf */; };
 		93C8E7212ADEF1DB002315A2 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8E7202ADEF1DB002315A2 /* TimerModel.swift */; };
 		93C8E7232ADEF249002315A2 /* FontUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8E7222ADEF249002315A2 /* FontUtil.swift */; };
@@ -322,6 +325,7 @@
 		0BA3E50A2ADFC62000BCFE9E /* StoryAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryAdminView.swift; sourceTree = "<group>"; };
 		0BA3E50F2ADFD04700BCFE9E /* StoryThemeModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryThemeModalView.swift; sourceTree = "<group>"; };
 		0BA3E5112ADFD98400BCFE9E /* StoryModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModalView.swift; sourceTree = "<group>"; };
+		930CBFFA2AF76956001B67D2 /* ViewWillDisappear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWillDisappear.swift; sourceTree = "<group>"; };
 		930D688D2AF2DB82001976F0 /* MultipleChoicePrompt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleChoicePrompt.swift; sourceTree = "<group>"; };
 		930D688F2AF2DB92001976F0 /* BoardAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardAnswer.swift; sourceTree = "<group>"; };
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
@@ -411,6 +415,8 @@
 		93C2F8BA2AD684CE007D1ABC /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		93C2F8BF2AD685A3007D1ABC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		93C2F8C12AD685D7007D1ABC /* yolov8s.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = yolov8s.mlmodel; sourceTree = "<group>"; };
+		93C30CB92AF926150076808F /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		93C30CBB2AF928CC0076808F /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		93C8E71D2ADEDA79002315A2 /* CherryBombRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CherryBombRegular.ttf; sourceTree = "<group>"; };
 		93C8E7202ADEF1DB002315A2 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		93C8E7222ADEF249002315A2 /* FontUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontUtil.swift; sourceTree = "<group>"; };
@@ -849,6 +855,7 @@
 				93676D232AF139A800E756A5 /* ProgressBar.swift */,
 				93676D2A2AF1435200E756A5 /* Pointer.swift */,
 				9328F9162AF25C2200E82995 /* ModalComponent.swift */,
+				93C30CB92AF926150076808F /* TimerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1010,6 +1017,7 @@
 				935D78542AEC09A000DF64A5 /* GlobalStorage.swift */,
 				935D78632AEE217C00DF64A5 /* ColorUtil.swift */,
 				051CC1892AF22D0800632E09 /* OrientationInfo.swift */,
+				930CBFFA2AF76956001B67D2 /* ViewWillDisappear.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1198,6 +1206,7 @@
 				935D786E2AEF4C1200DF64A5 /* Spacer.swift */,
 				93CA8B7A2AF00E8400651885 /* SpriteKit.swift */,
 				056A3E472AF25170009299F4 /* SKSpriteNodeExtension.swift */,
+				93C30CBB2AF928CC0076808F /* DateExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1436,6 +1445,7 @@
 				937AF2952AE8C06C008C69BB /* ARView.swift in Sources */,
 				938E3D312AD8FD2E003D2AE1 /* ItemViewModel.swift in Sources */,
 				0B6E2F662ADC8ECE0001D320 /* StoryThemeModel.swift in Sources */,
+				930CBFFB2AF76956001B67D2 /* ViewWillDisappear.swift in Sources */,
 				93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */,
 				938C55382AE183AA00BC233D /* FontViewModifier.swift in Sources */,
 				935D786F2AEF4C1200DF64A5 /* Spacer.swift in Sources */,
@@ -1503,6 +1513,8 @@
 				0B6E2F6E2ADC92950001D320 /* HintModel.swift in Sources */,
 				935D78692AEF4B1C00DF64A5 /* View.swift in Sources */,
 				93E3D87C2AE4EFDB00E5391F /* SpeakPromptViewModel.swift in Sources */,
+				93C30CBA2AF926150076808F /* TimerView.swift in Sources */,
+				93C30CBC2AF928CC0076808F /* DateExtension.swift in Sources */,
 				0BA3E5122ADFD98400BCFE9E /* StoryModalView.swift in Sources */,
 				937AF29C2AE8D47E008C69BB /* ResourceLoader.swift in Sources */,
 				0B2E31E22AD9064900DFC16F /* CollectionViewModel.swift in Sources */,

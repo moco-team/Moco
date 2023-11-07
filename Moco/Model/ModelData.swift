@@ -8,7 +8,7 @@
 import Foundation
 
 struct ModelData {
-    static let dataToBePopulated = [
+    static let dataToBePopulated: [String: [StoryThemeModel]] = [
         "storyThemeModel": [
             // Story theme-1
             StoryThemeModel(
@@ -287,7 +287,7 @@ struct ModelData {
                                 ]
                             )
                         ],
-                        isAvailable: false
+                        isAvailable: true
                     ),
                     // Episode-3
                     EpisodeModel(

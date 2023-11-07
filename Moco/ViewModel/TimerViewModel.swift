@@ -39,6 +39,8 @@ import SwiftUI
         timerModel.internalTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(doJob), userInfo: nil, repeats: true)
     }
 
+    func getTimerRemaining(_: String) {}
+
     @objc func doJob() {
         guard timerModel.jobs.count > 0 else { return }
         timerModel.jobs.forEach { job in
