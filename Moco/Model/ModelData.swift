@@ -227,7 +227,7 @@ struct ModelData {
                                     ],
                                     answerAssets: [
                                         "Maze/answer_hammer",
-                                        "Maze/answer_backpack",
+                                        "Maze/answer_backpack"
                                     ]
                                 ),
                                 storyContents: [

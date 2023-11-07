@@ -33,14 +33,13 @@ final class PromptModel: Identifiable {
     var story: StoryModel?
     var hints: [HintModel]?
 
-    init(correctAnswer: String, 
+    init(correctAnswer: String,
          startTime: Double,
          promptType: PromptType,
          hints: [HintModel]?,
          question: String? = "",
-         answerChoices: [String]? = [], 
-         answerAssets: [String]? = []
-    ) {
+         answerChoices: [String]? = [],
+         answerAssets: [String]? = []) {
         uid = UUID().uuidString
         self.startTime = startTime
         self.promptType = promptType

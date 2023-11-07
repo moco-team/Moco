@@ -9,7 +9,16 @@ import SwiftUI
 
 struct MazeTutorialView: View {
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Text("Tutorial")
+            Text("Miringkan layar ke kanan")
+            CircularProgressView(progress: Double(20) / 100.0, size: 60, width: 10) {
+                progress in
+                Text("\(progress * 100, specifier: "%.0f")%")
+                    .customFont(.didactGothic, size: 20)
+                    .bold()
+            }
+        }
     }
 }
 
