@@ -17,6 +17,10 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
     private var previewLayer = AVCaptureVideoPreviewLayer()
     var screenRect: CGRect! = nil // For view dimensions
 
+    var objectDetectionViewModel: ObjectDetectionViewModel?
+    var detectionHandler: ((String?) -> Void)?
+    var threshold: Float = 0.8
+
     // Detector
     private var videoOutput = AVCaptureVideoDataOutput()
     var requests = [VNRequest]()
@@ -36,14 +40,29 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
         }
     }
 
-    override func willTransition(to _: UITraitCollection, with _: UIViewControllerTransitionCoordinator) {
-        screenRect = UIScreen.main.bounds
-        previewLayer.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
+    override func viewWillDisappear(_ animated: Bool) {
+        stopSession()
+        super.viewWillDisappear(animated)
+    }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        stopSession()
+        super.viewDidDisappear(animated)
+    }
+
+    func stopSession() {
+        if captureSession.isRunning {
+            sessionQueue.async { [weak self] in
+                self?.captureSession.stopRunning()
+            }
+        }
+    }
+
+    func setOrientation() {
         switch UIDevice.current.orientation {
         // Home button on top
         case UIDeviceOrientation.portraitUpsideDown:
-            previewLayer.connection?.videoOrientation = .portraitUpsideDown
+            previewLayer.connection?.videoOrientation = .portrait
 
         // Home button on right
         case UIDeviceOrientation.landscapeLeft:
@@ -55,11 +74,41 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
 
         // Home button at bottom
         case UIDeviceOrientation.portrait:
-            previewLayer.connection?.videoOrientation = .portrait
+            previewLayer.connection?.videoOrientation = .portraitUpsideDown
 
         default:
             break
         }
+    }
+
+    func setOutputOrientation() {
+        switch UIDevice.current.orientation {
+        // Home button on top
+        case UIDeviceOrientation.portraitUpsideDown:
+            videoOutput.connection(with: .video)?.videoOrientation = .portrait
+
+        // Home button on right
+        case UIDeviceOrientation.landscapeLeft:
+            videoOutput.connection(with: .video)?.videoOrientation = .landscapeRight
+
+        // Home button on left
+        case UIDeviceOrientation.landscapeRight:
+            videoOutput.connection(with: .video)?.videoOrientation = .landscapeLeft
+
+        // Home button at bottom
+        case UIDeviceOrientation.portrait:
+            videoOutput.connection(with: .video)?.videoOrientation = .portraitUpsideDown
+
+        default:
+            break
+        }
+    }
+
+    override func willTransition(to _: UITraitCollection, with _: UIViewControllerTransitionCoordinator) {
+        screenRect = UIScreen.main.bounds
+        previewLayer.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
+
+        setOrientation()
 
         // Detector
         updateLayers()
@@ -102,13 +151,13 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill // Fill screen
-        previewLayer.connection?.videoOrientation = .portrait
+        setOrientation()
 
         // Detector
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sampleBufferQueue"))
         captureSession.addOutput(videoOutput)
 
-        videoOutput.connection(with: .video)?.videoOrientation = .portrait
+        setOutputOrientation()
 
         // Updates to UI must be on main queue
         DispatchQueue.main.async { [weak self] in
@@ -118,9 +167,22 @@ class ObjectDetectionViewController: UIViewController, AVCaptureVideoDataOutputS
 }
 
 struct HostedViewController: UIViewControllerRepresentable {
-    func makeUIViewController(context _: Context) -> UIViewController {
-        return ObjectDetectionViewController()
+    @EnvironmentObject var objectDetectionViewModel: ObjectDetectionViewModel
+
+    var targetObject: DetectionValue = .person
+    var threshold: Float = 0.8
+    var detectionHandler: ((String?) -> Void)?
+
+    func makeUIViewController(context _: Context) -> ObjectDetectionViewController {
+        let viewController = ObjectDetectionViewController()
+        viewController.detectionHandler = detectionHandler
+        viewController.threshold = threshold
+        return viewController
     }
 
-    func updateUIViewController(_: UIViewController, context _: Context) {}
+    func updateUIViewController(_ viewController: ObjectDetectionViewController, context _: Context) {
+        if objectDetectionViewModel.shouldStopSession {
+            viewController.stopSession()
+        }
+    }
 }

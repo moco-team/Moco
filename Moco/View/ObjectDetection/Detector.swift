@@ -35,7 +35,7 @@ extension ObjectDetectionViewController {
 
         for observation in results where observation is VNRecognizedObjectObservation {
             guard let objectObservation = observation as? VNRecognizedObjectObservation else { continue }
-            guard objectObservation.confidence > 0.5 else { continue }
+            guard objectObservation.confidence > threshold else { continue }
 
             // Transformations
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(screenRect.size.width), Int(screenRect.size.height))
@@ -50,11 +50,13 @@ extension ObjectDetectionViewController {
 
             let textlayer = CATextLayer()
 
+            let objectName = objectObservation.labels.first?.identifier
+
             textlayer.frame = CGRect(x: objectBounds.minX,
                                      y: screenRect.size.height - objectBounds.maxY + 10, width: 200, height: 18)
             textlayer.fontSize = 12
             textlayer.alignmentMode = .center
-            textlayer.string = objectObservation.labels[0].identifier
+            textlayer.string = objectObservation.labels.first?.identifier
             textlayer.isWrapped = true
             textlayer.truncationMode = .end
             textlayer.backgroundColor = UIColor.white.cgColor
@@ -62,6 +64,8 @@ extension ObjectDetectionViewController {
 
             detectionLayer.addSublayer(boxLayer)
             detectionLayer.addSublayer(textlayer)
+
+            detectionHandler?(objectName)
         }
     }
 
