@@ -43,7 +43,7 @@ class MazeScene: SKScene, ObservableObject {
         }
     }
 
-    @Published private(set) var correctAnswer = false
+    @Published private(set) var correctAnswer: Bool?
 
     var mazeModel = MazeModel()
 
@@ -102,6 +102,7 @@ class MazeScene: SKScene, ObservableObject {
             let scale = SKAction.scale(to: 0.0001, duration: 0.3)
             let remove = SKAction.removeFromParent()
             let sequence = SKAction.sequence([move, scale, remove])
+            correctAnswer = false
             moco.run(sequence) { [unowned self] in
                 createPlayer()
             }
@@ -122,6 +123,8 @@ class MazeScene: SKScene, ObservableObject {
                 height: min(size.width, size.height) / CGFloat(mazeModel.arrayPoint.count)
             )
         )
+
+        correctAnswer = nil
 
         moco.name = "moco"
         mazeModel.characterLocationPoint = mazeModel.startPoint

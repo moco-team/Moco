@@ -98,7 +98,9 @@ struct MazeView: View {
             TimerViewModel().stopTimer()
         }
         .onChange(of: scene.correctAnswer) {
-            correctAnswer = scene.correctAnswer
+            if let sceneCorrectAnswer = scene.correctAnswer {
+                correctAnswer = sceneCorrectAnswer
+            }
         }
         .popUp(isActive: $correctAnswer, withConfetti: true) {
             onComplete()
