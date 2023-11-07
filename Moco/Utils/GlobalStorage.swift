@@ -11,4 +11,6 @@ enum GlobalStorage {
     @AppStorage("BACKSOUND_VOLUME") static var backsoundVolume = 1.0
     @AppStorage("NARRATION_VOLUME") static var narrationVolume = 1.0
     @AppStorage("SOUND_EFFECT_VOLUME") static var soundEffectVolume = 1.0
+    @AppStorage("MAZE_TUTORIAL_FINISHED") static var mazeTutorialFinished = false
+    @AppStorage("AR_TUTORIAL_FINISHED") static var arTutorialFinished = false
 }

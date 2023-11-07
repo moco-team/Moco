@@ -30,24 +30,26 @@ struct TimerPlayground: View {
 
     var body: some View {
         VStack {
-            Text(formattedTimer)
-                .font(Font.system(.largeTitle, design: .monospaced))
-                .onReceive(timer) { _ in
-                    if self.isTimerRunning && durationInSeconds > 0 {
-                        durationInSeconds -= 1
+            CircularProgressView(progress: Double(durationInSeconds) / Double(durationParamInSeconds), dynamicColor: true) { _ in
+                Text(formattedTimer)
+                    .font(Font.system(.largeTitle, design: .monospaced))
+                    .onReceive(timer) { _ in
+                        if self.isTimerRunning && durationInSeconds > 0 {
+                            durationInSeconds -= 1
+                        }
                     }
-                }
-                .onAppear {
-                    durationInSeconds = durationParamInSeconds
-                    isTimerRunning.toggle()
-                }
-            Text("-5s")
-                .font(Font.system(.title, design: .monospaced))
-                .foregroundColor(.red)
+                    .onAppear {
+                        durationInSeconds = durationParamInSeconds
+                        isTimerRunning.toggle()
+                    }
+            }
+//            Text("-5s")
+//                .font(Font.system(.title, design: .monospaced))
+//                .foregroundColor(.red)
         }
     }
 }
 
 #Preview {
-    TimerPlayground(durationParamInSeconds: 60 * 6)
+    TimerPlayground(durationParamInSeconds: 60 * 1)
 }
