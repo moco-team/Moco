@@ -12,6 +12,7 @@ struct CircularProgressView<Content: View>: View {
     var size: CGFloat = 200
     var color: Color = .green
     var width: CGFloat = 30
+    var dynamicColor = false
 
     @ViewBuilder let content: (Double) -> Content?
 
@@ -19,16 +20,22 @@ struct CircularProgressView<Content: View>: View {
         ZStack {
             Circle()
                 .stroke(
-                    color.opacity(0.5),
+                    (dynamicColor ? progress > 0.6 ? .green : progress > 0.3 ? .yellow : .red : color).opacity(0.5),
                     lineWidth: width
                 )
             Circle()
                 .trim(from: 0, to: progress)
                 .stroke(
-                    color,
+                    dynamicColor ?
+                        progress > 0.6 ?
+                        .green :
+                        progress > 0.3 ?
+                        .yellow
+                        : .red
+                        : color,
                     style: StrokeStyle(
                         lineWidth: width,
-                        lineCap: .round
+                        lineCap: .butt
                     )
                 )
                 .rotationEffect(.degrees(-90))

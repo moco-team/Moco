@@ -61,6 +61,7 @@ struct MazeView: View {
             scene.wrongAnswerAsset = answersAsset
             TimerViewModel().setTimer(key: "mazeTimer\(correctAnswerAsset)", withInterval: 0.02) {
                 motionViewModel.updateMotion()
+//                print(orientationInfo.orientation)
                 if orientationInfo.orientation == .landscapeLeft {
                     if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
                         if motionViewModel.rollNum > 0 {
@@ -97,7 +98,9 @@ struct MazeView: View {
             TimerViewModel().stopTimer()
         }
         .onChange(of: scene.correctAnswer) {
-            correctAnswer = scene.correctAnswer
+            if let sceneCorrectAnswer = scene.correctAnswer {
+                correctAnswer = sceneCorrectAnswer
+            }
         }
         .popUp(isActive: $correctAnswer, withConfetti: true) {
             onComplete()

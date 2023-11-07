@@ -144,6 +144,9 @@
 		937AF29F2AE8FDB7008C69BB /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 938C553F2AE22E6800BC233D /* DidactGothic-Regular.ttf */; };
 		937AF2A22AE930AF008C69BB /* MazeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2A12AE930AF008C69BB /* MazeScene.swift */; };
 		937AF2A42AE930E0008C69BB /* MazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2A32AE930E0008C69BB /* MazeView.swift */; };
+		937EE4132AF9E35700A5CCF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EE4122AF9E35700A5CCF5 /* AppDelegate.swift */; };
+		937EE4152AFA200600A5CCF5 /* HapticViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EE4142AFA200500A5CCF5 /* HapticViewModel.swift */; };
+		937EE4172AFA261F00A5CCF5 /* MazeTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EE4162AFA261F00A5CCF5 /* MazeTutorialView.swift */; };
 		937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */; };
 		937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */; };
 		938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55352AE181C600BC233D /* RootViewModifier.swift */; };
@@ -370,6 +373,9 @@
 		937AF29D2AE8D4EE008C69BB /* ARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewModel.swift; sourceTree = "<group>"; };
 		937AF2A12AE930AF008C69BB /* MazeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeScene.swift; sourceTree = "<group>"; };
 		937AF2A32AE930E0008C69BB /* MazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeView.swift; sourceTree = "<group>"; };
+		937EE4122AF9E35700A5CCF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		937EE4142AFA200500A5CCF5 /* HapticViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticViewModel.swift; sourceTree = "<group>"; };
+		937EE4162AFA261F00A5CCF5 /* MazeTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeTutorialView.swift; sourceTree = "<group>"; };
 		937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		938C55352AE181C600BC233D /* RootViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModifier.swift; sourceTree = "<group>"; };
@@ -994,6 +1000,7 @@
 			children = (
 				937AF2A12AE930AF008C69BB /* MazeScene.swift */,
 				937AF2A32AE930E0008C69BB /* MazeView.swift */,
+				937EE4162AFA261F00A5CCF5 /* MazeTutorialView.swift */,
 			);
 			path = Maze;
 			sourceTree = "<group>";
@@ -1073,8 +1080,7 @@
 				93C2F8B42AD6848F007D1ABC /* View */,
 				938E3D462ADB0AA5003D2AE1 /* Routes.swift */,
 				93C2F8832AD683AC007D1ABC /* MocoApp.swift */,
-				93C2F8852AD683AC007D1ABC /* ContentView.swift */,
-				93C2F8872AD683AC007D1ABC /* Item.swift */,
+				937EE4122AF9E35700A5CCF5 /* AppDelegate.swift */,
 				93C2F8892AD683AE007D1ABC /* Assets.xcassets */,
 				93C2F88E2AD683AE007D1ABC /* Moco.entitlements */,
 				93C2F88F2AD683AE007D1ABC /* Info.plist */,
@@ -1132,6 +1138,7 @@
 				935D78562AEC2D7900DF64A5 /* SettingsViewModel.swift */,
 				05B8ED9F2AEE65FE009ED2C5 /* MotionViewModel.swift */,
 				93CA8B7E2AF010C600651885 /* MazePromptViewModel.swift */,
+				937EE4142AFA200500A5CCF5 /* HapticViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1433,6 +1440,7 @@
 				0BA3E50B2ADFC62000BCFE9E /* StoryAdminView.swift in Sources */,
 				938E3D582ADC00FB003D2AE1 /* PopUpExtension.swift in Sources */,
 				0B46D7212AF12077002DE821 /* EpisodeViewModel.swift in Sources */,
+				937EE4152AFA200600A5CCF5 /* HapticViewModel.swift in Sources */,
 				938E3D562ADBE961003D2AE1 /* Screen.swift in Sources */,
 				0B6E2F702ADC96200001D320 /* StoryThemeViewModel.swift in Sources */,
 				058DC8F52AF2CFF100A0885D /* TextViewModifier.swift in Sources */,
@@ -1502,12 +1510,14 @@
 				935D786B2AEF4B8300DF64A5 /* Binding.swift in Sources */,
 				937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */,
 				938E3D332AD91605003D2AE1 /* DetectionView.swift in Sources */,
+				937EE4132AF9E35700A5CCF5 /* AppDelegate.swift in Sources */,
 				935D78552AEC09A000DF64A5 /* GlobalStorage.swift in Sources */,
 				05BA97AA2AE11EE400F64F52 /* MPVolumeViewExtension.swift in Sources */,
 				93676D242AF139A800E756A5 /* ProgressBar.swift in Sources */,
 				05B8EDA02AEE65FE009ED2C5 /* MotionViewModel.swift in Sources */,
 				938E3D452ADAD5F3003D2AE1 /* StoryBook.swift in Sources */,
 				93CA8B7D2AF0107800651885 /* MazePromptModel.swift in Sources */,
+				937EE4172AFA261F00A5CCF5 /* MazeTutorialView.swift in Sources */,
 				0B6E2F722ADC97BE0001D320 /* StoryViewModel.swift in Sources */,
 				935D78502AEBF98400DF64A5 /* GifView.swift in Sources */,
 				937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */,
