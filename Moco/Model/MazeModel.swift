@@ -30,7 +30,7 @@ struct MazeModel {
     var startPoint = LocationPoint()
     var exitPoints = [LocationPoint()]
 
-    static var mapSize = MapSize(width: 23, height: 17)
+    static var mapSize = MapSize(width: 27, height: 13)
 
     var arrayPoint: [[Int]] = [[]]
 
@@ -140,9 +140,9 @@ struct MazeModel {
 
         func generateExitPoints() -> [LocationPoint] {
             var exitPositions = [
-                generateInOutXPoint(yPos: 0),
-                generateInOutXPoint(yPos: 0),
-                generateInOutXPoint(yPos: 0)
+                generateInOutXPoint(yPos: rows - 1),
+                generateInOutXPoint(yPos: rows - 1),
+                generateInOutXPoint(yPos: rows - 1)
             ]
 
             var xPositions = exitPositions.map { $0.xPos }.sorted()
@@ -150,9 +150,9 @@ struct MazeModel {
             while !checkDifferenceGreaterThan(xPositions) {
                 resetGenerateInOutPoint(exitOnly: true)
                 exitPositions = [
-                    generateInOutXPoint(yPos: 0),
-                    generateInOutXPoint(yPos: 0),
-                    generateInOutXPoint(yPos: 0)
+                    generateInOutXPoint(yPos: rows - 1),
+                    generateInOutXPoint(yPos: rows - 1),
+                    generateInOutXPoint(yPos: rows - 1)
                 ]
 
                 xPositions = exitPositions.map { $0.xPos }.sorted()
@@ -160,13 +160,13 @@ struct MazeModel {
             return exitPositions
         }
 
-        var characterPos = generateInOutXPoint(yPos: rows - 1)
+        var characterPos = generateInOutXPoint(yPos: 0)
         var exitPoints = generateExitPoints()
         var correctPos = exitPoints.first!
 
         while !canReachDestination(from: maze, startRow: characterPos.yPos, startCol: characterPos.xPos, destinationRow: correctPos.yPos, destinationCol: correctPos.xPos) {
             resetGenerateInOutPoint()
-            characterPos = generateInOutXPoint(yPos: rows - 1)
+            characterPos = generateInOutXPoint(yPos: 0)
             exitPoints = generateExitPoints()
             correctPos = exitPoints.first!
         }

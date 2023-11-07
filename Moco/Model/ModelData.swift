@@ -181,6 +181,11 @@ struct ModelData {
                                      C.) 3
                                     """,
                                     answerChoices: [
+                                        "Dua",
+                                        "Satu",
+                                        "Tiga"
+                                    ],
+                                    answerAssets: [
                                         "Maze/answer_one",
                                         "Maze/answer_three"
                                     ]
@@ -216,8 +221,13 @@ struct ModelData {
                                      C.) Kacamata Hitam
                                     """,
                                     answerChoices: [
+                                        "Kacamata Hitam",
+                                        "Palu",
+                                        "Tas Ransel"
+                                    ],
+                                    answerAssets: [
+                                        "Maze/answer_hammer",
                                         "Maze/answer_backpack",
-                                        "Maze/answer_hammer"
                                     ]
                                 ),
                                 storyContents: [
@@ -251,6 +261,11 @@ struct ModelData {
                                      C.) Katak
                                     """,
                                     answerChoices: [
+                                        "Tikus",
+                                        "Sapi",
+                                        "Katak"
+                                    ],
+                                    answerAssets: [
                                         "Maze/answer_sapi_jantan",
                                         "Maze/answer_frog"
                                     ]

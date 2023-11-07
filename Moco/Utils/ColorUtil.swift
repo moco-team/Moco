@@ -110,5 +110,5 @@ extension Color {
 struct TextColor {
     let primary = Color(hex: "#4E7294")
     let green = Color(hex: "#687348")
-    let brown = Color(hex: "#735D48")
+    let brown = Color(hex: "#734848")
 }

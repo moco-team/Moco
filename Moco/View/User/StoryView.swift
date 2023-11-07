@@ -203,7 +203,12 @@ struct StoryView: View {
                                             }
                                         case .maze:
                                             if let mazePrompt = promptViewModel.prompt {
-                                                MazePrompt(promptText: mazePrompt.question!, answersAsset: mazePrompt.answerChoices!, correctAnswerAsset: mazePrompt.correctAnswer) {
+                                                MazePrompt(
+                                                    promptText: mazePrompt.question!,
+                                                    answersAsset: mazePrompt.answerAssets!,
+                                                    answers: mazePrompt.answerChoices!,
+                                                    correctAnswerAsset: mazePrompt.correctAnswer
+                                                ) {
                                                     nextPage()
                                                 }.id(mazePrompt.id)
                                             }

@@ -26,14 +26,21 @@ final class PromptModel: Identifiable {
     @Attribute var correctAnswer = ""
     @Attribute var question: String? = ""
     @Attribute var answerChoices: [String]? = []
+    @Attribute var answerAssets: [String]? = []
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
     var story: StoryModel?
     var hints: [HintModel]?
 
-    init(correctAnswer: String, startTime: Double, promptType: PromptType, hints: [HintModel]?, question: String? = "",
-         answerChoices: [String]? = []) {
+    init(correctAnswer: String, 
+         startTime: Double,
+         promptType: PromptType,
+         hints: [HintModel]?,
+         question: String? = "",
+         answerChoices: [String]? = [], 
+         answerAssets: [String]? = []
+    ) {
         uid = UUID().uuidString
         self.startTime = startTime
         self.promptType = promptType
@@ -41,6 +48,7 @@ final class PromptModel: Identifiable {
         self.hints = hints ?? []
         self.question = question
         self.answerChoices = answerChoices
+        self.answerAssets = answerAssets
         createdAt = Date()
         updatedAt = Date()
     }
