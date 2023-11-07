@@ -19,4 +19,9 @@ struct Screen {
     static var size: CGSize {
         UIScreen.main.bounds.size
     }
+
+    static var orientation: UIInterfaceOrientation? {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return nil }
+        return windowScene.interfaceOrientation
+    }
 }

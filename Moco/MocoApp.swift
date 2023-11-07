@@ -10,6 +10,8 @@ import SwiftUI
 
 @main
 struct MocoApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     // MARK: - Bindables
 
     @Bindable private var routeViewModel = RouteViewModel()
