@@ -17,7 +17,7 @@ struct HomeView: View {
     @Environment(\.navigate) private var navigate
 
     @State private var homeViewModel = HomeViewModel()
-    
+
     @State private var isPresentingScanner = false
 
     var body: some View {
@@ -50,11 +50,11 @@ struct HomeView: View {
                         .customFont(.cherryBomb, size: 50)
                         .foregroundColor(Color.blueTxt)
                         .fontWeight(.bold)
-                    
-                    Button("Test Scan QR Code"){
+
+                    Button("Test Scan QR Code") {
                         self.isPresentingScanner = true
                     }
-                    .sheet(isPresented: $isPresentingScanner){
+                    .sheet(isPresented: $isPresentingScanner) {
                         QRScannerSheet()
                     }
                     Spacer()
