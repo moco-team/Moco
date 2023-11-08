@@ -95,6 +95,7 @@ struct HomeView: View {
                 }
                 homeViewModel.soundLevel = 0.3
                 homeViewModel.setVolume()
+                GlobalStorage.mazeTutorialFinished = false
             }
         }
     }

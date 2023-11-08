@@ -23,6 +23,9 @@ struct MazeTutorialView: View {
     @State private var downProgress = 0
     @State private var upProgress = 0
     @State private var currentPhase = MazeTutorialPhase.right
+    @State private var showTutorialCompletePrompt = false
+
+    @Binding var isTutorialDone: Bool
 
     var currentProgress: Int {
         get {
@@ -119,17 +122,23 @@ struct MazeTutorialView: View {
                         currentPhase = .up
                     case .up:
                         currentPhase = .down
-                    default:
-                        break
+                    case .down:
+                        if !showTutorialCompletePrompt {
+                            showTutorialCompletePrompt = true
+                        }
                     }
                 }
             }
         }
         .ignoresSafeArea()
         .frame(width: Screen.width, height: Screen.height)
+        .popUp(isActive: $showTutorialCompletePrompt) {
+            GlobalStorage.mazeTutorialFinished = true
+            isTutorialDone = true
+        }
     }
 }
 
 #Preview {
-    MazeTutorialView()
+    MazeTutorialView(isTutorialDone: .constant(false))
 }

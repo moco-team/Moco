@@ -43,7 +43,7 @@ struct MazePrompt: View {
                 .ignoresSafeArea()
                 .frame(width: Screen.width, height: Screen.height)
             } else {
-                MazeTutorialView()
+                MazeTutorialView(isTutorialDone: $mazePromptViewModel.isTutorialDone)
             }
         }.background {
             Image("Maze/bg-texture").resizable().scaledToFill().overlay {
