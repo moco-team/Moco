@@ -59,7 +59,7 @@ struct HomeView: View {
                             ) { index, storyTheme in
                                 StoryBookNew(
                                     image: storyTheme.pictureName,
-                                    firstPageBackground: storyTheme.episodes![0].pictureName,
+                                    firstPageBackground: storyTheme.episodes?.first?.pictureName ?? "",
                                     number: index + 1
                                 ) {
                                     storyThemeViewModel.setSelectedStoryTheme(storyTheme)
