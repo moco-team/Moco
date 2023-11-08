@@ -11,4 +11,5 @@ struct MazePromptModel {
     var blurOpacity = 0.0
     var showStartButton = false
     var isStarted = false
+    var progress = 0.0
 }

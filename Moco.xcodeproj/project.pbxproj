@@ -147,6 +147,7 @@
 		937EE4132AF9E35700A5CCF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EE4122AF9E35700A5CCF5 /* AppDelegate.swift */; };
 		937EE4152AFA200600A5CCF5 /* HapticViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EE4142AFA200500A5CCF5 /* HapticViewModel.swift */; };
 		937EE4172AFA261F00A5CCF5 /* MazeTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EE4162AFA261F00A5CCF5 /* MazeTutorialView.swift */; };
+		937EE41A2AFA8DFD00A5CCF5 /* MazeProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EE4192AFA8DFD00A5CCF5 /* MazeProgress.swift */; };
 		937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */; };
 		937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */; };
 		938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55352AE181C600BC233D /* RootViewModifier.swift */; };
@@ -375,6 +376,7 @@
 		937EE4122AF9E35700A5CCF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		937EE4142AFA200500A5CCF5 /* HapticViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticViewModel.swift; sourceTree = "<group>"; };
 		937EE4162AFA261F00A5CCF5 /* MazeTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeTutorialView.swift; sourceTree = "<group>"; };
+		937EE4192AFA8DFD00A5CCF5 /* MazeProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeProgress.swift; sourceTree = "<group>"; };
 		937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		938C55352AE181C600BC233D /* RootViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModifier.swift; sourceTree = "<group>"; };
@@ -843,6 +845,7 @@
 		0B1197602AD7D4A7004FAD14 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				937EE4182AFA8DF000A5CCF5 /* Maze */,
 				05FF77192AF0B0650037453D /* Tutorial */,
 				9398FBB62AE41D0200AB5CE4 /* Image */,
 				93C8E7282AE0164E002315A2 /* Animations */,
@@ -1000,6 +1003,14 @@
 				937AF2A12AE930AF008C69BB /* MazeScene.swift */,
 				937AF2A32AE930E0008C69BB /* MazeView.swift */,
 				937EE4162AFA261F00A5CCF5 /* MazeTutorialView.swift */,
+			);
+			path = Maze;
+			sourceTree = "<group>";
+		};
+		937EE4182AFA8DF000A5CCF5 /* Maze */ = {
+			isa = PBXGroup;
+			children = (
+				937EE4192AFA8DFD00A5CCF5 /* MazeProgress.swift */,
 			);
 			path = Maze;
 			sourceTree = "<group>";
@@ -1583,6 +1594,7 @@
 				0B6E2F762ADC9F020001D320 /* PromptViewModel.swift in Sources */,
 				938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */,
 				9328F9172AF25C2200E82995 /* ModalComponent.swift in Sources */,
+				937EE41A2AFA8DFD00A5CCF5 /* MazeProgress.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1758,6 +1770,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1792,6 +1805,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

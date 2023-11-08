@@ -12,6 +12,48 @@ struct MazePrompt: View {
 
     var promptText = "Moco adalah sapi jantan"
     var answersAsset = ["Maze/answer_one", "Maze/answer_two"]
+    var answers = ["satu", "dua", "tiga"]
+    var correctAnswerAsset = "Maze/answer_three"
+    var initialTime = 60 * 3
+
+    var action: () -> Void = {}
+
+    var body: some View {
+        ZStack {
+            VStack {
+                HStack {
+                    MazeProgress(progress: $mazePromptViewModel.progress)
+                    TimerView()
+                    Spacer()
+                }
+                Text(promptText).customFont(.didactGothic, size: 40).foregroundColor(.text.brown)
+                Spacer()
+                MazeView(
+                    answersAsset: answersAsset,
+                    answers: answers,
+                    correctAnswerAsset: correctAnswerAsset
+                ) {
+                    action()
+                }
+            }
+            .ignoresSafeArea()
+            .frame(width: Screen.width, height: Screen.height)
+        }.background {
+            Image("Maze/bg-texture").resizable().scaledToFill().overlay {
+                Color.yellow.opacity(0.3)
+            }
+        }
+        .ignoresSafeArea()
+        .frame(width: Screen.width, height: Screen.height)
+        .forceRotation()
+    }
+}
+
+struct MazePromptOld: View {
+    @State private var mazePromptViewModel = MazePromptViewModel()
+
+    var promptText = "Moco adalah sapi jantan"
+    var answersAsset = ["Maze/answer_one", "Maze/answer_two"]
     var correctAnswerAsset = "Maze/answer_three"
 
     var action: () -> Void = {}

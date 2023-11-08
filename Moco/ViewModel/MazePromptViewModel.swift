@@ -22,6 +22,15 @@ import SwiftUI
         mazePromptModel.showStartButton
     }
 
+    var progress: Double {
+        set {
+            mazePromptModel.progress = newValue
+        }
+        get {
+            mazePromptModel.progress + 0.5
+        }
+    }
+
     func playPrompt() {
         mazePromptModel.isStarted = false
         withAnimation(.easeInOut(duration: 3)) {
