@@ -34,6 +34,7 @@
 		058DC90F2AF2F62B00A0885D /* phone-tilt.json in Resources */ = {isa = PBXBuildFile; fileRef = 058DC90E2AF2F62B00A0885D /* phone-tilt.json */; };
 		0592100C2AFA476F0008CD2C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 0592100B2AFA476F0008CD2C /* CodeScanner */; };
 		059210102AFB601E0008CD2C /* QRScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0592100F2AFB601E0008CD2C /* QRScannerSheet.swift */; };
+		059210142AFB68480008CD2C /* Base64ConverterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059210132AFB68480008CD2C /* Base64ConverterExtension.swift */; };
 		05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */; };
 		05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */; };
 		05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93552ADE74740082B21D /* RecognizerError.swift */; };
@@ -282,6 +283,7 @@
 		058DC90B2AF2F17700A0885D /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		058DC90E2AF2F62B00A0885D /* phone-tilt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "phone-tilt.json"; sourceTree = "<group>"; };
 		0592100F2AFB601E0008CD2C /* QRScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerSheet.swift; sourceTree = "<group>"; };
+		059210132AFB68480008CD2C /* Base64ConverterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64ConverterExtension.swift; sourceTree = "<group>"; };
 		05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSpeechRecognizerExtension.swift; sourceTree = "<group>"; };
 		05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioSessionExtension.swift; sourceTree = "<group>"; };
 		05AE93552ADE74740082B21D /* RecognizerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerError.swift; sourceTree = "<group>"; };
@@ -1235,6 +1237,7 @@
 				93CA8B7A2AF00E8400651885 /* SpriteKit.swift */,
 				056A3E472AF25170009299F4 /* SKSpriteNodeExtension.swift */,
 				93C30CBB2AF928CC0076808F /* DateExtension.swift */,
+				059210132AFB68480008CD2C /* Base64ConverterExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1509,6 +1512,7 @@
 				938E3D542ADBCDB8003D2AE1 /* StoryNavigationButton.swift in Sources */,
 				9398FBB82AE41D2600AB5CE4 /* CustomAsyncImage.swift in Sources */,
 				0B6E2F742ADC9DC90001D320 /* HintViewModel.swift in Sources */,
+				059210142AFB68480008CD2C /* Base64ConverterExtension.swift in Sources */,
 				0571CB382AE1935C00CE0CC7 /* InvisibleButton.swift in Sources */,
 				938E3D372AD939C4003D2AE1 /* ContentView.swift in Sources */,
 				93E3D87A2AE4E95700E5391F /* SpeakPromptModel.swift in Sources */,
