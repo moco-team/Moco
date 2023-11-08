@@ -23,6 +23,8 @@ final class ARViewModel: NSObject, ObservableObject {
     @Published var hasFindObject: Bool = false
     @Published var foundObjectName: String?
     @Published var isFinalClue: Bool = false
+    
+    var arView: ARView? = nil
 
     func resume() {
         if !assetsLoaded && loadCancellable == nil {
@@ -40,6 +42,7 @@ final class ARViewModel: NSObject, ObservableObject {
         config.planeDetection = [.horizontal]
         arView.session.run(config)
         arView.session.delegate = self
+        self.arView = arView
     }
 
     func setSearchedObject(objectName: String) {
@@ -140,6 +143,34 @@ extension ARViewModel: ARSessionDelegate {
             // Lost an anchor, remove the AnchorEntity from the Scene
             anchorEntity.scene?.removeAnchor(anchorEntity)
             self.anchors.removeValue(forKey: anchor.identifier)
+        }
+    }
+    
+    func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
+        if !anchors.isEmpty {
+//            print("ANCHORS NOT EMPTY")
+//            print(anchors.last!)
+            
+            // Automatically set the point to middle of the screen
+            let point = CGPoint(x: Screen.width/2, y: Screen.height/2)
+            
+            guard (self.arView != nil),
+                  let result = self.arView!.raycast(from: point,
+                                              allowing: .existingPlaneGeometry,
+                                              alignment: .horizontal).first,
+                  let anchor = result.anchor
+            else {
+                return
+            }
+            
+            if !hasPlacedObject {
+//                _ = self.addCup(anchor: point, at:anchors.last!.transform, in: self.arView!)
+                _ = self.addCup(anchor: anchor, at:result.worldTransform, in: self.arView!)
+                hasPlacedObject = true
+            }
+            
+        } else {
+            print("Anchors is empty!")
         }
     }
 }
