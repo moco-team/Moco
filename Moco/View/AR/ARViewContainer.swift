@@ -25,6 +25,8 @@ struct ARViewContainer: UIViewRepresentable {
 
         // Configure the session
         viewModel.configureSession(forView: arView)
+        isShowHint = false
+        viewModel.hasPlacedObject = false
 
         // Capture taps into the ARView
         context.coordinator.arView = arView
@@ -82,22 +84,6 @@ struct ARViewContainer: UIViewRepresentable {
                 checkFoundObject(entities: entities!)
 
                 return
-            } else {
-                print("Place an object")
-
-                let point = gesture.location(in: gesture.view)
-                guard let arView,
-                      let result = arView.raycast(from: point,
-                                                  allowing: .existingPlaneGeometry,
-                                                  alignment: .horizontal).first,
-                      let anchor = result.anchor
-                else {
-                    return
-                }
-                _ = parent.viewModel.addCup(anchor: anchor,
-                                            at: result.worldTransform,
-                                            in: arView)
-                parent.viewModel.hasPlacedObject = true
             }
         }
 
@@ -126,13 +112,6 @@ struct ARViewContainer: UIViewRepresentable {
                             print("isfinalclue")
                             print(self.parent.viewModel.isFinalClue)
                         }
-
-                        // TODO: Set to false only for the last clue
-//                        if self.parent.viewModel.isFinalClue {
-                        parent.viewModel.hasPlacedObject = false
-                        print("set to false")
-                        print(parent.viewModel.hasPlacedObject)
-//                        }
                     }
                 } else {
                     print("The object found is incorrect!")
@@ -176,7 +155,7 @@ struct ARViewContainer: UIViewRepresentable {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [self] in
                 modelComponent.materials = [existingMaterial]
                 entity.components.set(modelComponent)
-                self.isShowHint = false
+                self.isShowHint = false // Agar updateUIView ketrigger
             }
         }
     }

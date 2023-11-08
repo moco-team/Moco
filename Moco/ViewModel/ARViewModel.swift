@@ -23,6 +23,7 @@ final class ARViewModel: NSObject, ObservableObject {
     @Published var hasFindObject: Bool = false
     @Published var foundObjectName: String?
     @Published var isFinalClue: Bool = false
+    @Published var toBeFoundEntityNames: [String] = ["honey_jar", "key", "airplane"]
     
     var arView: ARView? = nil
 
@@ -97,6 +98,12 @@ final class ARViewModel: NSObject, ObservableObject {
                 view.installGestures(for: parentEntity)
 
                 anchors[anchor.identifier] = anchorEntity
+                
+                toBeFoundEntityNames.forEach { entityName in
+                    if entityName != foundObjectName {
+                        environment.findEntity(named: entityName)?.removeFromParent()
+                    }
+                }
 
                 return environment
             }
@@ -163,7 +170,7 @@ extension ARViewModel: ARSessionDelegate {
                 return
             }
             
-            if !hasPlacedObject {
+            if !hasPlacedObject && !hasFindObject {
 //                _ = self.addCup(anchor: point, at:anchors.last!.transform, in: self.arView!)
                 _ = self.addCup(anchor: anchor, at:result.worldTransform, in: self.arView!)
                 hasPlacedObject = true
