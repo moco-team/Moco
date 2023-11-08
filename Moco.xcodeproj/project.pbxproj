@@ -32,6 +32,8 @@
 		058DC90A2AF2F0A200A0885D /* tap-screen.json in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9092AF2F0A200A0885D /* tap-screen.json */; };
 		058DC90C2AF2F17700A0885D /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 058DC90B2AF2F17700A0885D /* loading.json */; };
 		058DC90F2AF2F62B00A0885D /* phone-tilt.json in Resources */ = {isa = PBXBuildFile; fileRef = 058DC90E2AF2F62B00A0885D /* phone-tilt.json */; };
+		0592100C2AFA476F0008CD2C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 0592100B2AFA476F0008CD2C /* CodeScanner */; };
+		059210102AFB601E0008CD2C /* QRScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0592100F2AFB601E0008CD2C /* QRScannerSheet.swift */; };
 		05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */; };
 		05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */; };
 		05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93552ADE74740082B21D /* RecognizerError.swift */; };
@@ -279,6 +281,7 @@
 		058DC9092AF2F0A200A0885D /* tap-screen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "tap-screen.json"; sourceTree = "<group>"; };
 		058DC90B2AF2F17700A0885D /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		058DC90E2AF2F62B00A0885D /* phone-tilt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "phone-tilt.json"; sourceTree = "<group>"; };
+		0592100F2AFB601E0008CD2C /* QRScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerSheet.swift; sourceTree = "<group>"; };
 		05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSpeechRecognizerExtension.swift; sourceTree = "<group>"; };
 		05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioSessionExtension.swift; sourceTree = "<group>"; };
 		05AE93552ADE74740082B21D /* RecognizerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerError.swift; sourceTree = "<group>"; };
@@ -450,6 +453,7 @@
 			files = (
 				93676D292AF13C5400E756A5 /* SwiftUITooltip in Frameworks */,
 				935D78672AEE858500DF64A5 /* ConfettiSwiftUI in Frameworks */,
+				0592100C2AFA476F0008CD2C /* CodeScanner in Frameworks */,
 				05AE93682ADE83430082B21D /* Lottie in Frameworks */,
 				935D784E2AEBF96800DF64A5 /* FLAnimatedImage in Frameworks */,
 				0517C5202AEF3C9B00CE7A01 /* RKFade in Frameworks */,
@@ -867,6 +871,7 @@
 				93676D2A2AF1435200E756A5 /* Pointer.swift */,
 				9328F9162AF25C2200E82995 /* ModalComponent.swift */,
 				93C30CB92AF926150076808F /* TimerView.swift */,
+				0592100F2AFB601E0008CD2C /* QRScannerSheet.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1284,6 +1289,7 @@
 				935D78662AEE858500DF64A5 /* ConfettiSwiftUI */,
 				0517C51F2AEF3C9B00CE7A01 /* RKFade */,
 				93676D282AF13C5400E756A5 /* SwiftUITooltip */,
+				0592100B2AFA476F0008CD2C /* CodeScanner */,
 			);
 			productName = Moco;
 			productReference = 93C2F8802AD683AC007D1ABC /* Moco.app */;
@@ -1363,6 +1369,7 @@
 				935D78652AEE858500DF64A5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 				0517C51E2AEF3C9B00CE7A01 /* XCRemoteSwiftPackageReference "RealityKit-Fade" */,
 				93676D272AF13C5300E756A5 /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */,
+				0592100A2AFA476F0008CD2C /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = 93C2F8812AD683AC007D1ABC /* Products */;
 			projectDirPath = "";
@@ -1481,6 +1488,7 @@
 				930CBFFB2AF76956001B67D2 /* ViewWillDisappear.swift in Sources */,
 				93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */,
 				938C55382AE183AA00BC233D /* FontViewModifier.swift in Sources */,
+				059210102AFB601E0008CD2C /* QRScannerSheet.swift in Sources */,
 				935D786F2AEF4C1200DF64A5 /* Spacer.swift in Sources */,
 				93C2F8BD2AD684CE007D1ABC /* HomeView.swift in Sources */,
 				93C8E7232ADEF249002315A2 /* FontUtil.swift in Sources */,
@@ -1946,6 +1954,14 @@
 				minimumVersion = 1.0.14;
 			};
 		};
+		0592100A2AFA476F0008CD2C /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.3;
+			};
+		};
 		05AE93662ADE83430082B21D /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -1985,6 +2001,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0517C51E2AEF3C9B00CE7A01 /* XCRemoteSwiftPackageReference "RealityKit-Fade" */;
 			productName = RKFade;
+		};
+		0592100B2AFA476F0008CD2C /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0592100A2AFA476F0008CD2C /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 		05AE93672ADE83430082B21D /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
