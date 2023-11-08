@@ -26,7 +26,7 @@ struct MazeTutorialView: View {
 
     var currentProgress: Int {
         get {
-            switch (currentPhase) {
+            switch currentPhase {
             case .right:
                 return rightProgress
             case .left:
@@ -38,7 +38,7 @@ struct MazeTutorialView: View {
             }
         }
         set {
-            switch (currentPhase) {
+            switch currentPhase {
             case .right:
                 rightProgress = newValue
             case .left:
@@ -52,7 +52,7 @@ struct MazeTutorialView: View {
     }
 
     var currentInstruction: String {
-        switch (currentPhase) {
+        switch currentPhase {
         case .right:
             return "kanan"
         case .left:
@@ -112,7 +112,7 @@ struct MazeTutorialView: View {
                         }
                     }
                 } else if currentProgress >= 100 {
-                    switch (currentPhase) {
+                    switch currentPhase {
                     case .right:
                         currentPhase = .left
                     case .left:
