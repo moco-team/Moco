@@ -53,13 +53,14 @@ struct ARStory: View {
                     clue: clueDataArray[promptIndex],
                     lastPrompt: promptIndex == (clueDataArray.count - 1),
                     onFoundObject: {
-                        // isGameStarted = false // turn of the arcameraview first, so it can generate new instance for the next prompt
+                         isGameStarted = false // turn off the ARCameraView first, so it can generate new instance for the next prompt
 
                         print("Ditemukan!")
                         print("promptIndex")
                         print(promptIndex) // 2
                         if promptIndex < clueDataArray.count {
                             promptIndex += 1
+                            startVisibility = true
                         }
                         if promptIndex >= clueDataArray.count {
                             doneHandler?()
@@ -71,7 +72,7 @@ struct ARStory: View {
                 .id(promptIndex)
                 .ignoresSafeArea()
             }
-            if promptIndex < (clueDataArray.count - 1) {
+            if promptIndex < clueDataArray.count {
                 if startVisibility {
                     ARClueView(clue: clueDataArray[promptIndex].clue, onStartGame: {
                         isGameStarted = true
@@ -80,6 +81,11 @@ struct ARStory: View {
                     })
                     .ignoresSafeArea()
                     .frame(width: Screen.width, height: Screen.height)
+                    .onDisappear() {
+                        withAnimation(Animation.easeIn(duration: 1.5)) {
+                            startVisibility = false
+                        }
+                    }
                 }
             }
         }
