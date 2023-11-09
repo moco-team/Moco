@@ -12,6 +12,7 @@
 		0518CDD82AE220BA00521EC8 /* moco-1-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518CDD72AE220BA00521EC8 /* moco-1-2.json */; };
 		0518CDDA2AE227FA00521EC8 /* kakak_katak.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518CDD92AE227FA00521EC8 /* kakak_katak.json */; };
 		051CC18A2AF22D0800632E09 /* OrientationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051CC1892AF22D0800632E09 /* OrientationInfo.swift */; };
+		0522B02F2AFCC36900D51EF8 /* card_flip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0522B02E2AFCC36900D51EF8 /* card_flip.mp3 */; };
 		056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */; };
 		056A3E482AF25170009299F4 /* SKSpriteNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A3E472AF25170009299F4 /* SKSpriteNodeExtension.swift */; };
 		056B67262AE28CFB00A3B493 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056B67252AE28CFB00A3B493 /* ProfileView.swift */; };
@@ -233,6 +234,7 @@
 		0518CDD72AE220BA00521EC8 /* moco-1-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-2.json"; sourceTree = "<group>"; };
 		0518CDD92AE227FA00521EC8 /* kakak_katak.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = kakak_katak.json; sourceTree = "<group>"; };
 		051CC1892AF22D0800632E09 /* OrientationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationInfo.swift; sourceTree = "<group>"; };
+		0522B02E2AFCC36900D51EF8 /* card_flip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = card_flip.mp3; sourceTree = "<group>"; };
 		053393102AE13A0C0085BB30 /* bear_thankyou.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bear_thankyou.m4a; sourceTree = "<group>"; };
 		053393112AE13A220085BB30 /* frog_thankyou.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = frog_thankyou.m4a; sourceTree = "<group>"; };
 		053393122AE13A310085BB30 /* congratulations.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = congratulations.m4a; sourceTree = "<group>"; };
@@ -485,6 +487,14 @@
 				050353E02ADFE2970066591A /* FindHoney.swift */,
 			);
 			path = FindHoney;
+			sourceTree = "<group>";
+		};
+		0522B02D2AFCC33900D51EF8 /* SoundFx */ = {
+			isa = PBXGroup;
+			children = (
+				0522B02E2AFCC36900D51EF8 /* card_flip.mp3 */,
+			);
+			path = SoundFx;
 			sourceTree = "<group>";
 		};
 		0569496F2AE0EAD600830D57 /* Page9 */ = {
@@ -943,6 +953,7 @@
 		932357D22ADE6DF2009B3D86 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				0522B02D2AFCC33900D51EF8 /* SoundFx */,
 				93EB5FA22AFAC10000C4FB34 /* Maze */,
 				93676D252AF13AA200E756A5 /* pop.mp3 */,
 				93C8E7262ADF8DA3002315A2 /* bg-shop.mp3 */,
@@ -1397,6 +1408,7 @@
 				058DC8F32AF2C2E700A0885D /* honey-new.usdz in Resources */,
 				931722182AE5508300346382 /* Page2-monolog1.m4a in Resources */,
 				931722192AE5508300346382 /* Page3-monolog1.m4a in Resources */,
+				0522B02F2AFCC36900D51EF8 /* card_flip.mp3 in Resources */,
 				9317221A2AE5508300346382 /* Page4-monolog2.m4a in Resources */,
 				9317221B2AE5508300346382 /* Page4-monolog1.m4a in Resources */,
 				058DC90A2AF2F0A200A0885D /* tap-screen.json in Resources */,
