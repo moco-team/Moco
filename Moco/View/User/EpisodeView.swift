@@ -69,9 +69,7 @@ struct EpisodeView: View {
                             ForEach(
                                 Array(availableEpisodes.enumerated()), id: \.element
                             ) { index, episode in
-                                StoryBookNew(
-                                    image: episode.pictureName,
-                                    firstPageBackground: episode.pictureName,
+                                EpisodeItem(
                                     number: index + 1
                                 ) {
                                     Task {
