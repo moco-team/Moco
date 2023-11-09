@@ -10,6 +10,8 @@ import SwiftUI
 @Observable class MazePromptViewModel {
     private var mazePromptModel = MazePromptModel()
 
+    var isTutorialDone = GlobalStorage.mazeTutorialFinished
+
     var isStarted: Bool {
         mazePromptModel.isStarted
     }
@@ -28,6 +30,15 @@ import SwiftUI
         }
         get {
             mazePromptModel.progress + 0.5
+        }
+    }
+
+    var isCorrectAnswer: Bool {
+        set {
+            mazePromptModel.isCorrectAnswer = newValue
+        }
+        get {
+            mazePromptModel.isCorrectAnswer
         }
     }
 

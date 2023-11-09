@@ -234,5 +234,5 @@ class MazeScene: SKScene, ObservableObject {
 }
 
 #Preview {
-    MazeView()
+    MazeView(correctAnswer: .constant(false))
 }

@@ -8,7 +8,6 @@
 import Foundation
 
 extension String {
-
     func fromBase64() -> String? {
         guard let data = Data(base64Encoded: self) else {
             return nil
@@ -18,7 +17,6 @@ extension String {
     }
 
     func toBase64() -> String {
-        return Data(self.utf8).base64EncodedString()
+        return Data(utf8).base64EncodedString()
     }
-
 }

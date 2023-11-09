@@ -30,7 +30,7 @@ struct MazeModel {
     var startPoint = LocationPoint()
     var exitPoints = [LocationPoint()]
 
-    static var mapSize = MapSize(width: 27, height: 13)
+    static var mapSize = MapSize(width: 25, height: 13)
 
     var arrayPoint: [[Int]] = [[]]
 
@@ -121,9 +121,9 @@ struct MazeModel {
 
         func resetGenerateInOutPoint(exitOnly: Bool = false) {
             for col in 0 ..< cols {
-                maze[0][col] = 1
+                maze[rows - 1][col] = 1
                 if !exitOnly {
-                    maze[rows - 1][col] = 1
+                    maze[0][col] = 1
                 }
             }
         }

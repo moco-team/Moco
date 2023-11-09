@@ -5,14 +5,13 @@
 //  Created by Daniel Aprillio on 08/11/23.
 //
 
-import SwiftUI
 import CodeScanner
+import SwiftUI
 
 struct QRScannerSheet: View {
-    
     @State var isPresentingScanner: Bool = false
     @State var scannerResult: String = "Scan QR Code to get started!"
-    
+
     var body: some View {
         CodeScannerView(
             codeTypes: [.qr],

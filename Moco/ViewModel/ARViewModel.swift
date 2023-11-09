@@ -23,8 +23,8 @@ final class ARViewModel: NSObject, ObservableObject {
     @Published var hasFindObject: Bool = false
     @Published var foundObjectName: String?
     @Published var isFinalClue: Bool = false
-    
-    var arView: ARView? = nil
+
+    var arView: ARView?
 
     func resume() {
         if !assetsLoaded && loadCancellable == nil {
@@ -145,30 +145,30 @@ extension ARViewModel: ARSessionDelegate {
             self.anchors.removeValue(forKey: anchor.identifier)
         }
     }
-    
-    func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
+
+    func session(_: ARSession, didUpdate anchors: [ARAnchor]) {
         if !anchors.isEmpty {
 //            print("ANCHORS NOT EMPTY")
 //            print(anchors.last!)
-            
+
             // Automatically set the point to middle of the screen
-            let point = CGPoint(x: Screen.width/2, y: Screen.height/2)
-            
-            guard (self.arView != nil),
-                  let result = self.arView!.raycast(from: point,
-                                              allowing: .existingPlaneGeometry,
-                                              alignment: .horizontal).first,
+            let point = CGPoint(x: Screen.width / 2, y: Screen.height / 2)
+
+            guard arView != nil,
+                  let result = arView!.raycast(from: point,
+                                               allowing: .existingPlaneGeometry,
+                                               alignment: .horizontal).first,
                   let anchor = result.anchor
             else {
                 return
             }
-            
+
             if !hasPlacedObject {
 //                _ = self.addCup(anchor: point, at:anchors.last!.transform, in: self.arView!)
-                _ = self.addCup(anchor: anchor, at:result.worldTransform, in: self.arView!)
+                _ = addCup(anchor: anchor, at: result.worldTransform, in: arView!)
                 hasPlacedObject = true
             }
-            
+
         } else {
             print("Anchors is empty!")
         }

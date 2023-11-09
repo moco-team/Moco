@@ -20,24 +20,31 @@ struct MazePrompt: View {
 
     var body: some View {
         ZStack {
-            VStack {
-                HStack {
-                    MazeProgress(progress: $mazePromptViewModel.progress)
-                    TimerView()
+            if mazePromptViewModel.isTutorialDone {
+                VStack {
+                    HStack {
+                        MazeProgress(progress: $mazePromptViewModel.progress)
+                        Spacer()
+                        TimerView().padding(.trailing, Screen.width * 0.2)
+                    }
+                    Text(promptText)
+                        .customFont(.didactGothic, size: 40)
+                        .foregroundColor(.text.brown)
                     Spacer()
+                    MazeView(
+                        answersAsset: answersAsset,
+                        answers: answers,
+                        correctAnswerAsset: correctAnswerAsset,
+                        correctAnswer: $mazePromptViewModel.isCorrectAnswer
+                    ) {
+                        action()
+                    }.padding(.bottom, 20)
                 }
-                Text(promptText).customFont(.didactGothic, size: 40).foregroundColor(.text.brown)
-                Spacer()
-                MazeView(
-                    answersAsset: answersAsset,
-                    answers: answers,
-                    correctAnswerAsset: correctAnswerAsset
-                ) {
-                    action()
-                }
+                .ignoresSafeArea()
+                .frame(width: Screen.width, height: Screen.height)
+            } else {
+                MazeTutorialView(isTutorialDone: $mazePromptViewModel.isTutorialDone)
             }
-            .ignoresSafeArea()
-            .frame(width: Screen.width, height: Screen.height)
         }.background {
             Image("Maze/bg-texture").resizable().scaledToFill().overlay {
                 Color.yellow.opacity(0.3)
@@ -46,6 +53,9 @@ struct MazePrompt: View {
         .ignoresSafeArea()
         .frame(width: Screen.width, height: Screen.height)
         .forceRotation()
+        .popUp(isActive: $mazePromptViewModel.isCorrectAnswer, withConfetti: true) {
+            action()
+        }
     }
 }
 
@@ -60,7 +70,9 @@ struct MazePromptOld: View {
 
     var body: some View {
         ZStack {
-            MazeView(answersAsset: answersAsset, correctAnswerAsset: correctAnswerAsset) {
+            MazeView(answersAsset: answersAsset,
+                     correctAnswerAsset: correctAnswerAsset,
+                     correctAnswer: .constant(true)) {
                 action()
             }
 
