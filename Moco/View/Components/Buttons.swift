@@ -11,6 +11,7 @@ struct MainButton: ButtonStyle {
     enum MainButtonType {
         case success
         case warning
+        case danger
     }
 
     var width: CGFloat?
@@ -25,14 +26,14 @@ struct MainButton: ButtonStyle {
             .padding()
             .background {
                 Image(type == .success ?
-                    "Buttons/button-success" :
-                    "Buttons/button-warning"
+                    "Buttons/button-success" : type == .warning ?
+                    "Buttons/button-warning" : "Buttons/button-negative"
                 )
                 .resizable()
                 .scaledToFit()
                 .frame(width: width, height: height)
             }
-            .foregroundColor(type == .success ? .text.green : .text.brown)
+            .foregroundColor(type == .success ? .text.green : type == .warning ? .text.brown : .text.red)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
             .scaleEffect(configuration.isPressed ? 1.2 : 1)
             .animation(.easeOut(duration: 0.2), value: configuration.isPressed)

@@ -46,7 +46,7 @@ struct HomeView: View {
                 Spacer()
 
                 HStack {
-                    Text("Koleksi Buku")
+                    Text("Koleksi Cerita Dunia Ajaib")
                         .customFont(.cherryBomb, size: 50)
                         .foregroundColor(Color.blueTxt)
                         .fontWeight(.bold)
@@ -95,7 +95,6 @@ struct HomeView: View {
                 }
                 homeViewModel.soundLevel = 0.3
                 homeViewModel.setVolume()
-                GlobalStorage.mazeTutorialFinished = false
             }
         }
     }

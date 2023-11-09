@@ -41,6 +41,7 @@ struct MazeModel {
     )
 
     init() {
+        print("maze init")
         randomizeMaze()
     }
 
@@ -54,6 +55,8 @@ struct MazeModel {
         correctPoint = newMazeWithPlayerPos.2.first!
         exitPoints = newMazeWithPlayerPos.2
         startPoint = characterLocationPoint
+        print(arrayPoint.count)
+        print(points.count)
     }
 
     private static func generateMaze(rows: Int, cols: Int) -> ([[Int]], LocationPoint, [LocationPoint]) {
@@ -208,6 +211,7 @@ struct MazeModel {
     }
 
     mutating func move(_ direction: MoveDirection) -> Bool {
+        let initialLocation = characterLocationPoint
         switch direction {
         case .left:
             if characterLocationPoint.xPos <= 0 ||
@@ -237,7 +241,10 @@ struct MazeModel {
         guard
             points.indices.contains(characterLocationPoint.yPos) &&
             points.first!.indices.contains(characterLocationPoint.xPos)
-        else { return false }
+        else {
+            characterLocationPoint = initialLocation
+            return false
+        }
 
         return true
     }

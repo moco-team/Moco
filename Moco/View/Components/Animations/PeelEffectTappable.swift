@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PeelEffectTappable<Content: View, Background: View>: View {
+    @Environment(\.audioViewModel) private var audioViewModel
+    @State private var soundFxExecuted = false
     var content: Content
     var background: Background
 
@@ -107,6 +109,10 @@ struct PeelEffectTappable<Content: View, Background: View>: View {
             .onReceive(timer) { _ in
                 switch self.state {
                 case .start:
+                    if !soundFxExecuted {
+                        audioViewModel.playSound(soundFileName: "card_flip", category: .soundEffect)
+                        soundFxExecuted.toggle()
+                    }
                     if dragProgress < maxProgress {
                         dragProgress += 0.1
                     } else if !onCompleteExecuted {
@@ -117,6 +123,10 @@ struct PeelEffectTappable<Content: View, Background: View>: View {
                     dragProgress = 0
                     onCompleteExecuted = false
                 case .reverse:
+                    if !soundFxExecuted {
+                        audioViewModel.playSound(soundFileName: "card_flip", category: .soundEffect)
+                        soundFxExecuted.toggle()
+                    }
                     if dragProgress == 0 && !onCompleteExecuted {
                         dragProgress = maxProgress
                     }
@@ -129,6 +139,7 @@ struct PeelEffectTappable<Content: View, Background: View>: View {
                 }
             }
             .onAppear {
+                soundFxExecuted = false
                 onCompleteExecuted = false
                 if !isReverse {
                     dragProgress = 0

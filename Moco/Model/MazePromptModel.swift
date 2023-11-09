@@ -12,5 +12,6 @@ struct MazePromptModel {
     var showStartButton = false
     var isStarted = false
     var progress = 0.0
-    var isCorrectAnswer = false
+    var isCorrectAnswer: Bool = false
+    var isWrongAnswer: Bool = false
 }

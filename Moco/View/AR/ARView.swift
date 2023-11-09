@@ -68,7 +68,7 @@ struct ARCameraView: View {
                                 fadeInHintButton.toggle()
                             }
                         }
-                        .onDisappear() {
+                        .onDisappear {
                             withAnimation(Animation.easeIn(duration: 1.5)) {
                                 fadeInHintButton.toggle()
                             }

@@ -14,6 +14,8 @@ enum PeelEffectState: CaseIterable, Codable, Equatable {
 }
 
 struct PeelEffect<Content: View, Background: View>: View {
+    @Environment(\.audioViewModel) private var audioViewModel
+
     var content: Content
     var background: Background
 
@@ -43,6 +45,8 @@ struct PeelEffect<Content: View, Background: View>: View {
 
     @State private var dragProgress: CGFloat = 0
     @State private var onCompleteExecuted = false
+
+    @State private var soundFxExecuted = false
 
     let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
 
@@ -120,6 +124,10 @@ struct PeelEffect<Content: View, Background: View>: View {
             .onReceive(timer) { _ in
                 switch self.state {
                 case .start:
+                    if !soundFxExecuted {
+                        audioViewModel.playSound(soundFileName: "card_flip", category: .soundEffect)
+                        soundFxExecuted.toggle()
+                    }
                     if dragProgress < maxProgress {
                         dragProgress += 0.1
                     } else if !onCompleteExecuted {
@@ -130,6 +138,10 @@ struct PeelEffect<Content: View, Background: View>: View {
                     dragProgress = 0
                     onCompleteExecuted = false
                 case .reverse:
+                    if !soundFxExecuted {
+                        audioViewModel.playSound(soundFileName: "card_flip", category: .soundEffect)
+                        soundFxExecuted.toggle()
+                    }
                     if dragProgress == 0 && !onCompleteExecuted {
                         dragProgress = maxProgress
                     }
@@ -143,6 +155,7 @@ struct PeelEffect<Content: View, Background: View>: View {
             }
             .onAppear {
                 onCompleteExecuted = false
+                soundFxExecuted = false
                 if !isReverse {
                     dragProgress = 0
                     state = .stop

@@ -34,4 +34,31 @@ import Foundation
             GlobalStorage.soundEffectVolume = newValue
         }
     }
+
+    var mazeTutorialFinished: Bool {
+        get {
+            GlobalStorage.mazeTutorialFinished
+        }
+        set {
+            GlobalStorage.mazeTutorialFinished = newValue
+        }
+    }
+
+    var arTutorialFinished: Bool {
+        get {
+            GlobalStorage.arTutorialFinished
+        }
+        set {
+            GlobalStorage.arTutorialFinished = newValue
+        }
+    }
+
+    var storyTutorialFinished: Bool {
+        get {
+            GlobalStorage.arTutorialFinished
+        }
+        set {
+            GlobalStorage.arTutorialFinished = newValue
+        }
+    }
 }

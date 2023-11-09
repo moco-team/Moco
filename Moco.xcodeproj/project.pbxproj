@@ -134,6 +134,7 @@
 		93676D292AF13C5400E756A5 /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 93676D282AF13C5400E756A5 /* SwiftUITooltip */; };
 		93676D2B2AF1435200E756A5 /* Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93676D2A2AF1435200E756A5 /* Pointer.swift */; };
 		93676D2D2AF1475200E756A5 /* PointerViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93676D2C2AF1475200E756A5 /* PointerViewModifier.swift */; };
+		93692EAA2AFD43FD00CD6561 /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93692EA92AFD43FD00CD6561 /* PauseMenu.swift */; };
 		937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2852AE80BFA008C69BB /* RippleView.swift */; };
 		937AF2882AE81983008C69BB /* RippleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2872AE81983008C69BB /* RippleModel.swift */; };
 		937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2892AE81A26008C69BB /* RippleViewModel.swift */; };
@@ -367,6 +368,7 @@
 		93676D252AF13AA200E756A5 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
 		93676D2A2AF1435200E756A5 /* Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointer.swift; sourceTree = "<group>"; };
 		93676D2C2AF1475200E756A5 /* PointerViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointerViewModifier.swift; sourceTree = "<group>"; };
+		93692EA92AFD43FD00CD6561 /* PauseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
 		937AF2852AE80BFA008C69BB /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
 		937AF2872AE81983008C69BB /* RippleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleModel.swift; sourceTree = "<group>"; };
 		937AF2892AE81A26008C69BB /* RippleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleViewModel.swift; sourceTree = "<group>"; };
@@ -884,6 +886,7 @@
 				9328F9162AF25C2200E82995 /* ModalComponent.swift */,
 				93C30CB92AF926150076808F /* TimerView.swift */,
 				0592100F2AFB601E0008CD2C /* QRScannerSheet.swift */,
+				93692EA92AFD43FD00CD6561 /* PauseMenu.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1590,6 +1593,7 @@
 				937AF28C2AE832A7008C69BB /* ARViewContainer.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
 				93676D2D2AF1475200E756A5 /* PointerViewModifier.swift in Sources */,
+				93692EAA2AFD43FD00CD6561 /* PauseMenu.swift in Sources */,
 				937AF2A22AE930AF008C69BB /* MazeScene.swift in Sources */,
 				935D78622AEE1AC400DF64A5 /* MazePrompt.swift in Sources */,
 				938C553E2AE1B76600BC233D /* ObjectDetectionModel.swift in Sources */,

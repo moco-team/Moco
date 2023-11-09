@@ -42,6 +42,15 @@ import SwiftUI
         }
     }
 
+    var isWrongAnswer: Bool {
+        set {
+            mazePromptModel.isWrongAnswer = newValue
+        }
+        get {
+            mazePromptModel.isWrongAnswer
+        }
+    }
+
     func playPrompt() {
         mazePromptModel.isStarted = false
         withAnimation(.easeInOut(duration: 3)) {
