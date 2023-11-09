@@ -76,7 +76,8 @@ struct TimerView: View {
     var body: some View {
         VStack {
             Text(formattedTimer)
-                .font(Font.system(.largeTitle, design: .monospaced))
+                .customFont(.cherryBomb, size: 35)
+                .foregroundColor(.text.darkBlue)
                 .onReceive(timer) { _ in
                     if self.isTimerRunning && durationInSeconds > 0 {
                         durationInSeconds -= 1
@@ -88,8 +89,10 @@ struct TimerView: View {
                 .onAppear {
                     durationInSeconds = durationParamInSeconds
                     isTimerRunning.toggle()
-                }.background {
-                    Image("")
+                }
+                .padding(10)
+                .background {
+                    Image("Components/timer-base").resizable()
                 }
         }
     }

@@ -25,7 +25,7 @@ final class ARViewModel: NSObject, ObservableObject {
     @Published var isFinalClue: Bool = false
     @Published var toBeFoundEntityNames: [String] = ["honey_jar", "key", "airplane"]
     
-    var arView: ARView? = nil
+    var arView: ARView?
 
     func resume() {
         if !assetsLoaded && loadCancellable == nil {
@@ -153,13 +153,13 @@ extension ARViewModel: ARSessionDelegate {
         }
     }
     
-    func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
+    func session(_: ARSession, didUpdate anchors: [ARAnchor]) {
         if !anchors.isEmpty {
 //            print("ANCHORS NOT EMPTY")
 //            print(anchors.last!)
             
             // Automatically set the point to middle of the screen
-            let point = CGPoint(x: Screen.width/2, y: Screen.height/2)
+            let point = CGPoint(x: Screen.width / 2, y: Screen.height / 2)
             
             guard (self.arView != nil),
                   let result = self.arView!.raycast(from: point,
@@ -172,7 +172,7 @@ extension ARViewModel: ARSessionDelegate {
             
             if !hasPlacedObject && !hasFindObject {
 //                _ = self.addCup(anchor: point, at:anchors.last!.transform, in: self.arView!)
-                _ = self.addCup(anchor: anchor, at:result.worldTransform, in: self.arView!)
+                _ = addCup(anchor: anchor, at: result.worldTransform, in: arView!)
                 hasPlacedObject = true
             }
             

@@ -32,7 +32,8 @@ struct PopUpComponent: ViewModifier {
     var cancelHandler: (() -> Void)?
 
     func body(content: Content) -> some View {
-        content.overlay {
+        ZStack {
+            content.ignoresSafeArea()
             if isActive {
                 PopUpComponentView(
                     isActive: $isActive,
@@ -86,7 +87,6 @@ struct PopUpComponentView: View {
         ZStack {
             Color(.black)
                 .opacity(internalOverlayOpacity)
-                .frame(width: Screen.width, height: Screen.height)
                 .onTapGesture {
                     close()
                 }

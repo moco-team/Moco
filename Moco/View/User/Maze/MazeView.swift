@@ -47,7 +47,7 @@ struct MazeView: View {
         return scene
     }()
 
-    @State private var correctAnswer = false
+    @Binding var correctAnswer: Bool
 
     var onComplete: () -> Void = {}
 
@@ -62,6 +62,8 @@ struct MazeView: View {
             ZStack {
                 if let obj1 = scene.obj01, scene.obj03 != nil {
                     Text(answers[0]).offset(x: obj1.position.x - answersWidth[0] / 2)
+                        .customFont(.didactGothic, size: 30)
+                        .foregroundColor(.text.brown)
                         .background {
                             GeometryReader {
                                 proxy in
@@ -74,6 +76,8 @@ struct MazeView: View {
                 }
                 if let obj2 = scene.obj02, scene.obj03 != nil {
                     Text(answers[1]).offset(x: obj2.position.x - answersWidth[1] / 2)
+                        .customFont(.didactGothic, size: 30)
+                        .foregroundColor(.text.brown)
                         .background {
                             GeometryReader {
                                 proxy in
@@ -86,6 +90,8 @@ struct MazeView: View {
                 }
                 if let obj3 = scene.obj03, scene.obj03 != nil {
                     Text(answers[2]).offset(x: obj3.position.x - answersWidth[2] / 2)
+                        .customFont(.didactGothic, size: 30)
+                        .foregroundColor(.text.brown)
                         .background {
                             GeometryReader {
                                 proxy in
@@ -98,7 +104,7 @@ struct MazeView: View {
                 }
             }
         }
-        .background(.ultraThinMaterial)
+        .background(.clear)
         .onAppear {
             motionViewModel.startUpdates()
             scene.correctAnswerAsset = correctAnswerAsset
@@ -145,14 +151,11 @@ struct MazeView: View {
                 correctAnswer = sceneCorrectAnswer
             }
         }
-        .popUp(isActive: $correctAnswer, withConfetti: true) {
-            onComplete()
-        }
     }
 }
 
 #Preview {
-    MazeView {
+    MazeView(correctAnswer: .constant(true)) {
         print("Done")
     }
 }
