@@ -54,7 +54,7 @@ struct EpisodeView: View {
                                 navigate.pop()
                             }
 
-                        Text("Pilih Episode")
+                        Text("Episode")
                             .customFont(.cherryBomb, size: 50)
                             .foregroundColor(Color.blueTxt)
                             .fontWeight(.bold)
