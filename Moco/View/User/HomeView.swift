@@ -18,8 +18,6 @@ struct HomeView: View {
 
     @State private var homeViewModel = HomeViewModel()
 
-    @State private var isPresentingScanner = false
-
     var body: some View {
         ZStack {
             VStack {
@@ -51,12 +49,10 @@ struct HomeView: View {
                         .foregroundColor(Color.blueTxt)
                         .fontWeight(.bold)
 
-                    Button("Test Scan QR Code") {
-                        self.isPresentingScanner = true
+                    NavigationLink(destination: QRScannerSheet()){
+                        Text("QR Code")
                     }
-                    .sheet(isPresented: $isPresentingScanner) {
-                        QRScannerSheet()
-                    }
+                    
                     Spacer()
                 }.padding(.leading, 60).padding(.bottom, 30)
 
