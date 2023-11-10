@@ -26,20 +26,30 @@ struct SceneKitView: UIViewRepresentable {
 
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.camera?.automaticallyAdjustsZRange = true
-//        cameraNode.position = SCNVector3(x: 0, y: 0, z: 10)
-//        cameraNode.pivot = SCNMatrix4MakeTranslation(10, 10, 155);
 
         scnView.scene?.rootNode.addChildNode(cameraNode)
 
-        scnView.pointOfView = cameraNode
+        scnView.debugOptions = .showWorldOrigin
 
         scnView.allowsCameraControl = true
         scnView.autoenablesDefaultLighting = true
         scnView.isTemporalAntialiasingEnabled = true
-        scnView.defaultCameraController.maximumVerticalAngle = 10
 
         scnView.cameraControlConfiguration.autoSwitchToFreeCamera = false
+
+        let camera = scnView.defaultCameraController
+        let cameraConfig = scnView.cameraControlConfiguration
+        let maxFov = CGFloat(110)
+        let minFov = CGFloat(20)
+        camera.pointOfView?.look(at: SCNVector3(x: 0, y: 0, z: 0))
+
+        camera.maximumVerticalAngle = 50
+        camera.minimumVerticalAngle = 20
+
+        camera.interactionMode = .orbitTurntable
+
+        cameraConfig.rotationSensitivity = 0.3
+        cameraConfig.panSensitivity = 0.3
 
         if let recognizers = scnView.gestureRecognizers {
             for gestureRecognizer in recognizers {
