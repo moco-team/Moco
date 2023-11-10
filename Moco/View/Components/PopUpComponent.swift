@@ -23,6 +23,7 @@ struct PopUpComponent: ViewModifier {
     var containerBgColor = Color.white
     var textColor = Color.black
     var overlayOpacity = 0.3
+    var isLarge = false
     var width = Screen.width * 0.45
     var height = Screen.height * 0.6
 
@@ -77,6 +78,7 @@ struct PopUpComponentView: View {
     var containerBgColor = Color.white
     var textColor = Color.blue2Txt
     var overlayOpacity = 0.3
+    var isLarge = false
     var width = Screen.width * 0.45
     var height = Screen.height * 0.6
 
@@ -104,7 +106,7 @@ struct PopUpComponentView: View {
                         Rectangle().frame(width: width, height: height)
                             .foregroundColor(.clear)
                             .overlay {
-                                Image("Components/popup-base").resizable().scaledToFit()
+                                Image(isLarge ? "Components/popup-base-lg" : "Components/popup-base").resizable().scaledToFit()
                             }
 
                         VStack {

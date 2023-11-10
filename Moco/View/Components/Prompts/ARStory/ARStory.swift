@@ -53,7 +53,7 @@ struct ARStory: View {
                     clue: clueDataArray[promptIndex],
                     lastPrompt: promptIndex == (clueDataArray.count - 1),
                     onFoundObject: {
-                         isGameStarted = false // turn off the ARCameraView first, so it can generate new instance for the next prompt
+                        isGameStarted = false // turn off the ARCameraView first, so it can generate new instance for the next prompt
 
                         print("Ditemukan!")
                         print("promptIndex")
@@ -81,7 +81,7 @@ struct ARStory: View {
                     })
                     .ignoresSafeArea()
                     .frame(width: Screen.width, height: Screen.height)
-                    .onDisappear() {
+                    .onDisappear {
                         withAnimation(Animation.easeIn(duration: 1.5)) {
                             startVisibility = false
                         }

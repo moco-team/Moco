@@ -19,6 +19,7 @@ struct StoryView: View {
 
     @Environment(\.timerViewModel) private var timerViewModel
     @Environment(\.audioViewModel) private var audioViewModel
+    @Environment(\.settingsViewModel) private var settingsViewModel
     @Environment(\.navigate) private var navigate
     @EnvironmentObject var speechViewModel: SpeechRecognizerViewModel
     @EnvironmentObject var objectDetectionViewModel: ObjectDetectionViewModel
@@ -44,6 +45,7 @@ struct StoryView: View {
     @State private var showWrongAnsPopup = false
     @State private var mazeQuestionIndex = 0
     @State private var forceShowNext = false
+    @State private var showPauseMenu = false
 
     // MARK: - Variables
 
@@ -126,10 +128,19 @@ struct StoryView: View {
         }
     }
 
-    private func prevPage() {
+    private func prevPage(_ targetScrollPosition: Int? = nil) {
         guard scrollPosition! > 0 else { return }
+        if let targetScrollPositionParam = targetScrollPosition {
+            if targetScrollPositionParam < 0 {
+                return
+            }
+        }
         isReversePeel = true
-        scrollPosition! -= 1
+        if let targetScrollPositionParam = targetScrollPosition {
+            scrollPosition = targetScrollPositionParam
+        } else {
+            scrollPosition! -= 1
+        }
         peelEffectState = .reverse
 
         peelBackground = AnyView(Image(storyViewModel.storyPage!.background)
@@ -258,12 +269,13 @@ struct StoryView: View {
                     HStack {
                         Spacer()
                         Button {
-                            if !isMuted {
-                                audioViewModel.mute()
-                            } else {
-                                audioViewModel.unmute()
-                            }
-                            isMuted.toggle()
+//                            if !isMuted {
+//                                audioViewModel.mute()
+//                            } else {
+//                                audioViewModel.unmute()
+//                            }
+//                            isMuted.toggle()
+                            showPauseMenu = true
                         } label: {
                             Image(isMuted ? "Buttons/sound-off" : "Buttons/sound-on")
                                 .resizable()
@@ -339,6 +351,34 @@ struct StoryView: View {
             storyThemeViewModel.setSelectedStoryTheme(storyThemeViewModel.findWithID(storyThemeViewModel.selectedStoryTheme!.uid)!)
             navigate.pop {
                 stop()
+            }
+        }
+        .overlay {
+            if showPauseMenu {
+                PauseMenu(isActive: $showPauseMenu) {
+                    switch activePrompt?.promptType {
+                    case .maze:
+                        settingsViewModel.mazeTutorialFinished = false
+                    case .none:
+                        break
+                    case .some(.puzzle):
+                        break
+                    case .some(.findHoney):
+                        break
+                    case .some(.objectDetection):
+                        break
+                    case .some(.speech):
+                        break
+                    case .some(.multipleChoice):
+                        break
+                    case .some(.ar):
+                        break
+                    }
+                } repeatHandler: {
+                    prevPage(0)
+                }
+            } else {
+                EmptyView()
             }
         }
         .customModal(isActive: $showWrongAnsPopup, title: "Apakah kamu yakin dengan jawaban ini? Coba cek kembali pertanyaannya") {

@@ -54,7 +54,7 @@ struct EpisodeView: View {
                                 navigate.pop()
                             }
 
-                        Text("Pilih Episode")
+                        Text("Episode")
                             .customFont(.cherryBomb, size: 50)
                             .foregroundColor(Color.blueTxt)
                             .fontWeight(.bold)
@@ -69,9 +69,7 @@ struct EpisodeView: View {
                             ForEach(
                                 Array(availableEpisodes.enumerated()), id: \.element
                             ) { index, episode in
-                                StoryBookNew(
-                                    image: episode.pictureName,
-                                    firstPageBackground: episode.pictureName,
+                                EpisodeItem(
                                     number: index + 1
                                 ) {
                                     Task {

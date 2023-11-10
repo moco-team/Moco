@@ -98,7 +98,7 @@ final class ARViewModel: NSObject, ObservableObject {
                 view.installGestures(for: parentEntity)
 
                 anchors[anchor.identifier] = anchorEntity
-                
+
                 toBeFoundEntityNames.forEach { entityName in
                     if entityName != foundObjectName {
                         environment.findEntity(named: entityName)?.removeFromParent()
@@ -152,7 +152,7 @@ extension ARViewModel: ARSessionDelegate {
             self.anchors.removeValue(forKey: anchor.identifier)
         }
     }
-  
+
     func session(_: ARSession, didUpdate anchors: [ARAnchor]) {
         if !anchors.isEmpty {
 //            print("ANCHORS NOT EMPTY")
@@ -169,7 +169,7 @@ extension ARViewModel: ARSessionDelegate {
             else {
                 return
             }
-            
+
             if !hasPlacedObject && !hasFindObject {
 //                _ = self.addCup(anchor: point, at:anchors.last!.transform, in: self.arView!)
                 _ = addCup(anchor: anchor, at: result.worldTransform, in: arView!)

@@ -112,4 +112,6 @@ struct TextColor {
     let green = Color(hex: "#687348")
     let brown = Color(hex: "#734848")
     let darkBlue = Color(hex: "#355E85")
+    let brown2 = Color(hex: "#B89868")
+    let red = Color(hex: "#B86868")
 }

@@ -136,6 +136,10 @@
 		93676D292AF13C5400E756A5 /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 93676D282AF13C5400E756A5 /* SwiftUITooltip */; };
 		93676D2B2AF1435200E756A5 /* Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93676D2A2AF1435200E756A5 /* Pointer.swift */; };
 		93676D2D2AF1475200E756A5 /* PointerViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93676D2C2AF1475200E756A5 /* PointerViewModifier.swift */; };
+		93692EAA2AFD43FD00CD6561 /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93692EA92AFD43FD00CD6561 /* PauseMenu.swift */; };
+		93692EAC2AFD5CAC00CD6561 /* EpisodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93692EAB2AFD5CAC00CD6561 /* EpisodeItem.swift */; };
+		93692EAE2AFDCD9900CD6561 /* tes4.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 93692EAD2AFDCD9900CD6561 /* tes4.usdz */; };
+		93692EB12AFDCE3600CD6561 /* 3DRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93692EB02AFDCE3600CD6561 /* 3DRenderer.swift */; };
 		937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2852AE80BFA008C69BB /* RippleView.swift */; };
 		937AF2882AE81983008C69BB /* RippleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2872AE81983008C69BB /* RippleModel.swift */; };
 		937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2892AE81A26008C69BB /* RippleViewModel.swift */; };
@@ -371,6 +375,10 @@
 		93676D252AF13AA200E756A5 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
 		93676D2A2AF1435200E756A5 /* Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointer.swift; sourceTree = "<group>"; };
 		93676D2C2AF1475200E756A5 /* PointerViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointerViewModifier.swift; sourceTree = "<group>"; };
+		93692EA92AFD43FD00CD6561 /* PauseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
+		93692EAB2AFD5CAC00CD6561 /* EpisodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeItem.swift; sourceTree = "<group>"; };
+		93692EAD2AFDCD9900CD6561 /* tes4.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = tes4.usdz; sourceTree = "<group>"; };
+		93692EB02AFDCE3600CD6561 /* 3DRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 3DRenderer.swift; sourceTree = "<group>"; };
 		937AF2852AE80BFA008C69BB /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
 		937AF2872AE81983008C69BB /* RippleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleModel.swift; sourceTree = "<group>"; };
 		937AF2892AE81A26008C69BB /* RippleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleViewModel.swift; sourceTree = "<group>"; };
@@ -874,6 +882,7 @@
 		0B1197602AD7D4A7004FAD14 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				93692EAF2AFDCE1F00CD6561 /* 3D */,
 				937EE4182AFA8DF000A5CCF5 /* Maze */,
 				05FF77192AF0B0650037453D /* Tutorial */,
 				9398FBB62AE41D0200AB5CE4 /* Image */,
@@ -897,6 +906,7 @@
 				9328F9162AF25C2200E82995 /* ModalComponent.swift */,
 				93C30CB92AF926150076808F /* TimerView.swift */,
 				0592100F2AFB601E0008CD2C /* QRScannerSheet.swift */,
+				93692EA92AFD43FD00CD6561 /* PauseMenu.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -941,6 +951,7 @@
 				056B67252AE28CFB00A3B493 /* ProfileView.swift */,
 				056B67272AE28D1400A3B493 /* AchievementsView.swift */,
 				938E3D362AD939C4003D2AE1 /* ContentView.swift */,
+				93692EAB2AFD5CAC00CD6561 /* EpisodeItem.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1003,6 +1014,14 @@
 			path = Maze;
 			sourceTree = "<group>";
 		};
+		93692EAF2AFDCE1F00CD6561 /* 3D */ = {
+			isa = PBXGroup;
+			children = (
+				93692EB02AFDCE3600CD6561 /* 3DRenderer.swift */,
+			);
+			path = 3D;
+			sourceTree = "<group>";
+		};
 		937AF28D2AE832AF008C69BB /* AR */ = {
 			isa = PBXGroup;
 			children = (
@@ -1023,6 +1042,7 @@
 				058DC8EC2AF2BC6E00A0885D /* honey.usdz */,
 				058DC8F02AF2BE4E00A0885D /* key.usdz */,
 				05E8B55C2AECE32D00E3612F /* button.usdz */,
+				93692EAD2AFDCD9900CD6561 /* tes4.usdz */,
 				937AF2972AE8C72B008C69BB /* environment.usdz */,
 				058DC8F22AF2C2E700A0885D /* honey-new.usdz */,
 			);
@@ -1431,6 +1451,7 @@
 				9317221D2AE5508300346382 /* Page5-monolog1.m4a in Resources */,
 				9317221E2AE5508300346382 /* Page6-monolog1.m4a in Resources */,
 				058DC9082AF2EC5100A0885D /* s1-ep3-backsound.mp3 in Resources */,
+				93692EAE2AFDCD9900CD6561 /* tes4.usdz in Resources */,
 				9317221F2AE5508300346382 /* prompt_kursi.m4a in Resources */,
 				937AF2982AE8C72B008C69BB /* environment.usdz in Resources */,
 				93EB5FA42AFAC10900C4FB34 /* maze-bgm.mp3 in Resources */,
@@ -1561,6 +1582,7 @@
 				05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */,
 				930D68902AF2DB92001976F0 /* BoardAnswer.swift in Sources */,
 				930D688E2AF2DB82001976F0 /* MultipleChoicePrompt.swift in Sources */,
+				93692EAC2AFD5CAC00CD6561 /* EpisodeItem.swift in Sources */,
 				05AE93632ADE82920082B21D /* LottieView.swift in Sources */,
 				935D786D2AEF4BD600DF64A5 /* ViewOnLoad.swift in Sources */,
 				93C8E7252ADEF2D3002315A2 /* TimerViewModel.swift in Sources */,
@@ -1606,6 +1628,7 @@
 				937AF28C2AE832A7008C69BB /* ARViewContainer.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
 				93676D2D2AF1475200E756A5 /* PointerViewModifier.swift in Sources */,
+				93692EAA2AFD43FD00CD6561 /* PauseMenu.swift in Sources */,
 				937AF2A22AE930AF008C69BB /* MazeScene.swift in Sources */,
 				935D78622AEE1AC400DF64A5 /* MazePrompt.swift in Sources */,
 				938C553E2AE1B76600BC233D /* ObjectDetectionModel.swift in Sources */,
@@ -1633,6 +1656,7 @@
 				05E17AD52ADE86DE00A34547 /* FindTheObject.swift in Sources */,
 				0B6E2F762ADC9F020001D320 /* PromptViewModel.swift in Sources */,
 				938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */,
+				93692EB12AFDCE3600CD6561 /* 3DRenderer.swift in Sources */,
 				9328F9172AF25C2200E82995 /* ModalComponent.swift in Sources */,
 				937EE41A2AFA8DFD00A5CCF5 /* MazeProgress.swift in Sources */,
 			);

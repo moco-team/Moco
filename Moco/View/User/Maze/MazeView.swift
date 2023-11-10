@@ -48,6 +48,7 @@ struct MazeView: View {
     }()
 
     @Binding var correctAnswer: Bool
+    @Binding var wrongAnswer: Bool
 
     var onComplete: () -> Void = {}
 
@@ -151,11 +152,16 @@ struct MazeView: View {
                 correctAnswer = sceneCorrectAnswer
             }
         }
+        .onChange(of: scene.wrongAnswer) {
+            if let sceneWrongAnswer = scene.wrongAnswer {
+                wrongAnswer = sceneWrongAnswer
+            }
+        }
     }
 }
 
 #Preview {
-    MazeView(correctAnswer: .constant(true)) {
+    MazeView(correctAnswer: .constant(true), wrongAnswer: .constant(false)) {
         print("Done")
     }
 }

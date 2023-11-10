@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MazePrompt: View {
+    @Environment(\.settingsViewModel) private var settingsViewModel
     @State private var mazePromptViewModel = MazePromptViewModel()
 
     var promptText = "Moco adalah sapi jantan"
@@ -20,7 +21,7 @@ struct MazePrompt: View {
 
     var body: some View {
         ZStack {
-            if mazePromptViewModel.isTutorialDone {
+            if settingsViewModel.mazeTutorialFinished {
                 VStack {
                     HStack {
                         MazeProgress(progress: $mazePromptViewModel.progress)
@@ -35,7 +36,8 @@ struct MazePrompt: View {
                         answersAsset: answersAsset,
                         answers: answers,
                         correctAnswerAsset: correctAnswerAsset,
-                        correctAnswer: $mazePromptViewModel.isCorrectAnswer
+                        correctAnswer: $mazePromptViewModel.isCorrectAnswer,
+                        wrongAnswer: $mazePromptViewModel.isWrongAnswer
                     ) {
                         action()
                     }.padding(.bottom, 20)
@@ -53,7 +55,10 @@ struct MazePrompt: View {
         .ignoresSafeArea()
         .frame(width: Screen.width, height: Screen.height)
         .forceRotation()
-        .popUp(isActive: $mazePromptViewModel.isCorrectAnswer, withConfetti: true) {
+        .popUp(isActive: $mazePromptViewModel.isCorrectAnswer, title: "Selamat kamu berhasil", withConfetti: true) {
+            action()
+        }
+        .popUp(isActive: $mazePromptViewModel.isWrongAnswer, title: "Oh tidak! Kamu pergi ke jalan yang salah") {
             action()
         }
     }
@@ -72,7 +77,8 @@ struct MazePromptOld: View {
         ZStack {
             MazeView(answersAsset: answersAsset,
                      correctAnswerAsset: correctAnswerAsset,
-                     correctAnswer: .constant(true)) {
+                     correctAnswer: .constant(true),
+                     wrongAnswer: .constant(false)) {
                 action()
             }
 

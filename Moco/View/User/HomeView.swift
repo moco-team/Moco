@@ -18,6 +18,8 @@ struct HomeView: View {
 
     @State private var homeViewModel = HomeViewModel()
 
+    @State private var isShowing3d = false
+
     var body: some View {
         ZStack {
             VStack {
@@ -44,7 +46,7 @@ struct HomeView: View {
                 Spacer()
 
                 HStack {
-                    Text("Koleksi Buku")
+                    Text("Koleksi Cerita Dunia Ajaib")
                         .customFont(.cherryBomb, size: 50)
                         .foregroundColor(Color.blueTxt)
                         .fontWeight(.bold)
@@ -52,7 +54,9 @@ struct HomeView: View {
                     NavigationLink(destination: QRScannerSheet()){
                         Text("QR Code")
                     }
-                    
+                    Button("Test 3d") {
+                        self.isShowing3d = true
+                    }
                     Spacer()
                 }.padding(.leading, 60).padding(.bottom, 30)
 
@@ -91,7 +95,9 @@ struct HomeView: View {
                 }
                 homeViewModel.soundLevel = 0.3
                 homeViewModel.setVolume()
-                GlobalStorage.mazeTutorialFinished = false
+            }
+            if isShowing3d {
+                ThreeDRenderer()
             }
         }
     }
