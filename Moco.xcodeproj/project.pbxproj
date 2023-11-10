@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		050353E12ADFE2970066591A /* FindHoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050353E02ADFE2970066591A /* FindHoney.swift */; };
+		050E42072AFDC540009666DB /* ARTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050E42062AFDC540009666DB /* ARTutorialView.swift */; };
+		050E420F2AFDCC7D009666DB /* arrange_camera_to_barcode.json in Resources */ = {isa = PBXBuildFile; fileRef = 050E420E2AFDCC7D009666DB /* arrange_camera_to_barcode.json */; };
 		0517C5202AEF3C9B00CE7A01 /* RKFade in Frameworks */ = {isa = PBXBuildFile; productRef = 0517C51F2AEF3C9B00CE7A01 /* RKFade */; };
 		0518CDD82AE220BA00521EC8 /* moco-1-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518CDD72AE220BA00521EC8 /* moco-1-2.json */; };
 		0518CDDA2AE227FA00521EC8 /* kakak_katak.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518CDD92AE227FA00521EC8 /* kakak_katak.json */; };
@@ -235,6 +237,8 @@
 
 /* Begin PBXFileReference section */
 		050353E02ADFE2970066591A /* FindHoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindHoney.swift; sourceTree = "<group>"; };
+		050E42062AFDC540009666DB /* ARTutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARTutorialView.swift; sourceTree = "<group>"; };
+		050E420E2AFDCC7D009666DB /* arrange_camera_to_barcode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrange_camera_to_barcode.json; sourceTree = "<group>"; };
 		0518CDD72AE220BA00521EC8 /* moco-1-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-2.json"; sourceTree = "<group>"; };
 		0518CDD92AE227FA00521EC8 /* kakak_katak.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = kakak_katak.json; sourceTree = "<group>"; };
 		051CC1892AF22D0800632E09 /* OrientationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationInfo.swift; sourceTree = "<group>"; };
@@ -495,6 +499,14 @@
 				050353E02ADFE2970066591A /* FindHoney.swift */,
 			);
 			path = FindHoney;
+			sourceTree = "<group>";
+		};
+		050E42052AFDC540009666DB /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				050E42062AFDC540009666DB /* ARTutorialView.swift */,
+			);
+			path = Tutorial;
 			sourceTree = "<group>";
 		};
 		0522B02D2AFCC33900D51EF8 /* SoundFx */ = {
@@ -849,6 +861,7 @@
 		05FF77282AF0B69F0037453D /* Story1 */ = {
 			isa = PBXGroup;
 			children = (
+				050E420E2AFDCC7D009666DB /* arrange_camera_to_barcode.json */,
 				05FF77292AF0B6A30037453D /* Ep3 */,
 			);
 			path = Story1;
@@ -1012,6 +1025,7 @@
 		937AF28D2AE832AF008C69BB /* AR */ = {
 			isa = PBXGroup;
 			children = (
+				050E42052AFDC540009666DB /* Tutorial */,
 				937AF28B2AE832A7008C69BB /* ARViewContainer.swift */,
 				937AF2942AE8C06C008C69BB /* ARView.swift */,
 				937AF2992AE8D422008C69BB /* EnvironmentEntity.swift */,
@@ -1474,6 +1488,7 @@
 				05E17AD92ADED16800A34547 /* balon_merah.mp3 in Resources */,
 				0571CB452AE19D6000CE0CC7 /* moco-1-10.json in Resources */,
 				93C2F88A2AD683AE007D1ABC /* Assets.xcassets in Resources */,
+				050E420F2AFDCC7D009666DB /* arrange_camera_to_barcode.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1555,6 +1570,7 @@
 				0571CB362AE17A9E00CE0CC7 /* SpeakTheStory.swift in Sources */,
 				0B46D7232AF120BC002DE821 /* EpisodeModel.swift in Sources */,
 				93E3D8762AE4E4BA00E5391F /* DetectionPromptModel.swift in Sources */,
+				050E42072AFDC540009666DB /* ARTutorialView.swift in Sources */,
 				05FF77222AF0B28A0037453D /* GestureList.swift in Sources */,
 				05FF77162AF0B0250037453D /* TutorialCard.swift in Sources */,
 				938C55412AE2301700BC233D /* BurgerMenu.swift in Sources */,

@@ -18,7 +18,6 @@ struct HomeView: View {
 
     @State private var homeViewModel = HomeViewModel()
 
-    @State private var isPresentingScanner = false
     @State private var isShowing3d = false
 
     var body: some View {
@@ -52,11 +51,8 @@ struct HomeView: View {
                         .foregroundColor(Color.blueTxt)
                         .fontWeight(.bold)
 
-                    Button("Test Scan QR Code") {
-                        self.isPresentingScanner = true
-                    }
-                    .sheet(isPresented: $isPresentingScanner) {
-                        QRScannerSheet()
+                    NavigationLink(destination: QRScannerSheet()){
+                        Text("QR Code")
                     }
                     Button("Test 3d") {
                         self.isShowing3d = true

@@ -31,13 +31,17 @@ struct ARCameraView: View {
             // Overlay above the camera
             VStack {
                 ZStack {
-                    Color.black.opacity(0.3)
-                    VStack {
-                        Spacer()
-                        Text("Tap pada layar untuk meletakkan dunia")
-                            .font(.headline)
-                            .padding(32)
-                    }
+                    Image("Components/modal-base").resizable().scaledToFill()
+                        .padding(80)
+                        .position(x: Screen.width/2, y: 10.0)
+
+                    Text(clue.clue)
+                        .customFont(.didactGothic, size: 30)
+                        .foregroundColor(.blue2Txt)
+                        .glowBorder(color: .white, lineWidth: 5)
+                        .padding(.horizontal, 120)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .frame(height: 150)
                 Spacer()
