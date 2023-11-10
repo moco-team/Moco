@@ -9,22 +9,43 @@ import CodeScanner
 import SwiftUI
 
 struct QRScannerSheet: View {
-    @State var isPresentingScanner: Bool = false
-    @State var scannerResult: String = "Scan QR Code to get started!"
+    @State var scannerResult: [String] = []
 
+    func getResult() -> [String]{
+        return self.scannerResult
+    }
+    
+    func clearResult(){
+        self.scannerResult = []
+    }
+    
     var body: some View {
-        CodeScannerView(
-            codeTypes: [.qr],
-            completion: { result in
-                if case let .success(code) = result {
-                    if let url = URL(string: code.string) {
-                        UIApplication.shared.open(url)
-                        self.scannerResult = "\(url)"
+        VStack{
+            CodeScannerView(
+                codeTypes: [.qr],
+                scanMode: .oncePerCode,
+                completion: { result in
+                    if case let .success(code) = result {
+                        if let url = URL(string: code.string) {
+                            UIApplication.shared.open(url)
+                            self.scannerResult.append("\(url)")
+                        }
+    //                    print(self.scannerResult)
                     }
-                    self.isPresentingScanner = false
                 }
-            }
-        )
+            )
+            
+//            ForEach(self.getResult(), id: \.self){result in
+//                Text(result)
+//            }
+//            
+//            Button{
+//                self.clearResult()
+//            } label: {
+//                Text("clear results")
+//            }
+        }
+        
     }
 }
 
