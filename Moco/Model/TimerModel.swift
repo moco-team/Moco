@@ -16,7 +16,7 @@ struct TimerModel {
     }
 
     func pauseTimer() {
-        guard internalTimer.contains(where: {$1 != nil}) else {
+        guard internalTimer.contains(where: { $1 != nil }) else {
             print("No timer active, start the timer before you stop it.")
             return
         }
@@ -26,7 +26,7 @@ struct TimerModel {
     }
 
     mutating func stopTimer(_ key: String) {
-        guard internalTimer.contains(where: {$0.key == key}) else {
+        guard internalTimer.contains(where: { $0.key == key }) else {
             print("Timer with key \(key) not found")
             return
         }
@@ -39,7 +39,7 @@ struct TimerModel {
     }
 
     mutating func stopTimer() {
-        guard internalTimer.contains(where: {$1 != nil}) else {
+        guard internalTimer.contains(where: { $1 != nil }) else {
             print("No timer active, start the timer before you stop it.")
             return
         }
