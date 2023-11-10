@@ -19,6 +19,7 @@ struct HomeView: View {
     @State private var homeViewModel = HomeViewModel()
 
     @State private var isPresentingScanner = false
+    @State private var isShowing3d = false
 
     var body: some View {
         ZStack {
@@ -56,6 +57,9 @@ struct HomeView: View {
                     }
                     .sheet(isPresented: $isPresentingScanner) {
                         QRScannerSheet()
+                    }
+                    Button("Test 3d") {
+                        self.isShowing3d = true
                     }
                     Spacer()
                 }.padding(.leading, 60).padding(.bottom, 30)
@@ -95,6 +99,9 @@ struct HomeView: View {
                 }
                 homeViewModel.soundLevel = 0.3
                 homeViewModel.setVolume()
+            }
+            if isShowing3d {
+                ThreeDRenderer()
             }
         }
     }
