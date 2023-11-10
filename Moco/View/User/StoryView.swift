@@ -178,86 +178,86 @@ struct StoryView: View {
                 LazyHStack(spacing: 0) {
                     if let stories = episodeViewModel.selectedEpisode!.stories {
                         ForEach(Array(stories.enumerated()), id: \.offset) { index, _ in
-                            PeelEffectTappable(state: $peelEffectState, isReverse: isReversePeel) {
-                                ZStack {
+                            ZStack {
+                                PeelEffectTappable(state: $peelEffectState, isReverse: isReversePeel) {
                                     Image(storyViewModel.storyPage!.background)
                                         .resizable()
                                         .scaledToFill()
                                         .frame(width: Screen.width, height: Screen.height, alignment: .center)
                                         .clipped()
+                                } background: {
+                                    peelBackground
+                                } onComplete: {
+                                    toBeExecutedByPeelEffect()
+                                }
 
-                                    if storyContentViewModel.narratives!.count > narrativeIndex && !storyContentViewModel.narratives!.isEmpty {
-                                        let narrative = storyContentViewModel.narratives![max(narrativeIndex, 0)]
-                                        Text(narrative.contentName)
-                                            .foregroundColor(Color(hex: narrative.color ?? "#000000"))
-                                            .frame(maxWidth: CGFloat(narrative.maxWidth!), alignment: .leading)
-                                            .position(CGPoint(
-                                                x: Screen.width * narrative.positionX,
-                                                y: Screen.height * narrative.positionY
-                                            ))
-                                            .id(narrativeIndex)
-                                            .transition(.opacity.animation(.linear))
-                                            .customFont(.didactGothic, size: narrative.fontSize)
-                                            .padding(.bottom, 2)
-                                    }
+                                if storyContentViewModel.narratives!.count > narrativeIndex && !storyContentViewModel.narratives!.isEmpty {
+                                    let narrative = storyContentViewModel.narratives![max(narrativeIndex, 0)]
+                                    Text(narrative.contentName)
+                                        .foregroundColor(Color(hex: narrative.color ?? "#000000"))
+                                        .frame(maxWidth: CGFloat(narrative.maxWidth!), alignment: .leading)
+                                        .position(CGPoint(
+                                            x: Screen.width * narrative.positionX,
+                                            y: Screen.height * narrative.positionY
+                                        ))
+                                        .id(narrativeIndex)
+                                        .transition(.opacity.animation(.linear))
+                                        .customFont(.didactGothic, size: narrative.fontSize)
+                                        .padding(.bottom, 2)
+                                }
 
-                                    Group {
-                                        switch activePrompt?.promptType {
-                                        case .multipleChoice:
-                                            if promptViewModel.prompt != nil {
-                                                MultipleChoicePrompt {
-                                                    activePrompt = nil
-                                                    nextPage()
-                                                } onWrong: {
-                                                    showWrongAnsPopup = true
-                                                }
-                                            }
-                                        case .maze:
-                                            if let mazePrompt = promptViewModel.prompt {
-                                                MazePrompt(
-                                                    promptText: mazePrompt.question!,
-                                                    answersAsset: mazePrompt.answerAssets!,
-                                                    answers: mazePrompt.answerChoices!,
-                                                    correctAnswerAsset: mazePrompt.correctAnswer
-                                                ) {
-                                                    nextPage()
-                                                }.id(mazePrompt.id)
-                                            }
-                                        case .ar:
-                                            ARStory {
+                                Group {
+                                    switch activePrompt?.promptType {
+                                    case .multipleChoice:
+                                        if promptViewModel.prompt != nil {
+                                            MultipleChoicePrompt {
+                                                activePrompt = nil
                                                 nextPage()
+                                            } onWrong: {
+                                                showWrongAnsPopup = true
                                             }
-                                        case .puzzle:
-                                            FindTheObjectView(
-                                                isPromptDone: .constant(false),
-                                                content: "Once upon a time...",
-                                                hints: hintViewModel.hints,
-                                                correctAnswer: promptViewModel.prompt!.correctAnswer,
-                                                balloons: [
-                                                    Balloon(color: "orange", isCorrect: false),
-                                                    Balloon(color: "ungu", isCorrect: false),
-                                                    Balloon(color: "merah", isCorrect: true),
-                                                    Balloon(color: "hijau", isCorrect: false),
-                                                    Balloon(color: "biru", isCorrect: false)
-                                                ]
+                                        }
+                                    case .maze:
+                                        if let mazePrompt = promptViewModel.prompt {
+                                            MazePrompt(
+                                                promptText: mazePrompt.question!,
+                                                answersAsset: mazePrompt.answerAssets!,
+                                                answers: mazePrompt.answerChoices!,
+                                                correctAnswerAsset: mazePrompt.correctAnswer
                                             ) {
                                                 nextPage()
-                                            }
-                                        case .objectDetection:
-                                            DetectionView {
-                                                nextPage()
-                                            }
-                                        default:
-                                            EmptyView()
+                                            }.id(mazePrompt.id)
                                         }
+                                    case .ar:
+                                        ARStory {
+                                            nextPage()
+                                        }
+                                    case .puzzle:
+                                        FindTheObjectView(
+                                            isPromptDone: .constant(false),
+                                            content: "Once upon a time...",
+                                            hints: hintViewModel.hints,
+                                            correctAnswer: promptViewModel.prompt!.correctAnswer,
+                                            balloons: [
+                                                Balloon(color: "orange", isCorrect: false),
+                                                Balloon(color: "ungu", isCorrect: false),
+                                                Balloon(color: "merah", isCorrect: true),
+                                                Balloon(color: "hijau", isCorrect: false),
+                                                Balloon(color: "biru", isCorrect: false)
+                                            ]
+                                        ) {
+                                            nextPage()
+                                        }
+                                    case .objectDetection:
+                                        DetectionView {
+                                            nextPage()
+                                        }
+                                    default:
+                                        EmptyView()
                                     }
+                                }
 
-                                }.id(index)
-                            } background: {
-                                peelBackground
-                            } onComplete: {
-                                toBeExecutedByPeelEffect()
-                            }
+                            }.id(index)
                         }
                     }
                 }.scrollTargetLayout()

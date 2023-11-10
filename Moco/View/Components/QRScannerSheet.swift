@@ -11,16 +11,16 @@ import SwiftUI
 struct QRScannerSheet: View {
     @State var scannerResult: [String] = []
 
-    func getResult() -> [String]{
-        return self.scannerResult
+    func getResult() -> [String] {
+        return scannerResult
     }
-    
-    func clearResult(){
-        self.scannerResult = []
+
+    func clearResult() {
+        scannerResult = []
     }
-    
+
     var body: some View {
-        VStack{
+        VStack {
             CodeScannerView(
                 codeTypes: [.qr],
                 scanMode: .oncePerCode,
@@ -30,22 +30,21 @@ struct QRScannerSheet: View {
                             UIApplication.shared.open(url)
                             self.scannerResult.append("\(url)")
                         }
-    //                    print(self.scannerResult)
+                        //                    print(self.scannerResult)
                     }
                 }
             )
-            
+
 //            ForEach(self.getResult(), id: \.self){result in
 //                Text(result)
 //            }
-//            
+//
 //            Button{
 //                self.clearResult()
 //            } label: {
 //                Text("clear results")
 //            }
         }
-        
     }
 }
 

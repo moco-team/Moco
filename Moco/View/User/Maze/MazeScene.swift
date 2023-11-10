@@ -137,7 +137,7 @@ class MazeScene: SKScene, ObservableObject {
         wrongAnswer = nil
 
         moco.name = "moco"
-        mazeModel.characterLocationPoint = mazeModel.startPoint
+        mazeModel.resetPlayerLocation()
         moco.position =
             mazeModel.points[mazeModel.startPoint.yPos][mazeModel.startPoint.xPos]
         addChild(moco)

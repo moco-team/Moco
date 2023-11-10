@@ -8,27 +8,45 @@
 import Foundation
 
 struct TimerModel {
-    var internalTimer: Timer?
-    var jobs = [() -> Void]()
+    var internalTimer: [String: Timer?] = [:]
+    var jobs: [String: () -> Void] = [:]
 
     mutating func clearJobs() {
-        jobs = []
+        jobs = [:]
     }
 
     func pauseTimer() {
-        guard internalTimer != nil else {
+        guard internalTimer.contains(where: {$1 != nil}) else {
             print("No timer active, start the timer before you stop it.")
             return
         }
-        internalTimer?.invalidate()
+        internalTimer.forEach {
+            $1?.invalidate()
+        }
+    }
+
+    mutating func stopTimer(_ key: String) {
+        guard internalTimer.contains(where: {$0.key == key}) else {
+            print("Timer with key \(key) not found")
+            return
+        }
+
+        internalTimer[key]??.invalidate()
+
+        internalTimer.removeValue(forKey: key)
+
+        jobs.removeValue(forKey: key)
     }
 
     mutating func stopTimer() {
-        guard internalTimer != nil else {
+        guard internalTimer.contains(where: {$1 != nil}) else {
             print("No timer active, start the timer before you stop it.")
             return
         }
-        jobs = [() -> Void]()
-        internalTimer?.invalidate()
+        clearJobs()
+        internalTimer.forEach {
+            $1?.invalidate()
+        }
+        internalTimer = [:]
     }
 }

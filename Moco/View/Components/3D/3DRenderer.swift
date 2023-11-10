@@ -6,11 +6,11 @@
 //
 
 import SceneKit
-import SwiftUI
 import SceneKit.ModelIO
+import SwiftUI
 
-struct SceneKitView : UIViewRepresentable {
-    func makeUIView(context: Context) -> SCNView {
+struct SceneKitView: UIViewRepresentable {
+    func makeUIView(context _: Context) -> SCNView {
         guard let urlPath = Bundle.main.url(forResource: "tes4", withExtension: "usdz") else {
             fatalError("usdz not found")
         }
@@ -18,7 +18,7 @@ struct SceneKitView : UIViewRepresentable {
         // you can load the textures on an MDAsset so it's not white
         mdlAsset.loadTextures()
 
-        let asset = mdlAsset.object(at: 0) // extract first object
+//        let asset = mdlAsset.object(at: 0) // extract first object
         // let assetNode = SCNNode(mdlObject: asset)
 
         let scnView = SCNView()
@@ -26,10 +26,13 @@ struct SceneKitView : UIViewRepresentable {
 
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 3)
-//        cameraNode.pivot = SCNMatrix4MakeTranslation(0, 0, 155);
+        cameraNode.camera?.automaticallyAdjustsZRange = true
+//        cameraNode.position = SCNVector3(x: 0, y: 0, z: 10)
+//        cameraNode.pivot = SCNMatrix4MakeTranslation(10, 10, 155);
 
         scnView.scene?.rootNode.addChildNode(cameraNode)
+
+        scnView.pointOfView = cameraNode
 
         scnView.allowsCameraControl = true
         scnView.autoenablesDefaultLighting = true
@@ -49,7 +52,7 @@ struct SceneKitView : UIViewRepresentable {
         if let recognizers = scnView.gestureRecognizers {
             for gestureRecognizer in recognizers {
                 if let gesture = gestureRecognizer as? UIRotationGestureRecognizer {
-                    gestureRecognizer.isEnabled = false
+                    gesture.isEnabled = false
                 }
             }
         }
@@ -65,8 +68,7 @@ struct SceneKitView : UIViewRepresentable {
         return scnView
     }
 
-    func updateUIView(_ scnView: SCNView, context: Context) {
-    }
+    func updateUIView(_: SCNView, context _: Context) {}
 }
 
 struct ThreeDRenderer: View {
@@ -110,7 +112,7 @@ struct ThreeDRendererOld: View {
                     options: [
                         .allowsCameraControl,
                         .autoenablesDefaultLighting,
-                        .temporalAntialiasingEnabled,
+                        .temporalAntialiasingEnabled
                     ]
                 )
             }

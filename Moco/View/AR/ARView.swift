@@ -33,7 +33,7 @@ struct ARCameraView: View {
                 ZStack {
                     Image("Components/modal-base").resizable().scaledToFill()
                         .padding(80)
-                        .position(x: Screen.width/2, y: 10.0)
+                        .position(x: Screen.width / 2, y: 10.0)
 
                     Text(clue.clue)
                         .customFont(.didactGothic, size: 30)

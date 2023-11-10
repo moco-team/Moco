@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// BEWARE
+///
+/// if using this view, the
 struct PeelEffectTappable<Content: View, Background: View>: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @State private var soundFxExecuted = false
