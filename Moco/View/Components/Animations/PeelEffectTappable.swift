@@ -9,7 +9,8 @@ import SwiftUI
 
 /// BEWARE
 ///
-/// if using this view, the
+/// if using this view, the content's onAppear function
+/// will be called several times
 struct PeelEffectTappable<Content: View, Background: View>: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @State private var soundFxExecuted = false
