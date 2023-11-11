@@ -157,7 +157,12 @@ struct MazeTutorialView: View {
         }
         .ignoresSafeArea()
         .frame(width: Screen.width, height: Screen.height)
-        .popUp(isActive: $showTutorialCompletePrompt, closeWhenDone: true) {
+        .popUp(
+            isActive: $showTutorialCompletePrompt,
+            title: "Selamat kamu berhasil menyelesaikan tutorial",
+            withConfetti: true,
+            closeWhenDone: true
+        ) {
             done()
         } cancelHandler: {
             done()
