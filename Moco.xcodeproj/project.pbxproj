@@ -160,6 +160,7 @@
 		937EE41A2AFA8DFD00A5CCF5 /* MazeProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EE4192AFA8DFD00A5CCF5 /* MazeProgress.swift */; };
 		937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */; };
 		937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */; };
+		93836C782AFF6E08001A3FEE /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93836C772AFF6E08001A3FEE /* Process.swift */; };
 		938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55352AE181C600BC233D /* RootViewModifier.swift */; };
 		938C55382AE183AA00BC233D /* FontViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55372AE183AA00BC233D /* FontViewModifier.swift */; };
 		938C553A2AE1B3E800BC233D /* ObjectDetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */; };
@@ -398,6 +399,7 @@
 		937EE4192AFA8DFD00A5CCF5 /* MazeProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeProgress.swift; sourceTree = "<group>"; };
 		937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		93836C772AFF6E08001A3FEE /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		938C55352AE181C600BC233D /* RootViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModifier.swift; sourceTree = "<group>"; };
 		938C55372AE183AA00BC233D /* FontViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewModifier.swift; sourceTree = "<group>"; };
 		938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewModel.swift; sourceTree = "<group>"; };
@@ -1091,6 +1093,7 @@
 				935D78632AEE217C00DF64A5 /* ColorUtil.swift */,
 				051CC1892AF22D0800632E09 /* OrientationInfo.swift */,
 				930CBFFA2AF76956001B67D2 /* ViewWillDisappear.swift */,
+				93836C772AFF6E08001A3FEE /* Process.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1617,6 +1620,7 @@
 				0B2E31E22AD9064900DFC16F /* CollectionViewModel.swift in Sources */,
 				05FF771D2AF0B0980037453D /* TutorialView.swift in Sources */,
 				05FF771F2AF0B0980037453D /* TutorialGestureView.swift in Sources */,
+				93836C782AFF6E08001A3FEE /* Process.swift in Sources */,
 				937AF2912AE83794008C69BB /* Date.swift in Sources */,
 				935D784B2AEBC7FE00DF64A5 /* CustomPersistentModel.swift in Sources */,
 				0BA3E5102ADFD04700BCFE9E /* StoryThemeModalView.swift in Sources */,
