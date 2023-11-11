@@ -41,6 +41,7 @@ struct MazePrompt: View {
                     ) {
                         action()
                     }.padding(.bottom, 20)
+                        .id(promptText)
                 }
                 .ignoresSafeArea()
                 .frame(width: Screen.width, height: Screen.height)
@@ -54,13 +55,13 @@ struct MazePrompt: View {
         }
         .ignoresSafeArea()
         .frame(width: Screen.width, height: Screen.height)
-        .forceRotation()
         .popUp(isActive: $mazePromptViewModel.isCorrectAnswer, title: "Selamat kamu berhasil", withConfetti: true) {
             action()
         }
         .popUp(isActive: $mazePromptViewModel.isWrongAnswer, title: "Oh tidak! Kamu pergi ke jalan yang salah") {
             action()
         }
+        .forceRotation()
     }
 }
 

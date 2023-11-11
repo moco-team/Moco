@@ -6,11 +6,11 @@
 //
 
 import SceneKit
-import SwiftUI
 import SceneKit.ModelIO
+import SwiftUI
 
-struct SceneKitView : UIViewRepresentable {
-    func makeUIView(context: Context) -> SCNView {
+struct SceneKitView: UIViewRepresentable {
+    func makeUIView(context _: Context) -> SCNView {
         guard let urlPath = Bundle.main.url(forResource: "tes4", withExtension: "usdz") else {
             fatalError("usdz not found")
         }
@@ -18,7 +18,7 @@ struct SceneKitView : UIViewRepresentable {
         // you can load the textures on an MDAsset so it's not white
         mdlAsset.loadTextures()
 
-        let asset = mdlAsset.object(at: 0) // extract first object
+//        let asset = mdlAsset.object(at: 0) // extract first object
         // let assetNode = SCNNode(mdlObject: asset)
 
         let scnView = SCNView()
@@ -26,17 +26,30 @@ struct SceneKitView : UIViewRepresentable {
 
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 3)
-//        cameraNode.pivot = SCNMatrix4MakeTranslation(0, 0, 155);
 
         scnView.scene?.rootNode.addChildNode(cameraNode)
+
+        scnView.debugOptions = .showWorldOrigin
 
         scnView.allowsCameraControl = true
         scnView.autoenablesDefaultLighting = true
         scnView.isTemporalAntialiasingEnabled = true
-        scnView.defaultCameraController.maximumVerticalAngle = 10
 
         scnView.cameraControlConfiguration.autoSwitchToFreeCamera = false
+
+        let camera = scnView.defaultCameraController
+        let cameraConfig = scnView.cameraControlConfiguration
+        let maxFov = CGFloat(110)
+        let minFov = CGFloat(20)
+        camera.pointOfView?.look(at: SCNVector3(x: 0, y: 0, z: 0))
+
+        camera.maximumVerticalAngle = 50
+        camera.minimumVerticalAngle = 20
+
+        camera.interactionMode = .orbitTurntable
+
+        cameraConfig.rotationSensitivity = 0.3
+        cameraConfig.panSensitivity = 0.3
 
         if let recognizers = scnView.gestureRecognizers {
             for gestureRecognizer in recognizers {
@@ -49,7 +62,7 @@ struct SceneKitView : UIViewRepresentable {
         if let recognizers = scnView.gestureRecognizers {
             for gestureRecognizer in recognizers {
                 if let gesture = gestureRecognizer as? UIRotationGestureRecognizer {
-                    gestureRecognizer.isEnabled = false
+                    gesture.isEnabled = false
                 }
             }
         }
@@ -65,8 +78,7 @@ struct SceneKitView : UIViewRepresentable {
         return scnView
     }
 
-    func updateUIView(_ scnView: SCNView, context: Context) {
-    }
+    func updateUIView(_: SCNView, context _: Context) {}
 }
 
 struct ThreeDRenderer: View {
@@ -110,7 +122,7 @@ struct ThreeDRendererOld: View {
                     options: [
                         .allowsCameraControl,
                         .autoenablesDefaultLighting,
-                        .temporalAntialiasingEnabled,
+                        .temporalAntialiasingEnabled
                     ]
                 )
             }

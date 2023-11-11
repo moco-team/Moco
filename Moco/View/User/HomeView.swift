@@ -51,7 +51,7 @@ struct HomeView: View {
                         .foregroundColor(Color.blueTxt)
                         .fontWeight(.bold)
 
-                    NavigationLink(destination: QRScannerSheet()){
+                    NavigationLink(destination: QRScannerSheet()) {
                         Text("QR Code")
                     }
                     Button("Test 3d") {

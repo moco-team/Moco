@@ -19,6 +19,7 @@ struct MazePuzzle {
 struct MazeView: View {
     @EnvironmentObject var motionViewModel: MotionViewModel
     @EnvironmentObject var orientationInfo: OrientationInfo
+    @Environment(\.timerViewModel) private var timerViewModel
 
     var answersAsset = ["Maze/answer_one", "Maze/answer_two"] {
         didSet {
@@ -106,11 +107,13 @@ struct MazeView: View {
             }
         }
         .background(.clear)
-        .onAppear {
+        .onLoad {
             motionViewModel.startUpdates()
             scene.correctAnswerAsset = correctAnswerAsset
             scene.wrongAnswerAsset = answersAsset
-            TimerViewModel().setTimer(key: "mazeTimer\(correctAnswerAsset)", withInterval: 0.02) {
+            timerViewModel.stopTimer("mazeTimer\(correctAnswerAsset)")
+            timerViewModel.setTimer(key: "mazeTimer\(correctAnswerAsset)", withInterval: 5) {
+                print("wasu")
                 motionViewModel.updateMotion()
                 if orientationInfo.orientation == .landscapeLeft {
                     if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
@@ -145,7 +148,7 @@ struct MazeView: View {
         }
         .onDisappear {
 //            motionViewModel.stopUpdates()
-            TimerViewModel().stopTimer()
+            timerViewModel.stopTimer("mazeTimer\(correctAnswerAsset)")
         }
         .onChange(of: scene.correctAnswer) {
             if let sceneCorrectAnswer = scene.correctAnswer {

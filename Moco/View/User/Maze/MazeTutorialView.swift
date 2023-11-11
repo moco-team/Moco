@@ -17,6 +17,7 @@ enum MazeTutorialPhase {
 struct MazeTutorialView: View {
     @EnvironmentObject var motionViewModel: MotionViewModel
     @EnvironmentObject var orientationInfo: OrientationInfo
+    @Environment(\.timerViewModel) private var timerViewModel
 
     @State private var rightProgress = 0
     @State private var leftProgress = 0
@@ -82,7 +83,8 @@ struct MazeTutorialView: View {
         }
         .onAppear {
             motionViewModel.startUpdates()
-            TimerViewModel().setTimer(key: "mazeTutorialTimer", withInterval: 0.02) {
+            timerViewModel.stopTimer("mazeTutorialTimer")
+            timerViewModel.setTimer(key: "mazeTutorialTimer", withInterval: 0.02) {
                 motionViewModel.updateMotion()
                 if currentProgress < 100 {
                     if orientationInfo.orientation == .landscapeLeft {
@@ -129,6 +131,9 @@ struct MazeTutorialView: View {
                     }
                 }
             }
+        }
+        .onDisappear {
+            timerViewModel.stopTimer("mazeTutorialTimer")
         }
         .ignoresSafeArea()
         .frame(width: Screen.width, height: Screen.height)

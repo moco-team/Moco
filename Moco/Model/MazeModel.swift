@@ -25,10 +25,10 @@ struct LocationPoint: Equatable {
 }
 
 struct MazeModel {
-    var characterLocationPoint = LocationPoint()
-    var correctPoint = LocationPoint()
-    var startPoint = LocationPoint()
-    var exitPoints = [LocationPoint()]
+    private(set) var characterLocationPoint = LocationPoint()
+    private(set) var correctPoint = LocationPoint()
+    private(set) var startPoint = LocationPoint()
+    private(set) var exitPoints = [LocationPoint()]
 
     static var mapSize = MapSize(width: 25, height: 13)
 
@@ -46,17 +46,19 @@ struct MazeModel {
     }
 
     mutating func randomizeMaze() {
-        let newMazeWithPlayerPos = MazeModel.generateMaze(
+        (arrayPoint, characterLocationPoint, exitPoints) = MazeModel.generateMaze(
             rows: MazeModel.mapSize.height,
             cols: MazeModel.mapSize.width
         )
-        arrayPoint = newMazeWithPlayerPos.0
-        characterLocationPoint = newMazeWithPlayerPos.1
-        correctPoint = newMazeWithPlayerPos.2.first!
-        exitPoints = newMazeWithPlayerPos.2
+        correctPoint = exitPoints.first!
         startPoint = characterLocationPoint
         print(arrayPoint.count)
         print(points.count)
+    }
+
+    mutating func resetPlayerLocation() {
+        print("Reset player location")
+        characterLocationPoint = startPoint
     }
 
     private static func generateMaze(rows: Int, cols: Int) -> ([[Int]], LocationPoint, [LocationPoint]) {
@@ -211,7 +213,6 @@ struct MazeModel {
     }
 
     mutating func move(_ direction: MoveDirection) -> Bool {
-        let initialLocation = characterLocationPoint
         switch direction {
         case .left:
             if characterLocationPoint.xPos <= 0 ||
@@ -242,7 +243,6 @@ struct MazeModel {
             points.indices.contains(characterLocationPoint.yPos) &&
             points.first!.indices.contains(characterLocationPoint.xPos)
         else {
-            characterLocationPoint = initialLocation
             return false
         }
 
