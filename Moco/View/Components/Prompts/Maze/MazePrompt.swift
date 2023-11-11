@@ -21,7 +21,7 @@ struct MazePrompt: View {
 
     var body: some View {
         ZStack {
-            if settingsViewModel.mazeTutorialFinished {
+            ZStack {
                 VStack {
                     HStack {
                         MazeProgress(progress: $mazePromptViewModel.progress)
@@ -37,7 +37,8 @@ struct MazePrompt: View {
                         answers: answers,
                         correctAnswerAsset: correctAnswerAsset,
                         correctAnswer: $mazePromptViewModel.isCorrectAnswer,
-                        wrongAnswer: $mazePromptViewModel.isWrongAnswer
+                        wrongAnswer: $mazePromptViewModel.isWrongAnswer,
+                        isTutorialDone: $mazePromptViewModel.isTutorialDone
                     ) {
                         action()
                     }.padding(.bottom, 20)
@@ -45,8 +46,9 @@ struct MazePrompt: View {
                 }
                 .ignoresSafeArea()
                 .frame(width: Screen.width, height: Screen.height)
-            } else {
-                MazeTutorialView(isTutorialDone: $mazePromptViewModel.isTutorialDone)
+                if !mazePromptViewModel.isTutorialDone {
+                    MazeTutorialView(isTutorialDone: $mazePromptViewModel.isTutorialDone)
+                }
             }
         }.background {
             Image("Maze/bg-texture").resizable().scaledToFill().overlay {
@@ -79,7 +81,8 @@ struct MazePromptOld: View {
             MazeView(answersAsset: answersAsset,
                      correctAnswerAsset: correctAnswerAsset,
                      correctAnswer: .constant(true),
-                     wrongAnswer: .constant(false)) {
+                     wrongAnswer: .constant(false),
+                     isTutorialDone: .constant(true)) {
                 action()
             }
 

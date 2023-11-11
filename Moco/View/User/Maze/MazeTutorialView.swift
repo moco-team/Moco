@@ -25,6 +25,7 @@ struct MazeTutorialView: View {
     @State private var upProgress = 0
     @State private var currentPhase = MazeTutorialPhase.right
     @State private var showTutorialCompletePrompt = false
+    @State private var isDone = false
 
     @Binding var isTutorialDone: Bool
 
@@ -68,18 +69,36 @@ struct MazeTutorialView: View {
         }
     }
 
+    func done() {
+        GlobalStorage.mazeTutorialFinished = true
+        withAnimation {
+            isDone = true
+        } completion: {
+            isTutorialDone = true
+        }
+    }
+
     var body: some View {
-        VStack {
-            Text("Tutorial Maze Asu")
-            Spacer()
-            Text("Miringkan layar ke \(currentInstruction)")
-            CircularProgressView(progress: Double(currentProgress) / 100.0, size: 60, width: 10) {
-                progress in
-                Text("\(progress * 100, specifier: "%.0f")%")
-                    .customFont(.didactGothic, size: 20)
-                    .bold()
+        ZStack {
+            Color.black.opacity(0.5)
+            VStack {
+                GIFView(type: .name("gyro"))
+                    .frame(width: 200, height: 200)
+                    .padding(.horizontal)
+                    .padding(.top, -75)
+                    .frame(width: 280, alignment: .center)
+                Text("Miringkan perangkat ke \(currentInstruction)")
+                    .customFont(.didactGothic, size: 30)
+                    .foregroundColor(.white)
+                    .padding()
+                CircularProgressView(progress: Double(currentProgress) / 100.0, size: 60, width: 10) {
+                    progress in
+                    Text("\(progress * 100, specifier: "%.0f")%")
+                        .customFont(.didactGothic, size: 20)
+                        .foregroundColor(.white)
+                        .bold()
+                }
             }
-            Spacer()
         }
         .onAppear {
             motionViewModel.startUpdates()
@@ -125,21 +144,23 @@ struct MazeTutorialView: View {
                     case .up:
                         currentPhase = .down
                     case .down:
-                        if !showTutorialCompletePrompt {
+                        if !showTutorialCompletePrompt && !isDone {
                             showTutorialCompletePrompt = true
                         }
                     }
                 }
             }
         }
+        .opacity(isDone ? 0 : 1)
         .onDisappear {
             timerViewModel.stopTimer("mazeTutorialTimer")
         }
         .ignoresSafeArea()
         .frame(width: Screen.width, height: Screen.height)
-        .popUp(isActive: $showTutorialCompletePrompt) {
-            GlobalStorage.mazeTutorialFinished = true
-            isTutorialDone = true
+        .popUp(isActive: $showTutorialCompletePrompt, closeWhenDone: true) {
+            done()
+        } cancelHandler: {
+            done()
         }
     }
 }

@@ -29,6 +29,8 @@ struct PopUpComponent: ViewModifier {
 
     var withConfetti = false
 
+    var closeWhenDone = false
+
     var function: () -> Void
     var cancelHandler: (() -> Void)?
 
@@ -49,7 +51,8 @@ struct PopUpComponent: ViewModifier {
                     textColor: textColor,
                     overlayOpacity: overlayOpacity,
                     width: width,
-                    height: height
+                    height: height,
+                    closeWhenDone: closeWhenDone
                 ) {
                     function()
                 } cancelHandler: {
@@ -81,6 +84,7 @@ struct PopUpComponentView: View {
     var isLarge = false
     var width = Screen.width * 0.45
     var height = Screen.height * 0.6
+    var closeWhenDone = false
 
     var function: () -> Void
     var cancelHandler: (() -> Void)?
@@ -143,6 +147,9 @@ struct PopUpComponentView: View {
                                     }
                                     Button(confirmText) {
                                         function()
+                                        if closeWhenDone {
+                                            close()
+                                        }
                                     }
                                     .buttonStyle(MainButton(width: 180, type: .success))
                                     .font(.footnote)
