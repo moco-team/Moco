@@ -48,7 +48,7 @@ struct ARClueView: View {
                 Spacer()
 
                 if isButtonVisible {
-                    Button {
+                    SfxButton {
                         onStartGame()
                     } label: {
                         Image("Buttons/button-start").resizable().scaledToFit()

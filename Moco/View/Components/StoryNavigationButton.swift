@@ -25,7 +25,7 @@ struct StoryNavigationButton: View {
     ]
 
     var body: some View {
-        Button {
+        SfxButton {
             pressHandler?()
         } label: {
             Image(directionMap[direction]!)
@@ -48,7 +48,7 @@ struct StoryNavigationButtonOld: View {
     ]
 
     var body: some View {
-        Button {
+        SfxButton {
             pressHandler?()
         } label: {
             Image(systemName: directionMap[direction]!)

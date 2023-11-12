@@ -8,12 +8,31 @@
 import AVFoundation
 
 @Observable class AudioViewModel: NSObject, AVAudioPlayerDelegate {
+    static var shared = AudioViewModel()
+
     private var audioModel = AudioModel()
 
     /// Plays a sound with arbitrary filename and type, specify numberOfLoops = -1 to play indefinitely
     func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0, volume: Float = 1, category: AudioCategory? = nil) {
         guard !Process.isPreview else { return }
-        audioModel.playSound(soundFileName: soundFileName, type: type, numberOfLoops: numberOfLoops, volume: volume, category: category)
+        let player = audioModel.playSound(soundFileName: soundFileName, type: type, numberOfLoops: numberOfLoops, volume: volume, category: category)
+        player.delegate = self
+    }
+
+    func playSound(soundFileName: String) {
+        playSound(soundFileName: soundFileName, type: .mp3, numberOfLoops: 0, volume: 1, category: nil)
+    }
+
+    func playSound(soundFileName: String, category: AudioCategory) {
+        playSound(soundFileName: soundFileName, type: .mp3, numberOfLoops: 0, volume: 1, category: category)
+    }
+
+    func playSound(soundFileName: String, numberOfLoops: Int, category: AudioCategory) {
+        playSound(soundFileName: soundFileName, type: .mp3, numberOfLoops: numberOfLoops, volume: 1, category: category)
+    }
+
+    func playSound(soundFileName: String, type: AudioType = .mp3, numberOfLoops: Int = 0, volume: Float = 1, category: AudioCategory? = nil) {
+        playSound(soundFileName: soundFileName, type: type.rawValue, numberOfLoops: numberOfLoops, volume: volume, category: category)
     }
 
     /// Stop a sound from playing

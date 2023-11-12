@@ -39,8 +39,6 @@ struct SceneKitView: UIViewRepresentable {
 
         let camera = scnView.defaultCameraController
         let cameraConfig = scnView.cameraControlConfiguration
-        let maxFov = CGFloat(110)
-        let minFov = CGFloat(20)
         camera.pointOfView?.look(at: SCNVector3(x: 0, y: 0, z: 0))
 
         camera.maximumVerticalAngle = 50

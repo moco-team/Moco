@@ -9,22 +9,34 @@ import SwiftUI
 
 struct MazePrompt: View {
     @Environment(\.settingsViewModel) private var settingsViewModel
-    @State private var mazePromptViewModel = MazePromptViewModel()
+    @Environment(\.audioViewModel) private var audioViewModel
+    @Environment(\.episodeViewModel) private var episodeViewModel
+    @Environment(\.mazePromptViewModel) private var mazePromptViewModel
+
+    @State private var isCorrectAnswerPopup = false
+    @State private var isWrongAnswerPopup = false
 
     var promptText = "Moco adalah sapi jantan"
     var answersAsset = ["Maze/answer_one", "Maze/answer_two"]
     var answers = ["satu", "dua", "tiga"]
     var correctAnswerAsset = "Maze/answer_three"
     var initialTime = 60 * 3
+    var promptId = ""
 
     var action: () -> Void = {}
+
+    func playInitialNarration() {
+        if mazePromptViewModel.isTutorialDone {
+            audioViewModel.playSound(soundFileName: "013 (maze) - bantu arahkan Moco ke jawaban yang benar ya", type: .m4a, category: .narration)
+        }
+    }
 
     var body: some View {
         ZStack {
             ZStack {
                 VStack {
                     HStack {
-                        MazeProgress(progress: $mazePromptViewModel.progress)
+                        MazeProgress()
                         Spacer()
                         TimerView().padding(.trailing, Screen.width * 0.2)
                     }
@@ -35,10 +47,7 @@ struct MazePrompt: View {
                     MazeView(
                         answersAsset: answersAsset,
                         answers: answers,
-                        correctAnswerAsset: correctAnswerAsset,
-                        correctAnswer: $mazePromptViewModel.isCorrectAnswer,
-                        wrongAnswer: $mazePromptViewModel.isWrongAnswer,
-                        isTutorialDone: $mazePromptViewModel.isTutorialDone
+                        correctAnswerAsset: correctAnswerAsset
                     ) {
                         action()
                     }.padding(.bottom, 20)
@@ -47,7 +56,7 @@ struct MazePrompt: View {
                 .ignoresSafeArea()
                 .frame(width: Screen.width, height: Screen.height)
                 if !mazePromptViewModel.isTutorialDone {
-                    MazeTutorialView(isTutorialDone: $mazePromptViewModel.isTutorialDone)
+                    MazeTutorialView()
                 }
             }
         }.background {
@@ -57,10 +66,32 @@ struct MazePrompt: View {
         }
         .ignoresSafeArea()
         .frame(width: Screen.width, height: Screen.height)
-        .popUp(isActive: $mazePromptViewModel.isCorrectAnswer, title: "Selamat kamu berhasil", withConfetti: true) {
+        .onChange(of: mazePromptViewModel.isTutorialDone) {
+            playInitialNarration()
+        }
+        .onChange(of: mazePromptViewModel.isCorrectAnswer) {
+            if mazePromptViewModel.isCorrectAnswer {
+                isCorrectAnswerPopup = true
+                mazePromptViewModel.currentMazeIndex += 1
+            }
+        }
+        .onChange(of: mazePromptViewModel.isWrongAnswer) {
+            if mazePromptViewModel.isWrongAnswer {
+                isWrongAnswerPopup = true
+                mazePromptViewModel.incWrong()
+            }
+        }
+        .onAppear {
+            mazePromptViewModel.reset()
+            (mazePromptViewModel.progress,
+             mazePromptViewModel.currentMazeIndex,
+             mazePromptViewModel.mazeCount) = episodeViewModel.getMazeProgress(promptId: promptId)
+            playInitialNarration()
+        }
+        .popUp(isActive: $isCorrectAnswerPopup, title: "Selamat kamu berhasil", withConfetti: true) {
             action()
         }
-        .popUp(isActive: $mazePromptViewModel.isWrongAnswer, title: "Oh tidak! Kamu pergi ke jalan yang salah") {
+        .popUp(isActive: $isWrongAnswerPopup, title: "Oh tidak! Kamu pergi ke jalan yang salah") {
             action()
         }
         .forceRotation()
@@ -79,10 +110,7 @@ struct MazePromptOld: View {
     var body: some View {
         ZStack {
             MazeView(answersAsset: answersAsset,
-                     correctAnswerAsset: correctAnswerAsset,
-                     correctAnswer: .constant(true),
-                     wrongAnswer: .constant(false),
-                     isTutorialDone: .constant(true)) {
+                     correctAnswerAsset: correctAnswerAsset) {
                 action()
             }
 
@@ -97,7 +125,7 @@ struct MazePromptOld: View {
                         }
                         .frame(width: Screen.width * 0.7, height: 0.4 * Screen.height)
                     if mazePromptViewModel.showStartButton {
-                        Button {
+                        SfxButton {
                             mazePromptViewModel.stopPrompt()
                         } label: {
                             Image("Buttons/button-start").resizable().scaledToFit()
@@ -112,12 +140,13 @@ struct MazePromptOld: View {
                         )
                         .padding(.bottom, 20)
                     }
-                }.frame(width: Screen.width, height: Screen.height).background(.ultraThinMaterial.opacity(mazePromptViewModel.blurOpacity))
+                }.frame(width: Screen.width, height: Screen.height)
+                    .background(.ultraThinMaterial.opacity(mazePromptViewModel.blurOpacity))
             } else {
                 VStack {
                     HStack {
                         Spacer()
-                        Button {
+                        SfxButton {
                             mazePromptViewModel.playPrompt()
                         } label: {
                             Image("Buttons/button-question")
