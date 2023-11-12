@@ -275,7 +275,8 @@ struct AudioModel: Identifiable, Equatable {
         player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: nil) { _ in
             // Check if the player has reached the end of the current item
             if let currentItem = player.currentItem,
-               currentItem.currentTime() >= currentItem.duration {
+               currentItem.currentTime() >= currentItem.duration
+            {
                 // Pause the player
                 player.pause()
 
@@ -394,7 +395,9 @@ struct AudioModel: Identifiable, Equatable {
     mutating func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully _: Bool) {
         if let url = player.url {
             if let category = playerCategories[url], category == .narration {
-                unmute()
+                if !playersByCategory.narration.contains(where: { $0.isPlaying }) {
+                    unmute()
+                }
             }
         }
         if let index = duplicatePlayers.firstIndex(of: player) {
