@@ -382,7 +382,7 @@ struct StoryView: View {
                 EmptyView()
             }
         }
-        .customModal(isActive: $showWrongAnsPopup, title: "Apakah kamu yakin dengan jawaban ini? Coba cek kembali pertanyaannya") {
+        .customModal(isActive: $showWrongAnsPopup, title: "Apakah kamu yakin dengan jawaban ini? Coba cek kembali pertanyaannya", textColor: Color.brownTxt) {
             activePrompt = nil
             showWrongAnsPopup = false
         }

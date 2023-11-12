@@ -20,7 +20,7 @@ struct ModalComponent: ViewModifier {
     var bottomImage: String?
     var confirmText = "Yes"
     var containerBgColor = Color.white
-    var textColor = Color.black
+    var textColor = Color.brownTxt
     var overlayOpacity = 0.3
     var width = Screen.width * 0.45
     var height = Screen.height * 0.6
@@ -71,7 +71,7 @@ struct ModalComponentView: View {
     var bottomImage: String?
     var confirmText = "Yes"
     var containerBgColor = Color.white
-    var textColor = Color.black
+    var textColor = Color.brownTxt
     var overlayOpacity = 0.3
     var width = Screen.width * 0.45
     var height = Screen.height * 0.6
@@ -110,7 +110,10 @@ struct ModalComponentView: View {
                                 .foregroundColor(textColor)
                                 .padding(.top, 10)
                                 .padding(.bottom, 20)
+                                .padding(.horizontal, 18)
+                                .multilineTextAlignment(.center)
                                 .fixedSize(horizontal: false, vertical: true)
+                                .glowBorder(color: .white, lineWidth: 5)
 
                             if text != "" {
                                 Text(text ?? "")
@@ -173,7 +176,7 @@ struct ModalPreview: View {
         Button("Waduh") {
             isActive = true
             print(isActive)
-        }.customModal(isActive: $isActive, title: "Yakin mau keluar?", withConfetti: true) {
+        }.customModal(isActive: $isActive, title: "Apakah kamu yakin dengan jawaban ini? Coba cek kembali pertanyaannya", withConfetti: true) {
             print("Done")
         } cancelHandler: {
             print("Cancel")

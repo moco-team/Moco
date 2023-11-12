@@ -26,6 +26,9 @@
 		0571CB462AE19D6000CE0CC7 /* maudi.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB402AE19D6000CE0CC7 /* maudi.json */; };
 		0571CB482AE19D6000CE0CC7 /* moco-1-5.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB422AE19D6000CE0CC7 /* moco-1-5.json */; };
 		0571CB492AE19D6000CE0CC7 /* teka_dan_teki.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB432AE19D6000CE0CC7 /* teka_dan_teki.json */; };
+		0589EA582AFF3FCB00C87BF7 /* tes4-2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0589EA572AFF3FCB00C87BF7 /* tes4-2.usdz */; };
+		0589EA5C2AFF50E000C87BF7 /* tes1-2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0589EA5B2AFF50E000C87BF7 /* tes1-2.usdz */; };
+		0589EA622AFF5CB100C87BF7 /* tes4-3.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0589EA612AFF5CB100C87BF7 /* tes4-3.usdz */; };
 		058DC8EE2AF2BC6E00A0885D /* honey.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8EC2AF2BC6E00A0885D /* honey.usdz */; };
 		058DC8EF2AF2BC6E00A0885D /* airplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8ED2AF2BC6E00A0885D /* airplane.usdz */; };
 		058DC8F12AF2BE4E00A0885D /* key.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F02AF2BE4E00A0885D /* key.usdz */; };
@@ -280,6 +283,9 @@
 		0571CB402AE19D6000CE0CC7 /* maudi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = maudi.json; sourceTree = "<group>"; };
 		0571CB422AE19D6000CE0CC7 /* moco-1-5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-5.json"; sourceTree = "<group>"; };
 		0571CB432AE19D6000CE0CC7 /* teka_dan_teki.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teka_dan_teki.json; sourceTree = "<group>"; };
+		0589EA572AFF3FCB00C87BF7 /* tes4-2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "tes4-2.usdz"; sourceTree = "<group>"; };
+		0589EA5B2AFF50E000C87BF7 /* tes1-2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "tes1-2.usdz"; sourceTree = "<group>"; };
+		0589EA612AFF5CB100C87BF7 /* tes4-3.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "tes4-3.usdz"; sourceTree = "<group>"; };
 		058DC8EC2AF2BC6E00A0885D /* honey.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = honey.usdz; sourceTree = "<group>"; };
 		058DC8ED2AF2BC6E00A0885D /* airplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = airplane.usdz; sourceTree = "<group>"; };
 		058DC8F02AF2BE4E00A0885D /* key.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = key.usdz; sourceTree = "<group>"; };
@@ -842,6 +848,12 @@
 		05E8B56B2AED57AA00E3612F /* ARStory */ = {
 			isa = PBXGroup;
 			children = (
+				050E42052AFDC540009666DB /* Tutorial */,
+				937AF28B2AE832A7008C69BB /* ARViewContainer.swift */,
+				937AF2942AE8C06C008C69BB /* ARView.swift */,
+				937AF2992AE8D422008C69BB /* EnvironmentEntity.swift */,
+				937AF29B2AE8D47E008C69BB /* ResourceLoader.swift */,
+				05E8B5692AED4AD400E3612F /* ARClueView.swift */,
 				05E8B56C2AED57CF00E3612F /* ARStory.swift */,
 			);
 			path = ARStory;
@@ -1040,26 +1052,16 @@
 			path = 3D;
 			sourceTree = "<group>";
 		};
-		937AF28D2AE832AF008C69BB /* AR */ = {
-			isa = PBXGroup;
-			children = (
-				050E42052AFDC540009666DB /* Tutorial */,
-				937AF28B2AE832A7008C69BB /* ARViewContainer.swift */,
-				937AF2942AE8C06C008C69BB /* ARView.swift */,
-				937AF2992AE8D422008C69BB /* EnvironmentEntity.swift */,
-				937AF29B2AE8D47E008C69BB /* ResourceLoader.swift */,
-				05E8B5692AED4AD400E3612F /* ARClueView.swift */,
-			);
-			path = AR;
-			sourceTree = "<group>";
-		};
 		937AF2962AE8C719008C69BB /* Usdz */ = {
 			isa = PBXGroup;
 			children = (
+				0589EA5B2AFF50E000C87BF7 /* tes1-2.usdz */,
 				058DC8ED2AF2BC6E00A0885D /* airplane.usdz */,
 				058DC8EC2AF2BC6E00A0885D /* honey.usdz */,
 				058DC8F02AF2BE4E00A0885D /* key.usdz */,
 				05E8B55C2AECE32D00E3612F /* button.usdz */,
+				0589EA572AFF3FCB00C87BF7 /* tes4-2.usdz */,
+				0589EA612AFF5CB100C87BF7 /* tes4-3.usdz */,
 				93692EAD2AFDCD9900CD6561 /* tes4.usdz */,
 				937AF2972AE8C72B008C69BB /* environment.usdz */,
 				058DC8F22AF2C2E700A0885D /* honey-new.usdz */,
@@ -1264,7 +1266,6 @@
 		93C2F8B42AD6848F007D1ABC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				937AF28D2AE832AF008C69BB /* AR */,
 				938C55342AE181AF00BC233D /* ViewModifiers */,
 				0BA3E5072ADFC5EE00BCFE9E /* User */,
 				0BA3E5062ADFC5E200BCFE9E /* Admin */,
@@ -1507,13 +1508,16 @@
 				05FF772F2AF0B6C30037453D /* hand.zoom.gif in Resources */,
 				0571CB3D2AE19D5700CE0CC7 /* moco-1-1.json in Resources */,
 				058DC8EF2AF2BC6E00A0885D /* airplane.usdz in Resources */,
+				0589EA582AFF3FCB00C87BF7 /* tes4-2.usdz in Resources */,
 				93C2F88D2AD683AE007D1ABC /* Preview Assets.xcassets in Resources */,
+				0589EA622AFF5CB100C87BF7 /* tes4-3.usdz in Resources */,
 				05AE93612ADE82410082B21D /* testing-cat.json in Resources */,
 				056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */,
 				0571CB462AE19D6000CE0CC7 /* maudi.json in Resources */,
 				932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */,
 				05FF77302AF0B6C30037453D /* ripple.gif in Resources */,
 				0518CDD82AE220BA00521EC8 /* moco-1-2.json in Resources */,
+				0589EA5C2AFF50E000C87BF7 /* tes1-2.usdz in Resources */,
 				05E17AD92ADED16800A34547 /* balon_merah.mp3 in Resources */,
 				0571CB452AE19D6000CE0CC7 /* moco-1-10.json in Resources */,
 				93C2F88A2AD683AE007D1ABC /* Assets.xcassets in Resources */,

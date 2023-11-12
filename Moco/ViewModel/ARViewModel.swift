@@ -26,10 +26,20 @@ final class ARViewModel: NSObject, ObservableObject {
     @Published var toBeFoundEntityNames: [String] = ["honey_jar", "key", "airplane"]
 
     var arView: ARView?
+    
+    var isTutorialDone: Bool {
+        get {
+            GlobalStorage.arTutorialFinished
+        }
+        set {
+            GlobalStorage.arTutorialFinished = newValue
+        }
+    }
 
     func resume() {
         if !assetsLoaded && loadCancellable == nil {
             loadAssets()
+            print("Load Asset ...")
         }
     }
 
@@ -44,6 +54,14 @@ final class ARViewModel: NSObject, ObservableObject {
         arView.session.run(config)
         arView.session.delegate = self
         self.arView = arView
+    }
+    
+    func resetSession() {
+        // Stop the current AR session
+        arView?.session.pause()
+
+        // Remove anchors
+        arView?.scene.anchors.removeAll()
     }
 
     func setSearchedObject(objectName: String) {
