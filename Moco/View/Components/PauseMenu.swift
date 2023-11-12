@@ -76,12 +76,12 @@ struct PauseMenu: View {
                                 }.foregroundColor(.black).accentColor(.black).tint(.text.brown2)
                             }.padding(.horizontal, 90)
 
-                            Button("ULANGI") {
+                            SfxButton("ULANGI") {
                                 repeatHandler?()
                                 close()
                             }
                             .buttonStyle(MainButton(width: 250, height: 120, type: .danger, fontSize: CGFloat(30)))
-                            Button(confirmText) {
+                            SfxButton(confirmText) {
                                 function()
                                 close()
                             }
@@ -99,7 +99,7 @@ struct PauseMenu: View {
                 }
             }
             .overlay(alignment: .topTrailing) {
-                Button {
+                SfxButton {
                     close()
                 } label: {
                     Image("Buttons/button-x").resizable().frame(width: 80, height: 80).shadow(radius: 20, x: -20, y: 20)

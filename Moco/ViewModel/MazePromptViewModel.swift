@@ -16,6 +16,7 @@ import SwiftUI
         }
         set {
             GlobalStorage.mazeTutorialFinished = newValue
+            mazePromptModel.isTutorialDone = newValue
         }
     }
 

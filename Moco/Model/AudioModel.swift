@@ -13,6 +13,12 @@ enum AudioCategory: Equatable, Hashable {
     case soundEffect
 }
 
+enum AudioType: String, Equatable, Hashable {
+    case mp3
+    case m4a
+    case wav
+}
+
 protocol AVPlayerWithVolume {
     // Define anything in common between objects
     // Example:
@@ -160,7 +166,10 @@ struct AudioModel: Identifiable, Equatable {
     }
 
     mutating func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0, volume: Float = 1, category: AudioCategory? = nil) {
-        guard let bundle = Bundle.main.path(forResource: soundFileName, ofType: type) else { return }
+        guard let bundle = Bundle.main.path(forResource: soundFileName, ofType: type) else {
+            print("SOUND NOT FOUND, check the bundle resources")
+            return
+        }
         let soundFileNameURL = URL(fileURLWithPath: bundle)
 
         if let player = players[soundFileNameURL] { // player for sound has been found

@@ -162,6 +162,14 @@
 		937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */; };
 		93836C782AFF6E08001A3FEE /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93836C772AFF6E08001A3FEE /* Process.swift */; };
 		93836C7E2B0003DD001A3FEE /* gyro.gif in Resources */ = {isa = PBXBuildFile; fileRef = 93836C7D2B0003DD001A3FEE /* gyro.gif */; };
+		93836C802B008034001A3FEE /* button_tap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93836C7F2B008034001A3FEE /* button_tap.mp3 */; };
+		93836C812B008C8E001A3FEE /* 008 (maze) - wah, kamu baik sekali yaa.. mau membantu Moco menemukan Teka dan Teki.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9042AF2D59700A0885D /* 008 (maze) - wah, kamu baik sekali yaa.. mau membantu Moco menemukan Teka dan Teki.m4a */; };
+		93836C822B008C98001A3FEE /* 009 (maze) - coba miringkan layar ke kanan.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9002AF2D59600A0885D /* 009 (maze) - coba miringkan layar ke kanan.m4a */; };
+		93836C832B008C9C001A3FEE /* 010 (maze) - coba miringkan layar ke kiri.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9032AF2D59700A0885D /* 010 (maze) - coba miringkan layar ke kiri.m4a */; };
+		93836C842B008CA0001A3FEE /* 011 (maze) - coba miringkan layar ke atas.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8FF2AF2D59600A0885D /* 011 (maze) - coba miringkan layar ke atas.m4a */; };
+		93836C852B008CA4001A3FEE /* 012 (maze) - coba miringkan layar ke bawah.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9012AF2D59600A0885D /* 012 (maze) - coba miringkan layar ke bawah.m4a */; };
+		93836C862B008CA8001A3FEE /* 013 (maze) - bantu arahkan Moco ke jawaban yang benar ya.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9022AF2D59700A0885D /* 013 (maze) - bantu arahkan Moco ke jawaban yang benar ya.m4a */; };
+		93836C872B008CAE001A3FEE /* 014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9062AF2D5A400A0885D /* 014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a */; };
 		938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55352AE181C600BC233D /* RootViewModifier.swift */; };
 		938C55382AE183AA00BC233D /* FontViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55372AE183AA00BC233D /* FontViewModifier.swift */; };
 		938C553A2AE1B3E800BC233D /* ObjectDetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */; };
@@ -277,7 +285,7 @@
 		058DC8F22AF2C2E700A0885D /* honey-new.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "honey-new.usdz"; sourceTree = "<group>"; };
 		058DC8F42AF2CFF100A0885D /* TextViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewModifier.swift; sourceTree = "<group>"; };
 		058DC8F72AF2D54600A0885D /* 005 - Coba baca lagi cerita ini.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "005 - Coba baca lagi cerita ini.m4a"; sourceTree = "<group>"; };
-		058DC8F82AF2D54700A0885D /* 003 - Tolong Moco memilih jalaban yang benar.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "003 - Tolong Moco memilih jalaban yang benar.m4a"; sourceTree = "<group>"; };
+		058DC8F82AF2D54700A0885D /* 003 - Tolong Moco memilih jawaban yang benar.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "003 - Tolong Moco memilih jawaban yang benar.m4a"; sourceTree = "<group>"; };
 		058DC8F92AF2D54700A0885D /* 002 - Keren.. yuk mulai petualangan ini!.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "002 - Keren.. yuk mulai petualangan ini!.m4a"; sourceTree = "<group>"; };
 		058DC8FA2AF2D54700A0885D /* 001 - Hai, apakah kamu sudah bisa membaca.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "001 - Hai, apakah kamu sudah bisa membaca.m4a"; sourceTree = "<group>"; };
 		058DC8FB2AF2D54700A0885D /* 006 - Cerdas! Jawaban kamu benar.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "006 - Cerdas! Jawaban kamu benar.m4a"; sourceTree = "<group>"; };
@@ -402,6 +410,7 @@
 		937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		93836C772AFF6E08001A3FEE /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		93836C7D2B0003DD001A3FEE /* gyro.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gyro.gif; sourceTree = "<group>"; };
+		93836C7F2B008034001A3FEE /* button_tap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = button_tap.mp3; sourceTree = "<group>"; };
 		938C55352AE181C600BC233D /* RootViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModifier.swift; sourceTree = "<group>"; };
 		938C55372AE183AA00BC233D /* FontViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewModifier.swift; sourceTree = "<group>"; };
 		938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewModel.swift; sourceTree = "<group>"; };
@@ -516,6 +525,7 @@
 		0522B02D2AFCC33900D51EF8 /* SoundFx */ = {
 			isa = PBXGroup;
 			children = (
+				93836C7F2B008034001A3FEE /* button_tap.mp3 */,
 				0522B02E2AFCC36900D51EF8 /* card_flip.mp3 */,
 			);
 			path = SoundFx;
@@ -691,7 +701,7 @@
 			children = (
 				058DC8FA2AF2D54700A0885D /* 001 - Hai, apakah kamu sudah bisa membaca.m4a */,
 				058DC8F92AF2D54700A0885D /* 002 - Keren.. yuk mulai petualangan ini!.m4a */,
-				058DC8F82AF2D54700A0885D /* 003 - Tolong Moco memilih jalaban yang benar.m4a */,
+				058DC8F82AF2D54700A0885D /* 003 - Tolong Moco memilih jawaban yang benar.m4a */,
 				058DC8FC2AF2D54700A0885D /* 004 - Kamu sudah yakin.m4a */,
 				058DC8F72AF2D54600A0885D /* 005 - Coba baca lagi cerita ini.m4a */,
 				058DC8FB2AF2D54700A0885D /* 006 - Cerdas! Jawaban kamu benar.m4a */,
@@ -1441,8 +1451,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93836C872B008CAE001A3FEE /* 014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a in Resources */,
+				93836C862B008CA8001A3FEE /* 013 (maze) - bantu arahkan Moco ke jawaban yang benar ya.m4a in Resources */,
+				93836C852B008CA4001A3FEE /* 012 (maze) - coba miringkan layar ke bawah.m4a in Resources */,
+				93836C842B008CA0001A3FEE /* 011 (maze) - coba miringkan layar ke atas.m4a in Resources */,
+				93836C832B008C9C001A3FEE /* 010 (maze) - coba miringkan layar ke kiri.m4a in Resources */,
+				93836C822B008C98001A3FEE /* 009 (maze) - coba miringkan layar ke kanan.m4a in Resources */,
+				93836C812B008C8E001A3FEE /* 008 (maze) - wah, kamu baik sekali yaa.. mau membantu Moco menemukan Teka dan Teki.m4a in Resources */,
 				93676D262AF13AA200E756A5 /* pop.mp3 in Resources */,
 				05FF77332AF0B6C30037453D /* hand.tap.gif in Resources */,
+				93836C802B008034001A3FEE /* button_tap.mp3 in Resources */,
 				937AF29F2AE8FDB7008C69BB /* DidactGothic-Regular.ttf in Resources */,
 				931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */,
 				058DC8F32AF2C2E700A0885D /* honey-new.usdz in Resources */,

@@ -17,6 +17,7 @@ enum MazeTutorialPhase {
 struct MazeTutorialView: View {
     @EnvironmentObject var motionViewModel: MotionViewModel
     @EnvironmentObject var orientationInfo: OrientationInfo
+    @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.timerViewModel) private var timerViewModel
 
     @State private var rightProgress = 0
@@ -70,7 +71,6 @@ struct MazeTutorialView: View {
     }
 
     func done() {
-        GlobalStorage.mazeTutorialFinished = true
         withAnimation {
             isDone = true
         } completion: {
@@ -139,10 +139,25 @@ struct MazeTutorialView: View {
                     switch currentPhase {
                     case .right:
                         currentPhase = .left
+                        audioViewModel.playSound(
+                            soundFileName: "010 (maze) - coba miringkan layar ke kiri",
+                            type: "m4a",
+                            category: .narration
+                        )
                     case .left:
                         currentPhase = .up
+                        audioViewModel.playSound(
+                            soundFileName: "011 (maze) - coba miringkan layar ke atas",
+                            type: "m4a",
+                            category: .narration
+                        )
                     case .up:
                         currentPhase = .down
+                        audioViewModel.playSound(
+                            soundFileName: "012 (maze) - coba miringkan layar ke bawah",
+                            type: "m4a",
+                            category: .narration
+                        )
                     case .down:
                         if !showTutorialCompletePrompt && !isDone {
                             showTutorialCompletePrompt = true
@@ -154,6 +169,13 @@ struct MazeTutorialView: View {
         .opacity(isDone ? 0 : 1)
         .onDisappear {
             timerViewModel.stopTimer("mazeTutorialTimer")
+        }
+        .onAppear {
+            audioViewModel.playSound(
+                soundFileName: "009 (maze) - coba miringkan layar ke kanan",
+                type: "m4a",
+                category: .narration
+            )
         }
         .ignoresSafeArea()
         .frame(width: Screen.width, height: Screen.height)

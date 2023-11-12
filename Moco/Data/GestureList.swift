@@ -43,7 +43,7 @@ var gestureDescriptionViewList = [
     ),
     AnyView(
         VStack {
-            Button {
+            SfxButton {
                 print("Hint!")
             } label: {
                 Image("Buttons/button-hint")

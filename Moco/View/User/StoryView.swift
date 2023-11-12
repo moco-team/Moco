@@ -268,7 +268,7 @@ struct StoryView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Button {
+                        SfxButton {
 //                            if !isMuted {
 //                                audioViewModel.mute()
 //                            } else {
@@ -289,7 +289,7 @@ struct StoryView: View {
                             )
                         )
                         .padding()
-                        Button {
+                        SfxButton {
                             isExitPopUpActive = true
                         } label: {
                             Image("Buttons/button-x").resizable().scaledToFit()
@@ -322,7 +322,7 @@ struct StoryView: View {
                 VStack {
                     Spacer()
                     if showPromptButton && activePrompt == nil {
-                        Button {
+                        SfxButton {
                             activePrompt = promptViewModel.prompt!
                         } label: {
                             Image("Buttons/button-start").resizable().scaledToFit()

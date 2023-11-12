@@ -49,7 +49,7 @@ struct ARCameraView: View {
                 HStack {
                     Spacer()
                     if clue.meshes != nil && arViewModel.hasPlacedObject {
-                        Button {
+                        SfxButton {
                             print("Hint!")
                             isShowHint = true
                         } label: {

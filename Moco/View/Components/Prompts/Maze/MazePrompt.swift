@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MazePrompt: View {
     @Environment(\.settingsViewModel) private var settingsViewModel
+    @Environment(\.audioViewModel) private var audioViewModel
     @State private var mazePromptViewModel = MazePromptViewModel()
 
     var promptText = "Moco adalah sapi jantan"
@@ -18,6 +19,12 @@ struct MazePrompt: View {
     var initialTime = 60 * 3
 
     var action: () -> Void = {}
+
+    func playInitialNarration() {
+        if mazePromptViewModel.isTutorialDone {
+            audioViewModel.playSound(soundFileName: "013 (maze) - bantu arahkan Moco ke jawaban yang benar ya", type: .m4a, category: .narration)
+        }
+    }
 
     var body: some View {
         ZStack {
@@ -57,6 +64,13 @@ struct MazePrompt: View {
         }
         .ignoresSafeArea()
         .frame(width: Screen.width, height: Screen.height)
+        .onChange(of: mazePromptViewModel.isTutorialDone) {
+            print("Kuntul")
+            playInitialNarration()
+        }
+        .onAppear {
+            playInitialNarration()
+        }
         .popUp(isActive: $mazePromptViewModel.isCorrectAnswer, title: "Selamat kamu berhasil", withConfetti: true) {
             action()
         }
@@ -97,7 +111,7 @@ struct MazePromptOld: View {
                         }
                         .frame(width: Screen.width * 0.7, height: 0.4 * Screen.height)
                     if mazePromptViewModel.showStartButton {
-                        Button {
+                        SfxButton {
                             mazePromptViewModel.stopPrompt()
                         } label: {
                             Image("Buttons/button-start").resizable().scaledToFit()
@@ -112,12 +126,13 @@ struct MazePromptOld: View {
                         )
                         .padding(.bottom, 20)
                     }
-                }.frame(width: Screen.width, height: Screen.height).background(.ultraThinMaterial.opacity(mazePromptViewModel.blurOpacity))
+                }.frame(width: Screen.width, height: Screen.height)
+                    .background(.ultraThinMaterial.opacity(mazePromptViewModel.blurOpacity))
             } else {
                 VStack {
                     HStack {
                         Spacer()
-                        Button {
+                        SfxButton {
                             mazePromptViewModel.playPrompt()
                         } label: {
                             Image("Buttons/button-question")
