@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MazeProgress: View {
-    @Binding var progress: Double
+    @Environment(\.mazePromptViewModel) private var mazePromptViewModel
 
     var body: some View {
         HStack {
@@ -17,13 +17,13 @@ struct MazeProgress: View {
                 ZStack {
                     Image("Maze/moco-head-timer").resizable().aspectRatio(contentMode: .fit)
                     Color.gray
-                        .offset(y: -size.height * progress)
+                        .offset(y: -size.height * mazePromptViewModel.progress)
                         .mask {
                             Image("Maze/moco-head-timer").resizable().aspectRatio(contentMode: .fit)
                         }
                 }.frame(width: Screen.width * 0.08, height: Screen.height * 0.1)
             }.frame(width: Screen.width * 0.08, height: Screen.height * 0.1)
-            Text("\(Int(progress * 100))%")
+            Text("\(Int(mazePromptViewModel.progress * 100))%")
                 .customFont(.cherryBomb, size: 40)
                 .foregroundColor(.text.darkBlue)
         }
@@ -31,5 +31,5 @@ struct MazeProgress: View {
 }
 
 #Preview {
-    MazeProgress(progress: .constant(0.5))
+    MazeProgress()
 }

@@ -27,7 +27,7 @@ import SwiftData
             predicate: #Predicate {
                 $0.episode?.uid == episodeUid
             },
-            sortBy: [SortDescriptor<StoryModel>(\.createdAt)]
+            sortBy: [SortDescriptor<StoryModel>(\.pageNumber)]
         )
 
         storyPage = (try? modelContext?.fetch(fetchDescriptor)[index] ?? nil) ?? nil

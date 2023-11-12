@@ -18,7 +18,7 @@ struct BurgerMenu: View {
             HStack {
                 if expand {
                     HStack {
-                        Button {
+                        SfxButton {
                             navigate.append(.achievements)
                         } label: {
                             Image("Story/Icons/achievements")
@@ -26,15 +26,7 @@ struct BurgerMenu: View {
                                 .frame(width: 90, height: 90)
                                 .shadow(radius: 4, x: -2, y: 2)
                         }
-                        Button {
-                            navigate.append(.profile)
-                        } label: {
-                            Image("Story/Icons/profile")
-                                .resizable()
-                                .frame(width: 90, height: 90)
-                                .shadow(radius: 4, x: -2, y: 2)
-                        }
-                        Button {
+                        SfxButton {
                             navigate.append(.settings)
                         } label: {
                             Image("Story/Icons/settings")
@@ -46,7 +38,7 @@ struct BurgerMenu: View {
                         .padding(.leading, 20)
                         .padding(.trailing, 10)
                 }
-                Button {
+                SfxButton {
                     withAnimation(.spring()) {
                         self.expand.toggle()
                     }

@@ -65,6 +65,7 @@ struct PopUpComponent: ViewModifier {
 }
 
 struct PopUpComponentView: View {
+    @Environment(\.audioViewModel) private var audioViewModel
     @State private var offset: CGFloat = 1000
     @Binding var isActive: Bool
     @State private var confettiCounter = 0
@@ -136,7 +137,7 @@ struct PopUpComponentView: View {
                             Grid(horizontalSpacing: 20) {
                                 GridRow {
                                     if cancelText != nil {
-                                        Button(cancelText!) {
+                                        SfxButton(cancelText!) {
                                             if cancelHandler != nil {
                                                 cancelHandler!()
                                             }
@@ -145,7 +146,7 @@ struct PopUpComponentView: View {
                                         .buttonStyle(MainButton(width: 180, type: .warning))
                                         .font(.footnote)
                                     }
-                                    Button(confirmText) {
+                                    SfxButton(confirmText) {
                                         function()
                                         if closeWhenDone {
                                             close()
@@ -168,7 +169,7 @@ struct PopUpComponentView: View {
                 }
             }
             .overlay(alignment: .topTrailing) {
-                Button {
+                SfxButton {
                     close()
                 } label: {
                     Image("Buttons/button-x").resizable().frame(width: 50, height: 50).shadow(radius: 20, x: -20, y: 20)
@@ -183,6 +184,7 @@ struct PopUpComponentView: View {
                 }
                 if withConfetti {
                     confettiCounter += 1
+                    audioViewModel.playSound(soundFileName: "congratulation-popup")
                 }
             }
         }
@@ -291,7 +293,7 @@ struct PopUpComponentViewOld: View {
                 }
             }
             .overlay(alignment: .topTrailing) {
-                Button {
+                SfxButton {
                     close()
                 } label: {
                     Image("Buttons/button-x").resizable().frame(width: 50, height: 50)
