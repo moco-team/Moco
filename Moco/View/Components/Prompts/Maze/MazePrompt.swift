@@ -10,13 +10,18 @@ import SwiftUI
 struct MazePrompt: View {
     @Environment(\.settingsViewModel) private var settingsViewModel
     @Environment(\.audioViewModel) private var audioViewModel
-    @State private var mazePromptViewModel = MazePromptViewModel()
+    @Environment(\.episodeViewModel) private var episodeViewModel
+    @Environment(\.mazePromptViewModel) private var mazePromptViewModel
+
+    @State private var isCorrectAnswerPopup = false
+    @State private var isWrongAnswerPopup = false
 
     var promptText = "Moco adalah sapi jantan"
     var answersAsset = ["Maze/answer_one", "Maze/answer_two"]
     var answers = ["satu", "dua", "tiga"]
     var correctAnswerAsset = "Maze/answer_three"
     var initialTime = 60 * 3
+    var promptId = ""
 
     var action: () -> Void = {}
 
@@ -31,7 +36,7 @@ struct MazePrompt: View {
             ZStack {
                 VStack {
                     HStack {
-                        MazeProgress(progress: $mazePromptViewModel.progress)
+                        MazeProgress()
                         Spacer()
                         TimerView().padding(.trailing, Screen.width * 0.2)
                     }
@@ -42,10 +47,7 @@ struct MazePrompt: View {
                     MazeView(
                         answersAsset: answersAsset,
                         answers: answers,
-                        correctAnswerAsset: correctAnswerAsset,
-                        correctAnswer: $mazePromptViewModel.isCorrectAnswer,
-                        wrongAnswer: $mazePromptViewModel.isWrongAnswer,
-                        isTutorialDone: $mazePromptViewModel.isTutorialDone
+                        correctAnswerAsset: correctAnswerAsset
                     ) {
                         action()
                     }.padding(.bottom, 20)
@@ -54,7 +56,7 @@ struct MazePrompt: View {
                 .ignoresSafeArea()
                 .frame(width: Screen.width, height: Screen.height)
                 if !mazePromptViewModel.isTutorialDone {
-                    MazeTutorialView(isTutorialDone: $mazePromptViewModel.isTutorialDone)
+                    MazeTutorialView()
                 }
             }
         }.background {
@@ -67,13 +69,30 @@ struct MazePrompt: View {
         .onChange(of: mazePromptViewModel.isTutorialDone) {
             playInitialNarration()
         }
+        .onChange(of: mazePromptViewModel.isCorrectAnswer) {
+            if mazePromptViewModel.isCorrectAnswer {
+                isCorrectAnswerPopup = true
+                mazePromptViewModel.currentMazeIndex += 1
+            }
+        }
+        .onChange(of: mazePromptViewModel.isWrongAnswer) {
+            if mazePromptViewModel.isWrongAnswer {
+                isWrongAnswerPopup = true
+                mazePromptViewModel.incWrong()
+            }
+        }
         .onAppear {
+            mazePromptViewModel.reset()
+            (mazePromptViewModel.progress,
+             mazePromptViewModel.currentMazeIndex,
+             mazePromptViewModel.mazeCount
+            ) = episodeViewModel.getMazeProgress(promptId: promptId)
             playInitialNarration()
         }
-        .popUp(isActive: $mazePromptViewModel.isCorrectAnswer, title: "Selamat kamu berhasil", withConfetti: true) {
+        .popUp(isActive: $isCorrectAnswerPopup, title: "Selamat kamu berhasil", withConfetti: true) {
             action()
         }
-        .popUp(isActive: $mazePromptViewModel.isWrongAnswer, title: "Oh tidak! Kamu pergi ke jalan yang salah") {
+        .popUp(isActive: $isWrongAnswerPopup, title: "Oh tidak! Kamu pergi ke jalan yang salah") {
             action()
         }
         .forceRotation()
@@ -92,10 +111,8 @@ struct MazePromptOld: View {
     var body: some View {
         ZStack {
             MazeView(answersAsset: answersAsset,
-                     correctAnswerAsset: correctAnswerAsset,
-                     correctAnswer: .constant(true),
-                     wrongAnswer: .constant(false),
-                     isTutorialDone: .constant(true)) {
+                     correctAnswerAsset: correctAnswerAsset
+            ) {
                 action()
             }
 

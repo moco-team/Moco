@@ -32,12 +32,39 @@ import SwiftUI
         mazePromptModel.showStartButton
     }
 
+    func reset(_ all: Bool = false) {
+        mazePromptModel.reset(all)
+    }
+
+    func incWrong() {
+        mazePromptModel.wrongCount += 1
+    }
+
     var progress: Double {
         set {
             mazePromptModel.progress = newValue
         }
         get {
-            mazePromptModel.progress + 0.5
+            Double(max(mazePromptModel.currentMazeIndex - mazePromptModel.wrongCount, 0)) /
+            Double(mazePromptModel.mazeCount == 0 ? 1 : mazePromptModel.mazeCount)
+        }
+    }
+
+    var mazeCount: Int {
+        set {
+            mazePromptModel.mazeCount = newValue
+        }
+        get {
+            mazePromptModel.mazeCount
+        }
+    }
+
+    var currentMazeIndex: Int {
+        set {
+            mazePromptModel.currentMazeIndex = newValue
+        }
+        get {
+            mazePromptModel.currentMazeIndex
         }
     }
 

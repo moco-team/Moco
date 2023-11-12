@@ -16,7 +16,7 @@ struct StoryView: View {
     @Environment(\.storyContentViewModel) private var storyContentViewModel
     @Environment(\.promptViewModel) private var promptViewModel
     @Environment(\.hintViewModel) private var hintViewModel
-
+    @Environment(\.mazePromptViewModel) private var mazePromptViewModel
     @Environment(\.timerViewModel) private var timerViewModel
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.settingsViewModel) private var settingsViewModel
@@ -223,7 +223,8 @@ struct StoryView: View {
                                                 promptText: mazePrompt.question!,
                                                 answersAsset: mazePrompt.answerAssets!,
                                                 answers: mazePrompt.answerChoices!,
-                                                correctAnswerAsset: mazePrompt.correctAnswer
+                                                correctAnswerAsset: mazePrompt.correctAnswer,
+                                                promptId: mazePrompt.uid
                                             ) {
                                                 nextPage()
                                             }.id(mazePrompt.id)
@@ -387,6 +388,7 @@ struct StoryView: View {
         }
         .task {
             onPageChange()
+            mazePromptViewModel.reset(true)
         }
         .task(id: scrollPosition) {
             onPageChange()

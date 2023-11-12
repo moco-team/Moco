@@ -26,7 +26,8 @@ struct MocoApp: App {
     @State private var storyContentViewModel = StoryContentViewModel.shared
     @State private var promptViewModel = PromptViewModel.shared
     @State private var hintViewModel = HintViewModel.shared
-    @State var settingsViewModel = SettingsViewModel()
+    @State private var settingsViewModel = SettingsViewModel()
+    @State private var mazePromptViewModel = MazePromptViewModel()
 
     // MARK: - State Objects
 
@@ -53,6 +54,7 @@ struct MocoApp: App {
                 .environment(\.hintViewModel, hintViewModel)
                 .environment(\.audioViewModel, audioViewModel)
                 .environment(\.timerViewModel, timerViewModel)
+                .environment(\.mazePromptViewModel, mazePromptViewModel)
                 .environmentObject(speechViewModel)
                 .environmentObject(objectDetectionViewModel)
                 .environmentObject(arViewModel)

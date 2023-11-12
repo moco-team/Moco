@@ -17,6 +17,7 @@ enum MazeTutorialPhase {
 struct MazeTutorialView: View {
     @EnvironmentObject var motionViewModel: MotionViewModel
     @EnvironmentObject var orientationInfo: OrientationInfo
+    @Environment(\.mazePromptViewModel) private var mazePromptViewModel
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.timerViewModel) private var timerViewModel
 
@@ -27,8 +28,6 @@ struct MazeTutorialView: View {
     @State private var currentPhase = MazeTutorialPhase.right
     @State private var showTutorialCompletePrompt = false
     @State private var isDone = false
-
-    @Binding var isTutorialDone: Bool
 
     var currentProgress: Int {
         get {
@@ -74,7 +73,7 @@ struct MazeTutorialView: View {
         withAnimation {
             isDone = true
         } completion: {
-            isTutorialDone = true
+            mazePromptViewModel.isTutorialDone = true
         }
     }
 
@@ -193,5 +192,5 @@ struct MazeTutorialView: View {
 }
 
 #Preview {
-    MazeTutorialView(isTutorialDone: .constant(false))
+    MazeTutorialView()
 }

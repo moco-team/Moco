@@ -19,6 +19,7 @@ struct MazePuzzle {
 struct MazeView: View {
     @EnvironmentObject var motionViewModel: MotionViewModel
     @EnvironmentObject var orientationInfo: OrientationInfo
+    @Environment(\.mazePromptViewModel) private var mazePromptViewModel
     @Environment(\.timerViewModel) private var timerViewModel
 
     var answersAsset = ["Maze/answer_one", "Maze/answer_two"] {
@@ -47,10 +48,6 @@ struct MazeView: View {
 
         return scene
     }()
-
-    @Binding var correctAnswer: Bool
-    @Binding var wrongAnswer: Bool
-    @Binding var isTutorialDone: Bool
 
     var onComplete: () -> Void = {}
 
@@ -114,7 +111,7 @@ struct MazeView: View {
             scene.wrongAnswerAsset = answersAsset
             timerViewModel.stopTimer("mazeTimer\(correctAnswerAsset)")
             timerViewModel.setTimer(key: "mazeTimer\(correctAnswerAsset)", withInterval: 0.02) {
-                guard isTutorialDone else { return }
+                guard mazePromptViewModel.isTutorialDone else { return }
                 motionViewModel.updateMotion()
                 if orientationInfo.orientation == .landscapeLeft {
                     if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
@@ -153,19 +150,19 @@ struct MazeView: View {
         }
         .onChange(of: scene.correctAnswer) {
             if let sceneCorrectAnswer = scene.correctAnswer {
-                correctAnswer = sceneCorrectAnswer
+                mazePromptViewModel.isCorrectAnswer = sceneCorrectAnswer
             }
         }
         .onChange(of: scene.wrongAnswer) {
             if let sceneWrongAnswer = scene.wrongAnswer {
-                wrongAnswer = sceneWrongAnswer
+                mazePromptViewModel.isWrongAnswer = sceneWrongAnswer
             }
         }
     }
 }
 
 #Preview {
-    MazeView(correctAnswer: .constant(true), wrongAnswer: .constant(false), isTutorialDone: .constant(true)) {
+    MazeView() {
         print("Done")
     }
 }
