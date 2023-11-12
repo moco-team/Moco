@@ -47,7 +47,7 @@ import SwiftUI
         }
         get {
             Double(max(mazePromptModel.currentMazeIndex - mazePromptModel.wrongCount, 0)) /
-            Double(mazePromptModel.mazeCount == 0 ? 1 : mazePromptModel.mazeCount)
+                Double(mazePromptModel.mazeCount == 0 ? 1 : mazePromptModel.mazeCount)
         }
     }
 

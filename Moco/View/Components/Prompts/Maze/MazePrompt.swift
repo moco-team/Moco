@@ -85,8 +85,7 @@ struct MazePrompt: View {
             mazePromptViewModel.reset()
             (mazePromptViewModel.progress,
              mazePromptViewModel.currentMazeIndex,
-             mazePromptViewModel.mazeCount
-            ) = episodeViewModel.getMazeProgress(promptId: promptId)
+             mazePromptViewModel.mazeCount) = episodeViewModel.getMazeProgress(promptId: promptId)
             playInitialNarration()
         }
         .popUp(isActive: $isCorrectAnswerPopup, title: "Selamat kamu berhasil", withConfetti: true) {
@@ -111,8 +110,7 @@ struct MazePromptOld: View {
     var body: some View {
         ZStack {
             MazeView(answersAsset: answersAsset,
-                     correctAnswerAsset: correctAnswerAsset
-            ) {
+                     correctAnswerAsset: correctAnswerAsset) {
                 action()
             }
 

@@ -162,7 +162,7 @@ struct MazeView: View {
 }
 
 #Preview {
-    MazeView() {
+    MazeView {
         print("Done")
     }
 }
