@@ -57,6 +57,20 @@ struct HomeView: View {
                     Button("Test 3d") {
                         self.isShowing3d = true
                     }
+                    NavigationLink(
+                        destination: ARTutorialView() {
+                            navigate.pop()
+                        }
+                    ) {
+                        Text("AR Tutorial")
+                    }
+                    NavigationLink(
+                        destination: ARStory() {
+                            navigate.pop()
+                        }
+                    ) {
+                        Text("AR Story")
+                    }
                     Spacer()
                 }.padding(.leading, 60).padding(.bottom, 30)
 

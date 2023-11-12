@@ -16,21 +16,23 @@ struct ClueData {
 struct ARStory: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.navigate) private var navigate
-
-    @State private var startVisibility: Bool = true
-    @State private var promptIndex = 0 {
-        didSet {
-            startVisibility = true
-        }
-    }
+    @EnvironmentObject var arViewModel: ARViewModel
+    
+    @State private var startVisibility: Bool = false
+    @State private var promptIndex = 0
 
     @State private var isGameStarted: Bool = false
+    @State private var isTutorialFinished: Bool = false {
+        didSet {
+            arViewModel.isTutorialDone = self.isTutorialFinished
+        }
+    }
 
     var doneHandler: (() -> Void)?
 
     let clueDataArray: [ClueData] = [
         ClueData(
-            clue: "Wow! kita sudah berada di pulau Arjuna. Sekarang, kita perlu mencari benda yang dapat menjadi clue untuk menemukan Maudi!",
+            clue: "Wow! kita sudah berada di pulau Arjuna. Sekarang, cari madu agar bisa menemukan Maudi!",
             objectName: "honey_jar",
             meshes: ["honey_jar"]
         ),
@@ -48,7 +50,7 @@ struct ARStory: View {
 
     var body: some View {
         ZStack {
-            if isGameStarted {
+            if isTutorialFinished {
                 ARCameraView(
                     clue: clueDataArray[promptIndex],
                     lastPrompt: promptIndex == (clueDataArray.count - 1),
@@ -57,23 +59,33 @@ struct ARStory: View {
 
                         print("Ditemukan!")
                         print("promptIndex")
-                        print(promptIndex) // 2
-                        if promptIndex < clueDataArray.count {
+                        print(promptIndex) // 2 -> selesai
+                        if promptIndex < (clueDataArray.count - 1) {
                             promptIndex += 1
-                            startVisibility = true
-                        }
-                        if promptIndex >= clueDataArray.count {
+                        } else {
                             doneHandler?()
                         }
                     }
-                ) {
-                    doneHandler?()
-                }
+                )
                 .id(promptIndex)
                 .ignoresSafeArea()
+                
+                if (!arViewModel.hasPlacedObject) {
+                    Image("AR/Tutorial/augmented-reality")
+                        .frame(height: Screen.width * 0.3)
+                }
+            } else {
+                ARTutorialView() {
+                    print("Tutorial AR selesai")
+                    isTutorialFinished = true
+                    arViewModel.pause()
+                    arViewModel.resetSession()
+                }
+                .ignoresSafeArea()
             }
+            
             if promptIndex < clueDataArray.count {
-                if startVisibility {
+                if startVisibility { // Never be true
                     ARClueView(clue: clueDataArray[promptIndex].clue, onStartGame: {
                         isGameStarted = true
                         startVisibility = false
@@ -88,6 +100,9 @@ struct ARStory: View {
                     }
                 }
             }
+        }
+        .task {
+            isTutorialFinished = arViewModel.isTutorialDone
         }
     }
 }
