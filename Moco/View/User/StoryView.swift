@@ -318,7 +318,7 @@ struct StoryView: View {
                             nextPage()
                         }
                     }
-                }
+                }.opacity(activePrompt == nil ? 1 : 0.5)
                 VStack {
                     Spacer()
                     if showPromptButton && activePrompt == nil {

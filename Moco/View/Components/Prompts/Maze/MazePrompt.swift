@@ -65,7 +65,6 @@ struct MazePrompt: View {
         .ignoresSafeArea()
         .frame(width: Screen.width, height: Screen.height)
         .onChange(of: mazePromptViewModel.isTutorialDone) {
-            print("Kuntul")
             playInitialNarration()
         }
         .onAppear {

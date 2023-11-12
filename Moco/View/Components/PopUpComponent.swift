@@ -65,6 +65,7 @@ struct PopUpComponent: ViewModifier {
 }
 
 struct PopUpComponentView: View {
+    @Environment(\.audioViewModel) private var audioViewModel
     @State private var offset: CGFloat = 1000
     @Binding var isActive: Bool
     @State private var confettiCounter = 0
@@ -183,6 +184,7 @@ struct PopUpComponentView: View {
                 }
                 if withConfetti {
                     confettiCounter += 1
+                    audioViewModel.playSound(soundFileName: "congratulation-popup")
                 }
             }
         }

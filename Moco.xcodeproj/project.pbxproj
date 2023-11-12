@@ -170,6 +170,7 @@
 		93836C852B008CA4001A3FEE /* 012 (maze) - coba miringkan layar ke bawah.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9012AF2D59600A0885D /* 012 (maze) - coba miringkan layar ke bawah.m4a */; };
 		93836C862B008CA8001A3FEE /* 013 (maze) - bantu arahkan Moco ke jawaban yang benar ya.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9022AF2D59700A0885D /* 013 (maze) - bantu arahkan Moco ke jawaban yang benar ya.m4a */; };
 		93836C872B008CAE001A3FEE /* 014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9062AF2D5A400A0885D /* 014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a */; };
+		93836C892B0096AB001A3FEE /* congratulation-popup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93836C882B0096AB001A3FEE /* congratulation-popup.mp3 */; };
 		938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55352AE181C600BC233D /* RootViewModifier.swift */; };
 		938C55382AE183AA00BC233D /* FontViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55372AE183AA00BC233D /* FontViewModifier.swift */; };
 		938C553A2AE1B3E800BC233D /* ObjectDetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */; };
@@ -411,6 +412,7 @@
 		93836C772AFF6E08001A3FEE /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		93836C7D2B0003DD001A3FEE /* gyro.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gyro.gif; sourceTree = "<group>"; };
 		93836C7F2B008034001A3FEE /* button_tap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = button_tap.mp3; sourceTree = "<group>"; };
+		93836C882B0096AB001A3FEE /* congratulation-popup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "congratulation-popup.mp3"; sourceTree = "<group>"; };
 		938C55352AE181C600BC233D /* RootViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModifier.swift; sourceTree = "<group>"; };
 		938C55372AE183AA00BC233D /* FontViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewModifier.swift; sourceTree = "<group>"; };
 		938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewModel.swift; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 		0522B02D2AFCC33900D51EF8 /* SoundFx */ = {
 			isa = PBXGroup;
 			children = (
+				93836C882B0096AB001A3FEE /* congratulation-popup.mp3 */,
 				93836C7F2B008034001A3FEE /* button_tap.mp3 */,
 				0522B02E2AFCC36900D51EF8 /* card_flip.mp3 */,
 			);
@@ -1484,6 +1487,7 @@
 				058DC8F12AF2BE4E00A0885D /* key.usdz in Resources */,
 				931722212AE5508300346382 /* frog_thankyou.m4a in Resources */,
 				931722222AE5508300346382 /* Page9-monolog1.m4a in Resources */,
+				93836C892B0096AB001A3FEE /* congratulation-popup.mp3 in Resources */,
 				058DC8EE2AF2BC6E00A0885D /* honey.usdz in Resources */,
 				931722232AE5508300346382 /* Page10-monolog1.m4a in Resources */,
 				931722242AE5508300346382 /* Page10-monolog2.m4a in Resources */,
