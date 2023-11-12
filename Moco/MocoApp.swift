@@ -18,7 +18,7 @@ struct MocoApp: App {
 
     // MARK: - States
 
-    @State private var audioViewModel = AudioViewModel()
+    @State private var audioViewModel = AudioViewModel.shared
     @State private var timerViewModel = TimerViewModel()
     @State private var storyThemeViewModel = StoryThemeViewModel.shared
     @State private var episodeViewModel = EpisodeViewModel.shared

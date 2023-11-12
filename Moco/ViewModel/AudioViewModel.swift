@@ -8,6 +8,8 @@
 import AVFoundation
 
 @Observable class AudioViewModel: NSObject, AVAudioPlayerDelegate {
+    static var shared = AudioViewModel()
+
     private var audioModel = AudioModel()
 
     /// Plays a sound with arbitrary filename and type, specify numberOfLoops = -1 to play indefinitely

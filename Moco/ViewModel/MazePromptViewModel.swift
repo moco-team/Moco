@@ -9,6 +9,7 @@ import SwiftUI
 
 @Observable class MazePromptViewModel {
     private var mazePromptModel = MazePromptModel()
+    private var audioViewModel = AudioViewModel.shared
 
     var isTutorialDone: Bool {
         get {
@@ -62,6 +63,13 @@ import SwiftUI
     var currentMazeIndex: Int {
         set {
             mazePromptModel.currentMazeIndex = newValue
+            if mazeCount > -1 && currentMazeIndex >= mazeCount {
+                audioViewModel.playSound(
+                    soundFileName: "008 (maze) - wah, kamu baik sekali yaa.. mau membantu Moco menemukan Teka dan Teki",
+                    type: .m4a,
+                    category: .narration
+                )
+            }
         }
         get {
             mazePromptModel.currentMazeIndex
