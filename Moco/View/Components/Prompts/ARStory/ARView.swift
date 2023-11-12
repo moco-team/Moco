@@ -10,8 +10,9 @@ import SwiftUI
 struct ARCameraView: View {
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var arViewModel: ARViewModel
+    @Environment(\.audioViewModel) private var audioViewModel
 
-    let clue: ClueData
+    let clue: PromptModel
     let lastPrompt: Bool
     var onFoundObject: () -> Void = {}
     var onEnd: () -> Void = {}
@@ -26,20 +27,21 @@ struct ARCameraView: View {
 
     var body: some View {
         ZStack {
-            ARViewContainer(isShowHint: $isShowHint, meshes: clue.meshes ?? nil).edgesIgnoringSafeArea(.all)
+            ARViewContainer(isShowHint: $isShowHint, meshes: clue.answerAssets ?? nil).edgesIgnoringSafeArea(.all)
 
             // Overlay above the camera
             VStack {
                 ZStack {
                     Image("Components/modal-base").resizable().scaledToFill()
                         .padding(80)
-                        .position(x: Screen.width / 2, y: 10.0)
+                        .position(x: Screen.width / 2, y: 70.0)
 
-                    Text(clue.clue)
+                    Text(clue.question!)
                         .customFont(.didactGothic, size: 30)
                         .foregroundColor(.blue2Txt)
                         .glowBorder(color: .white, lineWidth: 5)
                         .padding(.horizontal, 120)
+                        .padding(.top, 120)
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                 }
@@ -48,7 +50,7 @@ struct ARCameraView: View {
 
                 HStack {
                     Spacer()
-                    if clue.meshes != nil && arViewModel.hasPlacedObject {
+                    if clue.answerAssets != nil && arViewModel.hasPlacedObject {
                         SfxButton {
                             print("Hint!")
                             isShowHint = true
@@ -96,7 +98,7 @@ struct ARCameraView: View {
             .animation(Animation.default.speed(1),
                        value: arViewModel.assetsLoaded)
         }
-        .popUp(isActive: $isPopUpActive, title: "Selamat! Kamu berhasil menemukan benda nya! Mari kita cari benda selanjutnya!") {
+        .popUp(isActive: $isPopUpActive, title: "Selamat! Kamu berhasil menemukan madunya! Mari kita cari benda selanjutnya!") {
             print("next")
             print(lastPrompt)
             onFoundObject()
@@ -104,6 +106,11 @@ struct ARCameraView: View {
         }
         .popUp(isActive: $isFinalPopUpActive, title: "Selamat! Kamu berhasil menemukan semua benda nya!") {
             isFinalPopUpActive = false
+            audioViewModel.playSound(
+                soundFileName: "014 - Selamat! Kamu berhasil menyelesaikan petualangan ini",
+                type: "m4a",
+                category: .narration
+            )
             isLastNarrativePopupActive = true
         }
         .popUp(isActive: $isLastNarrativePopupActive, title: "Akhirnya, Moco dan teman-teman berhasil pulang ke Kota Mocokerto setelah petualangan yang panjang. Terima kasih untuk hari ini!") {
@@ -138,12 +145,13 @@ struct ARCameraView: View {
 
             if lastPrompt {
                 isFinalPopUpActive = true
+                audioViewModel.playSound(soundFileName: "success", category: .soundEffect)
             } else {
                 isPopUpActive = true
             }
         }
         .task {
-            arViewModel.setSearchedObject(objectName: clue.objectName)
+            arViewModel.setSearchedObject(objectName: clue.correctAnswer)
             arViewModel.isFinalClue = lastPrompt
         }
         .onAppear {
@@ -157,10 +165,13 @@ struct ARCameraView: View {
 
 #Preview {
     ARCameraView(
-        clue: ClueData(
-            clue: "Carilah benda yang dapat menjadi clue agar bisa menemukan Bebe!",
-            objectName: "button",
-            meshes: ["Mesh_button_cylinder", "Mesh_button_cube"]
+        clue: PromptModel(
+            correctAnswer: "honey_jar", 
+            startTime: 3,
+            promptType: PromptType.ar,
+            hints: nil,
+            question: "Wow! kita sudah berada di pulau Arjuna. Sekarang, cari madu agar bisa menemukan Maudi!",
+            answerAssets: ["honey_jar"]
         ),
         lastPrompt: false,
         onFoundObject: {}

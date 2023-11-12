@@ -23,6 +23,7 @@ struct StoryView: View {
     @Environment(\.navigate) private var navigate
     @EnvironmentObject var speechViewModel: SpeechRecognizerViewModel
     @EnvironmentObject var objectDetectionViewModel: ObjectDetectionViewModel
+    @EnvironmentObject var arViewModel: ARViewModel
 
     // MARK: - Static Variables
 
@@ -230,8 +231,18 @@ struct StoryView: View {
                                             }.id(mazePrompt.id)
                                         }
                                     case .ar:
-                                        ARStory {
-                                            nextPage()
+                                        if let ARPrompt = promptViewModel.prompt {
+                                            ARStory(
+                                                prompt: ARPrompt,
+                                                lastPrompt: index == (stories.count - 1)
+                                            ) {
+                                                nextPage()
+                                            }
+                                            .id(ARPrompt.id)
+                                            .onAppear {
+                                                print("nih AR")
+                                                print(promptViewModel.prompt?.correctAnswer)
+                                            }
                                         }
                                     case .puzzle:
                                         FindTheObjectView(
@@ -389,6 +400,7 @@ struct StoryView: View {
         .task {
             onPageChange()
             mazePromptViewModel.reset(true)
+//            arViewModel.resetStates()
         }
         .task(id: scrollPosition) {
             onPageChange()

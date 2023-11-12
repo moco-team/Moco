@@ -26,6 +26,7 @@
 		0571CB462AE19D6000CE0CC7 /* maudi.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB402AE19D6000CE0CC7 /* maudi.json */; };
 		0571CB482AE19D6000CE0CC7 /* moco-1-5.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB422AE19D6000CE0CC7 /* moco-1-5.json */; };
 		0571CB492AE19D6000CE0CC7 /* teka_dan_teki.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB432AE19D6000CE0CC7 /* teka_dan_teki.json */; };
+		058559332B013EBA00275A7B /* find-ar-plane.gif in Resources */ = {isa = PBXBuildFile; fileRef = 058559322B013EBA00275A7B /* find-ar-plane.gif */; };
 		0589EA582AFF3FCB00C87BF7 /* tes4-2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0589EA572AFF3FCB00C87BF7 /* tes4-2.usdz */; };
 		0589EA5C2AFF50E000C87BF7 /* tes1-2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0589EA5B2AFF50E000C87BF7 /* tes1-2.usdz */; };
 		0589EA622AFF5CB100C87BF7 /* tes4-3.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0589EA612AFF5CB100C87BF7 /* tes4-3.usdz */; };
@@ -283,6 +284,7 @@
 		0571CB402AE19D6000CE0CC7 /* maudi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = maudi.json; sourceTree = "<group>"; };
 		0571CB422AE19D6000CE0CC7 /* moco-1-5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-5.json"; sourceTree = "<group>"; };
 		0571CB432AE19D6000CE0CC7 /* teka_dan_teki.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teka_dan_teki.json; sourceTree = "<group>"; };
+		058559322B013EBA00275A7B /* find-ar-plane.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "find-ar-plane.gif"; sourceTree = "<group>"; };
 		0589EA572AFF3FCB00C87BF7 /* tes4-2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "tes4-2.usdz"; sourceTree = "<group>"; };
 		0589EA5B2AFF50E000C87BF7 /* tes1-2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "tes1-2.usdz"; sourceTree = "<group>"; };
 		0589EA612AFF5CB100C87BF7 /* tes4-3.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "tes4-3.usdz"; sourceTree = "<group>"; };
@@ -905,6 +907,7 @@
 				05FF772A2AF0B6C30037453D /* hand.zoom.gif */,
 				05FF772B2AF0B6C30037453D /* ripple.gif */,
 				93836C7D2B0003DD001A3FEE /* gyro.gif */,
+				058559322B013EBA00275A7B /* find-ar-plane.gif */,
 			);
 			path = Ep3;
 			sourceTree = "<group>";
@@ -1514,6 +1517,7 @@
 				05AE93612ADE82410082B21D /* testing-cat.json in Resources */,
 				056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */,
 				0571CB462AE19D6000CE0CC7 /* maudi.json in Resources */,
+				058559332B013EBA00275A7B /* find-ar-plane.gif in Resources */,
 				932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */,
 				05FF77302AF0B6C30037453D /* ripple.gif in Resources */,
 				0518CDD82AE220BA00521EC8 /* moco-1-2.json in Resources */,

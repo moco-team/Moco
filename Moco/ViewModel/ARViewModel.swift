@@ -63,6 +63,13 @@ final class ARViewModel: NSObject, ObservableObject {
         // Remove anchors
         arView?.scene.anchors.removeAll()
     }
+    
+    func resetStates() {
+        assetsLoaded = false
+        hasPlacedObject = false
+        hasFindObject = false
+        isFinalClue = false
+    }
 
     func setSearchedObject(objectName: String) {
         foundObjectName = objectName
@@ -191,6 +198,7 @@ extension ARViewModel: ARSessionDelegate {
             if !hasPlacedObject && !hasFindObject {
 //                _ = self.addCup(anchor: point, at:anchors.last!.transform, in: self.arView!)
                 _ = addCup(anchor: anchor, at: result.worldTransform, in: arView!)
+                print("add cup, change the value of hasPlacedObject")
                 hasPlacedObject = true
             }
 

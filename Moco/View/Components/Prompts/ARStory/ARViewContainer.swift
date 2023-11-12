@@ -20,7 +20,7 @@ struct ARViewContainer: UIViewRepresentable {
     let meshes: [String]?
 
     func makeUIView(context: Context) -> ARView {
-        let arView = ARView(frame: .zero)
+        let arView = ARView(frame: .init(x: 1, y: 1, width: 1, height: 1), cameraMode: .ar, automaticallyConfigureSession: false)
         arView.environment.lighting.intensityExponent = 1.5
 
         // Configure the session
