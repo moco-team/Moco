@@ -50,6 +50,7 @@ struct MazeView: View {
 
     @Binding var correctAnswer: Bool
     @Binding var wrongAnswer: Bool
+    @Binding var isTutorialDone: Bool
 
     var onComplete: () -> Void = {}
 
@@ -113,7 +114,7 @@ struct MazeView: View {
             scene.wrongAnswerAsset = answersAsset
             timerViewModel.stopTimer("mazeTimer\(correctAnswerAsset)")
             timerViewModel.setTimer(key: "mazeTimer\(correctAnswerAsset)", withInterval: 0.02) {
-                print("wasu")
+                guard isTutorialDone else { return }
                 motionViewModel.updateMotion()
                 if orientationInfo.orientation == .landscapeLeft {
                     if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
@@ -164,7 +165,7 @@ struct MazeView: View {
 }
 
 #Preview {
-    MazeView(correctAnswer: .constant(true), wrongAnswer: .constant(false)) {
+    MazeView(correctAnswer: .constant(true), wrongAnswer: .constant(false), isTutorialDone: .constant(true)) {
         print("Done")
     }
 }

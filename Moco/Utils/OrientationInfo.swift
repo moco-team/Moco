@@ -23,10 +23,16 @@ class OrientationInfo: ObservableObject {
         orientation = .landscapeLeft
 
         // fairly arbitrary starting value for 'flat' orientations
-        if UIDevice.current.orientation == .landscapeLeft {
+        // !!!: - For some reason its flipped
+        if Screen.orientation == .landscapeRight {
             orientation = .landscapeLeft
-        } else if UIDevice.current.orientation == .landscapeRight {
+        } else if Screen.orientation == .landscapeLeft {
             orientation = .landscapeRight
+        }
+
+        if let appDelegateOrientationLock = AppDelegate.orientationLock {
+            orientation = (appDelegateOrientationLock == .landscapeLeft) ? .landscapeRight : .landscapeLeft
+            return
         }
 
         // unowned self because we unregister before self becomes invalid
