@@ -15,7 +15,8 @@ import AVFoundation
     /// Plays a sound with arbitrary filename and type, specify numberOfLoops = -1 to play indefinitely
     func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0, volume: Float = 1, category: AudioCategory? = nil) {
         guard !Process.isPreview else { return }
-        audioModel.playSound(soundFileName: soundFileName, type: type, numberOfLoops: numberOfLoops, volume: volume, category: category)
+        let player = audioModel.playSound(soundFileName: soundFileName, type: type, numberOfLoops: numberOfLoops, volume: volume, category: category)
+        player.delegate = self
     }
 
     func playSound(soundFileName: String) {

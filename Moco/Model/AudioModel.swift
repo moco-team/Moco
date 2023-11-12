@@ -23,10 +23,18 @@ protocol AVPlayerWithVolume {
     // Define anything in common between objects
     // Example:
     var volume: Float { get set }
+    func setVolume(_ volume: Float, fadeDuration duration: TimeInterval)
+    var isPlaying: Bool { get } /* is it playing or not? */
 }
 
 extension AVAudioPlayer: AVPlayerWithVolume {}
-extension AVQueuePlayer: AVPlayerWithVolume {}
+extension AVQueuePlayer: AVPlayerWithVolume {
+    func setVolume(_ volume: Float, fadeDuration _: TimeInterval) {
+        self.volume = volume
+    }
+
+    var isPlaying: Bool { true }
+}
 
 struct PlayersByCategory: Equatable {
     var narration: [any AVPlayerWithVolume] = []
@@ -42,6 +50,7 @@ struct PlayersByCategory: Equatable {
 
 struct AudioModel: Identifiable, Equatable {
     var players: [URL: AVAudioPlayer] = [:]
+    var playerCategories: [URL: AudioCategory] = [:]
     var queuePlayers: [String: AVQueuePlayer] = [:]
     var playerVolumes: [URL: Float] = [:]
     var queuePlayerVolumes: [String: Float] = [:]
@@ -65,13 +74,13 @@ struct AudioModel: Identifiable, Equatable {
     }
 
     mutating func unmute() {
-        setVolume(nil)
+        setVolume(nil, fadeDuration: 1)
         setVolumeQueue(nil)
     }
 
-    mutating func setVolume(_ volume: Float?, writePlayerVolumes: Bool = true) {
+    mutating func setVolume(_ volume: Float?, writePlayerVolumes: Bool = true, fadeDuration: TimeInterval = 0) {
         players.forEach { _, value in
-            setVolume(volume, player: value, writePlayerVolumes: writePlayerVolumes)
+            setVolume(volume, player: value, writePlayerVolumes: writePlayerVolumes, fadeDuration: fadeDuration)
         }
     }
 
@@ -88,14 +97,19 @@ struct AudioModel: Identifiable, Equatable {
         }
     }
 
-    mutating func setVolume(_ volume: Float?, player: AVAudioPlayer, writePlayerVolumes: Bool = true) {
+    mutating func setVolume(
+        _ volume: Float?,
+        player: AVAudioPlayer,
+        writePlayerVolumes: Bool = true,
+        fadeDuration: TimeInterval = 0
+    ) {
         if let playerURL = player.url {
             if volume != nil && writePlayerVolumes {
                 playerVolumes[playerURL] = volume
             }
-            player.setVolume(volume ?? (playerVolumes[playerURL] ?? 0), fadeDuration: 0)
+            player.setVolume(volume ?? (playerVolumes[playerURL] ?? 0), fadeDuration: fadeDuration)
         } else {
-            player.setVolume(volume ?? 1, fadeDuration: 0)
+            player.setVolume(volume ?? 1, fadeDuration: fadeDuration)
         }
     }
 
@@ -135,7 +149,7 @@ struct AudioModel: Identifiable, Equatable {
         return parsedVolume
     }
 
-    mutating func setPlayerByCategory(_ player: AVPlayerWithVolume, category: AudioCategory?) {
+    mutating func setPlayerByCategory(_ player: AVPlayerWithVolume, category: AudioCategory?, url: URL? = nil) {
         switch category {
         case .backsound:
             playersByCategory.backsound.append(player)
@@ -145,6 +159,9 @@ struct AudioModel: Identifiable, Equatable {
             playersByCategory.soundEffect.append(player)
         case .none:
             break
+        }
+        if let url = url {
+            playerCategories[url] = category
         }
     }
 
@@ -165,10 +182,16 @@ struct AudioModel: Identifiable, Equatable {
         }
     }
 
-    mutating func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0, volume: Float = 1, category: AudioCategory? = nil) {
+    mutating func playSound(
+        soundFileName: String,
+        type: String = "mp3",
+        numberOfLoops: Int = 0,
+        volume: Float = 1,
+        category: AudioCategory? = nil
+    ) -> AVAudioPlayer {
         guard let bundle = Bundle.main.path(forResource: soundFileName, ofType: type) else {
             print("SOUND NOT FOUND, check the bundle resources")
-            return
+            return AVAudioPlayer()
         }
         let soundFileNameURL = URL(fileURLWithPath: bundle)
 
@@ -180,7 +203,17 @@ struct AudioModel: Identifiable, Equatable {
                 player.prepareToPlay()
                 player.play()
             }
-            setPlayerByCategory(player, category: category)
+            setPlayerByCategory(player, category: category, url: player.url)
+            if category == .narration {
+                for player in playersByCategory.backsound {
+                    player.setVolume(0, fadeDuration: 0.5)
+                }
+            } else if category == .backsound {
+                if playersByCategory.narration.contains(where: { $0.isPlaying }) {
+                    player.setVolume(0, fadeDuration: 0.5)
+                }
+            }
+            return player
         } else { // player has not been found, create a new player with the URL if possible
             do {
                 let player = try AVAudioPlayer(contentsOf: soundFileNameURL)
@@ -190,11 +223,22 @@ struct AudioModel: Identifiable, Equatable {
                 setVolume(parsedVolume, player: player)
                 player.prepareToPlay()
                 player.play()
-                setPlayerByCategory(player, category: category)
+                setPlayerByCategory(player, category: category, url: player.url)
+                if category == .narration {
+                    for player in playersByCategory.backsound {
+                        player.setVolume(0, fadeDuration: 0.5)
+                    }
+                } else if category == .backsound {
+                    if playersByCategory.narration.contains(where: { $0.isPlaying }) {
+                        player.setVolume(0, fadeDuration: 0.5)
+                    }
+                }
+                return player
             } catch {
                 print(error.localizedDescription)
             }
         }
+        return AVAudioPlayer()
     }
 
     /// Play sounds in queue
@@ -308,6 +352,7 @@ struct AudioModel: Identifiable, Equatable {
         playerVolumes = [:]
         queuePlayerVolumes = [:]
         duplicatePlayers = []
+        playerCategories = [:]
         playersByCategory = PlayersByCategory()
     }
 
@@ -336,17 +381,22 @@ struct AudioModel: Identifiable, Equatable {
 
     mutating func playSounds(soundFileNames: [String]) {
         soundFileNames.forEach { name in
-            playSound(soundFileName: name)
+            _ = playSound(soundFileName: name)
         }
     }
 
     mutating func playSounds(soundFileNames: String...) {
         soundFileNames.forEach { name in
-            playSound(soundFileName: name)
+            _ = playSound(soundFileName: name)
         }
     }
 
     mutating func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully _: Bool) {
+        if let url = player.url {
+            if let category = playerCategories[url], category == .narration {
+                unmute()
+            }
+        }
         if let index = duplicatePlayers.firstIndex(of: player) {
             duplicatePlayers.remove(at: index)
         }

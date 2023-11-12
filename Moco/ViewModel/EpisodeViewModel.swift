@@ -75,8 +75,6 @@ import SwiftData
 
     func getMazeProgress(promptId: String) -> (Double, Int, Int) {
         let mazePrompts = getPromptByType(promptType: .maze)
-        print("kntl", mazePrompts.map { $0.prompt?.uid })
-        print(promptId)
         guard mazePrompts.count > 0 else { return (0, 0, 0) }
         let nthPrompt = Double((mazePrompts.firstIndex {
             $0.prompt?.uid == promptId
