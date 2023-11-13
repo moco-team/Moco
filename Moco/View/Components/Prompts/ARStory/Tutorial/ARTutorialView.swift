@@ -40,10 +40,13 @@ struct ARTutorialView: View {
 
     var doneHandler: (() -> Void)?
 
-    let clue = ClueData(
-        clue: "Wow! kita sudah berada di pulau Arjuna. Sekarang, kita perlu mencari benda yang dapat menjadi clue untuk menemukan Maudi!",
-        objectName: "honey_jar",
-        meshes: ["honey_jar"]
+    let clue = PromptModel(
+        correctAnswer: "honey_jar", // object to be found
+        startTime: 3,
+        promptType: PromptType.ar,
+        hints: nil,
+        question: "Wow! kita sudah berada di pulau Arjuna. Sekarang, cari madu agar bisa menemukan Maudi!",
+        answerAssets: ["honey_jar"] // meshes
     )
 
     var body: some View {
@@ -77,14 +80,30 @@ struct ARTutorialView: View {
 //                        .frame(height: Screen.height * 0.3)
 //                }
 //            } else
-                ARViewContainer(isShowHint: $isShowHint, meshes: clue.meshes ?? nil)
+                ARViewContainer(isShowHint: $isShowHint, meshes: clue.answerAssets ?? nil)
                     .edgesIgnoringSafeArea(.all)
 
                 // AR Tutorial illustration
                 if isLottieVisible && !isARPlaced {
-                    VStack {
-                        Image("AR/Tutorial/augmented-reality")
-                            .frame(height: Screen.height * 0.1)
+                    ZStack {
+                        Color.black.opacity(0.2)
+                        Image("AR/Tutorial/plane")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: Screen.width * 0.3, height: Screen.height * 0.3)
+                        
+                        VStack {
+                            GIFView(type: .name("find-ar-plane"))
+                                .frame(width: 200, height: 200)
+                                .padding(.horizontal)
+                                .padding(.top, -75)
+                                .frame(width: 280, alignment: .center)
+                            
+                            Text("Cari area datar")
+                                .customFont(.didactGothic, size: 30)
+                                .foregroundColor(.white)
+                                .padding()
+                        }
                     }
                 }
             
@@ -123,7 +142,7 @@ struct ARTutorialView: View {
                category: .backsound
            )
             
-            arViewModel.setSearchedObject(objectName: clue.objectName)
+            arViewModel.setSearchedObject(objectName: clue.correctAnswer)
             arViewModel.isFinalClue = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation {
@@ -151,7 +170,7 @@ struct ARTutorialView: View {
             }
         }
         .onDisappear {
-            print("tutorial view menghilang")
+            print("AR tutorial view menghilang")
         }
         .onChange(of: scenePhase, initial: true) { _, newPhase in
             switch newPhase {

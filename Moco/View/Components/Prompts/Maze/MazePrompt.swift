@@ -63,6 +63,8 @@ struct MazePrompt: View {
             Image("Maze/bg-texture").resizable().scaledToFill().overlay {
                 Color.yellow.opacity(0.3)
             }
+            .ignoresSafeArea()
+            .frame(width: Screen.width, height: Screen.height)
         }
         .ignoresSafeArea()
         .frame(width: Screen.width, height: Screen.height)

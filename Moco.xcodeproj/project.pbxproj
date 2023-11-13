@@ -26,13 +26,13 @@
 		0571CB462AE19D6000CE0CC7 /* maudi.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB402AE19D6000CE0CC7 /* maudi.json */; };
 		0571CB482AE19D6000CE0CC7 /* moco-1-5.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB422AE19D6000CE0CC7 /* moco-1-5.json */; };
 		0571CB492AE19D6000CE0CC7 /* teka_dan_teki.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB432AE19D6000CE0CC7 /* teka_dan_teki.json */; };
+		058559332B013EBA00275A7B /* find-ar-plane.gif in Resources */ = {isa = PBXBuildFile; fileRef = 058559322B013EBA00275A7B /* find-ar-plane.gif */; };
+		0585593B2B01CE4900275A7B /* Floating_Lighthouse.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0585593A2B01CE4900275A7B /* Floating_Lighthouse.usdz */; };
 		0589EA582AFF3FCB00C87BF7 /* tes4-2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0589EA572AFF3FCB00C87BF7 /* tes4-2.usdz */; };
 		0589EA5C2AFF50E000C87BF7 /* tes1-2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0589EA5B2AFF50E000C87BF7 /* tes1-2.usdz */; };
-		0589EA622AFF5CB100C87BF7 /* tes4-3.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0589EA612AFF5CB100C87BF7 /* tes4-3.usdz */; };
 		058DC8EE2AF2BC6E00A0885D /* honey.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8EC2AF2BC6E00A0885D /* honey.usdz */; };
 		058DC8EF2AF2BC6E00A0885D /* airplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8ED2AF2BC6E00A0885D /* airplane.usdz */; };
 		058DC8F12AF2BE4E00A0885D /* key.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F02AF2BE4E00A0885D /* key.usdz */; };
-		058DC8F32AF2C2E700A0885D /* honey-new.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F22AF2C2E700A0885D /* honey-new.usdz */; };
 		058DC8F52AF2CFF100A0885D /* TextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058DC8F42AF2CFF100A0885D /* TextViewModifier.swift */; };
 		058DC9082AF2EC5100A0885D /* s1-ep3-backsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9072AF2EC5100A0885D /* s1-ep3-backsound.mp3 */; };
 		058DC90A2AF2F0A200A0885D /* tap-screen.json in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9092AF2F0A200A0885D /* tap-screen.json */; };
@@ -54,7 +54,6 @@
 		05E17AD52ADE86DE00A34547 /* FindTheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD42ADE86DE00A34547 /* FindTheObject.swift */; };
 		05E17AD72ADEBFC500A34547 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD62ADEBFC500A34547 /* BalloonView.swift */; };
 		05E17AD92ADED16800A34547 /* balon_merah.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05E17AD82ADED16800A34547 /* balon_merah.mp3 */; };
-		05E8B55D2AECE32D00E3612F /* button.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 05E8B55C2AECE32D00E3612F /* button.usdz */; };
 		05E8B56A2AED4AD400E3612F /* ARClueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E8B5692AED4AD400E3612F /* ARClueView.swift */; };
 		05E8B56D2AED57CF00E3612F /* ARStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E8B56C2AED57CF00E3612F /* ARStory.swift */; };
 		05FF77162AF0B0250037453D /* TutorialCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF77152AF0B0250037453D /* TutorialCard.swift */; };
@@ -283,13 +282,13 @@
 		0571CB402AE19D6000CE0CC7 /* maudi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = maudi.json; sourceTree = "<group>"; };
 		0571CB422AE19D6000CE0CC7 /* moco-1-5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-5.json"; sourceTree = "<group>"; };
 		0571CB432AE19D6000CE0CC7 /* teka_dan_teki.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teka_dan_teki.json; sourceTree = "<group>"; };
+		058559322B013EBA00275A7B /* find-ar-plane.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "find-ar-plane.gif"; sourceTree = "<group>"; };
+		0585593A2B01CE4900275A7B /* Floating_Lighthouse.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Floating_Lighthouse.usdz; sourceTree = "<group>"; };
 		0589EA572AFF3FCB00C87BF7 /* tes4-2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "tes4-2.usdz"; sourceTree = "<group>"; };
 		0589EA5B2AFF50E000C87BF7 /* tes1-2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "tes1-2.usdz"; sourceTree = "<group>"; };
-		0589EA612AFF5CB100C87BF7 /* tes4-3.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "tes4-3.usdz"; sourceTree = "<group>"; };
 		058DC8EC2AF2BC6E00A0885D /* honey.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = honey.usdz; sourceTree = "<group>"; };
 		058DC8ED2AF2BC6E00A0885D /* airplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = airplane.usdz; sourceTree = "<group>"; };
 		058DC8F02AF2BE4E00A0885D /* key.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = key.usdz; sourceTree = "<group>"; };
-		058DC8F22AF2C2E700A0885D /* honey-new.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "honey-new.usdz"; sourceTree = "<group>"; };
 		058DC8F42AF2CFF100A0885D /* TextViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewModifier.swift; sourceTree = "<group>"; };
 		058DC8F72AF2D54600A0885D /* 005 - Coba baca lagi cerita ini.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "005 - Coba baca lagi cerita ini.m4a"; sourceTree = "<group>"; };
 		058DC8F82AF2D54700A0885D /* 003 - Tolong Moco memilih jawaban yang benar.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "003 - Tolong Moco memilih jawaban yang benar.m4a"; sourceTree = "<group>"; };
@@ -323,7 +322,6 @@
 		05E17AD42ADE86DE00A34547 /* FindTheObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTheObject.swift; sourceTree = "<group>"; };
 		05E17AD62ADEBFC500A34547 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
 		05E17AD82ADED16800A34547 /* balon_merah.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = balon_merah.mp3; sourceTree = "<group>"; };
-		05E8B55C2AECE32D00E3612F /* button.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = button.usdz; sourceTree = "<group>"; };
 		05E8B5692AED4AD400E3612F /* ARClueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARClueView.swift; sourceTree = "<group>"; };
 		05E8B56C2AED57CF00E3612F /* ARStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARStory.swift; sourceTree = "<group>"; };
 		05FF77152AF0B0250037453D /* TutorialCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialCard.swift; sourceTree = "<group>"; };
@@ -905,6 +903,7 @@
 				05FF772A2AF0B6C30037453D /* hand.zoom.gif */,
 				05FF772B2AF0B6C30037453D /* ripple.gif */,
 				93836C7D2B0003DD001A3FEE /* gyro.gif */,
+				058559322B013EBA00275A7B /* find-ar-plane.gif */,
 			);
 			path = Ep3;
 			sourceTree = "<group>";
@@ -1055,16 +1054,14 @@
 		937AF2962AE8C719008C69BB /* Usdz */ = {
 			isa = PBXGroup;
 			children = (
-				0589EA5B2AFF50E000C87BF7 /* tes1-2.usdz */,
 				058DC8ED2AF2BC6E00A0885D /* airplane.usdz */,
 				058DC8EC2AF2BC6E00A0885D /* honey.usdz */,
 				058DC8F02AF2BE4E00A0885D /* key.usdz */,
-				05E8B55C2AECE32D00E3612F /* button.usdz */,
-				0589EA572AFF3FCB00C87BF7 /* tes4-2.usdz */,
-				0589EA612AFF5CB100C87BF7 /* tes4-3.usdz */,
-				93692EAD2AFDCD9900CD6561 /* tes4.usdz */,
 				937AF2972AE8C72B008C69BB /* environment.usdz */,
-				058DC8F22AF2C2E700A0885D /* honey-new.usdz */,
+				0585593A2B01CE4900275A7B /* Floating_Lighthouse.usdz */,
+				0589EA5B2AFF50E000C87BF7 /* tes1-2.usdz */,
+				93692EAD2AFDCD9900CD6561 /* tes4.usdz */,
+				0589EA572AFF3FCB00C87BF7 /* tes4-2.usdz */,
 			);
 			path = Usdz;
 			sourceTree = "<group>";
@@ -1467,7 +1464,6 @@
 				93836C802B008034001A3FEE /* button_tap.mp3 in Resources */,
 				937AF29F2AE8FDB7008C69BB /* DidactGothic-Regular.ttf in Resources */,
 				931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */,
-				058DC8F32AF2C2E700A0885D /* honey-new.usdz in Resources */,
 				931722182AE5508300346382 /* Page2-monolog1.m4a in Resources */,
 				931722192AE5508300346382 /* Page3-monolog1.m4a in Resources */,
 				0522B02F2AFCC36900D51EF8 /* card_flip.mp3 in Resources */,
@@ -1479,6 +1475,7 @@
 				9317221D2AE5508300346382 /* Page5-monolog1.m4a in Resources */,
 				9317221E2AE5508300346382 /* Page6-monolog1.m4a in Resources */,
 				058DC9082AF2EC5100A0885D /* s1-ep3-backsound.mp3 in Resources */,
+				0585593B2B01CE4900275A7B /* Floating_Lighthouse.usdz in Resources */,
 				93692EAE2AFDCD9900CD6561 /* tes4.usdz in Resources */,
 				9317221F2AE5508300346382 /* prompt_kursi.m4a in Resources */,
 				937AF2982AE8C72B008C69BB /* environment.usdz in Resources */,
@@ -1500,7 +1497,6 @@
 				93C2F8C02AD685A3007D1ABC /* README.md in Resources */,
 				0518CDDA2AE227FA00521EC8 /* kakak_katak.json in Resources */,
 				05FF77322AF0B6C30037453D /* hand.swipe.up.gif in Resources */,
-				05E8B55D2AECE32D00E3612F /* button.usdz in Resources */,
 				93836C7E2B0003DD001A3FEE /* gyro.gif in Resources */,
 				05FF77312AF0B6C30037453D /* hand.swipe.left.gif in Resources */,
 				05D966E12ADEE6CF00997E3A /* success.mp3 in Resources */,
@@ -1510,10 +1506,10 @@
 				058DC8EF2AF2BC6E00A0885D /* airplane.usdz in Resources */,
 				0589EA582AFF3FCB00C87BF7 /* tes4-2.usdz in Resources */,
 				93C2F88D2AD683AE007D1ABC /* Preview Assets.xcassets in Resources */,
-				0589EA622AFF5CB100C87BF7 /* tes4-3.usdz in Resources */,
 				05AE93612ADE82410082B21D /* testing-cat.json in Resources */,
 				056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */,
 				0571CB462AE19D6000CE0CC7 /* maudi.json in Resources */,
+				058559332B013EBA00275A7B /* find-ar-plane.gif in Resources */,
 				932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */,
 				05FF77302AF0B6C30037453D /* ripple.gif in Resources */,
 				0518CDD82AE220BA00521EC8 /* moco-1-2.json in Resources */,
