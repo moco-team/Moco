@@ -8,6 +8,8 @@
 import SwiftUI
 
 @Observable class TimerViewModel {
+    static var shared = TimerViewModel()
+
     private var timerModel = TimerModel()
     var timerSet: [String: Bool] = [:]
 

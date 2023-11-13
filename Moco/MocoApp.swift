@@ -19,7 +19,7 @@ struct MocoApp: App {
     // MARK: - States
 
     @State private var audioViewModel = AudioViewModel.shared
-    @State private var timerViewModel = TimerViewModel()
+    @State private var timerViewModel = TimerViewModel.shared
     @State private var storyThemeViewModel = StoryThemeViewModel.shared
     @State private var episodeViewModel = EpisodeViewModel.shared
     @State private var storyViewModel = StoryViewModel.shared
@@ -27,7 +27,7 @@ struct MocoApp: App {
     @State private var promptViewModel = PromptViewModel.shared
     @State private var hintViewModel = HintViewModel.shared
     @State private var settingsViewModel = SettingsViewModel()
-    @State private var mazePromptViewModel = MazePromptViewModel()
+    @State private var mazePromptViewModel = MazePromptViewModel.shared
 
     // MARK: - State Objects
 
@@ -35,7 +35,7 @@ struct MocoApp: App {
     @StateObject private var objectDetectionViewModel = ObjectDetectionViewModel.shared
     @StateObject private var arViewModel = ARViewModel()
     @StateObject private var motionViewModel = MotionViewModel()
-    @StateObject private var orientationInfo = OrientationInfo()
+    @StateObject private var orientationInfo = OrientationInfo.shared
 
     private static let sharedModelContainer: ModelContainer = ModelGenerator.generator(false)
     static let modelContext = ModelContext(sharedModelContainer)
