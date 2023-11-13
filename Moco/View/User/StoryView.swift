@@ -206,69 +206,6 @@ struct StoryView: View {
                                         .customFont(.didactGothic, size: narrative.fontSize)
                                         .padding(.bottom, 2)
                                 }
-
-                                Group {
-                                    switch activePrompt?.promptType {
-                                    case .multipleChoice:
-                                        if promptViewModel.prompt != nil {
-                                            MultipleChoicePrompt {
-                                                activePrompt = nil
-                                                nextPage()
-                                            } onWrong: {
-                                                showWrongAnsPopup = true
-                                            }
-                                        }
-                                    case .maze:
-                                        if let mazePrompt = promptViewModel.prompt {
-                                            MazePrompt(
-                                                promptText: mazePrompt.question!,
-                                                answersAsset: mazePrompt.answerAssets!,
-                                                answers: mazePrompt.answerChoices!,
-                                                correctAnswerAsset: mazePrompt.correctAnswer,
-                                                promptId: mazePrompt.uid
-                                            ) {
-                                                nextPage()
-                                            }.id(mazePrompt.id)
-                                        }
-                                    case .ar:
-                                        if let ARPrompt = promptViewModel.prompt {
-                                            ARStory(
-                                                prompt: ARPrompt,
-                                                lastPrompt: index == (stories.count - 1)
-                                            ) {
-                                                nextPage()
-                                            }
-                                            .id(ARPrompt.id)
-                                            .onAppear {
-                                                print("nih AR")
-                                                print(promptViewModel.prompt?.correctAnswer)
-                                            }
-                                        }
-                                    case .puzzle:
-                                        FindTheObjectView(
-                                            isPromptDone: .constant(false),
-                                            content: "Once upon a time...",
-                                            hints: hintViewModel.hints,
-                                            correctAnswer: promptViewModel.prompt!.correctAnswer,
-                                            balloons: [
-                                                Balloon(color: "orange", isCorrect: false),
-                                                Balloon(color: "ungu", isCorrect: false),
-                                                Balloon(color: "merah", isCorrect: true),
-                                                Balloon(color: "hijau", isCorrect: false),
-                                                Balloon(color: "biru", isCorrect: false)
-                                            ]
-                                        ) {
-                                            nextPage()
-                                        }
-                                    case .objectDetection:
-                                        DetectionView {
-                                            nextPage()
-                                        }
-                                    default:
-                                        EmptyView()
-                                    }
-                                }
-
                             }.id(index)
                         }
                     }
@@ -276,6 +213,69 @@ struct StoryView: View {
             }.scrollDisabled(true)
                 .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
                 .scrollPosition(id: $scrollPosition)
+            if let stories = episodeViewModel.selectedEpisode?.stories {
+                Group {
+                    switch activePrompt?.promptType {
+                    case .multipleChoice:
+                        if promptViewModel.prompt != nil {
+                            MultipleChoicePrompt {
+                                activePrompt = nil
+                                nextPage()
+                            } onWrong: {
+                                showWrongAnsPopup = true
+                            }
+                        }
+                    case .maze:
+                        if let mazePrompt = promptViewModel.prompt {
+                            MazePrompt(
+                                promptText: mazePrompt.question!,
+                                answersAsset: mazePrompt.answerAssets!,
+                                answers: mazePrompt.answerChoices!,
+                                correctAnswerAsset: mazePrompt.correctAnswer,
+                                promptId: mazePrompt.uid
+                            ) {
+                                nextPage()
+                            }.id(mazePrompt.id)
+                        }
+                    case .ar:
+                        if let ARPrompt = promptViewModel.prompt {
+                            ARStory(
+                                prompt: ARPrompt,
+                                lastPrompt: scrollPosition == (stories.count - 1)
+                            ) {
+                                nextPage()
+                            }
+                            .id(ARPrompt.id)
+                            .onAppear {
+                                print("nih AR")
+                                print(promptViewModel.prompt?.correctAnswer)
+                            }
+                        }
+                    case .puzzle:
+                        FindTheObjectView(
+                            isPromptDone: .constant(false),
+                            content: "Once upon a time...",
+                            hints: hintViewModel.hints,
+                            correctAnswer: promptViewModel.prompt!.correctAnswer,
+                            balloons: [
+                                Balloon(color: "orange", isCorrect: false),
+                                Balloon(color: "ungu", isCorrect: false),
+                                Balloon(color: "merah", isCorrect: true),
+                                Balloon(color: "hijau", isCorrect: false),
+                                Balloon(color: "biru", isCorrect: false)
+                            ]
+                        ) {
+                            nextPage()
+                        }
+                    case .objectDetection:
+                        DetectionView {
+                            nextPage()
+                        }
+                    default:
+                        EmptyView()
+                    }
+                }
+            }
             ZStack {
                 VStack {
                     HStack {

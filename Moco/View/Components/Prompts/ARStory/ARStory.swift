@@ -83,7 +83,7 @@ struct ARStory: View {
     //                            doneHandler?()
     //                        }
                             isStoryDone = true
-//                            doneHandler?()
+                            doneHandler?()
                         }
                     )
                     .id(promptIndex)
@@ -115,7 +115,7 @@ struct ARStory: View {
                         doneHandler?()
                     }
                 }
-            } else {
+            } else if lastPrompt {
                 ARTutorialView() {
                     print("Tutorial AR selesai")
                     isTutorialFinished = true
