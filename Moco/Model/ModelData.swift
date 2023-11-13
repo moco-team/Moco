@@ -350,7 +350,12 @@ struct ModelData {
                                     startTime: 3,
                                     promptType: PromptType.ar,
                                     hints: nil,
-                                    question: "Yeay!! Kita berhasil menemukan Bebe! Betapa melelahkannya perjalanan hari ini. Waktunya kita pulang, yuk mencari alat yang dapat membawa kita kembali ke Kota Mocokerto!",
+                                    question: 
+                                    """
+                                    Yeay!! Kita berhasil menemukan Bebe! Betapa melelahkannya \
+                                    perjalanan hari ini. Waktunya kita pulang, yuk mencari alat yang dapat membawa \
+                                    kita kembali ke Kota Mocokerto!
+                                    """,
                                     answerAssets: ["airplane"]
                                 ),
                                 storyContents: [],

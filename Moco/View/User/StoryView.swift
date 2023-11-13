@@ -384,7 +384,7 @@ struct StoryView: View {
                     case .some(.multipleChoice):
                         break
                     case .some(.ar):
-                        break
+                        settingsViewModel.arTutorialFinished = false
                     }
                 } repeatHandler: {
                     prevPage(0)
