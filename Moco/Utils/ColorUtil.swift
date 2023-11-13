@@ -105,6 +105,7 @@ extension Color {
     ///
     /// `Color.text.primary`
     static let text = TextColor()
+    static let bg = BgColor()
 }
 
 struct TextColor {
@@ -114,4 +115,8 @@ struct TextColor {
     let darkBlue = Color(hex: "#355E85")
     let brown2 = Color(hex: "#B89868")
     let red = Color(hex: "#B86868")
+}
+
+struct BgColor {
+    let blue = Color(hex: "#99C4E5")
 }

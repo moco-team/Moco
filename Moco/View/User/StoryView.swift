@@ -216,6 +216,10 @@ struct StoryView: View {
             if let stories = episodeViewModel.selectedEpisode?.stories {
                 Group {
                     switch activePrompt?.promptType {
+                    case .card:
+                        if promptViewModel.prompt != nil {
+                           CardPrompt()
+                        }
                     case .multipleChoice:
                         if promptViewModel.prompt != nil {
                             MultipleChoicePrompt {
@@ -385,6 +389,8 @@ struct StoryView: View {
                         break
                     case .some(.ar):
                         settingsViewModel.arTutorialFinished = false
+                    case .some(.card):
+                        break
                     }
                 } repeatHandler: {
                     prevPage(0)

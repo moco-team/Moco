@@ -16,6 +16,7 @@ enum PromptType: String, Codable {
     case multipleChoice
     case maze
     case ar
+    case card
 }
 
 @Model

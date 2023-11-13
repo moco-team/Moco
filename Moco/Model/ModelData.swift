@@ -26,7 +26,7 @@ struct ModelData {
                                 prompt: PromptModel(
                                     correctAnswer: "0",
                                     startTime: 2,
-                                    promptType: PromptType.multipleChoice,
+                                    promptType: PromptType.card,
                                     hints: nil,
                                     question: """
                                     Siapakah nama seekor anak sapi yang lucu?
@@ -46,7 +46,8 @@ struct ModelData {
                                         color: "",
                                         fontSize: 0
                                     )
-                                ]
+                                ],
+                                earlyPrompt: true
                             ),
                             // Story page-2
                             StoryModel(
