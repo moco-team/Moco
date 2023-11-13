@@ -218,7 +218,7 @@ struct StoryView: View {
                     switch activePrompt?.promptType {
                     case .card:
                         if promptViewModel.prompt != nil {
-                           CardPrompt()
+                            CardPrompt()
                         }
                     case .multipleChoice:
                         if promptViewModel.prompt != nil {

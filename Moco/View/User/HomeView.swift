@@ -58,7 +58,7 @@ struct HomeView: View {
                         self.isShowing3d = true
                     }
                     NavigationLink(
-                        destination: ARTutorialView() {
+                        destination: ARTutorialView {
                             navigate.pop()
                         }
                     ) {
@@ -121,7 +121,7 @@ struct HomeView: View {
                 homeViewModel.setVolume()
             }
             if isShowing3d {
-                ThreeDRenderer(){
+                ThreeDRenderer {
                     print("test 3d render selesai!")
                 }
             }

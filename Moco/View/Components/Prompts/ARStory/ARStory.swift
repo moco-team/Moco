@@ -11,19 +11,20 @@ struct ARStory: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.navigate) private var navigate
     @EnvironmentObject var arViewModel: ARViewModel
-    
+
     @State private var startVisibility: Bool = false
     @State private var promptIndex = 0
 
     @State private var isGameStarted: Bool = false
     @State private var isTutorialFinished: Bool = false {
         didSet {
-            arViewModel.isTutorialDone = self.isTutorialFinished
+            arViewModel.isTutorialDone = isTutorialFinished
         }
     }
+
     @State private var isStoryDone: Bool = false
-    
-    var prompt: PromptModel = PromptModel(
+
+    var prompt: PromptModel = .init(
         correctAnswer: "honey_jar", // object to be found
         startTime: 0,
         promptType: PromptType.ar,
@@ -45,7 +46,7 @@ struct ARStory: View {
 //            answerAssets: ["honey_jar"] // meshes
 //        ),
 //        PromptModel(
-//            correctAnswer: "key", 
+//            correctAnswer: "key",
 //            startTime: 3,
 //            promptType: PromptType.ar,
 //            hints: nil,
@@ -53,7 +54,7 @@ struct ARStory: View {
 //            answerAssets: ["key"]
 //        ),
 //        PromptModel(
-//            correctAnswer: "airplane", 
+//            correctAnswer: "airplane",
 //            startTime: 3,
 //            promptType: PromptType.ar,
 //            hints: nil,
@@ -69,40 +70,40 @@ struct ARStory: View {
                     ARCameraView(
                         clue: prompt,
                         lastPrompt: lastPrompt,
-    //                    clue: promptArray[promptIndex],
-    //                    lastPrompt: promptIndex == (promptArray.count - 1),
+                        //                    clue: promptArray[promptIndex],
+                        //                    lastPrompt: promptIndex == (promptArray.count - 1),
                         onFoundObject: {
                             isGameStarted = false // turn off the ARCameraView first, so it can generate new instance for the next prompt
 
                             print("Ditemukan!")
                             print("promptIndex")
                             print(promptIndex) // 2 -> selesai
-    //                        if promptIndex < (promptArray.count - 1) {
-    //                            promptIndex += 1
-    //                        } else {
-    //                            doneHandler?()
-    //                        }
+                            //                        if promptIndex < (promptArray.count - 1) {
+                            //                            promptIndex += 1
+                            //                        } else {
+                            //                            doneHandler?()
+                            //                        }
                             isStoryDone = true
                             doneHandler?()
                         }
                     )
                     .id(promptIndex)
-                    
-                    if (!arViewModel.hasPlacedObject) {
+
+                    if !arViewModel.hasPlacedObject {
                         ZStack {
                             Color.black.opacity(0.2)
                             Image("AR/Tutorial/plane")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: Screen.width * 0.3, height: Screen.height * 0.3)
-                            
+
                             VStack {
                                 GIFView(type: .name("find-ar-plane"))
                                     .frame(width: 200, height: 200)
                                     .padding(.horizontal)
                                     .padding(.top, -75)
                                     .frame(width: 280, alignment: .center)
-                                
+
                                 Text("Cari area datar")
                                     .customFont(.didactGothic, size: 30)
                                     .foregroundColor(.white)
@@ -111,19 +112,19 @@ struct ARStory: View {
                         }
                     }
                 } else {
-                    ThreeDRenderer() {
+                    ThreeDRenderer {
                         doneHandler?()
                     }
                 }
             } else if lastPrompt {
-                ARTutorialView() {
+                ARTutorialView {
                     print("Tutorial AR selesai")
                     isTutorialFinished = true
                     arViewModel.pause()
                     arViewModel.resetSession()
                 }
             }
-            
+
             // Not will be used
 //            if promptIndex < promptArray.count {
 //                if startVisibility { // Never be true
@@ -159,7 +160,7 @@ struct ARStory: View {
             hints: nil,
             question: "Wow! kita sudah berada di pulau Arjuna. Sekarang, cari madu agar bisa menemukan Maudi!",
             answerAssets: ["honey_jar"] // meshes
-        ), 
+        ),
         lastPrompt: true
     )
 }

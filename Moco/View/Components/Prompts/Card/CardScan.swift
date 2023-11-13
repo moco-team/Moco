@@ -5,8 +5,8 @@
 //  Created by Aaron Christopher Tanhar on 14/11/23.
 //
 
-import SwiftUI
 import CodeScanner
+import SwiftUI
 
 struct CardScan: View {
     @State private var scanResult: [String] = []
@@ -28,7 +28,7 @@ struct CardScan: View {
                             fileName: "arrange_camera_to_barcode.json",
                             loopMode: .loop
                         )
-                            .frame(height: Screen.height * 0.2)
+                        .frame(height: Screen.height * 0.2)
                     }
                 }
                 VStack {

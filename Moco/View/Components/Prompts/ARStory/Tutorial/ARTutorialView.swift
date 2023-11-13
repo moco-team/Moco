@@ -65,7 +65,7 @@ struct ARTutorialView: View {
 //                            audioViewModel.playSound(soundFileName: "success", category: .soundEffect)
 //                        } else {
 //                            // TODO: Play sound coba lagi
-////                            audioViewModel.playSound(soundFileName: "success", category: .soundEffect)
+            ////                            audioViewModel.playSound(soundFileName: "success", category: .soundEffect)
 //                        }
 //                    }
 //                )
@@ -80,33 +80,33 @@ struct ARTutorialView: View {
 //                        .frame(height: Screen.height * 0.3)
 //                }
 //            } else
-                ARViewContainer(isShowHint: $isShowHint, meshes: clue.answerAssets ?? nil)
-                    .edgesIgnoringSafeArea(.all)
+            ARViewContainer(isShowHint: $isShowHint, meshes: clue.answerAssets ?? nil)
+                .edgesIgnoringSafeArea(.all)
 
-                // AR Tutorial illustration
-                if isLottieVisible && !isARPlaced {
-                    ZStack {
-                        Color.black.opacity(0.2)
-                        Image("AR/Tutorial/plane")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: Screen.width * 0.3, height: Screen.height * 0.3)
-                        
-                        VStack {
-                            GIFView(type: .name("find-ar-plane"))
-                                .frame(width: 200, height: 200)
-                                .padding(.horizontal)
-                                .padding(.top, -75)
-                                .frame(width: 280, alignment: .center)
-                            
-                            Text("Cari area datar")
-                                .customFont(.didactGothic, size: 30)
-                                .foregroundColor(.white)
-                                .padding()
-                        }
+            // AR Tutorial illustration
+            if isLottieVisible && !isARPlaced {
+                ZStack {
+                    Color.black.opacity(0.2)
+                    Image("AR/Tutorial/plane")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: Screen.width * 0.3, height: Screen.height * 0.3)
+
+                    VStack {
+                        GIFView(type: .name("find-ar-plane"))
+                            .frame(width: 200, height: 200)
+                            .padding(.horizontal)
+                            .padding(.top, -75)
+                            .frame(width: 280, alignment: .center)
+
+                        Text("Cari area datar")
+                            .customFont(.didactGothic, size: 30)
+                            .foregroundColor(.white)
+                            .padding()
                     }
                 }
-            
+            }
+
             // Loading screen
             ZStack {
                 Color.white
@@ -137,11 +137,11 @@ struct ARTutorialView: View {
         .task {
             audioViewModel.pauseAllSounds()
             audioViewModel.playSound(
-               soundFileName: "maze-bgm",
-               numberOfLoops: -1,
-               category: .backsound
-           )
-            
+                soundFileName: "maze-bgm",
+                numberOfLoops: -1,
+                category: .backsound
+            )
+
             arViewModel.setSearchedObject(objectName: clue.correctAnswer)
             arViewModel.isFinalClue = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

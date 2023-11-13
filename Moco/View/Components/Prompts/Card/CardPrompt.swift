@@ -57,7 +57,7 @@ struct CardPrompt: View {
                                 .revealed :
                                 index == currentCard ?
                                 .active :
-                                    .inactive,
+                                .inactive,
                             revealedImage: card.image,
                             text: card.text,
                             suffix: card.suffix
@@ -71,7 +71,7 @@ struct CardPrompt: View {
                     .customFont(.didactGothic, size: 40)
             }
             if showScanner {
-                CardScan() {
+                CardScan {
                     currentCard += 1
                     showScanner = false
                 }

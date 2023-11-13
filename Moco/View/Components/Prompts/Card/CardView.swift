@@ -13,7 +13,7 @@ struct CardView: View {
     var text = ""
     var suffix = ""
 
-    var onTap: (() -> ())?
+    var onTap: (() -> Void)?
 
     var body: some View {
         VStack {

@@ -84,13 +84,13 @@ struct SceneKitView: UIViewRepresentable {
 struct ThreeDRenderer: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.navigate) private var navigate
-    
+
     @State var fadeInView: Bool = false
     @State private var showQuitButton: Bool = false
     @State private var shakeAnimation: CGFloat = 0
-    
+
     let action: () -> Void?
-    
+
     var body: some View {
         ZStack {
             SceneKitView()
@@ -186,5 +186,5 @@ struct ThreeDRendererOld: View {
 }
 
 #Preview {
-    ThreeDRenderer(){}
+    ThreeDRenderer {}
 }

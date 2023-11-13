@@ -351,7 +351,7 @@ struct ModelData {
                                     startTime: 3,
                                     promptType: PromptType.ar,
                                     hints: nil,
-                                    question: 
+                                    question:
                                     """
                                     Yeay!! Kita berhasil menemukan Bebe! Betapa melelahkannya \
                                     perjalanan hari ini. Waktunya kita pulang, yuk mencari alat yang dapat membawa \

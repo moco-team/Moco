@@ -166,7 +166,7 @@ struct ARCameraView: View {
 #Preview {
     ARCameraView(
         clue: PromptModel(
-            correctAnswer: "honey_jar", 
+            correctAnswer: "honey_jar",
             startTime: 3,
             promptType: PromptType.ar,
             hints: nil,
