@@ -366,3 +366,12 @@ struct ModelData {
         ]
     ]
 }
+
+struct SkyBox {
+    var px: String
+    var py: String
+    var pz: String
+    var nx: String
+    var ny: String
+    var nz: String
+}

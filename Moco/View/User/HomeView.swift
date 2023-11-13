@@ -121,7 +121,9 @@ struct HomeView: View {
                 homeViewModel.setVolume()
             }
             if isShowing3d {
-                ThreeDRenderer()
+                ThreeDRenderer(){
+                    print("test 3d render selesai!")
+                }
             }
         }
     }

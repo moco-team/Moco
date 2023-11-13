@@ -21,6 +21,7 @@ struct ARStory: View {
             arViewModel.isTutorialDone = self.isTutorialFinished
         }
     }
+    @State private var isStoryDone: Bool = false
     
     var prompt: PromptModel = PromptModel(
         correctAnswer: "honey_jar", // object to be found
@@ -64,48 +65,54 @@ struct ARStory: View {
     var body: some View {
         ZStack {
             if isTutorialFinished {
-                ARCameraView(
-                    clue: prompt,
-                    lastPrompt: lastPrompt,
-//                    clue: promptArray[promptIndex],
-//                    lastPrompt: promptIndex == (promptArray.count - 1),
-                    onFoundObject: {
-                        isGameStarted = false // turn off the ARCameraView first, so it can generate new instance for the next prompt
+                if !isStoryDone {
+                    ARCameraView(
+                        clue: prompt,
+                        lastPrompt: lastPrompt,
+    //                    clue: promptArray[promptIndex],
+    //                    lastPrompt: promptIndex == (promptArray.count - 1),
+                        onFoundObject: {
+                            isGameStarted = false // turn off the ARCameraView first, so it can generate new instance for the next prompt
 
-                        print("Ditemukan!")
-                        print("promptIndex")
-                        print(promptIndex) // 2 -> selesai
-//                        if promptIndex < (promptArray.count - 1) {
-//                            promptIndex += 1
-//                        } else {
+                            print("Ditemukan!")
+                            print("promptIndex")
+                            print(promptIndex) // 2 -> selesai
+    //                        if promptIndex < (promptArray.count - 1) {
+    //                            promptIndex += 1
+    //                        } else {
+    //                            doneHandler?()
+    //                        }
+                            isStoryDone = true
 //                            doneHandler?()
-//                        }
-                        
-                        doneHandler?()
-                    }
-                )
-                .id(promptIndex)
-                
-                if (!arViewModel.hasPlacedObject) {
-                    ZStack {
-                        Color.black.opacity(0.2)
-                        Image("AR/Tutorial/plane")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: Screen.width * 0.3, height: Screen.height * 0.3)
-                        
-                        VStack {
-                            GIFView(type: .name("find-ar-plane"))
-                                .frame(width: 200, height: 200)
-                                .padding(.horizontal)
-                                .padding(.top, -75)
-                                .frame(width: 280, alignment: .center)
-                            
-                            Text("Cari area datar")
-                                .customFont(.didactGothic, size: 30)
-                                .foregroundColor(.white)
-                                .padding()
                         }
+                    )
+                    .id(promptIndex)
+                    
+                    if (!arViewModel.hasPlacedObject) {
+                        ZStack {
+                            Color.black.opacity(0.2)
+                            Image("AR/Tutorial/plane")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: Screen.width * 0.3, height: Screen.height * 0.3)
+                            
+                            VStack {
+                                GIFView(type: .name("find-ar-plane"))
+                                    .frame(width: 200, height: 200)
+                                    .padding(.horizontal)
+                                    .padding(.top, -75)
+                                    .frame(width: 280, alignment: .center)
+                                
+                                Text("Cari area datar")
+                                    .customFont(.didactGothic, size: 30)
+                                    .foregroundColor(.white)
+                                    .padding()
+                            }
+                        }
+                    }
+                } else {
+                    ThreeDRenderer() {
+                        doneHandler?()
                     }
                 }
             } else {

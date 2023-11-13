@@ -11,7 +11,7 @@ import SwiftUI
 
 struct SceneKitView: UIViewRepresentable {
     func makeUIView(context _: Context) -> SCNView {
-        guard let urlPath = Bundle.main.url(forResource: "tes4", withExtension: "usdz") else {
+        guard let urlPath = Bundle.main.url(forResource: "Floating_Lighthouse", withExtension: "usdz") else {
             fatalError("usdz not found")
         }
         let mdlAsset = MDLAsset(url: urlPath)
@@ -22,10 +22,12 @@ struct SceneKitView: UIViewRepresentable {
         // let assetNode = SCNNode(mdlObject: asset)
 
         let scnView = SCNView()
+        scnView.backgroundColor = UIColor.clear
         scnView.scene = SCNScene(mdlAsset: mdlAsset)
 
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(x: 0, y: 3.5, z: 15)
 
         scnView.scene?.rootNode.addChildNode(cameraNode)
 
@@ -35,7 +37,7 @@ struct SceneKitView: UIViewRepresentable {
         scnView.autoenablesDefaultLighting = true
         scnView.isTemporalAntialiasingEnabled = true
 
-        scnView.cameraControlConfiguration.autoSwitchToFreeCamera = false
+//        scnView.cameraControlConfiguration.autoSwitchToFreeCamera = false
 
         let camera = scnView.defaultCameraController
         let cameraConfig = scnView.cameraControlConfiguration
@@ -80,9 +82,61 @@ struct SceneKitView: UIViewRepresentable {
 }
 
 struct ThreeDRenderer: View {
+    @Environment(\.audioViewModel) private var audioViewModel
+    @Environment(\.navigate) private var navigate
+    
+    @State var fadeInView: Bool = false
+    @State private var showQuitButton: Bool = false
+    @State private var shakeAnimation: CGFloat = 0
+    
+    let action: () -> Void?
+    
     var body: some View {
-        VStack {
+        ZStack {
             SceneKitView()
+                .task {
+                    audioViewModel.playSound(
+                        soundFileName: "014 - Selamat! Kamu berhasil menyelesaikan petualangan ini",
+                        type: "m4a",
+                        category: .narration
+                    )
+                    // TODO: Dubbing for the to be continued story
+                    // ex: moco pun masuk ke dunia lain
+                }
+                .onAppear {
+                    withAnimation(.easeIn(duration: 1)) {
+                        fadeInView.toggle()
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        withAnimation {
+                            showQuitButton = true
+                        }
+                    }
+                }
+                .opacity(fadeInView ? 1 : 0)
+
+            if showQuitButton {
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Button("Keluar") {
+                            navigate.popToRoot()
+                            action()
+                        }
+                        .buttonStyle(MainButton(width: 180, type: .danger))
+                        .padding(.bottom, 20)
+                        .modifier(Shake(animatableData: shakeAnimation))
+                    }
+                }
+            }
+        }
+        .task {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                withAnimation {
+                    shakeAnimation = 1 // Set shakeAnimation to trigger the effect
+                }
+            }
         }
     }
 }
@@ -132,5 +186,5 @@ struct ThreeDRendererOld: View {
 }
 
 #Preview {
-    ThreeDRenderer()
+    ThreeDRenderer(){}
 }
