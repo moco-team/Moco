@@ -8,6 +8,8 @@
 import SwiftUI
 
 @Observable class MazePromptViewModel {
+    static var shared = MazePromptViewModel()
+
     private var mazePromptModel = MazePromptModel()
     private var audioViewModel = AudioViewModel.shared
 

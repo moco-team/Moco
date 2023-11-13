@@ -65,7 +65,17 @@ struct HomeView: View {
                         Text("AR Tutorial")
                     }
                     NavigationLink(
-                        destination: ARStory() {
+                        destination: ARStory(
+                            prompt: PromptModel(
+                                correctAnswer: "honey_jar", // object to be found
+                                startTime: 0,
+                                promptType: PromptType.ar,
+                                hints: nil,
+                                question: "Wow! kita sudah berada di pulau Arjuna. Sekarang, cari madu agar bisa menemukan Maudi!",
+                                answerAssets: ["honey_jar"] // meshes
+                            ),
+                            lastPrompt: true
+                        ) {
                             navigate.pop()
                         }
                     ) {
@@ -111,7 +121,9 @@ struct HomeView: View {
                 homeViewModel.setVolume()
             }
             if isShowing3d {
-                ThreeDRenderer()
+                ThreeDRenderer(){
+                    print("test 3d render selesai!")
+                }
             }
         }
     }

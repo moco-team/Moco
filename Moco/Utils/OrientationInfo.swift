@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 class OrientationInfo: ObservableObject {
+    static var shared = OrientationInfo()
+
     enum Orientation {
         case landscapeLeft
         case landscapeRight

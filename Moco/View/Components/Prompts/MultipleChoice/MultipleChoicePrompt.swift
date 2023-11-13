@@ -29,7 +29,6 @@ struct MultipleChoicePrompt: View {
         Image("Story/Prompts/moco-board")
             .resizable()
             .scaledToFill()
-            .frame(width: Screen.width, height: Screen.height, alignment: .center)
             .clipped()
             .onTapGesture {}
             .overlay {

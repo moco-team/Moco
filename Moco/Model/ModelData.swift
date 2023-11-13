@@ -308,54 +308,75 @@ struct ModelData {
                     EpisodeModel(
                         pictureName: "",
                         stories: [
-                            // Story page-1
+                            // Story page-1 // benda ke-1 yg harus dicari
                             StoryModel(
-                                background: "Story/Content/Story1/Pages/Page7/background",
+                                background: "",
                                 pageNumber: 1,
                                 isHavePrompt: true,
                                 prompt: PromptModel(
-                                    correctAnswer: "",
+                                    correctAnswer: "honey_jar", // object to be found
                                     startTime: 3,
                                     promptType: PromptType.ar,
-                                    hints: nil
+                                    hints: nil,
+                                    question: "Wow! kita sudah berada di pulau Arjuna. Sekarang, cari madu agar bisa menemukan Maudi!",
+                                    answerAssets: ["honey_jar"] // meshes
                                 ),
-                                storyContents: [
-                                    StoryContentModel(
-                                        duration: 0,
-                                        contentName: "bg-story",
-                                        contentType: StoryContentType.audio,
-                                        positionX: 0,
-                                        positionY: 0,
-                                        maxWidth: 0,
-                                        color: "",
-                                        fontSize: 0
-                                    )
-                                ],
+                                storyContents: [],
                                 enableUI: false,
                                 earlyPrompt: true
                             ),
                             StoryModel(
-                                background: "Story/Content/Story1/Pages/Page7/background",
+                                background: "",
                                 pageNumber: 2,
-                                storyContents: [
-                                    StoryContentModel(
-                                        duration: 0,
-                                        contentName: "bg-story",
-                                        contentType: StoryContentType.audio,
-                                        positionX: 0,
-                                        positionY: 0,
-                                        maxWidth: 0,
-                                        color: "",
-                                        fontSize: 0
-                                    )
-                                ]
+                                isHavePrompt: true,
+                                prompt: PromptModel(
+                                    correctAnswer: "key",
+                                    startTime: 3,
+                                    promptType: PromptType.ar,
+                                    hints: nil,
+                                    question: "Bagus! Kita telah menemukan dimana Bebe dikurung! Namun, pintunya terkunci. Mari kita cari sesuatu yang dapat membuka tempat Bebe dikurung!",
+                                    answerAssets: ["key"]
+                                ),
+                                storyContents: [],
+                                enableUI: false,
+                                earlyPrompt: true
+                            ),
+                            StoryModel(
+                                background: "",
+                                pageNumber: 3,
+                                isHavePrompt: true,
+                                prompt: PromptModel(
+                                    correctAnswer: "airplane",
+                                    startTime: 3,
+                                    promptType: PromptType.ar,
+                                    hints: nil,
+                                    question: 
+                                    """
+                                    Yeay!! Kita berhasil menemukan Bebe! Betapa melelahkannya \
+                                    perjalanan hari ini. Waktunya kita pulang, yuk mencari alat yang dapat membawa \
+                                    kita kembali ke Kota Mocokerto!
+                                    """,
+                                    answerAssets: ["airplane"]
+                                ),
+                                storyContents: [],
+                                enableUI: false,
+                                earlyPrompt: true
                             )
                         ],
-                        isAvailable: false
+                        isAvailable: true
                     )
                 ],
                 slug: "story-1"
             )
         ]
     ]
+}
+
+struct SkyBox {
+    var px: String
+    var py: String
+    var pz: String
+    var nx: String
+    var ny: String
+    var nz: String
 }
