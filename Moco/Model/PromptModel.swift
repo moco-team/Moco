@@ -9,7 +9,6 @@ import Foundation
 import SwiftData
 
 enum PromptType: String, Codable {
-    case puzzle
     case findHoney
     case objectDetection
     case speech
@@ -26,6 +25,7 @@ final class PromptModel: Identifiable {
     @Attribute var promptType = PromptType.maze
     @Attribute var correctAnswer = ""
     @Attribute var question: String? = ""
+    @Attribute var imageCard: String? = ""
     @Attribute var answerChoices: [String]? = []
     @Attribute var answerAssets: [String]? = []
     @Attribute var createdAt = Date()
@@ -39,6 +39,7 @@ final class PromptModel: Identifiable {
          promptType: PromptType,
          hints: [HintModel]?,
          question: String? = "",
+         imageCard: String? = "",
          answerChoices: [String]? = [],
          answerAssets: [String]? = []) {
         uid = UUID().uuidString
@@ -47,6 +48,7 @@ final class PromptModel: Identifiable {
         self.correctAnswer = correctAnswer
         self.hints = hints ?? []
         self.question = question
+        self.imageCard = imageCard
         self.answerChoices = answerChoices
         self.answerAssets = answerAssets
         createdAt = Date()

@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct FindTheObjectView: View {
+    @Environment(\.promptViewModel) private var promptViewModel
     @Environment(\.navigate) private var navigate
 
     @Binding var isPromptDone: Bool
 
     let content: String
-    let hints: [HintModel]
-    let correctAnswer: String
     @State var balloons: [Balloon]
 
     let maxTry = 3

@@ -102,7 +102,7 @@ struct StoryView: View {
         startNarrative()
         startPrompt()
         if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
-            promptViewModel.fetchPrompt(storyPage)
+            promptViewModel.fetchPrompt(storyPage, storyPage.earlyPrompt)
             activePrompt = promptViewModel.prompt!
         }
     }
@@ -162,7 +162,7 @@ struct StoryView: View {
             if let storyPage = storyViewModel.storyPage {
                 storyContentViewModel.fetchStoryContents(storyPage)
 
-                promptViewModel.fetchPrompt(storyPage)
+                promptViewModel.fetchPrompt(storyPage, storyPage.earlyPrompt)
 
                 if let prompt = promptViewModel.prompt, prompt.hints != nil {
                     hintViewModel.fetchHints(prompt)

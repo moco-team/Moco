@@ -23,18 +23,32 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page1/background",
                                 pageNumber: 1,
                                 isHavePrompt: true,
-                                prompt: PromptModel(
-                                    correctAnswer: "0",
-                                    startTime: 2,
-                                    promptType: PromptType.card,
-                                    hints: nil,
-                                    question: """
-                                    Siapakah nama seekor anak sapi yang lucu?
-                                    A.) Moco
-                                    B.) Bebe
-                                    C.) Teka dan Teki
-                                    """
-                                ),
+                                prompt: [
+                                    PromptModel(
+                                        correctAnswer: "Moco",
+                                        startTime: 2,
+                                        promptType: PromptType.card,
+                                        hints: nil,
+                                        question: "Siapakah anak sapi yang lucu?",
+                                        imageCard: "Story/Content/Story1/Pages/Page1/moco-card"
+                                    ),
+                                    PromptModel(
+                                        correctAnswer: "Bebe",
+                                        startTime: 2,
+                                        promptType: PromptType.card,
+                                        hints: nil,
+                                        question: "Siapakah anak beruang yang polos?",
+                                        imageCard: "Story/Content/Story1/Pages/Page1/bebe-card"
+                                    ),
+                                    PromptModel(
+                                        correctAnswer: "Teka dan Teki",
+                                        startTime: 2,
+                                        promptType: PromptType.card,
+                                        hints: nil,
+                                        question: "Siapakah yang disebut kembar?",
+                                        imageCard: "Story/Content/Story1/Pages/Page1/tekateki-card"
+                                    )
+                                ],
                                 storyContents: [
                                     StoryContentModel(
                                         duration: 0,
@@ -54,18 +68,20 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page2/background",
                                 pageNumber: 2,
                                 isHavePrompt: true,
-                                prompt: PromptModel(
-                                    correctAnswer: "2",
-                                    startTime: 2,
-                                    promptType: PromptType.multipleChoice,
-                                    hints: nil,
-                                    question: """
-                                    Mengapa Bebe tidak dapat mengeluarkan tangannya dari toples?
-                                    A. Karena tangan Bebe terlalu besar
-                                    B. Karena Kato merupakan katak yang jahat
-                                    C. Karena toples tersebut berisi lem yang lengket
-                                    """
-                                ),
+                                prompt: [
+                                    PromptModel(
+                                        correctAnswer: "2",
+                                        startTime: 2,
+                                        promptType: PromptType.multipleChoice,
+                                        hints: nil,
+                                        question: """
+                                        Mengapa Bebe tidak dapat mengeluarkan tangannya dari toples?
+                                        A. Karena tangan Bebe terlalu besar
+                                        B. Karena Kato merupakan katak yang jahat
+                                        C. Karena toples tersebut berisi lem yang lengket
+                                        """
+                                    )
+                                ],
                                 storyContents: [
                                     StoryContentModel(
                                         duration: 0,
@@ -84,18 +100,20 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page3/background",
                                 pageNumber: 3,
                                 isHavePrompt: true,
-                                prompt: PromptModel(
-                                    correctAnswer: "2",
-                                    startTime: 2,
-                                    promptType: PromptType.multipleChoice,
-                                    hints: nil,
-                                    question: """
-                                    Mengapa perjalanan mengejar Kato dan Bebe terpaksa berhenti?
-                                    A. Karena Moco, Teka, dan Teki capek bermain kejar-kejaran
-                                    B. Karena Kato dan Bebe sudah tidak asik untuk diajak bermain
-                                    C. Karena Moco, Teka, dan Teki merupakan hewan darat
-                                    """
-                                ),
+                                prompt: [
+                                    PromptModel(
+                                        correctAnswer: "2",
+                                        startTime: 2,
+                                        promptType: PromptType.multipleChoice,
+                                        hints: nil,
+                                        question: """
+                                        Mengapa perjalanan mengejar Kato dan Bebe terpaksa berhenti?
+                                        A. Karena Moco, Teka, dan Teki capek bermain kejar-kejaran
+                                        B. Karena Kato dan Bebe sudah tidak asik untuk diajak bermain
+                                        C. Karena Moco, Teka, dan Teki merupakan hewan darat
+                                        """
+                                    )
+                                ],
                                 storyContents: [
                                     StoryContentModel(
                                         duration: 0,
@@ -114,18 +132,20 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page4/background",
                                 pageNumber: 4,
                                 isHavePrompt: true,
-                                prompt: PromptModel(
-                                    correctAnswer: "1",
-                                    startTime: 2,
-                                    promptType: PromptType.multipleChoice,
-                                    hints: nil,
-                                    question: """
-                                    Bagaimana perasaan Moco ketika ia kehilangan seluruh teman berpetualangnya?
-                                    A. Moco merasa senang
-                                    B. Moco merasa sedih
-                                    C. Moco merasa lapar
-                                    """
-                                ),
+                                prompt: [
+                                    PromptModel(
+                                        correctAnswer: "1",
+                                        startTime: 2,
+                                        promptType: PromptType.multipleChoice,
+                                        hints: nil,
+                                        question: """
+                                        Bagaimana perasaan Moco ketika ia kehilangan seluruh teman berpetualangnya?
+                                        A. Moco merasa senang
+                                        B. Moco merasa sedih
+                                        C. Moco merasa lapar
+                                        """
+                                    )
+                                ],
                                 storyContents: [
                                     StoryContentModel(
                                         duration: 0,
@@ -170,27 +190,29 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page6/background",
                                 pageNumber: 1,
                                 isHavePrompt: true,
-                                prompt: PromptModel(
-                                    correctAnswer: "Maze/answer_two",
-                                    startTime: 2,
-                                    promptType: PromptType.maze,
-                                    hints: nil,
-                                    question: """
-                                    “Berapakah jumlah teman yang sedang Moco cari di dalam terowongan?”
-                                     A.) 1
-                                     B.) 2
-                                     C.) 3
-                                    """,
-                                    answerChoices: [
-                                        "Dua",
-                                        "Satu",
-                                        "Tiga"
-                                    ],
-                                    answerAssets: [
-                                        "Maze/answer_one",
-                                        "Maze/answer_three"
-                                    ]
-                                ),
+                                prompt: [
+                                    PromptModel(
+                                        correctAnswer: "Maze/answer_two",
+                                        startTime: 2,
+                                        promptType: PromptType.maze,
+                                        hints: nil,
+                                        question: """
+                                        “Berapakah jumlah teman yang sedang Moco cari di dalam terowongan?”
+                                         A.) 1
+                                         B.) 2
+                                         C.) 3
+                                        """,
+                                        answerChoices: [
+                                            "Dua",
+                                            "Satu",
+                                            "Tiga"
+                                        ],
+                                        answerAssets: [
+                                            "Maze/answer_one",
+                                            "Maze/answer_three"
+                                        ]
+                                    )
+                                ],
                                 storyContents: [
                                     StoryContentModel(
                                         duration: 0,
@@ -210,27 +232,29 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page6/background",
                                 pageNumber: 2,
                                 isHavePrompt: true,
-                                prompt: PromptModel(
-                                    correctAnswer: "Maze/answer_glass",
-                                    startTime: 2,
-                                    promptType: PromptType.maze,
-                                    hints: nil,
-                                    question: """
-                                    “Benda apakah yang digunakan oleh Teka dan Teki?”
-                                     A.) Tongkat
-                                     B.) Tas Ransel
-                                     C.) Kacamata Hitam
-                                    """,
-                                    answerChoices: [
-                                        "Kacamata Hitam",
-                                        "Palu",
-                                        "Tas Ransel"
-                                    ],
-                                    answerAssets: [
-                                        "Maze/answer_hammer",
-                                        "Maze/answer_backpack"
-                                    ]
-                                ),
+                                prompt: [
+                                    PromptModel(
+                                        correctAnswer: "Maze/answer_glass",
+                                        startTime: 2,
+                                        promptType: PromptType.maze,
+                                        hints: nil,
+                                        question: """
+                                        “Benda apakah yang digunakan oleh Teka dan Teki?”
+                                         A.) Tongkat
+                                         B.) Tas Ransel
+                                         C.) Kacamata Hitam
+                                        """,
+                                        answerChoices: [
+                                            "Kacamata Hitam",
+                                            "Palu",
+                                            "Tas Ransel"
+                                        ],
+                                        answerAssets: [
+                                            "Maze/answer_hammer",
+                                            "Maze/answer_backpack"
+                                        ]
+                                    )
+                                ],
                                 storyContents: [
                                     StoryContentModel(
                                         duration: 0,
@@ -250,27 +274,29 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page6/background",
                                 pageNumber: 3,
                                 isHavePrompt: true,
-                                prompt: PromptModel(
-                                    correctAnswer: "Maze/answer_mice",
-                                    startTime: 2,
-                                    promptType: PromptType.maze,
-                                    hints: nil,
-                                    question: """
-                                    “Hewan apakah yang sedang Moco cari di dalam terowongan?”
-                                     A.) Tikus
-                                     B.) Sapi
-                                     C.) Katak
-                                    """,
-                                    answerChoices: [
-                                        "Tikus",
-                                        "Sapi",
-                                        "Katak"
-                                    ],
-                                    answerAssets: [
-                                        "Maze/answer_sapi_jantan",
-                                        "Maze/answer_frog"
-                                    ]
-                                ),
+                                prompt: [
+                                    PromptModel(
+                                        correctAnswer: "Maze/answer_mice",
+                                        startTime: 2,
+                                        promptType: PromptType.maze,
+                                        hints: nil,
+                                        question: """
+                                        “Hewan apakah yang sedang Moco cari di dalam terowongan?”
+                                         A.) Tikus
+                                         B.) Sapi
+                                         C.) Katak
+                                        """,
+                                        answerChoices: [
+                                            "Tikus",
+                                            "Sapi",
+                                            "Katak"
+                                        ],
+                                        answerAssets: [
+                                            "Maze/answer_sapi_jantan",
+                                            "Maze/answer_frog"
+                                        ]
+                                    )
+                                ],
                                 storyContents: [
                                     StoryContentModel(
                                         duration: 0,
@@ -314,14 +340,18 @@ struct ModelData {
                                 background: "",
                                 pageNumber: 1,
                                 isHavePrompt: true,
-                                prompt: PromptModel(
-                                    correctAnswer: "honey_jar", // object to be found
-                                    startTime: 3,
-                                    promptType: PromptType.ar,
-                                    hints: nil,
-                                    question: "Wow! kita sudah berada di pulau Arjuna. Sekarang, cari madu agar bisa menemukan Maudi!",
-                                    answerAssets: ["honey_jar"] // meshes
-                                ),
+                                prompt: [
+                                    PromptModel(
+                                        correctAnswer: "honey_jar", // object to be found
+                                        startTime: 3,
+                                        promptType: PromptType.ar,
+                                        hints: nil,
+                                        question: "Wow! kita sudah berada di pulau Arjuna. Sekarang, cari madu agar bisa menemukan Maudi!",
+                                        answerAssets: [
+                                            "honey_jar"
+                                        ] // meshes
+                                    )
+                                ],
                                 storyContents: [],
                                 enableUI: false,
                                 earlyPrompt: true
@@ -330,14 +360,16 @@ struct ModelData {
                                 background: "",
                                 pageNumber: 2,
                                 isHavePrompt: true,
-                                prompt: PromptModel(
-                                    correctAnswer: "key",
-                                    startTime: 3,
-                                    promptType: PromptType.ar,
-                                    hints: nil,
-                                    question: "Bagus! Kita telah menemukan dimana Bebe dikurung! Namun, pintunya terkunci. Mari kita cari sesuatu yang dapat membuka tempat Bebe dikurung!",
-                                    answerAssets: ["key"]
-                                ),
+                                prompt: [
+                                    PromptModel(
+                                        correctAnswer: "key",
+                                        startTime: 3,
+                                        promptType: PromptType.ar,
+                                        hints: nil,
+                                        question: "Bagus! Kita telah menemukan dimana Bebe dikurung! Namun, pintunya terkunci. Mari kita cari sesuatu yang dapat membuka tempat Bebe dikurung!",
+                                        answerAssets: ["key"]
+                                    )
+                                ],
                                 storyContents: [],
                                 enableUI: false,
                                 earlyPrompt: true
@@ -346,19 +378,21 @@ struct ModelData {
                                 background: "",
                                 pageNumber: 3,
                                 isHavePrompt: true,
-                                prompt: PromptModel(
-                                    correctAnswer: "airplane",
-                                    startTime: 3,
-                                    promptType: PromptType.ar,
-                                    hints: nil,
-                                    question:
-                                    """
-                                    Yeay!! Kita berhasil menemukan Bebe! Betapa melelahkannya \
-                                    perjalanan hari ini. Waktunya kita pulang, yuk mencari alat yang dapat membawa \
-                                    kita kembali ke Kota Mocokerto!
-                                    """,
-                                    answerAssets: ["airplane"]
-                                ),
+                                prompt: [
+                                    PromptModel(
+                                        correctAnswer: "airplane",
+                                        startTime: 3,
+                                        promptType: PromptType.ar,
+                                        hints: nil,
+                                        question:
+                                        """
+                                        Yeay!! Kita berhasil menemukan Bebe! Betapa melelahkannya \
+                                        perjalanan hari ini. Waktunya kita pulang, yuk mencari alat yang dapat membawa \
+                                        kita kembali ke Kota Mocokerto!
+                                        """,
+                                        answerAssets: ["airplane"]
+                                    )
+                                ],
                                 storyContents: [],
                                 enableUI: false,
                                 earlyPrompt: true

@@ -37,7 +37,6 @@ struct MultipleChoicePrompt: View {
                     if promptViewModel.prompt!.correctAnswer == "0" {
                         onCorrect()
                     } else {
-                        onWrong()
                     }
                 }
 
@@ -45,7 +44,6 @@ struct MultipleChoicePrompt: View {
                     if promptViewModel.prompt!.correctAnswer == "1" {
                         onCorrect()
                     } else {
-                        onWrong()
                     }
                 }
 
@@ -53,7 +51,6 @@ struct MultipleChoicePrompt: View {
                     if promptViewModel.prompt!.correctAnswer == "2" {
                         onCorrect()
                     } else {
-                        onWrong()
                     }
                 }
             }
@@ -63,7 +60,5 @@ struct MultipleChoicePrompt: View {
 #Preview {
     MultipleChoicePrompt {
         print("Benar2")
-    } onWrong: {
-        print("Uasu")
     }
 }

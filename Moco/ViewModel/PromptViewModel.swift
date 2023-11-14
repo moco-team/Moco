@@ -12,6 +12,7 @@ import SwiftData
     static var shared = PromptViewModel()
 
     var prompt: PromptModel?
+    var promptScan: [PromptModel]?
 
     init(modelContext: ModelContext? = nil) {
         super.init()
@@ -20,15 +21,29 @@ import SwiftData
         }
     }
 
-    func fetchPrompt(_ story: StoryModel) {
+    func fetchPrompt(_ story: StoryModel, _ earlyPrompt: Bool) {
         let storyUid = story.uid
-        let fetchDescriptor = FetchDescriptor<PromptModel>(
-            predicate: #Predicate {
-                $0.story?.uid == storyUid
-            },
-            sortBy: [SortDescriptor<PromptModel>(\.createdAt)]
-        )
-
-        prompt = (try? modelContext?.fetch(fetchDescriptor).first ?? nil) ?? nil
+        
+        if earlyPrompt {
+            let fetchDescriptor = FetchDescriptor<PromptModel>(
+                predicate: #Predicate {
+                    $0.story?.uid == storyUid
+                },
+                sortBy: [SortDescriptor<PromptModel>(\.createdAt)]
+            )
+            
+            promptScan = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? nil
+            prompt = nil
+        } else {
+            let fetchDescriptor = FetchDescriptor<PromptModel>(
+                predicate: #Predicate {
+                    $0.story?.uid == storyUid
+                },
+                sortBy: [SortDescriptor<PromptModel>(\.createdAt)]
+            )
+            
+            prompt = (try? modelContext?.fetch(fetchDescriptor).first ?? nil) ?? nil
+            promptScan = nil
+        }
     }
 }

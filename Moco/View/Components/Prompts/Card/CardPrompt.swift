@@ -12,7 +12,7 @@ enum CardState {
     case inactive
     case revealed
 }
-
+    
 struct Card: Identifiable {
     var text: String
     var image: String

@@ -23,14 +23,14 @@ final class StoryModel: Identifiable {
     }
 
     var episode: EpisodeModel?
-    var prompt: PromptModel?
+    var prompt: [PromptModel]?
     var storyContents: [StoryContentModel]?
 
     init(
         background: String,
         pageNumber: Int,
         isHavePrompt _: Bool = false,
-        prompt: PromptModel? = nil,
+        prompt: [PromptModel]? = nil,
         storyContents: [StoryContentModel]? = nil,
         enableUI _: Bool = true,
         earlyPrompt: Bool = false

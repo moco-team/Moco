@@ -103,10 +103,6 @@ struct MazePrompt: View {
 struct MazePromptOld: View {
     @State private var mazePromptViewModel = MazePromptViewModel()
 
-    var promptText = "Moco adalah sapi jantan"
-    var answersAsset = ["Maze/answer_one", "Maze/answer_two"]
-    var correctAnswerAsset = "Maze/answer_three"
-
     var action: () -> Void = {}
 
     var body: some View {
@@ -118,7 +114,7 @@ struct MazePromptOld: View {
 
             if !mazePromptViewModel.isStarted {
                 VStack {
-                    Text(promptText)
+                    Text(promptViewModel.prompt!.question ?? "")
                         .customFont(.didactGothic, size: 30)
                         .foregroundColor(.text.primary)
                         .opacity(mazePromptViewModel.blurOpacity)
