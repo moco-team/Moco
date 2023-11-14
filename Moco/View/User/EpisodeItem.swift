@@ -9,9 +9,9 @@ import SwiftUI
 
 struct EpisodeItem: View {
     var number = 1
-    var fontSize = CGFloat(34)
-    var width = CGFloat(330)
-    var height = CGFloat(440)
+    var fontSize = CGFloat(55)
+    var width = CGFloat(Screen.width * 0.3)
+    var height = CGFloat(Screen.height * 0.5)
 
     var onTap: (() -> Void)?
 
