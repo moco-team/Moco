@@ -81,7 +81,8 @@ struct CardPrompt: View {
             isActive: $showQuestionPopup,
             title: questionPopup,
             confirmText: "Scan",
-            closeWhenDone: true
+            closeWhenDone: true,
+            shakeItOff: 1
         ) {
             showScanner = true
         }

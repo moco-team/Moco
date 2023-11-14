@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "card-inactive.png",
+      "filename" : "dead_card.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

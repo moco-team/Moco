@@ -232,6 +232,7 @@
 		93F570312B02868800ECFB33 /* CardPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F570302B02868800ECFB33 /* CardPrompt.swift */; };
 		93F570332B02896A00ECFB33 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F570322B02896A00ECFB33 /* CardView.swift */; };
 		93F570352B0292DD00ECFB33 /* CardScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F570342B0292DD00ECFB33 /* CardScan.swift */; };
+		93F570372B0317D300ECFB33 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F570362B0317D300ECFB33 /* ShakeEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -485,6 +486,7 @@
 		93F570302B02868800ECFB33 /* CardPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPrompt.swift; sourceTree = "<group>"; };
 		93F570322B02896A00ECFB33 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		93F570342B0292DD00ECFB33 /* CardScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardScan.swift; sourceTree = "<group>"; };
+		93F570362B0317D300ECFB33 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1327,6 +1329,7 @@
 				937AF2852AE80BFA008C69BB /* RippleView.swift */,
 				935D785A2AED55B200DF64A5 /* PeelEffect.swift */,
 				935D785E2AED7C9D00DF64A5 /* PeelEffectTappable.swift */,
+				93F570362B0317D300ECFB33 /* ShakeEffect.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -1609,6 +1612,7 @@
 				059210142AFB68480008CD2C /* Base64ConverterExtension.swift in Sources */,
 				0571CB382AE1935C00CE0CC7 /* InvisibleButton.swift in Sources */,
 				938E3D372AD939C4003D2AE1 /* ContentView.swift in Sources */,
+				93F570372B0317D300ECFB33 /* ShakeEffect.swift in Sources */,
 				93E3D87A2AE4E95700E5391F /* SpeakPromptModel.swift in Sources */,
 				0B6E2F6C2ADC91E10001D320 /* PromptModel.swift in Sources */,
 				938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */,

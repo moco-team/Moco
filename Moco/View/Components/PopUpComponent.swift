@@ -30,6 +30,7 @@ struct PopUpComponent: ViewModifier {
     var withConfetti = false
 
     var closeWhenDone = false
+    var shakeItOff: CGFloat = 0
 
     var function: () -> Void
     var cancelHandler: (() -> Void)?
@@ -52,7 +53,8 @@ struct PopUpComponent: ViewModifier {
                     overlayOpacity: overlayOpacity,
                     width: width,
                     height: height,
-                    closeWhenDone: closeWhenDone
+                    closeWhenDone: closeWhenDone,
+                    shakeItOff: shakeItOff
                 ) {
                     function()
                 } cancelHandler: {
@@ -66,10 +68,12 @@ struct PopUpComponent: ViewModifier {
 
 struct PopUpComponentView: View {
     @Environment(\.audioViewModel) private var audioViewModel
+    @Environment(\.timerViewModel) private var timerViewModel
     @State private var offset: CGFloat = 1000
     @Binding var isActive: Bool
     @State private var confettiCounter = 0
     @State private var internalOverlayOpacity = 0.0
+    @State private var shakeAnimatableData: CGFloat = 0
 
     var title: String? = "Congratulations"
     var text: String? = ""
@@ -86,6 +90,7 @@ struct PopUpComponentView: View {
     var width = Screen.width * 0.45
     var height = Screen.height * 0.6
     var closeWhenDone = false
+    var shakeItOff: CGFloat = 0
 
     var function: () -> Void
     var cancelHandler: (() -> Void)?
@@ -154,6 +159,7 @@ struct PopUpComponentView: View {
                                     }
                                     .buttonStyle(MainButton(width: 180, type: .success))
                                     .font(.footnote)
+                                    .shake(animatableData: shakeItOff)
                                 }
                             }
                         }

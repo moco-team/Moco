@@ -126,7 +126,7 @@ struct ThreeDRenderer: View {
                         }
                         .buttonStyle(MainButton(width: 180, type: .danger))
                         .padding(.bottom, 20)
-                        .modifier(Shake(animatableData: shakeAnimation))
+                        .modifier(ShakeEffect(animatableData: shakeAnimation))
                     }
                 }
             }

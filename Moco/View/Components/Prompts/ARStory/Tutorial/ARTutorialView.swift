@@ -8,18 +8,6 @@
 import CodeScanner
 import SwiftUI
 
-struct Shake: GeometryEffect {
-    var amount: CGFloat = 10
-    var shakesPerUnit = 3
-    var animatableData: CGFloat
-
-    func effectValue(size _: CGSize) -> ProjectionTransform {
-        ProjectionTransform(CGAffineTransform(translationX:
-            amount * sin(animatableData * .pi * CGFloat(shakesPerUnit)),
-            y: 0))
-    }
-}
-
 struct ARTutorialView: View {
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.audioViewModel) private var audioViewModel

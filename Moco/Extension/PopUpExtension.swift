@@ -24,6 +24,7 @@ public extension View {
         width: CGFloat? = nil,
         height: CGFloat? = nil,
         closeWhenDone: Bool = false,
+        shakeItOff: CGFloat = 0,
         function: @escaping () -> Void,
         cancelHandler: (() -> Void)? = {}
     ) -> some View {
@@ -43,7 +44,8 @@ public extension View {
                 width: width ?? Screen.width * 0.32,
                 height: height ?? Screen.height * 0.3,
                 withConfetti: withConfetti,
-                closeWhenDone: closeWhenDone
+                closeWhenDone: closeWhenDone,
+                shakeItOff: shakeItOff
             ) {
                 function()
             } cancelHandler: {
