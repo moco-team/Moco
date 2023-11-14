@@ -20,7 +20,7 @@ import SwiftData
         }
     }
     
-    func fetchPrompt(_ story: StoryModel) {
+    func fetchPrompts(_ story: StoryModel) {
         let storyUid = story.uid
         let fetchDescriptor = FetchDescriptor<PromptModel>(
             predicate: #Predicate {
@@ -29,6 +29,6 @@ import SwiftData
             sortBy: [SortDescriptor<PromptModel>(\.createdAt)]
         )
         
-        prompts = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? nil
+        prompts = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
     }
 }

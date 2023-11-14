@@ -79,7 +79,7 @@ struct StoryView: View {
         if let storyPage = storyViewModel.storyPage, !storyPage.earlyPrompt {
             activePrompt = nil
         }
-        guard promptViewModel.prompts?[0] != nil else { return }
+        guard promptViewModel.prompts != nil else { return }
         timerViewModel.setTimer(key: "storyPagePrompt-\(scrollPosition!)", withInterval: promptViewModel.prompts![0].startTime) {
             withAnimation {
                 showPromptButton = true
@@ -102,7 +102,7 @@ struct StoryView: View {
         startNarrative()
         startPrompt()
         if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
-            promptViewModel.fetchPrompt(storyPage)
+            promptViewModel.fetchPrompts(storyPage)
             activePrompt = promptViewModel.prompts![0]
         }
     }
@@ -162,10 +162,10 @@ struct StoryView: View {
             if let storyPage = storyViewModel.storyPage {
                 storyContentViewModel.fetchStoryContents(storyPage)
 
-                promptViewModel.fetchPrompt(storyPage)
+                promptViewModel.fetchPrompts(storyPage)
 
-                if let prompt = promptViewModel.prompts?[0], prompt.hints != nil {
-                    hintViewModel.fetchHints(prompt)
+                if let prompts = promptViewModel.prompts, prompts[0].hints != nil {
+                    hintViewModel.fetchHints(prompts[0])
                 }
             }
         }
@@ -252,25 +252,9 @@ struct StoryView: View {
                             .id(ARPrompt.id)
                             .onAppear {
                                 print("nih AR")
-//                                print(promptViewModel.prompt?.correctAnswer)
+                                print(promptViewModel.prompts![0].correctAnswer)
                             }
                         }
-//                    case .puzzle:
-//                        FindTheObjectView(
-//                            isPromptDone: .constant(false),
-//                            content: "Once upon a time...",
-//                            hints: hintViewModel.hints,
-//                            correctAnswer: promptViewModel.prompts![0].correctAnswer,
-//                            balloons: [
-//                                Balloon(color: "orange", isCorrect: false),
-//                                Balloon(color: "ungu", isCorrect: false),
-//                                Balloon(color: "merah", isCorrect: true),
-//                                Balloon(color: "hijau", isCorrect: false),
-//                                Balloon(color: "biru", isCorrect: false)
-//                            ]
-//                        ) {
-//                            nextPage()
-//                        }
                     case .objectDetection:
                         DetectionView {
                             nextPage()

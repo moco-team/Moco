@@ -19,7 +19,7 @@ final class StoryModel: Identifiable {
     @Attribute var updatedAt = Date()
 
     var isHavePrompt: Bool {
-        prompts != nil
+        prompts != []
     }
 
     var episode: EpisodeModel? = nil
@@ -30,7 +30,7 @@ final class StoryModel: Identifiable {
         background: String,
         pageNumber: Int,
         isHavePrompt _: Bool = false,
-        prompts: [PromptModel]?,
+        prompts: [PromptModel]? = [],
         storyContents: [StoryContentModel]? = [],
         enableUI _: Bool = true,
         earlyPrompt: Bool = false

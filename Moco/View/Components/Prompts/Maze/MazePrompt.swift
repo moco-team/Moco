@@ -12,25 +12,25 @@ struct MazePrompt: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.episodeViewModel) private var episodeViewModel
     @Environment(\.mazePromptViewModel) private var mazePromptViewModel
-
+    
     @State private var isCorrectAnswerPopup = false
     @State private var isWrongAnswerPopup = false
-
+    
     var promptText = "Moco adalah sapi jantan"
     var answersAsset = ["Maze/answer_one", "Maze/answer_two"]
     var answers = ["satu", "dua", "tiga"]
     var correctAnswerAsset = "Maze/answer_three"
     var initialTime = 60 * 3
     var promptId = ""
-
+    
     var action: () -> Void = {}
-
+    
     func playInitialNarration() {
         if mazePromptViewModel.isTutorialDone {
             audioViewModel.playSound(soundFileName: "013 (maze) - bantu arahkan Moco ke jawaban yang benar ya", type: .m4a, category: .narration)
         }
     }
-
+    
     var body: some View {
         ZStack {
             ZStack {
@@ -103,16 +103,16 @@ struct MazePrompt: View {
 struct MazePromptOld: View {
     @Environment(\.promptViewModel) private var promptViewModel
     @State private var mazePromptViewModel = MazePromptViewModel()
-
+    
     var action: () -> Void = {}
-
+    
     var body: some View {
         ZStack {
             MazeView(answersAsset: promptViewModel.prompts![0].answerAssets!,
                      correctAnswerAsset: promptViewModel.prompts![0].correctAnswer) {
                 action()
             }
-
+            
             if !mazePromptViewModel.isStarted {
                 VStack {
                     Text(promptViewModel.prompts![0].question ?? "")

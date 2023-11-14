@@ -25,19 +25,19 @@ struct CardPrompt: View {
         ZStack {
             VStack {
                 HStack(spacing: 20) {
-                    if let prompts = promptViewModel.prompts {
-                        ForEach(Array(prompts.enumerated()), id: \.offset) { index, prompt in
+                    if let cardPrompts = promptViewModel.prompts {
+                        ForEach(Array(cardPrompts.enumerated()), id: \.offset) { index, cardPrompt in
                             CardView(
                                 state: index < currentCard ?
                                     .revealed :
                                     index == currentCard ?
                                     .active :
                                         .inactive,
-                                revealedImage: prompt.imageCard!,
-                                text: prompt.correctAnswer,
-                                suffix: prompt.correctAnswer == "Teka dan Teki" ? "" : ","
+                                revealedImage: cardPrompt.imageCard!,
+                                text: cardPrompt.correctAnswer,
+                                suffix: cardPrompt.correctAnswer == "Teka dan Teki" ? "" : ","
                             ) {
-                                questionPopup = prompt.question!
+                                questionPopup = cardPrompt.question!
                                 showQuestionPopup = true
                             }
                         }
