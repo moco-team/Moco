@@ -79,7 +79,7 @@ struct StoryView: View {
         if let storyPage = storyViewModel.storyPage, !storyPage.earlyPrompt {
             activePrompt = nil
         }
-        guard promptViewModel.prompts != nil else { return }
+        guard let prompts = promptViewModel.prompts, !prompts.isEmpty else { return }
         timerViewModel.setTimer(key: "storyPagePrompt-\(scrollPosition!)", withInterval: promptViewModel.prompts![0].startTime) {
             withAnimation {
                 showPromptButton = true
@@ -164,7 +164,7 @@ struct StoryView: View {
 
                 promptViewModel.fetchPrompts(storyPage)
 
-                if let prompts = promptViewModel.prompts, prompts[0].hints != nil {
+                if let prompts = promptViewModel.prompts, prompts.first?.hints != nil {
                     hintViewModel.fetchHints(prompts[0])
                 }
             }
@@ -230,7 +230,7 @@ struct StoryView: View {
                             }
                         }
                     case .maze:
-                        if let mazePrompt = promptViewModel.prompts?[0] {
+                        if let mazePrompt = promptViewModel.prompts?.first {
                             MazePrompt(
                                 promptText: mazePrompt.question!,
                                 answersAsset: mazePrompt.answerAssets!,
@@ -313,7 +313,10 @@ struct StoryView: View {
                     }
                     Spacer()
 
-                    if promptViewModel.prompts == nil || forceShowNext {
+                    if promptViewModel.prompts == nil ||
+                        promptViewModel.prompts!.isEmpty ||
+                        forceShowNext
+                    {
                         StoryNavigationButton(direction: .right) {
                             nextPage()
                         }
