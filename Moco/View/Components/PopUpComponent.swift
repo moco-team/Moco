@@ -8,6 +8,11 @@
 import ConfettiSwiftUI
 import SwiftUI
 
+public enum PopUpType {
+    case base
+    case danger
+}
+
 struct PopUpComponent: ViewModifier {
     @State private var offset: CGFloat = 1000
     @Binding var isActive: Bool
@@ -26,6 +31,7 @@ struct PopUpComponent: ViewModifier {
     var isLarge = false
     var width = Screen.width * 0.45
     var height = Screen.height * 0.6
+    var type = PopUpType.base
 
     var withConfetti = false
 
@@ -91,6 +97,7 @@ struct PopUpComponentView: View {
     var height = Screen.height * 0.6
     var closeWhenDone = false
     var shakeItOff: CGFloat = 0
+    var type = PopUpType.base
 
     var function: () -> Void
     var cancelHandler: (() -> Void)?
@@ -116,7 +123,20 @@ struct PopUpComponentView: View {
                         Rectangle().frame(width: width, height: height)
                             .foregroundColor(.clear)
                             .overlay {
-                                Image(isLarge ? "Components/popup-base-lg" : "Components/popup-base").resizable().scaledToFit()
+                                switch type {
+                                case .base:
+                                    Image(isLarge ?
+                                          "Components/popup-base-lg" :
+                                            "Components/popup-base")
+                                    .resizable()
+                                    .scaledToFit()
+                                case .danger:
+                                    Image(isLarge ?
+                                          "Components/popup-base-lg" :
+                                            "Components/popup-danger")
+                                        .resizable()
+                                        .scaledToFit()
+                                }
                             }
 
                         VStack {

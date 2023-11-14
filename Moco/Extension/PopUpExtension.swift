@@ -25,6 +25,7 @@ public extension View {
         height: CGFloat? = nil,
         closeWhenDone: Bool = false,
         shakeItOff: CGFloat = 0,
+        type: PopUpType = PopUpType.base,
         function: @escaping () -> Void,
         cancelHandler: (() -> Void)? = {}
     ) -> some View {
@@ -43,6 +44,7 @@ public extension View {
                 isLarge: isLarge,
                 width: width ?? Screen.width * 0.32,
                 height: height ?? Screen.height * 0.3,
+                type: type,
                 withConfetti: withConfetti,
                 closeWhenDone: closeWhenDone,
                 shakeItOff: shakeItOff
