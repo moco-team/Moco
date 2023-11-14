@@ -9,6 +9,7 @@ import Foundation
 import SwiftData
 
 enum PromptType: String, Codable {
+    case puzzle
     case findHoney
     case objectDetection
     case speech
@@ -31,7 +32,7 @@ final class PromptModel: Identifiable {
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
-    var story: StoryModel?
+    var story: StoryModel? = nil
     var hints: [HintModel]?
 
     init(correctAnswer: String,

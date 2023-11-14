@@ -80,10 +80,10 @@ struct EpisodeView: View {
                                         storyContentViewModel.fetchStoryContents(storyViewModel.storyPage!)
 
                                         if storyViewModel.storyPage!.isHavePrompt {
-                                            promptViewModel.fetchPrompt(storyViewModel.storyPage!, storyViewModel.storyPage!.earlyPrompt)
+                                            promptViewModel.fetchPrompt(storyViewModel.storyPage!)
 
-                                            if promptViewModel.prompt!.hints != nil {
-                                                hintViewModel.fetchHints(promptViewModel.prompt!)
+                                            if promptViewModel.prompts![0].hints != nil {
+                                                hintViewModel.fetchHints(promptViewModel.prompts![0])
                                             }
                                         }
 

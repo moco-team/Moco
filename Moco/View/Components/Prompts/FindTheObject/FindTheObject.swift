@@ -63,7 +63,7 @@ struct FindTheObjectView: View {
                 print("Selesai!")
             }
         }
-        .popUp(isActive: $showTheAnswer, title: correctAnswer) {
+        .popUp(isActive: $showTheAnswer, title: promptViewModel.prompts![0].correctAnswer) {
             print("Selesai!")
         } cancelHandler: {
             navigate.popToRoot()
@@ -79,8 +79,6 @@ struct FindTheObjectView: View {
     FindTheObjectView(
         isPromptDone: .constant(false),
         content: "Once upon a time...",
-        hints: [HintModel(hint: "Coba lagi!"), HintModel(hint: "Ayo coba lagi!")],
-        correctAnswer: "Jawaban yang benar adalah balon berwarna Merah",
         balloons: [
             Balloon(color: "orange", isCorrect: false),
             Balloon(color: "ungu", isCorrect: false),

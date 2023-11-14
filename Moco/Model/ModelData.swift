@@ -23,7 +23,7 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page1/background",
                                 pageNumber: 1,
                                 isHavePrompt: true,
-                                prompt: [
+                                prompts: [
                                     PromptModel(
                                         correctAnswer: "Moco",
                                         startTime: 2,
@@ -68,7 +68,7 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page2/background",
                                 pageNumber: 2,
                                 isHavePrompt: true,
-                                prompt: [
+                                prompts: [
                                     PromptModel(
                                         correctAnswer: "2",
                                         startTime: 2,
@@ -100,7 +100,7 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page3/background",
                                 pageNumber: 3,
                                 isHavePrompt: true,
-                                prompt: [
+                                prompts: [
                                     PromptModel(
                                         correctAnswer: "2",
                                         startTime: 2,
@@ -132,7 +132,7 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page4/background",
                                 pageNumber: 4,
                                 isHavePrompt: true,
-                                prompt: [
+                                prompts: [
                                     PromptModel(
                                         correctAnswer: "1",
                                         startTime: 2,
@@ -164,7 +164,7 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page5/background",
                                 pageNumber: 5,
                                 isHavePrompt: false,
-                                prompt: nil,
+                                prompts: nil,
                                 storyContents: [
                                     StoryContentModel(
                                         duration: 0,
@@ -190,7 +190,7 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page6/background",
                                 pageNumber: 1,
                                 isHavePrompt: true,
-                                prompt: [
+                                prompts: [
                                     PromptModel(
                                         correctAnswer: "Maze/answer_two",
                                         startTime: 2,
@@ -232,7 +232,7 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page6/background",
                                 pageNumber: 2,
                                 isHavePrompt: true,
-                                prompt: [
+                                prompts: [
                                     PromptModel(
                                         correctAnswer: "Maze/answer_glass",
                                         startTime: 2,
@@ -274,7 +274,7 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page6/background",
                                 pageNumber: 3,
                                 isHavePrompt: true,
-                                prompt: [
+                                prompts: [
                                     PromptModel(
                                         correctAnswer: "Maze/answer_mice",
                                         startTime: 2,
@@ -315,6 +315,7 @@ struct ModelData {
                                 background: "Story/Content/Story1/Pages/Page6/background",
                                 pageNumber: 4,
                                 isHavePrompt: false,
+                                prompts: nil,
                                 storyContents: [
                                     StoryContentModel(
                                         duration: 0,
@@ -340,7 +341,7 @@ struct ModelData {
                                 background: "",
                                 pageNumber: 1,
                                 isHavePrompt: true,
-                                prompt: [
+                                prompts: [
                                     PromptModel(
                                         correctAnswer: "honey_jar", // object to be found
                                         startTime: 3,
@@ -360,7 +361,7 @@ struct ModelData {
                                 background: "",
                                 pageNumber: 2,
                                 isHavePrompt: true,
-                                prompt: [
+                                prompts: [
                                     PromptModel(
                                         correctAnswer: "key",
                                         startTime: 3,
@@ -378,7 +379,7 @@ struct ModelData {
                                 background: "",
                                 pageNumber: 3,
                                 isHavePrompt: true,
-                                prompt: [
+                                prompts: [
                                     PromptModel(
                                         correctAnswer: "airplane",
                                         startTime: 3,

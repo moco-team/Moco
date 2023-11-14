@@ -10,40 +10,25 @@ import SwiftData
 
 @Observable class PromptViewModel: BaseViewModel {
     static var shared = PromptViewModel()
-
-    var prompt: PromptModel?
-    var promptScan: [PromptModel]?
-
+    
+    var prompts: [PromptModel]?
+    
     init(modelContext: ModelContext? = nil) {
         super.init()
         if modelContext != nil {
             self.modelContext = modelContext
         }
     }
-
-    func fetchPrompt(_ story: StoryModel, _ earlyPrompt: Bool) {
+    
+    func fetchPrompt(_ story: StoryModel) {
         let storyUid = story.uid
+        let fetchDescriptor = FetchDescriptor<PromptModel>(
+            predicate: #Predicate {
+                $0.story?.uid == storyUid
+            },
+            sortBy: [SortDescriptor<PromptModel>(\.createdAt)]
+        )
         
-        if earlyPrompt {
-            let fetchDescriptor = FetchDescriptor<PromptModel>(
-                predicate: #Predicate {
-                    $0.story?.uid == storyUid
-                },
-                sortBy: [SortDescriptor<PromptModel>(\.createdAt)]
-            )
-            
-            promptScan = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? nil
-            prompt = nil
-        } else {
-            let fetchDescriptor = FetchDescriptor<PromptModel>(
-                predicate: #Predicate {
-                    $0.story?.uid == storyUid
-                },
-                sortBy: [SortDescriptor<PromptModel>(\.createdAt)]
-            )
-            
-            prompt = (try? modelContext?.fetch(fetchDescriptor).first ?? nil) ?? nil
-            promptScan = nil
-        }
+        prompts = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? nil
     }
 }

@@ -67,7 +67,7 @@ import SwiftData
 
     func getPromptByType(promptType: PromptType) -> [StoryModel] {
         let result = selectedEpisode?.stories?.filter {
-            $0.prompt?.promptType == promptType
+            $0.prompts?[0].promptType == promptType
         }.sorted { lhs, rhs in lhs.pageNumber < rhs.pageNumber } ?? []
 
         return result
@@ -77,7 +77,7 @@ import SwiftData
         let mazePrompts = getPromptByType(promptType: .maze)
         guard mazePrompts.count > 0 else { return (0, 0, 0) }
         let nthPrompt = Double((mazePrompts.firstIndex {
-            $0.prompt?.uid == promptId
+            $0.prompts?[0].uid == promptId
         } ?? 0))
         return (nthPrompt / Double(mazePrompts.count),
                 Int(nthPrompt), mazePrompts.count)

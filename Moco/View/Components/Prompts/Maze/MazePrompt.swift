@@ -101,20 +101,21 @@ struct MazePrompt: View {
 }
 
 struct MazePromptOld: View {
+    @Environment(\.promptViewModel) private var promptViewModel
     @State private var mazePromptViewModel = MazePromptViewModel()
 
     var action: () -> Void = {}
 
     var body: some View {
         ZStack {
-            MazeView(answersAsset: answersAsset,
-                     correctAnswerAsset: correctAnswerAsset) {
+            MazeView(answersAsset: promptViewModel.prompts![0].answerAssets!,
+                     correctAnswerAsset: promptViewModel.prompts![0].correctAnswer) {
                 action()
             }
 
             if !mazePromptViewModel.isStarted {
                 VStack {
-                    Text(promptViewModel.prompt!.question ?? "")
+                    Text(promptViewModel.prompts![0].question ?? "")
                         .customFont(.didactGothic, size: 30)
                         .foregroundColor(.text.primary)
                         .opacity(mazePromptViewModel.blurOpacity)

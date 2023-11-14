@@ -15,7 +15,7 @@ final class HintModel: Identifiable {
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
-    var prompt: PromptModel?
+    var prompt: PromptModel? = nil
 
     init(hint: String) {
         uid = UUID().uuidString

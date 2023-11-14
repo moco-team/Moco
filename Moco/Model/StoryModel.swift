@@ -19,28 +19,28 @@ final class StoryModel: Identifiable {
     @Attribute var updatedAt = Date()
 
     var isHavePrompt: Bool {
-        prompt != nil
+        prompts != nil
     }
 
-    var episode: EpisodeModel?
-    var prompt: [PromptModel]?
+    var episode: EpisodeModel? = nil
+    var prompts: [PromptModel]?
     var storyContents: [StoryContentModel]?
 
     init(
         background: String,
         pageNumber: Int,
         isHavePrompt _: Bool = false,
-        prompt: [PromptModel]? = nil,
-        storyContents: [StoryContentModel]? = nil,
+        prompts: [PromptModel]?,
+        storyContents: [StoryContentModel]? = [],
         enableUI _: Bool = true,
         earlyPrompt: Bool = false
     ) {
         uid = UUID().uuidString
         self.background = background
         self.pageNumber = pageNumber
-        self.prompt = prompt
+        self.prompts = prompts ?? []
         self.storyContents = storyContents
-        self.earlyPrompt = (prompt != nil) ? earlyPrompt : false
+        self.earlyPrompt = (prompts != nil) ? earlyPrompt : false
         createdAt = Date()
         updatedAt = Date()
     }

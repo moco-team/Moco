@@ -51,7 +51,7 @@ import SwiftData
         let mazeType = PromptType.maze
         let fetchDescriptor = FetchDescriptor<StoryModel>(
             predicate: #Predicate {
-                $0.episode?.uid == episodeUid && $0.prompt?.promptType == mazeType
+                $0.episode?.uid == episodeUid && $0.prompts?[0].promptType == mazeType
             },
             sortBy: [SortDescriptor<StoryModel>(\.createdAt)]
         )
