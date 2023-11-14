@@ -15,11 +15,11 @@ struct MazeProgress: View {
             GeometryReader {
                 let size = $0.size
                 ZStack {
-                    Image("Maze/moco-head-timer").resizable().aspectRatio(contentMode: .fit)
+                    Image("Maze/questioned-card").resizable().aspectRatio(contentMode: .fit)
                     Color.gray
                         .offset(y: -size.height * mazePromptViewModel.progress)
                         .mask {
-                            Image("Maze/moco-head-timer").resizable().aspectRatio(contentMode: .fit)
+                            Image("Maze/questioned-card").resizable().aspectRatio(contentMode: .fit)
                         }
                 }.frame(width: Screen.width * 0.08, height: Screen.height * 0.1)
             }.frame(width: Screen.width * 0.08, height: Screen.height * 0.1)

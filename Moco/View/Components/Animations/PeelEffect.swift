@@ -172,7 +172,7 @@ struct PeelPreview: View {
 
     var body: some View {
         PeelEffect(state: $peelState) {
-            StoryBookNew()
+            StoryBookNew(firstPageBackground: "Story/Cover/Story1")
         } background: {
             Image("Story/Cover/Story1")
                 .resizable()

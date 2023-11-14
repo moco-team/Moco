@@ -111,7 +111,7 @@ struct ARStory: View {
                             }
                         }
                     }
-                } else {
+                } else if lastPrompt {
                     ThreeDRenderer {
                         doneHandler?()
                     }
