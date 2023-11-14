@@ -26,7 +26,7 @@ final class ARViewModel: NSObject, ObservableObject {
     @Published var toBeFoundEntityNames: [String] = ["honey_jar", "key", "airplane"]
 
     var arView: ARView?
-    
+
     var isTutorialDone: Bool {
         get {
             GlobalStorage.arTutorialFinished
@@ -55,7 +55,7 @@ final class ARViewModel: NSObject, ObservableObject {
         arView.session.delegate = self
         self.arView = arView
     }
-    
+
     func resetSession() {
         // Stop the current AR session
         arView?.session.pause()
@@ -63,7 +63,7 @@ final class ARViewModel: NSObject, ObservableObject {
         // Remove anchors
         arView?.scene.anchors.removeAll()
     }
-    
+
     func resetStates() {
         assetsLoaded = false
         hasPlacedObject = false

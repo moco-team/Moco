@@ -18,7 +18,7 @@ final class EpisodeModel: Identifiable, CustomPersistentModel {
     @Attribute var updatedAt = Date()
 
     var stories: [StoryModel]?
-    var storyTheme: StoryThemeModel?
+    var storyTheme: StoryThemeModel? = nil
 
     init(pictureName: String, stories: [StoryModel]?, slug: String = "", isAvailable: Bool) {
         uid = UUID().uuidString

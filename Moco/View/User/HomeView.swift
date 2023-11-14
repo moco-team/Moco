@@ -35,15 +35,13 @@ struct HomeView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 0.4 * Screen.width)
-                        .padding(.top, 50)
+                        .padding(.top, Screen.height * 0.02)
 
                     Spacer()
 
                     BurgerMenu()
                 }
                 .padding(.horizontal, 0.05 * Screen.width)
-
-                Spacer()
 
                 HStack {
                     Text("Koleksi Cerita Dunia Ajaib")
@@ -58,7 +56,7 @@ struct HomeView: View {
                         self.isShowing3d = true
                     }
                     NavigationLink(
-                        destination: ARTutorialView() {
+                        destination: ARTutorialView {
                             navigate.pop()
                         }
                     ) {
@@ -82,7 +80,8 @@ struct HomeView: View {
                         Text("AR Story")
                     }
                     Spacer()
-                }.padding(.leading, 60).padding(.bottom, 30)
+                }.padding(.leading, 60)
+                    .padding(.vertical, Screen.height * 0.1)
 
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: [GridItem(.flexible())]) {
@@ -101,11 +100,14 @@ struct HomeView: View {
                                 }
                             }
                         }
+                        StoryBookNew(
+                            firstPageBackground: "Story/Cover/Story2",
+                            isLocked: true
+                        ) {}
                     }
                     .padding(.horizontal, 30)
                 }.scrollClipDisabled()
 
-                Spacer()
                 Spacer()
             }
             .onShake {
@@ -121,7 +123,7 @@ struct HomeView: View {
                 homeViewModel.setVolume()
             }
             if isShowing3d {
-                ThreeDRenderer(){
+                ThreeDRenderer {
                     print("test 3d render selesai!")
                 }
             }

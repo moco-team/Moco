@@ -16,6 +16,7 @@ enum PromptType: String, Codable {
     case multipleChoice
     case maze
     case ar
+    case card
 }
 
 @Model
@@ -25,12 +26,13 @@ final class PromptModel: Identifiable {
     @Attribute var promptType = PromptType.maze
     @Attribute var correctAnswer = ""
     @Attribute var question: String? = ""
+    @Attribute var imageCard: String? = ""
     @Attribute var answerChoices: [String]? = []
     @Attribute var answerAssets: [String]? = []
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
-    var story: StoryModel?
+    var story: StoryModel? = nil
     var hints: [HintModel]?
 
     init(correctAnswer: String,
@@ -38,6 +40,7 @@ final class PromptModel: Identifiable {
          promptType: PromptType,
          hints: [HintModel]?,
          question: String? = "",
+         imageCard: String? = "",
          answerChoices: [String]? = [],
          answerAssets: [String]? = []) {
         uid = UUID().uuidString
@@ -46,6 +49,7 @@ final class PromptModel: Identifiable {
         self.correctAnswer = correctAnswer
         self.hints = hints ?? []
         self.question = question
+        self.imageCard = imageCard
         self.answerChoices = answerChoices
         self.answerAssets = answerAssets
         createdAt = Date()

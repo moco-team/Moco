@@ -79,8 +79,8 @@ struct StoryView: View {
         if let storyPage = storyViewModel.storyPage, !storyPage.earlyPrompt {
             activePrompt = nil
         }
-        guard promptViewModel.prompt != nil else { return }
-        timerViewModel.setTimer(key: "storyPagePrompt-\(scrollPosition!)", withInterval: promptViewModel.prompt!.startTime) {
+        guard let prompts = promptViewModel.prompts, !prompts.isEmpty else { return }
+        timerViewModel.setTimer(key: "storyPagePrompt-\(scrollPosition!)", withInterval: promptViewModel.prompts![0].startTime) {
             withAnimation {
                 showPromptButton = true
             }
@@ -102,8 +102,8 @@ struct StoryView: View {
         startNarrative()
         startPrompt()
         if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
-            promptViewModel.fetchPrompt(storyPage)
-            activePrompt = promptViewModel.prompt!
+            promptViewModel.fetchPrompts(storyPage)
+            activePrompt = promptViewModel.prompts![0]
         }
     }
 
@@ -162,10 +162,10 @@ struct StoryView: View {
             if let storyPage = storyViewModel.storyPage {
                 storyContentViewModel.fetchStoryContents(storyPage)
 
-                promptViewModel.fetchPrompt(storyPage)
+                promptViewModel.fetchPrompts(storyPage)
 
-                if let prompt = promptViewModel.prompt, prompt.hints != nil {
-                    hintViewModel.fetchHints(prompt)
+                if let prompts = promptViewModel.prompts, prompts.first?.hints != nil {
+                    hintViewModel.fetchHints(prompts[0])
                 }
             }
         }
@@ -216,8 +216,12 @@ struct StoryView: View {
             if let stories = episodeViewModel.selectedEpisode?.stories {
                 Group {
                     switch activePrompt?.promptType {
+                    case .card:
+                        if promptViewModel.prompts != nil {
+                            CardPrompt()
+                        }
                     case .multipleChoice:
-                        if promptViewModel.prompt != nil {
+                        if promptViewModel.prompts != nil {
                             MultipleChoicePrompt {
                                 activePrompt = nil
                                 nextPage()
@@ -226,7 +230,7 @@ struct StoryView: View {
                             }
                         }
                     case .maze:
-                        if let mazePrompt = promptViewModel.prompt {
+                        if let mazePrompt = promptViewModel.prompts?.first {
                             MazePrompt(
                                 promptText: mazePrompt.question!,
                                 answersAsset: mazePrompt.answerAssets!,
@@ -238,7 +242,7 @@ struct StoryView: View {
                             }.id(mazePrompt.id)
                         }
                     case .ar:
-                        if let ARPrompt = promptViewModel.prompt {
+                        if let ARPrompt = promptViewModel.prompts?[0] {
                             ARStory(
                                 prompt: ARPrompt,
                                 lastPrompt: scrollPosition == (stories.count - 1)
@@ -248,24 +252,8 @@ struct StoryView: View {
                             .id(ARPrompt.id)
                             .onAppear {
                                 print("nih AR")
-                                print(promptViewModel.prompt?.correctAnswer)
+                                print(promptViewModel.prompts![0].correctAnswer)
                             }
-                        }
-                    case .puzzle:
-                        FindTheObjectView(
-                            isPromptDone: .constant(false),
-                            content: "Once upon a time...",
-                            hints: hintViewModel.hints,
-                            correctAnswer: promptViewModel.prompt!.correctAnswer,
-                            balloons: [
-                                Balloon(color: "orange", isCorrect: false),
-                                Balloon(color: "ungu", isCorrect: false),
-                                Balloon(color: "merah", isCorrect: true),
-                                Balloon(color: "hijau", isCorrect: false),
-                                Balloon(color: "biru", isCorrect: false)
-                            ]
-                        ) {
-                            nextPage()
                         }
                     case .objectDetection:
                         DetectionView {
@@ -325,7 +313,10 @@ struct StoryView: View {
                     }
                     Spacer()
 
-                    if promptViewModel.prompt == nil || forceShowNext {
+                    if promptViewModel.prompts == nil ||
+                        promptViewModel.prompts!.isEmpty ||
+                        forceShowNext
+                    {
                         StoryNavigationButton(direction: .right) {
                             nextPage()
                         }
@@ -335,7 +326,7 @@ struct StoryView: View {
                     Spacer()
                     if showPromptButton && activePrompt == nil {
                         SfxButton {
-                            activePrompt = promptViewModel.prompt!
+                            activePrompt = promptViewModel.prompts![0]
                         } label: {
                             Image("Buttons/button-start").resizable().scaledToFit()
                         }
@@ -367,27 +358,29 @@ struct StoryView: View {
         }
         .overlay {
             if showPauseMenu {
-                PauseMenu(isActive: $showPauseMenu) {
-                    switch activePrompt?.promptType {
-                    case .maze:
-                        settingsViewModel.mazeTutorialFinished = false
-                    case .none:
-                        break
-                    case .some(.puzzle):
-                        break
-                    case .some(.findHoney):
-                        break
-                    case .some(.objectDetection):
-                        break
-                    case .some(.speech):
-                        break
-                    case .some(.multipleChoice):
-                        break
-                    case .some(.ar):
-                        settingsViewModel.arTutorialFinished = false
+                if let promptType = activePrompt?.promptType {
+                    PauseMenu(isActive: $showPauseMenu) {
+                        switch promptType {
+                        case .maze:
+                            settingsViewModel.mazeTutorialFinished = false
+                        case .findHoney:
+                            break
+                        case .objectDetection:
+                            break
+                        case .speech:
+                            break
+                        case .multipleChoice:
+                            break
+                        case .ar:
+                            settingsViewModel.arTutorialFinished = false
+                        case .card:
+                            break
+                        case .puzzle:
+                            break
+                        }
+                    } repeatHandler: {
+                        prevPage(0)
                     }
-                } repeatHandler: {
-                    prevPage(0)
                 }
             } else {
                 EmptyView()

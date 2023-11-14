@@ -29,7 +29,7 @@ final class StoryContentModel: Identifiable {
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
-    var story: StoryModel?
+    var story: StoryModel? = nil
 
     init(duration: Double, contentName: String, contentType: StoryContentType, positionX: Double, positionY: Double, maxWidth: Double, color: String?,
          fontSize: CGFloat) {

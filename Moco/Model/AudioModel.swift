@@ -275,8 +275,7 @@ struct AudioModel: Identifiable, Equatable {
         player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: nil) { _ in
             // Check if the player has reached the end of the current item
             if let currentItem = player.currentItem,
-               currentItem.currentTime() >= currentItem.duration
-            {
+               currentItem.currentTime() >= currentItem.duration {
                 // Pause the player
                 player.pause()
 

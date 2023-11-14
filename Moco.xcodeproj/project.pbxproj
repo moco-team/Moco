@@ -229,6 +229,10 @@
 		93E3D87A2AE4E95700E5391F /* SpeakPromptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3D8792AE4E95700E5391F /* SpeakPromptModel.swift */; };
 		93E3D87C2AE4EFDB00E5391F /* SpeakPromptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3D87B2AE4EFDB00E5391F /* SpeakPromptViewModel.swift */; };
 		93EB5FA42AFAC10900C4FB34 /* maze-bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93EB5FA32AFAC10900C4FB34 /* maze-bgm.mp3 */; };
+		93F570312B02868800ECFB33 /* CardPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F570302B02868800ECFB33 /* CardPrompt.swift */; };
+		93F570332B02896A00ECFB33 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F570322B02896A00ECFB33 /* CardView.swift */; };
+		93F570352B0292DD00ECFB33 /* CardScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F570342B0292DD00ECFB33 /* CardScan.swift */; };
+		93F570372B0317D300ECFB33 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F570362B0317D300ECFB33 /* ShakeEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -479,6 +483,10 @@
 		93E3D8792AE4E95700E5391F /* SpeakPromptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakPromptModel.swift; sourceTree = "<group>"; };
 		93E3D87B2AE4EFDB00E5391F /* SpeakPromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakPromptViewModel.swift; sourceTree = "<group>"; };
 		93EB5FA32AFAC10900C4FB34 /* maze-bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "maze-bgm.mp3"; sourceTree = "<group>"; };
+		93F570302B02868800ECFB33 /* CardPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPrompt.swift; sourceTree = "<group>"; };
+		93F570322B02896A00ECFB33 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		93F570342B0292DD00ECFB33 /* CardScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardScan.swift; sourceTree = "<group>"; };
+		93F570362B0317D300ECFB33 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -788,6 +796,7 @@
 		05B1661C2ADE755F0077FA0D /* Prompts */ = {
 			isa = PBXGroup;
 			children = (
+				93F5702F2B02867500ECFB33 /* Card */,
 				930D68882AF2B994001976F0 /* MultipleChoice */,
 				935D78602AEE1AB400DF64A5 /* Maze */,
 				05E8B56B2AED57AA00E3612F /* ARStory */,
@@ -1320,6 +1329,7 @@
 				937AF2852AE80BFA008C69BB /* RippleView.swift */,
 				935D785A2AED55B200DF64A5 /* PeelEffect.swift */,
 				935D785E2AED7C9D00DF64A5 /* PeelEffectTappable.swift */,
+				93F570362B0317D300ECFB33 /* ShakeEffect.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -1330,6 +1340,16 @@
 				93EB5FA32AFAC10900C4FB34 /* maze-bgm.mp3 */,
 			);
 			path = Maze;
+			sourceTree = "<group>";
+		};
+		93F5702F2B02867500ECFB33 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				93F570302B02868800ECFB33 /* CardPrompt.swift */,
+				93F570322B02896A00ECFB33 /* CardView.swift */,
+				93F570342B0292DD00ECFB33 /* CardScan.swift */,
+			);
+			path = Card;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1592,11 +1612,13 @@
 				059210142AFB68480008CD2C /* Base64ConverterExtension.swift in Sources */,
 				0571CB382AE1935C00CE0CC7 /* InvisibleButton.swift in Sources */,
 				938E3D372AD939C4003D2AE1 /* ContentView.swift in Sources */,
+				93F570372B0317D300ECFB33 /* ShakeEffect.swift in Sources */,
 				93E3D87A2AE4E95700E5391F /* SpeakPromptModel.swift in Sources */,
 				0B6E2F6C2ADC91E10001D320 /* PromptModel.swift in Sources */,
 				938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */,
 				0B6E2F782ADCA8990001D320 /* StoryContentViewModel.swift in Sources */,
 				0571CB362AE17A9E00CE0CC7 /* SpeakTheStory.swift in Sources */,
+				93F570312B02868800ECFB33 /* CardPrompt.swift in Sources */,
 				0B46D7232AF120BC002DE821 /* EpisodeModel.swift in Sources */,
 				93E3D8762AE4E4BA00E5391F /* DetectionPromptModel.swift in Sources */,
 				050E42072AFDC540009666DB /* ARTutorialView.swift in Sources */,
@@ -1611,6 +1633,7 @@
 				05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */,
 				930D68902AF2DB92001976F0 /* BoardAnswer.swift in Sources */,
 				930D688E2AF2DB82001976F0 /* MultipleChoicePrompt.swift in Sources */,
+				93F570352B0292DD00ECFB33 /* CardScan.swift in Sources */,
 				93692EAC2AFD5CAC00CD6561 /* EpisodeItem.swift in Sources */,
 				05AE93632ADE82920082B21D /* LottieView.swift in Sources */,
 				935D786D2AEF4BD600DF64A5 /* ViewOnLoad.swift in Sources */,
@@ -1631,6 +1654,7 @@
 				0B6E2F722ADC97BE0001D320 /* StoryViewModel.swift in Sources */,
 				935D78502AEBF98400DF64A5 /* GifView.swift in Sources */,
 				937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */,
+				93F570332B02896A00ECFB33 /* CardView.swift in Sources */,
 				056A3E482AF25170009299F4 /* SKSpriteNodeExtension.swift in Sources */,
 				056B67282AE28D1400A3B493 /* AchievementsView.swift in Sources */,
 				938E3D432ADABD9F003D2AE1 /* BaseViewModel.swift in Sources */,

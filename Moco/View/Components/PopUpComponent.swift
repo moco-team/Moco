@@ -8,6 +8,11 @@
 import ConfettiSwiftUI
 import SwiftUI
 
+public enum PopUpType {
+    case base
+    case danger
+}
+
 struct PopUpComponent: ViewModifier {
     @State private var offset: CGFloat = 1000
     @Binding var isActive: Bool
@@ -26,10 +31,12 @@ struct PopUpComponent: ViewModifier {
     var isLarge = false
     var width = Screen.width * 0.45
     var height = Screen.height * 0.6
+    var type = PopUpType.base
 
     var withConfetti = false
 
     var closeWhenDone = false
+    var shakeItOff: CGFloat = 0
 
     var function: () -> Void
     var cancelHandler: (() -> Void)?
@@ -52,7 +59,8 @@ struct PopUpComponent: ViewModifier {
                     overlayOpacity: overlayOpacity,
                     width: width,
                     height: height,
-                    closeWhenDone: closeWhenDone
+                    closeWhenDone: closeWhenDone,
+                    shakeItOff: shakeItOff
                 ) {
                     function()
                 } cancelHandler: {
@@ -66,10 +74,12 @@ struct PopUpComponent: ViewModifier {
 
 struct PopUpComponentView: View {
     @Environment(\.audioViewModel) private var audioViewModel
+    @Environment(\.timerViewModel) private var timerViewModel
     @State private var offset: CGFloat = 1000
     @Binding var isActive: Bool
     @State private var confettiCounter = 0
     @State private var internalOverlayOpacity = 0.0
+    @State private var shakeAnimatableData: CGFloat = 0
 
     var title: String? = "Congratulations"
     var text: String? = ""
@@ -86,6 +96,8 @@ struct PopUpComponentView: View {
     var width = Screen.width * 0.45
     var height = Screen.height * 0.6
     var closeWhenDone = false
+    var shakeItOff: CGFloat = 0
+    var type = PopUpType.base
 
     var function: () -> Void
     var cancelHandler: (() -> Void)?
@@ -111,7 +123,20 @@ struct PopUpComponentView: View {
                         Rectangle().frame(width: width, height: height)
                             .foregroundColor(.clear)
                             .overlay {
-                                Image(isLarge ? "Components/popup-base-lg" : "Components/popup-base").resizable().scaledToFit()
+                                switch type {
+                                case .base:
+                                    Image(isLarge ?
+                                          "Components/popup-base-lg" :
+                                            "Components/popup-base")
+                                    .resizable()
+                                    .scaledToFit()
+                                case .danger:
+                                    Image(isLarge ?
+                                          "Components/popup-base-lg" :
+                                            "Components/popup-danger")
+                                        .resizable()
+                                        .scaledToFit()
+                                }
                             }
 
                         VStack {
@@ -154,6 +179,7 @@ struct PopUpComponentView: View {
                                     }
                                     .buttonStyle(MainButton(width: 180, type: .success))
                                     .font(.footnote)
+                                    .shake(animatableData: shakeItOff)
                                 }
                             }
                         }

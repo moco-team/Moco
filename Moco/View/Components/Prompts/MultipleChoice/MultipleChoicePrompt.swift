@@ -32,28 +32,25 @@ struct MultipleChoicePrompt: View {
             .clipped()
             .onTapGesture {}
             .overlay {
-                Text(promptViewModel.prompt!.question ?? "").customFont(.didactGothic, size: 20).position(CGPoint(x: 0.5 * Screen.width, y: 0.12 * Screen.height))
+                Text(promptViewModel.prompts![0].question ?? "").customFont(.didactGothic, size: 20).position(CGPoint(x: 0.5 * Screen.width, y: 0.12 * Screen.height))
                 BoardAnswer(label: "A", position: CGPoint(x: 0.21 * Screen.width, y: 0.5 * Screen.height)) {
-                    if promptViewModel.prompt!.correctAnswer == "0" {
+                    if promptViewModel.prompts![0].correctAnswer == "0" {
                         onCorrect()
                     } else {
-                        onWrong()
                     }
                 }
 
                 BoardAnswer(label: "B", position: CGPoint(x: 0.5 * Screen.width, y: 0.62 * Screen.height)) {
-                    if promptViewModel.prompt!.correctAnswer == "1" {
+                    if promptViewModel.prompts![0].correctAnswer == "1" {
                         onCorrect()
                     } else {
-                        onWrong()
                     }
                 }
 
                 BoardAnswer(label: "C", position: CGPoint(x: 0.79 * Screen.width, y: 0.5 * Screen.height)) {
-                    if promptViewModel.prompt!.correctAnswer == "2" {
+                    if promptViewModel.prompts![0].correctAnswer == "2" {
                         onCorrect()
                     } else {
-                        onWrong()
                     }
                 }
             }
@@ -63,7 +60,5 @@ struct MultipleChoicePrompt: View {
 #Preview {
     MultipleChoicePrompt {
         print("Benar2")
-    } onWrong: {
-        print("Uasu")
     }
 }
