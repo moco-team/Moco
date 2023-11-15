@@ -31,7 +31,7 @@ final class PromptModel: Identifiable {
     @Attribute var answerAssets: [String]? = []
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
-
+// __main__
     var story: StoryModel? = nil
     var hints: [HintModel]?
 

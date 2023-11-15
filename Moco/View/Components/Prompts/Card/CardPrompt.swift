@@ -20,7 +20,7 @@ struct CardPrompt: View {
     @State private var showQuestionPopup = false
     @State private var questionPopup = ""
     @State private var showScanner = false
-    
+
     var body: some View {
         ZStack {
             VStack {
@@ -43,8 +43,10 @@ struct CardPrompt: View {
                         }
                     }
                 }
-                Text("suka bermain bersama")
-                    .customFont(.didactGothic, size: 40)
+                if let cardPrompts = promptViewModel.prompts {
+                    Text(cardPrompts[currentCard].question ?? "")
+                        .customFont(.didactGothic, size: 40)
+                }
             }
             if showScanner {
                 CardScan {

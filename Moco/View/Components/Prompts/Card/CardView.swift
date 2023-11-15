@@ -26,23 +26,27 @@ struct CardView: View {
                         .onTapGesture {
                             onTap?()
                         }
-                    Text(String(repeating: "_", count: text.count) + suffix)
-                        .customFont(.didactGothic, size: 40)
+//                    Text(String(repeating: "_", count: text.count) + suffix)
+//                        .customFont(.didactGothic, size: 40)
                 }
             case .inactive:
                 Image("Story/Prompts/card-inactive")
                     .resizable()
                     .scaledToFit()
-                Text(String(repeating: "_", count: text.count) + suffix)
-                    .customFont(.didactGothic, size: 40)
+//                Text(String(repeating: "_", count: text.count) + suffix)
+//                    .customFont(.didactGothic, size: 40)
             case .revealed:
                 Image(revealedImage)
                     .resizable()
                     .scaledToFit()
-                Text(text + suffix)
-                    .customFont(.didactGothic, size: 40)
+//                Text(text + suffix)
+//                    .customFont(.didactGothic, size: 40)
             }
-        }.frame(width: 300, height: 400)
+        }
+        .frame(
+            width: Screen.width * 0.25,
+            height: 0.4 * Screen.height
+        )
     }
 }
 

@@ -48,37 +48,6 @@ struct HomeView: View {
                         .customFont(.cherryBomb, size: 50)
                         .foregroundColor(Color.blueTxt)
                         .fontWeight(.bold)
-
-                    NavigationLink(destination: QRScannerSheet()) {
-                        Text("QR Code")
-                    }
-                    Button("Test 3d") {
-                        self.isShowing3d = true
-                    }
-                    NavigationLink(
-                        destination: ARTutorialView {
-                            navigate.pop()
-                        }
-                    ) {
-                        Text("AR Tutorial")
-                    }
-                    NavigationLink(
-                        destination: ARStory(
-                            prompt: PromptModel(
-                                correctAnswer: "honey_jar", // object to be found
-                                startTime: 0,
-                                promptType: PromptType.ar,
-                                hints: nil,
-                                question: "Wow! kita sudah berada di pulau Arjuna. Sekarang, cari madu agar bisa menemukan Maudi!",
-                                answerAssets: ["honey_jar"] // meshes
-                            ),
-                            lastPrompt: true
-                        ) {
-                            navigate.pop()
-                        }
-                    ) {
-                        Text("AR Story")
-                    }
                     Spacer()
                 }.padding(.leading, 60)
                     .padding(.vertical, Screen.height * 0.1)
@@ -101,6 +70,7 @@ struct HomeView: View {
                             }
                         }
                         StoryBookNew(
+                            image: "Story/Cover/Story2",
                             firstPageBackground: "Story/Cover/Story2",
                             isLocked: true
                         ) {}

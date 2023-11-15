@@ -269,13 +269,25 @@ struct StoryView: View {
                     HStack {
                         Spacer()
                         SfxButton {
-//                            if !isMuted {
-//                                audioViewModel.mute()
-//                            } else {
-//                                audioViewModel.unmute()
-//                            }
-//                            isMuted.toggle()
-                            showPauseMenu = true
+                            isExitPopUpActive = true
+                        } label: {
+                            Image("Buttons/button-home").resizable().scaledToFit()
+                        }.buttonStyle(
+                            CircleButton(
+                                width: 80,
+                                height: 80,
+                                backgroundColor: .clear,
+                                foregroundColor: .clear
+                            )
+                        )
+                        .padding()
+                        SfxButton {
+                            if !isMuted {
+                                audioViewModel.mute()
+                            } else {
+                                audioViewModel.unmute()
+                            }
+                            isMuted.toggle()
                         } label: {
                             Image(isMuted ? "Buttons/sound-off" : "Buttons/sound-on")
                                 .resizable()
@@ -290,9 +302,11 @@ struct StoryView: View {
                         )
                         .padding()
                         SfxButton {
-                            isExitPopUpActive = true
+                            showPauseMenu = true
                         } label: {
-                            Image("Buttons/button-x").resizable().scaledToFit()
+                            Image("Buttons/button-settings")
+                                .resizable()
+                                .scaledToFit()
                         }.buttonStyle(
                             CircleButton(
                                 width: 80,
