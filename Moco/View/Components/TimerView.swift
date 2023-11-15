@@ -90,11 +90,11 @@ struct TimerView: View {
                     durationInSeconds = durationParamInSeconds
                     isTimerRunning.toggle()
                 }
-                .padding(10)
+                .padding(14)
                 .background {
                     Image("Components/timer-base").resizable()
                 }
-        }
+        }.padding()
     }
 }
 

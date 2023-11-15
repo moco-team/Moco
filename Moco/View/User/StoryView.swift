@@ -57,7 +57,7 @@ struct StoryView: View {
     private func updateText() {
         guard storyContentViewModel.narratives!.indices.contains(narrativeIndex + 1) else { return }
         narrativeIndex += 1
-        speechViewModel.textToSpeech(text: storyContentViewModel.narratives![narrativeIndex].contentName)
+//        speechViewModel.textToSpeech(text: storyContentViewModel.narratives![narrativeIndex].contentName)
         timerViewModel.setTimer(key: "storyPageTimer-\(narrativeIndex)-\(scrollPosition!)", withInterval: storyContentViewModel.narratives![narrativeIndex].duration) {
             updateText()
         }
@@ -217,8 +217,11 @@ struct StoryView: View {
                 Group {
                     switch activePrompt?.promptType {
                     case .card:
-                        if promptViewModel.prompts != nil {
-                            CardPrompt()
+                        if let cardPrompt = promptViewModel.prompts?.first {
+                            CardPrompt(showNext: $forceShowNext) {
+                                nextPage()
+                            }
+                            .id(cardPrompt.id)
                         }
                     case .multipleChoice:
                         if promptViewModel.prompts != nil {

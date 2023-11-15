@@ -26,7 +26,7 @@ struct MazeProgress: View {
             Text("\(Int(mazePromptViewModel.progress * 100))%")
                 .customFont(.cherryBomb, size: 40)
                 .foregroundColor(.text.darkBlue)
-        }
+        }.padding()
     }
 }
 

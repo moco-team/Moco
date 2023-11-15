@@ -35,10 +35,10 @@ struct MazePrompt: View {
         ZStack {
             ZStack {
                 VStack {
-                    HStack {
+                    HStack(alignment: .top) {
                         MazeProgress()
                         Spacer()
-                        TimerView().padding(.trailing, Screen.width * 0.2)
+                        TimerView().padding(.trailing, Screen.width * 0.3)
                     }
                     Text(promptText)
                         .customFont(.didactGothic, size: 40)

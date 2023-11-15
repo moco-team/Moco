@@ -19,6 +19,12 @@ enum PromptType: String, Codable {
     case card
 }
 
+enum CardType: String, Codable {
+    case character
+    case verb
+    case noun
+}
+
 @Model
 final class PromptModel: Identifiable {
     @Attribute var uid: String = ""
@@ -27,6 +33,9 @@ final class PromptModel: Identifiable {
     @Attribute var correctAnswer = ""
     @Attribute var question: String? = ""
     @Attribute var imageCard: String? = ""
+    @Attribute var cardLocationX: Double = 0.0
+    @Attribute var cardLocationY: Double = 0.0
+    @Attribute var cardType: CardType = CardType.character
     @Attribute var answerChoices: [String]? = []
     @Attribute var answerAssets: [String]? = []
     @Attribute var createdAt = Date()
@@ -42,7 +51,11 @@ final class PromptModel: Identifiable {
          question: String? = "",
          imageCard: String? = "",
          answerChoices: [String]? = [],
-         answerAssets: [String]? = []) {
+         answerAssets: [String]? = [],
+         cardLocationX: Double? = 0.0,
+         cardLocationY: Double? = 0.0,
+         cardType: CardType? = CardType.character
+    ) {
         uid = UUID().uuidString
         self.startTime = startTime
         self.promptType = promptType
@@ -52,6 +65,9 @@ final class PromptModel: Identifiable {
         self.imageCard = imageCard
         self.answerChoices = answerChoices
         self.answerAssets = answerAssets
+        self.cardLocationX = cardLocationX ?? 0.0
+        self.cardLocationY = cardLocationY ?? 0.0
+        self.cardType = cardType ?? .character
         createdAt = Date()
         updatedAt = Date()
     }
