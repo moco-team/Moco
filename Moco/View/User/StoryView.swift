@@ -79,7 +79,10 @@ struct StoryView: View {
         if let storyPage = storyViewModel.storyPage, !storyPage.earlyPrompt {
             activePrompt = nil
         }
-        guard let prompts = promptViewModel.prompts, !prompts.isEmpty else { return }
+        guard let prompts = promptViewModel.prompts, !prompts.isEmpty else {
+            showPromptButton = false
+            return
+        }
         timerViewModel.setTimer(key: "storyPagePrompt-\(scrollPosition!)", withInterval: promptViewModel.prompts![0].startTime) {
             withAnimation {
                 showPromptButton = true
@@ -100,10 +103,15 @@ struct StoryView: View {
         }
 
         startNarrative()
+        if let storyPage = storyViewModel.storyPage {
+            promptViewModel.fetchPrompts(storyPage)
+        }
         startPrompt()
         if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
             promptViewModel.fetchPrompts(storyPage)
-            activePrompt = promptViewModel.prompts![0]
+            if let prompt = promptViewModel.prompts?.first {
+                activePrompt = prompt
+            }
         }
     }
 

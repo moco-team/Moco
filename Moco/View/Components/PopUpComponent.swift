@@ -60,7 +60,8 @@ struct PopUpComponent: ViewModifier {
                     width: width,
                     height: height,
                     closeWhenDone: closeWhenDone,
-                    shakeItOff: shakeItOff
+                    shakeItOff: shakeItOff,
+                    type: type
                 ) {
                     function()
                 } cancelHandler: {

@@ -19,8 +19,10 @@ struct CardPrompt: View {
 
     @State private var currentCard = 0
     @State private var showQuestionPopup = false
+    @State private var showWrongAnswerPopup = false
     @State private var questionPopup = ""
     @State private var showScanner = false
+    @State private var scanResult: [String] = []
 
     @Binding var showNext: Bool
 
@@ -55,8 +57,6 @@ struct CardPrompt: View {
                cardQuestions.count > currentCard {
                 let promptContent = cardQuestions[currentCard]
                 VStack {
-
-
                     Text(promptContent.text)
                         .customFont(.didactGothic, size: 40)
 
@@ -69,12 +69,25 @@ struct CardPrompt: View {
                 )
             }
             if showScanner {
-                CardScan {
-                    currentCard += 1
-                    showScanner = false
-                    if let prompts = promptViewModel.prompts, currentCard >= prompts.count {
-                        showNext = true
-                        onComplete?()
+                if let cardPrompts = promptViewModel.prompts {
+                    CardScan(scanResult: $scanResult) {
+                        showScanner = false
+                        scanResult = scanResult.map {
+                            $0.fromBase64() ?? ""
+                        }
+                        if scanResult.joined(separator: " ")
+                            .trimmingCharacters(in: .whitespacesAndNewlines) !=
+                            cardPrompts[currentCard].correctAnswer {
+                            showWrongAnswerPopup = true
+                            return
+                        }
+
+                        currentCard += 1
+                        if let prompts = promptViewModel.prompts,
+                            currentCard >= prompts.count {
+                            showNext = true
+                            onComplete?()
+                        }
                     }
                 }
             }
@@ -88,6 +101,16 @@ struct CardPrompt: View {
             confirmText: "Scan",
             closeWhenDone: true,
             shakeItOff: 1
+        ) {
+            showScanner = true
+        }
+        .popUp(
+            isActive: $showWrongAnswerPopup,
+            title: "Belum tepat!\n" + questionPopup,
+            confirmText: "Scan",
+            closeWhenDone: true,
+            shakeItOff: 1,
+            type: .danger
         ) {
             showScanner = true
         }

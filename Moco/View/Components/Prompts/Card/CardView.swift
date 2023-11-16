@@ -66,9 +66,11 @@ struct CardView: View {
 //                Text(String(repeating: "_", count: text.count) + suffix)
 //                    .customFont(.didactGothic, size: 40)
             case .revealed:
-                Image(revealedImage)
-                    .resizable()
-                    .scaledToFit()
+                if type == .character {
+                    Image(revealedImage)
+                        .resizable()
+                        .scaledToFit()
+                }
 //                Text(text + suffix)
 //                    .customFont(.didactGothic, size: 40)
             }

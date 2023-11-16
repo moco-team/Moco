@@ -283,6 +283,139 @@ struct ModelData {
                                 ],
                                 earlyPrompt: true
                             ),
+                            StoryModel(
+                                background: "Story/Content/Story1/Ep2/Page7/background",
+                                pageNumber: 7,
+                                isHavePrompt: true,
+                                prompts: [
+                                    PromptModel(
+                                        correctAnswer: "lem",
+                                        startTime: 0,
+                                        promptType: PromptType.card,
+                                        hints: nil,
+                                        question: """
+                                        Apakah kata yang memiliki arti barang cair atau liat, dipakai untuk merekatkan sesuatu pada barang lain/perekat?
+                                        """,
+                                        imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
+                                        cardLocationX: 0.8,
+                                        cardLocationY: 0.33,
+                                        cardType: CardType.noun
+                                    )
+                                ],
+                                storyContents: [
+                                    StoryContentModel(
+                                        duration: 0,
+                                        contentName: "bg-story",
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
+                                    )
+                                ],
+                                earlyPrompt: true
+                            ),
+                            StoryModel(
+                                background: "Story/Content/Story1/Ep2/Page8/background",
+                                pageNumber: 8,
+                                isHavePrompt: false,
+                                storyContents: [
+                                    StoryContentModel(
+                                        duration: 0,
+                                        contentName: "bg-story",
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
+                                    )
+                                ]
+                            ),
+                            StoryModel(
+                                background: "Story/Content/Story1/Ep2/Page9/background",
+                                pageNumber: 9,
+                                isHavePrompt: true,
+                                prompts: [
+                                    PromptModel(
+                                        correctAnswer: "culik",
+                                        startTime: 0,
+                                        promptType: PromptType.card,
+                                        hints: nil,
+                                        question: """
+                                        Apakah kata yang memiliki arti mencuri atau melarikan orang lain dengan maksud tertentu?
+                                        """,
+                                        imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
+                                        cardLocationX: 0.8,
+                                        cardLocationY: 0.33,
+                                        cardType: CardType.noun
+                                    )
+                                ],
+                                storyContents: [
+                                    StoryContentModel(
+                                        duration: 0,
+                                        contentName: "bg-story",
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
+                                    )
+                                ],
+                                earlyPrompt: true
+                            ),
+                            StoryModel(
+                                background: "Story/Content/Story1/Ep2/Page10/background",
+                                pageNumber: 10,
+                                isHavePrompt: true,
+                                prompts: [
+                                    PromptModel(
+                                        correctAnswer: "terowongan",
+                                        startTime: 0,
+                                        promptType: PromptType.card,
+                                        hints: nil,
+                                        question: """
+                                        Apakah kata yang memiliki arti tembusan dalam tanah atau gunung?
+                                        """,
+                                        imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
+                                        cardLocationX: 0.8,
+                                        cardLocationY: 0.33,
+                                        cardType: CardType.noun
+                                    )
+                                ],
+                                storyContents: [
+                                    StoryContentModel(
+                                        duration: 0,
+                                        contentName: "bg-story",
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
+                                    )
+                                ],
+                                earlyPrompt: true
+                            ),
+                            StoryModel(
+                                background: "Story/Content/Story1/Ep2/Page11/background",
+                                pageNumber: 11,
+                                isHavePrompt: false,
+                                storyContents: [
+                                    StoryContentModel(
+                                        duration: 0,
+                                        contentName: "bg-story",
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
+                                    )
+                                ]
+                            ),
                         ],
                         isAvailable: true
                     ),

@@ -9,7 +9,7 @@ import CodeScanner
 import SwiftUI
 
 struct CardScan: View {
-    @State private var scanResult: [String] = []
+    @Binding var scanResult: [String]
 
     var onComplete: (() -> Void)?
 
@@ -32,9 +32,6 @@ struct CardScan: View {
                     }
                 }
                 VStack {
-                    Text("Area Kamera :")
-                        .customFont(.cherryBomb, size: 40)
-                        .padding()
                     CodeScannerView(
                         codeTypes: [.qr],
                         scanMode: .oncePerCode,
@@ -44,7 +41,7 @@ struct CardScan: View {
                                 onComplete?()
                             }
                         }
-                    ).cornerRadius(25)
+                    )
                 }
             }
         }.onAppear {
@@ -54,5 +51,5 @@ struct CardScan: View {
 }
 
 #Preview {
-    CardScan()
+    CardScan(scanResult: .constant([]))
 }
