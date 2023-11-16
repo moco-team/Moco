@@ -15,45 +15,85 @@ enum CardState {
 
 struct CardPrompt: View {
     @Environment(\.promptViewModel) private var promptViewModel
-    
+    @Environment(\.storyViewModel) private var storyViewModel
+
     @State private var currentCard = 0
     @State private var showQuestionPopup = false
+    @State private var showWrongAnswerPopup = false
     @State private var questionPopup = ""
     @State private var showScanner = false
+    @State private var scanResult: [String] = []
+
+    @Binding var showNext: Bool
+
+    var onComplete: (() -> Void)?
 
     var body: some View {
         ZStack {
-            VStack {
-                HStack(spacing: 20) {
-                    if let cardPrompts = promptViewModel.prompts {
-                        ForEach(Array(cardPrompts.enumerated()), id: \.offset) { index, cardPrompt in
-                            CardView(
-                                state: index < currentCard ?
-                                    .revealed :
-                                    index == currentCard ?
-                                    .active :
-                                        .inactive,
-                                revealedImage: cardPrompt.imageCard!,
-                                text: cardPrompt.correctAnswer,
-                                suffix: cardPrompt.correctAnswer == "Teka dan Teki" ? "" : ","
-                            ) {
-                                questionPopup = cardPrompt.question!
-                                showQuestionPopup = true
-                            }
+            if let cardPrompts = promptViewModel.prompts {
+                ForEach(Array(cardPrompts.enumerated()), id: \.offset) { index, cardPrompt in
+                    CardView(
+                        state: index < currentCard ?
+                            .revealed :
+                            index == currentCard ?
+                            .active :
+                                .inactive,
+                        revealedImage: cardPrompt.imageCard!,
+                        text: cardPrompt.correctAnswer,
+                        type: cardPrompt.cardType
+                    ) {
+                        questionPopup = cardPrompt.question!
+                        showQuestionPopup = true
+                    }
+                    .position(
+                        CGPoint(
+                            x: Screen.width * cardPrompt.cardLocationX,
+                            y: Screen.height * cardPrompt.cardLocationY
+                        )
+                    )
+                }
+            }
+            if let cardQuestions = storyViewModel.getStoryContentByType(.text),
+               cardQuestions.count > currentCard {
+                let promptContent = cardQuestions[currentCard]
+                VStack {
+                    Text(promptContent.text)
+                        .customFont(.didactGothic, size: 40)
+
+                }
+                .position(
+                    CGPoint(
+                        x: Screen.width * promptContent.positionX,
+                        y: Screen.height * promptContent.positionY
+                    )
+                )
+            }
+            if showScanner {
+                if let cardPrompts = promptViewModel.prompts {
+                    CardScan(scanResult: $scanResult) {
+                        showScanner = false
+                        scanResult = scanResult.map {
+                            $0.fromBase64() ?? ""
+                        }
+                        if scanResult.joined(separator: " ")
+                            .trimmingCharacters(in: .whitespacesAndNewlines) !=
+                            cardPrompts[currentCard].correctAnswer {
+                            showWrongAnswerPopup = true
+                            return
+                        }
+
+                        currentCard += 1
+                        if let prompts = promptViewModel.prompts,
+                            currentCard >= prompts.count {
+                            showNext = true
+                            onComplete?()
                         }
                     }
                 }
-                if let cardPrompts = promptViewModel.prompts {
-                    Text(cardPrompts[currentCard].question ?? "")
-                        .customFont(.didactGothic, size: 40)
-                }
             }
-            if showScanner {
-                CardScan {
-                    currentCard += 1
-                    showScanner = false
-                }
-            }
+        }
+        .onAppear {
+            currentCard = 0
         }
         .popUp(
             isActive: $showQuestionPopup,
@@ -64,9 +104,19 @@ struct CardPrompt: View {
         ) {
             showScanner = true
         }
+        .popUp(
+            isActive: $showWrongAnswerPopup,
+            title: "Belum tepat!\n" + questionPopup,
+            confirmText: "Scan",
+            closeWhenDone: true,
+            shakeItOff: 1,
+            type: .danger
+        ) {
+            showScanner = true
+        }
     }
 }
 
 #Preview {
-    CardPrompt()
+    CardPrompt(showNext: .constant(true))
 }

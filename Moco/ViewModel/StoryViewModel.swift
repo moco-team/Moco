@@ -46,6 +46,16 @@ import SwiftData
         return (try? modelContext?.fetch(fetchDescriptor)[index].background ?? nil) ?? nil
     }
 
+    func getStoryContentByType(_ type: StoryContentType) -> [StoryContentModel]? {
+        guard storyPage != nil else { return nil }
+
+        return (storyPage?.storyContents?.filter {
+            $0.contentType == type
+        } ?? []).sorted {
+            lhs, rhs in lhs.createdAt < rhs.createdAt
+        }
+    }
+
 //    func getSumMazePrompt(episode: EpisodeModel) -> Int {
 //        let episodeUid = episode.uid
 //        let mazeType = PromptType.maze

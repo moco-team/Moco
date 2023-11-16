@@ -26,13 +26,23 @@ final class StoryContentModel: Identifiable {
     @Attribute var maxWidth: Double? = Screen.width * 0.5
     @Attribute var color: String? = ""
     @Attribute var fontSize: CGFloat = 30
+    @Attribute var text = ""
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
     var story: StoryModel? = nil
 
-    init(duration: Double, contentName: String, contentType: StoryContentType, positionX: Double, positionY: Double, maxWidth: Double, color: String?,
-         fontSize: CGFloat) {
+    init(
+        duration: Double,
+         contentName: String,
+         contentType: StoryContentType,
+        text: String? = "",
+         positionX: Double,
+         positionY: Double,
+         maxWidth: Double,
+         color: String?,
+         fontSize: CGFloat
+    ) {
         uid = UUID().uuidString
         self.duration = duration
         self.contentName = contentName
@@ -42,6 +52,7 @@ final class StoryContentModel: Identifiable {
         self.maxWidth = maxWidth
         self.color = color
         self.fontSize = fontSize
+        self.text = text ?? ""
         createdAt = Date()
         updatedAt = Date()
     }

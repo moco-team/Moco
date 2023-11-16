@@ -57,7 +57,7 @@ struct StoryView: View {
     private func updateText() {
         guard storyContentViewModel.narratives!.indices.contains(narrativeIndex + 1) else { return }
         narrativeIndex += 1
-        speechViewModel.textToSpeech(text: storyContentViewModel.narratives![narrativeIndex].contentName)
+//        speechViewModel.textToSpeech(text: storyContentViewModel.narratives![narrativeIndex].contentName)
         timerViewModel.setTimer(key: "storyPageTimer-\(narrativeIndex)-\(scrollPosition!)", withInterval: storyContentViewModel.narratives![narrativeIndex].duration) {
             updateText()
         }
@@ -79,7 +79,10 @@ struct StoryView: View {
         if let storyPage = storyViewModel.storyPage, !storyPage.earlyPrompt {
             activePrompt = nil
         }
-        guard let prompts = promptViewModel.prompts, !prompts.isEmpty else { return }
+        guard let prompts = promptViewModel.prompts, !prompts.isEmpty else {
+            showPromptButton = false
+            return
+        }
         timerViewModel.setTimer(key: "storyPagePrompt-\(scrollPosition!)", withInterval: promptViewModel.prompts![0].startTime) {
             withAnimation {
                 showPromptButton = true
@@ -100,10 +103,15 @@ struct StoryView: View {
         }
 
         startNarrative()
+        if let storyPage = storyViewModel.storyPage {
+            promptViewModel.fetchPrompts(storyPage)
+        }
         startPrompt()
         if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
             promptViewModel.fetchPrompts(storyPage)
-            activePrompt = promptViewModel.prompts![0]
+            if let prompt = promptViewModel.prompts?.first {
+                activePrompt = prompt
+            }
         }
     }
 
@@ -217,8 +225,11 @@ struct StoryView: View {
                 Group {
                     switch activePrompt?.promptType {
                     case .card:
-                        if promptViewModel.prompts != nil {
-                            CardPrompt()
+                        if let cardPrompt = promptViewModel.prompts?.first {
+                            CardPrompt(showNext: $forceShowNext) {
+                                nextPage()
+                            }
+                            .id(cardPrompt.id)
                         }
                     case .multipleChoice:
                         if promptViewModel.prompts != nil {
