@@ -70,7 +70,7 @@ struct ModelData {
                                         duration: 0,
                                         contentName: "bg-story",
                                         contentType: StoryContentType.text,
-                                        text: "_____,              _____,               ______\nsuka bermain bersama.",
+                                        text: "_____,              _____,               ______\nsuka bermain bersama",
                                         positionX: 0.5,
                                         positionY: 0.9,
                                         maxWidth: 0,
@@ -81,7 +81,7 @@ struct ModelData {
                                         duration: 0,
                                         contentName: "bg-story",
                                         contentType: StoryContentType.text,
-                                        text: "Moco,              _____,               ______\nsuka bermain bersama.",
+                                        text: "Moco,              _____,               ______\nsuka bermain bersama",
                                         positionX: 0.5,
                                         positionY: 0.9,
                                         maxWidth: 0,
@@ -92,7 +92,7 @@ struct ModelData {
                                         duration: 0,
                                         contentName: "bg-story",
                                         contentType: StoryContentType.text,
-                                        text: "Moco,              Bebe,               ______\nsuka bermain bersama.",
+                                        text: "Moco,              Bebe,               ______\nsuka bermain bersama",
                                         positionX: 0.5,
                                         positionY: 0.9,
                                         maxWidth: 0,
@@ -103,7 +103,7 @@ struct ModelData {
                                         duration: 0,
                                         contentName: "bg-story",
                                         contentType: StoryContentType.text,
-                                        text: "Moco,              Bebe,               Teka & Teki\nsuka bermain bersama.",
+                                        text: "Moco,              Bebe,               Teka & Teki\nsuka bermain bersama",
                                         positionX: 0.5,
                                         positionY: 0.9,
                                         maxWidth: 0,
@@ -157,7 +157,7 @@ struct ModelData {
                                 isHavePrompt: true,
                                 prompts: [
                                     PromptModel(
-                                        correctAnswer: "kato",
+                                        correctAnswer: "main",
                                         startTime: 0,
                                         promptType: PromptType.card,
                                         hints: nil,
@@ -211,7 +211,7 @@ struct ModelData {
                                         hints: nil,
                                         question: """
                                         Apakah kata yang memiliki arti cairan
-                                        yang banyak mengandung zat gula pada sarang lebah atau bunga (rasanya manis)?
+                                        yang banyak mengandung gula pada sarang lebah atau bunga (rasanya manis)?
                                         """,
                                         imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
                                         cardLocationX: 0.8,
@@ -294,7 +294,7 @@ struct ModelData {
                                         promptType: PromptType.card,
                                         hints: nil,
                                         question: """
-                                        Apakah kata yang memiliki arti barang cair atau liat, dipakai untuk merekatkan sesuatu pada barang lain/perekat?
+                                        Apakah kata yang memiliki arti barang cair atau liat, dipakai untuk merekatkan sesuatu pada barang lain atau perekat?
                                         """,
                                         imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
                                         cardLocationX: 0.8,
@@ -425,7 +425,7 @@ struct ModelData {
                         stories: [
                             // Story page-1
                             StoryModel(
-                                background: "Story/Content/Story1/Pages/Page6/background",
+                                background: "",
                                 pageNumber: 1,
                                 isHavePrompt: true,
                                 prompts: [
@@ -435,10 +435,7 @@ struct ModelData {
                                         promptType: PromptType.maze,
                                         hints: nil,
                                         question: """
-                                            “Berapakah jumlah teman yang sedang Moco cari di dalam terowongan?”
-                                             A.) 1
-                                             B.) 2
-                                             C.) 3
+                                            Berapakah jumlah teman yang sedang Moco cari di dalam terowongan?
                                             """,
                                         answerChoices: [
                                             "Dua",
@@ -467,7 +464,7 @@ struct ModelData {
                             ),
                             // Story page-2
                             StoryModel(
-                                background: "Story/Content/Story1/Pages/Page6/background",
+                                background: "",
                                 pageNumber: 2,
                                 isHavePrompt: true,
                                 prompts: [
@@ -477,10 +474,7 @@ struct ModelData {
                                         promptType: PromptType.maze,
                                         hints: nil,
                                         question: """
-                                            “Benda apakah yang digunakan oleh Teka dan Teki?”
-                                             A.) Tongkat
-                                             B.) Tas Ransel
-                                             C.) Kacamata Hitam
+                                            Benda apakah yang digunakan oleh Teka dan Teki?
                                             """,
                                         answerChoices: [
                                             "Kacamata Hitam",
@@ -509,7 +503,7 @@ struct ModelData {
                             ),
                             // Story page-3
                             StoryModel(
-                                background: "Story/Content/Story1/Pages/Page6/background",
+                                background: "",
                                 pageNumber: 3,
                                 isHavePrompt: true,
                                 prompts: [
@@ -519,10 +513,7 @@ struct ModelData {
                                         promptType: PromptType.maze,
                                         hints: nil,
                                         question: """
-                                            “Hewan apakah yang sedang Moco cari di dalam terowongan?”
-                                             A.) Tikus
-                                             B.) Sapi
-                                             C.) Katak
+                                            Hewan apakah yang sedang Moco cari di dalam terowongan?
                                             """,
                                         answerChoices: [
                                             "Tikus",
@@ -551,7 +542,7 @@ struct ModelData {
                             ),
                             // Story page-4
                             StoryModel(
-                                background: "Story/Content/Story1/Pages/Page6/background",
+                                background: "",
                                 pageNumber: 4,
                                 isHavePrompt: false,
                                 prompts: nil,
@@ -586,7 +577,7 @@ struct ModelData {
                                         startTime: 3,
                                         promptType: PromptType.ar,
                                         hints: nil,
-                                        question: "Wow! kita sudah berada di pulau Arjuna. Sekarang, cari madu agar bisa menemukan Maudi!",
+                                        question: "Wow! kita sudah berada di pulau Arjuna. Sekarang, cari madu agar bisa menemukan Bebe!",
                                         answerAssets: [
                                             "honey_jar"
                                         ] // meshes
@@ -627,7 +618,7 @@ struct ModelData {
                                         question:
                                         """
                                         Yeay!! Kita berhasil menemukan Bebe! Betapa melelahkannya \
-                                        perjalanan hari ini. Waktunya kita pulang, yuk mencari alat yang dapat membawa \
+                                        perjalanan hari ini. Waktunya kita pulang, yuk cari alat yang dapat membawa \
                                         kita kembali ke Kota Mocokerto!
                                         """,
                                         answerAssets: ["airplane"]
