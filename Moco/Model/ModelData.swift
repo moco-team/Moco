@@ -30,11 +30,7 @@ struct ModelData {
                                         promptType: PromptType.card,
                                         hints: nil,
                                         question: "Siapakah anak sapi yang lucu?",
-                                        imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
-                                        // isi
-                                        cardPositionX: 0.0,
-                                        cardPositionY: 0.0,
-                                        cardState: CardState.active
+                                        imageCard: "Story/Content/Story1/Pages/Page1/moco-card"
                                     ),
                                     PromptModel(
                                         correctAnswer: "Bebe",
@@ -42,11 +38,7 @@ struct ModelData {
                                         promptType: PromptType.card,
                                         hints: nil,
                                         question: "Siapakah anak beruang yang polos?",
-                                        imageCard: "Story/Content/Story1/Pages/Page1/bebe-card",
-                                        // isi
-                                        cardPositionX: 0.0,
-                                        cardPositionY: 0.0,
-                                        cardState: CardState.inactive
+                                        imageCard: "Story/Content/Story1/Pages/Page1/bebe-card"
                                     ),
                                     PromptModel(
                                         correctAnswer: "Teka dan Teki",
@@ -54,57 +46,19 @@ struct ModelData {
                                         promptType: PromptType.card,
                                         hints: nil,
                                         question: "Siapakah yang disebut kembar?",
-                                        imageCard: "Story/Content/Story1/Pages/Page1/tekateki-card",
-                                        // isi
-                                        cardPositionX: 0.0,
-                                        cardPositionY: 0.0,
-                                        cardState: CardState.inactive
+                                        imageCard: "Story/Content/Story1/Pages/Page1/tekateki-card"
                                     )
                                 ],
                                 storyContents: [
                                     StoryContentModel(
+                                        duration: 0,
                                         contentName: "bg-story",
-                                        contentType: StoryContentType.audio
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "** **, ** **, ** **\n suka bermain bersama",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "**Moco**, ** **, ** **\n suka bermain bersama",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "**Moco**, **bebe**, ** **\n suka bermain bersama",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "**Moco**, **Bebe**, **Teka dan Teki**\n suka bermain bersama",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
                                     )
                                 ],
                                 earlyPrompt: true
@@ -115,337 +69,7 @@ struct ModelData {
                     // Episode-2
                     EpisodeModel(
                         pictureName: "",
-                        stories: [
-                            // Story page-1
-                            StoryModel(
-                                background: "Story/Content/Story1/Pages/Page1/background",
-                                pageNumber: 1,
-                                isHavePrompt: true,
-                                prompts: [
-                                    PromptModel(
-                                        correctAnswer: "Kato",
-                                        startTime: 2,
-                                        promptType: PromptType.card,
-                                        hints: nil,
-                                        question: "Siapakah nama katak yang dewasa?",
-                                        imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
-                                        // isi
-                                        cardPositionX: 0.0,
-                                        cardPositionY: 0.0,
-                                        cardState: CardState.active
-                                    )
-                                ],
-                                storyContents: [
-                                    StoryContentModel(
-                                        contentName: "bg-story",
-                                        contentType: StoryContentType.audio
-                                    ),
-                                ],
-                                earlyPrompt: true
-                            ),
-                            // Story page-2
-                            StoryModel(
-                                background: "Story/Content/Story1/Pages/Page1/background",
-                                pageNumber: 2,
-                                isHavePrompt: true,
-                                prompts: [
-                                    PromptModel(
-                                        correctAnswer: "main",
-                                        startTime: 2,
-                                        promptType: PromptType.card,
-                                        hints: nil,
-                                        question: "Apakah kata yang memiliki arti melakukan permainan untuk menyenangkan hati?",
-                                        imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
-                                        // isi
-                                        cardPositionX: 0.0,
-                                        cardPositionY: 0.0,
-                                        cardState: CardState.active
-                                    )
-                                ],
-                                storyContents: [
-                                    StoryContentModel(
-                                        contentName: "bg-story",
-                                        contentType: StoryContentType.audio
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "Kato menghampiri mereka",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "Ketika sedang ber** **",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "Ketika sedang ber**main**",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    )
-                                ],
-                                earlyPrompt: true
-                            ),
-                            // Story page-3
-                            StoryModel(
-                                background: "Story/Content/Story1/Pages/Page1/background",
-                                pageNumber: 3,
-                                isHavePrompt: true,
-                                prompts: [
-                                    PromptModel(
-                                        correctAnswer: "madu",
-                                        startTime: 2,
-                                        promptType: PromptType.card,
-                                        hints: nil,
-                                        question: "Apakah kata yang memiliki arti cairan yang banyak mengandung zat gula pada sarang lebah atau bunga (rasanya manis)?",
-                                        imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
-                                        // isi
-                                        cardPositionX: 0.0,
-                                        cardPositionY: 0.0,
-                                        cardState: CardState.active
-                                    )
-                                ],
-                                storyContents: [
-                                    StoryContentModel(
-                                        contentName: "bg-story",
-                                        contentType: StoryContentType.audio
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "yang dibawa Kato",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "Bebe tertarik dengan stoples ** **",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "Bebe tertarik dengan stoples **madu**",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                ],
-                                earlyPrompt: true
-                            ),
-                            // Story page-4
-                            StoryModel(
-                                background: "Story/Content/Story1/Pages/Page1/background",
-                                pageNumber: 4,
-                                isHavePrompt: true,
-                                prompts: [
-                                    PromptModel(
-                                        correctAnswer: "stoples",
-                                        startTime: 2,
-                                        promptType: PromptType.card,
-                                        hints: nil,
-                                        question: "Apakah kata yang memiliki arti tabung kaca atau plastik yang biasanya dipakai untuk menyimpan sesuatu?",
-                                        imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
-                                        // isi
-                                        cardPositionX: 0.0,
-                                        cardPositionY: 0.0,
-                                        cardState: CardState.active
-                                    )
-                                ],
-                                storyContents: [
-                                    StoryContentModel(
-                                        contentName: "bg-story",
-                                        contentType: StoryContentType.audio
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "Ia memasukkan tangannya ke dalam ** **",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "Ia memasukkan tangannya ke dalam **stoples**",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                ],
-                                earlyPrompt: true
-                            ),
-                            // Story page-5
-                            StoryModel(
-                                background: "Story/Content/Story1/Pages/Page1/background",
-                                pageNumber: 5,
-                                isHavePrompt: true,
-                                prompts: [
-                                    PromptModel(
-                                        correctAnswer: "lem",
-                                        startTime: 2,
-                                        promptType: PromptType.card,
-                                        hints: nil,
-                                        question: "Apakah kata yang memiliki arti barang cair atau liat, dipakai untuk merekatkan sesuatu pada barang lain/perekat?",
-                                        imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
-                                        // isi
-                                        cardPositionX: 0.0,
-                                        cardPositionY: 0.0,
-                                        cardState: CardState.active
-                                    )
-                                ],
-                                storyContents: [
-                                    StoryContentModel(
-                                        contentName: "bg-story",
-                                        contentType: StoryContentType.audio
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "Ia memasukkan tangannya ke dalam **stoples** tersebut yang ternyata berisi ** **",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "Ia memasukkan tangannya ke dalam **stoples** tersebut yang ternyata berisi **lem**",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                ],
-                                earlyPrompt: true
-                            ),
-                            // Story page-6
-                            StoryModel(
-                                background: "Story/Content/Story1/Pages/Page1/background",
-                                pageNumber: 6,
-                                isHavePrompt: true,
-                                prompts: [
-                                    PromptModel(
-                                        correctAnswer: "culik",
-                                        startTime: 2,
-                                        promptType: PromptType.card,
-                                        hints: nil,
-                                        question: "Apakah kata yang memiliki arti mencuri atau melarikan orang lain dengan maksud tertentu?",
-                                        imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
-                                        // isi
-                                        cardPositionX: 0.0,
-                                        cardPositionY: 0.0,
-                                        cardState: CardState.active
-                                    )
-                                ],
-                                storyContents: [
-                                    StoryContentModel(
-                                        contentName: "bg-story",
-                                        contentType: StoryContentType.audio
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "Kato men** ** Bebe",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "Kato men**culik** Bebe",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                ],
-                                earlyPrompt: true
-                            ),
-                            // Story page-7
-                            StoryModel(
-                                background: "Story/Content/Story1/Pages/Page1/background",
-                                pageNumber: 7,
-                                isHavePrompt: true,
-                                prompts: [
-                                    PromptModel(
-                                        correctAnswer: "terowongan",
-                                        startTime: 2,
-                                        promptType: PromptType.card,
-                                        hints: nil,
-                                        question: "Apakah kata yang memiliki arti tembusan dalam tanah atau gunung?",
-                                        imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
-                                        // isi
-                                        cardPositionX: 0.0,
-                                        cardPositionY: 0.0,
-                                        cardState: CardState.active
-                                    )
-                                ],
-                                storyContents: [
-                                    StoryContentModel(
-                                        contentName: "bg-story",
-                                        contentType: StoryContentType.audio
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "Kato men**culik** Bebe dan \n membawanya memasuki ** **",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                    StoryContentModel(
-                                        duration: 0.0,
-                                        contentName: "Kato men**culik** Bebe dan \n membawanya memasuki **terowongan**",
-                                        contentType: StoryContentType.text,
-                                        positionX: 0.0,
-                                        positionY: 0.0,
-                                        maxWidth: 0.0,
-                                        color: nil,
-                                        fontSize: 0.0
-                                    ),
-                                ],
-                                earlyPrompt: true
-                            )
-                        ],
+                        stories: [],
                         isAvailable: true
                     ),
                     // Episode-3
@@ -482,8 +106,14 @@ struct ModelData {
                                 ],
                                 storyContents: [
                                     StoryContentModel(
+                                        duration: 0,
                                         contentName: "maze-bgm",
-                                        contentType: StoryContentType.audio
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
                                     )
                                 ],
                                 earlyPrompt: true
@@ -518,8 +148,14 @@ struct ModelData {
                                 ],
                                 storyContents: [
                                     StoryContentModel(
+                                        duration: 0,
                                         contentName: "maze-bgm",
-                                        contentType: StoryContentType.audio
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
                                     )
                                 ],
                                 earlyPrompt: true
@@ -554,8 +190,14 @@ struct ModelData {
                                 ],
                                 storyContents: [
                                     StoryContentModel(
+                                        duration: 0,
                                         contentName: "maze-bgm",
-                                        contentType: StoryContentType.audio
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
                                     )
                                 ],
                                 earlyPrompt: true
