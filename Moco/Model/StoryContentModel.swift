@@ -31,8 +31,14 @@ final class StoryContentModel: Identifiable {
 
     var story: StoryModel? = nil
 
-    init(duration: Double, contentName: String, contentType: StoryContentType, positionX: Double, positionY: Double, maxWidth: Double, color: String?,
-         fontSize: CGFloat) {
+    init(duration: Double = 0.0,
+         contentName: String = "",
+         contentType: StoryContentType = StoryContentType.text,
+         positionX: Double = 0.0,
+         positionY: Double = 0.0,
+         maxWidth: Double = 0.0,
+         color: String? = nil,
+         fontSize: CGFloat = 0.0) {
         uid = UUID().uuidString
         self.duration = duration
         self.contentName = contentName
