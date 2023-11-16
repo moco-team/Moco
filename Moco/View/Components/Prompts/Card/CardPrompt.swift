@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum CardState: String, Codable {
+enum CardState {
     case active
     case inactive
     case revealed

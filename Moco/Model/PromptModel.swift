@@ -27,9 +27,6 @@ final class PromptModel: Identifiable {
     @Attribute var correctAnswer = ""
     @Attribute var question: String? = ""
     @Attribute var imageCard: String? = ""
-    @Attribute var cardPositionX: Double = 0.0
-    @Attribute var cardPositionY: Double = 0.0
-    @Attribute var cardState: CardState? = CardState.active
     @Attribute var answerChoices: [String]? = []
     @Attribute var answerAssets: [String]? = []
     @Attribute var createdAt = Date()
@@ -44,9 +41,6 @@ final class PromptModel: Identifiable {
          hints: [HintModel]?,
          question: String? = "",
          imageCard: String? = "",
-         cardPositionX: Double = 0.0,
-         cardPositionY: Double = 0.0,
-         cardState: CardState? = CardState.inactive,
          answerChoices: [String]? = [],
          answerAssets: [String]? = []) {
         uid = UUID().uuidString
@@ -56,9 +50,6 @@ final class PromptModel: Identifiable {
         self.hints = hints ?? []
         self.question = question
         self.imageCard = imageCard
-        self.cardPositionX = cardPositionX
-        self.cardPositionY = cardPositionY
-        self.cardState = cardState
         self.answerChoices = answerChoices
         self.answerAssets = answerAssets
         createdAt = Date()
