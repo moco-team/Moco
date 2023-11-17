@@ -542,7 +542,7 @@ struct ModelData {
                             ),
                             // Story page-4
                             StoryModel(
-                                background: "",
+                                background: "Story/Content/Story1/Pages/Page6/background",
                                 pageNumber: 4,
                                 isHavePrompt: false,
                                 prompts: nil,
