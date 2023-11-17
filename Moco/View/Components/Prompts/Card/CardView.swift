@@ -56,23 +56,18 @@ struct CardView: View {
                         .onTapGesture {
                             onTap?()
                         }
-//                    Text(String(repeating: "_", count: text.count) + suffix)
-//                        .customFont(.didactGothic, size: 40)
                 }
+                .scaleEffect(minScale: 1.0, maxScale: 1.05)
             case .inactive:
                 Image("Story/Prompts/card-inactive")
                     .resizable()
                     .scaledToFit()
-//                Text(String(repeating: "_", count: text.count) + suffix)
-//                    .customFont(.didactGothic, size: 40)
             case .revealed:
                 if type == .character {
                     Image(revealedImage)
                         .resizable()
                         .scaledToFit()
                 }
-//                Text(text + suffix)
-//                    .customFont(.didactGothic, size: 40)
             }
         }
         .frame(

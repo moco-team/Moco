@@ -94,6 +94,7 @@
 		930CBFFB2AF76956001B67D2 /* ViewWillDisappear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930CBFFA2AF76956001B67D2 /* ViewWillDisappear.swift */; };
 		930D688E2AF2DB82001976F0 /* MultipleChoicePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930D688D2AF2DB82001976F0 /* MultipleChoicePrompt.swift */; };
 		930D68902AF2DB92001976F0 /* BoardAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930D688F2AF2DB92001976F0 /* BoardAnswer.swift */; };
+		9310EC782B07C3040045A908 /* ScaleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310EC772B07C3040045A908 /* ScaleEffect.swift */; };
 		931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949722AE0EB6A00830D57 /* Page1-monolog1.m4a */; };
 		931722182AE5508300346382 /* Page2-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949752AE0EB6A00830D57 /* Page2-monolog1.m4a */; };
 		931722192AE5508300346382 /* Page3-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949772AE0EB6A00830D57 /* Page3-monolog1.m4a */; };
@@ -367,6 +368,7 @@
 		930CBFFA2AF76956001B67D2 /* ViewWillDisappear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWillDisappear.swift; sourceTree = "<group>"; };
 		930D688D2AF2DB82001976F0 /* MultipleChoicePrompt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleChoicePrompt.swift; sourceTree = "<group>"; };
 		930D688F2AF2DB92001976F0 /* BoardAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardAnswer.swift; sourceTree = "<group>"; };
+		9310EC772B07C3040045A908 /* ScaleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleEffect.swift; sourceTree = "<group>"; };
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
@@ -1330,6 +1332,7 @@
 				935D785A2AED55B200DF64A5 /* PeelEffect.swift */,
 				935D785E2AED7C9D00DF64A5 /* PeelEffectTappable.swift */,
 				93F570362B0317D300ECFB33 /* ShakeEffect.swift */,
+				9310EC772B07C3040045A908 /* ScaleEffect.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -1579,6 +1582,7 @@
 				935D78572AEC2D7900DF64A5 /* SettingsViewModel.swift in Sources */,
 				05AE93582ADE74980082B21D /* SpeechRecognizerViewModel.swift in Sources */,
 				938E3D3D2AD9901B003D2AE1 /* PopUpComponent.swift in Sources */,
+				9310EC782B07C3040045A908 /* ScaleEffect.swift in Sources */,
 				938E3D4D2ADBA247003D2AE1 /* ContentViewContainer.swift in Sources */,
 				0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */,
 				938E3D3F2AD990C3003D2AE1 /* Buttons.swift in Sources */,

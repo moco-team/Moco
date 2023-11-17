@@ -10,7 +10,7 @@ import SwiftUI
 public extension View {
     func popUp(
         isActive: Binding<Bool>,
-        title: String? = "Congratulation",
+        title: String = "Congratulation",
         text: String? = "",
         topImage: String? = nil,
         bottomImage: String? = nil,

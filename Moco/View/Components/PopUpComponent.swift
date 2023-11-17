@@ -18,7 +18,7 @@ struct PopUpComponent: ViewModifier {
     @Binding var isActive: Bool
     @State private var confettiCounter = 0
 
-    var title: String? = "Congratulations"
+    var title = "Congratulations"
     var text: String? = ""
 
     var topImage: String?
@@ -82,7 +82,7 @@ struct PopUpComponentView: View {
     @State private var internalOverlayOpacity = 0.0
     @State private var shakeAnimatableData: CGFloat = 0
 
-    var title: String? = "Congratulations"
+    var title = "Congratulations"
     var text: String? = ""
     var withConfetti = false
 
@@ -111,75 +111,64 @@ struct PopUpComponentView: View {
                     close()
                 }
             VStack(alignment: .center, spacing: 0) {
-                HStack(alignment: .center) {
-                    ZStack {
-                        if topImage != nil {
-                            Image(topImage!)
-                                .resizable()
-                                .scaledToFit().frame(width: 200)
-                                .padding(.top, -190)
-                                .padding(.leading, -100)
-                        }
-                        VStack {
-                            Text(title ?? "Congratulations").customFont(.cherryBomb, size: 32)
-                                .fontWeight(.heavy)
+                ZStack {
+                    if topImage != nil {
+                        Image(topImage!)
+                            .resizable()
+                            .scaledToFit().frame(width: 200)
+                            .padding(.top, -190)
+                            .padding(.leading, -100)
+                    }
+                    VStack {
+                        Spacer()
+
+                        Text(title)
+                            .customFont(.cherryBomb, size: 32)
+                            .fontWeight(.heavy)
+                            .foregroundColor(textColor)
+                            .glowBorder(color: .white, lineWidth: 5)
+                            .padding(.top, 10)
+                            .padding(.bottom, 20)
+                            .padding(.horizontal, 70)
+                            .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
+
+                        if text != "" {
+                            Text(text ?? "")
                                 .foregroundColor(textColor)
-                                .glowBorder(color: .white, lineWidth: 5)
-                                .padding(.top, 10)
-                                .padding(.bottom, 20)
+                                .font(.footnote)
+                                .padding(.bottom, 23)
                                 .padding(.horizontal, 70)
                                 .multilineTextAlignment(.center)
-                                .fixedSize(horizontal: false, vertical: true)
+                        }
 
-                            if text != "" {
-                                Text(text ?? "")
-                                    .foregroundColor(textColor)
-                                    .font(.footnote)
-                                    .padding(.bottom, 23)
-                                    .padding(.horizontal, 70)
-                                    .multilineTextAlignment(.center)
-                            }
+                        Spacer()
 
-                            Grid(horizontalSpacing: 20) {
-                                GridRow {
-                                    if cancelText != nil {
-                                        SfxButton(cancelText!) {
-                                            if cancelHandler != nil {
-                                                cancelHandler!()
-                                            }
-                                            close()
+                        Grid(horizontalSpacing: 20) {
+                            GridRow {
+                                if cancelText != nil {
+                                    SfxButton(cancelText!) {
+                                        if cancelHandler != nil {
+                                            cancelHandler!()
                                         }
-                                        .buttonStyle(MainButton(width: 180, type: .warning))
-                                        .font(.footnote)
+                                        close()
                                     }
-                                    SfxButton(confirmText) {
-                                        function()
-                                        if closeWhenDone {
-                                            close()
-                                        }
-                                    }
-                                    .buttonStyle(MainButton(width: 180, type: .success))
+                                    .buttonStyle(MainButton(width: 180, type: .warning))
                                     .font(.footnote)
-                                    .shake(animatableData: shakeItOff)
                                 }
-                            }
-                        }.padding(20)
-                        .background {
-                            switch type {
-                            case .base:
-                                Image(isLarge ?
-                                      "Components/popup-base-lg" :
-                                        "Components/popup-base")
-                                .resizable()
-                                .scaledToFit()
-                            case .danger:
-                                Image(isLarge ?
-                                      "Components/popup-base-lg" :
-                                        "Components/popup-danger")
-                                .resizable()
-                                .scaledToFit()
+                                SfxButton(confirmText) {
+                                    function()
+                                    if closeWhenDone {
+                                        close()
+                                    }
+                                }
+                                .buttonStyle(MainButton(width: 180, type: .success))
+                                .font(.footnote)
+                                .shake(animatableData: shakeItOff)
                             }
                         }
+                        .padding(.bottom)
+                    }.padding(20)
                         .overlay(alignment: .topTrailing) {
                             SfxButton {
                                 close()
@@ -190,15 +179,31 @@ struct PopUpComponentView: View {
                                     .shadow(radius: 20, x: -20, y: 20)
                             }
                         }
-                        if bottomImage != nil {
-                            Image(bottomImage!)
-                                .resizable()
-                                .scaledToFit().frame(width: 110)
-                                .padding(.top, 210)
-                                .padding(.leading, 240)
-                        }
-                    }.frame(width: width, height: height)
+                    if bottomImage != nil {
+                        Image(bottomImage!)
+                            .resizable()
+                            .scaledToFit().frame(width: 110)
+                            .padding(.top, 210)
+                            .padding(.leading, 240)
+                    }
                 }
+                .frame(width: width, height: height)
+                    .background {
+                        switch type {
+                        case .base:
+                            Image(isLarge ?
+                                  "Components/popup-base-lg" :
+                                    "Components/popup-base")
+                            .resizable()
+                            .scaledToFit()
+                        case .danger:
+                            Image(isLarge ?
+                                  "Components/popup-base-lg" :
+                                    "Components/popup-danger")
+                            .resizable()
+                            .scaledToFit()
+                        }
+                    }
             }
             .offset(x: 0, y: offset)
             .onAppear {

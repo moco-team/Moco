@@ -65,7 +65,6 @@ struct MainButton: ButtonStyle {
                 )
                 .resizable()
                 .scaledToFit()
-                .frame(width: width, height: height)
             }
             .foregroundColor(type == .success ? .text.green : type == .warning ? .text.brown : .text.red)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
