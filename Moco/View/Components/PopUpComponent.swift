@@ -188,22 +188,22 @@ struct PopUpComponentView: View {
                     }
                 }
                 .frame(width: width, height: height)
-                    .background {
-                        switch type {
-                        case .base:
-                            Image(isLarge ?
-                                  "Components/popup-base-lg" :
-                                    "Components/popup-base")
+                .background {
+                    switch type {
+                    case .base:
+                        Image(isLarge ?
+                            "Components/popup-base-lg" :
+                            "Components/popup-base")
                             .resizable()
                             .scaledToFit()
-                        case .danger:
-                            Image(isLarge ?
-                                  "Components/popup-base-lg" :
-                                    "Components/popup-danger")
+                    case .danger:
+                        Image(isLarge ?
+                            "Components/popup-base-lg" :
+                            "Components/popup-danger")
                             .resizable()
                             .scaledToFit()
-                        }
                     }
+                }
             }
             .offset(x: 0, y: offset)
             .onAppear {

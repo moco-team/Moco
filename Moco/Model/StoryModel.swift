@@ -22,7 +22,7 @@ final class StoryModel: Identifiable {
         prompts != []
     }
 
-    var episode: EpisodeModel? = nil
+    var episode: EpisodeModel?
     var prompts: [PromptModel]?
     var storyContents: [StoryContentModel]?
 

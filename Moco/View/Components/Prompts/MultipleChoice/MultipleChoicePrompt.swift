@@ -36,22 +36,19 @@ struct MultipleChoicePrompt: View {
                 BoardAnswer(label: "A", position: CGPoint(x: 0.21 * Screen.width, y: 0.5 * Screen.height)) {
                     if promptViewModel.prompts![0].correctAnswer == "0" {
                         onCorrect()
-                    } else {
-                    }
+                    } else {}
                 }
 
                 BoardAnswer(label: "B", position: CGPoint(x: 0.5 * Screen.width, y: 0.62 * Screen.height)) {
                     if promptViewModel.prompts![0].correctAnswer == "1" {
                         onCorrect()
-                    } else {
-                    }
+                    } else {}
                 }
 
                 BoardAnswer(label: "C", position: CGPoint(x: 0.79 * Screen.width, y: 0.5 * Screen.height)) {
                     if promptViewModel.prompts![0].correctAnswer == "2" {
                         onCorrect()
-                    } else {
-                    }
+                    } else {}
                 }
             }
     }

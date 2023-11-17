@@ -1,5 +1,5 @@
 //
-//  ShakeEffect.swift
+//  ScaleEffect.swift
 //  Moco
 //
 //  Created by Aaron Christopher Tanhar on 14/11/23.

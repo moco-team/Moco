@@ -111,7 +111,7 @@ struct StoryBookNew: View {
                                         )
                                     )
                             }
-                            .overlay{
+                            .overlay {
                                 if !isLocked {
                                     ZStack {
                                         Image("Story/Cover/bookmark")

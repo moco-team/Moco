@@ -415,7 +415,7 @@ struct ModelData {
                                         fontSize: 0
                                     )
                                 ]
-                            ),
+                            )
                         ],
                         isAvailable: true
                     ),
@@ -435,8 +435,8 @@ struct ModelData {
                                         promptType: PromptType.maze,
                                         hints: nil,
                                         question: """
-                                            Berapakah jumlah teman yang sedang Moco cari di dalam terowongan?
-                                            """,
+                                        Berapakah jumlah teman yang sedang Moco cari di dalam terowongan?
+                                        """,
                                         answerChoices: [
                                             "Dua",
                                             "Satu",
@@ -474,8 +474,8 @@ struct ModelData {
                                         promptType: PromptType.maze,
                                         hints: nil,
                                         question: """
-                                            Benda apakah yang digunakan oleh Teka dan Teki?
-                                            """,
+                                        Benda apakah yang digunakan oleh Teka dan Teki?
+                                        """,
                                         answerChoices: [
                                             "Kacamata Hitam",
                                             "Palu",
@@ -513,8 +513,8 @@ struct ModelData {
                                         promptType: PromptType.maze,
                                         hints: nil,
                                         question: """
-                                            Hewan apakah yang sedang Moco cari di dalam terowongan?
-                                            """,
+                                        Hewan apakah yang sedang Moco cari di dalam terowongan?
+                                        """,
                                         answerChoices: [
                                             "Tikus",
                                             "Sapi",
@@ -669,7 +669,7 @@ struct ModelData {
             )
         ]
     ]
-    
+
     static let dataToBePopulatedOld: [String: [StoryThemeModel]] = [
         "storyThemeModel": [
             // Story theme-1
@@ -692,12 +692,12 @@ struct ModelData {
                                         promptType: PromptType.card,
                                         hints: nil,
                                         question: """
-                                                    Siapakah nama seekor anak sapi yang lucu?
-                                                    A.) Moco
-                                                    B.) Bebe
-                                                    C.) Teka dan Teki
-                                                    """
-                                    ),
+                                        Siapakah nama seekor anak sapi yang lucu?
+                                        A.) Moco
+                                        B.) Bebe
+                                        C.) Teka dan Teki
+                                        """
+                                    )
                                 ],
                                 storyContents: [
                                     StoryContentModel(
@@ -1055,6 +1055,7 @@ struct ModelData {
         ]
     ]
 }
+
 struct SkyBox {
     var px: String
     var py: String

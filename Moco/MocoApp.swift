@@ -11,13 +11,13 @@ import SwiftUI
 @main
 struct MocoApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+
     // MARK: - Bindables
-    
+
     @Bindable private var routeViewModel = RouteViewModel()
-    
+
     // MARK: - States
-    
+
     @State private var audioViewModel = AudioViewModel.shared
     @State private var timerViewModel = TimerViewModel.shared
     @State private var storyThemeViewModel = StoryThemeViewModel.shared
@@ -28,18 +28,18 @@ struct MocoApp: App {
     @State private var hintViewModel = HintViewModel.shared
     @State private var settingsViewModel = SettingsViewModel()
     @State private var mazePromptViewModel = MazePromptViewModel.shared
-    
+
     // MARK: - State Objects
-    
+
     @StateObject private var speechViewModel = SpeechRecognizerViewModel.shared
     @StateObject private var objectDetectionViewModel = ObjectDetectionViewModel.shared
     @StateObject private var arViewModel = ARViewModel()
     @StateObject private var motionViewModel = MotionViewModel()
     @StateObject private var orientationInfo = OrientationInfo.shared
-    
+
     private static let sharedModelContainer: ModelContainer = ModelGenerator.generator(false)
     static let modelContext = ModelContext(sharedModelContainer)
-    
+
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $routeViewModel.navPath) {

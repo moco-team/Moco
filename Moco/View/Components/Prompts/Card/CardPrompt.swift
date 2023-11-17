@@ -37,7 +37,7 @@ struct CardPrompt: View {
                             .revealed :
                             index == currentCard ?
                             .active :
-                                .inactive,
+                            .inactive,
                         revealedImage: cardPrompt.imageCard!,
                         text: cardPrompt.correctAnswer,
                         type: cardPrompt.cardType
@@ -59,7 +59,6 @@ struct CardPrompt: View {
                 VStack {
                     Text(promptContent.text)
                         .customFont(.didactGothic, size: 40)
-
                 }
                 .position(
                     CGPoint(
@@ -84,7 +83,7 @@ struct CardPrompt: View {
 
                         currentCard += 1
                         if let prompts = promptViewModel.prompts,
-                            currentCard >= prompts.count {
+                           currentCard >= prompts.count {
                             showNext = true
                             onComplete?()
                         }

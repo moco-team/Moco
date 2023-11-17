@@ -30,18 +30,18 @@ final class StoryContentModel: Identifiable {
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
-    var story: StoryModel? = nil
+    var story: StoryModel?
 
     init(
         duration: Double,
-         contentName: String,
-         contentType: StoryContentType,
+        contentName: String,
+        contentType: StoryContentType,
         text: String? = "",
-         positionX: Double,
-         positionY: Double,
-         maxWidth: Double,
-         color: String?,
-         fontSize: CGFloat
+        positionX: Double,
+        positionY: Double,
+        maxWidth: Double,
+        color: String?,
+        fontSize: CGFloat
     ) {
         uid = UUID().uuidString
         self.duration = duration

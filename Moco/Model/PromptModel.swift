@@ -35,13 +35,13 @@ final class PromptModel: Identifiable {
     @Attribute var imageCard: String? = ""
     @Attribute var cardLocationX: Double = 0.0
     @Attribute var cardLocationY: Double = 0.0
-    @Attribute var cardType: CardType = CardType.character
+    @Attribute var cardType = CardType.character
     @Attribute var answerChoices: [String]? = []
     @Attribute var answerAssets: [String]? = []
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
-// __main__
-    var story: StoryModel? = nil
+    // __main__
+    var story: StoryModel?
     var hints: [HintModel]?
 
     init(correctAnswer: String,
@@ -54,8 +54,7 @@ final class PromptModel: Identifiable {
          answerAssets: [String]? = [],
          cardLocationX: Double? = 0.0,
          cardLocationY: Double? = 0.0,
-         cardType: CardType? = CardType.character
-    ) {
+         cardType: CardType? = CardType.character) {
         uid = UUID().uuidString
         self.startTime = startTime
         self.promptType = promptType

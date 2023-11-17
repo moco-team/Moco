@@ -37,9 +37,10 @@ struct ShakeViewModifier: ViewModifier {
         content
             .modifier(
                 ShakeEffect(
-                    amount: amount, 
+                    amount: amount,
                     shakesPerUnit: shakesPerUnit,
-                    animatableData: shakeAnimatableData)
+                    animatableData: shakeAnimatableData
+                )
             )
             .onDisappear {
                 internalShakeTimer.stopTimer("shakeTimer")
@@ -76,7 +77,7 @@ extension View {
     ) -> some View {
         modifier(
             ShakeViewModifier(
-                amount: amount, 
+                amount: amount,
                 shakesPerUnit: shakesPerUnit,
                 animatableData: animatableData,
                 interval: interval,

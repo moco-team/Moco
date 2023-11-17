@@ -117,7 +117,8 @@ struct StoryView: View {
 
     private func nextPage() {
         guard episodeViewModel.selectedEpisode!.stories!.count >
-                scrollPosition! + 1 else {
+            scrollPosition! + 1
+        else {
             isEpisodeFinished = true
             return
         }
@@ -342,8 +343,7 @@ struct StoryView: View {
 
                     if promptViewModel.prompts == nil ||
                         promptViewModel.prompts!.isEmpty ||
-                        forceShowNext
-                    {
+                        forceShowNext {
                         StoryNavigationButton(direction: .right) {
                             nextPage()
                         }

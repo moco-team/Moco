@@ -16,7 +16,7 @@ struct CardView: View {
 
     var onTap: (() -> Void)?
 
-    func getWidth() -> CGFloat{
+    func getWidth() -> CGFloat {
         switch type {
         case .character:
             return Screen.width * 0.25
@@ -25,7 +25,7 @@ struct CardView: View {
         }
     }
 
-    func getHeight() -> CGFloat{
+    func getHeight() -> CGFloat {
         switch type {
         case .character:
             return 0.4 * Screen.height
@@ -34,7 +34,7 @@ struct CardView: View {
         }
     }
 
-    func getActiveCard() -> String{
+    func getActiveCard() -> String {
         switch type {
         case .character:
             return "Story/Prompts/card-active"
