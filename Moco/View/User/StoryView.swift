@@ -116,12 +116,14 @@ struct StoryView: View {
     }
 
     private func nextPage() {
-        guard episodeViewModel.selectedEpisode!.stories!.count > scrollPosition! + 1 else {
+        guard episodeViewModel.selectedEpisode!.stories!.count >
+                scrollPosition! + 1 else {
             isEpisodeFinished = true
             return
         }
 
         showPromptButton = false
+        forceShowNext = false
 
         let nextPageBg = storyViewModel.getPageBackground(scrollPosition! + 1, episode: episodeViewModel.selectedEpisode!)
 

@@ -19,6 +19,7 @@ struct MazePromptModel {
     var currentMazeIndex = 0
 
     var wrongCount = 0
+    var durationInSeconds = 60 * 3
 
     mutating func reset(_ all: Bool = false) {
         blurOpacity = 0.0

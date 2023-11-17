@@ -120,26 +120,6 @@ struct PopUpComponentView: View {
                                 .padding(.top, -190)
                                 .padding(.leading, -100)
                         }
-
-                        Rectangle().frame(width: width, height: height)
-                            .foregroundColor(.clear)
-                            .overlay {
-                                switch type {
-                                case .base:
-                                    Image(isLarge ?
-                                          "Components/popup-base-lg" :
-                                            "Components/popup-base")
-                                    .resizable()
-                                    .scaledToFit()
-                                case .danger:
-                                    Image(isLarge ?
-                                          "Components/popup-base-lg" :
-                                            "Components/popup-danger")
-                                        .resizable()
-                                        .scaledToFit()
-                                }
-                            }
-
                         VStack {
                             Text(title ?? "Congratulations").customFont(.cherryBomb, size: 32)
                                 .fontWeight(.heavy)
@@ -183,8 +163,33 @@ struct PopUpComponentView: View {
                                     .shake(animatableData: shakeItOff)
                                 }
                             }
+                        }.padding(20)
+                        .background {
+                            switch type {
+                            case .base:
+                                Image(isLarge ?
+                                      "Components/popup-base-lg" :
+                                        "Components/popup-base")
+                                .resizable()
+                                .scaledToFit()
+                            case .danger:
+                                Image(isLarge ?
+                                      "Components/popup-base-lg" :
+                                        "Components/popup-danger")
+                                .resizable()
+                                .scaledToFit()
+                            }
                         }
-
+                        .overlay(alignment: .topTrailing) {
+                            SfxButton {
+                                close()
+                            } label: {
+                                Image("Buttons/button-x")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                    .shadow(radius: 20, x: -20, y: 20)
+                            }
+                        }
                         if bottomImage != nil {
                             Image(bottomImage!)
                                 .resizable()
@@ -193,13 +198,6 @@ struct PopUpComponentView: View {
                                 .padding(.leading, 240)
                         }
                     }.frame(width: width, height: height)
-                }
-            }
-            .overlay(alignment: .topTrailing) {
-                SfxButton {
-                    close()
-                } label: {
-                    Image("Buttons/button-x").resizable().frame(width: 50, height: 50).shadow(radius: 20, x: -20, y: 20)
                 }
             }
             .offset(x: 0, y: offset)
