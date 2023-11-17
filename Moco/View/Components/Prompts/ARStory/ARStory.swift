@@ -116,9 +116,8 @@ struct ARStory: View {
                         doneHandler?()
                     }
                 }
-            } else if lastPrompt {
+            } else {
                 ARTutorialView {
-                    print("Tutorial AR selesai")
                     isTutorialFinished = true
                     arViewModel.pause()
                     arViewModel.resetSession()

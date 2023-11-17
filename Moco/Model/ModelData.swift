@@ -583,7 +583,18 @@ struct ModelData {
                                         ] // meshes
                                     )
                                 ],
-                                storyContents: [],
+                                storyContents: [
+                                    StoryContentModel(
+                                        duration: 0,
+                                        contentName: "bg-story",
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
+                                    )
+                                ],
                                 enableUI: false,
                                 earlyPrompt: true
                             ),
@@ -601,7 +612,18 @@ struct ModelData {
                                         answerAssets: ["key"]
                                     )
                                 ],
-                                storyContents: [],
+                                storyContents: [
+                                    StoryContentModel(
+                                        duration: 0,
+                                        contentName: "bg-story",
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
+                                    )
+                                ],
                                 enableUI: false,
                                 earlyPrompt: true
                             ),
@@ -624,7 +646,18 @@ struct ModelData {
                                         answerAssets: ["airplane"]
                                     )
                                 ],
-                                storyContents: [],
+                                storyContents: [
+                                    StoryContentModel(
+                                        duration: 0,
+                                        contentName: "bg-story",
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
+                                    )
+                                ],
                                 enableUI: false,
                                 earlyPrompt: true
                             )
