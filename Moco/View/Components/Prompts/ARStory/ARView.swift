@@ -98,13 +98,13 @@ struct ARCameraView: View {
             .animation(Animation.default.speed(1),
                        value: arViewModel.assetsLoaded)
         }
-        .popUp(isActive: $isPopUpActive, title: "Selamat! Kamu berhasil menemukan madunya! Mari kita cari benda selanjutnya!") {
+        .popUp(isActive: $isPopUpActive, title: "Selamat! Kamu berhasil menemukan madunya! Mari kita cari benda selanjutnya!", disableCancel: true) {
             print("next")
             print(lastPrompt)
             onFoundObject()
             isPopUpActive = false
         }
-        .popUp(isActive: $isFinalPopUpActive, title: "Selamat! Kamu berhasil menemukan semua benda nya!") {
+        .popUp(isActive: $isFinalPopUpActive, title: "Selamat! Kamu berhasil menemukan semua benda nya!", disableCancel: true) {
             isFinalPopUpActive = false
             audioViewModel.playSound(
                 soundFileName: "014 - Selamat! Kamu berhasil menyelesaikan petualangan ini",
@@ -113,7 +113,7 @@ struct ARCameraView: View {
             )
             isLastNarrativePopupActive = true
         }
-        .popUp(isActive: $isLastNarrativePopupActive, title: "Akhirnya, Moco dan teman-teman berhasil pulang ke Kota Mocokerto setelah petualangan yang panjang. Terima kasih untuk hari ini!") {
+        .popUp(isActive: $isLastNarrativePopupActive, title: "Akhirnya, Moco dan teman-teman berhasil pulang ke Kota Mocokerto setelah petualangan yang panjang. Terima kasih untuk hari ini!", disableCancel: true) {
             isLastNarrativePopupActive = false
             isEndTheStoryPopupActive = true
             onEnd()
@@ -121,7 +121,8 @@ struct ARCameraView: View {
         .popUp(
             isActive: $isEndTheStoryPopupActive,
             title: "Akhiri petualangan dan keluar dari Pulau Arjuna?",
-            confirmText: "Akhiri"
+            confirmText: "Akhiri",
+            disableCancel: true
         ) {
             onFoundObject()
             isEndTheStoryPopupActive = false

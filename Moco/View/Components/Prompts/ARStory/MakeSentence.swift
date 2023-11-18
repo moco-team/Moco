@@ -17,6 +17,7 @@ struct MakeSentence: View {
     @State var fadeMakeSentenceView = false
     @State var showTutorial = true
     @State var showStartButton = false
+    @State var showPromptModal = false
     
     @State private var scanResult: [String] = []
     @State private var showScanner = false
@@ -30,7 +31,7 @@ struct MakeSentence: View {
             startTime: 0,
             promptType: PromptType.card,
             hints: nil,
-            question: "Cari karakter yang sesuai!",
+            question: "Siapa yang sedang lapar?",
             imageCard: "Story/Content/Story1/Pages/Page1/bebe-card" // TODO: Add image card
         ),
         .init(
@@ -46,7 +47,7 @@ struct MakeSentence: View {
             startTime: 0,
             promptType: PromptType.card,
             hints: nil,
-            question: "Apa yang bebe makan!",
+            question: "Apa yang bebe makan?",
             imageCard: "" // TODO: Add image card
         )
     ]
@@ -62,26 +63,26 @@ struct MakeSentence: View {
             // TODO: Modal: Susunlah 1 kartu biru, 1 kartu ungu, dan 1 kartu merah menjadi sebuah kalimat
             if showTutorial {
                 // TODO: Illustrasi: susun kartu (karakter + kt kerja + kt benda) menjadi kalimat
-                ZStack {
-                    Color.black.opacity(0.2)
-                    Image("AR/Tutorial/plane")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: Screen.width * 0.3, height: Screen.height * 0.3)
-
-                    VStack {
-                        GIFView(type: .name("find-ar-plane"))
-                            .frame(width: 200, height: 200)
-                            .padding(.horizontal)
-                            .padding(.top, -75)
-                            .frame(width: 280, alignment: .center)
-
-                        Text("Cari area datar")
-                            .customFont(.didactGothic, size: 30)
-                            .foregroundColor(.white)
-                            .padding()
-                    }
-                }
+//                ZStack {
+//                    Color.black.opacity(0.2)
+//                    Image("AR/Tutorial/plane")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: Screen.width * 0.3, height: Screen.height * 0.3)
+//
+//                    VStack {
+//                        GIFView(type: .name("find-ar-plane"))
+//                            .frame(width: 200, height: 200)
+//                            .padding(.horizontal)
+//                            .padding(.top, -75)
+//                            .frame(width: 280, alignment: .center)
+//
+//                        Text("Cari area datar")
+//                            .customFont(.didactGothic, size: 30)
+//                            .foregroundColor(.white)
+//                            .padding()
+//                    }
+//                }
             } else {
                 if showScanner {
                     CardScan(scanResult: $scanResult) {
@@ -96,17 +97,18 @@ struct MakeSentence: View {
                             showWrongAnswerPopup = true
                             return
                         }
-
+                        
                         currentPromptIndex += 1
+                        print("currentPromptIndex")
+                        print(currentPromptIndex)
                         if currentPromptIndex >= prompts.count {
+                            currentPromptIndex -= 1 // error prevention
                             showFinishPopUp = true
+                            showPromptModal = false
                         } else {
-                            showStartButton = true
+                            showPromptModal = true
                         }
                     }
-                }
-                ZStack {
-                    
                 }
             }
         }
@@ -123,7 +125,7 @@ struct MakeSentence: View {
                     intervalDuration: 3
                 )
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
                 withAnimation {
                     showStartButton = true
                 }
@@ -131,20 +133,20 @@ struct MakeSentence: View {
         }
         .onChange(of: showTutorial) { _, newValue in
             if showTutorial == true {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
                     withAnimation {
-                        showStartButton = true
+                        showPromptModal = true
                     }
                 }
             }
         }
-        .onChange(of: showStartButton) { _, newValue in
-            if showStartButton == true {
+        .onChange(of: showPromptModal) { _, newValue in
+            if showPromptModal == true {
                 audioViewModel.playSound(soundFileName: promptSound[currentPromptIndex], type: .m4a, category: .narration)
             }
         }
         .popUp(
-            isActive: $showStartButton,
+            isActive: $showPromptModal,
             title: prompts[currentPromptIndex].question!,
             confirmText: "Scan",
             closeWhenDone: true,
@@ -154,6 +156,16 @@ struct MakeSentence: View {
             showScanner = true
         } cancelHandler: {
             showScanner = true
+        }
+        .popUp(
+            isActive: $showStartButton,
+            title: "Setelah perjalanan yang panjang, Bebe sangat lelah dan lapar. Bantulah Bebe mencari sesuatu yang dapat dimakan!",
+            confirmText: "Scan",
+            disableCancel: true,
+            shakeItOff: 1
+        ) {
+            showStartButton = false
+            showPromptModal = true
         }
         .popUp(
             isActive: $showWrongAnswerPopup,
@@ -168,7 +180,7 @@ struct MakeSentence: View {
         } cancelHandler: {
             showScanner = true
         }
-        .popUp(isActive: $showFinishPopUp, title: "Selamat kamu berhasil menyusun kalimat!", withConfetti: true, closeWhenDone: true) {
+        .popUp(isActive: $showFinishPopUp, title: "Selamat kamu berhasil menyusun kalimat!", withConfetti: true, closeWhenDone: true, disableCancel: true) {
             showFinishPopUp = false
             print("selesai cak")
             onComplete?()
