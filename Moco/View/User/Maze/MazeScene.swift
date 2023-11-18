@@ -51,7 +51,7 @@ class MazeScene: SKScene, ObservableObject {
     override func didMove(to _: SKView) {
         createMap()
         createPlayer()
-        // createObjective()
+        createObjective()
     }
 
     func createMap() {
@@ -162,6 +162,9 @@ class MazeScene: SKScene, ObservableObject {
             height: min(size.width, size.height) / CGFloat(mazeModel.arrayPoint.count)
         )
         )
+        obj01.alpha = 0
+        obj02.alpha = 0
+        obj03.alpha = 0
 
         obj01.name = "obj01"
         obj01.position =

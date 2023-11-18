@@ -194,7 +194,7 @@ struct PopUpComponentView: View {
                             .padding(.leading, 240)
                     }
                 }
-                .frame(width: width, height: height)
+                .frame(maxWidth: width, maxHeight: height)
                 .background {
                     switch type {
                     case .base:
@@ -202,13 +202,13 @@ struct PopUpComponentView: View {
                             "Components/popup-base-lg" :
                             "Components/popup-base")
                             .resizable()
-                            .scaledToFit()
+                            .scaledToFill()
                     case .danger:
                         Image(isLarge ?
                             "Components/popup-base-lg" :
                             "Components/popup-danger")
                             .resizable()
-                            .scaledToFit()
+                            .scaledToFill()
                     }
                 }
             }

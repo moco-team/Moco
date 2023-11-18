@@ -20,7 +20,7 @@ struct MazeView: View {
     @EnvironmentObject var motionViewModel: MotionViewModel
     @EnvironmentObject var orientationInfo: OrientationInfo
     @Environment(\.mazePromptViewModel) private var mazePromptViewModel
-    @Environment(\.timerViewModel) private var timerViewModel
+    @State private var timerViewModel = TimerViewModel()
 
     var answersAsset = ["Maze/answer_one", "Maze/answer_two"] {
         didSet {
