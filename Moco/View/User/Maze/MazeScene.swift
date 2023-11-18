@@ -51,7 +51,7 @@ class MazeScene: SKScene, ObservableObject {
     override func didMove(to _: SKView) {
         createMap()
         createPlayer()
-        createObjective()
+        // createObjective()
     }
 
     func createMap() {
