@@ -435,12 +435,12 @@ struct ModelData {
                                         promptType: PromptType.maze,
                                         hints: nil,
                                         question: """
-                                        Berapakah jumlah teman yang sedang Moco cari di dalam terowongan?
+                                        Siapakah yang menyukai madu?
                                         """,
                                         answerChoices: [
-                                            "Dua",
-                                            "Satu",
-                                            "Tiga"
+                                            "Beruang Madu",
+                                            "Sapi",
+                                            "Tikus"
                                         ],
                                         answerAssets: [
                                             "Maze/answer_one",
@@ -474,12 +474,12 @@ struct ModelData {
                                         promptType: PromptType.maze,
                                         hints: nil,
                                         question: """
-                                        Benda apakah yang digunakan oleh Teka dan Teki?
+                                        Hewan apakah Moco?
                                         """,
                                         answerChoices: [
-                                            "Kacamata Hitam",
-                                            "Palu",
-                                            "Tas Ransel"
+                                            "Sapi",
+                                            "Katak",
+                                            "Tikus"
                                         ],
                                         answerAssets: [
                                             "Maze/answer_hammer",
@@ -513,12 +513,88 @@ struct ModelData {
                                         promptType: PromptType.maze,
                                         hints: nil,
                                         question: """
-                                        Hewan apakah yang sedang Moco cari di dalam terowongan?
+                                        Siapakah saudara dari Teka?
                                         """,
                                         answerChoices: [
-                                            "Tikus",
-                                            "Sapi",
-                                            "Katak"
+                                            "Teki",
+                                            "Moco",
+                                            "Bebe"
+                                        ],
+                                        answerAssets: [
+                                            "Maze/answer_sapi_jantan",
+                                            "Maze/answer_frog"
+                                        ]
+                                    )
+                                ],
+                                storyContents: [
+                                    StoryContentModel(
+                                        duration: 0,
+                                        contentName: "maze-bgm",
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
+                                    )
+                                ],
+                                earlyPrompt: true
+                            ),
+                            StoryModel(
+                                background: "",
+                                pageNumber: 4,
+                                isHavePrompt: true,
+                                prompts: [
+                                    PromptModel(
+                                        correctAnswer: "Maze/answer_mice",
+                                        startTime: 2,
+                                        promptType: PromptType.maze,
+                                        hints: nil,
+                                        question: """
+                                        Siapa yang bukan teman Moco?
+                                        """,
+                                        answerChoices: [
+                                            "Kato",
+                                            "Bebe",
+                                            "Teka"
+                                        ],
+                                        answerAssets: [
+                                            "Maze/answer_sapi_jantan",
+                                            "Maze/answer_frog"
+                                        ]
+                                    )
+                                ],
+                                storyContents: [
+                                    StoryContentModel(
+                                        duration: 0,
+                                        contentName: "maze-bgm",
+                                        contentType: StoryContentType.audio,
+                                        positionX: 0,
+                                        positionY: 0,
+                                        maxWidth: 0,
+                                        color: "",
+                                        fontSize: 0
+                                    )
+                                ],
+                                earlyPrompt: true
+                            ),
+                            StoryModel(
+                                background: "",
+                                pageNumber: 5,
+                                isHavePrompt: true,
+                                prompts: [
+                                    PromptModel(
+                                        correctAnswer: "Maze/answer_mice",
+                                        startTime: 2,
+                                        promptType: PromptType.maze,
+                                        hints: nil,
+                                        question: """
+                                        Karakter yang mirip Teka?
+                                        """,
+                                        answerChoices: [
+                                            "Teki",
+                                            "Kato",
+                                            "Moco"
                                         ],
                                         answerAssets: [
                                             "Maze/answer_sapi_jantan",
@@ -543,7 +619,7 @@ struct ModelData {
                             // Story page-4
                             StoryModel(
                                 background: "Story/Content/Story1/Pages/Page6/background",
-                                pageNumber: 4,
+                                pageNumber: 6,
                                 isHavePrompt: false,
                                 prompts: nil,
                                 storyContents: [

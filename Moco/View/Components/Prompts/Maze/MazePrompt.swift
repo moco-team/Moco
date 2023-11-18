@@ -16,6 +16,11 @@ struct MazePrompt: View {
     @State private var isCorrectAnswerPopup = false
     @State private var isWrongAnswerPopup = false
 
+    @State private var updateTimer = true
+    @State private var elapsedSecond = 0
+
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     var promptText = "Moco adalah sapi jantan"
     var answersAsset = ["Maze/answer_one", "Maze/answer_two"]
     var answers = ["satu", "dua", "tiga"]
@@ -38,7 +43,10 @@ struct MazePrompt: View {
                     HStack(alignment: .top) {
                         MazeProgress()
                         Spacer()
-                        TimerView().padding(.trailing, Screen.width * 0.3)
+                        TimerView(
+                            durationParamInSeconds: mazePromptViewModel.durationInSeconds
+                        )
+                        .padding(.trailing, Screen.width * 0.3)
                     }
                     Text(promptText)
                         .customFont(.didactGothic, size: 40)
@@ -73,14 +81,18 @@ struct MazePrompt: View {
         }
         .onChange(of: mazePromptViewModel.isCorrectAnswer) {
             if mazePromptViewModel.isCorrectAnswer {
+                updateTimer = false
                 isCorrectAnswerPopup = true
                 mazePromptViewModel.currentMazeIndex += 1
+                mazePromptViewModel.durationInSeconds -= elapsedSecond - 15
             }
         }
         .onChange(of: mazePromptViewModel.isWrongAnswer) {
             if mazePromptViewModel.isWrongAnswer {
+                updateTimer = false
                 isWrongAnswerPopup = true
                 mazePromptViewModel.incWrong()
+                mazePromptViewModel.durationInSeconds -= elapsedSecond + 5
             }
         }
         .onAppear {
@@ -90,11 +102,16 @@ struct MazePrompt: View {
              mazePromptViewModel.mazeCount) = episodeViewModel.getMazeProgress(promptId: promptId)
             playInitialNarration()
         }
-        .popUp(isActive: $isCorrectAnswerPopup, title: "Selamat kamu berhasil", withConfetti: true) {
+        .popUp(isActive: $isCorrectAnswerPopup, title: "Selamat kamu berhasil", withConfetti: true, disableCancel: true) {
             action()
         }
-        .popUp(isActive: $isWrongAnswerPopup, title: "Oh tidak! Kamu pergi ke jalan yang salah") {
+        .popUp(isActive: $isWrongAnswerPopup, title: "Oh tidak! Kamu pergi ke jalan yang salah", disableCancel: true) {
             action()
+        }
+        .onReceive(timer) { _ in
+            if updateTimer {
+                elapsedSecond += 1
+            }
         }
         .forceRotation()
     }

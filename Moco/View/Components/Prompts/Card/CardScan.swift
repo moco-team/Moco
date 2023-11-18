@@ -9,6 +9,8 @@ import CodeScanner
 import SwiftUI
 
 struct CardScan: View {
+    @Environment(\.audioViewModel) private var audioViewModel
+
     @Binding var scanResult: [String]
 
     var onComplete: (() -> Void)?
@@ -47,6 +49,11 @@ struct CardScan: View {
             }
         }.onAppear {
             scanResult = []
+            audioViewModel.playSound(
+                soundFileName: "arahkan_kamera",
+                type: .m4a,
+                category: .narration
+            )
         }
     }
 }

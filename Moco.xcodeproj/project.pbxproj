@@ -96,6 +96,9 @@
 		930D688E2AF2DB82001976F0 /* MultipleChoicePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930D688D2AF2DB82001976F0 /* MultipleChoicePrompt.swift */; };
 		930D68902AF2DB92001976F0 /* BoardAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930D688F2AF2DB92001976F0 /* BoardAnswer.swift */; };
 		9310EC782B07C3040045A908 /* ScaleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310EC772B07C3040045A908 /* ScaleEffect.swift */; };
+		9310EC7D2B07E3150045A908 /* arahkan_kamera.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9310EC7B2B07E0F80045A908 /* arahkan_kamera.m4a */; };
+		9310EC7E2B07E3150045A908 /* bagus_berhasil_scan.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9310EC7A2B07E0BD0045A908 /* bagus_berhasil_scan.m4a */; };
+		9310EC7F2B07E3150045A908 /* maaf_kartu_tidak_tepat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9310EC7C2B07E1280045A908 /* maaf_kartu_tidak_tepat.m4a */; };
 		931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949722AE0EB6A00830D57 /* Page1-monolog1.m4a */; };
 		931722182AE5508300346382 /* Page2-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949752AE0EB6A00830D57 /* Page2-monolog1.m4a */; };
 		931722192AE5508300346382 /* Page3-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949772AE0EB6A00830D57 /* Page3-monolog1.m4a */; };
@@ -376,6 +379,9 @@
 		930D688D2AF2DB82001976F0 /* MultipleChoicePrompt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleChoicePrompt.swift; sourceTree = "<group>"; };
 		930D688F2AF2DB92001976F0 /* BoardAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardAnswer.swift; sourceTree = "<group>"; };
 		9310EC772B07C3040045A908 /* ScaleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleEffect.swift; sourceTree = "<group>"; };
+		9310EC7A2B07E0BD0045A908 /* bagus_berhasil_scan.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bagus_berhasil_scan.m4a; sourceTree = "<group>"; };
+		9310EC7B2B07E0F80045A908 /* arahkan_kamera.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = arahkan_kamera.m4a; sourceTree = "<group>"; };
+		9310EC7C2B07E1280045A908 /* maaf_kartu_tidak_tepat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = maaf_kartu_tidak_tepat.m4a; sourceTree = "<group>"; };
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
@@ -1043,9 +1049,20 @@
 			path = MultipleChoice;
 			sourceTree = "<group>";
 		};
+		9310EC792B07E0A00045A908 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				9310EC7B2B07E0F80045A908 /* arahkan_kamera.m4a */,
+				9310EC7A2B07E0BD0045A908 /* bagus_berhasil_scan.m4a */,
+				9310EC7C2B07E1280045A908 /* maaf_kartu_tidak_tepat.m4a */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
 		932357D22ADE6DF2009B3D86 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				9310EC792B07E0A00045A908 /* Card */,
 				0522B02D2AFCC33900D51EF8 /* SoundFx */,
 				93EB5FA22AFAC10000C4FB34 /* Maze */,
 				93676D252AF13AA200E756A5 /* pop.mp3 */,
@@ -1504,6 +1521,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9310EC7D2B07E3150045A908 /* arahkan_kamera.m4a in Resources */,
+				9310EC7E2B07E3150045A908 /* bagus_berhasil_scan.m4a in Resources */,
+				9310EC7F2B07E3150045A908 /* maaf_kartu_tidak_tepat.m4a in Resources */,
 				93836C872B008CAE001A3FEE /* 014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a in Resources */,
 				93836C862B008CA8001A3FEE /* 013 (maze) - bantu arahkan Moco ke jawaban yang benar ya.m4a in Resources */,
 				93836C852B008CA4001A3FEE /* 012 (maze) - coba miringkan layar ke bawah.m4a in Resources */,

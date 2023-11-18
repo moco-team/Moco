@@ -96,6 +96,15 @@ import SwiftUI
         }
     }
 
+    var durationInSeconds: Int {
+        set {
+            mazePromptModel.durationInSeconds = newValue
+        }
+        get {
+            mazePromptModel.durationInSeconds
+        }
+    }
+
     func playPrompt() {
         mazePromptModel.isStarted = false
         withAnimation(.easeInOut(duration: 3)) {
