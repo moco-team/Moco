@@ -19,6 +19,7 @@ struct HomeView: View {
     @State private var homeViewModel = HomeViewModel()
 
     @State private var isShowing3d = false
+    @State private var isMakeSentenceTest = true
 
     var body: some View {
         ZStack {
@@ -48,6 +49,17 @@ struct HomeView: View {
                         .customFont(.cherryBomb, size: 50)
                         .foregroundColor(Color.blueTxt)
                         .fontWeight(.bold)
+                    
+                    if isMakeSentenceTest {
+                        NavigationLink(
+                            destination: MakeSentence() {
+                                print("MakeSentence")
+                            }
+                        ) {
+                            Text("Make Sentence")
+                        }
+                    }
+                    
                     Spacer()
                 }.padding(.leading, 60)
                     .padding(.vertical, Screen.height * 0.1)

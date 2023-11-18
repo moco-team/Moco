@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050077182B08033200376135 /* MakeSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050077172B08033200376135 /* MakeSentence.swift */; };
 		050353E12ADFE2970066591A /* FindHoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050353E02ADFE2970066591A /* FindHoney.swift */; };
 		050E42072AFDC540009666DB /* ARTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050E42062AFDC540009666DB /* ARTutorialView.swift */; };
 		050E420F2AFDCC7D009666DB /* arrange_camera_to_barcode.json in Resources */ = {isa = PBXBuildFile; fileRef = 050E420E2AFDCC7D009666DB /* arrange_camera_to_barcode.json */; };
@@ -254,6 +255,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		050077172B08033200376135 /* MakeSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeSentence.swift; sourceTree = "<group>"; };
+		0500771B2B081ED200376135 /* Cari kartu kata kerja.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cari kartu kata kerja.m4a"; sourceTree = "<group>"; };
+		0500771C2B081ED200376135 /* Cari kartu benda.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cari kartu benda.m4a"; sourceTree = "<group>"; };
+		0500771D2B081ED200376135 /* Cari kartu karakter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cari kartu karakter.m4a"; sourceTree = "<group>"; };
+		0500771E2B081F3C00376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apa yang akan dilakukan bebe selanjutnya.m4a"; sourceTree = "<group>"; };
+		0500771F2B08244200376135 /* Susunlah sebuah kalimat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Susunlah sebuah kalimat.m4a"; sourceTree = "<group>"; };
 		050353E02ADFE2970066591A /* FindHoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindHoney.swift; sourceTree = "<group>"; };
 		050E42062AFDC540009666DB /* ARTutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARTutorialView.swift; sourceTree = "<group>"; };
 		050E420E2AFDCC7D009666DB /* arrange_camera_to_barcode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrange_camera_to_barcode.json; sourceTree = "<group>"; };
@@ -522,6 +529,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		050077192B081EAF00376135 /* Ep4 */ = {
+			isa = PBXGroup;
+			children = (
+				0500771A2B081EC100376135 /* MakeSentence */,
+			);
+			path = Ep4;
+			sourceTree = "<group>";
+		};
+		0500771A2B081EC100376135 /* MakeSentence */ = {
+			isa = PBXGroup;
+			children = (
+				0500771E2B081F3C00376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a */,
+				0500771F2B08244200376135 /* Susunlah sebuah kalimat.m4a */,
+				0500771C2B081ED200376135 /* Cari kartu benda.m4a */,
+				0500771D2B081ED200376135 /* Cari kartu karakter.m4a */,
+				0500771B2B081ED200376135 /* Cari kartu kata kerja.m4a */,
+			);
+			path = MakeSentence;
+			sourceTree = "<group>";
+		};
 		050353DF2ADFE28B0066591A /* FindHoney */ = {
 			isa = PBXGroup;
 			children = (
@@ -829,6 +856,7 @@
 		05E17ADB2ADED18800A34547 /* Story1 */ = {
 			isa = PBXGroup;
 			children = (
+				050077192B081EAF00376135 /* Ep4 */,
 				058DC9052AF2D59A00A0885D /* Ep3 */,
 				058DC8FE2AF2D58800A0885D /* Ep2 */,
 				058DC8F62AF2D53900A0885D /* Ep1 */,
@@ -864,6 +892,7 @@
 				937AF29B2AE8D47E008C69BB /* ResourceLoader.swift */,
 				05E8B5692AED4AD400E3612F /* ARClueView.swift */,
 				05E8B56C2AED57CF00E3612F /* ARStory.swift */,
+				050077172B08033200376135 /* MakeSentence.swift */,
 			);
 			path = ARStory;
 			sourceTree = "<group>";
@@ -1604,6 +1633,7 @@
 				935D78532AEBF9FE00DF64A5 /* URL.swift in Sources */,
 				935D785D2AED6D6600DF64A5 /* StoryBookNew.swift in Sources */,
 				0B6E2F6A2ADC91060001D320 /* StoryContentModel.swift in Sources */,
+				050077182B08033200376135 /* MakeSentence.swift in Sources */,
 				93C8E72C2AE1373D002315A2 /* Shake.swift in Sources */,
 				937AF2882AE81983008C69BB /* RippleModel.swift in Sources */,
 				0B2E31DA2AD7EBE500DFC16F /* CollectionModel.swift in Sources */,
