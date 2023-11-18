@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		050077182B08033200376135 /* MakeSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050077172B08033200376135 /* MakeSentence.swift */; };
+		050077202B08B5B200376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771E2B081F3C00376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a */; };
+		050077212B08B5B200376135 /* Susunlah sebuah kalimat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771F2B08244200376135 /* Susunlah sebuah kalimat.m4a */; };
+		050077222B08B5B200376135 /* Cari kartu benda.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771C2B081ED200376135 /* Cari kartu benda.m4a */; };
+		050077232B08B5B200376135 /* Cari kartu karakter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771D2B081ED200376135 /* Cari kartu karakter.m4a */; };
+		050077242B08B5B200376135 /* Cari kartu kata kerja.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771B2B081ED200376135 /* Cari kartu kata kerja.m4a */; };
+		050077252B08B5B200376135 /* 001 - Hai, apakah kamu sudah bisa membaca.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8FA2AF2D54700A0885D /* 001 - Hai, apakah kamu sudah bisa membaca.m4a */; };
+		050077262B08B5B200376135 /* 002 - Keren.. yuk mulai petualangan ini!.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F92AF2D54700A0885D /* 002 - Keren.. yuk mulai petualangan ini!.m4a */; };
+		050077272B08B5B200376135 /* 003 - Tolong Moco memilih jawaban yang benar.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F82AF2D54700A0885D /* 003 - Tolong Moco memilih jawaban yang benar.m4a */; };
+		050077282B08B5B200376135 /* 004 - Kamu sudah yakin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8FC2AF2D54700A0885D /* 004 - Kamu sudah yakin.m4a */; };
+		050077292B08B5B200376135 /* 005 - Coba baca lagi cerita ini.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F72AF2D54600A0885D /* 005 - Coba baca lagi cerita ini.m4a */; };
+		0500772A2B08B5B200376135 /* 006 - Cerdas! Jawaban kamu benar.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8FB2AF2D54700A0885D /* 006 - Cerdas! Jawaban kamu benar.m4a */; };
+		0500772B2B08B5B200376135 /* 007 - Ayo kita lanjutkan petualangan ini.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8FD2AF2D54800A0885D /* 007 - Ayo kita lanjutkan petualangan ini.m4a */; };
 		050353E12ADFE2970066591A /* FindHoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050353E02ADFE2970066591A /* FindHoney.swift */; };
 		050E42072AFDC540009666DB /* ARTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050E42062AFDC540009666DB /* ARTutorialView.swift */; };
 		050E420F2AFDCC7D009666DB /* arrange_camera_to_barcode.json in Resources */ = {isa = PBXBuildFile; fileRef = 050E420E2AFDCC7D009666DB /* arrange_camera_to_barcode.json */; };
@@ -1521,6 +1533,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				050077202B08B5B200376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a in Resources */,
+				050077212B08B5B200376135 /* Susunlah sebuah kalimat.m4a in Resources */,
+				050077222B08B5B200376135 /* Cari kartu benda.m4a in Resources */,
+				050077232B08B5B200376135 /* Cari kartu karakter.m4a in Resources */,
+				050077242B08B5B200376135 /* Cari kartu kata kerja.m4a in Resources */,
+				050077252B08B5B200376135 /* 001 - Hai, apakah kamu sudah bisa membaca.m4a in Resources */,
+				050077262B08B5B200376135 /* 002 - Keren.. yuk mulai petualangan ini!.m4a in Resources */,
+				050077272B08B5B200376135 /* 003 - Tolong Moco memilih jawaban yang benar.m4a in Resources */,
+				050077282B08B5B200376135 /* 004 - Kamu sudah yakin.m4a in Resources */,
+				050077292B08B5B200376135 /* 005 - Coba baca lagi cerita ini.m4a in Resources */,
+				0500772A2B08B5B200376135 /* 006 - Cerdas! Jawaban kamu benar.m4a in Resources */,
+				0500772B2B08B5B200376135 /* 007 - Ayo kita lanjutkan petualangan ini.m4a in Resources */,
 				9310EC7D2B07E3150045A908 /* arahkan_kamera.m4a in Resources */,
 				9310EC7E2B07E3150045A908 /* bagus_berhasil_scan.m4a in Resources */,
 				9310EC7F2B07E3150045A908 /* maaf_kartu_tidak_tepat.m4a in Resources */,

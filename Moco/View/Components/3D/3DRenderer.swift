@@ -120,6 +120,10 @@ struct ThreeDRenderer: View {
                     Spacer()
                     HStack {
                         Spacer()
+                        Text("To be continued...")
+                            .customFont(.cherryBomb, size: 30)
+                            .foregroundColor(.blue2Txt)
+                            .glowBorder(color: .white, lineWidth: 5)
                         Button("Keluar") {
                             navigate.popToRoot()
                             action()

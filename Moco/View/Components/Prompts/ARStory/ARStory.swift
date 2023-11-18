@@ -16,6 +16,7 @@ struct ARStory: View {
     @State private var promptIndex = 0
 
     @State private var isGameStarted: Bool = false
+    @State private var showLastIsland: Bool = false
     @State private var isTutorialFinished: Bool = false {
         didSet {
             arViewModel.isTutorialDone = isTutorialFinished
@@ -74,7 +75,7 @@ struct ARStory: View {
                         //                    lastPrompt: promptIndex == (promptArray.count - 1),
                         onFoundObject: {
                             isGameStarted = false // turn off the ARCameraView first, so it can generate new instance for the next prompt
-
+                            
                             print("Ditemukan!")
                             print("promptIndex")
                             print(promptIndex) // 2 -> selesai
@@ -84,7 +85,9 @@ struct ARStory: View {
                             //                            doneHandler?()
                             //                        }
                             isStoryDone = true
-                            doneHandler?()
+                            if !lastPrompt {
+                                doneHandler?()
+                            }
                         }
                     )
                     .id(promptIndex)
@@ -111,7 +114,11 @@ struct ARStory: View {
                             }
                         }
                     }
-                } else if lastPrompt {
+                } else if lastPrompt && !showLastIsland {
+                    MakeSentence {
+                        showLastIsland = true
+                    }
+                } else if showLastIsland {
                     ThreeDRenderer {
                         doneHandler?()
                     }
