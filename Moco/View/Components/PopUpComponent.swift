@@ -32,6 +32,7 @@ struct PopUpComponent: ViewModifier {
     var width = Screen.width * 0.45
     var height = Screen.height * 0.6
     var type = PopUpType.base
+    var disableCancel = false
 
     var withConfetti = false
 
@@ -61,7 +62,8 @@ struct PopUpComponent: ViewModifier {
                     height: height,
                     closeWhenDone: closeWhenDone,
                     shakeItOff: shakeItOff,
-                    type: type
+                    type: type,
+                    disableCancel: disableCancel
                 ) {
                     function()
                 } cancelHandler: {
@@ -100,6 +102,8 @@ struct PopUpComponentView: View {
     var shakeItOff: CGFloat = 0
     var type = PopUpType.base
 
+    var disableCancel = false
+
     var function: () -> Void
     var cancelHandler: (() -> Void)?
 
@@ -108,6 +112,7 @@ struct PopUpComponentView: View {
             Color(.black)
                 .opacity(internalOverlayOpacity)
                 .onTapGesture {
+                    guard !disableCancel else { return }
                     close()
                 }
             VStack(alignment: .center, spacing: 0) {
@@ -170,13 +175,15 @@ struct PopUpComponentView: View {
                         .padding(.bottom)
                     }.padding(20)
                         .overlay(alignment: .topTrailing) {
-                            SfxButton {
-                                close()
-                            } label: {
-                                Image("Buttons/button-x")
-                                    .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .shadow(radius: 20, x: -20, y: 20)
+                            if !disableCancel {
+                                SfxButton {
+                                    close()
+                                } label: {
+                                    Image("Buttons/button-x")
+                                        .resizable()
+                                        .frame(width: 50, height: 50)
+                                        .shadow(radius: 20, x: -20, y: 20)
+                                }
                             }
                         }
                     if bottomImage != nil {

@@ -18,7 +18,10 @@ struct SfxButton<Content: View>: View {
     var body: some View {
         Button {
             action()
-            audioViewModel.playSound(soundFileName: soundName)
+            audioViewModel.playSound(
+                soundFileName: soundName,
+                category: .soundEffect
+            )
         } label: {
             label()
         }

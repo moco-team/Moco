@@ -33,6 +33,7 @@ struct MazePromptModel {
         currentMazeIndex = 0
         if all {
             wrongCount = 0
+            durationInSeconds = 60 * 3
         }
     }
 }

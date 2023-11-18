@@ -53,6 +53,7 @@ struct CircularTimerView: View {
 struct TimerView: View {
     @State var isTimerRunning = false
     @State private var durationInSeconds = 60 * 5
+    @State private var shouldShake: CGFloat = 0
     @State var interval = TimeInterval()
 
     var durationParamInSeconds = 60 * 5
@@ -81,6 +82,9 @@ struct TimerView: View {
                 .onReceive(timer) { _ in
                     if self.isTimerRunning && durationInSeconds > 0 {
                         durationInSeconds -= 1
+                        if durationInSeconds <= 10 {
+                            shouldShake = 1
+                        }
                         if durationInSeconds <= 0 {
                             onEnd?()
                         }
@@ -95,6 +99,7 @@ struct TimerView: View {
                     Image("Components/timer-base").resizable()
                 }
         }.padding()
+            .shake(animatableData: shouldShake)
     }
 }
 

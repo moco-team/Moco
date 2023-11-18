@@ -16,6 +16,7 @@ enum CardState {
 struct CardPrompt: View {
     @Environment(\.promptViewModel) private var promptViewModel
     @Environment(\.storyViewModel) private var storyViewModel
+    @Environment(\.audioViewModel) private var audioViewModel
 
     @State private var currentCard = 0
     @State private var showQuestionPopup = false
@@ -77,9 +78,20 @@ struct CardPrompt: View {
                         if scanResult.joined(separator: " ")
                             .trimmingCharacters(in: .whitespacesAndNewlines) !=
                             cardPrompts[currentCard].correctAnswer {
+                            audioViewModel.playSound(
+                                soundFileName: "maaf_kartu_tidak_tepat",
+                                type: .m4a,
+                                category: .narration
+                            )
                             showWrongAnswerPopup = true
                             return
                         }
+                        
+                        audioViewModel.playSound(
+                            soundFileName: "bagus_berhasil_scan",
+                            type: .m4a,
+                            category: .narration
+                        )
 
                         currentCard += 1
                         if let prompts = promptViewModel.prompts,
