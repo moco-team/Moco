@@ -111,6 +111,8 @@
 		9310EC7D2B07E3150045A908 /* arahkan_kamera.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9310EC7B2B07E0F80045A908 /* arahkan_kamera.m4a */; };
 		9310EC7E2B07E3150045A908 /* bagus_berhasil_scan.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9310EC7A2B07E0BD0045A908 /* bagus_berhasil_scan.m4a */; };
 		9310EC7F2B07E3150045A908 /* maaf_kartu_tidak_tepat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9310EC7C2B07E1280045A908 /* maaf_kartu_tidak_tepat.m4a */; };
+		9310EC812B0A353A0045A908 /* StoryViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310EC802B0A353A0045A908 /* StoryViewViewModel.swift */; };
+		9310EC862B0A40FA0045A908 /* Story1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310EC852B0A40FA0045A908 /* Story1.swift */; };
 		931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949722AE0EB6A00830D57 /* Page1-monolog1.m4a */; };
 		931722182AE5508300346382 /* Page2-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949752AE0EB6A00830D57 /* Page2-monolog1.m4a */; };
 		931722192AE5508300346382 /* Page3-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949772AE0EB6A00830D57 /* Page3-monolog1.m4a */; };
@@ -394,6 +396,8 @@
 		9310EC7A2B07E0BD0045A908 /* bagus_berhasil_scan.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bagus_berhasil_scan.m4a; sourceTree = "<group>"; };
 		9310EC7B2B07E0F80045A908 /* arahkan_kamera.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = arahkan_kamera.m4a; sourceTree = "<group>"; };
 		9310EC7C2B07E1280045A908 /* maaf_kartu_tidak_tepat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = maaf_kartu_tidak_tepat.m4a; sourceTree = "<group>"; };
+		9310EC802B0A353A0045A908 /* StoryViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewViewModel.swift; sourceTree = "<group>"; };
+		9310EC852B0A40FA0045A908 /* Story1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story1.swift; sourceTree = "<group>"; };
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
@@ -1071,6 +1075,23 @@
 			path = Card;
 			sourceTree = "<group>";
 		};
+		9310EC822B0A40960045A908 /* ModelData */ = {
+			isa = PBXGroup;
+			children = (
+				9310EC842B0A40EF0045A908 /* Stories */,
+				93B7098C2AF5723E000B9C28 /* ModelData.swift */,
+			);
+			path = ModelData;
+			sourceTree = "<group>";
+		};
+		9310EC842B0A40EF0045A908 /* Stories */ = {
+			isa = PBXGroup;
+			children = (
+				9310EC852B0A40FA0045A908 /* Story1.swift */,
+			);
+			path = Stories;
+			sourceTree = "<group>";
+		};
 		932357D22ADE6DF2009B3D86 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -1288,6 +1309,7 @@
 				05B8ED9F2AEE65FE009ED2C5 /* MotionViewModel.swift */,
 				93CA8B7E2AF010C600651885 /* MazePromptViewModel.swift */,
 				937EE4142AFA200500A5CCF5 /* HapticViewModel.swift */,
+				9310EC802B0A353A0045A908 /* StoryViewViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1295,6 +1317,7 @@
 		93C2F8B22AD68470007D1ABC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9310EC822B0A40960045A908 /* ModelData */,
 				938E3D3A2AD9874F003D2AE1 /* ModelGenerator.swift */,
 				938E3D382AD939DC003D2AE1 /* Item.swift */,
 				0B2E31D92AD7EBE500DFC16F /* CollectionModel.swift */,
@@ -1316,7 +1339,6 @@
 				935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */,
 				93CA8B7C2AF0107800651885 /* MazePromptModel.swift */,
 				9328F9142AF16B6900E82995 /* Gesture.swift */,
-				93B7098C2AF5723E000B9C28 /* ModelData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1657,6 +1679,7 @@
 				938E3D3D2AD9901B003D2AE1 /* PopUpComponent.swift in Sources */,
 				9310EC782B07C3040045A908 /* ScaleEffect.swift in Sources */,
 				938E3D4D2ADBA247003D2AE1 /* ContentViewContainer.swift in Sources */,
+				9310EC812B0A353A0045A908 /* StoryViewViewModel.swift in Sources */,
 				0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */,
 				938E3D3F2AD990C3003D2AE1 /* Buttons.swift in Sources */,
 				937AF2952AE8C06C008C69BB /* ARView.swift in Sources */,
@@ -1722,6 +1745,7 @@
 				937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */,
 				938E3D332AD91605003D2AE1 /* DetectionView.swift in Sources */,
 				937EE4132AF9E35700A5CCF5 /* AppDelegate.swift in Sources */,
+				9310EC862B0A40FA0045A908 /* Story1.swift in Sources */,
 				935D78552AEC09A000DF64A5 /* GlobalStorage.swift in Sources */,
 				05BA97AA2AE11EE400F64F52 /* MPVolumeViewExtension.swift in Sources */,
 				93676D242AF139A800E756A5 /* ProgressBar.swift in Sources */,

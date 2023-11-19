@@ -43,7 +43,7 @@ struct Pointer: View {
                 .background {
                     ZStack {
                         ForEach(rippleViewModel.ripples, id: \.self) { ripple in
-                            RippleView() {
+                            RippleView {
                                 rippleViewModel.removeRipple(id: ripple.id.uuidString)
                             }.allowsHitTesting(false)
                         }

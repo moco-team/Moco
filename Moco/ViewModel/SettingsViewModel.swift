@@ -8,6 +8,7 @@
 import Foundation
 
 @Observable class SettingsViewModel {
+    static var shared = SettingsViewModel()
     var narrationVolume: Double {
         get {
             GlobalStorage.narrationVolume
