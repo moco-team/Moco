@@ -75,7 +75,7 @@ struct ARStory: View {
                         //                    lastPrompt: promptIndex == (promptArray.count - 1),
                         onFoundObject: {
                             isGameStarted = false // turn off the ARCameraView first, so it can generate new instance for the next prompt
-                            
+
                             print("Ditemukan!")
                             print("promptIndex")
                             print(promptIndex) // 2 -> selesai

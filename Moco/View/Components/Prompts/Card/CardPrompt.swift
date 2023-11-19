@@ -86,7 +86,7 @@ struct CardPrompt: View {
                             showWrongAnswerPopup = true
                             return
                         }
-                        
+
                         audioViewModel.playSound(
                             soundFileName: "bagus_berhasil_scan",
                             type: .m4a,

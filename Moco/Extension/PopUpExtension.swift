@@ -46,7 +46,7 @@ public extension View {
                 width: width ?? Screen.width * 0.32,
                 height: height ?? Screen.height * 0.3,
                 type: type,
-                disableCancel: disableCancel, 
+                disableCancel: disableCancel,
                 withConfetti: withConfetti,
                 closeWhenDone: closeWhenDone,
                 shakeItOff: shakeItOff

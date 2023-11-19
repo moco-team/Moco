@@ -54,6 +54,8 @@ struct Routes: View {
 /// Route view model, should not change if not necessary
 @Observable
 class RouteViewModel {
+    static var shared = RouteViewModel()
+
     var navPath = [Route]() {
         willSet {
             previousRoute = navPath.last

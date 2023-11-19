@@ -113,7 +113,11 @@ struct ARCameraView: View {
             )
             isLastNarrativePopupActive = true
         }
-        .popUp(isActive: $isLastNarrativePopupActive, title: "Akhirnya, Moco dan teman-teman berhasil pulang ke Kota Mocokerto setelah petualangan yang panjang. Terima kasih untuk hari ini!", disableCancel: true) {
+        .popUp(
+            isActive: $isLastNarrativePopupActive,
+            title: "Akhirnya, Moco dan teman-teman berhasil pulang ke Kota Mocokerto setelah petualangan yang panjang. Terima kasih untuk hari ini!",
+            disableCancel: true
+        ) {
             isLastNarrativePopupActive = false
             isEndTheStoryPopupActive = true
             onEnd()

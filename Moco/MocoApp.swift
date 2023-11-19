@@ -14,7 +14,7 @@ struct MocoApp: App {
 
     // MARK: - Bindables
 
-    @Bindable private var routeViewModel = RouteViewModel()
+    @Bindable private var routeViewModel = RouteViewModel.shared
 
     // MARK: - States
 
@@ -26,7 +26,7 @@ struct MocoApp: App {
     @State private var storyContentViewModel = StoryContentViewModel.shared
     @State private var promptViewModel = PromptViewModel.shared
     @State private var hintViewModel = HintViewModel.shared
-    @State private var settingsViewModel = SettingsViewModel()
+    @State private var settingsViewModel = SettingsViewModel.shared
     @State private var mazePromptViewModel = MazePromptViewModel.shared
 
     // MARK: - State Objects

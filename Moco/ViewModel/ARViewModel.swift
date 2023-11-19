@@ -11,6 +11,7 @@ import Foundation
 import RealityKit
 
 final class ARViewModel: NSObject, ObservableObject {
+    static var shared = ARViewModel()
     /// Allow loading to take a minimum amount of time, to ease state transitions
     private static let loadBuffer: TimeInterval = 2
 

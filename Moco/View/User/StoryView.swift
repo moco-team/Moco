@@ -8,179 +8,9 @@
 import SwiftUI
 
 struct StoryView: View {
-    // MARK: - Environments stored property
-
-    @Environment(\.storyThemeViewModel) private var storyThemeViewModel
-    @Environment(\.storyViewModel) private var storyViewModel
-    @Environment(\.episodeViewModel) private var episodeViewModel
-    @Environment(\.storyContentViewModel) private var storyContentViewModel
-    @Environment(\.promptViewModel) private var promptViewModel
-    @Environment(\.hintViewModel) private var hintViewModel
-    @Environment(\.mazePromptViewModel) private var mazePromptViewModel
-    @Environment(\.timerViewModel) private var timerViewModel
-    @Environment(\.audioViewModel) private var audioViewModel
-    @Environment(\.settingsViewModel) private var settingsViewModel
-    @Environment(\.navigate) private var navigate
-    @EnvironmentObject var speechViewModel: SpeechRecognizerViewModel
-    @EnvironmentObject var objectDetectionViewModel: ObjectDetectionViewModel
-    @EnvironmentObject var arViewModel: ARViewModel
-
-    // MARK: - Static Variables
-
-    private static let storyVolume: Float = 0.5
-
     // MARK: - States
 
-    @State private var scrollPosition: Int? = 0
-    @State private var isExitPopUpActive = false
-    @State private var isEpisodeFinished = false
-    @State private var isMuted = false
-    @State private var text: String = ""
-    @State private var narrativeIndex: Int = -1
-    @State private var showPromptButton = false
-    @State private var activePrompt: PromptModel?
-    @State private var peelEffectState = PeelEffectState.stop
-    @State private var toBeExecutedByPeelEffect = {}
-    @State private var peelBackground = AnyView(EmptyView())
-    @State private var isReversePeel = false
-    @State private var showWrongAnsPopup = false
-    @State private var mazeQuestionIndex = 0
-    @State private var forceShowNext = false
-    @State private var showPauseMenu = false
-
-    // MARK: - Variables
-
-    var enableUI = true
-
-    // MARK: - Functions
-
-    private func updateText() {
-        guard storyContentViewModel.narratives!.indices.contains(narrativeIndex + 1) else { return }
-        narrativeIndex += 1
-//        speechViewModel.textToSpeech(text: storyContentViewModel.narratives![narrativeIndex].contentName)
-        timerViewModel.setTimer(key: "storyPageTimer-\(narrativeIndex)-\(scrollPosition!)", withInterval: storyContentViewModel.narratives![narrativeIndex].duration) {
-            updateText()
-        }
-    }
-
-    private func stop() {
-        timerViewModel.stopTimer()
-        audioViewModel.pauseAllSounds()
-        speechViewModel.stopSpeaking()
-    }
-
-    private func startNarrative() {
-        guard storyContentViewModel.narratives != nil else { return }
-        narrativeIndex = -1
-        updateText()
-    }
-
-    private func startPrompt() {
-        if let storyPage = storyViewModel.storyPage, !storyPage.earlyPrompt {
-            activePrompt = nil
-        }
-        guard let prompts = promptViewModel.prompts, !prompts.isEmpty else {
-            showPromptButton = false
-            return
-        }
-        timerViewModel.setTimer(key: "storyPagePrompt-\(scrollPosition!)", withInterval: promptViewModel.prompts![0].startTime) {
-            withAnimation {
-                showPromptButton = true
-            }
-        }
-    }
-
-    private func onPageChange() {
-        stop()
-        setNewStoryPage(scrollPosition ?? -1)
-
-        if let bgSound = storyContentViewModel.bgSound?.contentName {
-            audioViewModel.playSound(
-                soundFileName: bgSound,
-                numberOfLoops: -1,
-                category: .backsound
-            )
-        }
-
-        startNarrative()
-        if let storyPage = storyViewModel.storyPage {
-            promptViewModel.fetchPrompts(storyPage)
-        }
-        startPrompt()
-        if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
-            promptViewModel.fetchPrompts(storyPage)
-            if let prompt = promptViewModel.prompts?.first {
-                activePrompt = prompt
-            }
-        }
-    }
-
-    private func nextPage() {
-        guard episodeViewModel.selectedEpisode!.stories!.count >
-            scrollPosition! + 1
-        else {
-            isEpisodeFinished = true
-            return
-        }
-
-        showPromptButton = false
-        forceShowNext = false
-
-        let nextPageBg = storyViewModel.getPageBackground(scrollPosition! + 1, episode: episodeViewModel.selectedEpisode!)
-
-        peelBackground = AnyView(Image(nextPageBg ?? storyViewModel.storyPage!.background)
-            .resizable()
-            .scaledToFill()
-            .frame(width: Screen.width, height: Screen.height, alignment: .center)
-            .clipped())
-        peelEffectState = .start
-        toBeExecutedByPeelEffect = {
-            scrollPosition! += 1
-            peelEffectState = .stop
-        }
-    }
-
-    private func prevPage(_ targetScrollPosition: Int? = nil) {
-        guard scrollPosition! > 0 else { return }
-        if let targetScrollPositionParam = targetScrollPosition {
-            if targetScrollPositionParam < 0 {
-                return
-            }
-        }
-        isReversePeel = true
-        if let targetScrollPositionParam = targetScrollPosition {
-            scrollPosition = targetScrollPositionParam
-        } else {
-            scrollPosition! -= 1
-        }
-        peelEffectState = .reverse
-
-        peelBackground = AnyView(Image(storyViewModel.storyPage!.background)
-            .resizable()
-            .scaledToFill()
-            .frame(width: Screen.width, height: Screen.height, alignment: .center)
-            .clipped())
-        toBeExecutedByPeelEffect = {
-            peelEffectState = .stop
-            isReversePeel = false
-        }
-    }
-
-    private func setNewStoryPage(_ scrollPosition: Int) {
-        if scrollPosition > -1 {
-            storyViewModel.fetchStory(scrollPosition, episodeViewModel.selectedEpisode!)
-
-            if let storyPage = storyViewModel.storyPage {
-                storyContentViewModel.fetchStoryContents(storyPage)
-
-                promptViewModel.fetchPrompts(storyPage)
-
-                if let prompts = promptViewModel.prompts, prompts.first?.hints != nil {
-                    hintViewModel.fetchHints(prompts[0])
-                }
-            }
-        }
-    }
+    @Bindable private var svvm = StoryViewViewModel()
 
     // MARK: - View
 
@@ -188,23 +18,24 @@ struct StoryView: View {
         ZStack {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 0) {
-                    if let stories = episodeViewModel.selectedEpisode!.stories {
+                    if let stories = svvm.episodeViewModel.selectedEpisode!.stories {
                         ForEach(Array(stories.enumerated()), id: \.offset) { index, _ in
                             ZStack {
-                                PeelEffectTappable(state: $peelEffectState, isReverse: isReversePeel) {
-                                    Image(storyViewModel.storyPage!.background)
+                                PeelEffectTappable(state: $svvm.peelEffectState, isReverse: svvm.isReversePeel) {
+                                    Image(svvm.storyViewModel.storyPage!.background)
                                         .resizable()
                                         .scaledToFill()
                                         .frame(width: Screen.width, height: Screen.height, alignment: .center)
                                         .clipped()
                                 } background: {
-                                    peelBackground
+                                    svvm.peelBackground
                                 } onComplete: {
-                                    toBeExecutedByPeelEffect()
+                                    svvm.toBeExecutedByPeelEffect()
                                 }
 
-                                if storyContentViewModel.narratives!.count > narrativeIndex && !storyContentViewModel.narratives!.isEmpty {
-                                    let narrative = storyContentViewModel.narratives![max(narrativeIndex, 0)]
+                                if svvm.storyContentViewModel.narratives!.count > svvm.narrativeIndex &&
+                                    !svvm.storyContentViewModel.narratives!.isEmpty {
+                                    let narrative = svvm.storyContentViewModel.narratives![max(svvm.narrativeIndex, 0)]
                                     Text(narrative.contentName)
                                         .foregroundColor(Color(hex: narrative.color ?? "#000000"))
                                         .frame(maxWidth: CGFloat(narrative.maxWidth!), alignment: .leading)
@@ -212,7 +43,7 @@ struct StoryView: View {
                                             x: Screen.width * narrative.positionX,
                                             y: Screen.height * narrative.positionY
                                         ))
-                                        .id(narrativeIndex)
+                                        .id(svvm.narrativeIndex)
                                         .transition(.opacity.animation(.linear))
                                         .customFont(.didactGothic, size: narrative.fontSize)
                                         .padding(.bottom, 2)
@@ -223,28 +54,28 @@ struct StoryView: View {
                 }.scrollTargetLayout()
             }.scrollDisabled(true)
                 .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
-                .scrollPosition(id: $scrollPosition)
-            if let stories = episodeViewModel.selectedEpisode?.stories {
+                .scrollPosition(id: $svvm.scrollPosition)
+            if let stories = svvm.episodeViewModel.selectedEpisode?.stories {
                 Group {
-                    switch activePrompt?.promptType {
+                    switch svvm.activePrompt?.promptType {
                     case .card:
-                        if let cardPrompt = promptViewModel.prompts?.first {
-                            CardPrompt(showNext: $forceShowNext) {
-                                nextPage()
+                        if let cardPrompt = svvm.promptViewModel.prompts?.first {
+                            CardPrompt(showNext: $svvm.forceShowNext) {
+                                svvm.nextPage()
                             }
                             .id(cardPrompt.id)
                         }
                     case .multipleChoice:
-                        if promptViewModel.prompts != nil {
+                        if svvm.promptViewModel.prompts != nil {
                             MultipleChoicePrompt {
-                                activePrompt = nil
-                                nextPage()
+                                svvm.activePrompt = nil
+                                svvm.nextPage()
                             } onWrong: {
-                                showWrongAnsPopup = true
+                                svvm.showWrongAnsPopup = true
                             }
                         }
                     case .maze:
-                        if let mazePrompt = promptViewModel.prompts?.first {
+                        if let mazePrompt = svvm.promptViewModel.prompts?.first {
                             MazePrompt(
                                 promptText: mazePrompt.question!,
                                 answersAsset: mazePrompt.answerAssets!,
@@ -252,26 +83,26 @@ struct StoryView: View {
                                 correctAnswerAsset: mazePrompt.correctAnswer,
                                 promptId: mazePrompt.uid
                             ) {
-                                nextPage()
+                                svvm.nextPage()
                             }.id(mazePrompt.id)
                         }
                     case .ar:
-                        if let ARPrompt = promptViewModel.prompts?[0] {
+                        if let ARPrompt = svvm.promptViewModel.prompts?[0] {
                             ARStory(
                                 prompt: ARPrompt,
-                                lastPrompt: scrollPosition == (stories.count - 1)
+                                lastPrompt: svvm.scrollPosition == (stories.count - 1)
                             ) {
-                                nextPage()
+                                svvm.nextPage()
                             }
                             .id(ARPrompt.id)
                             .onAppear {
                                 print("nih AR")
-                                print(promptViewModel.prompts![0].correctAnswer)
+                                print(svvm.promptViewModel.prompts![0].correctAnswer)
                             }
                         }
                     case .objectDetection:
                         DetectionView {
-                            nextPage()
+                            svvm.nextPage()
                         }
                     default:
                         EmptyView()
@@ -283,7 +114,7 @@ struct StoryView: View {
                     HStack {
                         Spacer()
                         SfxButton {
-                            isExitPopUpActive = true
+                            svvm.isExitPopUpActive = true
                         } label: {
                             Image("Buttons/button-home").resizable().scaledToFit()
                         }.buttonStyle(
@@ -296,14 +127,9 @@ struct StoryView: View {
                         )
                         .padding()
                         SfxButton {
-                            if !isMuted {
-                                audioViewModel.mute()
-                            } else {
-                                audioViewModel.unmute()
-                            }
-                            isMuted.toggle()
+                            svvm.onPressSoundButton()
                         } label: {
-                            Image(isMuted ? "Buttons/sound-off" : "Buttons/sound-on")
+                            Image(svvm.isMuted ? "Buttons/sound-off" : "Buttons/sound-on")
                                 .resizable()
                                 .scaledToFit()
                         }.buttonStyle(
@@ -316,7 +142,7 @@ struct StoryView: View {
                         )
                         .padding()
                         SfxButton {
-                            showPauseMenu = true
+                            svvm.showPauseMenu = true
                         } label: {
                             Image("Buttons/button-settings")
                                 .resizable()
@@ -334,26 +160,26 @@ struct StoryView: View {
                     Spacer()
                 }
                 HStack {
-                    if scrollPosition! > 0 {
+                    if svvm.scrollPosition! > 0 {
                         StoryNavigationButton(direction: .left) {
-                            prevPage()
+                            svvm.prevPage()
                         }
                     }
                     Spacer()
 
-                    if promptViewModel.prompts == nil ||
-                        promptViewModel.prompts!.isEmpty ||
-                        forceShowNext {
+                    if svvm.promptViewModel.prompts == nil ||
+                        svvm.promptViewModel.prompts!.isEmpty ||
+                        svvm.forceShowNext {
                         StoryNavigationButton(direction: .right) {
-                            nextPage()
+                            svvm.nextPage()
                         }
                     }
-                }.opacity(activePrompt == nil ? 1 : 0.5)
+                }.opacity(svvm.activePrompt == nil ? 1 : 0.5)
                 VStack {
                     Spacer()
-                    if showPromptButton && activePrompt == nil {
+                    if svvm.showPromptButton && svvm.activePrompt == nil {
                         SfxButton {
-                            activePrompt = promptViewModel.prompts![0]
+                            svvm.activePrompt = svvm.promptViewModel.prompts![0]
                         } label: {
                             Image("Buttons/button-start").resizable().scaledToFit()
                         }
@@ -370,26 +196,19 @@ struct StoryView: View {
                 }
             }
         }
-        .popUp(isActive: $isExitPopUpActive, title: "Yakin mau keluar?", cancelText: "Tidak", confirmText: "Ya") {
-            navigate.pop {
-                stop()
-            }
+        .popUp(isActive: $svvm.isExitPopUpActive, title: "Yakin mau keluar?", cancelText: "Tidak", confirmText: "Ya") {
+            svvm.exit()
         }
-        .popUp(isActive: $isEpisodeFinished, title: "Lanjutkan cerita?", cancelText: "Tidak", confirmText: "Lanjut") {
-            episodeViewModel.setToAvailable(selectedStoryTheme: storyThemeViewModel.selectedStoryTheme!)
-            storyThemeViewModel.fetchStoryThemes()
-            storyThemeViewModel.setSelectedStoryTheme(storyThemeViewModel.findWithID(storyThemeViewModel.selectedStoryTheme!.uid)!)
-            navigate.pop {
-                stop()
-            }
+        .popUp(isActive: $svvm.isEpisodeFinished, title: "Lanjutkan cerita?", cancelText: "Tidak", confirmText: "Lanjut") {
+            svvm.continueStory()
         }
         .overlay {
-            if showPauseMenu {
-                if let promptType = activePrompt?.promptType {
-                    PauseMenu(isActive: $showPauseMenu) {
+            if svvm.showPauseMenu {
+                if let promptType = svvm.activePrompt?.promptType {
+                    PauseMenu(isActive: $svvm.showPauseMenu) {
                         switch promptType {
                         case .maze:
-                            settingsViewModel.mazeTutorialFinished = false
+                            svvm.settingsViewModel.mazeTutorialFinished = false
                         case .findHoney:
                             break
                         case .objectDetection:
@@ -399,31 +218,30 @@ struct StoryView: View {
                         case .multipleChoice:
                             break
                         case .ar:
-                            settingsViewModel.arTutorialFinished = false
+                            svvm.settingsViewModel.arTutorialFinished = false
                         case .card:
                             break
                         case .puzzle:
                             break
                         }
                     } repeatHandler: {
-                        prevPage(0)
+                        svvm.prevPage(0)
                     }
                 }
             } else {
                 EmptyView()
             }
         }
-        .customModal(isActive: $showWrongAnsPopup, title: "Apakah kamu yakin dengan jawaban ini? Coba cek kembali pertanyaannya", textColor: Color.brownTxt) {
-            activePrompt = nil
-            showWrongAnsPopup = false
+        .customModal(isActive: $svvm.showWrongAnsPopup, title: "Apakah kamu yakin dengan jawaban ini? Coba cek kembali pertanyaannya", textColor: Color.brownTxt) {
+            svvm.activePrompt = nil
+            svvm.showWrongAnsPopup = false
         }
         .task {
-            onPageChange()
-            mazePromptViewModel.reset(true)
+            svvm.onAppear()
 //            arViewModel.resetStates()
         }
-        .task(id: scrollPosition) {
-            onPageChange()
+        .task(id: svvm.scrollPosition) {
+            svvm.onPageChange()
         }
     }
 }

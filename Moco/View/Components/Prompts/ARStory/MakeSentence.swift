@@ -10,21 +10,21 @@ import SwiftUI
 struct MakeSentence: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.navigate) private var navigate
-    
+
     @State private var currentPromptIndex = 0
     @State private var showWrongAnswerPopup = false
-    
+
     @State var fadeMakeSentenceView = false
     @State var showTutorial = true
     @State var showStartButton = false
     @State var showPromptModal = false
-    
+
     @State private var scanResult: [String] = []
     @State private var showScanner = false
     @State private var showFinishPopUp = false
-    
+
     var onComplete: (() -> Void)?
-    
+
     var prompts: [PromptModel] = [
         .init(
             correctAnswer: "bebe",
@@ -51,13 +51,13 @@ struct MakeSentence: View {
             imageCard: "" // TODO: Add image card
         )
     ]
-    
+
     var promptSound: [String] = [
         "Cari kartu karakter",
         "Cari kartu kata kerja",
-        "Cari kartu benda",
+        "Cari kartu benda"
     ]
-    
+
     var body: some View {
         ZStack {
             // TODO: Modal: Susunlah 1 kartu biru, 1 kartu ungu, dan 1 kartu merah menjadi sebuah kalimat
@@ -87,17 +87,17 @@ struct MakeSentence: View {
                 if showScanner {
                     CardScan(scanResult: $scanResult) {
                         showScanner = false
-                        
+
                         scanResult = scanResult.map {
                             $0.fromBase64() ?? ""
                         }
-                        
+
                         if scanResult.joined(separator: " ")
                             .trimmingCharacters(in: .whitespacesAndNewlines) != prompts[currentPromptIndex].correctAnswer {
                             showWrongAnswerPopup = true
                             return
                         }
-                        
+
                         currentPromptIndex += 1
                         print("currentPromptIndex")
                         print(currentPromptIndex)
@@ -114,13 +114,13 @@ struct MakeSentence: View {
         }
         .onAppear {
             currentPromptIndex = 0
-            
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 // TODO: Gada suara
                 audioViewModel.playSoundsQueue(
                     sounds: [
                         .init(fileName: "Apa yang akan dilakukan bebe selanjutnya", type: "m4a"),
-                        .init(fileName: "Susunlah sebuah kalimat", type: "m4a"),
+                        .init(fileName: "Susunlah sebuah kalimat", type: "m4a")
                     ],
                     intervalDuration: 3
                 )
@@ -131,7 +131,7 @@ struct MakeSentence: View {
                 }
             }
         }
-        .onChange(of: showTutorial) { _, newValue in
+        .onChange(of: showTutorial) { _, _ in
             if showTutorial == true {
                 DispatchQueue.main.asyncAfter(deadline: .now()) {
                     withAnimation {
@@ -140,7 +140,7 @@ struct MakeSentence: View {
                 }
             }
         }
-        .onChange(of: showPromptModal) { _, newValue in
+        .onChange(of: showPromptModal) { _, _ in
             if showPromptModal == true {
                 audioViewModel.playSound(soundFileName: promptSound[currentPromptIndex], type: .m4a, category: .narration)
             }
@@ -184,7 +184,7 @@ struct MakeSentence: View {
             showFinishPopUp = false
             print("selesai cak")
             onComplete?()
-            
+
         } cancelHandler: {
             showFinishPopUp = true
         }
