@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct CardView: View {
+    @State private var showPointer = false
     var state = CardState.inactive
     var revealedImage = ""
     var text = ""
     var suffix = ""
     var type = CardType.character
+
+    private let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
 
     var onTap: (() -> Void)?
 
@@ -50,14 +53,21 @@ struct CardView: View {
             switch state {
             case .active:
                 VStack {
-                    Image(getActiveCard())
-                        .resizable()
-                        .scaledToFit()
-                        .onTapGesture {
-                            onTap?()
-                        }
+                    GeometryReader { proxy in
+                        let frame = proxy.frame(in: .local)
+                        Image(getActiveCard())
+                            .resizable()
+                            .scaledToFit()
+                            .onTapGesture {
+                                onTap?()
+                            }
+                            .scaleEffect(minScale: 1.0, maxScale: 1.05)
+                            .pointer(
+                                position: CGPoint(x: frame.midX, y: frame.midY),
+                                isShowing: showPointer
+                            )
+                    }
                 }
-                .scaleEffect(minScale: 1.0, maxScale: 1.05)
             case .inactive:
                 Image("Story/Prompts/card-inactive")
                     .resizable()
@@ -74,6 +84,10 @@ struct CardView: View {
             width: getWidth(),
             height: getHeight()
         )
+        .onReceive(timer) { _ in
+            showPointer = true
+            timer.upstream.connect().cancel()
+        }
     }
 }
 
