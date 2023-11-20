@@ -110,7 +110,6 @@ class MotionViewModel: ObservableObject {
 
         let angle = atan2(gravity.y, gravity.x) + .pi / 2;
         gravityDegree = angle * 180.0 / .pi;   // in degrees
-        print(gravityDegree, separator: " ")
     }
 
     // Function responsible for stopping the sensor updates
