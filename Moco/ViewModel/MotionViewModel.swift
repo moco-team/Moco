@@ -15,8 +15,11 @@ class MotionViewModel: ObservableObject {
 
     @Published var roll = false
     @Published var pitch = false
+    @Published var yaw = false
     @Published var rollNum = 0.0
     @Published var pitchNum = 0.0
+    @Published var yawNum = 0.0
+    @Published var gravityDegree = 0.0
 
     // The instance of CMMotionManager responsible for handling sensor updates
     private let motionManager = CMMotionManager()
@@ -97,10 +100,17 @@ class MotionViewModel: ObservableObject {
     }
 
     func updateMotion() {
-        rollNum = getAttitude()?.roll ?? 0
-        pitchNum = getAttitude()?.pitch ?? 0
+        let attitude = getAttitude()
+        rollNum = attitude?.roll ?? 0
+        pitchNum = attitude?.pitch ?? 0
+        yawNum = attitude?.yaw ?? 0
         roll = rollNum > 0
         pitch = pitchNum > 0
+        yaw = yawNum > 0
+
+        let angle = atan2(gravity.y, gravity.x) + .pi / 2;
+        gravityDegree = angle * 180.0 / .pi;   // in degrees
+        print(gravityDegree, separator: " ")
     }
 
     // Function responsible for stopping the sensor updates

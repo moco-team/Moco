@@ -116,9 +116,23 @@ struct MazeView: View {
                 if orientationInfo.orientation == .landscapeLeft {
                     if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
                         if motionViewModel.rollNum > 0 {
-                            scene.move(.up)
+                            switch motionViewModel.gravityDegree {
+                            case -75...(-10), 10...80:
+                                scene.move(.right)
+                            case 100...170, 190...255:
+                                scene.move(.left)
+                            default:
+                                scene.move(.up)
+                            }
                         } else if motionViewModel.rollNum < 0 {
-                            scene.move(.down)
+                            switch motionViewModel.gravityDegree {
+                            case -75...(-10), 105...170:
+                                scene.move(.right)
+                            case 10...75, 190...255:
+                                scene.move(.left)
+                            default:
+                                scene.move(.down)
+                            }
                         }
                     } else {
                         if motionViewModel.pitchNum > 0 {
@@ -130,9 +144,23 @@ struct MazeView: View {
                 } else if orientationInfo.orientation == .landscapeRight {
                     if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
                         if motionViewModel.rollNum > 0 {
-                            scene.move(.down)
+                            switch motionViewModel.gravityDegree {
+                            case -75...(-10), 105...170:
+                                scene.move(.right)
+                            case 10...75, 190...255:
+                                scene.move(.left)
+                            default:
+                                scene.move(.down)
+                            }
                         } else if motionViewModel.rollNum < 0 {
-                            scene.move(.up)
+                            switch motionViewModel.gravityDegree {
+                            case -75...(-10), 10...80:
+                                scene.move(.left)
+                            case 100...170, 190...255:
+                                scene.move(.right)
+                            default:
+                                scene.move(.up)
+                            }
                         }
                     } else {
                         if motionViewModel.pitchNum > 0 {
