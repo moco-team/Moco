@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CardView: View {
     @State private var showPointer = false
+    @State private var timerViewModel = TimerViewModel()
     var state = CardState.inactive
     var revealedImage = ""
     var text = ""
@@ -80,14 +81,18 @@ struct CardView: View {
                 }
             }
         }
+        .task {
+            timerViewModel.startTimer(key: text, withInterval: 5) {
+                showPointer = true
+            }
+        }
+        .onDisappear {
+            timerViewModel.stopTimer(text)
+        }
         .frame(
             width: getWidth(),
             height: getHeight()
         )
-        .onReceive(timer) { _ in
-            showPointer = true
-            timer.upstream.connect().cancel()
-        }
     }
 }
 
