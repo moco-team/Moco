@@ -401,7 +401,7 @@
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
-		9328F9122AF16B3A00E82995 /* Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Gesture.swift; path = Moco/Model/Gesture.swift; sourceTree = "<group>"; };
+		9328F9122AF16B3A00E82995 /* Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gesture.swift; sourceTree = "<group>"; };
 		9328F9142AF16B6900E82995 /* Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gesture.swift; sourceTree = "<group>"; };
 		9328F9162AF25C2200E82995 /* ModalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalComponent.swift; sourceTree = "<group>"; };
 		9328F9182AF25D8400E82995 /* ModalViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModifier.swift; sourceTree = "<group>"; };
@@ -1215,7 +1215,6 @@
 		93C2F8772AD683AC007D1ABC = {
 			isa = PBXGroup;
 			children = (
-				9328F9122AF16B3A00E82995 /* Gesture.swift */,
 				93C2F8BF2AD685A3007D1ABC /* README.md */,
 				93C2F8822AD683AC007D1ABC /* Moco */,
 				93C2F8972AD683AE007D1ABC /* MocoTests */,
@@ -1319,6 +1318,7 @@
 			children = (
 				9310EC822B0A40960045A908 /* ModelData */,
 				938E3D3A2AD9874F003D2AE1 /* ModelGenerator.swift */,
+				9328F9122AF16B3A00E82995 /* Gesture.swift */,
 				938E3D382AD939DC003D2AE1 /* Item.swift */,
 				0B2E31D92AD7EBE500DFC16F /* CollectionModel.swift */,
 				938E3D1E2AD7AD78003D2AE1 /* Collection.swift */,
