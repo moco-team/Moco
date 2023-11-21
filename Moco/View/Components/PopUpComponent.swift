@@ -149,9 +149,10 @@ struct PopUpComponentView: View {
 
                         Spacer()
 
-                        Grid(horizontalSpacing: 20) {
+                        Grid(horizontalSpacing: 0) {
                             GridRow {
                                 if cancelText != nil {
+                                    Spacer()
                                     SfxButton(cancelText!) {
                                         if cancelHandler != nil {
                                             cancelHandler!()
@@ -161,6 +162,7 @@ struct PopUpComponentView: View {
                                     .buttonStyle(MainButton(width: 180, type: .warning))
                                     .font(.footnote)
                                 }
+                                Spacer()
                                 SfxButton(confirmText) {
                                     function()
                                     if closeWhenDone {
@@ -170,6 +172,7 @@ struct PopUpComponentView: View {
                                 .buttonStyle(MainButton(width: 180, type: .success))
                                 .font(.footnote)
                                 .shake(animatableData: shakeItOff)
+                                Spacer()
                             }
                         }
                         .padding(.bottom)

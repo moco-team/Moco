@@ -108,8 +108,8 @@ class MotionViewModel: ObservableObject {
         pitch = pitchNum > 0
         yaw = yawNum > 0
 
-        let angle = atan2(gravity.y, gravity.x) + .pi / 2;
-        gravityDegree = angle * 180.0 / .pi;   // in degrees
+        let angle = atan2(gravity.y, gravity.x) + .pi / 2
+        gravityDegree = angle * 180.0 / .pi // in degrees
     }
 
     // Function responsible for stopping the sensor updates

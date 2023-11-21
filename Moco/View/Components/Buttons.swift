@@ -59,22 +59,20 @@ struct MainButton: ButtonStyle {
     var fontSize = CGFloat(20)
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(width: width, height: height)
             .padding()
+            .foregroundColor(type == .success ? .text.green : type == .warning ? .text.brown : .text.red)
+            .scaleEffect(configuration.isPressed ? 1.2 : 1)
+            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+            .shadow(radius: 2, y: 3)
+            .customFont(.cherryBomb, size: fontSize)
             .background {
                 Image(type == .success ?
                     "Buttons/button-success" : type == .warning ?
                     "Buttons/button-warning" : "Buttons/button-negative"
                 )
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
             }
-            .foregroundColor(type == .success ? .text.green : type == .warning ? .text.brown : .text.red)
-            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
-            .scaleEffect(configuration.isPressed ? 1.2 : 1)
-            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
-            .shadow(radius: 2, y: 3)
-            .customFont(.cherryBomb, size: fontSize)
     }
 }
 
@@ -145,13 +143,15 @@ struct BrownButton: ButtonStyle {
 struct ButtonView: View {
     @State var active = false
     var body: some View {
-        SfxButton(soundName: "non_existing_sound") {
-            print("Button pressed!")
-        } label: {
-            Text("Press me")
+        VStack {
+            SfxButton(soundName: "non_existing_sound") {
+                print("Button pressed!")
+            } label: {
+                Text("Press meeeeee")
+            }
+            .buttonStyle(MainButton(width: 180))
+            .customFont(.cherryBomb, size: 20)
         }
-        .buttonStyle(MainButton(width: 180))
-        .customFont(.cherryBomb, size: 20)
         Button("Press Me") {
             print("Button pressed!")
         }

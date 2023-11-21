@@ -29,19 +29,27 @@ struct ModelGenerator {
 
             // MARK: - This code will only run if the persistent store is empty.
 
+            for item in res {
+                modelContext.delete(item)
+            }
+
             for item in items {
-                if res.contains(where: {
-                    $0.slug == item.slug
-                }) {
-                    modelContext.delete(res.first {
-                        $0.slug == item.slug
-                    }!)
+                res.forEach {
+                    if $0.slug == item.slug {
+                        modelContext.delete($0)
+                    }
                 }
                 modelContext.insert(item)
             }
             try? modelContext.save()
         } catch {
             print("Cannot populate container")
+        }
+    }
+
+    @MainActor static func populate() {
+        for (_, datum) in ModelData.dataToBePopulated {
+            ModelGenerator.populateContainer(container: MocoApp.modelContext.container, items: datum)
         }
     }
 

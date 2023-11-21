@@ -23,9 +23,14 @@ struct EpisodeItem: View {
                     .scaledToFit()
 
                 HStack {
-                    Text("\(number)")
-                        .customFont(.cherryBomb, size: fontSize)
-                        .foregroundColor(.text.brown)
+                    VStack {
+                        Text("Bagian")
+                            .customFont(.cherryBomb, size: fontSize - 18)
+                            .foregroundColor(.text.brown)
+                        Text("\(number)")
+                            .customFont(.cherryBomb, size: fontSize)
+                            .foregroundColor(.text.brown)
+                    }
                 }
                 .frame(
                     width: proxy.size.width * 0.5,
@@ -33,7 +38,7 @@ struct EpisodeItem: View {
                 )
                 .offset(
                     x: proxy.size.width * 0.02,
-                    y: proxy.size.height * 0.07
+                    y: proxy.size.height * 0.078
                 )
             }
             .frame(

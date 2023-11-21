@@ -109,7 +109,7 @@ struct CardPrompt: View {
         .popUp(
             isActive: $showQuestionPopup,
             title: questionPopup,
-            confirmText: "Scan",
+            confirmText: "Buka Kamera",
             closeWhenDone: true,
             shakeItOff: 1
         ) {
@@ -118,7 +118,7 @@ struct CardPrompt: View {
         .popUp(
             isActive: $showWrongAnswerPopup,
             title: "Belum tepat!\n" + questionPopup,
-            confirmText: "Scan",
+            confirmText: "Buka Kamera",
             closeWhenDone: true,
             shakeItOff: 1,
             type: .danger

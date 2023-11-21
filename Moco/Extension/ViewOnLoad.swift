@@ -9,27 +9,44 @@ import SwiftUI
 
 private struct ViewOnLoadModifier: ViewModifier {
     @State private var didLoad = false
+
+    var async = false
     private let action: (() -> Void)?
 
     init(perform action: (() -> Void)? = nil) {
         self.action = action
     }
 
-    func body(content: Content) -> some View {
-        content.onAppear {
-            guard !didLoad
-            else {
-                return
-            }
+    init(async: Bool, perform action: (() -> Void)? = nil) {
+        self.action = action
+        self.async = async
+    }
 
-            didLoad = true
-            action?()
-        }
+    func body(content: Content) -> some View {
+        content
+            .onAppear {
+                guard !didLoad && !async
+                else {
+                    return
+                }
+
+                didLoad = true
+                action?()
+            }
+            .task {
+                guard !didLoad && async
+                else {
+                    return
+                }
+
+                didLoad = true
+                action?()
+            }
     }
 }
 
 public extension View {
-    func onLoad(perform action: (() -> Void)? = nil) -> some View {
-        modifier(ViewOnLoadModifier(perform: action))
+    func onLoad(async: Bool = false, perform action: (() -> Void)? = nil) -> some View {
+        modifier(ViewOnLoadModifier(async: async, perform: action))
     }
 }

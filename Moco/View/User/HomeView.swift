@@ -49,17 +49,6 @@ struct HomeView: View {
                         .customFont(.cherryBomb, size: 50)
                         .foregroundColor(Color.blueTxt)
                         .fontWeight(.bold)
-
-                    if isMakeSentenceTest {
-                        NavigationLink(
-                            destination: MakeSentence {
-                                print("MakeSentence")
-                            }
-                        ) {
-                            Text("Make Sentence")
-                        }
-                    }
-
                     Spacer()
                 }.padding(.leading, 60)
                     .padding(.vertical, Screen.height * 0.1)

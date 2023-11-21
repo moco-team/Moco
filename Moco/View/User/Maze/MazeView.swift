@@ -117,18 +117,18 @@ struct MazeView: View {
                     if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
                         if motionViewModel.rollNum > 0 {
                             switch motionViewModel.gravityDegree {
-                            case -75...(-10), 10...80:
+                            case -75 ... -10, 10 ... 80:
                                 scene.move(.right)
-                            case 100...170, 190...255:
+                            case 100 ... 170, 190 ... 255:
                                 scene.move(.left)
                             default:
                                 scene.move(.up)
                             }
                         } else if motionViewModel.rollNum < 0 {
                             switch motionViewModel.gravityDegree {
-                            case -75...(-10), 105...170:
+                            case -75 ... -10, 105 ... 170:
                                 scene.move(.right)
-                            case 10...75, 190...255:
+                            case 10 ... 75, 190 ... 255:
                                 scene.move(.left)
                             default:
                                 scene.move(.down)
@@ -145,18 +145,18 @@ struct MazeView: View {
                     if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
                         if motionViewModel.rollNum > 0 {
                             switch motionViewModel.gravityDegree {
-                            case -75...(-10), 105...170:
+                            case -75 ... -10, 105 ... 170:
                                 scene.move(.right)
-                            case 10...75, 190...255:
+                            case 10 ... 75, 190 ... 255:
                                 scene.move(.left)
                             default:
                                 scene.move(.down)
                             }
                         } else if motionViewModel.rollNum < 0 {
                             switch motionViewModel.gravityDegree {
-                            case -75...(-10), 10...80:
+                            case -75 ... -10, 10 ... 80:
                                 scene.move(.left)
-                            case 100...170, 190...255:
+                            case 100 ... 170, 190 ... 255:
                                 scene.move(.right)
                             default:
                                 scene.move(.up)
