@@ -10,6 +10,15 @@ import AVFoundation
 @Observable class AudioViewModel: NSObject, AVAudioPlayerDelegate {
     static var shared = AudioViewModel()
 
+    override init() {
+        super.init()
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+        } catch {
+            print("Error setting AVAudioSession category")
+        }
+    }
+
     private var audioModel = AudioModel()
 
     /// Plays a sound with arbitrary filename and type, specify numberOfLoops = -1 to play indefinitely
@@ -106,7 +115,7 @@ import AVFoundation
     @objc func playSoundNotification(_ notification: NSNotification) {
         guard !Process.isPreview else { return }
         if let soundFileName = notification.userInfo?["fileName"] as? String {
-            audioModel.playSound(soundFileName: soundFileName)
+            _ = audioModel.playSound(soundFileName: soundFileName)
         }
     }
 
