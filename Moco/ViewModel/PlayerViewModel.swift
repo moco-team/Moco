@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import SwiftUI
 import GameKit
+import SwiftUI
 
 class PlayerViewModel: ObservableObject {
     @Published var localPlayer = GKLocalPlayer.local

@@ -8,9 +8,23 @@
 import SwiftUI
 
 struct StoryView: View {
+    // MARK: - Environments
+    @Environment(\.storyThemeViewModel) private var storyThemeViewModel
+    @Environment(\.storyViewModel) private var storyViewModel
+    @Environment(\.episodeViewModel) private var episodeViewModel
+    @Environment(\.storyContentViewModel) private var storyContentViewModel
+    @Environment(\.promptViewModel) private var promptViewModel
+    @Environment(\.hintViewModel) private var hintViewModel
+    @Environment(\.mazePromptViewModel) private var mazePromptViewModel
+    @Environment(\.timerViewModel) private var timerViewModel
+    @Environment(\.audioViewModel) private var audioViewModel
+    @Environment(\.settingsViewModel) private var settingsViewModel
+    @Environment(\.navigate) private var navigate
+    @EnvironmentObject var arViewModel: ARViewModel
+
     // MARK: - States
 
-    @Bindable private var svvm = StoryViewViewModel()
+    @StateObject private var svvm = StoryViewViewModel()
 
     // MARK: - View
 
@@ -18,11 +32,11 @@ struct StoryView: View {
         ZStack {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 0) {
-                    if let stories = svvm.episodeViewModel.selectedEpisode!.stories {
+                    if let stories = episodeViewModel.selectedEpisode!.stories {
                         ForEach(Array(stories.enumerated()), id: \.offset) { index, _ in
                             ZStack {
                                 PeelEffectTappable(state: $svvm.peelEffectState, isReverse: svvm.isReversePeel) {
-                                    Image(svvm.storyViewModel.storyPage!.background)
+                                    Image(storyViewModel.storyPage!.background)
                                         .resizable()
                                         .scaledToFill()
                                         .frame(width: Screen.width, height: Screen.height, alignment: .center)
@@ -33,9 +47,9 @@ struct StoryView: View {
                                     svvm.toBeExecutedByPeelEffect()
                                 }
 
-                                if svvm.storyContentViewModel.narratives!.count > svvm.narrativeIndex &&
-                                    !svvm.storyContentViewModel.narratives!.isEmpty {
-                                    let narrative = svvm.storyContentViewModel.narratives![max(svvm.narrativeIndex, 0)]
+                                if storyContentViewModel.narratives!.count > svvm.narrativeIndex &&
+                                    !storyContentViewModel.narratives!.isEmpty {
+                                    let narrative = storyContentViewModel.narratives![max(svvm.narrativeIndex, 0)]
                                     Text(narrative.contentName)
                                         .foregroundColor(Color(hex: narrative.color ?? "#000000"))
                                         .frame(maxWidth: CGFloat(narrative.maxWidth!), alignment: .leading)
@@ -55,11 +69,11 @@ struct StoryView: View {
             }.scrollDisabled(true)
                 .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
                 .scrollPosition(id: $svvm.scrollPosition)
-            if let stories = svvm.episodeViewModel.selectedEpisode?.stories {
+            if let stories = episodeViewModel.selectedEpisode?.stories {
                 Group {
                     switch svvm.activePrompt?.promptType {
                     case .card:
-                        if let cardPrompt = svvm.promptViewModel.prompts?.first {
+                        if let cardPrompt = promptViewModel.prompts?.first {
                             CardPrompt(showNext: $svvm.forceShowNext) {
                                 svvm.nextPage()
                             }
@@ -75,7 +89,7 @@ struct StoryView: View {
                             }
                         }
                     case .maze:
-                        if let mazePrompt = svvm.promptViewModel.prompts?.first {
+                        if let mazePrompt = promptViewModel.prompts?.first {
                             MazePrompt(
                                 promptText: mazePrompt.question!,
                                 answersAsset: mazePrompt.answerAssets!,
@@ -87,7 +101,7 @@ struct StoryView: View {
                             }.id(mazePrompt.id)
                         }
                     case .ar:
-                        if let ARPrompt = svvm.promptViewModel.prompts?[0] {
+                        if let ARPrompt = promptViewModel.prompts?[0] {
                             ARStory(
                                 prompt: ARPrompt,
                                 lastPrompt: svvm.scrollPosition == (stories.count - 1)
@@ -95,10 +109,6 @@ struct StoryView: View {
                                 svvm.nextPage()
                             }
                             .id(ARPrompt.id)
-                            .onAppear {
-                                print("nih AR")
-                                print(svvm.promptViewModel.prompts![0].correctAnswer)
-                            }
                         }
                     case .objectDetection:
                         DetectionView {
@@ -167,8 +177,8 @@ struct StoryView: View {
                     }
                     Spacer()
 
-                    if svvm.promptViewModel.prompts == nil ||
-                        svvm.promptViewModel.prompts!.isEmpty ||
+                    if promptViewModel.prompts == nil ||
+                        promptViewModel.prompts!.isEmpty ||
                         svvm.forceShowNext {
                         StoryNavigationButton(direction: .right) {
                             svvm.nextPage()
@@ -239,9 +249,6 @@ struct StoryView: View {
         .task {
             svvm.onAppear()
 //            arViewModel.resetStates()
-        }
-        .task(id: svvm.scrollPosition) {
-            svvm.onPageChange()
         }
     }
 }

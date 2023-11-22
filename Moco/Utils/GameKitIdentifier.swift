@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct LeaderboardID{
+struct LeaderboardID {
     static let score = "com.mocoteam.Moco.leaderboard.score"
 }
 
-struct AchievementID{
+enum AchievementID {
     // Complete episode
     static let firstEpisode = "com.mocoteam.Moco.achievement.firstEpisode"
     static let secondEpisode = "com.mocoteam.Moco.achievement.secondEpisode"

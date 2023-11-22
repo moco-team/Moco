@@ -5,8 +5,8 @@
 //  Created by Daniel Aprillio on 22/11/23.
 //
 
-import SwiftUI
 import GameKit
+import SwiftUI
 
 public struct GameCenterView: UIViewControllerRepresentable {
     let viewController: GKGameCenterViewController
@@ -46,4 +46,3 @@ struct GameCenterView_Previews: PreviewProvider {
             .ignoresSafeArea()
     }
 }
-
