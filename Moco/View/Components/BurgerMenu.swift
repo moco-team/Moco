@@ -11,6 +11,7 @@ struct BurgerMenu: View {
     @Environment(\.navigate) private var navigate
 
     @State private var expand = false
+    @State var isGameCenterAchievementsPresented = false
 
     var body: some View {
         HStack(spacing: 0) {
@@ -25,6 +26,12 @@ struct BurgerMenu: View {
                                 .resizable()
                                 .frame(width: 90, height: 90)
                                 .shadow(radius: 4, x: -2, y: 2)
+                                .onTapGesture {
+                                    isGameCenterAchievementsPresented = true
+                                }
+                                .fullScreenCover(isPresented: $isGameCenterAchievementsPresented) {
+                                    GameCenterView(viewState: .achievements).ignoresSafeArea()
+                                }
                         }
                         SfxButton {
                             navigate.append(.settings)
