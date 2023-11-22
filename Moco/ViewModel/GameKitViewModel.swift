@@ -13,9 +13,8 @@ import SwiftUI
     var playerModel = PlayerViewModel.shared
 
     override init() {
-        
         super.init()
-        
+
         authenticateUser { [self] success in
             if success {
 //                self.reportScore(score: score)
@@ -57,13 +56,13 @@ import SwiftUI
             print("Score submitted: \(score)")
         }
     }
-    
-    func reportAchievement(achievementID: String, percentComplete: Double){
-        if playerModel.localPlayer.isAuthenticated{
+
+    func reportAchievement(achievementID: String, percentComplete: Double) {
+        if playerModel.localPlayer.isAuthenticated {
             let achievement = GKAchievement(identifier: achievementID)
             achievement.percentComplete = percentComplete
             achievement.showsCompletionBanner = true
-            
+
             GKAchievement.report([achievement]) { error in
                 if let error = error {
                     print("Failed to report achievement: \(error.localizedDescription)")
@@ -74,4 +73,3 @@ import SwiftUI
         }
     }
 }
-

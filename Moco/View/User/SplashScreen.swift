@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct SplashScreen: View {
-    
     @State private var scale = 0.6
     @Binding var isActive: Bool
-    
+
     var body: some View {
-        ZStack{
-            RadialGradient(colors: [Color(hex: "5EB9FF"), Color(hex:"6892B8")], center: .center, startRadius: Screen.width * 0.05, endRadius: Screen.width * 0.55)
+        ZStack {
+            RadialGradient(colors: [Color(hex: "5EB9FF"), Color(hex: "6892B8")], center: .center, startRadius: Screen.width * 0.05, endRadius: Screen.width * 0.55)
             VStack {
                 VStack {
                     Image("moco_logo_transparent")
@@ -23,7 +22,7 @@ struct SplashScreen: View {
                         .frame(width: Screen.width * 0.55)
                         .foregroundColor(.blue)
                 }.scaleEffect(scale)
-                    .onAppear{
+                    .onAppear {
                         withAnimation(.easeIn(duration: 0.8)) {
                             self.scale = 0.9
                         }
