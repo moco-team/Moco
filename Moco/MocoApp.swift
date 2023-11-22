@@ -31,7 +31,6 @@ struct MocoApp: App {
 
     // MARK: - State Objects
 
-    @StateObject private var speechViewModel = SpeechRecognizerViewModel.shared
     @StateObject private var objectDetectionViewModel = ObjectDetectionViewModel.shared
     @StateObject private var arViewModel = ARViewModel()
     @StateObject private var motionViewModel = MotionViewModel()
@@ -55,7 +54,6 @@ struct MocoApp: App {
                 .environment(\.audioViewModel, audioViewModel)
                 .environment(\.timerViewModel, timerViewModel)
                 .environment(\.mazePromptViewModel, mazePromptViewModel)
-                .environmentObject(speechViewModel)
                 .environmentObject(objectDetectionViewModel)
                 .environmentObject(arViewModel)
                 .environmentObject(motionViewModel)

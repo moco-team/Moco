@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SpeakTheStory: View {
     @Environment(\.audioViewModel) private var audioViewModel
-    @ObservedObject var speechRecognizerViewModel = SpeechRecognizerViewModel.shared
+    @ObservedObject var speechRecognizerViewModel = SpeechRecognizerViewModel()
 
 //    let hints: [String]
 

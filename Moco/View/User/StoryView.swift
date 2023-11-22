@@ -249,10 +249,8 @@ struct StoryView: View {
 #Preview {
     @State var timerViewModel = TimerViewModel()
     @State var audioViewModel = AudioViewModel()
-    @StateObject var speechViewModel = SpeechRecognizerViewModel.shared
 
     return StoryView()
         .environment(\.timerViewModel, timerViewModel)
         .environment(\.audioViewModel, audioViewModel)
-        .environmentObject(speechViewModel)
 }

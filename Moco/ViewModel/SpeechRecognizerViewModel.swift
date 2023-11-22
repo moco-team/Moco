@@ -10,8 +10,6 @@ import Foundation
 import Speech
 
 class SpeechRecognizerViewModel: ObservableObject {
-    static let shared = SpeechRecognizerViewModel()
-
     @Published var error: RecognizerError?
     @Published var transcript: String = ""
     @Published var possibleTranscripts = [String]()
@@ -22,7 +20,7 @@ class SpeechRecognizerViewModel: ObservableObject {
     private let recognizer: SFSpeechRecognizer?
     private let synthesizer = AVSpeechSynthesizer()
 
-    private init() {
+    init() {
         recognizer = SFSpeechRecognizer(locale: Locale(identifier: "id"))
 
         Task(priority: .background) {
