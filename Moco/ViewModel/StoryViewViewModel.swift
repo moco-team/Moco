@@ -21,7 +21,6 @@ class StoryViewViewModel: ObservableObject {
     private(set) var audioViewModel = AudioViewModel.shared
     private(set) var settingsViewModel = SettingsViewModel.shared
     private(set) var navigate = RouteViewModel.shared
-    private(set) var objectDetectionViewModel: ObjectDetectionViewModel = .shared
     private(set) var arViewModel: ARViewModel = .shared
 
     // MARK: - Static Variables
