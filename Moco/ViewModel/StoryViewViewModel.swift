@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-@Observable
-class StoryViewViewModel {
+class StoryViewViewModel: ObservableObject {
     // MARK: - Environments stored property
 
     private(set) var storyThemeViewModel = StoryThemeViewModel.shared
@@ -31,26 +30,26 @@ class StoryViewViewModel {
 
     // MARK: - States
 
-    var scrollPosition: Int? = 0
-    var isExitPopUpActive = false
-    var isEpisodeFinished = false
-    private(set) var isMuted = false
-    private var text: String = ""
-    var narrativeIndex: Int = -1
-    var showPromptButton = false
-    var activePrompt: PromptModel?
-    var peelEffectState = PeelEffectState.stop
-    private(set) var toBeExecutedByPeelEffect = {}
-    private(set) var peelBackground = AnyView(EmptyView())
-    private(set) var isReversePeel = false
-    var showWrongAnsPopup = false
-    private var mazeQuestionIndex = 0
-    var forceShowNext = false
-    var showPauseMenu = false
+    @Published var scrollPosition: Int? = 0
+    @Published var isExitPopUpActive = false
+    @Published var isEpisodeFinished = false
+    @Published private(set) var isMuted = false
+    @Published private var text: String = ""
+    @Published var narrativeIndex: Int = -1
+    @Published var showPromptButton = false
+    @Published var activePrompt: PromptModel?
+    @Published var peelEffectState = PeelEffectState.stop
+    @Published private(set) var toBeExecutedByPeelEffect = {}
+    @Published private(set) var peelBackground = AnyView(EmptyView())
+    @Published private(set) var isReversePeel = false
+    @Published var showWrongAnsPopup = false
+    @Published private var mazeQuestionIndex = 0
+    @Published var forceShowNext = false
+    @Published var showPauseMenu = false
 
     // MARK: - Variables
 
-    var enableUI = true
+    @Published var enableUI = true
 
     // MARK: - Functions
 
