@@ -47,7 +47,7 @@ struct CardScan: View {
                     )
                 }
             }
-        }.onAppear {
+        }.task {
             scanResult = []
             audioViewModel.playSound(
                 soundFileName: "arahkan_kamera",

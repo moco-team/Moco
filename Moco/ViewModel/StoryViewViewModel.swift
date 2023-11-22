@@ -90,26 +90,28 @@ class StoryViewViewModel {
     }
 
     func onPageChange() {
-        stop()
-        setNewStoryPage(scrollPosition ?? -1)
+        DispatchQueue.main.async { [self] in
+            stop()
+            setNewStoryPage(scrollPosition ?? -1)
 
-        if let bgSound = storyContentViewModel.bgSound?.contentName {
-            audioViewModel.playSound(
-                soundFileName: bgSound,
-                numberOfLoops: -1,
-                category: .backsound
-            )
-        }
+            if let bgSound = storyContentViewModel.bgSound?.contentName {
+                audioViewModel.playSound(
+                    soundFileName: bgSound,
+                    numberOfLoops: -1,
+                    category: .backsound
+                )
+            }
 
-        startNarrative()
-        if let storyPage = storyViewModel.storyPage {
-            promptViewModel.fetchPrompts(storyPage)
-        }
-        startPrompt()
-        if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
-            promptViewModel.fetchPrompts(storyPage)
-            if let prompt = promptViewModel.prompts?.first {
-                activePrompt = prompt
+            startNarrative()
+            if let storyPage = storyViewModel.storyPage {
+                promptViewModel.fetchPrompts(storyPage)
+            }
+            startPrompt()
+            if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
+                promptViewModel.fetchPrompts(storyPage)
+                if let prompt = promptViewModel.prompts?.first {
+                    activePrompt = prompt
+                }
             }
         }
     }
@@ -136,6 +138,8 @@ class StoryViewViewModel {
         toBeExecutedByPeelEffect = {
             self.scrollPosition! += 1
             self.peelEffectState = .stop
+
+            self.onPageChange()
         }
     }
 
@@ -163,6 +167,8 @@ class StoryViewViewModel {
             self.peelEffectState = .stop
             self.isReversePeel = false
         }
+
+        onPageChange()
     }
 
     private func setNewStoryPage(_ scrollPosition: Int) {

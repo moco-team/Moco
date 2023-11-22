@@ -10,7 +10,7 @@ import SwiftUI
 struct StoryView: View {
     // MARK: - States
 
-    @Bindable private var svvm = StoryViewViewModel()
+    @State private var svvm = StoryViewViewModel()
 
     // MARK: - View
 
@@ -95,10 +95,6 @@ struct StoryView: View {
                                 svvm.nextPage()
                             }
                             .id(ARPrompt.id)
-                            .onAppear {
-                                print("nih AR")
-                                print(svvm.promptViewModel.prompts![0].correctAnswer)
-                            }
                         }
                     case .objectDetection:
                         DetectionView {
@@ -239,9 +235,6 @@ struct StoryView: View {
         .task {
             svvm.onAppear()
 //            arViewModel.resetStates()
-        }
-        .task(id: svvm.scrollPosition) {
-            svvm.onPageChange()
         }
     }
 }

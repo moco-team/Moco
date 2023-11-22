@@ -78,26 +78,30 @@ struct CardPrompt: View {
                         if scanResult.joined(separator: " ")
                             .trimmingCharacters(in: .whitespacesAndNewlines) !=
                             cardPrompts[currentCard].correctAnswer {
-                            audioViewModel.playSound(
-                                soundFileName: "maaf_kartu_tidak_tepat",
-                                type: .m4a,
-                                category: .narration
-                            )
+                            DispatchQueue.global().async {
+                                audioViewModel.playSound(
+                                    soundFileName: "maaf_kartu_tidak_tepat",
+                                    type: .m4a,
+                                    category: .narration
+                                )
+                            }
                             showWrongAnswerPopup = true
                             return
                         }
-
-                        audioViewModel.playSound(
-                            soundFileName: "bagus_berhasil_scan",
-                            type: .m4a,
-                            category: .narration
-                        )
 
                         currentCard += 1
                         if let prompts = promptViewModel.prompts,
                            currentCard >= prompts.count {
                             showNext = true
                             onComplete?()
+                        }
+
+                        DispatchQueue.global().async {
+                            audioViewModel.playSound(
+                                soundFileName: "bagus_berhasil_scan",
+                                type: .m4a,
+                                category: .narration
+                            )
                         }
                     }
                 }
