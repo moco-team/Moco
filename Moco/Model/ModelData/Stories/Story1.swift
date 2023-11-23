@@ -155,7 +155,7 @@ private let episode2 = EpisodeModel(
                     hints: nil,
                     question: "Apakah kata yang memiliki arti melakukan permainan untuk menyenangkan hati?",
                     imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
-                    cardLocationX: 0.8,
+                    cardLocationX: 0.9,
                     cardLocationY: 0.33,
                     cardType: CardType.verb
                 )
@@ -256,7 +256,7 @@ private let episode2 = EpisodeModel(
                     Apakah kata yang memiliki arti tabung kaca atau plastik yang biasanya dipakai untuk menyimpan sesuatu?
                     """,
                     imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
-                    cardLocationX: 0.8,
+                    cardLocationX: 0.85,
                     cardLocationY: 0.33,
                     cardType: CardType.noun
                 )
@@ -289,8 +289,8 @@ private let episode2 = EpisodeModel(
                     Apakah kata yang memiliki arti barang cair atau liat, dipakai untuk merekatkan sesuatu pada barang lain atau perekat?
                     """,
                     imageCard: "Story/Content/Story1/Pages/Page1/moco-card",
-                    cardLocationX: 0.8,
-                    cardLocationY: 0.33,
+                    cardLocationX: 0.85,
+                    cardLocationY: 0.38,
                     cardType: CardType.noun
                 )
             ],

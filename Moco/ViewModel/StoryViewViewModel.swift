@@ -17,11 +17,10 @@ class StoryViewViewModel: ObservableObject {
     private(set) var promptViewModel = PromptViewModel.shared
     private(set) var hintViewModel = HintViewModel.shared
     private(set) var mazePromptViewModel = MazePromptViewModel.shared
-    private(set) var timerViewModel = TimerViewModel.shared
+    private(set) var timerViewModel = TimerViewModel()
     private(set) var audioViewModel = AudioViewModel.shared
     private(set) var settingsViewModel = SettingsViewModel.shared
     private(set) var navigate = RouteViewModel.shared
-    private(set) var arViewModel: ARViewModel = .shared
 
     // MARK: - Static Variables
 
@@ -39,7 +38,7 @@ class StoryViewViewModel: ObservableObject {
     @Published var activePrompt: PromptModel?
     @Published var peelEffectState = PeelEffectState.stop
     @Published private(set) var toBeExecutedByPeelEffect = {}
-    @Published private(set) var peelBackground = AnyView(EmptyView())
+    private(set) var peelBackground = AnyView(EmptyView())
     @Published private(set) var isReversePeel = false
     @Published var showWrongAnsPopup = false
     @Published private var mazeQuestionIndex = 0
@@ -69,7 +68,7 @@ class StoryViewViewModel: ObservableObject {
     private func startNarrative() {
         guard storyContentViewModel.narratives != nil else { return }
         narrativeIndex = -1
-        updateText()
+//        updateText()
     }
 
     private func startPrompt() {
@@ -80,10 +79,9 @@ class StoryViewViewModel: ObservableObject {
             showPromptButton = false
             return
         }
-        timerViewModel.setTimer(key: "storyPagePrompt-\(scrollPosition!)", withInterval: promptViewModel.prompts![0].startTime) {
-            withAnimation {
-                self.showPromptButton = true
-            }
+
+        withAnimation(Animation.default.delay(promptViewModel.prompts![0].startTime)) {
+            self.showPromptButton = true
         }
     }
 
