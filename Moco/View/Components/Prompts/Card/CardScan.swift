@@ -25,8 +25,6 @@ struct CardScan: View {
                         .foregroundColor(.blue2Txt)
                         .glowBorder(color: .white, lineWidth: 6)
                     VStack {
-//                        Text("Contoh :")
-//                            .customFont(.cherryBomb, size: 40)
                         LottieView(
                             fileName: "arrange_camera_to_barcode.json",
                             loopMode: .loop

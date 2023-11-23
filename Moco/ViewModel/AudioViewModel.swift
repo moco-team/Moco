@@ -54,8 +54,8 @@ import AVFoundation
         audioModel.stopAllSounds()
     }
 
-    func pauseAllSounds() {
-        audioModel.pauseAllSounds()
+    func pauseAllSounds(_ category: AudioCategory? = nil) {
+        audioModel.pauseAllSounds(category)
     }
 
     /// Stop all sounds from playing
