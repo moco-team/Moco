@@ -2008,10 +2008,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Moco/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
-				INFOPLIST_KEY_NSCameraUsageDescription = "To scan the QR code on the card, we need access to the camera.";
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses camera to capture QR Code on card.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses microphone to record your audio.";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to convert your speech into text.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to capture the QR code on the card and to display an AR world.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -2046,10 +2043,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Moco/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
-				INFOPLIST_KEY_NSCameraUsageDescription = "To scan the QR code on the card, we need access to the camera.";
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses camera to capture QR Code on card.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses microphone to record your audio.";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to convert your speech into text.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to capture the QR code on the card and to display an AR world.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
