@@ -63,7 +63,7 @@ class StoryViewViewModel: ObservableObject {
 
     func stop() {
         timerViewModel.stopTimer()
-        audioViewModel.pauseAllSounds()
+        audioViewModel.pauseAllSounds(.backsound)
     }
 
     private func startNarrative() {
@@ -88,28 +88,26 @@ class StoryViewViewModel: ObservableObject {
     }
 
     func onPageChange() {
-        DispatchQueue.main.async { [self] in
-            stop()
-            setNewStoryPage(scrollPosition ?? -1)
+        stop()
+        setNewStoryPage(scrollPosition ?? -1)
 
-            if let bgSound = storyContentViewModel.bgSound?.contentName {
-                audioViewModel.playSound(
-                    soundFileName: bgSound,
-                    numberOfLoops: -1,
-                    category: .backsound
-                )
-            }
+        if let bgSound = storyContentViewModel.bgSound?.contentName {
+            audioViewModel.playSound(
+                soundFileName: bgSound,
+                numberOfLoops: -1,
+                category: .backsound
+            )
+        }
 
-            startNarrative()
-            if let storyPage = storyViewModel.storyPage {
-                promptViewModel.fetchPrompts(storyPage)
-            }
-            startPrompt()
-            if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
-                promptViewModel.fetchPrompts(storyPage)
-                if let prompt = promptViewModel.prompts?.first {
-                    activePrompt = prompt
-                }
+        startNarrative()
+        if let storyPage = storyViewModel.storyPage {
+            promptViewModel.fetchPrompts(storyPage)
+        }
+        startPrompt()
+        if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
+            promptViewModel.fetchPrompts(storyPage)
+            if let prompt = promptViewModel.prompts?.first {
+                activePrompt = prompt
             }
         }
     }

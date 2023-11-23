@@ -88,14 +88,14 @@ struct CardPrompt: View {
                             showWrongAnswerPopup = true
                             return
                         }
-
+                        
                         currentCard += 1
                         if let prompts = promptViewModel.prompts,
                            currentCard >= prompts.count {
                             showNext = true
                             onComplete?()
                         }
-
+                        
                         DispatchQueue.global().async {
                             audioViewModel.playSound(
                                 soundFileName: "bagus_berhasil_scan",
@@ -103,6 +103,7 @@ struct CardPrompt: View {
                                 category: .narration
                             )
                         }
+                        
                     }
                 }
             }

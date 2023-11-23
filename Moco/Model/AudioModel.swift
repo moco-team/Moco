@@ -373,9 +373,16 @@ struct AudioModel: Identifiable, Equatable {
         }
     }
 
-    func pauseAllSounds() {
+    func pauseAllSounds(_ category: AudioCategory? = nil) {
         players.forEach { _, value in
-            value.stop()
+            if let nonNilCategory = category, let playerUrl = value.url {
+                let playerCategory = playerCategories[playerUrl]
+                if playerCategory == nonNilCategory {
+                    value.stop()
+                }
+            } else {
+                value.stop()
+            }
         }
     }
 
