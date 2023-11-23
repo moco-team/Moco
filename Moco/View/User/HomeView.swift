@@ -75,6 +75,16 @@ struct HomeView: View {
                             firstPageBackground: "Story/Cover/Story2",
                             isLocked: true
                         ) {}
+                        StoryBookNew(
+                            image: "Story/Cover/Story2",
+                            firstPageBackground: "Story/Cover/Story2",
+                            isLocked: true
+                        ) {}
+                        StoryBookNew(
+                            image: "Story/Cover/Story2",
+                            firstPageBackground: "Story/Cover/Story2",
+                            isLocked: true
+                        ) {}
                     }
                     .padding(.horizontal, 30)
                 }.scrollClipDisabled()
