@@ -17,6 +17,7 @@ final class StoryThemeModel: Identifiable, CustomPersistentModel {
     @Attribute var updatedAt = Date()
 
     var episodes: [EpisodeModel]?
+    var users: [UserModel]?
 
     init(pictureName: String, episodes: [EpisodeModel]?, slug: String = "") {
         uid = UUID().uuidString

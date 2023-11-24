@@ -11,6 +11,7 @@ import SwiftUI
 struct EpisodeView: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.storyThemeViewModel) private var storyThemeViewModel
+    @Environment(\.userViewModel) private var userViewModel
     @Environment(\.episodeViewModel) private var episodeViewModel
     @Environment(\.storyViewModel) private var storyViewModel
     @Environment(\.storyContentViewModel) private var storyContentViewModel
@@ -64,29 +65,31 @@ struct EpisodeView: View {
 
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: [GridItem(.flexible())]) {
-                        if let availableEpisodes = episodeViewModel.availableEpisodes {
+                        if let episodes = episodeViewModel.episodes {
                             ForEach(
-                                Array(availableEpisodes.enumerated()), id: \.element
+                                Array(episodes.enumerated()), id: \.element
                             ) { index, episode in
                                 EpisodeItem(
                                     number: index + 1
                                 ) {
-                                    Task {
-                                        episodeViewModel.setSelectedEpisode(episode)
-
-                                        // open new story page
-                                        storyViewModel.fetchStory(0, episodeViewModel.selectedEpisode!)
-                                        storyContentViewModel.fetchStoryContents(storyViewModel.storyPage!)
-
-                                        if storyViewModel.storyPage!.isHavePrompt {
-                                            promptViewModel.fetchPrompts(storyViewModel.storyPage!)
-
-                                            if promptViewModel.prompts![0].hints != nil {
-                                                hintViewModel.fetchHints(promptViewModel.prompts![0])
+                                    if episode.isAvailable || index < userViewModel.userLogin!.availableEpisodeSum {
+                                        Task {
+                                            episodeViewModel.setSelectedEpisode(episode)
+                                            
+                                            // open new story page
+                                            storyViewModel.fetchStory(0, episodeViewModel.selectedEpisode!)
+                                            storyContentViewModel.fetchStoryContents(storyViewModel.storyPage!)
+                                            
+                                            if storyViewModel.storyPage!.isHavePrompt {
+                                                promptViewModel.fetchPrompts(storyViewModel.storyPage!)
+                                                
+                                                if promptViewModel.prompts![0].hints != nil {
+                                                    hintViewModel.fetchHints(promptViewModel.prompts![0])
+                                                }
                                             }
+                                            
+                                            navigate.append(.story)
                                         }
-
-                                        navigate.append(.story)
                                     }
                                 }
                             }

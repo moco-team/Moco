@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct EpisodeItem: View {
+    @Environment(\.userViewModel) private var userViewModel
+    @Environment(\.episodeViewModel) private var episodeViewModel
+    
     var number = 1
     var fontSize = CGFloat(55)
     var width = CGFloat(Screen.width * 0.3)
@@ -22,24 +25,26 @@ struct EpisodeItem: View {
                     .resizable()
                     .scaledToFit()
 
-                HStack {
-                    VStack {
-                        Text("Bagian")
-                            .customFont(.cherryBomb, size: fontSize - 18)
-                            .foregroundColor(.text.brown)
-                        Text("\(number)")
-                            .customFont(.cherryBomb, size: fontSize)
-                            .foregroundColor(.text.brown)
+                if episodeViewModel.episodes![number-1].isAvailable || number - 1 < userViewModel.userLogin!.availableEpisodeSum  {
+                    HStack {
+                        VStack {
+                            Text("Bagian")
+                                .customFont(.cherryBomb, size: fontSize - 18)
+                                .foregroundColor(.text.brown)
+                            Text("\(number)")
+                                .customFont(.cherryBomb, size: fontSize)
+                                .foregroundColor(.text.brown)
+                        }
                     }
+                    .frame(
+                        width: proxy.size.width * 0.5,
+                        height: proxy.size.height * 0.3
+                    )
+                    .offset(
+                        x: proxy.size.width * 0.02,
+                        y: proxy.size.height * 0.078
+                    )
                 }
-                .frame(
-                    width: proxy.size.width * 0.5,
-                    height: proxy.size.height * 0.3
-                )
-                .offset(
-                    x: proxy.size.width * 0.02,
-                    y: proxy.size.height * 0.078
-                )
             }
             .frame(
                 width: proxy.size.width,

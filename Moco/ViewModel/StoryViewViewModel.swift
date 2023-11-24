@@ -9,7 +9,8 @@ import SwiftUI
 
 class StoryViewViewModel: ObservableObject {
     // MARK: - Environments stored property
-
+    
+    private(set) var userViewModel = UserViewModel.shared
     private(set) var storyThemeViewModel = StoryThemeViewModel.shared
     private(set) var storyViewModel = StoryViewModel.shared
     private(set) var episodeViewModel = EpisodeViewModel.shared
@@ -198,6 +199,7 @@ class StoryViewViewModel: ObservableObject {
 
     func continueStory() {
         episodeViewModel.setToAvailable(selectedStoryTheme: storyThemeViewModel.selectedStoryTheme!)
+        userViewModel.addingAvailableEpisode()
         storyThemeViewModel.fetchStoryThemes()
         storyThemeViewModel.setSelectedStoryTheme(storyThemeViewModel.findWithID(storyThemeViewModel.selectedStoryTheme!.uid)!)
         navigate.pop {

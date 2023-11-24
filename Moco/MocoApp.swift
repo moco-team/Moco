@@ -26,6 +26,7 @@ struct MocoApp: App {
     @State private var storyContentViewModel = StoryContentViewModel.shared
     @State private var promptViewModel = PromptViewModel.shared
     @State private var hintViewModel = HintViewModel.shared
+    @State private var userViewModel = UserViewModel.shared
     @State private var settingsViewModel = SettingsViewModel.shared
     @State private var mazePromptViewModel = MazePromptViewModel.shared
 
@@ -45,6 +46,7 @@ struct MocoApp: App {
                 ContentViewContainer()
             }.environment(\.navigate, routeViewModel)
                 .environment(\.font, Font.custom("CherryBomb-Regular", size: 24, relativeTo: .body))
+                .environment(\.userViewModel, userViewModel)
                 .environment(\.storyThemeViewModel, storyThemeViewModel)
                 .environment(\.episodeViewModel, episodeViewModel)
                 .environment(\.storyViewModel, storyViewModel)
