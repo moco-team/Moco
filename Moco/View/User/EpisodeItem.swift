@@ -18,14 +18,18 @@ struct EpisodeItem: View {
 
     var onTap: (() -> Void)?
 
+    var isAvailable: Bool {
+        episodeViewModel.episodes![number-1].isAvailable || number - 1 < userViewModel.userLogin!.availableEpisodeSum
+    }
+
     var body: some View {
         GeometryReader { proxy in
             ZStack(alignment: .center) {
-                Image("Story/episode-list")
+                Image(isAvailable ? "Story/episode-list" : "Story/episode-list-locked")
                     .resizable()
                     .scaledToFit()
 
-                if episodeViewModel.episodes![number-1].isAvailable || number - 1 < userViewModel.userLogin!.availableEpisodeSum  {
+                if isAvailable {
                     HStack {
                         VStack {
                             Text("Bagian")
