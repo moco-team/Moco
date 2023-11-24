@@ -142,18 +142,19 @@ struct ARViewContainer: UIViewRepresentable {
         func updateEntityColor(entity: Entity) {
             guard
                 var modelComponent = entity.components[ModelComponent.self] as? ModelComponent,
-                let existingMaterial = modelComponent.materials.first
+                let _ = modelComponent.materials.first
             else { return }
 
-            // Change the color
-            var material = SimpleMaterial()
-            material.color = .init(tint: .yellow)
+            let originalMaterial = modelComponent.materials
 
-            modelComponent.materials = [material]
+            // Change the color
+            var material = SimpleMaterial(color: .yellow, isMetallic: false)
+
+            modelComponent.materials = [SimpleMaterial](repeating: material, count: originalMaterial.count)
             entity.components.set(modelComponent)
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [self] in
-                modelComponent.materials = [existingMaterial]
+                modelComponent.materials = originalMaterial
                 entity.components.set(modelComponent)
                 self.isShowHint = false // Agar updateUIView ketrigger
             }
