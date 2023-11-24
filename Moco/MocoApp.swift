@@ -14,26 +14,27 @@ struct MocoApp: App {
 
     // MARK: - Bindables
 
-    @Bindable private var routeViewModel = RouteViewModel()
+    @Bindable private var routeViewModel = RouteViewModel.shared
 
     // MARK: - States
 
-    @State private var audioViewModel = AudioViewModel()
-    @State private var timerViewModel = TimerViewModel()
+    @State private var audioViewModel = AudioViewModel.shared
+    @State private var timerViewModel = TimerViewModel.shared
     @State private var storyThemeViewModel = StoryThemeViewModel.shared
     @State private var episodeViewModel = EpisodeViewModel.shared
     @State private var storyViewModel = StoryViewModel.shared
     @State private var storyContentViewModel = StoryContentViewModel.shared
     @State private var promptViewModel = PromptViewModel.shared
     @State private var hintViewModel = HintViewModel.shared
+    @State private var settingsViewModel = SettingsViewModel.shared
+    @State private var mazePromptViewModel = MazePromptViewModel.shared
 
     // MARK: - State Objects
 
-    @StateObject private var speechViewModel = SpeechRecognizerViewModel.shared
     @StateObject private var objectDetectionViewModel = ObjectDetectionViewModel.shared
     @StateObject private var arViewModel = ARViewModel()
     @StateObject private var motionViewModel = MotionViewModel()
-    @StateObject private var orientationInfo = OrientationInfo()
+    @StateObject private var orientationInfo = OrientationInfo.shared
 
     private static let sharedModelContainer: ModelContainer = ModelGenerator.generator(false)
     static let modelContext = ModelContext(sharedModelContainer)
@@ -52,7 +53,7 @@ struct MocoApp: App {
                 .environment(\.hintViewModel, hintViewModel)
                 .environment(\.audioViewModel, audioViewModel)
                 .environment(\.timerViewModel, timerViewModel)
-                .environmentObject(speechViewModel)
+                .environment(\.mazePromptViewModel, mazePromptViewModel)
                 .environmentObject(objectDetectionViewModel)
                 .environmentObject(arViewModel)
                 .environmentObject(motionViewModel)

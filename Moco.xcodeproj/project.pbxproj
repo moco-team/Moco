@@ -7,11 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050077182B08033200376135 /* MakeSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050077172B08033200376135 /* MakeSentence.swift */; };
+		050077202B08B5B200376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771E2B081F3C00376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a */; };
+		050077212B08B5B200376135 /* Susunlah sebuah kalimat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771F2B08244200376135 /* Susunlah sebuah kalimat.m4a */; };
+		050077222B08B5B200376135 /* Cari kartu benda.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771C2B081ED200376135 /* Cari kartu benda.m4a */; };
+		050077232B08B5B200376135 /* Cari kartu karakter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771D2B081ED200376135 /* Cari kartu karakter.m4a */; };
+		050077242B08B5B200376135 /* Cari kartu kata kerja.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771B2B081ED200376135 /* Cari kartu kata kerja.m4a */; };
+		050077252B08B5B200376135 /* 001 - Hai, apakah kamu sudah bisa membaca.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8FA2AF2D54700A0885D /* 001 - Hai, apakah kamu sudah bisa membaca.m4a */; };
+		050077262B08B5B200376135 /* 002 - Keren.. yuk mulai petualangan ini!.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F92AF2D54700A0885D /* 002 - Keren.. yuk mulai petualangan ini!.m4a */; };
+		050077272B08B5B200376135 /* 003 - Tolong Moco memilih jawaban yang benar.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F82AF2D54700A0885D /* 003 - Tolong Moco memilih jawaban yang benar.m4a */; };
+		050077282B08B5B200376135 /* 004 - Kamu sudah yakin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8FC2AF2D54700A0885D /* 004 - Kamu sudah yakin.m4a */; };
+		050077292B08B5B200376135 /* 005 - Coba baca lagi cerita ini.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F72AF2D54600A0885D /* 005 - Coba baca lagi cerita ini.m4a */; };
+		0500772A2B08B5B200376135 /* 006 - Cerdas! Jawaban kamu benar.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8FB2AF2D54700A0885D /* 006 - Cerdas! Jawaban kamu benar.m4a */; };
+		0500772B2B08B5B200376135 /* 007 - Ayo kita lanjutkan petualangan ini.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8FD2AF2D54800A0885D /* 007 - Ayo kita lanjutkan petualangan ini.m4a */; };
 		050353E12ADFE2970066591A /* FindHoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050353E02ADFE2970066591A /* FindHoney.swift */; };
+		050E42072AFDC540009666DB /* ARTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050E42062AFDC540009666DB /* ARTutorialView.swift */; };
+		050E420F2AFDCC7D009666DB /* arrange_camera_to_barcode.json in Resources */ = {isa = PBXBuildFile; fileRef = 050E420E2AFDCC7D009666DB /* arrange_camera_to_barcode.json */; };
 		0517C5202AEF3C9B00CE7A01 /* RKFade in Frameworks */ = {isa = PBXBuildFile; productRef = 0517C51F2AEF3C9B00CE7A01 /* RKFade */; };
 		0518CDD82AE220BA00521EC8 /* moco-1-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518CDD72AE220BA00521EC8 /* moco-1-2.json */; };
 		0518CDDA2AE227FA00521EC8 /* kakak_katak.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518CDD92AE227FA00521EC8 /* kakak_katak.json */; };
 		051CC18A2AF22D0800632E09 /* OrientationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051CC1892AF22D0800632E09 /* OrientationInfo.swift */; };
+		051F98A12B0DFACC00D8F394 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F98A02B0DFACB00D8F394 /* SplashScreen.swift */; };
+		051F98A52B0E069F00D8F394 /* GameKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F98A42B0E069F00D8F394 /* GameKitViewModel.swift */; };
+		051F98A72B0E075600D8F394 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F98A62B0E075600D8F394 /* Player.swift */; };
+		051F98A92B0E07B800D8F394 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F98A82B0E07B800D8F394 /* PlayerViewModel.swift */; };
+		051F98AB2B0E098D00D8F394 /* GameKitIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F98AA2B0E098D00D8F394 /* GameKitIdentifier.swift */; };
+		051F98AD2B0E0D7600D8F394 /* GameCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051F98AC2B0E0D7600D8F394 /* GameCenterView.swift */; };
+		0522B02F2AFCC36900D51EF8 /* card_flip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0522B02E2AFCC36900D51EF8 /* card_flip.mp3 */; };
 		056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 056949842AE0EF8700830D57 /* cow_bell_ring.mp3 */; };
 		056A3E482AF25170009299F4 /* SKSpriteNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A3E472AF25170009299F4 /* SKSpriteNodeExtension.swift */; };
 		056B67262AE28CFB00A3B493 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056B67252AE28CFB00A3B493 /* ProfileView.swift */; };
@@ -23,15 +45,21 @@
 		0571CB462AE19D6000CE0CC7 /* maudi.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB402AE19D6000CE0CC7 /* maudi.json */; };
 		0571CB482AE19D6000CE0CC7 /* moco-1-5.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB422AE19D6000CE0CC7 /* moco-1-5.json */; };
 		0571CB492AE19D6000CE0CC7 /* teka_dan_teki.json in Resources */ = {isa = PBXBuildFile; fileRef = 0571CB432AE19D6000CE0CC7 /* teka_dan_teki.json */; };
+		058559332B013EBA00275A7B /* find-ar-plane.gif in Resources */ = {isa = PBXBuildFile; fileRef = 058559322B013EBA00275A7B /* find-ar-plane.gif */; };
+		0585593B2B01CE4900275A7B /* Floating_Lighthouse.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0585593A2B01CE4900275A7B /* Floating_Lighthouse.usdz */; };
+		0589EA582AFF3FCB00C87BF7 /* tes4-2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0589EA572AFF3FCB00C87BF7 /* tes4-2.usdz */; };
+		0589EA5C2AFF50E000C87BF7 /* tes1-2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0589EA5B2AFF50E000C87BF7 /* tes1-2.usdz */; };
 		058DC8EE2AF2BC6E00A0885D /* honey.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8EC2AF2BC6E00A0885D /* honey.usdz */; };
 		058DC8EF2AF2BC6E00A0885D /* airplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8ED2AF2BC6E00A0885D /* airplane.usdz */; };
 		058DC8F12AF2BE4E00A0885D /* key.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F02AF2BE4E00A0885D /* key.usdz */; };
-		058DC8F32AF2C2E700A0885D /* honey-new.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8F22AF2C2E700A0885D /* honey-new.usdz */; };
 		058DC8F52AF2CFF100A0885D /* TextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058DC8F42AF2CFF100A0885D /* TextViewModifier.swift */; };
 		058DC9082AF2EC5100A0885D /* s1-ep3-backsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9072AF2EC5100A0885D /* s1-ep3-backsound.mp3 */; };
 		058DC90A2AF2F0A200A0885D /* tap-screen.json in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9092AF2F0A200A0885D /* tap-screen.json */; };
 		058DC90C2AF2F17700A0885D /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 058DC90B2AF2F17700A0885D /* loading.json */; };
 		058DC90F2AF2F62B00A0885D /* phone-tilt.json in Resources */ = {isa = PBXBuildFile; fileRef = 058DC90E2AF2F62B00A0885D /* phone-tilt.json */; };
+		0592100C2AFA476F0008CD2C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 0592100B2AFA476F0008CD2C /* CodeScanner */; };
+		059210102AFB601E0008CD2C /* QRScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0592100F2AFB601E0008CD2C /* QRScannerSheet.swift */; };
+		059210142AFB68480008CD2C /* Base64ConverterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059210132AFB68480008CD2C /* Base64ConverterExtension.swift */; };
 		05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */; };
 		05AE93532ADE743C0082B21D /* AVAudioSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */; };
 		05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE93552ADE74740082B21D /* RecognizerError.swift */; };
@@ -45,7 +73,6 @@
 		05E17AD52ADE86DE00A34547 /* FindTheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD42ADE86DE00A34547 /* FindTheObject.swift */; };
 		05E17AD72ADEBFC500A34547 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD62ADEBFC500A34547 /* BalloonView.swift */; };
 		05E17AD92ADED16800A34547 /* balon_merah.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05E17AD82ADED16800A34547 /* balon_merah.mp3 */; };
-		05E8B55D2AECE32D00E3612F /* button.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 05E8B55C2AECE32D00E3612F /* button.usdz */; };
 		05E8B56A2AED4AD400E3612F /* ARClueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E8B5692AED4AD400E3612F /* ARClueView.swift */; };
 		05E8B56D2AED57CF00E3612F /* ARStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E8B56C2AED57CF00E3612F /* ARStory.swift */; };
 		05FF77162AF0B0250037453D /* TutorialCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF77152AF0B0250037453D /* TutorialCard.swift */; };
@@ -86,6 +113,12 @@
 		930CBFFB2AF76956001B67D2 /* ViewWillDisappear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930CBFFA2AF76956001B67D2 /* ViewWillDisappear.swift */; };
 		930D688E2AF2DB82001976F0 /* MultipleChoicePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930D688D2AF2DB82001976F0 /* MultipleChoicePrompt.swift */; };
 		930D68902AF2DB92001976F0 /* BoardAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930D688F2AF2DB92001976F0 /* BoardAnswer.swift */; };
+		9310EC782B07C3040045A908 /* ScaleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310EC772B07C3040045A908 /* ScaleEffect.swift */; };
+		9310EC7D2B07E3150045A908 /* arahkan_kamera.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9310EC7B2B07E0F80045A908 /* arahkan_kamera.m4a */; };
+		9310EC7E2B07E3150045A908 /* bagus_berhasil_scan.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9310EC7A2B07E0BD0045A908 /* bagus_berhasil_scan.m4a */; };
+		9310EC7F2B07E3150045A908 /* maaf_kartu_tidak_tepat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9310EC7C2B07E1280045A908 /* maaf_kartu_tidak_tepat.m4a */; };
+		9310EC812B0A353A0045A908 /* StoryViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310EC802B0A353A0045A908 /* StoryViewViewModel.swift */; };
+		9310EC862B0A40FA0045A908 /* Story1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310EC852B0A40FA0045A908 /* Story1.swift */; };
 		931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949722AE0EB6A00830D57 /* Page1-monolog1.m4a */; };
 		931722182AE5508300346382 /* Page2-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949752AE0EB6A00830D57 /* Page2-monolog1.m4a */; };
 		931722192AE5508300346382 /* Page3-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949772AE0EB6A00830D57 /* Page3-monolog1.m4a */; };
@@ -130,6 +163,10 @@
 		93676D292AF13C5400E756A5 /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 93676D282AF13C5400E756A5 /* SwiftUITooltip */; };
 		93676D2B2AF1435200E756A5 /* Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93676D2A2AF1435200E756A5 /* Pointer.swift */; };
 		93676D2D2AF1475200E756A5 /* PointerViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93676D2C2AF1475200E756A5 /* PointerViewModifier.swift */; };
+		93692EAA2AFD43FD00CD6561 /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93692EA92AFD43FD00CD6561 /* PauseMenu.swift */; };
+		93692EAC2AFD5CAC00CD6561 /* EpisodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93692EAB2AFD5CAC00CD6561 /* EpisodeItem.swift */; };
+		93692EAE2AFDCD9900CD6561 /* tes4.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 93692EAD2AFDCD9900CD6561 /* tes4.usdz */; };
+		93692EB12AFDCE3600CD6561 /* 3DRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93692EB02AFDCE3600CD6561 /* 3DRenderer.swift */; };
 		937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2852AE80BFA008C69BB /* RippleView.swift */; };
 		937AF2882AE81983008C69BB /* RippleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2872AE81983008C69BB /* RippleModel.swift */; };
 		937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937AF2892AE81A26008C69BB /* RippleViewModel.swift */; };
@@ -147,8 +184,20 @@
 		937EE4132AF9E35700A5CCF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EE4122AF9E35700A5CCF5 /* AppDelegate.swift */; };
 		937EE4152AFA200600A5CCF5 /* HapticViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EE4142AFA200500A5CCF5 /* HapticViewModel.swift */; };
 		937EE4172AFA261F00A5CCF5 /* MazeTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EE4162AFA261F00A5CCF5 /* MazeTutorialView.swift */; };
+		937EE41A2AFA8DFD00A5CCF5 /* MazeProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EE4192AFA8DFD00A5CCF5 /* MazeProgress.swift */; };
 		937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */; };
 		937F644D2AE4E13F00D50FC2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */; };
+		93836C782AFF6E08001A3FEE /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93836C772AFF6E08001A3FEE /* Process.swift */; };
+		93836C7E2B0003DD001A3FEE /* gyro.gif in Resources */ = {isa = PBXBuildFile; fileRef = 93836C7D2B0003DD001A3FEE /* gyro.gif */; };
+		93836C802B008034001A3FEE /* button_tap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93836C7F2B008034001A3FEE /* button_tap.mp3 */; };
+		93836C812B008C8E001A3FEE /* 008 (maze) - wah, kamu baik sekali yaa.. mau membantu Moco menemukan Teka dan Teki.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9042AF2D59700A0885D /* 008 (maze) - wah, kamu baik sekali yaa.. mau membantu Moco menemukan Teka dan Teki.m4a */; };
+		93836C822B008C98001A3FEE /* 009 (maze) - coba miringkan layar ke kanan.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9002AF2D59600A0885D /* 009 (maze) - coba miringkan layar ke kanan.m4a */; };
+		93836C832B008C9C001A3FEE /* 010 (maze) - coba miringkan layar ke kiri.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9032AF2D59700A0885D /* 010 (maze) - coba miringkan layar ke kiri.m4a */; };
+		93836C842B008CA0001A3FEE /* 011 (maze) - coba miringkan layar ke atas.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC8FF2AF2D59600A0885D /* 011 (maze) - coba miringkan layar ke atas.m4a */; };
+		93836C852B008CA4001A3FEE /* 012 (maze) - coba miringkan layar ke bawah.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9012AF2D59600A0885D /* 012 (maze) - coba miringkan layar ke bawah.m4a */; };
+		93836C862B008CA8001A3FEE /* 013 (maze) - bantu arahkan Moco ke jawaban yang benar ya.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9022AF2D59700A0885D /* 013 (maze) - bantu arahkan Moco ke jawaban yang benar ya.m4a */; };
+		93836C872B008CAE001A3FEE /* 014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 058DC9062AF2D5A400A0885D /* 014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a */; };
+		93836C892B0096AB001A3FEE /* congratulation-popup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93836C882B0096AB001A3FEE /* congratulation-popup.mp3 */; };
 		938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55352AE181C600BC233D /* RootViewModifier.swift */; };
 		938C55382AE183AA00BC233D /* FontViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55372AE183AA00BC233D /* FontViewModifier.swift */; };
 		938C553A2AE1B3E800BC233D /* ObjectDetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */; };
@@ -206,6 +255,11 @@
 		93E3D8782AE4E55000E5391F /* DetectionPromptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3D8772AE4E55000E5391F /* DetectionPromptViewModel.swift */; };
 		93E3D87A2AE4E95700E5391F /* SpeakPromptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3D8792AE4E95700E5391F /* SpeakPromptModel.swift */; };
 		93E3D87C2AE4EFDB00E5391F /* SpeakPromptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3D87B2AE4EFDB00E5391F /* SpeakPromptViewModel.swift */; };
+		93EB5FA42AFAC10900C4FB34 /* maze-bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93EB5FA32AFAC10900C4FB34 /* maze-bgm.mp3 */; };
+		93F570312B02868800ECFB33 /* CardPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F570302B02868800ECFB33 /* CardPrompt.swift */; };
+		93F570332B02896A00ECFB33 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F570322B02896A00ECFB33 /* CardView.swift */; };
+		93F570352B0292DD00ECFB33 /* CardScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F570342B0292DD00ECFB33 /* CardScan.swift */; };
+		93F570372B0317D300ECFB33 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F570362B0317D300ECFB33 /* ShakeEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,10 +280,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		050077172B08033200376135 /* MakeSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeSentence.swift; sourceTree = "<group>"; };
+		0500771B2B081ED200376135 /* Cari kartu kata kerja.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cari kartu kata kerja.m4a"; sourceTree = "<group>"; };
+		0500771C2B081ED200376135 /* Cari kartu benda.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cari kartu benda.m4a"; sourceTree = "<group>"; };
+		0500771D2B081ED200376135 /* Cari kartu karakter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cari kartu karakter.m4a"; sourceTree = "<group>"; };
+		0500771E2B081F3C00376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apa yang akan dilakukan bebe selanjutnya.m4a"; sourceTree = "<group>"; };
+		0500771F2B08244200376135 /* Susunlah sebuah kalimat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Susunlah sebuah kalimat.m4a"; sourceTree = "<group>"; };
 		050353E02ADFE2970066591A /* FindHoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindHoney.swift; sourceTree = "<group>"; };
+		050E42062AFDC540009666DB /* ARTutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARTutorialView.swift; sourceTree = "<group>"; };
+		050E420E2AFDCC7D009666DB /* arrange_camera_to_barcode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrange_camera_to_barcode.json; sourceTree = "<group>"; };
 		0518CDD72AE220BA00521EC8 /* moco-1-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-2.json"; sourceTree = "<group>"; };
 		0518CDD92AE227FA00521EC8 /* kakak_katak.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = kakak_katak.json; sourceTree = "<group>"; };
 		051CC1892AF22D0800632E09 /* OrientationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationInfo.swift; sourceTree = "<group>"; };
+		051F98A02B0DFACB00D8F394 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		051F98A42B0E069F00D8F394 /* GameKitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameKitViewModel.swift; sourceTree = "<group>"; };
+		051F98A62B0E075600D8F394 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		051F98A82B0E07B800D8F394 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		051F98AA2B0E098D00D8F394 /* GameKitIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameKitIdentifier.swift; sourceTree = "<group>"; };
+		051F98AC2B0E0D7600D8F394 /* GameCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterView.swift; sourceTree = "<group>"; };
+		0522B02E2AFCC36900D51EF8 /* card_flip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = card_flip.mp3; sourceTree = "<group>"; };
 		053393102AE13A0C0085BB30 /* bear_thankyou.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bear_thankyou.m4a; sourceTree = "<group>"; };
 		053393112AE13A220085BB30 /* frog_thankyou.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = frog_thankyou.m4a; sourceTree = "<group>"; };
 		053393122AE13A310085BB30 /* congratulations.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = congratulations.m4a; sourceTree = "<group>"; };
@@ -256,13 +325,16 @@
 		0571CB402AE19D6000CE0CC7 /* maudi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = maudi.json; sourceTree = "<group>"; };
 		0571CB422AE19D6000CE0CC7 /* moco-1-5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "moco-1-5.json"; sourceTree = "<group>"; };
 		0571CB432AE19D6000CE0CC7 /* teka_dan_teki.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teka_dan_teki.json; sourceTree = "<group>"; };
+		058559322B013EBA00275A7B /* find-ar-plane.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "find-ar-plane.gif"; sourceTree = "<group>"; };
+		0585593A2B01CE4900275A7B /* Floating_Lighthouse.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Floating_Lighthouse.usdz; sourceTree = "<group>"; };
+		0589EA572AFF3FCB00C87BF7 /* tes4-2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "tes4-2.usdz"; sourceTree = "<group>"; };
+		0589EA5B2AFF50E000C87BF7 /* tes1-2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "tes1-2.usdz"; sourceTree = "<group>"; };
 		058DC8EC2AF2BC6E00A0885D /* honey.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = honey.usdz; sourceTree = "<group>"; };
 		058DC8ED2AF2BC6E00A0885D /* airplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = airplane.usdz; sourceTree = "<group>"; };
 		058DC8F02AF2BE4E00A0885D /* key.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = key.usdz; sourceTree = "<group>"; };
-		058DC8F22AF2C2E700A0885D /* honey-new.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "honey-new.usdz"; sourceTree = "<group>"; };
 		058DC8F42AF2CFF100A0885D /* TextViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewModifier.swift; sourceTree = "<group>"; };
 		058DC8F72AF2D54600A0885D /* 005 - Coba baca lagi cerita ini.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "005 - Coba baca lagi cerita ini.m4a"; sourceTree = "<group>"; };
-		058DC8F82AF2D54700A0885D /* 003 - Tolong Moco memilih jalaban yang benar.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "003 - Tolong Moco memilih jalaban yang benar.m4a"; sourceTree = "<group>"; };
+		058DC8F82AF2D54700A0885D /* 003 - Tolong Moco memilih jawaban yang benar.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "003 - Tolong Moco memilih jawaban yang benar.m4a"; sourceTree = "<group>"; };
 		058DC8F92AF2D54700A0885D /* 002 - Keren.. yuk mulai petualangan ini!.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "002 - Keren.. yuk mulai petualangan ini!.m4a"; sourceTree = "<group>"; };
 		058DC8FA2AF2D54700A0885D /* 001 - Hai, apakah kamu sudah bisa membaca.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "001 - Hai, apakah kamu sudah bisa membaca.m4a"; sourceTree = "<group>"; };
 		058DC8FB2AF2D54700A0885D /* 006 - Cerdas! Jawaban kamu benar.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "006 - Cerdas! Jawaban kamu benar.m4a"; sourceTree = "<group>"; };
@@ -279,6 +351,8 @@
 		058DC9092AF2F0A200A0885D /* tap-screen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "tap-screen.json"; sourceTree = "<group>"; };
 		058DC90B2AF2F17700A0885D /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		058DC90E2AF2F62B00A0885D /* phone-tilt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "phone-tilt.json"; sourceTree = "<group>"; };
+		0592100F2AFB601E0008CD2C /* QRScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerSheet.swift; sourceTree = "<group>"; };
+		059210132AFB68480008CD2C /* Base64ConverterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64ConverterExtension.swift; sourceTree = "<group>"; };
 		05AE93502ADE73E40082B21D /* SFSpeechRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSpeechRecognizerExtension.swift; sourceTree = "<group>"; };
 		05AE93522ADE743C0082B21D /* AVAudioSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioSessionExtension.swift; sourceTree = "<group>"; };
 		05AE93552ADE74740082B21D /* RecognizerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerError.swift; sourceTree = "<group>"; };
@@ -291,7 +365,6 @@
 		05E17AD42ADE86DE00A34547 /* FindTheObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTheObject.swift; sourceTree = "<group>"; };
 		05E17AD62ADEBFC500A34547 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
 		05E17AD82ADED16800A34547 /* balon_merah.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = balon_merah.mp3; sourceTree = "<group>"; };
-		05E8B55C2AECE32D00E3612F /* button.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = button.usdz; sourceTree = "<group>"; };
 		05E8B5692AED4AD400E3612F /* ARClueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARClueView.swift; sourceTree = "<group>"; };
 		05E8B56C2AED57CF00E3612F /* ARStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARStory.swift; sourceTree = "<group>"; };
 		05FF77152AF0B0250037453D /* TutorialCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialCard.swift; sourceTree = "<group>"; };
@@ -333,10 +406,16 @@
 		930CBFFA2AF76956001B67D2 /* ViewWillDisappear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWillDisappear.swift; sourceTree = "<group>"; };
 		930D688D2AF2DB82001976F0 /* MultipleChoicePrompt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleChoicePrompt.swift; sourceTree = "<group>"; };
 		930D688F2AF2DB92001976F0 /* BoardAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardAnswer.swift; sourceTree = "<group>"; };
+		9310EC772B07C3040045A908 /* ScaleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleEffect.swift; sourceTree = "<group>"; };
+		9310EC7A2B07E0BD0045A908 /* bagus_berhasil_scan.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bagus_berhasil_scan.m4a; sourceTree = "<group>"; };
+		9310EC7B2B07E0F80045A908 /* arahkan_kamera.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = arahkan_kamera.m4a; sourceTree = "<group>"; };
+		9310EC7C2B07E1280045A908 /* maaf_kartu_tidak_tepat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = maaf_kartu_tidak_tepat.m4a; sourceTree = "<group>"; };
+		9310EC802B0A353A0045A908 /* StoryViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewViewModel.swift; sourceTree = "<group>"; };
+		9310EC852B0A40FA0045A908 /* Story1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story1.swift; sourceTree = "<group>"; };
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
-		9328F9122AF16B3A00E82995 /* Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Gesture.swift; path = Moco/Model/Gesture.swift; sourceTree = "<group>"; };
+		9328F9122AF16B3A00E82995 /* Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gesture.swift; sourceTree = "<group>"; };
 		9328F9142AF16B6900E82995 /* Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gesture.swift; sourceTree = "<group>"; };
 		9328F9162AF25C2200E82995 /* ModalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalComponent.swift; sourceTree = "<group>"; };
 		9328F9182AF25D8400E82995 /* ModalViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModifier.swift; sourceTree = "<group>"; };
@@ -360,6 +439,10 @@
 		93676D252AF13AA200E756A5 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
 		93676D2A2AF1435200E756A5 /* Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointer.swift; sourceTree = "<group>"; };
 		93676D2C2AF1475200E756A5 /* PointerViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointerViewModifier.swift; sourceTree = "<group>"; };
+		93692EA92AFD43FD00CD6561 /* PauseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
+		93692EAB2AFD5CAC00CD6561 /* EpisodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeItem.swift; sourceTree = "<group>"; };
+		93692EAD2AFDCD9900CD6561 /* tes4.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = tes4.usdz; sourceTree = "<group>"; };
+		93692EB02AFDCE3600CD6561 /* 3DRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 3DRenderer.swift; sourceTree = "<group>"; };
 		937AF2852AE80BFA008C69BB /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
 		937AF2872AE81983008C69BB /* RippleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleModel.swift; sourceTree = "<group>"; };
 		937AF2892AE81A26008C69BB /* RippleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleViewModel.swift; sourceTree = "<group>"; };
@@ -376,8 +459,13 @@
 		937EE4122AF9E35700A5CCF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		937EE4142AFA200500A5CCF5 /* HapticViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticViewModel.swift; sourceTree = "<group>"; };
 		937EE4162AFA261F00A5CCF5 /* MazeTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeTutorialView.swift; sourceTree = "<group>"; };
+		937EE4192AFA8DFD00A5CCF5 /* MazeProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeProgress.swift; sourceTree = "<group>"; };
 		937F644A2AE4E0BB00D50FC2 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		937F644C2AE4E13F00D50FC2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		93836C772AFF6E08001A3FEE /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
+		93836C7D2B0003DD001A3FEE /* gyro.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gyro.gif; sourceTree = "<group>"; };
+		93836C7F2B008034001A3FEE /* button_tap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = button_tap.mp3; sourceTree = "<group>"; };
+		93836C882B0096AB001A3FEE /* congratulation-popup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "congratulation-popup.mp3"; sourceTree = "<group>"; };
 		938C55352AE181C600BC233D /* RootViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModifier.swift; sourceTree = "<group>"; };
 		938C55372AE183AA00BC233D /* FontViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewModifier.swift; sourceTree = "<group>"; };
 		938C55392AE1B3E800BC233D /* ObjectDetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewModel.swift; sourceTree = "<group>"; };
@@ -441,6 +529,11 @@
 		93E3D8772AE4E55000E5391F /* DetectionPromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionPromptViewModel.swift; sourceTree = "<group>"; };
 		93E3D8792AE4E95700E5391F /* SpeakPromptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakPromptModel.swift; sourceTree = "<group>"; };
 		93E3D87B2AE4EFDB00E5391F /* SpeakPromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakPromptViewModel.swift; sourceTree = "<group>"; };
+		93EB5FA32AFAC10900C4FB34 /* maze-bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "maze-bgm.mp3"; sourceTree = "<group>"; };
+		93F570302B02868800ECFB33 /* CardPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPrompt.swift; sourceTree = "<group>"; };
+		93F570322B02896A00ECFB33 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		93F570342B0292DD00ECFB33 /* CardScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardScan.swift; sourceTree = "<group>"; };
+		93F570362B0317D300ECFB33 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,6 +543,7 @@
 			files = (
 				93676D292AF13C5400E756A5 /* SwiftUITooltip in Frameworks */,
 				935D78672AEE858500DF64A5 /* ConfettiSwiftUI in Frameworks */,
+				0592100C2AFA476F0008CD2C /* CodeScanner in Frameworks */,
 				05AE93682ADE83430082B21D /* Lottie in Frameworks */,
 				935D784E2AEBF96800DF64A5 /* FLAnimatedImage in Frameworks */,
 				0517C5202AEF3C9B00CE7A01 /* RKFade in Frameworks */,
@@ -473,12 +567,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		050077192B081EAF00376135 /* Ep4 */ = {
+			isa = PBXGroup;
+			children = (
+				0500771A2B081EC100376135 /* MakeSentence */,
+			);
+			path = Ep4;
+			sourceTree = "<group>";
+		};
+		0500771A2B081EC100376135 /* MakeSentence */ = {
+			isa = PBXGroup;
+			children = (
+				0500771E2B081F3C00376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a */,
+				0500771F2B08244200376135 /* Susunlah sebuah kalimat.m4a */,
+				0500771C2B081ED200376135 /* Cari kartu benda.m4a */,
+				0500771D2B081ED200376135 /* Cari kartu karakter.m4a */,
+				0500771B2B081ED200376135 /* Cari kartu kata kerja.m4a */,
+			);
+			path = MakeSentence;
+			sourceTree = "<group>";
+		};
 		050353DF2ADFE28B0066591A /* FindHoney */ = {
 			isa = PBXGroup;
 			children = (
 				050353E02ADFE2970066591A /* FindHoney.swift */,
 			);
 			path = FindHoney;
+			sourceTree = "<group>";
+		};
+		050E42052AFDC540009666DB /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				050E42062AFDC540009666DB /* ARTutorialView.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		0522B02D2AFCC33900D51EF8 /* SoundFx */ = {
+			isa = PBXGroup;
+			children = (
+				93836C882B0096AB001A3FEE /* congratulation-popup.mp3 */,
+				93836C7F2B008034001A3FEE /* button_tap.mp3 */,
+				0522B02E2AFCC36900D51EF8 /* card_flip.mp3 */,
+			);
+			path = SoundFx;
 			sourceTree = "<group>";
 		};
 		0569496F2AE0EAD600830D57 /* Page9 */ = {
@@ -651,7 +783,7 @@
 			children = (
 				058DC8FA2AF2D54700A0885D /* 001 - Hai, apakah kamu sudah bisa membaca.m4a */,
 				058DC8F92AF2D54700A0885D /* 002 - Keren.. yuk mulai petualangan ini!.m4a */,
-				058DC8F82AF2D54700A0885D /* 003 - Tolong Moco memilih jalaban yang benar.m4a */,
+				058DC8F82AF2D54700A0885D /* 003 - Tolong Moco memilih jawaban yang benar.m4a */,
 				058DC8FC2AF2D54700A0885D /* 004 - Kamu sudah yakin.m4a */,
 				058DC8F72AF2D54600A0885D /* 005 - Coba baca lagi cerita ini.m4a */,
 				058DC8FB2AF2D54700A0885D /* 006 - Cerdas! Jawaban kamu benar.m4a */,
@@ -731,6 +863,7 @@
 		05B1661C2ADE755F0077FA0D /* Prompts */ = {
 			isa = PBXGroup;
 			children = (
+				93F5702F2B02867500ECFB33 /* Card */,
 				930D68882AF2B994001976F0 /* MultipleChoice */,
 				935D78602AEE1AB400DF64A5 /* Maze */,
 				05E8B56B2AED57AA00E3612F /* ARStory */,
@@ -761,6 +894,7 @@
 		05E17ADB2ADED18800A34547 /* Story1 */ = {
 			isa = PBXGroup;
 			children = (
+				050077192B081EAF00376135 /* Ep4 */,
 				058DC9052AF2D59A00A0885D /* Ep3 */,
 				058DC8FE2AF2D58800A0885D /* Ep2 */,
 				058DC8F62AF2D53900A0885D /* Ep1 */,
@@ -789,7 +923,14 @@
 		05E8B56B2AED57AA00E3612F /* ARStory */ = {
 			isa = PBXGroup;
 			children = (
+				050E42052AFDC540009666DB /* Tutorial */,
+				937AF28B2AE832A7008C69BB /* ARViewContainer.swift */,
+				937AF2942AE8C06C008C69BB /* ARView.swift */,
+				937AF2992AE8D422008C69BB /* EnvironmentEntity.swift */,
+				937AF29B2AE8D47E008C69BB /* ResourceLoader.swift */,
+				05E8B5692AED4AD400E3612F /* ARClueView.swift */,
 				05E8B56C2AED57CF00E3612F /* ARStory.swift */,
+				050077172B08033200376135 /* MakeSentence.swift */,
 			);
 			path = ARStory;
 			sourceTree = "<group>";
@@ -825,6 +966,7 @@
 		05FF77282AF0B69F0037453D /* Story1 */ = {
 			isa = PBXGroup;
 			children = (
+				050E420E2AFDCC7D009666DB /* arrange_camera_to_barcode.json */,
 				05FF77292AF0B6A30037453D /* Ep3 */,
 			);
 			path = Story1;
@@ -838,6 +980,8 @@
 				05FF772E2AF0B6C30037453D /* hand.tap.gif */,
 				05FF772A2AF0B6C30037453D /* hand.zoom.gif */,
 				05FF772B2AF0B6C30037453D /* ripple.gif */,
+				93836C7D2B0003DD001A3FEE /* gyro.gif */,
+				058559322B013EBA00275A7B /* find-ar-plane.gif */,
 			);
 			path = Ep3;
 			sourceTree = "<group>";
@@ -845,6 +989,8 @@
 		0B1197602AD7D4A7004FAD14 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				93692EAF2AFDCE1F00CD6561 /* 3D */,
+				937EE4182AFA8DF000A5CCF5 /* Maze */,
 				05FF77192AF0B0650037453D /* Tutorial */,
 				9398FBB62AE41D0200AB5CE4 /* Image */,
 				93C8E7282AE0164E002315A2 /* Animations */,
@@ -866,6 +1012,8 @@
 				93676D2A2AF1435200E756A5 /* Pointer.swift */,
 				9328F9162AF25C2200E82995 /* ModalComponent.swift */,
 				93C30CB92AF926150076808F /* TimerView.swift */,
+				0592100F2AFB601E0008CD2C /* QRScannerSheet.swift */,
+				93692EA92AFD43FD00CD6561 /* PauseMenu.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -910,6 +1058,9 @@
 				056B67252AE28CFB00A3B493 /* ProfileView.swift */,
 				056B67272AE28D1400A3B493 /* AchievementsView.swift */,
 				938E3D362AD939C4003D2AE1 /* ContentView.swift */,
+				93692EAB2AFD5CAC00CD6561 /* EpisodeItem.swift */,
+				051F98A02B0DFACB00D8F394 /* SplashScreen.swift */,
+				051F98AC2B0E0D7600D8F394 /* GameCenterView.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -932,9 +1083,39 @@
 			path = MultipleChoice;
 			sourceTree = "<group>";
 		};
+		9310EC792B07E0A00045A908 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				9310EC7B2B07E0F80045A908 /* arahkan_kamera.m4a */,
+				9310EC7A2B07E0BD0045A908 /* bagus_berhasil_scan.m4a */,
+				9310EC7C2B07E1280045A908 /* maaf_kartu_tidak_tepat.m4a */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		9310EC822B0A40960045A908 /* ModelData */ = {
+			isa = PBXGroup;
+			children = (
+				9310EC842B0A40EF0045A908 /* Stories */,
+				93B7098C2AF5723E000B9C28 /* ModelData.swift */,
+			);
+			path = ModelData;
+			sourceTree = "<group>";
+		};
+		9310EC842B0A40EF0045A908 /* Stories */ = {
+			isa = PBXGroup;
+			children = (
+				9310EC852B0A40FA0045A908 /* Story1.swift */,
+			);
+			path = Stories;
+			sourceTree = "<group>";
+		};
 		932357D22ADE6DF2009B3D86 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				9310EC792B07E0A00045A908 /* Card */,
+				0522B02D2AFCC33900D51EF8 /* SoundFx */,
+				93EB5FA22AFAC10000C4FB34 /* Maze */,
 				93676D252AF13AA200E756A5 /* pop.mp3 */,
 				93C8E7262ADF8DA3002315A2 /* bg-shop.mp3 */,
 				05E17ADA2ADED17B00A34547 /* Story */,
@@ -970,16 +1151,12 @@
 			path = Maze;
 			sourceTree = "<group>";
 		};
-		937AF28D2AE832AF008C69BB /* AR */ = {
+		93692EAF2AFDCE1F00CD6561 /* 3D */ = {
 			isa = PBXGroup;
 			children = (
-				937AF28B2AE832A7008C69BB /* ARViewContainer.swift */,
-				937AF2942AE8C06C008C69BB /* ARView.swift */,
-				937AF2992AE8D422008C69BB /* EnvironmentEntity.swift */,
-				937AF29B2AE8D47E008C69BB /* ResourceLoader.swift */,
-				05E8B5692AED4AD400E3612F /* ARClueView.swift */,
+				93692EB02AFDCE3600CD6561 /* 3DRenderer.swift */,
 			);
-			path = AR;
+			path = 3D;
 			sourceTree = "<group>";
 		};
 		937AF2962AE8C719008C69BB /* Usdz */ = {
@@ -988,9 +1165,11 @@
 				058DC8ED2AF2BC6E00A0885D /* airplane.usdz */,
 				058DC8EC2AF2BC6E00A0885D /* honey.usdz */,
 				058DC8F02AF2BE4E00A0885D /* key.usdz */,
-				05E8B55C2AECE32D00E3612F /* button.usdz */,
 				937AF2972AE8C72B008C69BB /* environment.usdz */,
-				058DC8F22AF2C2E700A0885D /* honey-new.usdz */,
+				0585593A2B01CE4900275A7B /* Floating_Lighthouse.usdz */,
+				0589EA5B2AFF50E000C87BF7 /* tes1-2.usdz */,
+				93692EAD2AFDCD9900CD6561 /* tes4.usdz */,
+				0589EA572AFF3FCB00C87BF7 /* tes4-2.usdz */,
 			);
 			path = Usdz;
 			sourceTree = "<group>";
@@ -1001,6 +1180,14 @@
 				937AF2A12AE930AF008C69BB /* MazeScene.swift */,
 				937AF2A32AE930E0008C69BB /* MazeView.swift */,
 				937EE4162AFA261F00A5CCF5 /* MazeTutorialView.swift */,
+			);
+			path = Maze;
+			sourceTree = "<group>";
+		};
+		937EE4182AFA8DF000A5CCF5 /* Maze */ = {
+			isa = PBXGroup;
+			children = (
+				937EE4192AFA8DFD00A5CCF5 /* MazeProgress.swift */,
 			);
 			path = Maze;
 			sourceTree = "<group>";
@@ -1029,6 +1216,8 @@
 				935D78632AEE217C00DF64A5 /* ColorUtil.swift */,
 				051CC1892AF22D0800632E09 /* OrientationInfo.swift */,
 				930CBFFA2AF76956001B67D2 /* ViewWillDisappear.swift */,
+				93836C772AFF6E08001A3FEE /* Process.swift */,
+				051F98AA2B0E098D00D8F394 /* GameKitIdentifier.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1045,7 +1234,6 @@
 		93C2F8772AD683AC007D1ABC = {
 			isa = PBXGroup;
 			children = (
-				9328F9122AF16B3A00E82995 /* Gesture.swift */,
 				93C2F8BF2AD685A3007D1ABC /* README.md */,
 				93C2F8822AD683AC007D1ABC /* Moco */,
 				93C2F8972AD683AE007D1ABC /* MocoTests */,
@@ -1139,6 +1327,9 @@
 				05B8ED9F2AEE65FE009ED2C5 /* MotionViewModel.swift */,
 				93CA8B7E2AF010C600651885 /* MazePromptViewModel.swift */,
 				937EE4142AFA200500A5CCF5 /* HapticViewModel.swift */,
+				9310EC802B0A353A0045A908 /* StoryViewViewModel.swift */,
+				051F98A42B0E069F00D8F394 /* GameKitViewModel.swift */,
+				051F98A82B0E07B800D8F394 /* PlayerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1146,7 +1337,9 @@
 		93C2F8B22AD68470007D1ABC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9310EC822B0A40960045A908 /* ModelData */,
 				938E3D3A2AD9874F003D2AE1 /* ModelGenerator.swift */,
+				9328F9122AF16B3A00E82995 /* Gesture.swift */,
 				938E3D382AD939DC003D2AE1 /* Item.swift */,
 				0B2E31D92AD7EBE500DFC16F /* CollectionModel.swift */,
 				938E3D1E2AD7AD78003D2AE1 /* Collection.swift */,
@@ -1167,7 +1360,7 @@
 				935D784A2AEBC7FE00DF64A5 /* CustomPersistentModel.swift */,
 				93CA8B7C2AF0107800651885 /* MazePromptModel.swift */,
 				9328F9142AF16B6900E82995 /* Gesture.swift */,
-				93B7098C2AF5723E000B9C28 /* ModelData.swift */,
+				051F98A62B0E075600D8F394 /* Player.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1183,7 +1376,6 @@
 		93C2F8B42AD6848F007D1ABC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				937AF28D2AE832AF008C69BB /* AR */,
 				938C55342AE181AF00BC233D /* ViewModifiers */,
 				0BA3E5072ADFC5EE00BCFE9E /* User */,
 				0BA3E5062ADFC5E200BCFE9E /* Admin */,
@@ -1220,6 +1412,7 @@
 				93CA8B7A2AF00E8400651885 /* SpriteKit.swift */,
 				056A3E472AF25170009299F4 /* SKSpriteNodeExtension.swift */,
 				93C30CBB2AF928CC0076808F /* DateExtension.swift */,
+				059210132AFB68480008CD2C /* Base64ConverterExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1240,8 +1433,28 @@
 				937AF2852AE80BFA008C69BB /* RippleView.swift */,
 				935D785A2AED55B200DF64A5 /* PeelEffect.swift */,
 				935D785E2AED7C9D00DF64A5 /* PeelEffectTappable.swift */,
+				93F570362B0317D300ECFB33 /* ShakeEffect.swift */,
+				9310EC772B07C3040045A908 /* ScaleEffect.swift */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		93EB5FA22AFAC10000C4FB34 /* Maze */ = {
+			isa = PBXGroup;
+			children = (
+				93EB5FA32AFAC10900C4FB34 /* maze-bgm.mp3 */,
+			);
+			path = Maze;
+			sourceTree = "<group>";
+		};
+		93F5702F2B02867500ECFB33 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				93F570302B02868800ECFB33 /* CardPrompt.swift */,
+				93F570322B02896A00ECFB33 /* CardView.swift */,
+				93F570342B0292DD00ECFB33 /* CardScan.swift */,
+			);
+			path = Card;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1266,6 +1479,7 @@
 				935D78662AEE858500DF64A5 /* ConfettiSwiftUI */,
 				0517C51F2AEF3C9B00CE7A01 /* RKFade */,
 				93676D282AF13C5400E756A5 /* SwiftUITooltip */,
+				0592100B2AFA476F0008CD2C /* CodeScanner */,
 			);
 			productName = Moco;
 			productReference = 93C2F8802AD683AC007D1ABC /* Moco.app */;
@@ -1345,6 +1559,7 @@
 				935D78652AEE858500DF64A5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 				0517C51E2AEF3C9B00CE7A01 /* XCRemoteSwiftPackageReference "RealityKit-Fade" */,
 				93676D272AF13C5300E756A5 /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */,
+				0592100A2AFA476F0008CD2C /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = 93C2F8812AD683AC007D1ABC /* Products */;
 			projectDirPath = "";
@@ -1362,13 +1577,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				050077202B08B5B200376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a in Resources */,
+				050077212B08B5B200376135 /* Susunlah sebuah kalimat.m4a in Resources */,
+				050077222B08B5B200376135 /* Cari kartu benda.m4a in Resources */,
+				050077232B08B5B200376135 /* Cari kartu karakter.m4a in Resources */,
+				050077242B08B5B200376135 /* Cari kartu kata kerja.m4a in Resources */,
+				050077252B08B5B200376135 /* 001 - Hai, apakah kamu sudah bisa membaca.m4a in Resources */,
+				050077262B08B5B200376135 /* 002 - Keren.. yuk mulai petualangan ini!.m4a in Resources */,
+				050077272B08B5B200376135 /* 003 - Tolong Moco memilih jawaban yang benar.m4a in Resources */,
+				050077282B08B5B200376135 /* 004 - Kamu sudah yakin.m4a in Resources */,
+				050077292B08B5B200376135 /* 005 - Coba baca lagi cerita ini.m4a in Resources */,
+				0500772A2B08B5B200376135 /* 006 - Cerdas! Jawaban kamu benar.m4a in Resources */,
+				0500772B2B08B5B200376135 /* 007 - Ayo kita lanjutkan petualangan ini.m4a in Resources */,
+				9310EC7D2B07E3150045A908 /* arahkan_kamera.m4a in Resources */,
+				9310EC7E2B07E3150045A908 /* bagus_berhasil_scan.m4a in Resources */,
+				9310EC7F2B07E3150045A908 /* maaf_kartu_tidak_tepat.m4a in Resources */,
+				93836C872B008CAE001A3FEE /* 014 - Selamat! Kamu berhasil menyelesaikan petualangan ini.m4a in Resources */,
+				93836C862B008CA8001A3FEE /* 013 (maze) - bantu arahkan Moco ke jawaban yang benar ya.m4a in Resources */,
+				93836C852B008CA4001A3FEE /* 012 (maze) - coba miringkan layar ke bawah.m4a in Resources */,
+				93836C842B008CA0001A3FEE /* 011 (maze) - coba miringkan layar ke atas.m4a in Resources */,
+				93836C832B008C9C001A3FEE /* 010 (maze) - coba miringkan layar ke kiri.m4a in Resources */,
+				93836C822B008C98001A3FEE /* 009 (maze) - coba miringkan layar ke kanan.m4a in Resources */,
+				93836C812B008C8E001A3FEE /* 008 (maze) - wah, kamu baik sekali yaa.. mau membantu Moco menemukan Teka dan Teki.m4a in Resources */,
 				93676D262AF13AA200E756A5 /* pop.mp3 in Resources */,
 				05FF77332AF0B6C30037453D /* hand.tap.gif in Resources */,
+				93836C802B008034001A3FEE /* button_tap.mp3 in Resources */,
 				937AF29F2AE8FDB7008C69BB /* DidactGothic-Regular.ttf in Resources */,
 				931722172AE5508300346382 /* Page1-monolog1.m4a in Resources */,
-				058DC8F32AF2C2E700A0885D /* honey-new.usdz in Resources */,
 				931722182AE5508300346382 /* Page2-monolog1.m4a in Resources */,
 				931722192AE5508300346382 /* Page3-monolog1.m4a in Resources */,
+				0522B02F2AFCC36900D51EF8 /* card_flip.mp3 in Resources */,
 				9317221A2AE5508300346382 /* Page4-monolog2.m4a in Resources */,
 				9317221B2AE5508300346382 /* Page4-monolog1.m4a in Resources */,
 				058DC90A2AF2F0A200A0885D /* tap-screen.json in Resources */,
@@ -1377,13 +1615,17 @@
 				9317221D2AE5508300346382 /* Page5-monolog1.m4a in Resources */,
 				9317221E2AE5508300346382 /* Page6-monolog1.m4a in Resources */,
 				058DC9082AF2EC5100A0885D /* s1-ep3-backsound.mp3 in Resources */,
+				0585593B2B01CE4900275A7B /* Floating_Lighthouse.usdz in Resources */,
+				93692EAE2AFDCD9900CD6561 /* tes4.usdz in Resources */,
 				9317221F2AE5508300346382 /* prompt_kursi.m4a in Resources */,
 				937AF2982AE8C72B008C69BB /* environment.usdz in Resources */,
+				93EB5FA42AFAC10900C4FB34 /* maze-bgm.mp3 in Resources */,
 				058DC90F2AF2F62B00A0885D /* phone-tilt.json in Resources */,
 				931722202AE5508300346382 /* Page8-monolog1.m4a in Resources */,
 				058DC8F12AF2BE4E00A0885D /* key.usdz in Resources */,
 				931722212AE5508300346382 /* frog_thankyou.m4a in Resources */,
 				931722222AE5508300346382 /* Page9-monolog1.m4a in Resources */,
+				93836C892B0096AB001A3FEE /* congratulation-popup.mp3 in Resources */,
 				058DC8EE2AF2BC6E00A0885D /* honey.usdz in Resources */,
 				931722232AE5508300346382 /* Page10-monolog1.m4a in Resources */,
 				931722242AE5508300346382 /* Page10-monolog2.m4a in Resources */,
@@ -1395,23 +1637,27 @@
 				93C2F8C02AD685A3007D1ABC /* README.md in Resources */,
 				0518CDDA2AE227FA00521EC8 /* kakak_katak.json in Resources */,
 				05FF77322AF0B6C30037453D /* hand.swipe.up.gif in Resources */,
-				05E8B55D2AECE32D00E3612F /* button.usdz in Resources */,
+				93836C7E2B0003DD001A3FEE /* gyro.gif in Resources */,
 				05FF77312AF0B6C30037453D /* hand.swipe.left.gif in Resources */,
 				05D966E12ADEE6CF00997E3A /* success.mp3 in Resources */,
 				0571CB482AE19D6000CE0CC7 /* moco-1-5.json in Resources */,
 				05FF772F2AF0B6C30037453D /* hand.zoom.gif in Resources */,
 				0571CB3D2AE19D5700CE0CC7 /* moco-1-1.json in Resources */,
 				058DC8EF2AF2BC6E00A0885D /* airplane.usdz in Resources */,
+				0589EA582AFF3FCB00C87BF7 /* tes4-2.usdz in Resources */,
 				93C2F88D2AD683AE007D1ABC /* Preview Assets.xcassets in Resources */,
 				05AE93612ADE82410082B21D /* testing-cat.json in Resources */,
 				056949852AE0EF8800830D57 /* cow_bell_ring.mp3 in Resources */,
 				0571CB462AE19D6000CE0CC7 /* maudi.json in Resources */,
+				058559332B013EBA00275A7B /* find-ar-plane.gif in Resources */,
 				932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */,
 				05FF77302AF0B6C30037453D /* ripple.gif in Resources */,
 				0518CDD82AE220BA00521EC8 /* moco-1-2.json in Resources */,
+				0589EA5C2AFF50E000C87BF7 /* tes1-2.usdz in Resources */,
 				05E17AD92ADED16800A34547 /* balon_merah.mp3 in Resources */,
 				0571CB452AE19D6000CE0CC7 /* moco-1-10.json in Resources */,
 				93C2F88A2AD683AE007D1ABC /* Assets.xcassets in Resources */,
+				050E420F2AFDCC7D009666DB /* arrange_camera_to_barcode.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1453,7 +1699,9 @@
 				935D78572AEC2D7900DF64A5 /* SettingsViewModel.swift in Sources */,
 				05AE93582ADE74980082B21D /* SpeechRecognizerViewModel.swift in Sources */,
 				938E3D3D2AD9901B003D2AE1 /* PopUpComponent.swift in Sources */,
+				9310EC782B07C3040045A908 /* ScaleEffect.swift in Sources */,
 				938E3D4D2ADBA247003D2AE1 /* ContentViewContainer.swift in Sources */,
+				9310EC812B0A353A0045A908 /* StoryViewViewModel.swift in Sources */,
 				0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */,
 				938E3D3F2AD990C3003D2AE1 /* Buttons.swift in Sources */,
 				937AF2952AE8C06C008C69BB /* ARView.swift in Sources */,
@@ -1462,6 +1710,7 @@
 				930CBFFB2AF76956001B67D2 /* ViewWillDisappear.swift in Sources */,
 				93C2F8842AD683AC007D1ABC /* MocoApp.swift in Sources */,
 				938C55382AE183AA00BC233D /* FontViewModifier.swift in Sources */,
+				059210102AFB601E0008CD2C /* QRScannerSheet.swift in Sources */,
 				935D786F2AEF4C1200DF64A5 /* Spacer.swift in Sources */,
 				93C2F8BD2AD684CE007D1ABC /* HomeView.swift in Sources */,
 				93C8E7232ADEF249002315A2 /* FontUtil.swift in Sources */,
@@ -1473,8 +1722,10 @@
 				935D78532AEBF9FE00DF64A5 /* URL.swift in Sources */,
 				935D785D2AED6D6600DF64A5 /* StoryBookNew.swift in Sources */,
 				0B6E2F6A2ADC91060001D320 /* StoryContentModel.swift in Sources */,
+				050077182B08033200376135 /* MakeSentence.swift in Sources */,
 				93C8E72C2AE1373D002315A2 /* Shake.swift in Sources */,
 				937AF2882AE81983008C69BB /* RippleModel.swift in Sources */,
+				051F98AD2B0E0D7600D8F394 /* GameCenterView.swift in Sources */,
 				0B2E31DA2AD7EBE500DFC16F /* CollectionModel.swift in Sources */,
 				935D785B2AED55B200DF64A5 /* PeelEffect.swift in Sources */,
 				937F644B2AE4E0BB00D50FC2 /* HomeModel.swift in Sources */,
@@ -1482,15 +1733,20 @@
 				938E3D542ADBCDB8003D2AE1 /* StoryNavigationButton.swift in Sources */,
 				9398FBB82AE41D2600AB5CE4 /* CustomAsyncImage.swift in Sources */,
 				0B6E2F742ADC9DC90001D320 /* HintViewModel.swift in Sources */,
+				059210142AFB68480008CD2C /* Base64ConverterExtension.swift in Sources */,
 				0571CB382AE1935C00CE0CC7 /* InvisibleButton.swift in Sources */,
 				938E3D372AD939C4003D2AE1 /* ContentView.swift in Sources */,
+				93F570372B0317D300ECFB33 /* ShakeEffect.swift in Sources */,
 				93E3D87A2AE4E95700E5391F /* SpeakPromptModel.swift in Sources */,
 				0B6E2F6C2ADC91E10001D320 /* PromptModel.swift in Sources */,
 				938C55362AE181C600BC233D /* RootViewModifier.swift in Sources */,
 				0B6E2F782ADCA8990001D320 /* StoryContentViewModel.swift in Sources */,
 				0571CB362AE17A9E00CE0CC7 /* SpeakTheStory.swift in Sources */,
+				93F570312B02868800ECFB33 /* CardPrompt.swift in Sources */,
 				0B46D7232AF120BC002DE821 /* EpisodeModel.swift in Sources */,
 				93E3D8762AE4E4BA00E5391F /* DetectionPromptModel.swift in Sources */,
+				050E42072AFDC540009666DB /* ARTutorialView.swift in Sources */,
+				051F98A92B0E07B800D8F394 /* PlayerViewModel.swift in Sources */,
 				05FF77222AF0B28A0037453D /* GestureList.swift in Sources */,
 				05FF77162AF0B0250037453D /* TutorialCard.swift in Sources */,
 				938C55412AE2301700BC233D /* BurgerMenu.swift in Sources */,
@@ -1500,8 +1756,11 @@
 				05AE93512ADE73E40082B21D /* SFSpeechRecognizerExtension.swift in Sources */,
 				93C8E7212ADEF1DB002315A2 /* TimerModel.swift in Sources */,
 				05AE93562ADE74740082B21D /* RecognizerError.swift in Sources */,
+				051F98A12B0DFACC00D8F394 /* SplashScreen.swift in Sources */,
 				930D68902AF2DB92001976F0 /* BoardAnswer.swift in Sources */,
 				930D688E2AF2DB82001976F0 /* MultipleChoicePrompt.swift in Sources */,
+				93F570352B0292DD00ECFB33 /* CardScan.swift in Sources */,
+				93692EAC2AFD5CAC00CD6561 /* EpisodeItem.swift in Sources */,
 				05AE93632ADE82920082B21D /* LottieView.swift in Sources */,
 				935D786D2AEF4BD600DF64A5 /* ViewOnLoad.swift in Sources */,
 				93C8E7252ADEF2D3002315A2 /* TimerViewModel.swift in Sources */,
@@ -1511,6 +1770,7 @@
 				937AF28A2AE81A26008C69BB /* RippleViewModel.swift in Sources */,
 				938E3D332AD91605003D2AE1 /* DetectionView.swift in Sources */,
 				937EE4132AF9E35700A5CCF5 /* AppDelegate.swift in Sources */,
+				9310EC862B0A40FA0045A908 /* Story1.swift in Sources */,
 				935D78552AEC09A000DF64A5 /* GlobalStorage.swift in Sources */,
 				05BA97AA2AE11EE400F64F52 /* MPVolumeViewExtension.swift in Sources */,
 				93676D242AF139A800E756A5 /* ProgressBar.swift in Sources */,
@@ -1521,6 +1781,7 @@
 				0B6E2F722ADC97BE0001D320 /* StoryViewModel.swift in Sources */,
 				935D78502AEBF98400DF64A5 /* GifView.swift in Sources */,
 				937AF2862AE80BFB008C69BB /* RippleView.swift in Sources */,
+				93F570332B02896A00ECFB33 /* CardView.swift in Sources */,
 				056A3E482AF25170009299F4 /* SKSpriteNodeExtension.swift in Sources */,
 				056B67282AE28D1400A3B493 /* AchievementsView.swift in Sources */,
 				938E3D432ADABD9F003D2AE1 /* BaseViewModel.swift in Sources */,
@@ -1536,6 +1797,7 @@
 				0B2E31E22AD9064900DFC16F /* CollectionViewModel.swift in Sources */,
 				05FF771D2AF0B0980037453D /* TutorialView.swift in Sources */,
 				05FF771F2AF0B0980037453D /* TutorialGestureView.swift in Sources */,
+				93836C782AFF6E08001A3FEE /* Process.swift in Sources */,
 				937AF2912AE83794008C69BB /* Date.swift in Sources */,
 				935D784B2AEBC7FE00DF64A5 /* CustomPersistentModel.swift in Sources */,
 				0BA3E5102ADFD04700BCFE9E /* StoryThemeModalView.swift in Sources */,
@@ -1547,6 +1809,7 @@
 				937AF28C2AE832A7008C69BB /* ARViewContainer.swift in Sources */,
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
 				93676D2D2AF1475200E756A5 /* PointerViewModifier.swift in Sources */,
+				93692EAA2AFD43FD00CD6561 /* PauseMenu.swift in Sources */,
 				937AF2A22AE930AF008C69BB /* MazeScene.swift in Sources */,
 				935D78622AEE1AC400DF64A5 /* MazePrompt.swift in Sources */,
 				938C553E2AE1B76600BC233D /* ObjectDetectionModel.swift in Sources */,
@@ -1567,14 +1830,19 @@
 				0BA3E5092ADFC61500BCFE9E /* StoryThemeAdminView.swift in Sources */,
 				05E8B56A2AED4AD400E3612F /* ARClueView.swift in Sources */,
 				93C2F8BB2AD684CE007D1ABC /* Detector.swift in Sources */,
+				051F98A72B0E075600D8F394 /* Player.swift in Sources */,
 				935D78592AED433A00DF64A5 /* Color.swift in Sources */,
 				938C553A2AE1B3E800BC233D /* ObjectDetectionViewModel.swift in Sources */,
 				0B1197832AD7E97A004FAD14 /* CollectionRowView.swift in Sources */,
+				051F98AB2B0E098D00D8F394 /* GameKitIdentifier.swift in Sources */,
 				93E3D8782AE4E55000E5391F /* DetectionPromptViewModel.swift in Sources */,
+				051F98A52B0E069F00D8F394 /* GameKitViewModel.swift in Sources */,
 				05E17AD52ADE86DE00A34547 /* FindTheObject.swift in Sources */,
 				0B6E2F762ADC9F020001D320 /* PromptViewModel.swift in Sources */,
 				938E3D1F2AD7AD78003D2AE1 /* Collection.swift in Sources */,
+				93692EB12AFDCE3600CD6561 /* 3DRenderer.swift in Sources */,
 				9328F9172AF25C2200E82995 /* ModalComponent.swift in Sources */,
+				937EE41A2AFA8DFD00A5CCF5 /* MazeProgress.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1744,12 +2012,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Moco/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Allow this app to access the camera.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow this app to access the microphone.";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Allow this app to access speech recognition.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to capture the QR code on the card and to display an AR world.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1758,9 +2025,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mocoteam.Moco;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -1778,12 +2047,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Moco/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Allow this app to access the camera.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow this app to access the microphone.";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Allow this app to access speech recognition.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to capture the QR code on the card and to display an AR world.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1792,9 +2060,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mocoteam.Moco;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -1924,6 +2194,14 @@
 				minimumVersion = 1.0.14;
 			};
 		};
+		0592100A2AFA476F0008CD2C /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.3;
+			};
+		};
 		05AE93662ADE83430082B21D /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -1963,6 +2241,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0517C51E2AEF3C9B00CE7A01 /* XCRemoteSwiftPackageReference "RealityKit-Fade" */;
 			productName = RKFade;
+		};
+		0592100B2AFA476F0008CD2C /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0592100A2AFA476F0008CD2C /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 		05AE93672ADE83430082B21D /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -8,156 +8,23 @@
 import SwiftUI
 
 struct StoryView: View {
-    // MARK: - Environments stored property
-
+    // MARK: - Environments
     @Environment(\.storyThemeViewModel) private var storyThemeViewModel
     @Environment(\.storyViewModel) private var storyViewModel
     @Environment(\.episodeViewModel) private var episodeViewModel
     @Environment(\.storyContentViewModel) private var storyContentViewModel
     @Environment(\.promptViewModel) private var promptViewModel
     @Environment(\.hintViewModel) private var hintViewModel
-
+    @Environment(\.mazePromptViewModel) private var mazePromptViewModel
     @Environment(\.timerViewModel) private var timerViewModel
     @Environment(\.audioViewModel) private var audioViewModel
+    @Environment(\.settingsViewModel) private var settingsViewModel
     @Environment(\.navigate) private var navigate
-    @EnvironmentObject var speechViewModel: SpeechRecognizerViewModel
-    @EnvironmentObject var objectDetectionViewModel: ObjectDetectionViewModel
-
-    // MARK: - Static Variables
-
-    private static let storyVolume: Float = 0.5
+    @EnvironmentObject var arViewModel: ARViewModel
 
     // MARK: - States
 
-    @State private var scrollPosition: Int? = 0
-    @State private var isExitPopUpActive = false
-    @State private var isEpisodeFinished = false
-    @State private var isMuted = false
-    @State private var text: String = ""
-    @State private var narrativeIndex: Int = -1
-    @State private var showPromptButton = false
-    @State private var activePrompt: PromptModel?
-    @State private var peelEffectState = PeelEffectState.stop
-    @State private var toBeExecutedByPeelEffect = {}
-    @State private var peelBackground = AnyView(EmptyView())
-    @State private var isReversePeel = false
-    @State private var showWrongAnsPopup = false
-    @State private var mazeQuestionIndex = 0
-    @State private var forceShowNext = false
-
-    // MARK: - Variables
-
-    var enableUI = true
-
-    // MARK: - Functions
-
-    private func updateText() {
-        guard storyContentViewModel.narratives!.indices.contains(narrativeIndex + 1) else { return }
-        narrativeIndex += 1
-        speechViewModel.textToSpeech(text: storyContentViewModel.narratives![narrativeIndex].contentName)
-        timerViewModel.setTimer(key: "storyPageTimer-\(narrativeIndex)-\(scrollPosition!)", withInterval: storyContentViewModel.narratives![narrativeIndex].duration) {
-            updateText()
-        }
-    }
-
-    private func stop() {
-        timerViewModel.stopTimer()
-        audioViewModel.pauseAllSounds()
-        speechViewModel.stopSpeaking()
-    }
-
-    private func startNarrative() {
-        guard storyContentViewModel.narratives != nil else { return }
-        narrativeIndex = -1
-        updateText()
-    }
-
-    private func startPrompt() {
-        if let storyPage = storyViewModel.storyPage, !storyPage.earlyPrompt {
-            activePrompt = nil
-        }
-        guard promptViewModel.prompt != nil else { return }
-        timerViewModel.setTimer(key: "storyPagePrompt-\(scrollPosition!)", withInterval: promptViewModel.prompt!.startTime) {
-            withAnimation {
-                showPromptButton = true
-            }
-        }
-    }
-
-    private func onPageChange() {
-        stop()
-        setNewStoryPage(scrollPosition ?? -1)
-
-        if let bgSound = storyContentViewModel.bgSound?.contentName {
-            audioViewModel.playSound(
-                soundFileName: bgSound,
-                numberOfLoops: -1,
-                category: .backsound
-            )
-        }
-
-        startNarrative()
-        startPrompt()
-        if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
-            promptViewModel.fetchPrompt(storyPage)
-            activePrompt = promptViewModel.prompt!
-        }
-    }
-
-    private func nextPage() {
-        guard episodeViewModel.selectedEpisode!.stories!.count > scrollPosition! + 1 else {
-            isEpisodeFinished = true
-            return
-        }
-
-        showPromptButton = false
-
-        let nextPageBg = storyViewModel.getPageBackground(scrollPosition! + 1, episode: episodeViewModel.selectedEpisode!)
-
-        peelBackground = AnyView(Image(nextPageBg ?? storyViewModel.storyPage!.background)
-            .resizable()
-            .scaledToFill()
-            .frame(width: Screen.width, height: Screen.height, alignment: .center)
-            .clipped())
-        peelEffectState = .start
-        toBeExecutedByPeelEffect = {
-            scrollPosition! += 1
-            peelEffectState = .stop
-        }
-    }
-
-    private func prevPage() {
-        guard scrollPosition! > 0 else { return }
-        isReversePeel = true
-        scrollPosition! -= 1
-        peelEffectState = .reverse
-
-        peelBackground = AnyView(Image(storyViewModel.storyPage!.background)
-            .resizable()
-            .scaledToFill()
-            .frame(width: Screen.width, height: Screen.height, alignment: .center)
-            .clipped())
-        toBeExecutedByPeelEffect = {
-            peelEffectState = .stop
-            isReversePeel = false
-        }
-    }
-
-    private func setNewStoryPage(_ scrollPosition: Int) {
-        if scrollPosition > -1 {
-            storyViewModel.fetchStory(scrollPosition, episodeViewModel.selectedEpisode!)
-
-            if let storyPage = storyViewModel.storyPage {
-                storyContentViewModel.fetchStoryContents(storyPage)
-
-                promptViewModel.fetchPrompt(storyPage)
-
-                if let prompt = promptViewModel.prompt, prompt.hints != nil {
-                    hintViewModel.fetchHints(prompt)
-                }
-            }
-        }
-    }
+    @StateObject private var svvm = StoryViewViewModel()
 
     // MARK: - View
 
@@ -167,100 +34,112 @@ struct StoryView: View {
                 LazyHStack(spacing: 0) {
                     if let stories = episodeViewModel.selectedEpisode!.stories {
                         ForEach(Array(stories.enumerated()), id: \.offset) { index, _ in
-                            PeelEffectTappable(state: $peelEffectState, isReverse: isReversePeel) {
-                                ZStack {
+                            ZStack {
+                                PeelEffectTappable(state: $svvm.peelEffectState, isReverse: svvm.isReversePeel) {
                                     Image(storyViewModel.storyPage!.background)
                                         .resizable()
                                         .scaledToFill()
                                         .frame(width: Screen.width, height: Screen.height, alignment: .center)
                                         .clipped()
+                                } background: {
+                                    svvm.peelBackground
+                                } onComplete: {
+                                    svvm.toBeExecutedByPeelEffect()
+                                }
 
-                                    if storyContentViewModel.narratives!.count > narrativeIndex && !storyContentViewModel.narratives!.isEmpty {
-                                        let narrative = storyContentViewModel.narratives![max(narrativeIndex, 0)]
-                                        Text(narrative.contentName)
-                                            .foregroundColor(Color(hex: narrative.color ?? "#000000"))
-                                            .frame(maxWidth: CGFloat(narrative.maxWidth!), alignment: .leading)
-                                            .position(CGPoint(
-                                                x: Screen.width * narrative.positionX,
-                                                y: Screen.height * narrative.positionY
-                                            ))
-                                            .id(narrativeIndex)
-                                            .transition(.opacity.animation(.linear))
-                                            .customFont(.didactGothic, size: narrative.fontSize)
-                                            .padding(.bottom, 2)
-                                    }
-
-                                    Group {
-                                        switch activePrompt?.promptType {
-                                        case .multipleChoice:
-                                            if promptViewModel.prompt != nil {
-                                                MultipleChoicePrompt {
-                                                    activePrompt = nil
-                                                    nextPage()
-                                                } onWrong: {
-                                                    showWrongAnsPopup = true
-                                                }
-                                            }
-                                        case .maze:
-                                            if let mazePrompt = promptViewModel.prompt {
-                                                MazePrompt(promptText: mazePrompt.question!, answersAsset: mazePrompt.answerChoices!, correctAnswerAsset: mazePrompt.correctAnswer) {
-                                                    nextPage()
-                                                }.id(mazePrompt.id)
-                                            }
-                                        case .ar:
-                                            ARStory {
-                                                nextPage()
-                                            }
-                                        case .puzzle:
-                                            FindTheObjectView(
-                                                isPromptDone: .constant(false),
-                                                content: "Once upon a time...",
-                                                hints: hintViewModel.hints,
-                                                correctAnswer: promptViewModel.prompt!.correctAnswer,
-                                                balloons: [
-                                                    Balloon(color: "orange", isCorrect: false),
-                                                    Balloon(color: "ungu", isCorrect: false),
-                                                    Balloon(color: "merah", isCorrect: true),
-                                                    Balloon(color: "hijau", isCorrect: false),
-                                                    Balloon(color: "biru", isCorrect: false)
-                                                ]
-                                            ) {
-                                                nextPage()
-                                            }
-                                        case .objectDetection:
-                                            DetectionView {
-                                                nextPage()
-                                            }
-                                        default:
-                                            EmptyView()
-                                        }
-                                    }
-
-                                }.id(index)
-                            } background: {
-                                peelBackground
-                            } onComplete: {
-                                toBeExecutedByPeelEffect()
-                            }
+                                if storyContentViewModel.narratives!.count > svvm.narrativeIndex &&
+                                    !storyContentViewModel.narratives!.isEmpty {
+                                    let narrative = storyContentViewModel.narratives![max(svvm.narrativeIndex, 0)]
+                                    Text(narrative.contentName)
+                                        .foregroundColor(Color(hex: narrative.color ?? "#000000"))
+                                        .frame(maxWidth: CGFloat(narrative.maxWidth!), alignment: .leading)
+                                        .position(CGPoint(
+                                            x: Screen.width * narrative.positionX,
+                                            y: Screen.height * narrative.positionY
+                                        ))
+                                        .id(svvm.narrativeIndex)
+                                        .transition(.opacity.animation(.linear))
+                                        .customFont(.didactGothic, size: narrative.fontSize)
+                                        .padding(.bottom, 2)
+                                }
+                            }.id(index)
                         }
                     }
                 }.scrollTargetLayout()
             }.scrollDisabled(true)
                 .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
-                .scrollPosition(id: $scrollPosition)
+                .scrollPosition(id: $svvm.scrollPosition)
+            if let stories = episodeViewModel.selectedEpisode?.stories {
+                Group {
+                    switch svvm.activePrompt?.promptType {
+                    case .card:
+                        if let cardPrompt = promptViewModel.prompts?.first {
+                            CardPrompt(showNext: $svvm.forceShowNext) {
+                                svvm.nextPage()
+                            }
+                            .id(cardPrompt.id)
+                        }
+                    case .multipleChoice:
+                        if svvm.promptViewModel.prompts != nil {
+                            MultipleChoicePrompt {
+                                svvm.activePrompt = nil
+                                svvm.nextPage()
+                            } onWrong: {
+                                svvm.showWrongAnsPopup = true
+                            }
+                        }
+                    case .maze:
+                        if let mazePrompt = promptViewModel.prompts?.first {
+                            MazePrompt(
+                                promptText: mazePrompt.question!,
+                                answersAsset: mazePrompt.answerAssets!,
+                                answers: mazePrompt.answerChoices!,
+                                correctAnswerAsset: mazePrompt.correctAnswer,
+                                promptId: mazePrompt.uid
+                            ) {
+                                svvm.nextPage()
+                            }.id(mazePrompt.id)
+                        }
+                    case .ar:
+                        if let ARPrompt = promptViewModel.prompts?[0] {
+                            ARStory(
+                                prompt: ARPrompt,
+                                lastPrompt: svvm.scrollPosition == (stories.count - 1)
+                            ) {
+                                svvm.nextPage()
+                            }
+                            .id(ARPrompt.id)
+                        }
+                    case .objectDetection:
+                        DetectionView {
+                            svvm.nextPage()
+                        }
+                    default:
+                        EmptyView()
+                    }
+                }
+            }
             ZStack {
                 VStack {
                     HStack {
                         Spacer()
-                        Button {
-                            if !isMuted {
-                                audioViewModel.mute()
-                            } else {
-                                audioViewModel.unmute()
-                            }
-                            isMuted.toggle()
+                        SfxButton {
+                            svvm.isExitPopUpActive = true
                         } label: {
-                            Image(isMuted ? "Buttons/sound-off" : "Buttons/sound-on")
+                            Image("Buttons/button-home").resizable().scaledToFit()
+                        }.buttonStyle(
+                            CircleButton(
+                                width: 80,
+                                height: 80,
+                                backgroundColor: .clear,
+                                foregroundColor: .clear
+                            )
+                        )
+                        .padding()
+                        SfxButton {
+                            svvm.onPressSoundButton()
+                        } label: {
+                            Image(svvm.isMuted ? "Buttons/sound-off" : "Buttons/sound-on")
                                 .resizable()
                                 .scaledToFit()
                         }.buttonStyle(
@@ -272,10 +151,12 @@ struct StoryView: View {
                             )
                         )
                         .padding()
-                        Button {
-                            isExitPopUpActive = true
+                        SfxButton {
+                            svvm.showPauseMenu = true
                         } label: {
-                            Image("Buttons/button-x").resizable().scaledToFit()
+                            Image("Buttons/button-settings")
+                                .resizable()
+                                .scaledToFit()
                         }.buttonStyle(
                             CircleButton(
                                 width: 80,
@@ -289,24 +170,26 @@ struct StoryView: View {
                     Spacer()
                 }
                 HStack {
-                    if scrollPosition! > 0 {
+                    if svvm.scrollPosition! > 0 {
                         StoryNavigationButton(direction: .left) {
-                            prevPage()
+                            svvm.prevPage()
                         }
                     }
                     Spacer()
 
-                    if promptViewModel.prompt == nil || forceShowNext {
+                    if promptViewModel.prompts == nil ||
+                        promptViewModel.prompts!.isEmpty ||
+                        svvm.forceShowNext {
                         StoryNavigationButton(direction: .right) {
-                            nextPage()
+                            svvm.nextPage()
                         }
                     }
-                }
+                }.opacity(svvm.activePrompt == nil ? 1 : 0.5)
                 VStack {
                     Spacer()
-                    if showPromptButton && activePrompt == nil {
-                        Button {
-                            activePrompt = promptViewModel.prompt!
+                    if svvm.showPromptButton && svvm.activePrompt == nil {
+                        SfxButton {
+                            svvm.activePrompt = svvm.promptViewModel.prompts![0]
                         } label: {
                             Image("Buttons/button-start").resizable().scaledToFit()
                         }
@@ -323,28 +206,49 @@ struct StoryView: View {
                 }
             }
         }
-        .popUp(isActive: $isExitPopUpActive, title: "Petualangan Moco belum selesai!. Petualangan Moco akan terulang dari awal. Yakin mau keluar?", cancelText: "Tidak", confirmText: "Ya") {
-            navigate.pop {
-                stop()
+        .popUp(isActive: $svvm.isExitPopUpActive, title: "Yakin mau keluar?", cancelText: "Tidak", confirmText: "Ya") {
+            svvm.exit()
+        }
+        .popUp(isActive: $svvm.isEpisodeFinished, title: "Lanjutkan cerita?", cancelText: "Tidak", confirmText: "Lanjut") {
+            svvm.continueStory()
+        }
+        .overlay {
+            if svvm.showPauseMenu {
+                if let promptType = svvm.activePrompt?.promptType {
+                    PauseMenu(isActive: $svvm.showPauseMenu) {
+                        switch promptType {
+                        case .maze:
+                            svvm.settingsViewModel.mazeTutorialFinished = false
+                        case .findHoney:
+                            break
+                        case .objectDetection:
+                            break
+                        case .speech:
+                            break
+                        case .multipleChoice:
+                            break
+                        case .ar:
+                            svvm.settingsViewModel.arTutorialFinished = false
+                        case .card:
+                            break
+                        case .puzzle:
+                            break
+                        }
+                    } repeatHandler: {
+                        svvm.prevPage(0)
+                    }
+                }
+            } else {
+                EmptyView()
             }
         }
-        .popUp(isActive: $isEpisodeFinished, title: "Petualangan Moco sebentar lagi selesai!. Lanjutkan petualangan?", cancelText: "Tidak", confirmText: "Lanjut") {
-            episodeViewModel.setToAvailable(selectedStoryTheme: storyThemeViewModel.selectedStoryTheme!)
-            storyThemeViewModel.fetchStoryThemes()
-            storyThemeViewModel.setSelectedStoryTheme(storyThemeViewModel.findWithID(storyThemeViewModel.selectedStoryTheme!.uid)!)
-            navigate.pop {
-                stop()
-            }
-        }
-        .customModal(isActive: $showWrongAnsPopup, title: "Apakah kamu yakin dengan jawaban ini? Coba cek kembali pertanyaannya") {
-            activePrompt = nil
-            showWrongAnsPopup = false
+        .customModal(isActive: $svvm.showWrongAnsPopup, title: "Apakah kamu yakin dengan jawaban ini? Coba cek kembali pertanyaannya", textColor: Color.brownTxt) {
+            svvm.activePrompt = nil
+            svvm.showWrongAnsPopup = false
         }
         .task {
-            onPageChange()
-        }
-        .task(id: scrollPosition) {
-            onPageChange()
+            svvm.onAppear()
+//            arViewModel.resetStates()
         }
     }
 }
@@ -352,10 +256,8 @@ struct StoryView: View {
 #Preview {
     @State var timerViewModel = TimerViewModel()
     @State var audioViewModel = AudioViewModel()
-    @StateObject var speechViewModel = SpeechRecognizerViewModel.shared
 
     return StoryView()
         .environment(\.timerViewModel, timerViewModel)
         .environment(\.audioViewModel, audioViewModel)
-        .environmentObject(speechViewModel)
 }

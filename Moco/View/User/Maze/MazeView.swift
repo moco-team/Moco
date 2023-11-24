@@ -19,6 +19,8 @@ struct MazePuzzle {
 struct MazeView: View {
     @EnvironmentObject var motionViewModel: MotionViewModel
     @EnvironmentObject var orientationInfo: OrientationInfo
+    @Environment(\.mazePromptViewModel) private var mazePromptViewModel
+    @State private var timerViewModel = TimerViewModel()
 
     var answersAsset = ["Maze/answer_one", "Maze/answer_two"] {
         didSet {
@@ -26,48 +28,111 @@ struct MazeView: View {
         }
     }
 
+    var answers = ["satu", "dua", "tiga"]
+
     var correctAnswerAsset = "Maze/answer_three" {
         didSet {
             scene.correctAnswerAsset = correctAnswerAsset
         }
     }
 
+    @State private var answersWidth: [Double] = [0, 0, 0]
+
     @StateObject private var scene: MazeScene = {
         let screenWidth = Screen.width
         let screenHeight = Screen.height
         let scene = MazeScene(
-            size: CGSize(width: screenWidth, height: screenHeight)
+            size: CGSize(width: screenWidth, height: screenHeight * 0.7)
         )
         scene.scaleMode = .fill
 
         return scene
     }()
 
-    @State private var correctAnswer = false
-
     var onComplete: () -> Void = {}
 
     var body: some View {
-        ZStack {
-            SpriteView(scene: scene, options: [.allowsTransparency])
-                .padding(.vertical, 12)
-                .ignoresSafeArea()
-                .frame(width: Screen.width, height: Screen.height)
+        VStack(alignment: .leading) {
+            ZStack {
+                SpriteView(scene: scene, options: [.allowsTransparency])
+                    .padding(.vertical, 12)
+                    .ignoresSafeArea()
+                    .frame(width: Screen.width, height: Screen.height * 0.7)
+            }
+            ZStack {
+                if let obj1 = scene.obj01, scene.obj03 != nil {
+                    Text(answers[0]).offset(x: obj1.position.x - answersWidth[0] / 2)
+                        .customFont(.didactGothic, size: 30)
+                        .foregroundColor(.text.brown)
+                        .background {
+                            GeometryReader {
+                                proxy in
+                                HStack {} // just an empty container to triggers the onAppear
+                                    .onAppear {
+                                        answersWidth[0] = proxy.size.width
+                                    }
+                            }
+                        }
+                }
+                if let obj2 = scene.obj02, scene.obj03 != nil {
+                    Text(answers[1]).offset(x: obj2.position.x - answersWidth[1] / 2)
+                        .customFont(.didactGothic, size: 30)
+                        .foregroundColor(.text.brown)
+                        .background {
+                            GeometryReader {
+                                proxy in
+                                HStack {} // just an empty container to triggers the onAppear
+                                    .onAppear {
+                                        answersWidth[1] = proxy.size.width
+                                    }
+                            }
+                        }
+                }
+                if let obj3 = scene.obj03, scene.obj03 != nil {
+                    Text(answers[2]).offset(x: obj3.position.x - answersWidth[2] / 2)
+                        .customFont(.didactGothic, size: 30)
+                        .foregroundColor(.text.brown)
+                        .background {
+                            GeometryReader {
+                                proxy in
+                                HStack {} // just an empty container to triggers the onAppear
+                                    .onAppear {
+                                        answersWidth[2] = proxy.size.width
+                                    }
+                            }
+                        }
+                }
+            }
         }
-        .background(.ultraThinMaterial)
-        .onAppear {
+        .background(.clear)
+        .onLoad {
             motionViewModel.startUpdates()
             scene.correctAnswerAsset = correctAnswerAsset
             scene.wrongAnswerAsset = answersAsset
-            TimerViewModel().setTimer(key: "mazeTimer\(correctAnswerAsset)", withInterval: 0.02) {
+            timerViewModel.stopTimer("mazeTimer\(correctAnswerAsset)")
+            timerViewModel.setTimer(key: "mazeTimer\(correctAnswerAsset)", withInterval: 0.02) {
+                guard mazePromptViewModel.isTutorialDone else { return }
                 motionViewModel.updateMotion()
-//                print(orientationInfo.orientation)
                 if orientationInfo.orientation == .landscapeLeft {
                     if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
                         if motionViewModel.rollNum > 0 {
-                            scene.move(.up)
+                            switch motionViewModel.gravityDegree {
+                            case -75 ... -10, 10 ... 80:
+                                scene.move(.right)
+                            case 100 ... 170, 190 ... 255:
+                                scene.move(.left)
+                            default:
+                                scene.move(.up)
+                            }
                         } else if motionViewModel.rollNum < 0 {
-                            scene.move(.down)
+                            switch motionViewModel.gravityDegree {
+                            case -75 ... -10, 105 ... 170:
+                                scene.move(.right)
+                            case 10 ... 75, 190 ... 255:
+                                scene.move(.left)
+                            default:
+                                scene.move(.down)
+                            }
                         }
                     } else {
                         if motionViewModel.pitchNum > 0 {
@@ -79,9 +144,23 @@ struct MazeView: View {
                 } else if orientationInfo.orientation == .landscapeRight {
                     if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
                         if motionViewModel.rollNum > 0 {
-                            scene.move(.down)
+                            switch motionViewModel.gravityDegree {
+                            case -75 ... -10, 105 ... 170:
+                                scene.move(.right)
+                            case 10 ... 75, 190 ... 255:
+                                scene.move(.left)
+                            default:
+                                scene.move(.down)
+                            }
                         } else if motionViewModel.rollNum < 0 {
-                            scene.move(.up)
+                            switch motionViewModel.gravityDegree {
+                            case -75 ... -10, 10 ... 80:
+                                scene.move(.left)
+                            case 100 ... 170, 190 ... 255:
+                                scene.move(.right)
+                            default:
+                                scene.move(.up)
+                            }
                         }
                     } else {
                         if motionViewModel.pitchNum > 0 {
@@ -95,15 +174,17 @@ struct MazeView: View {
         }
         .onDisappear {
 //            motionViewModel.stopUpdates()
-            TimerViewModel().stopTimer()
+            timerViewModel.stopTimer("mazeTimer\(correctAnswerAsset)")
         }
         .onChange(of: scene.correctAnswer) {
             if let sceneCorrectAnswer = scene.correctAnswer {
-                correctAnswer = sceneCorrectAnswer
+                mazePromptViewModel.isCorrectAnswer = sceneCorrectAnswer
             }
         }
-        .popUp(isActive: $correctAnswer, withConfetti: true) {
-            onComplete()
+        .onChange(of: scene.wrongAnswer) {
+            if let sceneWrongAnswer = scene.wrongAnswer {
+                mazePromptViewModel.isWrongAnswer = sceneWrongAnswer
+            }
         }
     }
 }

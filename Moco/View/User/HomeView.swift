@@ -18,6 +18,9 @@ struct HomeView: View {
 
     @State private var homeViewModel = HomeViewModel()
 
+    @State private var isShowing3d = false
+    @State private var isMakeSentenceTest = true
+
     var body: some View {
         ZStack {
             VStack {
@@ -33,7 +36,7 @@ struct HomeView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 0.4 * Screen.width)
-                        .padding(.top, 50)
+                        .padding(.top, Screen.height * 0.02)
 
                     Spacer()
 
@@ -41,15 +44,14 @@ struct HomeView: View {
                 }
                 .padding(.horizontal, 0.05 * Screen.width)
 
-                Spacer()
-
                 HStack {
-                    Text("Koleksi Buku")
+                    Text("Koleksi Cerita Dunia Ajaib")
                         .customFont(.cherryBomb, size: 50)
                         .foregroundColor(Color.blueTxt)
                         .fontWeight(.bold)
                     Spacer()
-                }.padding(.leading, 60).padding(.bottom, 30)
+                }.padding(.leading, 60)
+                    .padding(.vertical, Screen.height * 0.1)
 
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: [GridItem(.flexible())]) {
@@ -59,7 +61,7 @@ struct HomeView: View {
                             ) { index, storyTheme in
                                 StoryBookNew(
                                     image: storyTheme.pictureName,
-                                    firstPageBackground: storyTheme.episodes![0].pictureName,
+                                    firstPageBackground: storyTheme.episodes?.first?.pictureName ?? "",
                                     number: index + 1
                                 ) {
                                     storyThemeViewModel.setSelectedStoryTheme(storyTheme)
@@ -68,11 +70,25 @@ struct HomeView: View {
                                 }
                             }
                         }
+                        StoryBookNew(
+                            image: "Story/Cover/Story2",
+                            firstPageBackground: "Story/Cover/Story2",
+                            isLocked: true
+                        ) {}
+                        StoryBookNew(
+                            image: "Story/Cover/Story2",
+                            firstPageBackground: "Story/Cover/Story2",
+                            isLocked: true
+                        ) {}
+                        StoryBookNew(
+                            image: "Story/Cover/Story2",
+                            firstPageBackground: "Story/Cover/Story2",
+                            isLocked: true
+                        ) {}
                     }
                     .padding(.horizontal, 30)
                 }.scrollClipDisabled()
 
-                Spacer()
                 Spacer()
             }
             .onShake {
@@ -86,6 +102,11 @@ struct HomeView: View {
                 }
                 homeViewModel.soundLevel = 0.3
                 homeViewModel.setVolume()
+            }
+            if isShowing3d {
+                ThreeDRenderer {
+                    print("test 3d render selesai!")
+                }
             }
         }
     }

@@ -7,10 +7,48 @@
 
 import SwiftUI
 
+struct SfxButton<Content: View>: View {
+    @Environment(\.audioViewModel) private var audioViewModel
+
+    var soundName = "button_tap"
+
+    var action: () -> Void
+    @ViewBuilder var label: () -> Content
+
+    var body: some View {
+        Button {
+            action()
+            audioViewModel.playSound(
+                soundFileName: soundName,
+                category: .soundEffect
+            )
+        } label: {
+            label()
+        }
+    }
+}
+
+extension SfxButton where Content == AnyView {
+    /// Creates a button that generates its label from a localized string key.
+    ///
+    /// - Parameters:
+    ///   - title: The key for the button's localized title, that describes
+    ///     the purpose of the button's `action`.
+    ///   - action: The action to perform when the user triggers the button.
+    init(_ title: String, action: @escaping () -> Void, soundName: String = "button_tap") {
+        self.init(soundName: soundName) {
+            action()
+        } label: {
+            AnyView(Text(title))
+        }
+    }
+}
+
 struct MainButton: ButtonStyle {
     enum MainButtonType {
         case success
         case warning
+        case danger
     }
 
     var width: CGFloat?
@@ -21,23 +59,20 @@ struct MainButton: ButtonStyle {
     var fontSize = CGFloat(20)
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(width: width, height: height)
             .padding()
-            .background {
-                Image(type == .success ?
-                    "Buttons/button-success" :
-                    "Buttons/button-warning"
-                )
-                .resizable()
-                .scaledToFit()
-                .frame(width: width, height: height)
-            }
-            .foregroundColor(type == .success ? .text.green : .text.brown)
-            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            .foregroundColor(type == .success ? .text.green : type == .warning ? .text.brown : .text.red)
             .scaleEffect(configuration.isPressed ? 1.2 : 1)
             .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
             .shadow(radius: 2, y: 3)
             .customFont(.cherryBomb, size: fontSize)
+            .background {
+                Image(type == .success ?
+                    "Buttons/button-success" : type == .warning ?
+                    "Buttons/button-warning" : "Buttons/button-negative"
+                )
+                .resizable()
+                .scaledToFill()
+            }
     }
 }
 
@@ -108,6 +143,15 @@ struct BrownButton: ButtonStyle {
 struct ButtonView: View {
     @State var active = false
     var body: some View {
+        VStack {
+            SfxButton(soundName: "non_existing_sound") {
+                print("Button pressed!")
+            } label: {
+                Text("Press meeeeee")
+            }
+            .buttonStyle(MainButton(width: 180))
+            .customFont(.cherryBomb, size: 20)
+        }
         Button("Press Me") {
             print("Button pressed!")
         }

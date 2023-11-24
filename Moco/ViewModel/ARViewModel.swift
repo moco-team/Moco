@@ -11,6 +11,7 @@ import Foundation
 import RealityKit
 
 final class ARViewModel: NSObject, ObservableObject {
+    static var shared = ARViewModel()
     /// Allow loading to take a minimum amount of time, to ease state transitions
     private static let loadBuffer: TimeInterval = 2
 
@@ -23,10 +24,23 @@ final class ARViewModel: NSObject, ObservableObject {
     @Published var hasFindObject: Bool = false
     @Published var foundObjectName: String?
     @Published var isFinalClue: Bool = false
+    @Published var toBeFoundEntityNames: [String] = ["honey_jar", "key", "airplane"]
+
+    var arView: ARView?
+
+    var isTutorialDone: Bool {
+        get {
+            GlobalStorage.arTutorialFinished
+        }
+        set {
+            GlobalStorage.arTutorialFinished = newValue
+        }
+    }
 
     func resume() {
         if !assetsLoaded && loadCancellable == nil {
             loadAssets()
+            print("Load Asset ...")
         }
     }
 
@@ -40,6 +54,22 @@ final class ARViewModel: NSObject, ObservableObject {
         config.planeDetection = [.horizontal]
         arView.session.run(config)
         arView.session.delegate = self
+        self.arView = arView
+    }
+
+    func resetSession() {
+        // Stop the current AR session
+        arView?.session.pause()
+
+        // Remove anchors
+        arView?.scene.anchors.removeAll()
+    }
+
+    func resetStates() {
+        assetsLoaded = false
+        hasPlacedObject = false
+        hasFindObject = false
+        isFinalClue = false
     }
 
     func setSearchedObject(objectName: String) {
@@ -95,6 +125,12 @@ final class ARViewModel: NSObject, ObservableObject {
 
                 anchors[anchor.identifier] = anchorEntity
 
+                toBeFoundEntityNames.forEach { entityName in
+                    if entityName != foundObjectName {
+                        environment.findEntity(named: entityName)?.removeFromParent()
+                    }
+                }
+
                 return environment
             }
 
@@ -140,6 +176,35 @@ extension ARViewModel: ARSessionDelegate {
             // Lost an anchor, remove the AnchorEntity from the Scene
             anchorEntity.scene?.removeAnchor(anchorEntity)
             self.anchors.removeValue(forKey: anchor.identifier)
+        }
+    }
+
+    func session(_: ARSession, didUpdate anchors: [ARAnchor]) {
+        if !anchors.isEmpty {
+//            print("ANCHORS NOT EMPTY")
+//            print(anchors.last!)
+
+            // Automatically set the point to middle of the screen
+            let point = CGPoint(x: Screen.width / 2, y: Screen.height / 2)
+
+            guard arView != nil,
+                  let result = arView!.raycast(from: point,
+                                               allowing: .existingPlaneGeometry,
+                                               alignment: .horizontal).first,
+                  let anchor = result.anchor
+            else {
+                return
+            }
+
+            if !hasPlacedObject && !hasFindObject {
+//                _ = self.addCup(anchor: point, at:anchors.last!.transform, in: self.arView!)
+                _ = addCup(anchor: anchor, at: result.worldTransform, in: arView!)
+                print("add cup, change the value of hasPlacedObject")
+                hasPlacedObject = true
+            }
+
+        } else {
+            print("Anchors is empty!")
         }
     }
 }

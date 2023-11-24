@@ -33,15 +33,13 @@ struct EpisodeView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 0.4 * Screen.width)
-                        .padding(.top, 50)
+                        .padding(.top, Screen.height * 0.02)
 
                     Spacer()
 
                     BurgerMenu()
                 }
                 .padding(.horizontal, 0.05 * Screen.width)
-
-                Spacer()
 
                 HStack {
                     HStack(spacing: 40) {
@@ -54,14 +52,15 @@ struct EpisodeView: View {
                                 navigate.pop()
                             }
 
-                        Text("Pilih Episode")
+                        Text("Episode")
                             .customFont(.cherryBomb, size: 50)
                             .foregroundColor(Color.blueTxt)
                             .fontWeight(.bold)
                     }
 
                     Spacer()
-                }.padding(.leading, 60).padding(.bottom, 30)
+                }.padding(.leading, 60)
+                    .padding(.vertical, Screen.height * 0.1)
 
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: [GridItem(.flexible())]) {
@@ -69,9 +68,7 @@ struct EpisodeView: View {
                             ForEach(
                                 Array(availableEpisodes.enumerated()), id: \.element
                             ) { index, episode in
-                                StoryBookNew(
-                                    image: episode.pictureName,
-                                    firstPageBackground: episode.pictureName,
+                                EpisodeItem(
                                     number: index + 1
                                 ) {
                                     Task {
@@ -82,10 +79,10 @@ struct EpisodeView: View {
                                         storyContentViewModel.fetchStoryContents(storyViewModel.storyPage!)
 
                                         if storyViewModel.storyPage!.isHavePrompt {
-                                            promptViewModel.fetchPrompt(storyViewModel.storyPage!)
+                                            promptViewModel.fetchPrompts(storyViewModel.storyPage!)
 
-                                            if promptViewModel.prompt!.hints != nil {
-                                                hintViewModel.fetchHints(promptViewModel.prompt!)
+                                            if promptViewModel.prompts![0].hints != nil {
+                                                hintViewModel.fetchHints(promptViewModel.prompts![0])
                                             }
                                         }
 
@@ -98,7 +95,6 @@ struct EpisodeView: View {
                     .padding(.horizontal, 30)
                 }.scrollClipDisabled()
 
-                Spacer()
                 Spacer()
             }
         }

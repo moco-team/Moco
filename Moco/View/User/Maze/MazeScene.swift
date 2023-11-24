@@ -44,6 +44,7 @@ class MazeScene: SKScene, ObservableObject {
     }
 
     @Published private(set) var correctAnswer: Bool?
+    @Published private(set) var wrongAnswer: Bool?
 
     var mazeModel = MazeModel()
 
@@ -97,22 +98,30 @@ class MazeScene: SKScene, ObservableObject {
         let position =
             mazeModel.points[mazeModel.characterLocationPoint.yPos][mazeModel.characterLocationPoint.xPos]
 
-        if mazeModel.characterLocationPoint.yPos == 0 && mazeModel.characterLocationPoint.xPos != mazeModel.correctPoint.xPos {
-            let move = SKAction.move(to: position, duration: 0.3)
-            let scale = SKAction.scale(to: 0.0001, duration: 0.3)
-            let remove = SKAction.removeFromParent()
-            let sequence = SKAction.sequence([move, scale, remove])
-            correctAnswer = false
-            moco.run(sequence) { [unowned self] in
-                createPlayer()
-            }
-        } else if mazeModel.characterLocationPoint == mazeModel.correctPoint {
-            correctAnswer = true
-        }
-
         let move = SKAction.move(to: position, duration: 0.3)
         let sequence = SKAction.sequence([move])
         moco.run(sequence, withKey: "moving")
+
+        if mazeModel.characterLocationPoint.yPos == mazeModel.correctPoint.yPos &&
+            mazeModel.characterLocationPoint.xPos != mazeModel.correctPoint.xPos {
+//            let move = SKAction.move(to: position, duration: 0.3)
+//            let scale = SKAction.scale(to: 0.0001, duration: 0.3)
+//            let remove = SKAction.removeFromParent()
+//            let sequence = SKAction.sequence([move, scale, remove])
+//            moco.run(sequence) { [unowned self] in
+//                createPlayer()
+//            }
+            print("char", mazeModel.characterLocationPoint, "goal", mazeModel.correctPoint)
+            correctAnswer = false
+            wrongAnswer = true
+        } else if mazeModel.characterLocationPoint == mazeModel.correctPoint {
+            print("char", mazeModel.characterLocationPoint, "goal", mazeModel.correctPoint)
+            correctAnswer = true
+            wrongAnswer = false
+        } else {
+            correctAnswer = nil
+            wrongAnswer = nil
+        }
     }
 
     func createPlayer() {
@@ -125,9 +134,10 @@ class MazeScene: SKScene, ObservableObject {
         )
 
         correctAnswer = nil
+        wrongAnswer = nil
 
         moco.name = "moco"
-        mazeModel.characterLocationPoint = mazeModel.startPoint
+        mazeModel.resetPlayerLocation()
         moco.position =
             mazeModel.points[mazeModel.startPoint.yPos][mazeModel.startPoint.xPos]
         addChild(moco)
@@ -152,6 +162,9 @@ class MazeScene: SKScene, ObservableObject {
             height: min(size.width, size.height) / CGFloat(mazeModel.arrayPoint.count)
         )
         )
+        obj01.alpha = 0
+        obj02.alpha = 0
+        obj03.alpha = 0
 
         obj01.name = "obj01"
         obj01.position =

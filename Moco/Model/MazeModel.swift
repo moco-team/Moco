@@ -25,12 +25,12 @@ struct LocationPoint: Equatable {
 }
 
 struct MazeModel {
-    var characterLocationPoint = LocationPoint()
-    var correctPoint = LocationPoint()
-    var startPoint = LocationPoint()
-    var exitPoints = [LocationPoint()]
+    private(set) var characterLocationPoint = LocationPoint()
+    private(set) var correctPoint = LocationPoint()
+    private(set) var startPoint = LocationPoint()
+    private(set) var exitPoints = [LocationPoint()]
 
-    static var mapSize = MapSize(width: 23, height: 17)
+    static var mapSize = MapSize(width: 25, height: 13)
 
     var arrayPoint: [[Int]] = [[]]
 
@@ -41,19 +41,24 @@ struct MazeModel {
     )
 
     init() {
+        print("maze init")
         randomizeMaze()
     }
 
     mutating func randomizeMaze() {
-        let newMazeWithPlayerPos = MazeModel.generateMaze(
+        (arrayPoint, characterLocationPoint, exitPoints) = MazeModel.generateMaze(
             rows: MazeModel.mapSize.height,
             cols: MazeModel.mapSize.width
         )
-        arrayPoint = newMazeWithPlayerPos.0
-        characterLocationPoint = newMazeWithPlayerPos.1
-        correctPoint = newMazeWithPlayerPos.2.first!
-        exitPoints = newMazeWithPlayerPos.2
+        correctPoint = exitPoints.first!
         startPoint = characterLocationPoint
+        print(arrayPoint.count)
+        print(points.count)
+    }
+
+    mutating func resetPlayerLocation() {
+        print("Reset player location")
+        characterLocationPoint = startPoint
     }
 
     private static func generateMaze(rows: Int, cols: Int) -> ([[Int]], LocationPoint, [LocationPoint]) {
@@ -121,9 +126,9 @@ struct MazeModel {
 
         func resetGenerateInOutPoint(exitOnly: Bool = false) {
             for col in 0 ..< cols {
-                maze[0][col] = 1
+                maze[rows - 1][col] = 1
                 if !exitOnly {
-                    maze[rows - 1][col] = 1
+                    maze[0][col] = 1
                 }
             }
         }
@@ -140,9 +145,9 @@ struct MazeModel {
 
         func generateExitPoints() -> [LocationPoint] {
             var exitPositions = [
-                generateInOutXPoint(yPos: 0),
-                generateInOutXPoint(yPos: 0),
-                generateInOutXPoint(yPos: 0)
+                generateInOutXPoint(yPos: rows - 1),
+                generateInOutXPoint(yPos: rows - 1),
+                generateInOutXPoint(yPos: rows - 1)
             ]
 
             var xPositions = exitPositions.map { $0.xPos }.sorted()
@@ -150,9 +155,9 @@ struct MazeModel {
             while !checkDifferenceGreaterThan(xPositions) {
                 resetGenerateInOutPoint(exitOnly: true)
                 exitPositions = [
-                    generateInOutXPoint(yPos: 0),
-                    generateInOutXPoint(yPos: 0),
-                    generateInOutXPoint(yPos: 0)
+                    generateInOutXPoint(yPos: rows - 1),
+                    generateInOutXPoint(yPos: rows - 1),
+                    generateInOutXPoint(yPos: rows - 1)
                 ]
 
                 xPositions = exitPositions.map { $0.xPos }.sorted()
@@ -160,13 +165,13 @@ struct MazeModel {
             return exitPositions
         }
 
-        var characterPos = generateInOutXPoint(yPos: rows - 1)
+        var characterPos = generateInOutXPoint(yPos: 0)
         var exitPoints = generateExitPoints()
         var correctPos = exitPoints.first!
 
         while !canReachDestination(from: maze, startRow: characterPos.yPos, startCol: characterPos.xPos, destinationRow: correctPos.yPos, destinationCol: correctPos.xPos) {
             resetGenerateInOutPoint()
-            characterPos = generateInOutXPoint(yPos: rows - 1)
+            characterPos = generateInOutXPoint(yPos: 0)
             exitPoints = generateExitPoints()
             correctPos = exitPoints.first!
         }
@@ -237,7 +242,9 @@ struct MazeModel {
         guard
             points.indices.contains(characterLocationPoint.yPos) &&
             points.first!.indices.contains(characterLocationPoint.xPos)
-        else { return false }
+        else {
+            return false
+        }
 
         return true
     }

@@ -8,23 +8,131 @@
 import SwiftUI
 
 struct MazePrompt: View {
-    @State private var mazePromptViewModel = MazePromptViewModel()
+    @Environment(\.settingsViewModel) private var settingsViewModel
+    @Environment(\.audioViewModel) private var audioViewModel
+    @Environment(\.episodeViewModel) private var episodeViewModel
+    @Environment(\.mazePromptViewModel) private var mazePromptViewModel
+
+    @State private var isCorrectAnswerPopup = false
+    @State private var isWrongAnswerPopup = false
+
+    @State private var updateTimer = true
+    @State private var elapsedSecond = 0
+
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var promptText = "Moco adalah sapi jantan"
     var answersAsset = ["Maze/answer_one", "Maze/answer_two"]
+    var answers = ["satu", "dua", "tiga"]
     var correctAnswerAsset = "Maze/answer_three"
+    var initialTime = 60 * 3
+    var promptId = ""
+
+    var action: () -> Void = {}
+
+    func playInitialNarration() {
+        if mazePromptViewModel.isTutorialDone {
+            audioViewModel.playSound(soundFileName: "013 (maze) - bantu arahkan Moco ke jawaban yang benar ya", type: .m4a, category: .narration)
+        }
+    }
+
+    var body: some View {
+        ZStack {
+            ZStack {
+                VStack {
+                    HStack(alignment: .top) {
+                        MazeProgress()
+                        Spacer()
+                        TimerView(
+                            durationParamInSeconds: mazePromptViewModel.durationInSeconds
+                        )
+                        .padding(.trailing, Screen.width * 0.3)
+                    }
+                    Text(promptText)
+                        .customFont(.didactGothic, size: 40)
+                        .foregroundColor(.text.brown)
+                    Spacer()
+                    MazeView(
+                        answersAsset: answersAsset,
+                        answers: answers,
+                        correctAnswerAsset: correctAnswerAsset
+                    ) {
+                        action()
+                    }.padding(.bottom, 20)
+                        .id(promptText)
+                }
+                .ignoresSafeArea()
+                .frame(width: Screen.width, height: Screen.height)
+                if !mazePromptViewModel.isTutorialDone {
+                    MazeTutorialView()
+                }
+            }
+        }.background {
+            Image("Maze/bg-texture").resizable().scaledToFill().overlay {
+                Color.yellow.opacity(0.3)
+            }
+            .ignoresSafeArea()
+            .frame(width: Screen.width, height: Screen.height)
+        }
+        .ignoresSafeArea()
+        .frame(width: Screen.width, height: Screen.height)
+        .onChange(of: mazePromptViewModel.isTutorialDone) {
+            playInitialNarration()
+        }
+        .onChange(of: mazePromptViewModel.isCorrectAnswer) {
+            if mazePromptViewModel.isCorrectAnswer {
+                updateTimer = false
+                isCorrectAnswerPopup = true
+                mazePromptViewModel.currentMazeIndex += 1
+                mazePromptViewModel.durationInSeconds -= elapsedSecond - 15
+            }
+        }
+        .onChange(of: mazePromptViewModel.isWrongAnswer) {
+            if mazePromptViewModel.isWrongAnswer {
+                updateTimer = false
+                isWrongAnswerPopup = true
+                mazePromptViewModel.incWrong()
+                mazePromptViewModel.durationInSeconds -= elapsedSecond + 5
+            }
+        }
+        .onAppear {
+            mazePromptViewModel.reset()
+            (mazePromptViewModel.progress,
+             mazePromptViewModel.currentMazeIndex,
+             mazePromptViewModel.mazeCount) = episodeViewModel.getMazeProgress(promptId: promptId)
+            playInitialNarration()
+        }
+        .popUp(isActive: $isCorrectAnswerPopup, title: "Selamat kamu berhasil", withConfetti: true, disableCancel: true) {
+            action()
+        }
+        .popUp(isActive: $isWrongAnswerPopup, title: "Oh tidak! Kamu pergi ke jalan yang salah", disableCancel: true) {
+            action()
+        }
+        .onReceive(timer) { _ in
+            if updateTimer {
+                elapsedSecond += 1
+            }
+        }
+        .forceRotation()
+    }
+}
+
+struct MazePromptOld: View {
+    @Environment(\.promptViewModel) private var promptViewModel
+    @State private var mazePromptViewModel = MazePromptViewModel()
 
     var action: () -> Void = {}
 
     var body: some View {
         ZStack {
-            MazeView(answersAsset: answersAsset, correctAnswerAsset: correctAnswerAsset) {
+            MazeView(answersAsset: promptViewModel.prompts![0].answerAssets!,
+                     correctAnswerAsset: promptViewModel.prompts![0].correctAnswer) {
                 action()
             }
 
             if !mazePromptViewModel.isStarted {
                 VStack {
-                    Text(promptText)
+                    Text(promptViewModel.prompts![0].question ?? "")
                         .customFont(.didactGothic, size: 30)
                         .foregroundColor(.text.primary)
                         .opacity(mazePromptViewModel.blurOpacity)
@@ -33,7 +141,7 @@ struct MazePrompt: View {
                         }
                         .frame(width: Screen.width * 0.7, height: 0.4 * Screen.height)
                     if mazePromptViewModel.showStartButton {
-                        Button {
+                        SfxButton {
                             mazePromptViewModel.stopPrompt()
                         } label: {
                             Image("Buttons/button-start").resizable().scaledToFit()
@@ -48,12 +156,13 @@ struct MazePrompt: View {
                         )
                         .padding(.bottom, 20)
                     }
-                }.frame(width: Screen.width, height: Screen.height).background(.ultraThinMaterial.opacity(mazePromptViewModel.blurOpacity))
+                }.frame(width: Screen.width, height: Screen.height)
+                    .background(.ultraThinMaterial.opacity(mazePromptViewModel.blurOpacity))
             } else {
                 VStack {
                     HStack {
                         Spacer()
-                        Button {
+                        SfxButton {
                             mazePromptViewModel.playPrompt()
                         } label: {
                             Image("Buttons/button-question")

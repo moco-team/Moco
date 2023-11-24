@@ -15,18 +15,30 @@ struct StoryBookNew: View {
 
     let durationAndDelay: CGFloat = 0.3
     var image: String? = "Story/Cover/Story1"
-    var firstPageBackground: String?
+    var firstPageBackground: String
     var number: Int = 1
+    var isLocked = false
     @State private var peelEffectState = PeelEffectState.stop
 
     var tapHandler: (() -> Void)?
+
+    var width: CGFloat {
+        Screen.width * 0.3
+    }
+
+    var height: CGFloat {
+        Screen.height * 0.3
+    }
 
     var body: some View {
         VStack {
             ZStack {
                 Rectangle()
                     .fill(.white)
-                    .frame(width: 420, height: 300) // Adjust the frame size as needed
+                    .frame(
+                        width: width,
+                        height: height
+                    ) // Adjust the frame size as needed
                     .clipShape(
                         .rect(
                             topLeadingRadius: 16,
@@ -36,10 +48,13 @@ struct StoryBookNew: View {
                         )
                     )
 
-                Image(firstPageBackground!)
+                Image(firstPageBackground)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 400, height: 280)
+                    .frame(
+                        width: width,
+                        height: height
+                    ) // Adjust the frame size as needed
                     .clipShape(
                         .rect(
                             topLeadingRadius: 8,
@@ -55,7 +70,10 @@ struct StoryBookNew: View {
                             ZStack {
                                 Rectangle()
                                     .fill(.white)
-                                    .frame(width: 420, height: 300) // Adjust the frame size as needed
+                                    .frame(
+                                        width: width + 20,
+                                        height: height + 20
+                                    ) // Adjust the frame size as needed
                                     .clipShape(
                                         .rect(
                                             topLeadingRadius: 16,
@@ -67,7 +85,23 @@ struct StoryBookNew: View {
                                 Image(image ?? "")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: 400, height: 280) // Adjust the frame size as needed
+                                    .frame(
+                                        width: width,
+                                        height: height
+                                    ) // Adjust the frame size as needed
+                                    .overlay {
+                                        if isLocked {
+                                            Color.black.opacity(0.4)
+                                                .overlay {
+                                                    Image("Story/Cover/locked")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 100)
+                                                }
+                                        } else {
+                                            EmptyView()
+                                        }
+                                    }
                                     .clipShape(
                                         .rect(
                                             topLeadingRadius: 8,
@@ -77,29 +111,35 @@ struct StoryBookNew: View {
                                         )
                                     )
                             }
-                            .overlay(
-                                ZStack {
-                                    Image("Story/Cover/bookmark")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 70, height: 70)
-                                        .opacity(0.5)
+                            .overlay {
+                                if !isLocked {
+                                    ZStack {
+                                        Image("Story/Cover/bookmark")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 70, height: 70)
+                                            .opacity(0.5)
 
-                                    Text("\(number)")
-                                        .customFont(size: 30)
-                                        .foregroundColor(Color.brownTxt)
-                                        .fontWeight(.bold)
-                                        .padding(.bottom, 1)
-                                        .offset(x: 0, y: -9)
+                                        Text("\(number)")
+                                            .customFont(size: 30)
+                                            .foregroundColor(Color.brownTxt)
+                                            .fontWeight(.bold)
+                                            .padding(.bottom, 1)
+                                            .offset(x: 0, y: -9)
+                                    }
+                                    .position(x: 53, y: 41)
+                                } else {
+                                    EmptyView()
                                 }
-                                .position(x: 53, y: 41)
-                            )
+                            }
                         }
                     }
                 } background: {} onComplete: {
+                    guard !isLocked else { return }
                     tapHandler?()
                 }
                 .onTapGesture {
+                    guard !isLocked else { return }
                     peelEffectState = .start
                 }
             }
@@ -108,5 +148,5 @@ struct StoryBookNew: View {
 }
 
 #Preview {
-    StoryBookNew()
+    StoryBookNew(firstPageBackground: "Story/Cover/Story1")
 }

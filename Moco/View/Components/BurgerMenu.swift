@@ -11,6 +11,7 @@ struct BurgerMenu: View {
     @Environment(\.navigate) private var navigate
 
     @State private var expand = false
+    @State var isGameCenterAchievementsPresented = false
 
     var body: some View {
         HStack(spacing: 0) {
@@ -18,23 +19,21 @@ struct BurgerMenu: View {
             HStack {
                 if expand {
                     HStack {
-                        Button {
+                        SfxButton {
                             navigate.append(.achievements)
                         } label: {
                             Image("Story/Icons/achievements")
                                 .resizable()
                                 .frame(width: 90, height: 90)
                                 .shadow(radius: 4, x: -2, y: 2)
+                                .onTapGesture {
+                                    isGameCenterAchievementsPresented = true
+                                }
+                                .fullScreenCover(isPresented: $isGameCenterAchievementsPresented) {
+                                    GameCenterView(viewState: .achievements).ignoresSafeArea()
+                                }
                         }
-                        Button {
-                            navigate.append(.profile)
-                        } label: {
-                            Image("Story/Icons/profile")
-                                .resizable()
-                                .frame(width: 90, height: 90)
-                                .shadow(radius: 4, x: -2, y: 2)
-                        }
-                        Button {
+                        SfxButton {
                             navigate.append(.settings)
                         } label: {
                             Image("Story/Icons/settings")
@@ -46,7 +45,7 @@ struct BurgerMenu: View {
                         .padding(.leading, 20)
                         .padding(.trailing, 10)
                 }
-                Button {
+                SfxButton {
                     withAnimation(.spring()) {
                         self.expand.toggle()
                     }

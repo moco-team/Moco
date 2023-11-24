@@ -8,6 +8,8 @@
 import SwiftUI
 
 @Observable class TimerViewModel {
+    static var shared = TimerViewModel()
+
     private var timerModel = TimerModel()
     var timerSet: [String: Bool] = [:]
 
@@ -19,7 +21,7 @@ import SwiftUI
         if timerSet[key] != nil, timerSet[key]! {
             return
         }
-        startTimer(withInterval: interval, andJob: job)
+        startTimer(key: key, withInterval: interval, andJob: job)
         timerSet[key] = true
     }
 
@@ -30,20 +32,26 @@ import SwiftUI
         timerSet = [:]
     }
 
+    func stopTimer(_ key: String) {
+        timerModel.jobs.removeValue(forKey: key)
+        timerSet.removeValue(forKey: key)
+    }
+
     /// Start a timer
-    func startTimer(withInterval interval: Double, andJob job: @escaping () -> Void) {
-        if timerModel.internalTimer != nil {
-            timerModel.internalTimer?.invalidate()
+    func startTimer(key: String, withInterval interval: Double, andJob job: @escaping () -> Void) {
+        if timerModel.internalTimer[key] != nil {
+            timerModel.internalTimer[key]??.invalidate()
+            timerModel.jobs.removeValue(forKey: key)
         }
-        timerModel.jobs.append(job)
-        timerModel.internalTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(doJob), userInfo: nil, repeats: true)
+        timerModel.jobs[key] = job
+        timerModel.internalTimer[key] = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(doJob), userInfo: nil, repeats: true)
     }
 
     func getTimerRemaining(_: String) {}
 
     @objc func doJob() {
         guard timerModel.jobs.count > 0 else { return }
-        timerModel.jobs.forEach { job in
+        timerModel.jobs.forEach { _, job in
             job()
         }
     }

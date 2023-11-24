@@ -11,7 +11,6 @@ import SwiftUI
 
 /// Definition of route keys
 enum Route: Hashable {
-    case home
     case story
 //    case storyAdmin(String?)
 //    case storyThemeAdmin
@@ -30,8 +29,6 @@ struct Routes: View {
 
     var body: some View {
         switch route {
-        case .home:
-            HomeView()
         case .story:
             StoryView()
 //        case .storyAdmin:
@@ -57,6 +54,8 @@ struct Routes: View {
 /// Route view model, should not change if not necessary
 @Observable
 class RouteViewModel {
+    static var shared = RouteViewModel()
+
     var navPath = [Route]() {
         willSet {
             previousRoute = navPath.last

@@ -64,4 +64,28 @@ import SwiftData
             }
         }
     }
+
+    func getPromptByType(promptType: PromptType) -> [PromptModel] {
+        let result = selectedEpisode?.stories?
+            .sorted {
+                lhs, rhs in lhs.pageNumber < rhs.pageNumber
+            }
+            .compactMap { $0.prompts }
+            .flatMap { $0 }
+            .filter {
+                $0.promptType == promptType
+            } ?? []
+
+        return result
+    }
+
+    func getMazeProgress(promptId: String) -> (Double, Int, Int) {
+        let mazePrompts = getPromptByType(promptType: .maze)
+        guard mazePrompts.count > 0 else { return (0, 0, 0) }
+        let nthPrompt = Double((mazePrompts.firstIndex {
+            $0.uid == promptId
+        } ?? 0))
+        return (nthPrompt / Double(mazePrompts.count),
+                Int(nthPrompt), mazePrompts.count)
+    }
 }

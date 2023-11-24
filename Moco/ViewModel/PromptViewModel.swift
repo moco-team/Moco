@@ -11,7 +11,7 @@ import SwiftData
 @Observable class PromptViewModel: BaseViewModel {
     static var shared = PromptViewModel()
 
-    var prompt: PromptModel?
+    var prompts: [PromptModel]?
 
     init(modelContext: ModelContext? = nil) {
         super.init()
@@ -20,7 +20,7 @@ import SwiftData
         }
     }
 
-    func fetchPrompt(_ story: StoryModel) {
+    func fetchPrompts(_ story: StoryModel) {
         let storyUid = story.uid
         let fetchDescriptor = FetchDescriptor<PromptModel>(
             predicate: #Predicate {
@@ -29,6 +29,6 @@ import SwiftData
             sortBy: [SortDescriptor<PromptModel>(\.createdAt)]
         )
 
-        prompt = (try? modelContext?.fetch(fetchDescriptor).first ?? nil) ?? nil
+        prompts = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
     }
 }

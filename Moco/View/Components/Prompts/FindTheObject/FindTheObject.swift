@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct FindTheObjectView: View {
+    @Environment(\.promptViewModel) private var promptViewModel
     @Environment(\.navigate) private var navigate
 
     @Binding var isPromptDone: Bool
 
     let content: String
-    let hints: [HintModel]
-    let correctAnswer: String
     @State var balloons: [Balloon]
 
     let maxTry = 3
@@ -64,7 +63,7 @@ struct FindTheObjectView: View {
                 print("Selesai!")
             }
         }
-        .popUp(isActive: $showTheAnswer, title: correctAnswer) {
+        .popUp(isActive: $showTheAnswer, title: promptViewModel.prompts![0].correctAnswer) {
             print("Selesai!")
         } cancelHandler: {
             navigate.popToRoot()
@@ -80,8 +79,6 @@ struct FindTheObjectView: View {
     FindTheObjectView(
         isPromptDone: .constant(false),
         content: "Once upon a time...",
-        hints: [HintModel(hint: "Coba lagi!"), HintModel(hint: "Ayo coba lagi!")],
-        correctAnswer: "Jawaban yang benar adalah balon berwarna Merah",
         balloons: [
             Balloon(color: "orange", isCorrect: false),
             Balloon(color: "ungu", isCorrect: false),

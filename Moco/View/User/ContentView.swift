@@ -10,10 +10,16 @@ import SwiftUI
 
 // !!!: - Jangan Diubah
 struct ContentView: View {
+    @State private var isActive = false
+
     var body: some View {
         // MARK: - First View Declaration
 
-        HomeView()
+        if isActive {
+            HomeView()
+        } else {
+            SplashScreen(isActive: $isActive)
+        }
     }
 }
 

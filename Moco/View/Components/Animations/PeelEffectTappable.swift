@@ -7,7 +7,14 @@
 
 import SwiftUI
 
+/// BEWARE
+///
+/// if using this view, the content's onAppear function
+/// will be called several times
 struct PeelEffectTappable<Content: View, Background: View>: View {
+    @Environment(\.audioViewModel) private var audioViewModel
+    @State private var soundFxExecuted = false
+    @State private var timerViewModel = TimerViewModel()
     var content: Content
     var background: Background
 
@@ -37,8 +44,6 @@ struct PeelEffectTappable<Content: View, Background: View>: View {
 
     @State private var dragProgress: CGFloat = 0
     @State private var onCompleteExecuted = false
-
-    let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
 
     var body: some View {
         content
@@ -104,31 +109,8 @@ struct PeelEffectTappable<Content: View, Background: View>: View {
             .background {
                 background
             }
-            .onReceive(timer) { _ in
-                switch self.state {
-                case .start:
-                    if dragProgress < maxProgress {
-                        dragProgress += 0.1
-                    } else if !onCompleteExecuted {
-                        onComplete()
-                        onCompleteExecuted = true
-                    }
-                case .stop:
-                    dragProgress = 0
-                    onCompleteExecuted = false
-                case .reverse:
-                    if dragProgress == 0 && !onCompleteExecuted {
-                        dragProgress = maxProgress
-                    }
-                    if dragProgress >= 0.1 {
-                        dragProgress -= 0.1
-                    } else if !onCompleteExecuted {
-                        onComplete()
-                        onCompleteExecuted = true
-                    }
-                }
-            }
             .onAppear {
+                soundFxExecuted = false
                 onCompleteExecuted = false
                 if !isReverse {
                     dragProgress = 0
@@ -136,6 +118,38 @@ struct PeelEffectTappable<Content: View, Background: View>: View {
                 } else {
                     state = .reverse
                     dragProgress = maxProgress
+                }
+                timerViewModel.startTimer(key: "timerPeelEffect", withInterval: 0.05) {
+                    switch self.state {
+                    case .start:
+                        if !soundFxExecuted {
+                            audioViewModel.playSound(soundFileName: "card_flip", category: .soundEffect)
+                            soundFxExecuted.toggle()
+                        }
+                        if dragProgress < maxProgress {
+                            dragProgress += 0.1
+                        } else if !onCompleteExecuted {
+                            onComplete()
+                            onCompleteExecuted = true
+                        }
+                    case .stop:
+                        dragProgress = 0
+                        onCompleteExecuted = false
+                    case .reverse:
+                        if !soundFxExecuted {
+                            audioViewModel.playSound(soundFileName: "card_flip", category: .soundEffect)
+                            soundFxExecuted.toggle()
+                        }
+                        if dragProgress == 0 && !onCompleteExecuted {
+                            dragProgress = maxProgress
+                        }
+                        if dragProgress >= 0.1 {
+                            dragProgress -= 0.1
+                        } else if !onCompleteExecuted {
+                            onComplete()
+                            onCompleteExecuted = true
+                        }
+                    }
                 }
             }
     }

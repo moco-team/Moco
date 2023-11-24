@@ -8,12 +8,17 @@
 import ConfettiSwiftUI
 import SwiftUI
 
+public enum PopUpType {
+    case base
+    case danger
+}
+
 struct PopUpComponent: ViewModifier {
     @State private var offset: CGFloat = 1000
     @Binding var isActive: Bool
     @State private var confettiCounter = 0
 
-    var title: String? = "Congratulations"
+    var title = "Congratulations"
     var text: String? = ""
 
     var topImage: String?
@@ -23,16 +28,23 @@ struct PopUpComponent: ViewModifier {
     var containerBgColor = Color.white
     var textColor = Color.black
     var overlayOpacity = 0.3
+    var isLarge = false
     var width = Screen.width * 0.45
     var height = Screen.height * 0.6
+    var type = PopUpType.base
+    var disableCancel = false
 
     var withConfetti = false
+
+    var closeWhenDone = false
+    var shakeItOff: CGFloat = 0
 
     var function: () -> Void
     var cancelHandler: (() -> Void)?
 
     func body(content: Content) -> some View {
-        content.overlay {
+        ZStack {
+            content.ignoresSafeArea()
             if isActive {
                 PopUpComponentView(
                     isActive: $isActive,
@@ -47,7 +59,11 @@ struct PopUpComponent: ViewModifier {
                     textColor: textColor,
                     overlayOpacity: overlayOpacity,
                     width: width,
-                    height: height
+                    height: height,
+                    closeWhenDone: closeWhenDone,
+                    shakeItOff: shakeItOff,
+                    type: type,
+                    disableCancel: disableCancel
                 ) {
                     function()
                 } cancelHandler: {
@@ -60,12 +76,15 @@ struct PopUpComponent: ViewModifier {
 }
 
 struct PopUpComponentView: View {
+    @Environment(\.audioViewModel) private var audioViewModel
+    @Environment(\.timerViewModel) private var timerViewModel
     @State private var offset: CGFloat = 1000
     @Binding var isActive: Bool
     @State private var confettiCounter = 0
     @State private var internalOverlayOpacity = 0.0
+    @State private var shakeAnimatableData: CGFloat = 0
 
-    var title: String? = "Congratulations"
+    var title = "Congratulations"
     var text: String? = ""
     var withConfetti = false
 
@@ -76,8 +95,14 @@ struct PopUpComponentView: View {
     var containerBgColor = Color.white
     var textColor = Color.blue2Txt
     var overlayOpacity = 0.3
+    var isLarge = false
     var width = Screen.width * 0.45
     var height = Screen.height * 0.6
+    var closeWhenDone = false
+    var shakeItOff: CGFloat = 0
+    var type = PopUpType.base
+
+    var disableCancel = false
 
     var function: () -> Void
     var cancelHandler: (() -> Void)?
@@ -86,84 +111,109 @@ struct PopUpComponentView: View {
         ZStack {
             Color(.black)
                 .opacity(internalOverlayOpacity)
-                .frame(width: Screen.width, height: Screen.height)
                 .onTapGesture {
+                    guard !disableCancel else { return }
                     close()
                 }
             VStack(alignment: .center, spacing: 0) {
-                HStack(alignment: .center) {
-                    ZStack {
-                        if topImage != nil {
-                            Image(topImage!)
-                                .resizable()
-                                .scaledToFit().frame(width: 200)
-                                .padding(.top, -190)
-                                .padding(.leading, -100)
-                        }
+                ZStack {
+                    if topImage != nil {
+                        Image(topImage!)
+                            .resizable()
+                            .scaledToFit().frame(width: 200)
+                            .padding(.top, -190)
+                            .padding(.leading, -100)
+                    }
+                    VStack {
+                        Spacer()
 
-                        Rectangle().frame(width: width, height: height)
-                            .foregroundColor(.clear)
-                            .overlay {
-                                Image("Components/popup-base").resizable().scaledToFit()
-                            }
+                        Text(title)
+                            .customFont(.cherryBomb, size: 32)
+                            .fontWeight(.heavy)
+                            .foregroundColor(textColor)
+                            .glowBorder(color: .white, lineWidth: 5)
+                            .padding(.top, 10)
+                            .padding(.bottom, 20)
+                            .padding(.horizontal, 70)
+                            .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
 
-                        VStack {
-                            Text(title ?? "Congratulations").customFont(.cherryBomb, size: 32)
-                                .fontWeight(.heavy)
+                        if text != "" {
+                            Text(text ?? "")
                                 .foregroundColor(textColor)
-                                .glowBorder(color: .white, lineWidth: 5)
-                                .padding(.top, 10)
-                                .padding(.bottom, 20)
+                                .font(.footnote)
+                                .padding(.bottom, 23)
                                 .padding(.horizontal, 70)
                                 .multilineTextAlignment(.center)
-                                .fixedSize(horizontal: false, vertical: true)
+                        }
 
-                            if text != "" {
-                                Text(text ?? "")
-                                    .foregroundColor(textColor)
-                                    .font(.footnote)
-                                    .padding(.bottom, 23)
-                                    .padding(.horizontal, 70)
-                                    .multilineTextAlignment(.center)
-                            }
+                        Spacer()
 
-                            Grid(horizontalSpacing: 20) {
-                                GridRow {
-                                    if cancelText != nil {
-                                        Button(cancelText!) {
-                                            if cancelHandler != nil {
-                                                cancelHandler!()
-                                            }
-                                            close()
+                        Grid(horizontalSpacing: 0) {
+                            GridRow {
+                                if cancelText != nil {
+                                    Spacer()
+                                    SfxButton(cancelText!) {
+                                        if cancelHandler != nil {
+                                            cancelHandler!()
                                         }
-                                        .buttonStyle(MainButton(width: 180, type: .warning))
-                                        .font(.footnote)
+                                        close()
                                     }
-                                    Button(confirmText) {
-                                        function()
-                                    }
-                                    .buttonStyle(MainButton(width: 180, type: .success))
+                                    .buttonStyle(MainButton(width: 180, type: .warning))
                                     .font(.footnote)
+                                }
+                                Spacer()
+                                SfxButton(confirmText) {
+                                    function()
+                                    if closeWhenDone {
+                                        close()
+                                    }
+                                }
+                                .buttonStyle(MainButton(width: 180, type: .success))
+                                .font(.footnote)
+                                .shake(animatableData: shakeItOff)
+                                Spacer()
+                            }
+                        }
+                        .padding(.bottom)
+                    }.padding(20)
+                        .overlay(alignment: .topTrailing) {
+                            if !disableCancel {
+                                SfxButton {
+                                    close()
+                                } label: {
+                                    Image("Buttons/button-x")
+                                        .resizable()
+                                        .frame(width: 50, height: 50)
+                                        .shadow(radius: 20, x: -20, y: 20)
                                 }
                             }
                         }
-
-                        if bottomImage != nil {
-                            Image(bottomImage!)
-                                .resizable()
-                                .scaledToFit().frame(width: 110)
-                                .padding(.top, 210)
-                                .padding(.leading, 240)
-                        }
-                    }.frame(width: width, height: height)
+                    if bottomImage != nil {
+                        Image(bottomImage!)
+                            .resizable()
+                            .scaledToFit().frame(width: 110)
+                            .padding(.top, 210)
+                            .padding(.leading, 240)
+                    }
                 }
-            }
-            .overlay(alignment: .topTrailing) {
-                Button {
-                    close()
-                } label: {
-                    Image("Buttons/button-x").resizable().frame(width: 50, height: 50).shadow(radius: 20, x: -20, y: 20)
+                .background {
+                    switch type {
+                    case .base:
+                        Image(isLarge ?
+                            "Components/popup-base-lg" :
+                            "Components/popup-base")
+                            .resizable()
+                            .scaledToFill()
+                    case .danger:
+                        Image(isLarge ?
+                            "Components/popup-base-lg" :
+                            "Components/popup-danger")
+                            .resizable()
+                            .scaledToFill()
+                    }
                 }
+                .frame(maxWidth: width, maxHeight: height)
             }
             .offset(x: 0, y: offset)
             .onAppear {
@@ -174,6 +224,7 @@ struct PopUpComponentView: View {
                 }
                 if withConfetti {
                     confettiCounter += 1
+                    audioViewModel.playSound(soundFileName: "congratulation-popup")
                 }
             }
         }
@@ -282,7 +333,7 @@ struct PopUpComponentViewOld: View {
                 }
             }
             .overlay(alignment: .topTrailing) {
-                Button {
+                SfxButton {
                     close()
                 } label: {
                     Image("Buttons/button-x").resizable().frame(width: 50, height: 50)

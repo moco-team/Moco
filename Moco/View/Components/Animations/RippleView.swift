@@ -15,8 +15,8 @@ struct Ripple: Identifiable, Hashable {
 
 struct RippleView: View {
     @State private var isVisible = true
-    var xPosition: CGFloat
-    var yPosition: CGFloat
+    var xPosition: CGFloat?
+    var yPosition: CGFloat?
 
     @State var index = 0
     let images = (0 ... 60).map { UIImage(named: "Ripple_\($0)")! }
@@ -28,14 +28,24 @@ struct RippleView: View {
         VStack {
             if isVisible {
                 VStack {
-                    Image(uiImage: images[index])
-                        .resizable()
-                        .frame(width: 200, height: 200, alignment: .center)
-                        .onReceive(timer) { _ in
-                            self.index += 1
-                            if self.index >= 60 { self.index = 0 }
-                        }
-                        .position(x: xPosition, y: yPosition)
+                    if let xPos = xPosition, let yPos = yPosition {
+                        Image(uiImage: images[index])
+                            .resizable()
+                            .frame(width: 200, height: 200, alignment: .center)
+                            .onReceive(timer) { _ in
+                                self.index += 1
+                                if self.index >= 60 { self.index = 0 }
+                            }
+                            .position(x: xPos, y: yPos)
+                    } else {
+                        Image(uiImage: images[index])
+                            .resizable()
+                            .frame(width: 200, height: 200, alignment: .center)
+                            .onReceive(timer) { _ in
+                                self.index += 1
+                                if self.index >= 60 { self.index = 0 }
+                            }
+                    }
                 }.onAppear(perform: {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
                         self.index = 0

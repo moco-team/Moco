@@ -27,7 +27,7 @@ import SwiftData
             predicate: #Predicate {
                 $0.episode?.uid == episodeUid
             },
-            sortBy: [SortDescriptor<StoryModel>(\.createdAt)]
+            sortBy: [SortDescriptor<StoryModel>(\.pageNumber)]
         )
 
         storyPage = (try? modelContext?.fetch(fetchDescriptor)[index] ?? nil) ?? nil
@@ -46,18 +46,28 @@ import SwiftData
         return (try? modelContext?.fetch(fetchDescriptor)[index].background ?? nil) ?? nil
     }
 
-    func getSumMazePrompt(episode: EpisodeModel) -> Int {
-        let episodeUid = episode.uid
-        let mazeType = PromptType.maze
-        let fetchDescriptor = FetchDescriptor<StoryModel>(
-            predicate: #Predicate {
-                $0.episode?.uid == episodeUid && $0.prompt?.promptType == mazeType
-            },
-            sortBy: [SortDescriptor<StoryModel>(\.createdAt)]
-        )
+    func getStoryContentByType(_ type: StoryContentType) -> [StoryContentModel]? {
+        guard storyPage != nil else { return nil }
 
-        let result = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
-
-        return result.count
+        return (storyPage?.storyContents?.filter {
+            $0.contentType == type
+        } ?? []).sorted {
+            lhs, rhs in lhs.createdAt < rhs.createdAt
+        }
     }
+
+//    func getSumMazePrompt(episode: EpisodeModel) -> Int {
+//        let episodeUid = episode.uid
+//        let mazeType = PromptType.maze
+//        let fetchDescriptor = FetchDescriptor<StoryModel>(
+//            predicate: #Predicate {
+//                $0.episode?.uid == episodeUid && $0.prompt?.promptType == mazeType
+//            },
+//            sortBy: [SortDescriptor<StoryModel>(\.createdAt)]
+//        )
+//
+//        let result = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
+//
+//        return result.count
+//    }
 }

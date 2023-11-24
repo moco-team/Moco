@@ -8,11 +8,40 @@
 import AVFoundation
 
 @Observable class AudioViewModel: NSObject, AVAudioPlayerDelegate {
+    static var shared = AudioViewModel()
+
+    override init() {
+        super.init()
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+        } catch {
+            print("Error setting AVAudioSession category")
+        }
+    }
+
     private var audioModel = AudioModel()
 
     /// Plays a sound with arbitrary filename and type, specify numberOfLoops = -1 to play indefinitely
     func playSound(soundFileName: String, type: String = "mp3", numberOfLoops: Int = 0, volume: Float = 1, category: AudioCategory? = nil) {
-        audioModel.playSound(soundFileName: soundFileName, type: type, numberOfLoops: numberOfLoops, volume: volume, category: category)
+        guard !Process.isPreview else { return }
+        let player = audioModel.playSound(soundFileName: soundFileName, type: type, numberOfLoops: numberOfLoops, volume: volume, category: category)
+        player.delegate = self
+    }
+
+    func playSound(soundFileName: String) {
+        playSound(soundFileName: soundFileName, type: .mp3, numberOfLoops: 0, volume: 1, category: nil)
+    }
+
+    func playSound(soundFileName: String, category: AudioCategory) {
+        playSound(soundFileName: soundFileName, type: .mp3, numberOfLoops: 0, volume: 1, category: category)
+    }
+
+    func playSound(soundFileName: String, numberOfLoops: Int, category: AudioCategory) {
+        playSound(soundFileName: soundFileName, type: .mp3, numberOfLoops: numberOfLoops, volume: 1, category: category)
+    }
+
+    func playSound(soundFileName: String, type: AudioType = .mp3, numberOfLoops: Int = 0, volume: Float = 1, category: AudioCategory? = nil) {
+        playSound(soundFileName: soundFileName, type: type.rawValue, numberOfLoops: numberOfLoops, volume: volume, category: category)
     }
 
     /// Stop a sound from playing
@@ -25,8 +54,8 @@ import AVFoundation
         audioModel.stopAllSounds()
     }
 
-    func pauseAllSounds() {
-        audioModel.pauseAllSounds()
+    func pauseAllSounds(_ category: AudioCategory? = nil) {
+        audioModel.pauseAllSounds(category)
     }
 
     /// Stop all sounds from playing
@@ -43,10 +72,12 @@ import AVFoundation
     }
 
     func playSounds(soundFileNames: [String]) {
+        guard !Process.isPreview else { return }
         audioModel.playSounds(soundFileNames: soundFileNames)
     }
 
     func playSounds(soundFileNames: String...) {
+        guard !Process.isPreview else { return }
         audioModel.playSounds(soundFileNames: soundFileNames)
     }
 
@@ -61,6 +92,7 @@ import AVFoundation
     }
 
     func playSounds(soundFileNames: [String], withDelay: Double) { // withDelay is in seconds
+        guard !Process.isPreview else { return }
         soundFileNames.enumerated().forEach { index, soundFileName in
             let delay = withDelay * Double(index)
             _ = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(playSoundNotification(_:)), userInfo: ["fileName": soundFileName], repeats: false)
@@ -76,12 +108,14 @@ import AVFoundation
     }
 
     func playSoundsQueue(sounds: [AudioModel.QueuePlayerParam], intervalDuration: Double = 0, volume: Float = 1, id: String? = nil, category: AudioCategory? = nil) {
+        guard !Process.isPreview else { return }
         audioModel.playSoundsQueue(sounds: sounds, intervalDuration: intervalDuration, volume: volume, id: id, category: category)
     }
 
     @objc func playSoundNotification(_ notification: NSNotification) {
+        guard !Process.isPreview else { return }
         if let soundFileName = notification.userInfo?["fileName"] as? String {
-            audioModel.playSound(soundFileName: soundFileName)
+            _ = audioModel.playSound(soundFileName: soundFileName)
         }
     }
 

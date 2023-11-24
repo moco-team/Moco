@@ -12,7 +12,7 @@ import SwiftUI
 @Observable class StoryContentViewModel: BaseViewModel {
     static var shared = StoryContentViewModel()
 
-    var narratives: [StoryContentModel]?
+    var narratives: [StoryContentModel]? = []
     var lottieAnimation: StoryContentModel?
     var bgSound: StoryContentModel?
 
