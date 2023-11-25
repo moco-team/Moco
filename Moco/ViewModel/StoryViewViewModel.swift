@@ -9,7 +9,7 @@ import SwiftUI
 
 class StoryViewViewModel: ObservableObject {
     // MARK: - Environments stored property
-    
+
     private(set) var userViewModel = UserViewModel.shared
     private(set) var storyThemeViewModel = StoryThemeViewModel.shared
     private(set) var storyViewModel = StoryViewModel.shared

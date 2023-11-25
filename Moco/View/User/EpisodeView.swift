@@ -75,19 +75,19 @@ struct EpisodeView: View {
                                     if episode.isAvailable || index < userViewModel.userLogin!.availableEpisodeSum {
                                         Task {
                                             episodeViewModel.setSelectedEpisode(episode)
-                                            
+
                                             // open new story page
                                             storyViewModel.fetchStory(0, episodeViewModel.selectedEpisode!)
                                             storyContentViewModel.fetchStoryContents(storyViewModel.storyPage!)
-                                            
+
                                             if storyViewModel.storyPage!.isHavePrompt {
                                                 promptViewModel.fetchPrompts(storyViewModel.storyPage!)
-                                                
+
                                                 if promptViewModel.prompts![0].hints != nil {
                                                     hintViewModel.fetchHints(promptViewModel.prompts![0])
                                                 }
                                             }
-                                            
+
                                             navigate.append(.story)
                                         }
                                     }

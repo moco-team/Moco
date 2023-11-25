@@ -20,7 +20,7 @@ extension EnvironmentValues {
         get { self[TimerViewModelKey.self] }
         set { self[TimerViewModelKey.self] = newValue }
     }
-    
+
     var userViewModel: UserViewModel {
         get { self[UserViewModelKey.self] }
         set { self[UserViewModelKey.self] = newValue }
