@@ -409,7 +409,7 @@ private let episode2 = EpisodeModel(
             ]
         )
     ],
-    isAvailable: true
+    isAvailable: false
 )
 
 private let episode3 = EpisodeModel(
@@ -628,7 +628,7 @@ private let episode3 = EpisodeModel(
             ]
         )
     ],
-    isAvailable: true
+    isAvailable: false
 )
 
 private let episode4 = EpisodeModel(
@@ -730,7 +730,7 @@ private let episode4 = EpisodeModel(
             earlyPrompt: true
         )
     ],
-    isAvailable: true
+    isAvailable: false
 )
 
 struct Story1: StoryProtocol {

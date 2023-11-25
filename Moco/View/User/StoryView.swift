@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StoryView: View {
     // MARK: - Environments
+
     @Environment(\.storyThemeViewModel) private var storyThemeViewModel
     @Environment(\.storyViewModel) private var storyViewModel
     @Environment(\.episodeViewModel) private var episodeViewModel

@@ -14,6 +14,7 @@ struct HomeView: View {
     @Environment(\.timerViewModel) private var timerViewModel
 
     @Environment(\.storyThemeViewModel) private var storyThemeViewModel
+    @Environment(\.userViewModel) private var userViewModel
     @Environment(\.navigate) private var navigate
 
     @State private var homeViewModel = HomeViewModel()
@@ -96,6 +97,22 @@ struct HomeView: View {
             }
             .onAppear {
                 storyThemeViewModel.fetchStoryThemes()
+
+                // Setiap user punya progress masing-masing dan kalau mau terulang dari episode awal,
+                // maka availableEpisodeSum milik user harus direset jumlahnya menjadi 1
+                // (bisa juga dengan cara membuka comment line di bawah ini untuk proses testing saja!)
+
+//                userViewModel.deleteAllUsers()
+
+                userViewModel.fetchUsers()
+
+                if let users = userViewModel.users, users.count > 0 {
+                    userViewModel.userLogin = users[0]
+                } else {
+                    userViewModel.addUser(userData: UserModel(availableStoryThemeSum: 1, availableEpisodeSum: 1))
+                    userViewModel.userLogin = userViewModel.users![0]
+                }
+
                 if navigate.previousRoute == nil {
                     audioViewModel.clearAll()
                     audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1, category: .backsound)

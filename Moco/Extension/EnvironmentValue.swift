@@ -21,6 +21,11 @@ extension EnvironmentValues {
         set { self[TimerViewModelKey.self] = newValue }
     }
 
+    var userViewModel: UserViewModel {
+        get { self[UserViewModelKey.self] }
+        set { self[UserViewModelKey.self] = newValue }
+    }
+
     var storyThemeViewModel: StoryThemeViewModel {
         get { self[StoryThemeViewModelKey.self] }
         set { self[StoryThemeViewModelKey.self] = newValue }
@@ -70,6 +75,10 @@ private struct AudioViewModelKey: EnvironmentKey {
 
 private struct TimerViewModelKey: EnvironmentKey {
     static var defaultValue: TimerViewModel = .init()
+}
+
+private struct UserViewModelKey: EnvironmentKey {
+    static var defaultValue: UserViewModel = .init()
 }
 
 private struct StoryThemeViewModelKey: EnvironmentKey {
