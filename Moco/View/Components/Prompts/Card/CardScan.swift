@@ -8,9 +8,24 @@
 import CodeScanner
 import SwiftUI
 
+enum CameraMode {
+    case front
+    case back
+
+    mutating func toggle() {
+        switch self {
+        case .back:
+            self = .front
+        case .front:
+            self = .back
+        }
+    }
+}
+
 struct CardScan: View {
     @Environment(\.audioViewModel) private var audioViewModel
 
+    @State private var cameraMode = CameraMode.back
     @Binding var scanResult: [String]
 
     var onComplete: (() -> Void)?
@@ -33,16 +48,43 @@ struct CardScan: View {
                     }
                 }
                 VStack {
-                    CodeScannerView(
-                        codeTypes: [.qr],
-                        scanMode: .oncePerCode,
-                        completion: { result in
-                            if case let .success(code) = result {
-                                scanResult.append(code.string)
-                                onComplete?()
+                    ZStack {
+                        CodeScannerView(
+                            codeTypes: [.qr],
+                            scanMode: .oncePerCode,
+                            videoCaptureDevice: cameraMode == .back ?
+                                .default(.builtInUltraWideCamera,
+                                         for: .video,
+                                         position: .back) :
+                                .default(.builtInWideAngleCamera,
+                                         for: .video,
+                                         position: .front),
+                            completion: { result in
+                                if case let .success(code) = result {
+                                    scanResult.append(code.string)
+                                    onComplete?()
+                                }
+                            }
+                        ).id(cameraMode)
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Spacer()
+                                SfxButton {
+                                    cameraMode.toggle()
+                                } label: {
+                                    Image("Buttons/button-switch-camera").resizable().scaledToFit()
+                                }.buttonStyle(
+                                    CircleButton(
+                                        width: 80,
+                                        height: 80,
+                                        backgroundColor: .clear,
+                                        foregroundColor: .clear
+                                    )
+                                ).padding()
                             }
                         }
-                    )
+                    }
                 }
             }
         }.task {
