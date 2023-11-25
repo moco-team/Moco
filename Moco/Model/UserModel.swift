@@ -14,6 +14,7 @@ final class UserModel: Identifiable, CustomPersistentModel {
     @Attribute var slug: String = ""
     @Attribute var availableStoryThemeSum: Int = 1
     @Attribute var availableEpisodeSum: Int = 0
+    @Attribute var clearedEpisodeSum: Int = 0
     @Attribute var createdAt = Date()
     @Attribute var updatedAt = Date()
 
