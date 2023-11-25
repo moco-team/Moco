@@ -98,7 +98,10 @@ struct HomeView: View {
             .onAppear {
                 storyThemeViewModel.fetchStoryThemes()
 
-                // Setiap user punya progress masing-masing dan kalau mau terulang dari episode awal, maka availableEpisodeSum milik user harus direset jumlahnya menjadi 1 (bisa juga dengan cara membuka comment line di bawah ini untuk proses testing saja!)
+                // Setiap user punya progress masing-masing dan kalau mau terulang dari episode awal,
+                // maka availableEpisodeSum milik user harus direset jumlahnya menjadi 1
+                // (bisa juga dengan cara membuka comment line di bawah ini untuk proses testing saja!)
+
 //                userViewModel.deleteAllUsers()
 
                 userViewModel.fetchUsers()
