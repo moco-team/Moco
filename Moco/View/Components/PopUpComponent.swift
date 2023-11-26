@@ -128,13 +128,13 @@ struct PopUpComponentView: View {
                         Spacer()
 
                         Text(title)
-                            .customFont(.cherryBomb, size: 32)
+                            .customFont(.cherryBomb, size: UIDevice.isIPad ? 32 : 24)
                             .fontWeight(.heavy)
                             .foregroundColor(textColor)
                             .glowBorder(color: .white, lineWidth: 5)
                             .padding(.top, 10)
                             .padding(.bottom, 20)
-                            .padding(.horizontal, 70)
+                            .padding(.horizontal, 10)
                             .multilineTextAlignment(.center)
                             .fixedSize(horizontal: false, vertical: true)
 
@@ -184,7 +184,10 @@ struct PopUpComponentView: View {
                                 } label: {
                                     Image("Buttons/button-x")
                                         .resizable()
-                                        .frame(width: 50, height: 50)
+                                        .frame(
+                                            width: UIDevice.isIPad ? 50 : 40,
+                                            height: UIDevice.isIPad ? 50 : 40
+                                        )
                                         .shadow(radius: 20, x: -20, y: 20)
                                 }
                             }

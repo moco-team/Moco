@@ -12,7 +12,7 @@ struct EpisodeItem: View {
     @Environment(\.episodeViewModel) private var episodeViewModel
 
     var number = 1
-    var fontSize = CGFloat(55)
+    var fontSize: CGFloat = UIDevice.isIPad ? 55 : 30
     var width = CGFloat(Screen.width * 0.3)
     var height = CGFloat(Screen.height * 0.5)
 
@@ -31,17 +31,32 @@ struct EpisodeItem: View {
 
                 if isAvailable {
                     HStack {
-                        VStack {
-                            Text("Bagian")
-                                .customFont(.cherryBomb, size: fontSize - 18)
-                                .foregroundColor(.text.brown)
-                            Text("\(number)")
-                                .customFont(.cherryBomb, size: fontSize)
-                                .foregroundColor(.text.brown)
+                        ZStack {
+                            VStack {
+                                Text("Bagian")
+                                    .customFont(.cherryBomb, size: fontSize - 18)
+                                    .foregroundColor(.text.brown)
+                                Text("\(number)")
+                                    .customFont(.cherryBomb, size: fontSize)
+                                    .foregroundColor(.text.brown)
+                            }
+                            if number < userViewModel.userLogin!.availableEpisodeSum {
+                                HStack {
+                                    Spacer()
+                                    VStack {
+                                        Spacer()
+                                        Image("Story/done-icon")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: UIDevice.isIPad ? 40 : 20)
+                                            .padding()
+                                    }
+                                }
+                            }
                         }
                     }
                     .frame(
-                        width: proxy.size.width * 0.5,
+                        width: proxy.size.width * (UIDevice.isIPad ? 0.5 : 0.4),
                         height: proxy.size.height * 0.3
                     )
                     .offset(
@@ -64,4 +79,6 @@ struct EpisodeItem: View {
 
 #Preview {
     EpisodeItem()
+        .environment(\.userViewModel, UserViewModel.shared)
+        .environment(\.episodeViewModel, EpisodeViewModel.shared)
 }

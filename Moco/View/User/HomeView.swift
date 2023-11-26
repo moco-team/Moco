@@ -33,11 +33,7 @@ struct HomeView: View {
 
             VStack {
                 HStack(alignment: .center) {
-                    Image("Story/nav-icon")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 0.4 * Screen.width)
-                        .padding(.top, Screen.height * 0.02)
+                    MocoIcon()
 
                     Spacer()
 
@@ -47,7 +43,7 @@ struct HomeView: View {
 
                 HStack {
                     Text("Koleksi Cerita Dunia Ajaib")
-                        .customFont(.cherryBomb, size: 50)
+                        .customFont(.cherryBomb, size: UIDevice.isIPad ? 50 : 30)
                         .foregroundColor(Color.blueTxt)
                         .fontWeight(.bold)
                     Spacer()

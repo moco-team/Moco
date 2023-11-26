@@ -5,7 +5,7 @@
 //  Created by Aaron Christopher Tanhar on 26/10/23.
 //
 
-import Foundation
+import SwiftUI
 
 enum MoveDirection: Equatable {
     case left
@@ -30,7 +30,7 @@ struct MazeModel {
     private(set) var startPoint = LocationPoint()
     private(set) var exitPoints = [LocationPoint()]
 
-    static var mapSize = MapSize(width: 25, height: 13)
+    static var mapSize = UIDevice.isIPad ? MapSize(width: 25, height: 13) : MapSize(width: 25, height: 9)
 
     var arrayPoint: [[Int]] = [[]]
 

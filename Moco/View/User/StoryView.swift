@@ -27,6 +27,12 @@ struct StoryView: View {
 
     @StateObject private var svvm = StoryViewViewModel()
 
+    // MARK: - Variables
+
+    var buttonSize: CGFloat {
+        UIDevice.isIPad ? 80 : 50
+    }
+
     // MARK: - View
 
     var body: some View {
@@ -49,7 +55,8 @@ struct StoryView: View {
                                 }
 
                                 if storyContentViewModel.narratives!.count > svvm.narrativeIndex &&
-                                    !storyContentViewModel.narratives!.isEmpty {
+                                    !storyContentViewModel.narratives!.isEmpty
+                                {
                                     let narrative = storyContentViewModel.narratives![max(svvm.narrativeIndex, 0)]
                                     Text(narrative.contentName)
                                         .foregroundColor(Color(hex: narrative.color ?? "#000000"))
@@ -130,8 +137,8 @@ struct StoryView: View {
                             Image("Buttons/button-home").resizable().scaledToFit()
                         }.buttonStyle(
                             CircleButton(
-                                width: 80,
-                                height: 80,
+                                width: buttonSize,
+                                height: buttonSize,
                                 backgroundColor: .clear,
                                 foregroundColor: .clear
                             )
@@ -145,8 +152,8 @@ struct StoryView: View {
                                 .scaledToFit()
                         }.buttonStyle(
                             CircleButton(
-                                width: 80,
-                                height: 80,
+                                width: buttonSize,
+                                height: buttonSize,
                                 backgroundColor: .clear,
                                 foregroundColor: .clear
                             )
@@ -160,8 +167,8 @@ struct StoryView: View {
                                 .scaledToFit()
                         }.buttonStyle(
                             CircleButton(
-                                width: 80,
-                                height: 80,
+                                width: buttonSize,
+                                height: buttonSize,
                                 backgroundColor: .clear,
                                 foregroundColor: .clear
                             )
@@ -180,7 +187,8 @@ struct StoryView: View {
 
                     if promptViewModel.prompts == nil ||
                         promptViewModel.prompts!.isEmpty ||
-                        svvm.forceShowNext {
+                        svvm.forceShowNext
+                    {
                         StoryNavigationButton(direction: .right) {
                             svvm.nextPage()
                         }

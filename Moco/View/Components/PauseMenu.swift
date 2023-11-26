@@ -35,6 +35,18 @@ struct PauseMenu: View {
     var repeatHandler: (() -> Void)?
     var cancelHandler: (() -> Void)?
 
+    var buttonWidth: CGFloat {
+        UIDevice.isIPad ? 250 : 125
+    }
+
+    var buttonHeight: CGFloat {
+        UIDevice.isIPad ? 120 : 60
+    }
+
+    var buttonFontSize: CGFloat {
+        UIDevice.isIPad ? 30 : 15
+    }
+
     var body: some View {
         ZStack {
             Color(.black)
@@ -80,12 +92,12 @@ struct PauseMenu: View {
                                 repeatHandler?()
                                 close()
                             }
-                            .buttonStyle(MainButton(width: 250, height: 120, type: .danger, fontSize: CGFloat(30)))
+                            .buttonStyle(MainButton(width: buttonWidth, height: buttonHeight, type: .danger, fontSize: buttonFontSize))
                             SfxButton(confirmText) {
                                 function()
                                 close()
                             }
-                            .buttonStyle(MainButton(width: 250, height: 120, type: .success, fontSize: CGFloat(30)))
+                            .buttonStyle(MainButton(width: buttonWidth, height: buttonHeight, type: .success, fontSize: buttonFontSize))
                         }
 
                         if bottomImage != nil {
@@ -102,7 +114,10 @@ struct PauseMenu: View {
                 SfxButton {
                     close()
                 } label: {
-                    Image("Buttons/button-x").resizable().frame(width: 80, height: 80).shadow(radius: 20, x: -20, y: 20)
+                    Image("Buttons/button-x")
+                        .resizable()
+                        .frame(width:  UIDevice.isIPad ? 80 : 50, height:  UIDevice.isIPad ? 80 : 50)
+                        .shadow(radius: 20, x: -20, y: 20)
                 }
             }
             .offset(x: 0, y: offset)

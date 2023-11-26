@@ -24,7 +24,7 @@ struct MazeProgress: View {
                 }.frame(width: Screen.width * 0.08, height: Screen.height * 0.1)
             }.frame(width: Screen.width * 0.08, height: Screen.height * 0.1)
             Text("\(Int(mazePromptViewModel.progress * 100))%")
-                .customFont(.cherryBomb, size: 40)
+                .customFont(.cherryBomb, size: UIDevice.isIPad ? 40 : 25)
                 .foregroundColor(.text.darkBlue)
         }.padding()
     }

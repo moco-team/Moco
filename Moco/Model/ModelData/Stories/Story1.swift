@@ -8,7 +8,7 @@
 import Foundation
 
 private let episode1 = EpisodeModel(
-    pictureName: "",
+    pictureName: "Story/Content/Story1/Pages/Page1/background",
     stories: [
         // Story page-1
         StoryModel(
