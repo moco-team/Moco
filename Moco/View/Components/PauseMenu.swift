@@ -116,7 +116,7 @@ struct PauseMenu: View {
                 } label: {
                     Image("Buttons/button-x")
                         .resizable()
-                        .frame(width:  UIDevice.isIPad ? 80 : 50, height:  UIDevice.isIPad ? 80 : 50)
+                        .frame(width: UIDevice.isIPad ? 80 : 50, height: UIDevice.isIPad ? 80 : 50)
                         .shadow(radius: 20, x: -20, y: 20)
                 }
             }

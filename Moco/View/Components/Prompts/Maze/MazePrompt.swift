@@ -33,7 +33,7 @@ struct MazePrompt: View {
     func playInitialNarration() {
         if mazePromptViewModel.isTutorialDone {
             audioViewModel.playSound(
-                soundFileName: "013 (maze) - bantu arahkan Moco ke jawaban yang benar ya", 
+                soundFileName: "013 (maze) - bantu arahkan Moco ke jawaban yang benar ya",
                 type: .m4a,
                 category: .narration
             )

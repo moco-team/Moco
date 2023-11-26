@@ -55,8 +55,7 @@ struct StoryView: View {
                                 }
 
                                 if storyContentViewModel.narratives!.count > svvm.narrativeIndex &&
-                                    !storyContentViewModel.narratives!.isEmpty
-                                {
+                                    !storyContentViewModel.narratives!.isEmpty {
                                     let narrative = storyContentViewModel.narratives![max(svvm.narrativeIndex, 0)]
                                     Text(narrative.contentName)
                                         .foregroundColor(Color(hex: narrative.color ?? "#000000"))
@@ -187,8 +186,7 @@ struct StoryView: View {
 
                     if promptViewModel.prompts == nil ||
                         promptViewModel.prompts!.isEmpty ||
-                        svvm.forceShowNext
-                    {
+                        svvm.forceShowNext {
                         StoryNavigationButton(direction: .right) {
                             svvm.nextPage()
                         }

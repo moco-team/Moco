@@ -116,7 +116,7 @@ extension StoryViewViewModel {
 
     func nextPage() {
         guard episodeViewModel.selectedEpisode!.stories!.count >
-                scrollPosition! + 1
+            scrollPosition! + 1
         else {
             isEpisodeFinished = true
             return
