@@ -72,7 +72,7 @@ struct EpisodeView: View {
                                 EpisodeItem(
                                     number: index + 1
                                 ) {
-                                    if episode.isAvailable || index < userViewModel.userLogin!.availableEpisodeSum {
+                                    if true {
                                         Task {
                                             episodeViewModel.setSelectedEpisode(episode)
 
@@ -107,6 +107,7 @@ struct EpisodeView: View {
                 audioViewModel.clearAll()
                 audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1, category: .backsound)
             }
+            AppDelegate.orientationLock = nil
         }
     }
 }

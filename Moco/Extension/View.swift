@@ -68,6 +68,7 @@ extension View {
 
 struct ForceRotationViewModifier: ViewModifier {
     var orientation: UIInterfaceOrientationMask?
+    var resetOrientation = true
 
     func body(content: Content) -> some View {
         content
@@ -75,13 +76,15 @@ struct ForceRotationViewModifier: ViewModifier {
                 AppDelegate.orientationLock = orientation ?? (Screen.orientation == .landscapeLeft ? .landscapeLeft : .landscapeRight)
             }
             .onDisappear {
-                AppDelegate.orientationLock = nil
+                if resetOrientation {
+                    AppDelegate.orientationLock = nil
+                }
             }
     }
 }
 
 extension View {
-    func forceRotation(_ orientation: UIInterfaceOrientationMask? = nil) -> some View {
-        modifier(ForceRotationViewModifier(orientation: orientation))
+    func forceRotation(_ orientation: UIInterfaceOrientationMask? = nil, resetOrientation: Bool? = true) -> some View {
+        modifier(ForceRotationViewModifier(orientation: orientation, resetOrientation: resetOrientation ?? true))
     }
 }

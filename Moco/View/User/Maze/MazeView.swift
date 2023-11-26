@@ -52,14 +52,14 @@ struct MazeView: View {
     var onComplete: () -> Void = {}
 
     var fontSize: CGFloat {
-        UIDevice.isIPad ? 30 : 15
+        UIDevice.isIPad ? 25 : 15
     }
 
     var body: some View {
         VStack(alignment: .leading) {
             ZStack {
                 SpriteView(scene: scene, options: [.allowsTransparency])
-                    .padding(.vertical, UIDevice.isIPad ? 12 : 0)
+                    .padding(.vertical, UIDevice.isIPad ? 5 : 0)
                     .ignoresSafeArea()
                     .frame(width: Screen.width, height: Screen.height * (UIDevice.isIPad ? 0.7 : 0.6))
             }
@@ -72,7 +72,7 @@ struct MazeView: View {
                             GeometryReader {
                                 proxy in
                                 HStack {} // just an empty container to triggers the onAppear
-                                    .onAppear {
+                                    .task {
                                         answersWidth[0] = proxy.size.width
                                     }
                             }
@@ -86,7 +86,7 @@ struct MazeView: View {
                             GeometryReader {
                                 proxy in
                                 HStack {} // just an empty container to triggers the onAppear
-                                    .onAppear {
+                                    .task {
                                         answersWidth[1] = proxy.size.width
                                     }
                             }
@@ -100,7 +100,7 @@ struct MazeView: View {
                             GeometryReader {
                                 proxy in
                                 HStack {} // just an empty container to triggers the onAppear
-                                    .onAppear {
+                                    .task {
                                         answersWidth[2] = proxy.size.width
                                     }
                             }

@@ -53,7 +53,7 @@ struct MazePrompt: View {
                         .padding(.trailing, Screen.width * 0.3)
                     }
                     Text(promptText)
-                        .customFont(.didactGothic, size: UIDevice.isIPad ? 40 : 20)
+                        .customFont(.didactGothic, size: UIDevice.isIPad ? 35 : 20)
                         .foregroundColor(.text.brown)
                     Spacer()
                     MazeView(
@@ -62,7 +62,7 @@ struct MazePrompt: View {
                         correctAnswerAsset: correctAnswerAsset
                     ) {
                         action()
-                    }.padding(.bottom, UIDevice.isIPad ? 20 : 10)
+                    }.padding(.bottom, 10)
                         .id(promptText)
                 }
                 .ignoresSafeArea()
@@ -117,7 +117,7 @@ struct MazePrompt: View {
                 elapsedSecond += 1
             }
         }
-        .forceRotation()
+        .forceRotation(resetOrientation: false)
     }
 }
 
