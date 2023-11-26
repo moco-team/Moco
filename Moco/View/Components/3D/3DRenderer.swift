@@ -6,7 +6,6 @@
 //
 
 import SceneKit
-import SceneKit.ModelIO
 import SwiftUI
 
 struct SceneKitView: UIViewRepresentable {
@@ -121,14 +120,14 @@ struct ThreeDRenderer: View {
                     HStack {
                         Spacer()
                         Text("To be continued...")
-                            .customFont(.cherryBomb, size: 30)
+                            .customFont(.cherryBomb, size: UIDevice.isIPad ? 30 : 20)
                             .foregroundColor(.blue2Txt)
                             .glowBorder(color: .white, lineWidth: 5)
                         Button("Keluar") {
                             navigate.popToRoot()
                             action()
                         }
-                        .buttonStyle(MainButton(width: 180, type: .danger))
+                        .buttonStyle(MainButton(width: UIDevice.isIPad ? 180 : 100, type: .danger))
                         .padding(.bottom, 20)
                         .modifier(ShakeEffect(animatableData: shakeAnimation))
                     }

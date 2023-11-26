@@ -385,4 +385,3 @@ struct PopUpPreview: View {
 #Preview {
     PopUpPreview()
 }
-

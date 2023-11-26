@@ -14,72 +14,75 @@ struct SettingsView: View {
 
     var body: some View {
         VStack {
-            Image("Buttons/button-home")
-                .resizable()
-                .frame(width: 70, height: 70)
-                .shadow(radius: 4, x: -2, y: 2)
-                .onTapGesture {
-                    navigate.pop()
+            VStack {
+                Image("Buttons/button-home")
+                    .resizable()
+                    .frame(width: 70, height: 70)
+                    .shadow(radius: 4, x: -2, y: 2)
+                    .onTapGesture {
+                        navigate.pop()
+                    }
+
+                Text("Backsound")
+                HStack {
+                    Image(systemName: "speaker.fill")
+                        .foregroundColor(Color.black)
+
+                    Slider(value: $settingsViewModel.backsoundVolume,
+                           in: 0 ... 1,
+                           step: 0.01) { _ in
+                        audioViewModel
+                            .setVolumeByCategory(
+                                Float(
+                                    settingsViewModel.backsoundVolume),
+                                category: .backsound
+                            )
+                    }.foregroundColor(.black).accentColor(.black)
+
+                    Image(systemName: "speaker.wave.2.fill")
+                        .foregroundColor(Color.black)
                 }
+                Text("Narration")
+                HStack {
+                    Image(systemName: "speaker.fill")
+                        .foregroundColor(Color.black)
 
-            Text("Backsound")
-            HStack {
-                Image(systemName: "speaker.fill")
-                    .foregroundColor(Color.black)
+                    Slider(value: $settingsViewModel.narrationVolume,
+                           in: 0 ... 1,
+                           step: 0.01) { _ in
+                        audioViewModel
+                            .setVolumeByCategory(
+                                Float(
+                                    settingsViewModel.narrationVolume),
+                                category: .narration
+                            )
+                    }.foregroundColor(.black).accentColor(.black)
 
-                Slider(value: $settingsViewModel.backsoundVolume,
-                       in: 0 ... 1,
-                       step: 0.01) { _ in
-                    audioViewModel
-                        .setVolumeByCategory(
-                            Float(
-                                settingsViewModel.backsoundVolume),
-                            category: .backsound
-                        )
-                }.foregroundColor(.black).accentColor(.black)
+                    Image(systemName: "speaker.wave.2.fill")
+                        .foregroundColor(Color.black)
+                }
+                Text("Sound effect")
+                HStack {
+                    Image(systemName: "speaker.fill")
+                        .foregroundColor(Color.black)
 
-                Image(systemName: "speaker.wave.2.fill")
-                    .foregroundColor(Color.black)
-            }
-            Text("Narration")
-            HStack {
-                Image(systemName: "speaker.fill")
-                    .foregroundColor(Color.black)
+                    Slider(value: $settingsViewModel.soundEffectVolume,
+                           in: 0 ... 1,
+                           step: 0.01) { _ in
+                        audioViewModel
+                            .setVolumeByCategory(
+                                Float(
+                                    settingsViewModel.soundEffectVolume),
+                                category: .soundEffect
+                            )
+                    }.foregroundColor(.black).accentColor(.black)
 
-                Slider(value: $settingsViewModel.narrationVolume,
-                       in: 0 ... 1,
-                       step: 0.01) { _ in
-                    audioViewModel
-                        .setVolumeByCategory(
-                            Float(
-                                settingsViewModel.narrationVolume),
-                            category: .narration
-                        )
-                }.foregroundColor(.black).accentColor(.black)
-
-                Image(systemName: "speaker.wave.2.fill")
-                    .foregroundColor(Color.black)
-            }
-            Text("Sound effect")
-            HStack {
-                Image(systemName: "speaker.fill")
-                    .foregroundColor(Color.black)
-
-                Slider(value: $settingsViewModel.soundEffectVolume,
-                       in: 0 ... 1,
-                       step: 0.01) { _ in
-                    audioViewModel
-                        .setVolumeByCategory(
-                            Float(
-                                settingsViewModel.soundEffectVolume),
-                            category: .soundEffect
-                        )
-                }.foregroundColor(.black).accentColor(.black)
-
-                Image(systemName: "speaker.wave.2.fill")
-                    .foregroundColor(Color.black)
-            }
+                    Image(systemName: "speaker.wave.2.fill")
+                        .foregroundColor(Color.black)
+                }
+            }.frame(maxWidth: 0.75 * Screen.width)
         }
+        .frame(width: Screen.width, height: Screen.height)
         .foregroundColor(.text.darkBlue)
         .background {
             Image("Story/main-background")

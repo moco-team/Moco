@@ -5,6 +5,7 @@
 //  Created by Aaron Christopher Tanhar on 14/11/23.
 //
 
+import AVFoundation
 import CodeScanner
 import SwiftUI
 
@@ -30,6 +31,27 @@ struct CardScan: View {
 
     var onComplete: (() -> Void)?
 
+    var captureDevice: AVCaptureDevice? {
+        do {
+            let captureDevice = AVCaptureDevice.default(cameraMode == .back ?
+                .builtInTripleCamera :
+                .builtInWideAngleCamera,
+                for: .video,
+                position: (cameraMode == .back) ? .back : .front)
+            try captureDevice?.lockForConfiguration()
+            if let autoFocusRangeSupported = captureDevice?.isAutoFocusRangeRestrictionSupported, autoFocusRangeSupported {
+                captureDevice?.autoFocusRangeRestriction = .near
+            }
+            if let isFocusModeSupported = captureDevice?.isFocusModeSupported(.continuousAutoFocus), isFocusModeSupported {
+                captureDevice?.focusMode = .continuousAutoFocus
+            }
+
+            return captureDevice
+        } catch {
+            return nil
+        }
+    }
+
     var body: some View {
         ZStack {
             Color.bg.blue
@@ -52,13 +74,7 @@ struct CardScan: View {
                         CodeScannerView(
                             codeTypes: [.qr],
                             scanMode: .oncePerCode,
-                            videoCaptureDevice: cameraMode == .back ?
-                                .default(.builtInUltraWideCamera,
-                                         for: .video,
-                                         position: .back) :
-                                .default(.builtInWideAngleCamera,
-                                         for: .video,
-                                         position: .front),
+                            videoCaptureDevice: captureDevice,
                             completion: { result in
                                 if case let .success(code) = result {
                                     scanResult.append(code.string)

@@ -118,6 +118,10 @@ struct ARStory: View {
                     MakeSentence {
                         showLastIsland = true
                     }
+                    .onAppear {
+                        arViewModel.pause()
+                        arViewModel.resetSession()
+                    }
                 } else if showLastIsland {
                     ThreeDRenderer {
                         doneHandler?()
@@ -151,6 +155,10 @@ struct ARStory: View {
         }
         .ignoresSafeArea()
         .frame(width: Screen.width, height: Screen.height)
+        .onDisappear {
+            arViewModel.pause()
+            arViewModel.resetSession()
+        }
         .task {
             isTutorialFinished = arViewModel.isTutorialDone
         }
