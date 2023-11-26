@@ -19,7 +19,11 @@ struct EpisodeItem: View {
     var onTap: (() -> Void)?
 
     var isAvailable: Bool {
-        episodeViewModel.episodes![number - 1].isAvailable || number - 1 < userViewModel.userLogin!.availableEpisodeSum
+        guard let episodes = episodeViewModel.episodes, let userLogin = userViewModel.userLogin else {
+            return false
+        }
+
+        return episodes[number - 1].isAvailable || number - 1 < userLogin.availableEpisodeSum
     }
 
     var body: some View {
