@@ -291,7 +291,8 @@ struct PopUpComponentViewOld: View {
                             .cornerRadius(10)
 
                         VStack {
-                            Text(title ?? "Congratulations").customFont(.cherryBomb, size: 22)
+                            Text(title ?? "Congratulations")
+                                .customFont(.cherryBomb, size: 22)
                                 .foregroundColor(textColor)
                                 .padding(.top, 10)
                                 .padding(.bottom, 20)
@@ -384,3 +385,4 @@ struct PopUpPreview: View {
 #Preview {
     PopUpPreview()
 }
+
