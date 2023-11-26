@@ -124,7 +124,8 @@ struct ARCameraView: View {
             disableCancel: true
         ) {
             isLastNarrativePopupActive = false
-            isEndTheStoryPopupActive = true
+//            isEndTheStoryPopupActive = true
+            onFoundObject()
             onEnd()
         }
         .popUp(
