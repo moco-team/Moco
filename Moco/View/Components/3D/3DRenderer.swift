@@ -6,6 +6,7 @@
 //
 
 import SceneKit
+import SceneKit.ModelIO
 import SwiftUI
 
 struct SceneKitView: UIViewRepresentable {
