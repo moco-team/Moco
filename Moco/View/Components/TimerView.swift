@@ -77,7 +77,7 @@ struct TimerView: View {
     var body: some View {
         VStack {
             Text(formattedTimer)
-                .customFont(.cherryBomb, size: 35)
+                .customFont(.cherryBomb, size: UIDevice.isIPad ? 35 : 15)
                 .foregroundColor(.text.darkBlue)
                 .onReceive(timer) { _ in
                     if self.isTimerRunning && durationInSeconds > 0 {

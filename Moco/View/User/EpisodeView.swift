@@ -19,6 +19,10 @@ struct EpisodeView: View {
     @Environment(\.hintViewModel) private var hintViewModel
     @Environment(\.navigate) private var navigate
 
+    var homeButtonSize: CGFloat {
+        UIDevice.isIPad ? 70 : 50
+    }
+
     var body: some View {
         ZStack {
             VStack {
@@ -30,11 +34,7 @@ struct EpisodeView: View {
 
             VStack {
                 HStack(alignment: .center) {
-                    Image("Story/nav-icon")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 0.4 * Screen.width)
-                        .padding(.top, Screen.height * 0.02)
+                    MocoIcon()
 
                     Spacer()
 
@@ -46,7 +46,7 @@ struct EpisodeView: View {
                     HStack(spacing: 40) {
                         Image("Buttons/button-home")
                             .resizable()
-                            .frame(width: 70, height: 70)
+                            .frame(width: homeButtonSize, height: homeButtonSize)
                             .shadow(radius: 4, x: -2, y: 2)
                             .foregroundColor(.white)
                             .onTapGesture {
@@ -54,7 +54,7 @@ struct EpisodeView: View {
                             }
 
                         Text("Episode")
-                            .customFont(.cherryBomb, size: 50)
+                            .customFont(.cherryBomb, size: UIDevice.isIPad ? 50 : 30)
                             .foregroundColor(Color.blueTxt)
                             .fontWeight(.bold)
                     }
@@ -95,7 +95,7 @@ struct EpisodeView: View {
                             }
                         }
                     }
-                    .padding(.horizontal, 30)
+                    .padding(.horizontal, UIDevice.isIPad ? 30 : 10)
                 }.scrollClipDisabled()
 
                 Spacer()

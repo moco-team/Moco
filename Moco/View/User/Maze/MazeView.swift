@@ -42,7 +42,7 @@ struct MazeView: View {
         let screenWidth = Screen.width
         let screenHeight = Screen.height
         let scene = MazeScene(
-            size: CGSize(width: screenWidth, height: screenHeight * 0.7)
+            size: CGSize(width: screenWidth, height: screenHeight * (UIDevice.isIPad ? 0.7 : 0.6))
         )
         scene.scaleMode = .fill
 
@@ -51,18 +51,22 @@ struct MazeView: View {
 
     var onComplete: () -> Void = {}
 
+    var fontSize: CGFloat {
+        UIDevice.isIPad ? 30 : 15
+    }
+
     var body: some View {
         VStack(alignment: .leading) {
             ZStack {
                 SpriteView(scene: scene, options: [.allowsTransparency])
-                    .padding(.vertical, 12)
+                    .padding(.vertical, UIDevice.isIPad ? 12 : 0)
                     .ignoresSafeArea()
-                    .frame(width: Screen.width, height: Screen.height * 0.7)
+                    .frame(width: Screen.width, height: Screen.height * (UIDevice.isIPad ? 0.7 : 0.6))
             }
             ZStack {
                 if let obj1 = scene.obj01, scene.obj03 != nil {
                     Text(answers[0]).offset(x: obj1.position.x - answersWidth[0] / 2)
-                        .customFont(.didactGothic, size: 30)
+                        .customFont(.didactGothic, size: fontSize)
                         .foregroundColor(.text.brown)
                         .background {
                             GeometryReader {
@@ -76,7 +80,7 @@ struct MazeView: View {
                 }
                 if let obj2 = scene.obj02, scene.obj03 != nil {
                     Text(answers[1]).offset(x: obj2.position.x - answersWidth[1] / 2)
-                        .customFont(.didactGothic, size: 30)
+                        .customFont(.didactGothic, size: fontSize)
                         .foregroundColor(.text.brown)
                         .background {
                             GeometryReader {
@@ -90,7 +94,7 @@ struct MazeView: View {
                 }
                 if let obj3 = scene.obj03, scene.obj03 != nil {
                     Text(answers[2]).offset(x: obj3.position.x - answersWidth[2] / 2)
-                        .customFont(.didactGothic, size: 30)
+                        .customFont(.didactGothic, size: fontSize)
                         .foregroundColor(.text.brown)
                         .background {
                             GeometryReader {
@@ -189,8 +193,17 @@ struct MazeView: View {
     }
 }
 
-#Preview {
-    MazeView {
-        print("Done")
+struct MazeViewPreview: View {
+    var body: some View {
+        MazeView {
+            print("Done")
+        }
+        .environment(\.mazePromptViewModel, MazePromptViewModel.shared)
+        .environmentObject(MotionViewModel())
+        .environmentObject(OrientationInfo.shared)
     }
+}
+
+#Preview {
+    MazeViewPreview()
 }

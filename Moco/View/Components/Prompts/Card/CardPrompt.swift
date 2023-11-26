@@ -59,7 +59,7 @@ struct CardPrompt: View {
                 let promptContent = cardQuestions[currentCard]
                 VStack {
                     Text(promptContent.text)
-                        .customFont(.didactGothic, size: 40)
+                        .customFont(.didactGothic, size: UIDevice.isIPad ? 40 : 25)
                 }
                 .position(
                     CGPoint(

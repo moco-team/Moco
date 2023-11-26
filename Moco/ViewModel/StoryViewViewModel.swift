@@ -22,6 +22,7 @@ class StoryViewViewModel: ObservableObject {
     private(set) var audioViewModel = AudioViewModel.shared
     private(set) var settingsViewModel = SettingsViewModel.shared
     private(set) var navigate = RouteViewModel.shared
+    private(set) var gameKitViewModel = GameKitViewModel.shared
 
     // MARK: - Static Variables
 
@@ -49,7 +50,9 @@ class StoryViewViewModel: ObservableObject {
     // MARK: - Variables
 
     @Published var enableUI = true
+}
 
+extension StoryViewViewModel {
     // MARK: - Functions
 
     private func updateText() {
@@ -69,7 +72,7 @@ class StoryViewViewModel: ObservableObject {
     private func startNarrative() {
         guard storyContentViewModel.narratives != nil else { return }
         narrativeIndex = -1
-//        updateText()
+        //        updateText()
     }
 
     private func startPrompt() {
@@ -200,11 +203,29 @@ class StoryViewViewModel: ObservableObject {
     func continueStory() {
         episodeViewModel.setToAvailable(selectedStoryTheme: storyThemeViewModel.selectedStoryTheme!)
         userViewModel.addingAvailableEpisode()
+        registerAchievement()
         storyThemeViewModel.fetchStoryThemes()
         storyThemeViewModel.setSelectedStoryTheme(storyThemeViewModel.findWithID(storyThemeViewModel.selectedStoryTheme!.uid)!)
         navigate.pop {
             self.stop()
         }
+    }
+
+    func registerAchievement() {
+        var achievementId = AchievementID.firstEpisode
+        switch userViewModel.userLogin?.availableEpisodeSum {
+        case 1:
+            achievementId = AchievementID.firstEpisode
+        case 2:
+            achievementId = AchievementID.secondEpisode
+        case 3:
+            achievementId = AchievementID.thirdEpisode
+        case 4:
+            achievementId = AchievementID.fourthEpisode
+        default:
+            break
+        }
+        gameKitViewModel.reportAchievement(achievementID: achievementId, percentComplete: 100)
     }
 
     func onAppear() {

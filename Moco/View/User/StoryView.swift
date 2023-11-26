@@ -27,6 +27,12 @@ struct StoryView: View {
 
     @StateObject private var svvm = StoryViewViewModel()
 
+    // MARK: - Variables
+
+    var buttonSize: CGFloat {
+        UIDevice.isIPad ? 80 : 50
+    }
+
     // MARK: - View
 
     var body: some View {
@@ -130,8 +136,8 @@ struct StoryView: View {
                             Image("Buttons/button-home").resizable().scaledToFit()
                         }.buttonStyle(
                             CircleButton(
-                                width: 80,
-                                height: 80,
+                                width: buttonSize,
+                                height: buttonSize,
                                 backgroundColor: .clear,
                                 foregroundColor: .clear
                             )
@@ -145,8 +151,8 @@ struct StoryView: View {
                                 .scaledToFit()
                         }.buttonStyle(
                             CircleButton(
-                                width: 80,
-                                height: 80,
+                                width: buttonSize,
+                                height: buttonSize,
                                 backgroundColor: .clear,
                                 foregroundColor: .clear
                             )
@@ -160,8 +166,8 @@ struct StoryView: View {
                                 .scaledToFit()
                         }.buttonStyle(
                             CircleButton(
-                                width: 80,
-                                height: 80,
+                                width: buttonSize,
+                                height: buttonSize,
                                 backgroundColor: .clear,
                                 foregroundColor: .clear
                             )

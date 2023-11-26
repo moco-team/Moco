@@ -65,6 +65,11 @@ extension EnvironmentValues {
         get { self[MazePromptViewModelKey.self] }
         set { self[MazePromptViewModelKey.self] = newValue }
     }
+
+    var gameKitViewModel: GameKitViewModel {
+        get { self[GameKitViewModelKey.self] }
+        set { self[GameKitViewModelKey.self] = newValue }
+    }
 }
 
 // MARK: - View Model Keys
@@ -111,4 +116,8 @@ private struct SettingsViewModelKey: EnvironmentKey {
 
 private struct MazePromptViewModelKey: EnvironmentKey {
     static var defaultValue: MazePromptViewModel = .init()
+}
+
+private struct GameKitViewModelKey: EnvironmentKey {
+    static var defaultValue: GameKitViewModel = .init()
 }

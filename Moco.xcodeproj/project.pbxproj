@@ -136,6 +136,7 @@
 		931722232AE5508300346382 /* Page10-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949822AE0ED3300830D57 /* Page10-monolog1.m4a */; };
 		931722242AE5508300346382 /* Page10-monolog2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949812AE0ED3300830D57 /* Page10-monolog2.m4a */; };
 		931722252AE5508300346382 /* congratulations.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 053393122AE13A310085BB30 /* congratulations.m4a */; };
+		931B8DA12B13344E0025F604 /* MocoIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931B8DA02B13344E0025F604 /* MocoIcon.swift */; };
 		932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 932357D52ADE6EF3009B3D86 /* bg-story.mp3 */; };
 		932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D72ADE700D009B3D86 /* AudioViewModel.swift */; };
 		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
@@ -414,6 +415,7 @@
 		9310EC7C2B07E1280045A908 /* maaf_kartu_tidak_tepat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = maaf_kartu_tidak_tepat.m4a; sourceTree = "<group>"; };
 		9310EC802B0A353A0045A908 /* StoryViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewViewModel.swift; sourceTree = "<group>"; };
 		9310EC852B0A40FA0045A908 /* Story1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story1.swift; sourceTree = "<group>"; };
+		931B8DA02B13344E0025F604 /* MocoIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocoIcon.swift; sourceTree = "<group>"; };
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
@@ -1014,6 +1016,7 @@
 				93C30CB92AF926150076808F /* TimerView.swift */,
 				0592100F2AFB601E0008CD2C /* QRScannerSheet.swift */,
 				93692EA92AFD43FD00CD6561 /* PauseMenu.swift */,
+				931B8DA02B13344E0025F604 /* MocoIcon.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1704,6 +1707,7 @@
 				9310EC782B07C3040045A908 /* ScaleEffect.swift in Sources */,
 				938E3D4D2ADBA247003D2AE1 /* ContentViewContainer.swift in Sources */,
 				9310EC812B0A353A0045A908 /* StoryViewViewModel.swift in Sources */,
+				931B8DA12B13344E0025F604 /* MocoIcon.swift in Sources */,
 				0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */,
 				938E3D3F2AD990C3003D2AE1 /* Buttons.swift in Sources */,
 				937AF2952AE8C06C008C69BB /* ARView.swift in Sources */,
@@ -2033,7 +2037,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -2068,7 +2072,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

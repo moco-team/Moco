@@ -56,7 +56,7 @@ struct MainButton: ButtonStyle {
     var buttonColor = Color.redBtn
     var cornerRadius: CGFloat = 8
     var type = MainButtonType.success
-    var fontSize = CGFloat(20)
+    var fontSize = UIDevice.isIPad ? CGFloat(20) : CGFloat(16)
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()

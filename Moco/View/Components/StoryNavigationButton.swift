@@ -13,8 +13,8 @@ enum Direction {
 }
 
 struct StoryNavigationButton: View {
-    var width = 140.0
-    var height = 100.0
+    var width = UIDevice.isIPad ? 140.0 : 70.0
+    var height = UIDevice.isIPad ? 100.0 : 50
     var direction: Direction
 
     var pressHandler: (() -> Void)?

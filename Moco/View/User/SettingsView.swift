@@ -18,7 +18,6 @@ struct SettingsView: View {
                 .resizable()
                 .frame(width: 70, height: 70)
                 .shadow(radius: 4, x: -2, y: 2)
-                .foregroundColor(.white)
                 .onTapGesture {
                     navigate.pop()
                 }
@@ -80,6 +79,13 @@ struct SettingsView: View {
                 Image(systemName: "speaker.wave.2.fill")
                     .foregroundColor(Color.black)
             }
+        }
+        .foregroundColor(.text.darkBlue)
+        .background {
+            Image("Story/main-background")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .ignoresSafeArea()
         }
     }
 }

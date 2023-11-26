@@ -32,7 +32,11 @@ struct MazePrompt: View {
 
     func playInitialNarration() {
         if mazePromptViewModel.isTutorialDone {
-            audioViewModel.playSound(soundFileName: "013 (maze) - bantu arahkan Moco ke jawaban yang benar ya", type: .m4a, category: .narration)
+            audioViewModel.playSound(
+                soundFileName: "013 (maze) - bantu arahkan Moco ke jawaban yang benar ya",
+                type: .m4a,
+                category: .narration
+            )
         }
     }
 
@@ -49,7 +53,7 @@ struct MazePrompt: View {
                         .padding(.trailing, Screen.width * 0.3)
                     }
                     Text(promptText)
-                        .customFont(.didactGothic, size: 40)
+                        .customFont(.didactGothic, size: UIDevice.isIPad ? 40 : 20)
                         .foregroundColor(.text.brown)
                     Spacer()
                     MazeView(
@@ -58,7 +62,7 @@ struct MazePrompt: View {
                         correctAnswerAsset: correctAnswerAsset
                     ) {
                         action()
-                    }.padding(.bottom, 20)
+                    }.padding(.bottom, UIDevice.isIPad ? 20 : 10)
                         .id(promptText)
                 }
                 .ignoresSafeArea()
