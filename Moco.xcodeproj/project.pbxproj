@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		050077182B08033200376135 /* MakeSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050077172B08033200376135 /* MakeSentence.swift */; };
-		050077202B08B5B200376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771E2B081F3C00376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a */; };
-		050077212B08B5B200376135 /* Susunlah sebuah kalimat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771F2B08244200376135 /* Susunlah sebuah kalimat.m4a */; };
 		050077222B08B5B200376135 /* Cari kartu benda.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771C2B081ED200376135 /* Cari kartu benda.m4a */; };
 		050077232B08B5B200376135 /* Cari kartu karakter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771D2B081ED200376135 /* Cari kartu karakter.m4a */; };
 		050077242B08B5B200376135 /* Cari kartu kata kerja.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771B2B081ED200376135 /* Cari kartu kata kerja.m4a */; };
@@ -69,6 +67,8 @@
 		05AE93682ADE83430082B21D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 05AE93672ADE83430082B21D /* Lottie */; };
 		05B8EDA02AEE65FE009ED2C5 /* MotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B8ED9F2AEE65FE009ED2C5 /* MotionViewModel.swift */; };
 		05BA97AA2AE11EE400F64F52 /* MPVolumeViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BA97A92AE11EE400F64F52 /* MPVolumeViewExtension.swift */; };
+		05C13CFC2B13B74500F8F00E /* Susunlah sebuah kalimat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 05C13CFA2B13B6F600F8F00E /* Susunlah sebuah kalimat.m4a */; };
+		05C13CFD2B13B74A00F8F00E /* Apa yang akan dilakukan bebe selanjutnya.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 05C13CFB2B13B6F600F8F00E /* Apa yang akan dilakukan bebe selanjutnya.m4a */; };
 		05D966E12ADEE6CF00997E3A /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05D966E02ADEE6CF00997E3A /* success.mp3 */; };
 		05E17AD52ADE86DE00A34547 /* FindTheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD42ADE86DE00A34547 /* FindTheObject.swift */; };
 		05E17AD72ADEBFC500A34547 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD62ADEBFC500A34547 /* BalloonView.swift */; };
@@ -285,8 +285,6 @@
 		0500771B2B081ED200376135 /* Cari kartu kata kerja.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cari kartu kata kerja.m4a"; sourceTree = "<group>"; };
 		0500771C2B081ED200376135 /* Cari kartu benda.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cari kartu benda.m4a"; sourceTree = "<group>"; };
 		0500771D2B081ED200376135 /* Cari kartu karakter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cari kartu karakter.m4a"; sourceTree = "<group>"; };
-		0500771E2B081F3C00376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apa yang akan dilakukan bebe selanjutnya.m4a"; sourceTree = "<group>"; };
-		0500771F2B08244200376135 /* Susunlah sebuah kalimat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Susunlah sebuah kalimat.m4a"; sourceTree = "<group>"; };
 		050353E02ADFE2970066591A /* FindHoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindHoney.swift; sourceTree = "<group>"; };
 		050E42062AFDC540009666DB /* ARTutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARTutorialView.swift; sourceTree = "<group>"; };
 		050E420E2AFDCC7D009666DB /* arrange_camera_to_barcode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrange_camera_to_barcode.json; sourceTree = "<group>"; };
@@ -362,6 +360,8 @@
 		05AE93622ADE82920082B21D /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		05B8ED9F2AEE65FE009ED2C5 /* MotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionViewModel.swift; sourceTree = "<group>"; };
 		05BA97A92AE11EE400F64F52 /* MPVolumeViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPVolumeViewExtension.swift; sourceTree = "<group>"; };
+		05C13CFA2B13B6F600F8F00E /* Susunlah sebuah kalimat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Susunlah sebuah kalimat.m4a"; sourceTree = "<group>"; };
+		05C13CFB2B13B6F600F8F00E /* Apa yang akan dilakukan bebe selanjutnya.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apa yang akan dilakukan bebe selanjutnya.m4a"; sourceTree = "<group>"; };
 		05D966E02ADEE6CF00997E3A /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
 		05E17AD42ADE86DE00A34547 /* FindTheObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTheObject.swift; sourceTree = "<group>"; };
 		05E17AD62ADEBFC500A34547 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
@@ -580,8 +580,8 @@
 		0500771A2B081EC100376135 /* MakeSentence */ = {
 			isa = PBXGroup;
 			children = (
-				0500771E2B081F3C00376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a */,
-				0500771F2B08244200376135 /* Susunlah sebuah kalimat.m4a */,
+				05C13CFB2B13B6F600F8F00E /* Apa yang akan dilakukan bebe selanjutnya.m4a */,
+				05C13CFA2B13B6F600F8F00E /* Susunlah sebuah kalimat.m4a */,
 				0500771C2B081ED200376135 /* Cari kartu benda.m4a */,
 				0500771D2B081ED200376135 /* Cari kartu karakter.m4a */,
 				0500771B2B081ED200376135 /* Cari kartu kata kerja.m4a */,
@@ -1582,8 +1582,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				050077202B08B5B200376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a in Resources */,
-				050077212B08B5B200376135 /* Susunlah sebuah kalimat.m4a in Resources */,
+				05C13CFD2B13B74A00F8F00E /* Apa yang akan dilakukan bebe selanjutnya.m4a in Resources */,
+				05C13CFC2B13B74500F8F00E /* Susunlah sebuah kalimat.m4a in Resources */,
 				050077222B08B5B200376135 /* Cari kartu benda.m4a in Resources */,
 				050077232B08B5B200376135 /* Cari kartu karakter.m4a in Resources */,
 				050077242B08B5B200376135 /* Cari kartu kata kerja.m4a in Resources */,
