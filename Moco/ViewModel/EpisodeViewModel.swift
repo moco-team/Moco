@@ -12,6 +12,7 @@ import SwiftData
     static let shared = EpisodeViewModel()
 
     var selectedEpisode: EpisodeModel?
+    var indexEpisodePlay: Int?
     var episodes: [EpisodeModel]?
 
     init(modelContext: ModelContext? = nil) {
@@ -21,8 +22,9 @@ import SwiftData
         }
     }
 
-    func setSelectedEpisode(_ episode: EpisodeModel) {
+    func setSelectedEpisode(_ episode: EpisodeModel, _ indexEpisode: Int) {
         selectedEpisode = episode
+        indexEpisodePlay = indexEpisode
     }
 
     func fetchEpisodes(storyThemeId: String) {
@@ -51,8 +53,10 @@ import SwiftData
         fetchEpisodes(storyThemeId: selectedStoryTheme.uid)
 
         if let availableEpisode = fetchAvailableEpisodes(storyThemeId: selectedStoryTheme.uid) {
-            episodes![availableEpisode.count].isAvailable = true
-            try? modelContext?.save()
+            if EpisodeViewModel.shared.indexEpisodePlay == availableEpisode.count - 1 {
+                episodes![availableEpisode.count].isAvailable = true
+                try? modelContext?.save()
+            }
         }
     }
 

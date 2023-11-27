@@ -49,8 +49,10 @@ import SwiftData
 
     func addingAvailableEpisode() {
         if let userLogin = userLogin {
-            userLogin.availableEpisodeSum += 1
-            try? modelContext?.save()
+            if EpisodeViewModel.shared.indexEpisodePlay == userLogin.availableEpisodeSum - 1 {
+                userLogin.availableEpisodeSum += 1
+                try? modelContext?.save()
+            }
         }
     }
 
