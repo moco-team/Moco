@@ -72,7 +72,7 @@ struct EpisodeView: View {
                                 EpisodeItem(
                                     number: index + 1
                                 ) {
-                                    if true {
+                                    if episode.isAvailable || index < userViewModel.userLogin!.availableEpisodeSum {
                                         Task {
                                             episodeViewModel.setSelectedEpisode(episode)
 
