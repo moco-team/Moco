@@ -214,7 +214,7 @@ struct StoryView: View {
             }
         }
         .popUp(isActive: $svvm.isExitPopUpActive, title: "Yakin mau keluar?", cancelText: "Tidak", confirmText: "Ya") {
-            svvm.continueStory()
+            svvm.exit()
         }
         .popUp(isActive: $svvm.isEpisodeFinished, title: "Lanjutkan cerita?", cancelText: "Tidak", confirmText: "Lanjut") {
             svvm.continueStory()
