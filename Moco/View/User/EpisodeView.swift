@@ -74,7 +74,7 @@ struct EpisodeView: View {
                                 ) {
                                     if episode.isAvailable || index < userViewModel.userLogin!.availableEpisodeSum {
                                         Task {
-                                            episodeViewModel.setSelectedEpisode(episode)
+                                            episodeViewModel.setSelectedEpisode(episode, index)
 
                                             // open new story page
                                             storyViewModel.fetchStory(0, episodeViewModel.selectedEpisode!)

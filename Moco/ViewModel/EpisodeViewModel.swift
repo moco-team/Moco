@@ -10,21 +10,23 @@ import SwiftData
 
 @Observable class EpisodeViewModel: BaseViewModel {
     static let shared = EpisodeViewModel()
-
+    
     var selectedEpisode: EpisodeModel?
+    var indexEpisodePlay: Int?
     var episodes: [EpisodeModel]?
-
+    
     init(modelContext: ModelContext? = nil) {
         super.init()
         if modelContext != nil {
             self.modelContext = modelContext
         }
     }
-
-    func setSelectedEpisode(_ episode: EpisodeModel) {
+    
+    func setSelectedEpisode(_ episode: EpisodeModel, _ indexEpisode: Int) {
         selectedEpisode = episode
+        indexEpisodePlay = indexEpisode
     }
-
+    
     func fetchEpisodes(storyThemeId: String) {
         let fetchDescriptor = FetchDescriptor<EpisodeModel>(
             predicate: #Predicate {
@@ -32,10 +34,10 @@ import SwiftData
             },
             sortBy: [SortDescriptor<EpisodeModel>(\.createdAt)]
         )
-
+        
         episodes = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
     }
-
+    
     func fetchAvailableEpisodes(storyThemeId: String) -> [EpisodeModel]? {
         let fetchDescriptor = FetchDescriptor<EpisodeModel>(
             predicate: #Predicate {
@@ -43,19 +45,21 @@ import SwiftData
             },
             sortBy: [SortDescriptor<EpisodeModel>(\.createdAt)]
         )
-
+        
         return (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
     }
-
+    
     func setToAvailable(selectedStoryTheme: StoryThemeModel) {
         fetchEpisodes(storyThemeId: selectedStoryTheme.uid)
-
+        
         if let availableEpisode = fetchAvailableEpisodes(storyThemeId: selectedStoryTheme.uid) {
-            episodes![availableEpisode.count].isAvailable = true
-            try? modelContext?.save()
+            if EpisodeViewModel.shared.indexEpisodePlay == availableEpisode.count - 1 {
+                episodes![availableEpisode.count].isAvailable = true
+                try? modelContext?.save()
+            }
         }
     }
-
+    
     func getPromptByType(promptType: PromptType) -> [PromptModel] {
         let result = selectedEpisode?.stories?
             .sorted {
@@ -66,10 +70,10 @@ import SwiftData
             .filter {
                 $0.promptType == promptType
             } ?? []
-
+        
         return result
     }
-
+    
     func getMazeProgress(promptId: String) -> (Double, Int, Int) {
         let mazePrompts = getPromptByType(promptType: .maze)
         guard mazePrompts.count > 0 else { return (0, 0, 0) }
