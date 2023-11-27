@@ -9,7 +9,7 @@ import SwiftUI
 
 class StoryViewViewModel: ObservableObject {
     // MARK: - Environments stored property
-    
+
     private(set) var userViewModel = UserViewModel.shared
     private(set) var storyThemeViewModel = StoryThemeViewModel.shared
     private(set) var storyViewModel = StoryViewModel.shared
@@ -23,13 +23,13 @@ class StoryViewViewModel: ObservableObject {
     private(set) var settingsViewModel = SettingsViewModel.shared
     private(set) var navigate = RouteViewModel.shared
     private(set) var gameKitViewModel = GameKitViewModel.shared
-    
+
     // MARK: - Static Variables
-    
+
     private static let storyVolume: Float = 0.5
-    
+
     // MARK: - States
-    
+
     @Published var scrollPosition: Int? = 0
     @Published var isExitPopUpActive = false
     @Published var isEpisodeFinished = false
@@ -46,15 +46,15 @@ class StoryViewViewModel: ObservableObject {
     @Published private var mazeQuestionIndex = 0
     @Published var forceShowNext = false
     @Published var showPauseMenu = false
-    
+
     // MARK: - Variables
-    
+
     @Published var enableUI = true
 }
 
 extension StoryViewViewModel {
     // MARK: - Functions
-    
+
     private func updateText() {
         guard storyContentViewModel.narratives!.indices.contains(narrativeIndex + 1) else { return }
         narrativeIndex += 1
@@ -63,18 +63,18 @@ extension StoryViewViewModel {
             self.updateText()
         }
     }
-    
+
     func stop() {
         timerViewModel.stopTimer()
         audioViewModel.pauseAllSounds(.backsound)
     }
-    
+
     private func startNarrative() {
         guard storyContentViewModel.narratives != nil else { return }
         narrativeIndex = -1
         //        updateText()
     }
-    
+
     private func startPrompt() {
         if let storyPage = storyViewModel.storyPage, !storyPage.earlyPrompt {
             activePrompt = nil
@@ -83,16 +83,16 @@ extension StoryViewViewModel {
             showPromptButton = false
             return
         }
-        
+
         withAnimation(Animation.default.delay(promptViewModel.prompts![0].startTime)) {
             self.showPromptButton = true
         }
     }
-    
+
     func onPageChange() {
         stop()
         setNewStoryPage(scrollPosition ?? -1)
-        
+
         if let bgSound = storyContentViewModel.bgSound?.contentName {
             audioViewModel.playSound(
                 soundFileName: bgSound,
@@ -100,7 +100,7 @@ extension StoryViewViewModel {
                 category: .backsound
             )
         }
-        
+
         startNarrative()
         if let storyPage = storyViewModel.storyPage {
             promptViewModel.fetchPrompts(storyPage)
@@ -113,20 +113,20 @@ extension StoryViewViewModel {
             }
         }
     }
-    
+
     func nextPage() {
         guard episodeViewModel.selectedEpisode!.stories!.count >
-                scrollPosition! + 1
+            scrollPosition! + 1
         else {
             isEpisodeFinished = true
             return
         }
-        
+
         showPromptButton = false
         forceShowNext = false
-        
+
         let nextPageBg = storyViewModel.getPageBackground(scrollPosition! + 1, episode: episodeViewModel.selectedEpisode!)
-        
+
         peelBackground = AnyView(Image(nextPageBg ?? storyViewModel.storyPage!.background)
             .resizable()
             .scaledToFill()
@@ -136,11 +136,11 @@ extension StoryViewViewModel {
         toBeExecutedByPeelEffect = {
             self.scrollPosition! += 1
             self.peelEffectState = .stop
-            
+
             self.onPageChange()
         }
     }
-    
+
     func prevPage(_ targetScrollPosition: Int? = nil) {
         guard scrollPosition! > 0 else { return }
         if let targetScrollPositionParam = targetScrollPosition {
@@ -155,7 +155,7 @@ extension StoryViewViewModel {
             scrollPosition! -= 1
         }
         peelEffectState = .reverse
-        
+
         peelBackground = AnyView(Image(storyViewModel.storyPage!.background)
             .resizable()
             .scaledToFill()
@@ -165,26 +165,26 @@ extension StoryViewViewModel {
             self.peelEffectState = .stop
             self.isReversePeel = false
         }
-        
+
         onPageChange()
     }
-    
+
     private func setNewStoryPage(_ scrollPosition: Int) {
         if scrollPosition > -1 {
             storyViewModel.fetchStory(scrollPosition, episodeViewModel.selectedEpisode!)
-            
+
             if let storyPage = storyViewModel.storyPage {
                 storyContentViewModel.fetchStoryContents(storyPage)
-                
+
                 promptViewModel.fetchPrompts(storyPage)
-                
+
                 if let prompts = promptViewModel.prompts, prompts.first?.hints != nil {
                     hintViewModel.fetchHints(prompts[0])
                 }
             }
         }
     }
-    
+
     func onPressSoundButton() {
         if !isMuted {
             audioViewModel.mute()
@@ -193,13 +193,13 @@ extension StoryViewViewModel {
         }
         isMuted.toggle()
     }
-    
+
     func exit() {
         navigate.pop {
             self.stop()
         }
     }
-    
+
     func continueStory() {
         episodeViewModel.setToAvailable(selectedStoryTheme: storyThemeViewModel.selectedStoryTheme!)
         userViewModel.addingAvailableEpisode()
@@ -210,7 +210,7 @@ extension StoryViewViewModel {
             self.stop()
         }
     }
-    
+
     func registerAchievement() {
         var achievementId = AchievementID.firstEpisode
         switch userViewModel.userLogin?.availableEpisodeSum {
@@ -227,7 +227,7 @@ extension StoryViewViewModel {
         }
         gameKitViewModel.reportAchievement(achievementID: achievementId, percentComplete: 100)
     }
-    
+
     func onAppear() {
         onPageChange()
         mazePromptViewModel.reset(true)
