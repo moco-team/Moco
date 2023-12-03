@@ -42,7 +42,7 @@ struct HomeView: View {
                 .padding(.horizontal, 0.05 * Screen.width)
 
                 HStack {
-                    Text("Koleksi Cerita Dunia Ajaib")
+                    Text("Koleksi Cerita Ajaib")
                         .customFont(.cherryBomb, size: UIDevice.isIPad ? 50 : 30)
                         .foregroundColor(Color.blueTxt)
                         .fontWeight(.bold)
