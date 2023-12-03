@@ -219,7 +219,7 @@ class MazeScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
         }
         #if targetEnvironment(simulator)
             if let currentTouch = lastTouchPosition {
-                let diff = CGPoint(x: currentTouch.x - player.position.x, y: currentTouch.y - player.position.y)
+                let diff = CGPoint(x: currentTouch.x - moco.position.x, y: currentTouch.y - moco.position.y)
                 physicsWorld.gravity = CGVector(dx: diff.x / 100, dy: diff.y / 100)
             }
         #else
