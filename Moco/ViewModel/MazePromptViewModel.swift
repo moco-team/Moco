@@ -106,9 +106,7 @@ import SwiftUI
     }
 
     var canMove: Bool {
-        get {
-            isTutorialDone && !mazePromptModel.isGameOver
-        }
+        isTutorialDone && !mazePromptModel.isGameOver
     }
 
     var isGameOver: Bool {

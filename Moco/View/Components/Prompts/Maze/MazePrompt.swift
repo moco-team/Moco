@@ -126,8 +126,8 @@ struct MazePrompt: View {
         .popUp(
             isActive: $gameOverPopup,
             title: "Waktu telah habis!",
-            cancelText: "Keluar", 
-            confirmText: "Ulangi", 
+            cancelText: "Keluar",
+            confirmText: "Ulangi",
             disableCancel: true,
             type: .danger
         ) {
