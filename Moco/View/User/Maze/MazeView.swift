@@ -115,6 +115,7 @@ struct MazeView: View {
             scene.wrongAnswerAsset = answersAsset
             timerViewModel.stopTimer("mazeTimer\(correctAnswerAsset)")
             timerViewModel.setTimer(key: "mazeTimer\(correctAnswerAsset)", withInterval: 0.02) {
+                return
                 guard mazePromptViewModel.isTutorialDone else { return }
                 motionViewModel.updateMotion()
                 if orientationInfo.orientation == .landscapeLeft {
