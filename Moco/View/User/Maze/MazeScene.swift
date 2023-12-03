@@ -35,6 +35,7 @@ struct MazeAnswerAssets {
 
 class MazeScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
     let motionViewModel = MotionViewModel.shared
+    let mazePromptViewModel = MazePromptViewModel.shared
 
     var moco: SKSpriteNode!
     var obj01: SKSpriteNode!
@@ -168,25 +169,25 @@ class MazeScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
         obj03?.texture = SKTexture(imageNamed: wrongAnswerAsset[1])
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
         if let touch = touches.first {
             let location = touch.location(in: self)
             lastTouchPosition = location
         }
     }
 
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with _: UIEvent?) {
         if let touch = touches.first {
             let location = touch.location(in: self)
             lastTouchPosition = location
         }
     }
 
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesEnded(_: Set<UITouch>, with _: UIEvent?) {
         lastTouchPosition = nil
     }
 
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesCancelled(_: Set<UITouch>, with _: UIEvent?) {
         lastTouchPosition = nil
     }
 
@@ -208,20 +209,27 @@ class MazeScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
         }
     }
 
-    override func update(_ currentTime: TimeInterval) {
-#if targetEnvironment(simulator)
-        if let currentTouch = lastTouchPosition {
-            let diff = CGPoint(x: currentTouch.x - player.position.x, y: currentTouch.y - player.position.y)
-            physicsWorld.gravity = CGVector(dx: diff.x / 100, dy: diff.y / 100)
-        }
-#else
-        if let accelerometerData = motionViewModel.accelerometerData {
+    override func update(_: TimeInterval) {
+        if !mazePromptViewModel.canMove {
             physicsWorld.gravity = CGVector(
-                dx: accelerometerData.acceleration.y * -2,
-                dy: accelerometerData.acceleration.x * 2
+                dx: 0,
+                dy: 0
             )
+            return
         }
-#endif
+        #if targetEnvironment(simulator)
+            if let currentTouch = lastTouchPosition {
+                let diff = CGPoint(x: currentTouch.x - player.position.x, y: currentTouch.y - player.position.y)
+                physicsWorld.gravity = CGVector(dx: diff.x / 100, dy: diff.y / 100)
+            }
+        #else
+            if let accelerometerData = motionViewModel.accelerometerData {
+                physicsWorld.gravity = CGVector(
+                    dx: accelerometerData.acceleration.y * -2,
+                    dy: accelerometerData.acceleration.x * 2
+                )
+            }
+        #endif
     }
 }
 
@@ -257,7 +265,8 @@ extension MazeScene {
                         }
                         ground.physicsBody = SKPhysicsBody(rectangleOf: CGSize(
                             width: ground.size.width * 0.5,
-                            height: ground.size.height * 0.5)
+                            height: ground.size.height * 0.5
+                        )
                         )
                         ground.physicsBody?.categoryBitMask = CollisionTypes.finish.rawValue
                         ground.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
@@ -274,8 +283,8 @@ extension MazeScene {
 
                 // MARK: - Outer wall
 
-                if mazeModel.arrayPoint[index][jIndex] == 0 &&
-                    [0, mazeModel.arrayPoint.indices.last].contains(index) {
+                if mazeModel.arrayPoint[index][jIndex] == 0,
+                   [0, mazeModel.arrayPoint.indices.last].contains(index) {
                     let outerWall = SKSpriteNode()
                     outerWall.size = CGSize(width: tileSize, height: tileSize)
                     outerWall.name = "outer_wall"

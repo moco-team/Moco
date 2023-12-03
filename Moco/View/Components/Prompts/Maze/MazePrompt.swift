@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MazePrompt: View {
+    @Environment(\.navigate) private var navigate
     @Environment(\.settingsViewModel) private var settingsViewModel
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.episodeViewModel) private var episodeViewModel
@@ -15,6 +16,7 @@ struct MazePrompt: View {
 
     @State private var isCorrectAnswerPopup = false
     @State private var isWrongAnswerPopup = false
+    @State private var gameOverPopup = false
 
     @State private var updateTimer = true
     @State private var elapsedSecond = 0
@@ -29,6 +31,8 @@ struct MazePrompt: View {
     var promptId = ""
 
     var action: () -> Void = {}
+
+    var onRestart: (() -> Void)?
 
     func playInitialNarration() {
         if mazePromptViewModel.isTutorialDone {
@@ -49,7 +53,14 @@ struct MazePrompt: View {
                         Spacer()
                         TimerView(
                             durationParamInSeconds: mazePromptViewModel.durationInSeconds
-                        )
+                        ) {
+                            // MARK: - Game Over
+
+                            gameOverPopup = true
+                            mazePromptViewModel.isGameOver = true
+
+                            // MARK: -
+                        }
                         .padding(.trailing, Screen.width * 0.3)
                     }
                     Text(promptText)
@@ -112,8 +123,20 @@ struct MazePrompt: View {
         .popUp(isActive: $isWrongAnswerPopup, title: "Oh tidak! Kamu pergi ke jalan yang salah", disableCancel: true) {
             action()
         }
+        .popUp(
+            isActive: $gameOverPopup,
+            title: "Waktu telah habis!",
+            cancelText: "Keluar", 
+            confirmText: "Ulangi", 
+            disableCancel: true,
+            type: .danger
+        ) {
+            onRestart?()
+        } cancelHandler: {
+            navigate.popToRoot()
+        }
         .onReceive(timer) { _ in
-            if updateTimer {
+            if updateTimer && mazePromptViewModel.isTutorialDone {
                 elapsedSecond += 1
             }
         }

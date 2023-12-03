@@ -20,7 +20,6 @@ struct MazeView: View {
     @EnvironmentObject var motionViewModel: MotionViewModel
     @EnvironmentObject var orientationInfo: OrientationInfo
     @Environment(\.mazePromptViewModel) private var mazePromptViewModel
-    @State private var timerViewModel = TimerViewModel()
 
     var answersAsset = ["Maze/answer_one", "Maze/answer_two"] {
         didSet {
@@ -113,73 +112,6 @@ struct MazeView: View {
             motionViewModel.startUpdates()
             scene.correctAnswerAsset = correctAnswerAsset
             scene.wrongAnswerAsset = answersAsset
-            timerViewModel.stopTimer("mazeTimer\(correctAnswerAsset)")
-            timerViewModel.setTimer(key: "mazeTimer\(correctAnswerAsset)", withInterval: 0.02) {
-                return
-                guard mazePromptViewModel.isTutorialDone else { return }
-                motionViewModel.updateMotion()
-                if orientationInfo.orientation == .landscapeLeft {
-                    if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
-                        if motionViewModel.rollNum > 0 {
-                            switch motionViewModel.gravityDegree {
-                            case -75 ... -10, 10 ... 80:
-                                scene.move(.right)
-                            case 100 ... 170, 190 ... 255:
-                                scene.move(.left)
-                            default:
-                                scene.move(.up)
-                            }
-                        } else if motionViewModel.rollNum < 0 {
-                            switch motionViewModel.gravityDegree {
-                            case -75 ... -10, 105 ... 170:
-                                scene.move(.right)
-                            case 10 ... 75, 190 ... 255:
-                                scene.move(.left)
-                            default:
-                                scene.move(.down)
-                            }
-                        }
-                    } else {
-                        if motionViewModel.pitchNum > 0 {
-                            scene.move(.right)
-                        } else if motionViewModel.pitchNum < 0 {
-                            scene.move(.left)
-                        }
-                    }
-                } else if orientationInfo.orientation == .landscapeRight {
-                    if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
-                        if motionViewModel.rollNum > 0 {
-                            switch motionViewModel.gravityDegree {
-                            case -75 ... -10, 105 ... 170:
-                                scene.move(.right)
-                            case 10 ... 75, 190 ... 255:
-                                scene.move(.left)
-                            default:
-                                scene.move(.down)
-                            }
-                        } else if motionViewModel.rollNum < 0 {
-                            switch motionViewModel.gravityDegree {
-                            case -75 ... -10, 10 ... 80:
-                                scene.move(.left)
-                            case 100 ... 170, 190 ... 255:
-                                scene.move(.right)
-                            default:
-                                scene.move(.up)
-                            }
-                        }
-                    } else {
-                        if motionViewModel.pitchNum > 0 {
-                            scene.move(.left)
-                        } else if motionViewModel.pitchNum < 0 {
-                            scene.move(.right)
-                        }
-                    }
-                }
-            }
-        }
-        .onDisappear {
-//            motionViewModel.stopUpdates()
-            timerViewModel.stopTimer("mazeTimer\(correctAnswerAsset)")
         }
         .onChange(of: scene.correctAnswer) {
             if let sceneCorrectAnswer = scene.correctAnswer {
@@ -189,6 +121,68 @@ struct MazeView: View {
         .onChange(of: scene.wrongAnswer) {
             if let sceneWrongAnswer = scene.wrongAnswer {
                 mazePromptViewModel.isWrongAnswer = sceneWrongAnswer
+            }
+        }
+    }
+
+    private func updateMazeControl() {
+        guard mazePromptViewModel.isTutorialDone else { return }
+        motionViewModel.updateMotion()
+        if orientationInfo.orientation == .landscapeLeft {
+            if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
+                if motionViewModel.rollNum > 0 {
+                    switch motionViewModel.gravityDegree {
+                    case -75 ... -10, 10 ... 80:
+                        scene.move(.right)
+                    case 100 ... 170, 190 ... 255:
+                        scene.move(.left)
+                    default:
+                        scene.move(.up)
+                    }
+                } else if motionViewModel.rollNum < 0 {
+                    switch motionViewModel.gravityDegree {
+                    case -75 ... -10, 105 ... 170:
+                        scene.move(.right)
+                    case 10 ... 75, 190 ... 255:
+                        scene.move(.left)
+                    default:
+                        scene.move(.down)
+                    }
+                }
+            } else {
+                if motionViewModel.pitchNum > 0 {
+                    scene.move(.right)
+                } else if motionViewModel.pitchNum < 0 {
+                    scene.move(.left)
+                }
+            }
+        } else if orientationInfo.orientation == .landscapeRight {
+            if abs(motionViewModel.rollNum) > abs(motionViewModel.pitchNum) {
+                if motionViewModel.rollNum > 0 {
+                    switch motionViewModel.gravityDegree {
+                    case -75 ... -10, 105 ... 170:
+                        scene.move(.right)
+                    case 10 ... 75, 190 ... 255:
+                        scene.move(.left)
+                    default:
+                        scene.move(.down)
+                    }
+                } else if motionViewModel.rollNum < 0 {
+                    switch motionViewModel.gravityDegree {
+                    case -75 ... -10, 10 ... 80:
+                        scene.move(.left)
+                    case 100 ... 170, 190 ... 255:
+                        scene.move(.right)
+                    default:
+                        scene.move(.up)
+                    }
+                }
+            } else {
+                if motionViewModel.pitchNum > 0 {
+                    scene.move(.left)
+                } else if motionViewModel.pitchNum < 0 {
+                    scene.move(.right)
+                }
             }
         }
     }

@@ -15,6 +15,7 @@ struct MazePromptModel {
     var isCorrectAnswer: Bool = false
     var isWrongAnswer: Bool = false
     var isTutorialDone = GlobalStorage.mazeTutorialFinished
+    var isGameOver = false
     var mazeCount = -1
     var currentMazeIndex = 0
 
@@ -28,6 +29,7 @@ struct MazePromptModel {
         progress = 0.0
         isCorrectAnswer = false
         isWrongAnswer = false
+        isGameOver = false
         isTutorialDone = GlobalStorage.mazeTutorialFinished
         mazeCount = -1
         currentMazeIndex = 0
