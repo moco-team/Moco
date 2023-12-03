@@ -72,60 +72,6 @@ class MazeScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
         motionViewModel.startUpdates()
     }
 
-    func createMap() {
-        let screenWidth = size.width
-        let screenHeight = size.height
-        let tileSize = min(screenWidth, screenHeight) / CGFloat(mazeModel.arrayPoint.count)
-
-        var xRenderPos: CGFloat
-        var yRenderPos: CGFloat = screenHeight
-        for index in 0 ..< mazeModel.arrayPoint.count {
-            xRenderPos = tileSize / 2 + screenWidth / 2
-            xRenderPos -= (tileSize * CGFloat(mazeModel.arrayPoint.first!.count)) / 2
-
-            if index == 0 {
-                yRenderPos = screenHeight - tileSize / 2
-            } else {
-                yRenderPos -= tileSize
-            }
-
-            for jIndex in 0 ..< mazeModel.arrayPoint[index].count {
-                let ground = SKSpriteNode()
-                ground.size = CGSize(width: tileSize, height: tileSize)
-
-                if mazeModel.arrayPoint[index][jIndex] == 0 {
-                    ground.name = "0"
-                    ground.texture = SKTexture(imageNamed: "Maze/floor")
-                    if index == mazeModel.arrayPoint.count - 1 { // last tile
-                        ground.name = FinishType.wrong.rawValue
-                        if jIndex == mazeModel.correctPoint.xPos {
-                            ground.name = FinishType.correct.rawValue
-                        }
-                        ground.physicsBody = SKPhysicsBody(rectangleOf: CGSize(
-                            width: ground.size.width * 0.5,
-                            height: ground.size.height * 0.5)
-                        )
-                        ground.physicsBody?.categoryBitMask = CollisionTypes.finish.rawValue
-                        ground.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
-                        ground.physicsBody?.isDynamic = false
-                        ground.physicsBody?.collisionBitMask = 0
-                    }
-                } else if mazeModel.arrayPoint[index][jIndex] == 1 {
-                    ground.name = "1"
-                    ground.texture = SKTexture(imageNamed: "Maze/wall")
-                    ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
-                    ground.physicsBody?.categoryBitMask = CollisionTypes.wall.rawValue
-                    ground.physicsBody?.isDynamic = false
-                }
-
-                ground.position = CGPoint(x: xRenderPos, y: yRenderPos)
-                xRenderPos += tileSize
-                addChild(ground)
-                mazeModel.points[index][jIndex] = ground.position
-            }
-        }
-    }
-
     func move(_ direction: MoveDirection) {
         guard moco != nil && !moco.actionForKeyIsRunning(key: "moving") else { return }
         guard mazeModel.move(direction) else { return }
@@ -139,11 +85,9 @@ class MazeScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
 
         if mazeModel.characterLocationPoint.yPos == mazeModel.correctPoint.yPos &&
             mazeModel.characterLocationPoint.xPos != mazeModel.correctPoint.xPos {
-            print("char", mazeModel.characterLocationPoint, "goal", mazeModel.correctPoint)
             correctAnswer = false
             wrongAnswer = true
         } else if mazeModel.characterLocationPoint == mazeModel.correctPoint {
-            print("char", mazeModel.characterLocationPoint, "goal", mazeModel.correctPoint)
             correctAnswer = true
             wrongAnswer = false
         } else {
@@ -278,6 +222,81 @@ class MazeScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
             )
         }
 #endif
+    }
+}
+
+extension MazeScene {
+    func createMap() {
+        let screenWidth = size.width
+        let screenHeight = size.height
+        let tileSize = min(screenWidth, screenHeight) / CGFloat(mazeModel.arrayPoint.count)
+
+        var xRenderPos: CGFloat
+        var yRenderPos: CGFloat = screenHeight
+        for index in mazeModel.arrayPoint.indices {
+            xRenderPos = tileSize / 2 + screenWidth / 2
+            xRenderPos -= (tileSize * CGFloat(mazeModel.arrayPoint.first!.count)) / 2
+
+            if index == 0 {
+                yRenderPos = screenHeight - tileSize / 2
+            } else {
+                yRenderPos -= tileSize
+            }
+
+            for jIndex in mazeModel.arrayPoint[index].indices {
+                let ground = SKSpriteNode()
+                ground.size = CGSize(width: tileSize, height: tileSize)
+
+                if mazeModel.arrayPoint[index][jIndex] == 0 {
+                    ground.name = "0"
+                    ground.texture = SKTexture(imageNamed: "Maze/floor")
+                    if index == mazeModel.arrayPoint.indices.last { // last tile
+                        ground.name = FinishType.wrong.rawValue
+                        if jIndex == mazeModel.correctPoint.xPos {
+                            ground.name = FinishType.correct.rawValue
+                        }
+                        ground.physicsBody = SKPhysicsBody(rectangleOf: CGSize(
+                            width: ground.size.width * 0.5,
+                            height: ground.size.height * 0.5)
+                        )
+                        ground.physicsBody?.categoryBitMask = CollisionTypes.finish.rawValue
+                        ground.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+                        ground.physicsBody?.isDynamic = false
+                        ground.physicsBody?.collisionBitMask = 0
+                    }
+                } else if mazeModel.arrayPoint[index][jIndex] == 1 {
+                    ground.name = "1"
+                    ground.texture = SKTexture(imageNamed: "Maze/wall")
+                    ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
+                    ground.physicsBody?.categoryBitMask = CollisionTypes.wall.rawValue
+                    ground.physicsBody?.isDynamic = false
+                }
+
+                // MARK: - Outer wall
+
+                if mazeModel.arrayPoint[index][jIndex] == 0 &&
+                    [0, mazeModel.arrayPoint.indices.last].contains(index) {
+                    let outerWall = SKSpriteNode()
+                    outerWall.size = CGSize(width: tileSize, height: tileSize)
+                    outerWall.name = "outer_wall"
+                    outerWall.texture = SKTexture(imageNamed: "Maze/wall")
+                    outerWall.alpha = 0
+                    outerWall.physicsBody = SKPhysicsBody(rectangleOf: outerWall.size)
+                    outerWall.physicsBody?.categoryBitMask = CollisionTypes.wall.rawValue
+                    outerWall.physicsBody?.isDynamic = false
+                    outerWall.position = CGPoint(
+                        x: xRenderPos,
+                        y: yRenderPos + (index == 0 ? tileSize : -tileSize)
+                    )
+                    addChild(outerWall)
+                }
+
+                ground.position = CGPoint(x: xRenderPos, y: yRenderPos)
+                xRenderPos += tileSize
+                addChild(ground)
+                mazeModel.points[index][jIndex] = ground.position
+            }
+        }
     }
 }
 
