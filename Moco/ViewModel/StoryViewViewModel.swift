@@ -89,7 +89,7 @@ extension StoryViewViewModel {
         }
     }
 
-    func onPageChange() {
+    func onPageChange(_ earlyPrompt: Bool? = false) {
         stop()
         setNewStoryPage(scrollPosition ?? -1)
 
@@ -106,7 +106,7 @@ extension StoryViewViewModel {
             promptViewModel.fetchPrompts(storyPage)
         }
         startPrompt()
-        if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
+        if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt || earlyPrompt! {
             promptViewModel.fetchPrompts(storyPage)
             if let prompt = promptViewModel.prompts?.first {
                 activePrompt = prompt
@@ -230,6 +230,31 @@ extension StoryViewViewModel {
 
     func onAppear() {
         onPageChange()
+        mazePromptViewModel.reset(true)
+    }
+
+    func reset() {
+        scrollPosition = 0
+        isExitPopUpActive = false
+        isEpisodeFinished = false
+        isMuted = false
+        text = ""
+        narrativeIndex = -1
+        showPromptButton = false
+        activePrompt = nil
+        peelEffectState = PeelEffectState.stop
+        toBeExecutedByPeelEffect = {}
+        peelBackground = AnyView(EmptyView())
+        isReversePeel = false
+        showWrongAnsPopup = false
+        mazeQuestionIndex = 0
+        forceShowNext = false
+        showPauseMenu = false
+    }
+
+    func restart(_ earlyPrompt: Bool? = false) {
+        reset()
+        onPageChange(earlyPrompt!)
         mazePromptViewModel.reset(true)
     }
 }

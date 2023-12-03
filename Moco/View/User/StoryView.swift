@@ -105,7 +105,10 @@ struct StoryView: View {
                                 promptId: mazePrompt.uid
                             ) {
                                 svvm.nextPage()
-                            }.id(mazePrompt.id)
+                            } onRestart: {
+                                svvm.restart(true)
+                            }
+                            .id(mazePrompt.id)
                         }
                     case .ar:
                         if let ARPrompt = promptViewModel.prompts?[0] {
