@@ -27,7 +27,7 @@ struct MakeSentence: View {
 
     var prompts: [PromptModel] = [
         .init(
-            correctAnswer: "bebe",
+            correctAnswer: "bebe makan madu",
             startTime: 0,
             promptType: PromptType.card,
             hints: nil,
@@ -85,18 +85,23 @@ struct MakeSentence: View {
 //                }
             } else {
                 if showScanner {
-                    CardScan(scanResult: $scanResult) {
+                    CardScan(scanResult: $scanResult, resultCount: 3) {
                         showScanner = false
 
                         scanResult = scanResult.map {
                             $0.fromBase64() ?? ""
                         }
 
+                        print(scanResult.joined(separator: " ")
+                            .trimmingCharacters(in: .whitespacesAndNewlines))
+
                         if scanResult.joined(separator: " ")
                             .trimmingCharacters(in: .whitespacesAndNewlines) != prompts[currentPromptIndex].correctAnswer {
                             showWrongAnswerPopup = true
                             return
                         }
+
+
 
                         currentPromptIndex += 1
                         print("currentPromptIndex")
