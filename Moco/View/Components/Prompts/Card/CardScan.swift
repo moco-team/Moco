@@ -56,7 +56,7 @@ struct CardScan: View {
     }
 
     var capturedAnswer: String {
-        scanResult.map{ $0.fromBase64() ?? "" }.joined(separator: " ").capitalized
+        scanResult.map { $0.fromBase64() ?? "" }.joined(separator: " ").capitalized
     }
 
     var body: some View {
