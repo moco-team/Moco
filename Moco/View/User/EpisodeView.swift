@@ -63,40 +63,52 @@ struct EpisodeView: View {
                 }.padding(.leading, 60)
                     .padding(.vertical, Screen.height * 0.1)
 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: [GridItem(.flexible())]) {
-                        if let episodes = episodeViewModel.episodes {
-                            ForEach(
-                                Array(episodes.enumerated()), id: \.element
-                            ) { index, episode in
-                                EpisodeItem(
-                                    number: index + 1
-                                ) {
-                                    if episode.isAvailable || index < userViewModel.userLogin!.availableEpisodeSum {
-                                        Task {
-                                            episodeViewModel.setSelectedEpisode(episode, index)
+                ScrollViewReader { proxy in
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHGrid(rows: [GridItem(.flexible())]) {
+                            if let episodes = episodeViewModel.episodes {
+                                ForEach(
+                                    Array(episodes.enumerated()), id: \.element
+                                ) { index, episode in
+                                    EpisodeItem(
+                                        number: index + 1
+                                    ) {
+                                        if episode.isAvailable || index < userViewModel.userLogin!.availableEpisodeSum {
+                                            Task {
+                                                episodeViewModel.setSelectedEpisode(episode, index)
 
-                                            // open new story page
-                                            storyViewModel.fetchStory(0, episodeViewModel.selectedEpisode!)
-                                            storyContentViewModel.fetchStoryContents(storyViewModel.storyPage!)
+                                                // open new story page
+                                                storyViewModel.fetchStory(0, episodeViewModel.selectedEpisode!)
+                                                storyContentViewModel.fetchStoryContents(storyViewModel.storyPage!)
 
-                                            if storyViewModel.storyPage!.isHavePrompt {
-                                                promptViewModel.fetchPrompts(storyViewModel.storyPage!)
+                                                if storyViewModel.storyPage!.isHavePrompt {
+                                                    promptViewModel.fetchPrompts(storyViewModel.storyPage!)
 
-                                                if promptViewModel.prompts![0].hints != nil {
-                                                    hintViewModel.fetchHints(promptViewModel.prompts![0])
+                                                    if promptViewModel.prompts![0].hints != nil {
+                                                        hintViewModel.fetchHints(promptViewModel.prompts![0])
+                                                    }
                                                 }
-                                            }
 
-                                            navigate.append(.story)
+                                                navigate.append(.story)
+                                            }
                                         }
                                     }
+                                    .id(episode.uid)
                                 }
                             }
                         }
+                        .padding(.horizontal, UIDevice.isIPad ? 30 : 10)
                     }
-                    .padding(.horizontal, UIDevice.isIPad ? 30 : 10)
-                }.scrollClipDisabled()
+                    .defaultScrollAnchor(.trailing)
+                    .scrollClipDisabled()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                            withAnimation {
+                                proxy.scrollTo(episodeViewModel.episodes?.first?.uid)
+                            }
+                        }
+                    }
+                }
 
                 Spacer()
             }

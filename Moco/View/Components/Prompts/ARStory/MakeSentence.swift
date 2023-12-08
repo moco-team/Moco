@@ -101,8 +101,6 @@ struct MakeSentence: View {
                             return
                         }
 
-
-
                         currentPromptIndex += 1
                         print("currentPromptIndex")
                         print(currentPromptIndex)
