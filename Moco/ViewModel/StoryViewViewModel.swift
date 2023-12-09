@@ -127,11 +127,15 @@ extension StoryViewViewModel {
 
         let nextPageBg = storyViewModel.getPageBackground(scrollPosition! + 1, episode: episodeViewModel.selectedEpisode!)
 
-        peelBackground = AnyView(Image(nextPageBg ?? storyViewModel.storyPage!.background)
+        peelBackground = UIDevice.isIPad ? AnyView(Image(nextPageBg ?? storyViewModel.storyPage!.background)
             .resizable()
             .scaledToFill()
             .frame(width: Screen.width, height: Screen.height, alignment: .center)
-            .clipped())
+            .clipped()) : AnyView(Image(nextPageBg ?? storyViewModel.storyPage!.background)
+                .resizable()
+                .scaledToFit()
+                .frame(width: Screen.width, height: Screen.height, alignment: .center)
+                .clipped())
         peelEffectState = .start
         toBeExecutedByPeelEffect = {
             self.scrollPosition! += 1

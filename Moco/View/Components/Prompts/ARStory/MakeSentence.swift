@@ -27,7 +27,7 @@ struct MakeSentence: View {
 
     var prompts: [PromptModel] = [
         .init(
-            correctAnswer: "bebe makan madu",
+            correctAnswer: "bebe",
             startTime: 0,
             promptType: PromptType.card,
             hints: nil,
@@ -116,6 +116,7 @@ struct MakeSentence: View {
             }
         }
         .onAppear {
+            print("cukurukuk")
             currentPromptIndex = 0
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

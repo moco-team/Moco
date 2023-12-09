@@ -24,6 +24,7 @@ struct ARStory: View {
     }
 
     @State private var isStoryDone: Bool = false
+    @State private var isMakeSentence: Bool = false
 
     var prompt: PromptModel = .init(
         correctAnswer: "honey_jar", // object to be found
@@ -67,7 +68,7 @@ struct ARStory: View {
     var body: some View {
         ZStack {
             if isTutorialFinished {
-                if !isStoryDone {
+                if !isStoryDone && !showLastIsland && !isMakeSentence {
                     ARCameraView(
                         clue: prompt,
                         lastPrompt: lastPrompt,
@@ -87,6 +88,8 @@ struct ARStory: View {
                             isStoryDone = true
                             if !lastPrompt {
                                 doneHandler?()
+                            } else {
+                                isMakeSentence = true
                             }
                         }
                     )
@@ -114,7 +117,7 @@ struct ARStory: View {
                             }
                         }
                     }
-                } else if lastPrompt && !showLastIsland {
+                } else if lastPrompt && !showLastIsland && isMakeSentence {
                     MakeSentence {
                         showLastIsland = true
                     }
@@ -158,6 +161,9 @@ struct ARStory: View {
         .onDisappear {
             arViewModel.pause()
             arViewModel.resetSession()
+        }
+        .onAppear {
+            isStoryDone = false
         }
         .task {
             isTutorialFinished = arViewModel.isTutorialDone
