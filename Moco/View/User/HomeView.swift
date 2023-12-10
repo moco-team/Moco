@@ -19,7 +19,6 @@ struct HomeView: View {
 
     @State private var homeViewModel = HomeViewModel()
 
-
     var body: some View {
         ZStack {
             VStack {

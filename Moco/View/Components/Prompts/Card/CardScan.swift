@@ -59,6 +59,18 @@ struct CardScan: View {
         scanResult.map { $0.fromBase64() ?? "" }.joined(separator: " ").capitalized
     }
 
+    func playInstruction() {
+        // because the arahkan_kamera audio is 5 seconds, we need to do 7 + 5
+        DispatchQueue.main.asyncAfter(deadline: .now() + 12) {
+            audioViewModel.playSound(
+                soundFileName: "arahkan_kamera",
+                type: .m4a,
+                category: .narration
+            )
+            playInstruction()
+        }
+    }
+
     var body: some View {
         ZStack {
             Color.bg.blue
@@ -141,6 +153,7 @@ struct CardScan: View {
                 type: .m4a,
                 category: .narration
             )
+            playInstruction()
         }
     }
 }

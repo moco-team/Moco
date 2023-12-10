@@ -132,10 +132,10 @@ extension StoryViewViewModel {
             .scaledToFill()
             .frame(width: Screen.width, height: Screen.height, alignment: .center)
             .clipped()) : AnyView(Image(nextPageBg ?? storyViewModel.storyPage!.background)
-                .resizable()
-                .scaledToFit()
-                .frame(width: Screen.width, height: Screen.height, alignment: .center)
-                .clipped())
+            .resizable()
+            .scaledToFit()
+            .frame(width: Screen.width, height: Screen.height, alignment: .center)
+            .clipped())
         peelEffectState = .start
         toBeExecutedByPeelEffect = {
             self.scrollPosition! += 1
