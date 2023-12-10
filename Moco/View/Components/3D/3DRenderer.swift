@@ -13,7 +13,11 @@ struct SceneKitView: UIViewRepresentable {
         guard let sceneUrl = Bundle.main.url(forResource: "Floating_Lighthouse", withExtension: "usdz") else { fatalError() }
 
         let scnView = SCNView()
-        scnView.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
+        do {
+            scnView.scene = try SCNScene(url: sceneUrl, options: [.checkConsistency: true])
+        } catch {
+            fatalError("Failed to load SCNScene")
+        }
         scnView.backgroundColor = .clear
 
         scnView.allowsCameraControl = true
