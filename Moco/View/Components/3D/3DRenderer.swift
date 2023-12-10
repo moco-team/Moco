@@ -6,7 +6,6 @@
 //
 
 import SceneKit
-import SceneKit.ModelIO
 import SwiftUI
 
 struct SceneKitView: UIViewRepresentable {
@@ -162,13 +161,13 @@ struct ThreeDRendererOld: View {
                     options: [
                         .allowsCameraControl,
                         .autoenablesDefaultLighting,
-                        .temporalAntialiasingEnabled,
+                        .temporalAntialiasingEnabled
                     ]
                 )
             }
         }
         .task {
-            scene = SCNScene(mdlAsset: mdlAsset)
+//            scene = SCNScene(mdlAsset: mdlAsset)
         }
     }
 }
