@@ -85,7 +85,7 @@ struct MakeSentence: View {
 //                }
             } else {
                 if showScanner {
-                    CardScan(scanResult: $scanResult, resultCount: 3) {
+                    CardScan(scanResult: $scanResult) {
                         showScanner = false
 
                         scanResult = scanResult.map {

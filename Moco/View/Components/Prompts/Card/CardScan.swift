@@ -28,6 +28,7 @@ struct CardScan: View {
 
     @State private var cameraMode = CameraMode.back
     @State private var internalResultCount = 0
+    @State private var stopInstruction = false
     @Binding var scanResult: [String]
 
     var resultCount = 1
@@ -61,7 +62,9 @@ struct CardScan: View {
 
     func playInstruction() {
         // because the arahkan_kamera audio is 5 seconds, we need to do 7 + 5
+        guard !stopInstruction else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 12) {
+            guard !stopInstruction else { return }
             audioViewModel.playSound(
                 soundFileName: "arahkan_kamera",
                 type: .m4a,
@@ -146,6 +149,7 @@ struct CardScan: View {
                 }
             }
         }.task {
+            stopInstruction = false
             scanResult = []
             internalResultCount = 0
             audioViewModel.playSound(
@@ -154,6 +158,9 @@ struct CardScan: View {
                 category: .narration
             )
             playInstruction()
+        }
+        .onDisappear {
+            stopInstruction = true
         }
     }
 }
