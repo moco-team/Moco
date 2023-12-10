@@ -92,6 +92,9 @@ struct MakeSentence: View {
                             $0.fromBase64() ?? ""
                         }
 
+                        print(scanResult.joined(separator: " ")
+                            .trimmingCharacters(in: .whitespacesAndNewlines))
+
                         if scanResult.joined(separator: " ")
                             .trimmingCharacters(in: .whitespacesAndNewlines) != prompts[currentPromptIndex].correctAnswer {
                             showWrongAnswerPopup = true
@@ -113,6 +116,7 @@ struct MakeSentence: View {
             }
         }
         .onAppear {
+            print("cukurukuk")
             currentPromptIndex = 0
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

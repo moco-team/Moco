@@ -25,27 +25,32 @@ struct ARCameraView: View {
     @State var isEndTheStoryPopupActive = false
     @State var isLastNarrativePopupActive = false
 
+    var hintButtonSize: CGFloat {
+        UIDevice.isIPad ? 160 : 90
+    }
+
     var body: some View {
         ZStack {
-            ARViewContainer(isShowHint: $isShowHint, meshes: clue.answerAssets ?? nil).edgesIgnoringSafeArea(.all)
+            ARViewContainer(isShowHint: $isShowHint, meshes: clue.answerAssets ?? nil)
+                .edgesIgnoringSafeArea(.all)
 
             // Overlay above the camera
             VStack {
                 ZStack {
                     Image("Components/modal-base").resizable().scaledToFill()
-                        .padding(80)
-                        .position(x: Screen.width / 2, y: 70.0)
+                        .padding(UIDevice.isIPad ? 80 : 40)
+                        .position(x: Screen.width / 2, y: UIDevice.isIPad ? 70.0 : 30)
 
                     Text(clue.question!)
-                        .customFont(.didactGothic, size: 30)
+                        .customFont(.didactGothic, size: UIDevice.isIPad ? 30 : 15)
                         .foregroundColor(.blue2Txt)
                         .glowBorder(color: .white, lineWidth: 5)
                         .padding(.horizontal, 120)
-                        .padding(.top, 120)
+                        .padding(.top, UIDevice.isIPad ? 120 : 60)
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                 }
-                .frame(height: 150)
+                .frame(height: UIDevice.isIPad ? 150 : 50)
                 Spacer()
 
                 HStack {
@@ -62,13 +67,13 @@ struct ARCameraView: View {
                         }
                         .buttonStyle(
                             CircleButton(
-                                width: 160,
-                                height: 160,
+                                width: hintButtonSize,
+                                height: hintButtonSize,
                                 backgroundColor: .clear,
                                 foregroundColor: .clear
                             )
                         )
-                        .padding(50)
+                        .padding(UIDevice.isIPad ? 50 : 20)
                         .onAppear {
                             withAnimation(Animation.easeIn(duration: 1.5)) {
                                 fadeInHintButton.toggle()
@@ -119,7 +124,8 @@ struct ARCameraView: View {
             disableCancel: true
         ) {
             isLastNarrativePopupActive = false
-            isEndTheStoryPopupActive = true
+//            isEndTheStoryPopupActive = true
+            onFoundObject()
             onEnd()
         }
         .popUp(

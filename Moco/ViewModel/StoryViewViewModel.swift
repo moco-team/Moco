@@ -10,6 +10,7 @@ import SwiftUI
 class StoryViewViewModel: ObservableObject {
     // MARK: - Environments stored property
 
+    private(set) var userViewModel = UserViewModel.shared
     private(set) var storyThemeViewModel = StoryThemeViewModel.shared
     private(set) var storyViewModel = StoryViewModel.shared
     private(set) var episodeViewModel = EpisodeViewModel.shared
@@ -21,6 +22,7 @@ class StoryViewViewModel: ObservableObject {
     private(set) var audioViewModel = AudioViewModel.shared
     private(set) var settingsViewModel = SettingsViewModel.shared
     private(set) var navigate = RouteViewModel.shared
+    private(set) var gameKitViewModel = GameKitViewModel.shared
 
     // MARK: - Static Variables
 
@@ -48,7 +50,9 @@ class StoryViewViewModel: ObservableObject {
     // MARK: - Variables
 
     @Published var enableUI = true
+}
 
+extension StoryViewViewModel {
     // MARK: - Functions
 
     private func updateText() {
@@ -68,7 +72,7 @@ class StoryViewViewModel: ObservableObject {
     private func startNarrative() {
         guard storyContentViewModel.narratives != nil else { return }
         narrativeIndex = -1
-//        updateText()
+        //        updateText()
     }
 
     private func startPrompt() {
@@ -85,7 +89,7 @@ class StoryViewViewModel: ObservableObject {
         }
     }
 
-    func onPageChange() {
+    func onPageChange(_ earlyPrompt: Bool? = false) {
         stop()
         setNewStoryPage(scrollPosition ?? -1)
 
@@ -102,7 +106,7 @@ class StoryViewViewModel: ObservableObject {
             promptViewModel.fetchPrompts(storyPage)
         }
         startPrompt()
-        if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt {
+        if let storyPage = storyViewModel.storyPage, storyPage.earlyPrompt || earlyPrompt! {
             promptViewModel.fetchPrompts(storyPage)
             if let prompt = promptViewModel.prompts?.first {
                 activePrompt = prompt
@@ -123,9 +127,13 @@ class StoryViewViewModel: ObservableObject {
 
         let nextPageBg = storyViewModel.getPageBackground(scrollPosition! + 1, episode: episodeViewModel.selectedEpisode!)
 
-        peelBackground = AnyView(Image(nextPageBg ?? storyViewModel.storyPage!.background)
+        peelBackground = UIDevice.isIPad ? AnyView(Image(nextPageBg ?? storyViewModel.storyPage!.background)
             .resizable()
             .scaledToFill()
+            .frame(width: Screen.width, height: Screen.height, alignment: .center)
+            .clipped()) : AnyView(Image(nextPageBg ?? storyViewModel.storyPage!.background)
+            .resizable()
+            .scaledToFit()
             .frame(width: Screen.width, height: Screen.height, alignment: .center)
             .clipped())
         peelEffectState = .start
@@ -198,6 +206,8 @@ class StoryViewViewModel: ObservableObject {
 
     func continueStory() {
         episodeViewModel.setToAvailable(selectedStoryTheme: storyThemeViewModel.selectedStoryTheme!)
+        userViewModel.addingAvailableEpisode()
+        registerAchievement()
         storyThemeViewModel.fetchStoryThemes()
         storyThemeViewModel.setSelectedStoryTheme(storyThemeViewModel.findWithID(storyThemeViewModel.selectedStoryTheme!.uid)!)
         navigate.pop {
@@ -205,8 +215,50 @@ class StoryViewViewModel: ObservableObject {
         }
     }
 
+    func registerAchievement() {
+        var achievementId = AchievementID.firstEpisode
+        switch userViewModel.userLogin?.availableEpisodeSum {
+        case 1:
+            achievementId = AchievementID.firstEpisode
+        case 2:
+            achievementId = AchievementID.secondEpisode
+        case 3:
+            achievementId = AchievementID.thirdEpisode
+        case 4:
+            achievementId = AchievementID.fourthEpisode
+        default:
+            break
+        }
+        gameKitViewModel.reportAchievement(achievementID: achievementId, percentComplete: 100)
+    }
+
     func onAppear() {
         onPageChange()
+        mazePromptViewModel.reset(true)
+    }
+
+    func reset() {
+        scrollPosition = 0
+        isExitPopUpActive = false
+        isEpisodeFinished = false
+        isMuted = false
+        text = ""
+        narrativeIndex = -1
+        showPromptButton = false
+        activePrompt = nil
+        peelEffectState = PeelEffectState.stop
+        toBeExecutedByPeelEffect = {}
+        peelBackground = AnyView(EmptyView())
+        isReversePeel = false
+        showWrongAnsPopup = false
+        mazeQuestionIndex = 0
+        forceShowNext = false
+        showPauseMenu = false
+    }
+
+    func restart(_ earlyPrompt: Bool? = false) {
+        reset()
+        onPageChange(earlyPrompt!)
         mazePromptViewModel.reset(true)
     }
 }

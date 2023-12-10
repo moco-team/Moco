@@ -6,50 +6,37 @@
 //
 
 import SceneKit
-import SceneKit.ModelIO
 import SwiftUI
 
 struct SceneKitView: UIViewRepresentable {
     func makeUIView(context _: Context) -> SCNView {
-        guard let urlPath = Bundle.main.url(forResource: "Floating_Lighthouse", withExtension: "usdz") else {
-            fatalError("usdz not found")
-        }
-        let mdlAsset = MDLAsset(url: urlPath)
-        // you can load the textures on an MDAsset so it's not white
-        mdlAsset.loadTextures()
-
-//        let asset = mdlAsset.object(at: 0) // extract first object
-        // let assetNode = SCNNode(mdlObject: asset)
+        guard let sceneUrl = Bundle.main.url(forResource: "Floating_Lighthouse", withExtension: "usdz") else { fatalError() }
 
         let scnView = SCNView()
-        scnView.backgroundColor = UIColor.clear
-        scnView.scene = SCNScene(mdlAsset: mdlAsset)
-
-        let cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(x: 0, y: 3.5, z: 15)
-
-        scnView.scene?.rootNode.addChildNode(cameraNode)
-
-        scnView.debugOptions = .showWorldOrigin
+        do {
+            scnView.scene = try SCNScene(url: sceneUrl, options: [.checkConsistency: true])
+        } catch {
+            fatalError("Failed to load SCNScene")
+        }
+        scnView.backgroundColor = .clear
 
         scnView.allowsCameraControl = true
         scnView.autoenablesDefaultLighting = true
         scnView.isTemporalAntialiasingEnabled = true
-
-//        scnView.cameraControlConfiguration.autoSwitchToFreeCamera = false
+        scnView.antialiasingMode = .multisampling4X
 
         let camera = scnView.defaultCameraController
         let cameraConfig = scnView.cameraControlConfiguration
-        camera.pointOfView?.look(at: SCNVector3(x: 0, y: 0, z: 0))
 
         camera.maximumVerticalAngle = 50
-        camera.minimumVerticalAngle = 20
+        camera.minimumVerticalAngle = 10
 
         camera.interactionMode = .orbitTurntable
 
         cameraConfig.rotationSensitivity = 0.3
         cameraConfig.panSensitivity = 0.3
+
+        camera.pointOfView?.worldPosition = SCNVector3(x: 0, y: 0, z: 30)
 
         if let recognizers = scnView.gestureRecognizers {
             for gestureRecognizer in recognizers {
@@ -121,14 +108,14 @@ struct ThreeDRenderer: View {
                     HStack {
                         Spacer()
                         Text("To be continued...")
-                            .customFont(.cherryBomb, size: 30)
+                            .customFont(.cherryBomb, size: UIDevice.isIPad ? 30 : 20)
                             .foregroundColor(.blue2Txt)
                             .glowBorder(color: .white, lineWidth: 5)
                         Button("Keluar") {
                             navigate.popToRoot()
                             action()
                         }
-                        .buttonStyle(MainButton(width: 180, type: .danger))
+                        .buttonStyle(MainButton(width: UIDevice.isIPad ? 180 : 100, type: .danger))
                         .padding(.bottom, 20)
                         .modifier(ShakeEffect(animatableData: shakeAnimation))
                     }
@@ -184,7 +171,7 @@ struct ThreeDRendererOld: View {
             }
         }
         .task {
-            scene = SCNScene(mdlAsset: mdlAsset)
+//            scene = SCNScene(mdlAsset: mdlAsset)
         }
     }
 }

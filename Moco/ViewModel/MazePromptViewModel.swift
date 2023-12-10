@@ -105,6 +105,19 @@ import SwiftUI
         }
     }
 
+    var canMove: Bool {
+        isTutorialDone && !mazePromptModel.isGameOver
+    }
+
+    var isGameOver: Bool {
+        get {
+            mazePromptModel.isGameOver
+        }
+        set {
+            mazePromptModel.isGameOver = newValue
+        }
+    }
+
     func playPrompt() {
         mazePromptModel.isStarted = false
         withAnimation(.easeInOut(duration: 3)) {

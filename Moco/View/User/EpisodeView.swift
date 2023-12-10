@@ -11,12 +11,17 @@ import SwiftUI
 struct EpisodeView: View {
     @Environment(\.audioViewModel) private var audioViewModel
     @Environment(\.storyThemeViewModel) private var storyThemeViewModel
+    @Environment(\.userViewModel) private var userViewModel
     @Environment(\.episodeViewModel) private var episodeViewModel
     @Environment(\.storyViewModel) private var storyViewModel
     @Environment(\.storyContentViewModel) private var storyContentViewModel
     @Environment(\.promptViewModel) private var promptViewModel
     @Environment(\.hintViewModel) private var hintViewModel
     @Environment(\.navigate) private var navigate
+
+    var homeButtonSize: CGFloat {
+        UIDevice.isIPad ? 70 : 50
+    }
 
     var body: some View {
         ZStack {
@@ -29,11 +34,7 @@ struct EpisodeView: View {
 
             VStack {
                 HStack(alignment: .center) {
-                    Image("Story/nav-icon")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 0.4 * Screen.width)
-                        .padding(.top, Screen.height * 0.02)
+                    MocoIcon()
 
                     Spacer()
 
@@ -45,7 +46,7 @@ struct EpisodeView: View {
                     HStack(spacing: 40) {
                         Image("Buttons/button-home")
                             .resizable()
-                            .frame(width: 70, height: 70)
+                            .frame(width: homeButtonSize, height: homeButtonSize)
                             .shadow(radius: 4, x: -2, y: 2)
                             .foregroundColor(.white)
                             .onTapGesture {
@@ -53,7 +54,7 @@ struct EpisodeView: View {
                             }
 
                         Text("Episode")
-                            .customFont(.cherryBomb, size: 50)
+                            .customFont(.cherryBomb, size: UIDevice.isIPad ? 50 : 30)
                             .foregroundColor(Color.blueTxt)
                             .fontWeight(.bold)
                     }
@@ -62,38 +63,52 @@ struct EpisodeView: View {
                 }.padding(.leading, 60)
                     .padding(.vertical, Screen.height * 0.1)
 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: [GridItem(.flexible())]) {
-                        if let availableEpisodes = episodeViewModel.availableEpisodes {
-                            ForEach(
-                                Array(availableEpisodes.enumerated()), id: \.element
-                            ) { index, episode in
-                                EpisodeItem(
-                                    number: index + 1
-                                ) {
-                                    Task {
-                                        episodeViewModel.setSelectedEpisode(episode)
+                ScrollViewReader { proxy in
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHGrid(rows: [GridItem(.flexible())]) {
+                            if let episodes = episodeViewModel.episodes {
+                                ForEach(
+                                    Array(episodes.enumerated()), id: \.element
+                                ) { index, episode in
+                                    EpisodeItem(
+                                        number: index + 1
+                                    ) {
+                                        if episode.isAvailable || index < userViewModel.userLogin!.availableEpisodeSum {
+                                            Task {
+                                                episodeViewModel.setSelectedEpisode(episode, index)
 
-                                        // open new story page
-                                        storyViewModel.fetchStory(0, episodeViewModel.selectedEpisode!)
-                                        storyContentViewModel.fetchStoryContents(storyViewModel.storyPage!)
+                                                // open new story page
+                                                storyViewModel.fetchStory(0, episodeViewModel.selectedEpisode!)
+                                                storyContentViewModel.fetchStoryContents(storyViewModel.storyPage!)
 
-                                        if storyViewModel.storyPage!.isHavePrompt {
-                                            promptViewModel.fetchPrompts(storyViewModel.storyPage!)
+                                                if storyViewModel.storyPage!.isHavePrompt {
+                                                    promptViewModel.fetchPrompts(storyViewModel.storyPage!)
 
-                                            if promptViewModel.prompts![0].hints != nil {
-                                                hintViewModel.fetchHints(promptViewModel.prompts![0])
+                                                    if promptViewModel.prompts![0].hints != nil {
+                                                        hintViewModel.fetchHints(promptViewModel.prompts![0])
+                                                    }
+                                                }
+
+                                                navigate.append(.story)
                                             }
                                         }
-
-                                        navigate.append(.story)
                                     }
+                                    .id(episode.uid)
                                 }
                             }
                         }
+                        .padding(.horizontal, UIDevice.isIPad ? 30 : 10)
                     }
-                    .padding(.horizontal, 30)
-                }.scrollClipDisabled()
+                    .defaultScrollAnchor(.trailing)
+                    .scrollClipDisabled()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                            withAnimation {
+                                proxy.scrollTo(episodeViewModel.episodes?.first?.uid)
+                            }
+                        }
+                    }
+                }
 
                 Spacer()
             }
@@ -104,6 +119,7 @@ struct EpisodeView: View {
                 audioViewModel.clearAll()
                 audioViewModel.playSound(soundFileName: "bg-shop", numberOfLoops: -1, category: .backsound)
             }
+            AppDelegate.orientationLock = nil
         }
     }
 }

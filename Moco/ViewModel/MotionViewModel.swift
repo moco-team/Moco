@@ -9,6 +9,8 @@ import CoreMotion
 import Foundation
 
 class MotionViewModel: ObservableObject {
+    static var shared = MotionViewModel()
+
     @Published var accelerationValue: String = ""
     @Published var gravityValue: String = ""
     @Published var rotationValue: String = ""
@@ -30,6 +32,10 @@ class MotionViewModel: ObservableObject {
     private var gravity: CMAcceleration = .init()
     private var rotationRate: CMRotationRate = .init()
     private var attitude: CMAttitude?
+
+    var accelerometerData: CMAccelerometerData? {
+        motionManager.accelerometerData
+    }
 
     init() {
         // Set the update interval to any time that you want
@@ -63,6 +69,8 @@ class MotionViewModel: ObservableObject {
                 guard let self = self else { return }
                 getRotation(gyroData: gyroData)
             }
+
+            motionManager.startAccelerometerUpdates()
         }
     }
 

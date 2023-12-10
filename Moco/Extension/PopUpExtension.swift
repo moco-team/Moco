@@ -43,7 +43,7 @@ public extension View {
                 textColor: Color.blue2Txt,
                 overlayOpacity: overlayOpacity,
                 isLarge: isLarge,
-                width: width ?? Screen.width * 0.32,
+                width: width ?? Screen.width * (UIDevice.isIPad ? 0.32 : 0.4),
                 height: height ?? Screen.height * 0.3,
                 type: type,
                 disableCancel: disableCancel,

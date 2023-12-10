@@ -12,6 +12,8 @@ import SwiftUI
 @Observable class GameKitViewModel: NSObject, GKLocalPlayerListener {
     var playerModel = PlayerViewModel.shared
 
+    static var shared = GameKitViewModel()
+
     override init() {
         super.init()
 

@@ -13,6 +13,14 @@ struct BurgerMenu: View {
     @State private var expand = false
     @State var isGameCenterAchievementsPresented = false
 
+    var size: CGFloat {
+        UIDevice.isIPad ? 90 : 60
+    }
+
+    var expandedSize: CGFloat {
+        UIDevice.isIPad ? 50 : 35
+    }
+
     var body: some View {
         HStack(spacing: 0) {
             Spacer()
@@ -24,7 +32,7 @@ struct BurgerMenu: View {
                         } label: {
                             Image("Story/Icons/achievements")
                                 .resizable()
-                                .frame(width: 90, height: 90)
+                                .frame(width: size, height: size)
                                 .shadow(radius: 4, x: -2, y: 2)
                                 .onTapGesture {
                                     isGameCenterAchievementsPresented = true
@@ -38,12 +46,12 @@ struct BurgerMenu: View {
                         } label: {
                             Image("Story/Icons/settings")
                                 .resizable()
-                                .frame(width: 90, height: 90)
+                                .frame(width: size, height: size)
                                 .shadow(radius: 4, x: -2, y: 2)
                         }
-                    }.padding(.vertical, 18)
-                        .padding(.leading, 20)
-                        .padding(.trailing, 10)
+                    }.padding(.vertical, UIDevice.isIPad ? 18 : 12)
+                        .padding(.leading, UIDevice.isIPad ? 20 : 15)
+                        .padding(.trailing, UIDevice.isIPad ? 10 : 7)
                 }
                 SfxButton {
                     withAnimation(.spring()) {
@@ -52,13 +60,16 @@ struct BurgerMenu: View {
                 } label: {
                     Image(expand ? "Story/Icons/burger-menu-opened" : "Story/Icons/burger-menu")
                         .resizable()
-                        .frame(width: expand ? 50 : 90, height: expand ? 50 : 90)
+                        .frame(
+                            width: expand ? expandedSize : size,
+                            height: expand ? expandedSize : size
+                        )
                         .shadow(radius: 4, x: -2, y: 2)
                 }
-                .padding(.trailing, 20)
+                .padding(.trailing, UIDevice.isIPad ? 20 : 10)
             }
             .background(expand ? .white : .clear)
-            .cornerRadius(38)
+            .cornerRadius(UIDevice.isIPad ? 38 : 24)
         }
     }
 }

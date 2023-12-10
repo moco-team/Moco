@@ -27,7 +27,7 @@ struct StoryBookNew: View {
     }
 
     var height: CGFloat {
-        Screen.height * 0.3
+        UIDevice.isIPad ? Screen.height * 0.3 : Screen.height * 0.4
     }
 
     var body: some View {
@@ -71,8 +71,8 @@ struct StoryBookNew: View {
                                 Rectangle()
                                     .fill(.white)
                                     .frame(
-                                        width: width + 20,
-                                        height: height + 20
+                                        width: width + (UIDevice.isIPad ? 20 : 15),
+                                        height: height + (UIDevice.isIPad ? 20 : 15)
                                     ) // Adjust the frame size as needed
                                     .clipShape(
                                         .rect(
@@ -96,7 +96,7 @@ struct StoryBookNew: View {
                                                     Image("Story/Cover/locked")
                                                         .resizable()
                                                         .scaledToFit()
-                                                        .frame(width: 100)
+                                                        .frame(width: UIDevice.isIPad ? 100 : 60)
                                                 }
                                         } else {
                                             EmptyView()

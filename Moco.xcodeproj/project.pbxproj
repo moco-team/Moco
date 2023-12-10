@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		050077182B08033200376135 /* MakeSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050077172B08033200376135 /* MakeSentence.swift */; };
-		050077202B08B5B200376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771E2B081F3C00376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a */; };
-		050077212B08B5B200376135 /* Susunlah sebuah kalimat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771F2B08244200376135 /* Susunlah sebuah kalimat.m4a */; };
 		050077222B08B5B200376135 /* Cari kartu benda.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771C2B081ED200376135 /* Cari kartu benda.m4a */; };
 		050077232B08B5B200376135 /* Cari kartu karakter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771D2B081ED200376135 /* Cari kartu karakter.m4a */; };
 		050077242B08B5B200376135 /* Cari kartu kata kerja.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0500771B2B081ED200376135 /* Cari kartu kata kerja.m4a */; };
@@ -69,6 +67,8 @@
 		05AE93682ADE83430082B21D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 05AE93672ADE83430082B21D /* Lottie */; };
 		05B8EDA02AEE65FE009ED2C5 /* MotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B8ED9F2AEE65FE009ED2C5 /* MotionViewModel.swift */; };
 		05BA97AA2AE11EE400F64F52 /* MPVolumeViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BA97A92AE11EE400F64F52 /* MPVolumeViewExtension.swift */; };
+		05C13CFC2B13B74500F8F00E /* Susunlah sebuah kalimat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 05C13CFA2B13B6F600F8F00E /* Susunlah sebuah kalimat.m4a */; };
+		05C13CFD2B13B74A00F8F00E /* Apa yang akan dilakukan bebe selanjutnya.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 05C13CFB2B13B6F600F8F00E /* Apa yang akan dilakukan bebe selanjutnya.m4a */; };
 		05D966E12ADEE6CF00997E3A /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05D966E02ADEE6CF00997E3A /* success.mp3 */; };
 		05E17AD52ADE86DE00A34547 /* FindTheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD42ADE86DE00A34547 /* FindTheObject.swift */; };
 		05E17AD72ADEBFC500A34547 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E17AD62ADEBFC500A34547 /* BalloonView.swift */; };
@@ -106,6 +106,8 @@
 		0B6E2F742ADC9DC90001D320 /* HintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E2F732ADC9DC90001D320 /* HintViewModel.swift */; };
 		0B6E2F762ADC9F020001D320 /* PromptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E2F752ADC9F020001D320 /* PromptViewModel.swift */; };
 		0B6E2F782ADCA8990001D320 /* StoryContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E2F772ADCA8990001D320 /* StoryContentViewModel.swift */; };
+		0B771A622B10B1DB00F1D8CA /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B771A612B10B1DB00F1D8CA /* UserViewModel.swift */; };
+		0B771A642B10B1F500F1D8CA /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B771A632B10B1F500F1D8CA /* UserModel.swift */; };
 		0BA3E5092ADFC61500BCFE9E /* StoryThemeAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E5082ADFC61500BCFE9E /* StoryThemeAdminView.swift */; };
 		0BA3E50B2ADFC62000BCFE9E /* StoryAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E50A2ADFC62000BCFE9E /* StoryAdminView.swift */; };
 		0BA3E5102ADFD04700BCFE9E /* StoryThemeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA3E50F2ADFD04700BCFE9E /* StoryThemeModalView.swift */; };
@@ -134,6 +136,7 @@
 		931722232AE5508300346382 /* Page10-monolog1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949822AE0ED3300830D57 /* Page10-monolog1.m4a */; };
 		931722242AE5508300346382 /* Page10-monolog2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056949812AE0ED3300830D57 /* Page10-monolog2.m4a */; };
 		931722252AE5508300346382 /* congratulations.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 053393122AE13A310085BB30 /* congratulations.m4a */; };
+		931B8DA12B13344E0025F604 /* MocoIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931B8DA02B13344E0025F604 /* MocoIcon.swift */; };
 		932357D62ADE6EF3009B3D86 /* bg-story.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 932357D52ADE6EF3009B3D86 /* bg-story.mp3 */; };
 		932357D82ADE700D009B3D86 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D72ADE700D009B3D86 /* AudioViewModel.swift */; };
 		932357DA2ADE7190009B3D86 /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932357D92ADE7190009B3D86 /* AudioModel.swift */; };
@@ -284,8 +287,6 @@
 		0500771B2B081ED200376135 /* Cari kartu kata kerja.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cari kartu kata kerja.m4a"; sourceTree = "<group>"; };
 		0500771C2B081ED200376135 /* Cari kartu benda.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cari kartu benda.m4a"; sourceTree = "<group>"; };
 		0500771D2B081ED200376135 /* Cari kartu karakter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cari kartu karakter.m4a"; sourceTree = "<group>"; };
-		0500771E2B081F3C00376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apa yang akan dilakukan bebe selanjutnya.m4a"; sourceTree = "<group>"; };
-		0500771F2B08244200376135 /* Susunlah sebuah kalimat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Susunlah sebuah kalimat.m4a"; sourceTree = "<group>"; };
 		050353E02ADFE2970066591A /* FindHoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindHoney.swift; sourceTree = "<group>"; };
 		050E42062AFDC540009666DB /* ARTutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARTutorialView.swift; sourceTree = "<group>"; };
 		050E420E2AFDCC7D009666DB /* arrange_camera_to_barcode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrange_camera_to_barcode.json; sourceTree = "<group>"; };
@@ -361,6 +362,8 @@
 		05AE93622ADE82920082B21D /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		05B8ED9F2AEE65FE009ED2C5 /* MotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionViewModel.swift; sourceTree = "<group>"; };
 		05BA97A92AE11EE400F64F52 /* MPVolumeViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPVolumeViewExtension.swift; sourceTree = "<group>"; };
+		05C13CFA2B13B6F600F8F00E /* Susunlah sebuah kalimat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Susunlah sebuah kalimat.m4a"; sourceTree = "<group>"; };
+		05C13CFB2B13B6F600F8F00E /* Apa yang akan dilakukan bebe selanjutnya.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apa yang akan dilakukan bebe selanjutnya.m4a"; sourceTree = "<group>"; };
 		05D966E02ADEE6CF00997E3A /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
 		05E17AD42ADE86DE00A34547 /* FindTheObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTheObject.swift; sourceTree = "<group>"; };
 		05E17AD62ADEBFC500A34547 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
@@ -399,6 +402,8 @@
 		0B6E2F732ADC9DC90001D320 /* HintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintViewModel.swift; sourceTree = "<group>"; };
 		0B6E2F752ADC9F020001D320 /* PromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewModel.swift; sourceTree = "<group>"; };
 		0B6E2F772ADCA8990001D320 /* StoryContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryContentViewModel.swift; sourceTree = "<group>"; };
+		0B771A612B10B1DB00F1D8CA /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		0B771A632B10B1F500F1D8CA /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		0BA3E5082ADFC61500BCFE9E /* StoryThemeAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryThemeAdminView.swift; sourceTree = "<group>"; };
 		0BA3E50A2ADFC62000BCFE9E /* StoryAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryAdminView.swift; sourceTree = "<group>"; };
 		0BA3E50F2ADFD04700BCFE9E /* StoryThemeModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryThemeModalView.swift; sourceTree = "<group>"; };
@@ -412,6 +417,7 @@
 		9310EC7C2B07E1280045A908 /* maaf_kartu_tidak_tepat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = maaf_kartu_tidak_tepat.m4a; sourceTree = "<group>"; };
 		9310EC802B0A353A0045A908 /* StoryViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewViewModel.swift; sourceTree = "<group>"; };
 		9310EC852B0A40FA0045A908 /* Story1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story1.swift; sourceTree = "<group>"; };
+		931B8DA02B13344E0025F604 /* MocoIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocoIcon.swift; sourceTree = "<group>"; };
 		932357D52ADE6EF3009B3D86 /* bg-story.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bg-story.mp3"; sourceTree = "<group>"; };
 		932357D72ADE700D009B3D86 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		932357D92ADE7190009B3D86 /* AudioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
@@ -578,8 +584,8 @@
 		0500771A2B081EC100376135 /* MakeSentence */ = {
 			isa = PBXGroup;
 			children = (
-				0500771E2B081F3C00376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a */,
-				0500771F2B08244200376135 /* Susunlah sebuah kalimat.m4a */,
+				05C13CFB2B13B6F600F8F00E /* Apa yang akan dilakukan bebe selanjutnya.m4a */,
+				05C13CFA2B13B6F600F8F00E /* Susunlah sebuah kalimat.m4a */,
 				0500771C2B081ED200376135 /* Cari kartu benda.m4a */,
 				0500771D2B081ED200376135 /* Cari kartu karakter.m4a */,
 				0500771B2B081ED200376135 /* Cari kartu kata kerja.m4a */,
@@ -1014,6 +1020,7 @@
 				93C30CB92AF926150076808F /* TimerView.swift */,
 				0592100F2AFB601E0008CD2C /* QRScannerSheet.swift */,
 				93692EA92AFD43FD00CD6561 /* PauseMenu.swift */,
+				931B8DA02B13344E0025F604 /* MocoIcon.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1308,6 +1315,7 @@
 				938E3D302AD8FD2E003D2AE1 /* ItemViewModel.swift */,
 				0B2E31E12AD9064900DFC16F /* CollectionViewModel.swift */,
 				938E3D422ADABD9F003D2AE1 /* BaseViewModel.swift */,
+				0B771A612B10B1DB00F1D8CA /* UserViewModel.swift */,
 				0B6E2F6F2ADC96200001D320 /* StoryThemeViewModel.swift */,
 				0B46D7202AF12077002DE821 /* EpisodeViewModel.swift */,
 				0B6E2F712ADC97BE0001D320 /* StoryViewModel.swift */,
@@ -1343,6 +1351,7 @@
 				938E3D382AD939DC003D2AE1 /* Item.swift */,
 				0B2E31D92AD7EBE500DFC16F /* CollectionModel.swift */,
 				938E3D1E2AD7AD78003D2AE1 /* Collection.swift */,
+				0B771A632B10B1F500F1D8CA /* UserModel.swift */,
 				0B6E2F652ADC8ECE0001D320 /* StoryThemeModel.swift */,
 				0B46D7222AF120BC002DE821 /* EpisodeModel.swift */,
 				0B6E2F672ADC908B0001D320 /* StoryModel.swift */,
@@ -1577,8 +1586,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				050077202B08B5B200376135 /* Apa yang akan dilakukan bebe selanjutnya.m4a in Resources */,
-				050077212B08B5B200376135 /* Susunlah sebuah kalimat.m4a in Resources */,
+				05C13CFD2B13B74A00F8F00E /* Apa yang akan dilakukan bebe selanjutnya.m4a in Resources */,
+				05C13CFC2B13B74500F8F00E /* Susunlah sebuah kalimat.m4a in Resources */,
 				050077222B08B5B200376135 /* Cari kartu benda.m4a in Resources */,
 				050077232B08B5B200376135 /* Cari kartu karakter.m4a in Resources */,
 				050077242B08B5B200376135 /* Cari kartu kata kerja.m4a in Resources */,
@@ -1702,6 +1711,7 @@
 				9310EC782B07C3040045A908 /* ScaleEffect.swift in Sources */,
 				938E3D4D2ADBA247003D2AE1 /* ContentViewContainer.swift in Sources */,
 				9310EC812B0A353A0045A908 /* StoryViewViewModel.swift in Sources */,
+				931B8DA12B13344E0025F604 /* MocoIcon.swift in Sources */,
 				0B1197622AD7D4F3004FAD14 /* IconButton.swift in Sources */,
 				938E3D3F2AD990C3003D2AE1 /* Buttons.swift in Sources */,
 				937AF2952AE8C06C008C69BB /* ARView.swift in Sources */,
@@ -1773,6 +1783,7 @@
 				9310EC862B0A40FA0045A908 /* Story1.swift in Sources */,
 				935D78552AEC09A000DF64A5 /* GlobalStorage.swift in Sources */,
 				05BA97AA2AE11EE400F64F52 /* MPVolumeViewExtension.swift in Sources */,
+				0B771A622B10B1DB00F1D8CA /* UserViewModel.swift in Sources */,
 				93676D242AF139A800E756A5 /* ProgressBar.swift in Sources */,
 				05B8EDA02AEE65FE009ED2C5 /* MotionViewModel.swift in Sources */,
 				938E3D452ADAD5F3003D2AE1 /* StoryBook.swift in Sources */,
@@ -1810,6 +1821,7 @@
 				93C2F8BE2AD684CE007D1ABC /* Device.swift in Sources */,
 				93676D2D2AF1475200E756A5 /* PointerViewModifier.swift in Sources */,
 				93692EAA2AFD43FD00CD6561 /* PauseMenu.swift in Sources */,
+				0B771A642B10B1F500F1D8CA /* UserModel.swift in Sources */,
 				937AF2A22AE930AF008C69BB /* MazeScene.swift in Sources */,
 				935D78622AEE1AC400DF64A5 /* MazePrompt.swift in Sources */,
 				938C553E2AE1B76600BC233D /* ObjectDetectionModel.swift in Sources */,
@@ -2022,14 +2034,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mocoteam.Moco;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -2057,14 +2069,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mocoteam.Moco;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

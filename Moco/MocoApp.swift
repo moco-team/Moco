@@ -26,14 +26,16 @@ struct MocoApp: App {
     @State private var storyContentViewModel = StoryContentViewModel.shared
     @State private var promptViewModel = PromptViewModel.shared
     @State private var hintViewModel = HintViewModel.shared
+    @State private var userViewModel = UserViewModel.shared
     @State private var settingsViewModel = SettingsViewModel.shared
     @State private var mazePromptViewModel = MazePromptViewModel.shared
+    @State private var gameKitViewModel = GameKitViewModel.shared
 
     // MARK: - State Objects
 
     @StateObject private var objectDetectionViewModel = ObjectDetectionViewModel.shared
     @StateObject private var arViewModel = ARViewModel()
-    @StateObject private var motionViewModel = MotionViewModel()
+    @StateObject private var motionViewModel = MotionViewModel.shared
     @StateObject private var orientationInfo = OrientationInfo.shared
 
     private static let sharedModelContainer: ModelContainer = ModelGenerator.generator(false)
@@ -45,6 +47,7 @@ struct MocoApp: App {
                 ContentViewContainer()
             }.environment(\.navigate, routeViewModel)
                 .environment(\.font, Font.custom("CherryBomb-Regular", size: 24, relativeTo: .body))
+                .environment(\.userViewModel, userViewModel)
                 .environment(\.storyThemeViewModel, storyThemeViewModel)
                 .environment(\.episodeViewModel, episodeViewModel)
                 .environment(\.storyViewModel, storyViewModel)

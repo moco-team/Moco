@@ -8,7 +8,7 @@
 import Foundation
 
 private let episode1 = EpisodeModel(
-    pictureName: "",
+    pictureName: "Story/Content/Story1/Pages/Page1/background",
     stories: [
         // Story page-1
         StoryModel(
@@ -409,7 +409,7 @@ private let episode2 = EpisodeModel(
             ]
         )
     ],
-    isAvailable: true
+    isAvailable: false
 )
 
 private let episode3 = EpisodeModel(
@@ -417,7 +417,7 @@ private let episode3 = EpisodeModel(
     stories: [
         // Story page-1
         StoryModel(
-            background: "",
+            background: "Story/Content/Story1/Ep3/Page1/background",
             pageNumber: 1,
             isHavePrompt: true,
             prompts: [
@@ -452,7 +452,7 @@ private let episode3 = EpisodeModel(
                     fontSize: 0
                 )
             ],
-            earlyPrompt: true
+            earlyPrompt: false
         ),
         // Story page-2
         StoryModel(
@@ -610,10 +610,42 @@ private let episode3 = EpisodeModel(
         ),
         // Story page-4
         StoryModel(
-            background: "Story/Content/Story1/Pages/Page6/background",
+            background: "Story/Content/Story1/Ep3/Page6/background",
             pageNumber: 6,
+            isHavePrompt: true,
+            prompts: [
+                PromptModel(
+                    correctAnswer: "luna",
+                    startTime: 0,
+                    promptType: PromptType.card,
+                    hints: nil,
+                    question: """
+                    Siapakah seekor ular dewasa yang cerdik?
+                    """,
+                    imageCard: "",
+                    cardLocationX: 0.4,
+                    cardLocationY: 0.7,
+                    cardType: CardType.character
+                )
+            ],
+            storyContents: [
+                StoryContentModel(
+                    duration: 0,
+                    contentName: "bg-story",
+                    contentType: StoryContentType.audio,
+                    positionX: 0,
+                    positionY: 0,
+                    maxWidth: 0,
+                    color: "",
+                    fontSize: 0
+                )
+            ],
+            earlyPrompt: true
+        ),
+        StoryModel(
+            background: "Story/Content/Story1/Ep3/Page7/background",
+            pageNumber: 7,
             isHavePrompt: false,
-            prompts: nil,
             storyContents: [
                 StoryContentModel(
                     duration: 0,
@@ -628,7 +660,7 @@ private let episode3 = EpisodeModel(
             ]
         )
     ],
-    isAvailable: true
+    isAvailable: false
 )
 
 private let episode4 = EpisodeModel(
@@ -730,7 +762,7 @@ private let episode4 = EpisodeModel(
             earlyPrompt: true
         )
     ],
-    isAvailable: true
+    isAvailable: false
 )
 
 struct Story1: StoryProtocol {

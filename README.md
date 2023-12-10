@@ -1,4 +1,4 @@
-# Moco
+# Moco Kids
 
 ## Platform
 

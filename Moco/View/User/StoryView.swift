@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StoryView: View {
     // MARK: - Environments
+
     @Environment(\.storyThemeViewModel) private var storyThemeViewModel
     @Environment(\.storyViewModel) private var storyViewModel
     @Environment(\.episodeViewModel) private var episodeViewModel
@@ -26,21 +27,37 @@ struct StoryView: View {
 
     @StateObject private var svvm = StoryViewViewModel()
 
+    // MARK: - Variables
+
+    var buttonSize: CGFloat {
+        UIDevice.isIPad ? 80 : 50
+    }
+
     // MARK: - View
 
     var body: some View {
         ZStack {
+            Color.text.primary
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 0) {
                     if let stories = episodeViewModel.selectedEpisode!.stories {
                         ForEach(Array(stories.enumerated()), id: \.offset) { index, _ in
                             ZStack {
                                 PeelEffectTappable(state: $svvm.peelEffectState, isReverse: svvm.isReversePeel) {
-                                    Image(storyViewModel.storyPage!.background)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: Screen.width, height: Screen.height, alignment: .center)
-                                        .clipped()
+                                    if UIDevice.isIPad {
+                                        Image(storyViewModel.storyPage!.background)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: Screen.width, height: Screen.height, alignment: .center)
+                                            .clipped()
+                                    } else {
+                                        Image(storyViewModel.storyPage!.background)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .scaleEffect(1.4)
+                                            .frame(width: Screen.width, height: Screen.height, alignment: .center)
+                                            .clipped()
+                                    }
                                 } background: {
                                     svvm.peelBackground
                                 } onComplete: {
@@ -98,7 +115,10 @@ struct StoryView: View {
                                 promptId: mazePrompt.uid
                             ) {
                                 svvm.nextPage()
-                            }.id(mazePrompt.id)
+                            } onRestart: {
+                                svvm.restart(true)
+                            }
+                            .id(mazePrompt.id)
                         }
                     case .ar:
                         if let ARPrompt = promptViewModel.prompts?[0] {
@@ -129,8 +149,8 @@ struct StoryView: View {
                             Image("Buttons/button-home").resizable().scaledToFit()
                         }.buttonStyle(
                             CircleButton(
-                                width: 80,
-                                height: 80,
+                                width: buttonSize,
+                                height: buttonSize,
                                 backgroundColor: .clear,
                                 foregroundColor: .clear
                             )
@@ -144,8 +164,8 @@ struct StoryView: View {
                                 .scaledToFit()
                         }.buttonStyle(
                             CircleButton(
-                                width: 80,
-                                height: 80,
+                                width: buttonSize,
+                                height: buttonSize,
                                 backgroundColor: .clear,
                                 foregroundColor: .clear
                             )
@@ -159,8 +179,8 @@ struct StoryView: View {
                                 .scaledToFit()
                         }.buttonStyle(
                             CircleButton(
-                                width: 80,
-                                height: 80,
+                                width: buttonSize,
+                                height: buttonSize,
                                 backgroundColor: .clear,
                                 foregroundColor: .clear
                             )

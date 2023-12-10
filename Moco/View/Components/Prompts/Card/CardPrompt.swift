@@ -59,7 +59,7 @@ struct CardPrompt: View {
                 let promptContent = cardQuestions[currentCard]
                 VStack {
                     Text(promptContent.text)
-                        .customFont(.didactGothic, size: 40)
+                        .customFont(.didactGothic, size: UIDevice.isIPad ? 40 : 25)
                 }
                 .position(
                     CGPoint(
@@ -88,14 +88,14 @@ struct CardPrompt: View {
                             showWrongAnswerPopup = true
                             return
                         }
-                        
+
                         currentCard += 1
                         if let prompts = promptViewModel.prompts,
                            currentCard >= prompts.count {
                             showNext = true
                             onComplete?()
                         }
-                        
+
                         DispatchQueue.global().async {
                             audioViewModel.playSound(
                                 soundFileName: "bagus_berhasil_scan",
@@ -103,7 +103,6 @@ struct CardPrompt: View {
                                 category: .narration
                             )
                         }
-                        
                     }
                 }
             }

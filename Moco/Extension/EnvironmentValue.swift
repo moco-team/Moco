@@ -21,6 +21,11 @@ extension EnvironmentValues {
         set { self[TimerViewModelKey.self] = newValue }
     }
 
+    var userViewModel: UserViewModel {
+        get { self[UserViewModelKey.self] }
+        set { self[UserViewModelKey.self] = newValue }
+    }
+
     var storyThemeViewModel: StoryThemeViewModel {
         get { self[StoryThemeViewModelKey.self] }
         set { self[StoryThemeViewModelKey.self] = newValue }
@@ -60,6 +65,11 @@ extension EnvironmentValues {
         get { self[MazePromptViewModelKey.self] }
         set { self[MazePromptViewModelKey.self] = newValue }
     }
+
+    var gameKitViewModel: GameKitViewModel {
+        get { self[GameKitViewModelKey.self] }
+        set { self[GameKitViewModelKey.self] = newValue }
+    }
 }
 
 // MARK: - View Model Keys
@@ -70,6 +80,10 @@ private struct AudioViewModelKey: EnvironmentKey {
 
 private struct TimerViewModelKey: EnvironmentKey {
     static var defaultValue: TimerViewModel = .init()
+}
+
+private struct UserViewModelKey: EnvironmentKey {
+    static var defaultValue: UserViewModel = .init()
 }
 
 private struct StoryThemeViewModelKey: EnvironmentKey {
@@ -102,4 +116,8 @@ private struct SettingsViewModelKey: EnvironmentKey {
 
 private struct MazePromptViewModelKey: EnvironmentKey {
     static var defaultValue: MazePromptViewModel = .init()
+}
+
+private struct GameKitViewModelKey: EnvironmentKey {
+    static var defaultValue: GameKitViewModel = .init()
 }

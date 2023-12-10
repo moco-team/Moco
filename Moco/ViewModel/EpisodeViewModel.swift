@@ -12,7 +12,7 @@ import SwiftData
     static let shared = EpisodeViewModel()
 
     var selectedEpisode: EpisodeModel?
-    var availableEpisodes: [EpisodeModel]?
+    var indexEpisodePlay: Int?
     var episodes: [EpisodeModel]?
 
     init(modelContext: ModelContext? = nil) {
@@ -22,8 +22,9 @@ import SwiftData
         }
     }
 
-    func setSelectedEpisode(_ episode: EpisodeModel) {
+    func setSelectedEpisode(_ episode: EpisodeModel, _ indexEpisode: Int) {
         selectedEpisode = episode
+        indexEpisodePlay = indexEpisode
     }
 
     func fetchEpisodes(storyThemeId: String) {
@@ -35,32 +36,26 @@ import SwiftData
         )
 
         episodes = (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
+    }
 
-        availableEpisodes = []
+    func fetchAvailableEpisodes(storyThemeId: String) -> [EpisodeModel]? {
+        let fetchDescriptor = FetchDescriptor<EpisodeModel>(
+            predicate: #Predicate {
+                $0.storyTheme?.uid == storyThemeId && $0.isAvailable == true
+            },
+            sortBy: [SortDescriptor<EpisodeModel>(\.createdAt)]
+        )
 
-        for episode in episodes ?? [] {
-            if episode.isAvailable {
-                availableEpisodes?.append(episode)
-            }
-        }
+        return (try? modelContext?.fetch(fetchDescriptor) ?? []) ?? []
     }
 
     func setToAvailable(selectedStoryTheme: StoryThemeModel) {
-        if let episodes = episodes, let availableEpisodes = availableEpisodes {
-            if availableEpisodes.count < episodes.count &&
-                selectedEpisode!.uid == availableEpisodes[availableEpisodes.count - 1].uid {
-                let storyThemeId = selectedStoryTheme.uid
-                let fetchDescriptor = FetchDescriptor<EpisodeModel>(
-                    predicate: #Predicate {
-                        $0.storyTheme?.uid == storyThemeId
-                    },
-                    sortBy: [SortDescriptor<EpisodeModel>(\.createdAt)]
-                )
+        fetchEpisodes(storyThemeId: selectedStoryTheme.uid)
 
-                if let getEpisodes = (try? modelContext?.fetch(fetchDescriptor)) {
-                    getEpisodes[availableEpisodes.count].isAvailable = true
-                    try? modelContext?.save()
-                }
+        if let availableEpisode = fetchAvailableEpisodes(storyThemeId: selectedStoryTheme.uid) {
+            if EpisodeViewModel.shared.indexEpisodePlay == availableEpisode.count - 1 {
+                episodes![availableEpisode.count].isAvailable = true
+                try? modelContext?.save()
             }
         }
     }
