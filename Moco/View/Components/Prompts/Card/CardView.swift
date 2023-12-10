@@ -53,22 +53,25 @@ struct CardView: View {
         VStack {
             switch state {
             case .active:
-                VStack {
-                    GeometryReader { proxy in
-                        let frame = proxy.frame(in: .local)
-                        Image(getActiveCard())
-                            .resizable()
-                            .scaledToFit()
-                            .onTapGesture {
-                                onTap?()
-                            }
-                            .scaleEffect(minScale: 1.0, maxScale: 1.05)
-                            .pointer(
-                                position: CGPoint(x: frame.midX, y: frame.midY),
-                                isShowing: showPointer
-                            )
+                Image(getActiveCard())
+                    .resizable()
+                    .scaledToFit()
+                    .overlay {
+                        GeometryReader { proxy in
+                            let frame = proxy.frame(in: .local)
+                            Image(getActiveCard())
+                                .resizable()
+                                .scaledToFit()
+                                .onTapGesture {
+                                    onTap?()
+                                }
+                                .scaleEffect(minScale: 1.0, maxScale: 1.05)
+                                .pointer(
+                                    position: CGPoint(x: frame.midX, y: frame.midY),
+                                    isShowing: showPointer
+                                )
+                        }
                     }
-                }
             case .inactive:
                 Image("Story/Prompts/card-inactive")
                     .resizable()

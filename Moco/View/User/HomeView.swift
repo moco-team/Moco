@@ -19,8 +19,6 @@ struct HomeView: View {
 
     @State private var homeViewModel = HomeViewModel()
 
-    @State private var isShowing3d = false
-    @State private var isMakeSentenceTest = true
 
     var body: some View {
         ZStack {
@@ -115,11 +113,6 @@ struct HomeView: View {
                 }
                 homeViewModel.soundLevel = 0.3
                 homeViewModel.setVolume()
-            }
-            if isShowing3d {
-                ThreeDRenderer {
-                    print("test 3d render selesai!")
-                }
             }
         }
     }

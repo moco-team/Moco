@@ -57,7 +57,6 @@ struct MocoApp: App {
                 .environment(\.audioViewModel, audioViewModel)
                 .environment(\.timerViewModel, timerViewModel)
                 .environment(\.mazePromptViewModel, mazePromptViewModel)
-                .environment(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Key Path@*/ \.sizeCategory/*@END_MENU_TOKEN@*/, /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/ .extraExtraLarge/*@END_MENU_TOKEN@*/)
                 .environmentObject(objectDetectionViewModel)
                 .environmentObject(arViewModel)
                 .environmentObject(motionViewModel)

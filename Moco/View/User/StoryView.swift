@@ -37,17 +37,27 @@ struct StoryView: View {
 
     var body: some View {
         ZStack {
+            Color.text.primary
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 0) {
                     if let stories = episodeViewModel.selectedEpisode!.stories {
                         ForEach(Array(stories.enumerated()), id: \.offset) { index, _ in
                             ZStack {
                                 PeelEffectTappable(state: $svvm.peelEffectState, isReverse: svvm.isReversePeel) {
-                                    Image(storyViewModel.storyPage!.background)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: Screen.width, height: Screen.height, alignment: .center)
-                                        .clipped()
+                                    if UIDevice.isIPad {
+                                        Image(storyViewModel.storyPage!.background)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: Screen.width, height: Screen.height, alignment: .center)
+                                            .clipped()
+                                    } else {
+                                        Image(storyViewModel.storyPage!.background)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .scaleEffect(1.4)
+                                            .frame(width: Screen.width, height: Screen.height, alignment: .center)
+                                            .clipped()
+                                    }
                                 } background: {
                                     svvm.peelBackground
                                 } onComplete: {
